@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>webcatz → tunes!</title>
+		<link rel="icon" type="image/png" href="../assets/icon.png">
+		<link href="../global.css" rel="stylesheet" type="text/css" media="all">
+		<style>
+@font-face {font-family: "B612"; src: url(../beepbox-webring/B612.ttf)}
+body {display: flex; color: #fafdff; font-family: sans-serif; height: 100vh; margin: 0 15vh; background: url(../assets/checkerboard-tilted.png) center / 320px, url(asphalt.jpg) right / contain black; overflow: hidden; image-rendering: auto}
+
+#tracklist-wrapper {display: flex; flex-direction: row-reverse; justify-content: start; width: 500px; position: relative; image-rendering: pixelated}
+.skew {transform: skew(15deg); z-index: 1}
+#tracklist-title {writing-mode: vertical-rl; text-orientation: upright; text-shadow: -0.1em 0.1em black, -0.15em 0.15em black; margin-top: 12px; margin-left: 4px}
+@keyframes spin {to {rotate: 360deg}}
+#cd {height: 80vh; position: absolute; top: 10vh; left: 50%; z-index: -1; animation: 5s spin linear infinite}
+#tracklist {min-width: 500px; padding: 16px; box-sizing: border-box; background-color: black; overflow-y: auto}
+select {all: unset; color: gray; width: 100%; padding: 0.5em 1em; margin-bottom: 8px; box-sizing: border-box; transform: skewX(-15deg); background-color: black; cursor: pointer; transition: color 0.2s}
+select:hover {color: #fafdff}
+
+.entry-wrapper {padding: 0 4px}
+.entry {display: flex; align-items: center; gap: 1em; font-family: monospace; padding: 0.5em 1em; transform: skewX(-15deg); background-color: black; cursor: pointer; transition: color 0.02s, background-color 0.02s, transform 0.2s, box-shadow 0.2s; user-select: none}
+.entry-title {font-family: sans-serif; font-weight: bold; text-overflow: ellipsis; white-space: nowrap; overflow: hidden; pointer-events: none}
+.entry-date {font-size: 0.875em; min-width: max-content; margin-left: auto; opacity: 0.5; pointer-events: none}
+.entry:hover {color: black; transform: translate(12px, -4px); box-shadow: -12px 4px 0 black; background-color: var(--color)}
+.entry:active {color: #fafdff; transform: scale(1.025, 0.95); box-shadow: none; background-color: #fafdff; transition: 0.01s}
+.entry:hover img {filter: invert()}
+.entry-wrapper:first-of-type .entry-title::after {content: " (new! ✨)"; color: transparent; font-family: sans-serif; font-weight: bold; line-height: 0; background: linear-gradient(to right, #ff8426, #ffd100); background-clip: text; -webkit-background-clip: text}
+
+#info {display: flex; flex-direction: column; justify-content: center; align-items: start; gap: 8px}
+#title {font-size: 4em; font-weight: bold; text-shadow: 0 -0.1em black, 0.1em -0.1em black, 0.15em 0 black, 0.15em 0.15em black, 0 0.15em black, -0.1em 0.1em blue, -0.1em 0 black, -0.1em -0.1em black; text-overflow: ellipsis; white-space: nowrap; width: calc(80vw - 416px); padding: 0.1em; margin: -0.1em; overflow: hidden}
+#player-wrapper {height: calc(27.5vh + 48px); margin: 8px 0}
+#player {padding: 8px; padding-left: calc(15vh + 564px); padding-right: 64px; border: 12px black; border-style: solid none; background-color: black; position: absolute; left: 0; right: 0}
+iframe {width: 100%; height: 27.5vh; padding: 4px; background-color: black}
+.tape {color: #7e7987; padding: 0.1em 0.5em; margin: 0 0.25em; background-color: black}
+#comment {line-height: 1.5; margin-left: 96px}
+#comment a {color: inherit; text-decoration: underline}
+
+.hidden {display: none !important}
+
+#back {position: absolute; left: 16px; bottom: 16px; transition: 0.1s}
+#back:hover {background-color: white}
+#back:hover:not(:active) {color: black; box-shadow: 0 4px black; bottom: 20px}
+#back:active {color: white}
+
+@media (max-width: 1100px) {
+	body {margin: 0; flex-direction: column}
+
+	#tracklist-wrapper {width: unset; height: 100%; padding: 8px; box-sizing: border-box; flex-direction: column; gap: 8px}
+	#tracklist-title {writing-mode: unset; letter-spacing: 0.1em; margin: unset}
+	#cd {display: none}
+	#tracklist {min-width: unset; height: 100%; padding: unset; flex: 1}
+	select, .entry, .skew {transform: none}
+	select {box-shadow: 0 0 0 1px #404040}
+	.entry:hover {transform: translate(8px, -4px); box-shadow: -8px 4px 0 black}
+
+	#info {height: max-content; display: block !important; order: -1}
+	#title {font-size: 2.5em; width: unset; padding: 12px; margin: unset}
+	#player-wrapper {width: 100%; height: 100%}
+	#player {padding: 24px 8px; position: static}
+	iframe {height: 192px; box-sizing: border-box}
+	#comment {display: none; margin-left: unset}
+
+	#back {display: none}
+}
+		</style>
+	</head>
+	<body>
+		<div id="tracklist-wrapper">
+			<div id="tracklist-title" class="skew">tracklist</div>
+			<img id="cd" src="cd.png" aria-hidden="true">
+			<div id="tracklist" class="skew">
+				<select id="filter" name="filter">
+					<option value="" disabled selected>filter by...</option>
+					<option value="">all</option>
+					<option>featured</option>
+					<option>complete</option>
+					<option value="concept">concepts</option>
+					<optgroup label="by project...">
+						<option>breaktime</option>
+						<option value="cat">cat comic</option>
+						<option value="jam">game jams</option>
+						<option>labyrinth</option>
+						<option value="lbau">let's build a universe</option>
+						<option>outward</option>
+						<option value="tad">textbox adventure demo</option>
+					</optgroup>
+				</select>
+			</div>
+		</div>
+		<div id="info" class="hidden">
+			<div id="title">select a track...</div>
+			<div><span id="date" class="tape"></span><span id="tags" class="tape"></span></div>
+			<div id="player-wrapper"><div id="player"><iframe></iframe></div></div>
+			<span id="comment" class="tape"></span>
+		</div>
+		<script src="data.js"></script>
+		<script>
+addTracks();
+function addTracks() {
+	let html = "";
+	for (let i = 0; i < tracklist.length; i++) {
+		let tags = "";
+		if (tracklist[i].tags) {
+			if (tracklist[i].tags.includes("complete")) tags += '<img src="complete.png" alt="complete track" title="complete track">';
+			if (tracklist[i].tags.includes("featured")) tags += '<img src="featured.png" alt="featured track" title="featured track">';
+		}
+		html += `
+		<div class="entry-wrapper${tracklist[i].tags ? " " + tracklist[i].tags.join(" ") : ""}" style="background-color: ${getRandomColor()}">
+			<div class="entry" style="--color: ${getRandomColor()}" data-idx="${i}">
+				<div class="entry-title">${tracklist[i].name}</div>${tags}
+				${tracklist[i].date ? `<div class="entry-date">${arrayToDate(tracklist[i].date)}</div>` : ""}
+			</div>
+		</div>
+		`;
+	}
+	document.getElementById("tracklist").insertAdjacentHTML("beforeend", html);
+}
+
+const title = document.getElementById("title"), date = document.getElementById("date"), tags = document.getElementById("tags"), comment = document.getElementById("comment");
+var firstTime = true, lastPlayer = document.querySelector("iframe");
+document.getElementById("tracklist").onclick = event => {if (event.target.classList.contains("entry")) viewTrack(event.target.dataset.idx, event.target.style.getPropertyValue("--color"))};
+function viewTrack(i, color) {
+	if (firstTime) {firstTime = false; document.getElementById("info").removeAttribute("class")}
+	let track = tracklist[i], wrapper = document.getElementById("player");
+	// style
+	wrapper.style.backgroundColor = color;
+	wrapper.animate({clipPath: ["polygon(0 0, calc(30vh + 48px) 0, 0 100%, 0 100%)", "polygon(0 0, calc(100% + 30vh + 48px) 0, 100% 100%, 0 100%)"]}, 250);
+	// wrapper.animate({clipPath: ["inset(0 100% 0 0)", "inset(0 0 0 0)"]}, 250);
+	// track details
+	title.textContent = track.name;
+	date.textContent = track.date ? arrayToDate(track.date) : "undated";
+	if (track.tags) {
+		tags.textContent = "#" + track.tags.join(", #");
+		tags.classList.remove("hidden");
+	} else tags.classList.add("hidden");
+	if (track.note) {
+		if (track.note.includes("[")) {
+			let start, linkComment = track.note;
+			do {
+				start = linkComment.indexOf("[");
+				let end = linkComment.indexOf("]", start), trackName = linkComment.substring(start + 1, end);
+				linkComment = linkComment.substring(0, start) + "<a href='?track=" + trackName + "'>" + trackName + "</a>" + linkComment.substring(end + 1);
+			} while (start != -1);
+			comment.innerHTML = linkComment;
+		} else comment.textContent = track.note;
+		comment.classList.remove("hidden");
+	} else comment.classList.add("hidden");
+	// player
+	let player;
+	if (track.hash) {
+		let host;
+		switch (track.hash.substring(0, 1)) {
+			case "u": host = "https://ultraabox.github.io/player/#song="; break;
+			case "j": host = "https://jummbus.bitbucket.io/player/#song="; break;
+			default: host = "https://www.beepbox.co/player/#song=";
+		}
+		player = document.createElement("iframe"), player.src = host + track.hash;
+	} else player = document.createElement("audio"), player.controls = "true", player.loop = "true", player.src = "https://docs.google.com/uc?id=" + track.link;
+	lastPlayer.replaceWith(player);
+	lastPlayer = player;
+}
+
+function filter(tag) {
+	if (tag == "") for (const e of document.getElementsByClassName("entry-wrapper")) e.classList.remove("hidden")
+	else for (const e of document.getElementsByClassName("entry-wrapper")) e.classList.contains(tag) ? e.classList.remove("hidden") : e.classList.add("hidden");
+}
+document.getElementById("filter").onchange = event => filter(event.target.value);
+let params = new URLSearchParams(window.location.search);
+if (params.has("filter")) {
+	let tag = params.get("filter");
+	document.getElementById("filter").value = tag;
+	filter(tag);
+}
+if (params.has("track")) {
+	let i = tracklist.findIndex(track => track.name == params.get("track"));
+	if (i) viewTrack(i, getRandomColor());
+}
+
+function arrayToDate(array) {return ["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"][array[1] - 1] + " " + array[0] + ", '" + array[2].toString().substring(2)}
+function getRandomColor() {return "#" + ["d62411", "ff8426", "ffd100", "bfff3c", "10d275", "68aed4", "ff2674", "ff80a4"][Math.floor(Math.random() * 8)]}
+		</script>
+		<a id="back" class="tape" href="../index.html">← back home...?</a>
+	</body>
+</html>

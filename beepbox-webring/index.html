@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>webcatz → beepbox webring!</title>
+		<link rel="icon" type="image/png" href="../assets/icon.png">
+		<script src="data.js"></script>
+		<link href="../global.css" rel="stylesheet" type="text/css" media="all">
+		<style>
+			@font-face {font-family: "B612"; src: url(B612.ttf)}
+			body {color: #999; font-family: B612, sans-serif; line-height: 1.5; margin: 32px; background-color: black}
+			#main, #memberlist {max-width: 640px; margin: auto}
+			::selection {color: black; background-color: #98f}
+
+			.bordered, details[open], input {padding: 16px; border: 4px solid #222; border-radius: 5px}
+			.more-padding {padding: 32px}
+			.flex {display: flex; gap: 8px}
+
+			h1, h2 {color: white; margin-top: 0}
+			h1 {text-align: center; margin-bottom: 32px}
+			h1 span {color: #98f}
+			h3 {font-size: 1em; font-weight: normal; padding: 6px 14px; margin: -20px; margin-bottom: 1em; border-radius: 5px; background-color: #222}
+
+			a {color: #98f; text-decoration: underline}
+			ul {list-style-type: none; padding: 0; margin: 0}
+			li {padding: 12px 16px; border-radius: 5px}
+			li:nth-of-type(odd) {background-color: #222}
+
+			details {margin: 16px 0}
+			details[open] {padding-top: 0; border-top: none; box-sizing: border-box}
+			details[open] > summary {margin: 0 -20px}
+
+			textarea {width: 100%; height: 5em; margin-top: 16px}
+			input, button {font: inherit; appearance: none}
+			input {flex: 1; color: inherit; padding: 8px 12px; background-color: transparent}
+			button, summary, #back {color: white; padding: 6px 14px; border: none; border-radius: 5px; background-color: #444; cursor: pointer}
+			button:hover, summary:hover, #back:hover {background-color: #555}
+			button {text-align: center; box-sizing: border-box}
+
+			#about p:last-of-type, #rules p:last-of-type, #join p:last-of-type, #widget p:last-of-type {margin-bottom: 0}
+			#rules summary::marker {color: #00f3fe}
+			#join summary::marker {color: #ffff4a}
+			#widget summary::marker {color: #ff9759}
+			#widget2-button {width: 100%; margin-top: 1em}
+
+			#memberlist li {padding: 0}
+			#memberlist li:hover {background-color: #444}
+			#memberlist li a {display: block; padding: 12px 16px}
+
+			#back {display: block; text-decoration: none; width: max-content; margin: 64px auto}
+
+			#widget1 {display: flex; align-items: center; gap: 8px; font: 1rem/1.1 sans-serif; max-width: 100%}
+			#widget1-main {flex: 1; color: #999; text-align: center; padding: 8px 12px; border: 4px solid #222; border-radius: 5px; background-color: black}
+			#widget1-main a {color: #98f; font-weight: bold; text-decoration: underline}
+			#widget1-frame {width: 100%; height: 64px; margin-top: 8px}
+			.widget1-arrow {display: block; width: 14px; padding: 8px; border-radius: 5px; background-color: #444; cursor: pointer}
+			.widget1-arrow:hover {background: #555}
+
+			#widget2 {display: flex; align-items: center; gap: 4px}
+		</style>
+	</head>
+	<body>
+		<div id="main" class="bordered more-padding">
+			<h1>welcome to the <span>beepbox webring</span>!</h1>
+			<div id="about" class="bordered">
+				<h2>what is this?</h2>
+				<p>this is a webring for anyone who makes music using <a href="https://www.beepbox.co">beepbox</a>, <a href="https://jummbus.bitbucket.io">jummbox</a>, or any other beepbox derivative! this webring is only open to people with personal websites, though.</p>
+			</div>
+			<details id="rules">
+				<summary>what are the rules?</summary>
+				<p>great question! there are three of them:</p>
+				<ul>
+					<li>you should have a personal website/webpage. that means made with your own two hands!</li>
+					<li>you should be able to listen to beepbox/etc. songs somewhere on your website</b>. the point of this webring is to help people find music!</li>
+					<li>you should have the webring widget somewhere on your website.</li>
+				</ul>
+				<p>i do reserve the right to not let you join for whatever reason. don't worry, if you're not a huge asshole or something, this won't happen.</p>
+			</details>
+			<details id="join">
+				<summary>how do i join?</summary>
+				<p>reviewed the rules? great! send an email with your site url to "crowsthyme@gmail.com" with the subject line "beepbox webring"!</p>
+				<p>then just be patient and i'll add you when i have time!</p>
+			</details>
+			<details id="widget">
+				<summary>i'm in the webring—now what?</summary>
+				<p>congratulations! if you haven't already, choose a widget and put it on your site:</p>
+				<div class="flex">
+					<div class="bordered">
+						<h3>song widget</h3>
+						<div id="widget1"><img class="widget1-arrow" src="left.png"><div id="widget1-main"><div>this site is part of the <a href="">beepbox webring</a>!</div><iframe id="widget1-frame" src="https://www.beepbox.co/player/#song=9n31s0k0l00e03t2ma7g0fj07r1i0o432T1v1u39f0qwx10l611d08A0F0B0Q38e0Pa610E3b8618626T1v1u3df0qwx10p511d08AcFbBfQ269cP969bE2bi7iT1v1ue1f0q0y10n73d4aA0F0B7Q0000Pe600E2bb619T2v1u15f10w4qw02d03w0E0b4h400000000h4g000000014h000000004h400000000p16000000"></iframe></div><img class="widget1-arrow" src="right.png"></div>
+						<p>copy the widget code using the button below: (paste a beepbox/etc. song player link in the textbox first, though)</p>
+						<div class="flex">
+							<input id="song-input" type="text" placeholder="paste a beepbox/etc. song player url...">
+							<button onclick="copyCode('song', this)">copy!</button>
+						</div>
+						<p>paste that HTML wherever you want your widget to be, and then include this stylesheet link somewhere in that page's &lt;head&gt; tag:</p>
+						<textarea><link href="https://webcatz.neocities.org/beepbox-webring/widget.css" rel="stylesheet" type="text/css" media="all"></textarea>
+					</div>
+					<div class="bordered">
+						<h3>button widget</h3>
+						<div id="widget2"><img src="button-left.png"><img src="button.png"><img src="button-right.png"></div>
+						<p>copy the widget code using the button below:</p>
+						<button id="widget2-button" onclick="copyCode('button', this)">copy!</button>
+					</div>
+				</div>
+				<p>and voilá! you're an official part of the webring! happy jamming :3</p>
+			</details>
+		</div>
+		<a id="back" href="../index.html">← back to index?</a>
+		<div id="memberlist" class="bordered more-padding">
+			<h2>memberlist!</h2>
+		</div>
+		<script>
+		  /* memberlist */
+		  let list = "";
+		  sites.forEach(site => {list += `<li><a href='${site}'>${new URL(site).hostname}</a></li>`});
+      document.getElementById('memberlist').insertAdjacentHTML('beforeend', `<ul>${list}</ul>`);
+		  
+		  /* widget copier */
+			function copyCode(type, button) {
+				switch (type) {
+					case "song":
+						let song_url = document.getElementById("song-input").value;
+						if (song_url != "") {
+							navigator.clipboard.writeText(`<div id="beepbox-webring" data-song="${song_url}"><script type="text/javascript" src="https://webcatz.neocities.org/beepbox-webring/data.js"><\/script><script type="text/javascript" src="https://webcatz.neocities.org/beepbox-webring/widget.js"><\/script></div>`);
+						} else {
+							error();
+							return;
+						}
+						break;
+					case "button":
+						navigator.clipboard.writeText(`<div id="beepbox-webring"><script type="text/javascript" src="https://webcatz.neocities.org/beepbox-webring/data.js"><\/script><script type="text/javascript" src="https://webcatz.neocities.org/beepbox-webring/button-widget.js"><\/script></div>`);
+						break;
+				}
+
+				button.innerText = "copied!";
+				setTimeout(() => {button.innerText = "copy!"}, 1000);
+			}
+
+			function error() {
+				document.getElementById("song-input").style.borderColor = "red";
+				setTimeout(() => {document.getElementById("song-input").style = "none"}, 1000);
+			}
+		</script>
+	</body>
+</html>

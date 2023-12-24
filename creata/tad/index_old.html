@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>> textbox adventure demo |</title>
+    <link href="../../crt.css" rel="stylesheet" type="text/css" media="all">
+    <style>
+      @font-face {font-family: "Pixel"; src: url("assets/Pixel.ttf")}
+      body {
+        color: white; font: 1em/1.75 "Pixel";
+        padding: 0 128px; margin: 22px;
+        background: black;
+        image-rendering: pixelated;
+      }
+      body::after {
+        content: ""; box-shadow: 0 0 16px 16px inset black;
+        background: radial-gradient(circle at center, transparent 90%, black);
+        position: fixed; top: 0; right: 0; bottom: 0; left: 0; pointer-events: none;
+      }
+
+      /* SPLASH TEXT */
+      header {position: relative; pointer-events: none}
+      #splash {height: 112px; overflow: hidden; position: relative; z-index: -1}
+      #splash::after {
+        content: "";
+        background: linear-gradient(to bottom, transparent, black);
+        position: absolute; top: 0; right: 0; bottom: 0; left: 0;
+      }
+      @keyframes float {100% {transform: translateY(-2px)}}
+      #ghost {
+        filter: drop-shadow(0 0 2px #ff004d); scale: 2; rotate: 7.5deg; transform-origin: bottom right;
+        position: absolute; right: 32px; bottom: 50px;
+        animation: float 2s alternate infinite; z-index: -2;
+      }
+
+      /* MAIN */
+      h1 {
+        color: #602217; line-height: 0.75;
+        width: max-content; padding-top: 8px; padding-right: 8px;
+        border-right: 4px solid #602217; background-color: black;
+      }
+      #flex_container {display: flex; gap: 26px; margin: 0 -16px}
+      #container {margin-top: -112px}
+
+      main {
+        color: black; text-shadow: none;
+        border-style: solid; border-width: 66px 32px 16px 32px;
+        border-image: url("assets/panel.png") 33 16 8 16; border-image-outset: 2px;
+        background-color: #686f6f;
+        flex: 3;
+      }
+      main > div {padding: 24px 16px; margin: -82px -28px -32px -28px}
+      
+      #note {color: #686f6f; box-shadow: 8px 0 0 #602217, -8px 0 0 #602217; background-color: #602217}
+
+      aside {flex: 2}
+      aside img, aside audio {
+        display: block; width: 100%;
+        border: 2px solid #602217; border-radius: 2px; box-sizing: border-box
+      }
+      aside audio {background-color: black; margin-bottom: 16px}
+
+      @media (max-width: 1023px) {
+        body {padding: 0}
+        #flex_container {flex-direction: column; margin: 0}
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <p>> hello?</p>
+      <p>> ...is anyone there?</p>
+      <p id="splash">> my name is my name is my name is my name is my name is my name is my name is my name is my name is my name is my name is my name is my name is my name is my name is my name is my name is my name is my name is my name is my name is my name is my name is my name is my name is my name is my name is my name is my name is my name is my name is my name is my name is my name is my name is my name is my name is my name is my name is my name is my name is my name is my name is my name is my name is my name is my name is my name is my name is my name is my name is my name is my name is my name is my name is my name is my name is my name is my name is</p>
+      <img id="ghost" src="assets/GHOST.png">
+    </header>
+    <div id="container">
+      <h1 id="title">> textbox adventure demo</h1>
+      <script>
+        alternate()
+
+        function alternate() {
+          document.title = '> textbox adventure demo |';
+          document.getElementById("title").style.borderRightStyle = 'solid';
+          setTimeout(function() {
+            document.title = '> textbox adventure demo';
+            document.getElementById("title").style.borderRightStyle = 'none';
+            setTimeout(function() {
+              alternate();
+            }, 1000);
+          }, 1000);
+        }
+      </script>
+      <div id="flex_container">
+        <main>
+          <div>
+            <p id="note">// ran out of steam. will revisit these ideas later</p>
+            <p>hi! hello!! welcome!!!</p>
+            <p>this is a (currently untitled) pet project of mine i've been working on and off on for a long while.</p>
+            <p>it's a retro-styled story-driven game, controlled through text commands. there's a screenshot on the right! it's not <em>necessarily</em> a horror game, but it does contain a lot of horror elements (although the degree to which those elements are taken seriously varies wildly). all the main systems are pretty much fully functional already - the next step right now is for me to just stop procrastinating, sit down, and flesh out the story! all the ideas i've got right now are all in my head, but hoo boy do i really love a lot of them!!</p>
+            <p>i don't want to spoil too much of the premise of the game... mostly because i don't really want to commit to anything just yet, just in case. it'll deal a lot with concepts of identity (as you can guess by the splash text...) & especially identity in relation to agency - whether identity even means anything if you don't have the agency to enforce it. lotta complicated stuff in this bad boy. looking back on a lot of the stuff i've marked out now, i feel like i've subconsciously pulled on a lot of my own experiences, both of transness in a shitty super-religious country and of good-old intrinstic shame, self-isolation, and some other stuff i won't say because it's major wajor spoilers. woops. anyway this is just to say yeah this is a bit of a vent project but also it will still hopefully be a game that is only very angsty in a way that is enjoyable.</p>
+          </div>
+        </main>
+        <aside>
+          <audio controls src="https://drive.google.com/uc?id=1fcxbpzT3jUssHFRzsb92T2v5afmZg2KL"></audio>
+          <img id="screenshot" src="assets/tad.png">
+        </aside>
+      </div>
+    </div>
+  </body>
+</html>

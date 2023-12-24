@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>webcatz → sitemap!</title>
+    <link rel="icon" type="image/png" href="assets/icon.png">
+    <link href="global.css" rel="stylesheet" type="text/css" media="all">
+    <style>
+      body {color: white; font: 1em ms-serif; text-shadow: 0 0 1px; margin: 64px 8px; background: radial-gradient(#adff2f1a, transparent) fixed black}
+      #container {width: 300px; margin: auto}
+      h1 {font-size: 1em; width: 300px; padding: 0 0.5em; margin: 16px -6px; border: 6px double; border-top: none; border-bottom: none}
+      h1, a:hover, summary:hover {color: black; background-color: greenyellow}
+
+			/* list */
+      ul {color: greenyellow; list-style-type: none; padding: 0; margin: 0}
+      ul ul {padding-left: 8px; margin-left: 4px; border-left: 2px solid #adff2f1a}
+      a {display: block; color: greenyellow; width: 100%; padding-left: 4px; box-sizing: border-box}
+      ul ul a {color: #adff2f80}
+      a::before {content: "> "}
+      details {margin-top: 16px}
+      summary {color: greenyellow; font-size: 75%; opacity: 0.25}
+      .disabled {cursor: not-allowed}
+      .disabled:hover {color: black; background-color: black}
+
+			/* animation */
+      @keyframes appear {to {opacity: 1}}
+      .text, h1, #list, details {opacity: 0}
+      .text:first-of-type {animation: 0.01s appear 0.1s forwards}
+      .text:nth-of-type(2) {animation: 0.01s appear 0.3s forwards}
+      h1 {animation: 0.01s appear 2s forwards}
+      #list {animation: 0.01s appear 2.25s forwards}
+      details {animation: 0.01s appear 3s forwards}
+    </style>
+  </head>
+  <body>
+    <div id="container">
+      <div class="text">> view sitemap</div>
+      <div class="text">loading...</div>
+      <h1>sitemap</h1>
+      <ul id="list">
+        <li><a href="index.html">index</a></li>
+				<li><a class="disabled">about</a></li>
+        <li><a class="disabled">tunes</a></li>
+        <li><a class="disabled">creata</a></li>
+        <li><a href="beepbox-webring/index.html">beepbox webring</a></li>
+        <li><a class="disabled">minecraft screenshots</a></li>
+        <li><a class="disabled">links</a></li>
+      </ul>
+    </div>
+  </body>
+</html>

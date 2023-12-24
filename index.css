@@ -1,0 +1,260 @@
+.disabled {cursor: not-allowed}
+.disabled:hover {filter: grayscale()}
+
+@font-face {font-family: ms-serif; src: url(assets/fonts/ms-serif.ttf)}
+@font-face {font-family: gotham; src: url(assets/fonts/gotham-ssm.otf)}
+@font-face {font-family: merriweather-black; src: url(assets/fonts/merriweather-black.ttf)}
+@font-face {font-family: merriweather; src: url(assets/fonts/merriweather.ttf)}
+@font-face {font-family: print; src: url(assets/fonts/magazine.ttf)}
+body {color: white; min-height: 100vh; margin: 0; background: radial-gradient(black 50%, transparent) fixed, url(assets/checkerboard-tilted.png) #130f18; overflow-x: hidden}
+.imglink {display: block; cursor: help}
+/*
+blue: #32a7e2
+pink: #e23254
+yllw: #e2a732
+*/
+
+#title {display: flex; justify-content: center; align-items: center; height: 144px; background: url(assets/triple_star.png) no-repeat center, radial-gradient(circle at center, black 250px, white 250px, white 251px, transparent 251px), url(assets/banner.png) repeat no-repeat center}
+h1 {color: black; font: 3.5em merriweather-black, sans-serif; text-align: center; text-shadow: -1px 0 white, -1px -1px white, 0 -1px white, 1px -1px white, 1px 0 white, 1px 1px white, 0 1px white, -1px 1px white; margin: 0}
+h1 span::selection {color: white; text-shadow: -1px 0 var(--color), -1px -1px var(--color), 0 -1px var(--color), 1px -1px var(--color), 1px 0 var(--color), 1px 1px #32a7e2, 0 1px var(--color), -1px 1px var(--color), 0 0 8px white}
+h1 span {--color: #e23254}
+h1 span:first-of-type {--color: #32a7e2}
+h1 span:last-of-type {--color: #e2a732}
+
+#textbox {display: flex; justify-content: center; align-items: center; gap: 16px; font-family: sans-serif; height: 144px; background: url(assets/space.png) bottom}
+#textbox::before, #textbox::after {content: ""; border: solid black; border-width: 8px 50vw; position: absolute; left: 0; right: 0}
+#textbox::before {border-bottom-color: transparent; border-right-color: transparent; top: 0}
+#textbox::after {border-top-color: transparent; border-left-color: transparent; bottom: 0; z-index: 1}
+#textbox-sprite {margin-left: -140px; margin-top: -95px; transform-origin: bottom; z-index: 1; transition: 0.05s; cursor: pointer}
+#textbox-sprite:hover {transform: scale(0.95, 1.05)}
+#textbox-sprite:active {filter: hue-rotate(-30deg) saturate(0.75) brightness(1.1); transform: scale(1.05, 0.95)}
+#textbox-bubble {display: flex; flex-direction: column; justify-content: center; color: black; width: 400px; height: 100%; padding: 0 32px; background-image: radial-gradient(farthest-side circle at center, white 100%, transparent 100%)}
+#textbox-title {color: #bfbfbf; font-family: ms-serif; font-size: 75%; margin-left: 16px; margin-bottom: 2px; margin-top: -8px}
+#textbox-h {float: left; height: 2em; margin-right: 0.2em}
+#textbox-text span {font-size: 75%}
+#textbox-nya {display: none}
+
+#wrapper {display: flex; gap: 64px; max-width: 1280px; padding: 32px 0; margin: auto}
+.sidebar {flex: 1}
+
+/* middle section */
+#middle {flex: 2}
+#sitting-cats {width: 92px; margin: -46px 16px -18px auto; z-index: 1}
+
+nav {display: grid; grid-template-columns: 1fr 1fr; gap: 8px 16px}
+nav a {color: inherit}
+nav > a {display: block}
+
+/* classes */
+.font-sans {font-family: sans-serif}
+
+.button {--accent: currentcolor; transition: transform 0.1s, box-shadow 0.1s}
+.button:hover {transform: translateY(-4px); box-shadow: 0 4px var(--accent)}
+.button:active {transform: translateY(4px); box-shadow: none}
+.center {display: flex; justify-content: center; align-items: center; text-align: center}
+.sized {aspect-ratio: 2; box-sizing: border-box}
+
+.r1 {border-radius: 1px}
+.r3 {border-radius: 3px}
+.r4 {border-radius: 4px}
+.r5 {border-radius: 5px}
+.r8 {border-radius: 8px}
+.r16 {border-radius: 16px}
+
+.grid-wide {grid-column: span 2}
+.grid-tall {grid-row: span 2}
+.grid-tall-2 {grid-row: span 3}
+
+.hfill {width: 100%}
+.pos-rel {position: relative}
+.pos-abs {position: absolute}
+.margin-top {margin-top: 8px}
+.margin-bottom {margin-bottom: 8px}
+
+.flex {display: flex}
+.triple {display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 4px}
+.triple.column {grid-template-columns: 1fr; grid-template-rows: 1fr 1fr 1fr}
+.column {flex-direction: column}
+
+/* individual styling */
+#about {text-align: center; padding: 8px 16px; background: url(assets/space.png) bottom; transition: 0.1s}
+#about:hover {letter-spacing: 0.05em}
+
+#ad {border: 4px solid blue}
+
+#creata {font: bold 4em sans-serif; background: linear-gradient(to bottom, #fa7a23 1px, transparent 1px) no-repeat repeat top / 100% 4px fixed, linear-gradient(225deg, #ffa430, transparent) #ff8426}
+#creata div {rotate: 2deg}
+#creata span {font-family: print}
+
+#tunes {display: grid; grid-template-columns: max-content max-content 1fr; gap: 4px 16px; color: white; aspect-ratio: auto; padding: 16px; margin: 0 -8px; rotate: -1deg; background: url(tunes/button-gradient.png) repeat no-repeat bottom #1e90ff; overflow: hidden; transition: outline 0.2s}
+#tunes:hover {outline: 4px solid #ffffff40; outline-offset: 2px}
+#tunes-title, #tune-title {white-space: nowrap}
+#tunes-title {color: #fafdff; font-size: 1.5em; font-weight: bold; text-shadow: 0 -0.1em black, 0.1em -0.1em black, 0.15em 0 black, 0.15em 0.15em black, 0 0.15em black, -0.1em 0.1em blue, -0.1em 0 black, -0.1em -0.1em black; margin-left: 16px; margin-top: 4px}
+#tune-title {justify-self: start; align-self: end; color: #7e7987; padding: 0.1em 0.5em; background-color: black}
+#tunes iframe {width: 100%; height: 80px}
+#wayne {align-self: center; margin: -8px 0; border: 8px solid; border-image: url(assets/tunes-border.gif) 4 / 4px}
+#wayne:not(:hover) img:last-of-type, #wayne:hover img:first-of-type {display: none}
+@keyframes spin {to {rotate: 360deg}}
+#tunes-cd {top: -89.25px; left: -145.5px; z-index: -1; animation: 15s spin linear infinite}
+
+#news span, #news img {margin-right: 64px}
+#news span:last-of-type {margin-right: 0}
+#news img {display: inline-block; width: 96px; height: 1em}
+
+#shrines-wrapper {font-family: sans-serif}
+#shrines-title {color: #48454d; font-size: 2em; font-weight: bold; text-shadow: 0 -0.1em #f7f6e0, 0.1em -0.1em #f7f6e0, 0.1em 0 #f7f6e0, 0.1em 0.1em #f7f6e0, 0 0.1em #f7f6e0, -0.1em 0.1em #f7f6e0, -0.1em 0 #f7f6e0, -0.1em -0.1em #f7f6e0; rotate: 2deg; top: -2px; right: -4px; z-index: 1}
+#shrines {color: #f7f6e0; padding-bottom: 32px; background: url(assets/leaves.png) center / 224px 224px, url(assets/green-tile.png) center #668237; top: 0; bottom: 0; overflow: hidden scroll}
+#shrines a {display: block; color: #413d46; width: 50%; padding: 12px; padding-bottom: 16px; margin-bottom: -16px; box-shadow: 0 2px 8px #00000040; background-color: #f7f6e0; transition: rotate 0.1s}
+#shrines a:nth-of-type(odd) {margin-left: -5%; rotate: -2deg}
+#shrines a:nth-of-type(even) {margin-left: 15%; rotate: 2deg}
+@keyframes unrotate-left {90% {rotate: 1deg} to {rotate: 0deg}}
+@keyframes unrotate-right {90% {rotate: -1deg} to {rotate: 0deg}}
+#shrines a:nth-of-type(odd):hover {animation: 0.15s unrotate-left forwards}
+#shrines a:nth-of-type(even):hover {animation: 0.15s unrotate-right forwards}
+#shrines img {object-fit: cover; aspect-ratio: 1; margin-bottom: 8px}
+
+#statuscafe {color: white; font-family: monospace; border: solid #1d0b37; border-width: 25px 31px 24px 42px; border-image: url(https://webcatz.neocities.org/assets/status/bubble.gif) 25 31 29 42 fill / 25px 31px 29px 42px round}
+#statuscafe-username {color: #6f5da0; margin-bottom: 0.5em}
+#statuscafe-username a {color: #bf3d86; font-weight: bold; text-decoration: none; border-bottom: 1px dashed #bf3d86e0;}
+#statuscafe-username a:hover {color: black; box-shadow: 2px 0 #cefefe, -2px 0 #cefefe; border: none; background-color: #cefefe}
+#statuscafe-content {margin: 0 1em 0.5em 1em}
+#status-bubble {width: 52px; top: -48px; right: -20px; cursor: help}
+#status-design {display: none; width: 355px; top: -93px; right: -205px; z-index: 1; pointer-events: none}
+#status-bubble:hover + #status-design {display: block}
+
+#stamps {gap: 2px; margin: 0 -4px; overflow: hidden}
+
+#blog {color: #fdf7e6; font-size: 3em; font-weight: bold; border: 4px solid; border-image: url(assets/stamp-border.png) 4 / 4px repeat; background: url(assets/blog-stamp.png) center / 100%; background-clip: padding-box; rotate: 1deg; display: flex; justify-content: start; align-items: end; transition: background-size 0.1s ease-in}
+#blog:hover:not(:active) {background-size: 110%; transition: background-size 0.75s}
+
+@font-face {font-family: "old-london"; src: url(assets/fonts/old-london.ttf)}
+#resources {--accent: blue; color: black; font: 4em old-london; text-shadow: -0.5px -1px white, 0 -0.05em blue, 0.1em -0.05em blue, 0.1em 0 blue, 0.1em 0.075em blue, 0 0.075em blue, -0.1em 0.075em blue, -0.1em 0 blue, -0.1em -0.05em blue, 0.1em 0.1em 0.25em #00000080; background: url(assets/checkerboard-tilted.png) #130f18; overflow: hidden}
+@font-face {font-family: "gg-sans"; src: url(assets/fonts/gg-sans/medium.ttf)}
+#discord {--accent: #5865f2; color: #dbdee1; font: 1.5em gg-sans; text-shadow: 0 0 8px #0000007a; padding-left: 20%; background: radial-gradient(closest-corner circle at left, #232428 75%, white 75%, white 80%, transparent 80%) #303338}
+#discord span {color: #5865f2}
+#span-ify {--accent: white; color: black; letter-spacing: 0.05em; background-color: white; outline: 1px solid lightgray; outline-offset: -8px}
+#span-ify span {color: #519cd3; font-family: monospace; letter-spacing: 0; padding: 0 0.05em; margin: 0 0.1em; background-color: #1f1f1f}
+#span-ify span::before {color: gray; content: "<"}
+#span-ify span::after {color: gray; content: ">"}
+#dud {padding: 8px; background: url(assets/silly.png) center / 100% 150%}
+
+#art {--accent: pink; font: bold 2em sans-serif; background-color: white}
+#art div {color: black; text-shadow: 0.1em 0.1em pink, 0.2em 0.2em pink; transform: skewX(-30deg)}
+
+#catcomic {--accent: #2ceee2; font: bold 3.25em sans-serif; background: url(cat/assets/gradient-bottom.png) repeat no-repeat bottom / auto 25%, url(cat/assets/banner.png) repeat no-repeat top / auto 70% white}
+#catcomic div {color: transparent; margin: 0; background: url(cat/assets/title-bg.png) center / cover; background-clip: text; -webkit-background-clip: text; filter: drop-shadow(-0.1em 0 white) drop-shadow(0.1em 0 white) drop-shadow(0 -0.1em white) drop-shadow(0 0.1em white) drop-shadow(0 0.05em 0.1em #00000028); position: relative}
+
+@font-face {font-family: homemade-apple; src: url(assets/fonts/homemade-apple.ttf)}
+#tarot {--accent: #00ffb7; font: 2em/1.25 homemade-apple; background: radial-gradient(circle at center, #03291abf 25%, transparent), url(assets/checkerboard-tilted.png) center / 240px #0d0b0e}
+#tarot div {color: transparent; padding-top: 0.4em; background: linear-gradient(to top right, white 25%, #00ffb7); background-clip: text; -webkit-background-clip: text}
+
+@font-face {font-family: "B612"; src: url(beepbox-webring/B612.ttf)}
+#beepbox {--accent: #98f; font: 1.25em B612; text-align: center; padding: 16px; border: 4px solid #222; background: url(beepbox-webring/background.png) repeat no-repeat center black}
+#beepbox span {color: #98f}
+
+/* #slop {color: #f66121; font-size: 1.25em; text-shadow: 0 0 2px #f6612180; background-color: #f0f0b8} */
+
+#tv {aspect-ratio: 49/50; padding: 10% 11.3% 29.76% 11.3%; box-sizing: border-box; position: relative}
+#tv::after {content: ""; background: url(assets/vhs-player.png) center / cover; position: absolute; top: 0; left: 0; right: 0; bottom: 0; pointer-events: none}
+#tv iframe {width: 100%; height: 100%}
+
+#links {box-shadow: 0 2px 4px #000000bf inset; border: 8px outset #543619; background-image: url(assets/corkboard.jpg)}
+
+/* left sidebar */
+#ap {display: grid; grid-template-columns: 32px 1fr 32px; row-gap: 4px; font-family: ms-serif; margin-bottom: 16px}
+.lcd {color: #daf1b6; font-family: ms-serif; background-color: #232d1d}
+#ap-idx, #ap-time {color: #daf1b680; font-size: 0.75em}
+#ap button {text-align: center; border: none; background: #1a1a1a; transition: transform 0.1s, box-shadow 0.1s}
+#ap button:hover {transform: translateY(-2px); box-shadow: 0 2px white}
+#ap button:active {transform: translateY(2px); box-shadow: none}
+#ap-seeker {margin: 0 4px; background: transparent; cursor: pointer; appearance: none}
+#ap-seeker::-moz-range-track {height: 8px; background-color: #1a1a1a}
+#ap-seeker::-webkit-slider-runnable-track {height: 8px; background-color: #1a1a1a}
+#ap-seeker::-ms-track {height: 8px; background-color: #1a1a1a}
+#ap-seeker::-moz-range-thumb {width: 24px; height: 24px; border: none; border-radius: 0; background: url(assets/cat-knob.png) center / cover; transition: rotate 0.2s}
+#ap-seeker::-webkit-slider-thumb {width: 24px; height: 24px; margin-top: -4px; border: none; border-radius: 0; background: url(assets/cat-knob.png) center / cover; transition: rotate 0.2s}
+#ap-seeker::-ms-thumb {width: 24px; height: 24px; border: none; border-radius: 0; background: url(assets/cat-knob.png) center / cover; transition: rotate 0.2s}
+#ap-seeker::-moz-range-thumb:hover {rotate: -5deg}
+#ap-seeker::-moz-range-thumb:active {rotate: 15deg}
+#ap-seeker::-moz-range-progress {height: 8px; background: url(assets/space.png)}
+#ap-seeker::-ms-fill-lower {height: 8px; background: url(assets/space.png)}
+@keyframes awful {from {margin-left: 0} to {margin-left: calc(100% - 20px)}}
+#awful-fucking-thing {bottom: 100%; left: 0; right: 0}
+#awful-fucking-thing img {animation: 60s awful linear infinite alternate; cursor: pointer}
+.nightcore {background-image: url(assets/sparkles.gif); background-size: 100%}
+.nightcore #awful-fucking-thing {cursor: pointer}
+.nightcore #awful-fucking-thing img {animation-duration: 1s}
+
+.sidebar > img {margin-top: 16px}
+#transring {width: max-content; margin: 8px auto}
+#transring img {display: inline}
+#mobring #mob {margin: 8px auto}
+#lightswitch {margin-left: auto; margin-right: auto; z-index: 2}
+
+/* right sidebar */
+#changelog {display: flex; flex-direction: column; color: black; max-width: 256px; aspect-ratio: 32/49; padding: 32px 8px; margin-bottom: 32px; box-shadow: 12px 4px #32a7e2, 24px 8px #e23254, 36px 12px #e2a732; box-sizing: border-box; background: url(assets/notepad.png) no-repeat; position: absolute; top: 16px; right: 32px; z-index: 1}
+#changelog h2, #changelog h3 {text-shadow: 0 -0.1em #e2a732, 0.1em -0.1em #e2a732, 0.1em 0 #e2a732, 0.1em 0.1em #e2a732, 0 0.1em #e2a732, -0.1em 0.1em #e2a732, -0.1em 0 #e2a732, -0.1em -0.1em #e2a732, 0.1em 0.1em 0.25em #00000080; margin: 0}
+#changelog h2 {font-size: 2em; margin-left: -16px; margin-bottom: -4px; rotate: -2deg; z-index: 1}
+#changelog h3 {font-size: 1em; margin-left: -4px; margin-bottom: -16px; rotate: -1deg}
+#changelog-mew {cursor: pointer}
+#changelog-list {flex: 1; padding: 0 16px; overflow-y: scroll}
+#changelog-list div, #changelog-list > ul {opacity: 0.5}
+#changelog-list div:first-of-type, #changelog-list > ul:first-of-type {opacity: 1}
+#changelog-list div {color: white; font-family: gotham, sans-serif; font-size: 75%; width: max-content; padding: 0 4px; margin-left: auto; background-color: black}
+#changelog-list div:first-of-type {color: #e2a732}
+#changelog-list div::before {content: "/ "}
+#changelog ul {font: 0.8rem/1.5 merriweather, serif; list-style-type: "✦ "; padding-left: 1em}
+#changelog li {margin-top: 4px}
+#changelog-list a {color: white; padding: 0 4px; background-color: black}
+
+#cbox {margin: 60px 18px 0 18px}
+#cbox::after {content: ""; border-style: solid; border-width: 130px 104px 0 44px; border-image: url(assets/cbox-frame.png) 65 52 0 22 / 130px 104px 0 44px; position: absolute; top: -60px; left: -18px; right: -18px; bottom: 0; pointer-events: none}
+
+#outward-links {margin-top: 2em}
+#outward-links div {color: gray; font-style: italic; letter-spacing: 0.1em}
+#outward-links a {font-weight: bold; padding: 8px; margin-top: 4px; display: block}
+#profile {color: white; background: url(https://neocities.org/img/cat.png) no-repeat right / auto 225%, linear-gradient(to top, #ed3351 2px, #5b95a0 2px)}
+#publictransit {color: red; font-family: serif; background: url(https://publictransit.neocities.org/wizard-2.png) no-repeat top right / 30%, linear-gradient(#000000e0, #000000e0), url(https://publictransit.neocities.org/indexbg.png) center / cover}
+#publictransit span {color: transparent; background-image: linear-gradient(to bottom right, #5bcefa, white, #f5a8b8); background-clip: text; -webkit-background-clip: text}
+#github {color: #e6edf3; font-weight: normal !important; letter-spacing: 0.01em; background: url(assets/github.svg) no-repeat right / auto 140% #0d1117}
+
+/* misc */
+#blackout {display: none; top: 0; left: 0; right: 0; z-index: 1; pointer-events: none}
+#blackout div {background-color: black; position: fixed; top: 0; right: 0; bottom: 0; left: 0}
+#blackout img {top: 184px; left: calc(50% - 303.5px)}
+
+@keyframes move {from {transform: translate(-1px, -1px)} to {transform: translate(1px, 0.5px)}}
+#laser {width: 8px; height: 8px; border-radius: 50%; box-shadow: 0 0 8px red; background-color: #ff000080; top: 600px; left: calc(50vw + 300px); cursor: pointer; z-index: 3; transition: ease-in 0.05s; animation: 1s move infinite alternate}
+
+footer {color: #404040; font-family: ms-serif; font-size: 0.875em; letter-spacing: 0.05em; text-align: center; padding: 8px 32px; background-color: black}
+
+@media (max-width: 1152px) {
+  #changelog {grid-area: right; position: static; z-index: 0}
+  #changelog-date {font-size: 75%}
+}
+@media (max-width: 896px) {
+  #wrapper {display: block; padding: 0 32px}
+  .sidebar, #laser {display: none}
+  #middle {margin: 32px 0}
+  #changelog {margin: auto}
+}
+@media (max-width: 512px) {
+  #title {background: url(assets/triple_star.png) no-repeat center, url(assets/banner.png) repeat no-repeat center}
+  #textbox {gap: 4px}
+  #textbox-bubble {font-size: 0.875em}
+  #textbox-sprite {width: 50vw; margin-left: -12.5vw; align-self: end}
+  #wrapper {padding: 0 16px}
+  #middle {margin-top: 16px}
+  nav {font-size: 0.875em; gap: 4px 8px}
+  #tunes {padding: 8px; gap: 4px 8px}
+  #shrines a {width: 60%}
+  #span-ify {outline-offset: -4px}
+}
+@media (max-width: 1152px) and (min-width: 896px), (max-width: 512px) {
+  #creata {font-size: 3em}
+  #statuscafe {font-size: 0.875em; border-width: 12.5px 15.5px 12px 21px}
+  #blog {font-size: 2.5em}
+  .triple {font-size: 0.75em}
+  #catcomic {font-size: 2em}
+  #tarot {font-size: 1.5em}
+}

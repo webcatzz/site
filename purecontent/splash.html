@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <base target="_blank">
+    <link href="style.css" rel="stylesheet" type="text/css" media="all">
+    <style>
+      :root {
+        --accent: #7ed14a;
+        --accent-trans: #7ed14a80;
+      }
+      #statuscafe {
+        padding: .5em; margin-bottom: 8px;
+        border: 1px dashed #fff1e880; border-radius: 2px;
+        background-color: inherit;
+        position: fixed; left: 40px; bottom: 24px; right: 40px;
+      }
+      #statuscafe-username {margin-bottom: .5em}
+      #statuscafe-content {margin: 0 1em 0.5em 1em}
+
+      #changelog {width: 75%; aspect-ratio: 2 / 1; border-radius: 2px; background-color: #fff1e8}
+    </style>
+  </head>
+  <body>
+    <header>
+      <h2>welcome!</h2>
+      <span>[javascript broke. oh no]</span>
+      <script type="text/javascript" src="last-modified.js"></script>
+    </header>
+    <p>this is "purecontent", a super simplified version of my site!</p>
+    <p>i always find that i spend too long worrying about how certain pages are going to look, so this is my way to publish pages without worrying about that!</p>
+    <p>you can click the links on the left to move pages.</p>
+    <hr>
+    <iframe id="changelog" src="../changelog.html"></iframe>
+    <div id="statuscafe"><div id="statuscafe-username"></div><div id="statuscafe-content"></div></div><script src="https://status.cafe/current-status.js?name=tealcrows" defer></script>
+  </body>
+</html>

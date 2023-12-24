@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>WEB is CATZ</title>
+		<link rel="icon" type="image/png" href="assets/baba.gif">
+		<style>
+			body {display: flex; height: 100vh; margin: 0; background-color: black; image-rendering: pixelated}
+
+			#game-wrapper {flex: 1; display: flex; justify-content: center; align-items: center; padding: 48px; background-color: #15181f}
+			#game {width: 720px; height: 576px; background-color: black; position: relative}
+			#game > * {width: 48px; height: 48px; position: absolute; transition: top 0.1s, left 0.1s}
+			#game img {display: block}
+			.on-tile {background: url(assets/tile.gif) top left / 48px}
+			#baba {background: url(assets/baba.png) top left / 768px}
+			.letter {background: url(assets/text-letters.gif) top left / 1248px}
+			.invalid {filter: brightness(45%)}
+
+			#page {flex: 1; height: 100%; border: none}
+		</style>
+	</head>
+	<body>
+		<div id="game-wrapper">
+			<div id="game">
+				<div data-tile="5 1" id="baba" class="no-matrix"></div>
+				<img data-tile="0 0" src="assets/text-baba.gif">
+				<img data-tile="1 0" src="assets/text-is.gif">
+				<img data-tile="2 0" src="assets/text-you.gif">
+				<img data-tile="0 1" src="assets/text-tile.gif">
+				<img data-tile="1 1" src="assets/text-is.gif">
+				<img data-tile="2 1" src="assets/text-stop.gif">
+				<img data-tile="0 2" class="stop" src="assets/tile.gif">
+				<img data-tile="12 0" class="invalid" src="assets/text-music.gif">
+				<img data-tile="13 0" class="invalid" src="assets/text-is.gif">
+				<img data-tile="14 1" id="play" class="invalid" src="assets/text-play.gif">
+				<img data-tile="11 0" class="stop" src="assets/tile.gif">
+				<img data-tile="12 1" class="stop" src="assets/tile.gif">
+				<img data-tile="1 4" class="stop on-tile" src="assets/text-page.gif">
+				<img data-tile="2 4" class="stop on-tile" src="assets/text-is.gif">
+				<img data-tile="1 5" class="stop" src="assets/tile.gif">
+
+				<div data-tile="3 4" class="letter" data-char="7"></div>
+				<div data-tile="4 4" class="letter" data-char="14"></div>
+				<div data-tile="5 4" class="letter" data-char="12"></div>
+				<div data-tile="6 4" class="letter" data-char="4"></div>
+
+				<div data-tile="3 5" class="letter invalid" data-char="0"></div>
+				<div data-tile="4 5" class="letter invalid" data-char="1"></div>
+				<div data-tile="6 5" class="letter invalid" data-char="20"></div>
+				<div data-tile="7 5" class="letter invalid" data-char="19"></div>
+
+				<div data-tile="11 3" class="letter invalid" data-char="17"></div>
+				<div data-tile="11 4" class="letter invalid" data-char="8"></div>
+				<div data-tile="11 5" class="letter invalid" data-char="6"></div>
+				<div data-tile="12 3" class="letter invalid" data-char="8"></div>
+				<div data-tile="13 4" class="letter invalid" data-char="13"></div>
+
+				<div data-tile="3 9" class="letter invalid" data-char="18"></div>
+				<div data-tile="4 8" class="letter invalid" data-char="15"></div>
+				<div data-tile="6 10" class="letter invalid" data-char="2"></div>
+				<div data-tile="9 9" class="letter invalid" data-char="11"></div>
+			</div>
+		</div>
+		<iframe id="page"></iframe>
+		<script>
+			const baba = document.getElementById("baba"), letters = Array.from(document.getElementsByClassName("letter")), textSfx = [new Audio("https://files.catbox.moe/fyel6n.ogg"), new Audio("https://files.catbox.moe/3ar63v.ogg"), new Audio("https://files.catbox.moe/euk8zy.ogg"), new Audio("https://files.catbox.moe/g0kclx.ogg"), new Audio("https://files.catbox.moe/t25gkz.ogg")], page = document.getElementById("page");
+			const validPages = ["home", "about", "origin", "special", "more"], validTiles = ["belt", "bolt", "bug", "crab", "ghost", "me", "mob", "tile"];
+			var babaX = 5, babaY = 1, frame = 0, moveFrame = 0, ruleEnd = 7;
+			var matrix = [
+				[null, null, null, null, null, null, null, null, null, null, null, null],
+				[null, null, null, null, null, null, null, null, null, null, null, null],
+				[null, null, null, null, null, null, null, null, null, null, null, null],
+				[null, null, null, null, null, null, null, null, null, null, null, null],
+				[null, null, null, null, null, null, null, null, null, null, null, null],
+				[null, null, null, null, null, null, null, null, null, null, null, null],
+				[null, null, null, null, null, null, null, null, null, null, null, null],
+				[null, null, null, null, null, null, null, null, null, null, null, null],
+				[null, null, null, null, null, null, null, null, null, null, null, null],
+				[null, null, null, null, null, null, null, null, null, null, null, null],
+				[null, null, null, null, null, null, null, null, null, null, null, null],
+				[null, null, null, null, null, null, null, null, null, null, null, null],
+				[null, null, null, null, null, null, null, null, null, null, null, null],
+				[null, null, null, null, null, null, null, null, null, null, null, null],
+				[null, null, null, null, null, null, null, null, null, null, null, null]
+			];
+			Array.from(document.getElementById("game").children).forEach(tile => {
+				let pos = tile.dataset.tile.split(" ");
+				if (tile.id != "baba") matrix[pos[0]][pos[1]] = tile;
+				tile.style.left = (pos[0] * 48) + "px";
+				tile.style.top = (pos[1] * 48) + "px";
+				if (tile.classList.contains("letter")) tile.style.backgroundPositionX = (tile.dataset.char * -48) + "px";
+			});
+			document.body.focus();
+			page.src = "home.html";
+			nextFrame();
+
+			document.body.onkeypress = event => {
+				let newX = babaX, newY = babaY, dir, push, isX;
+				switch (event.key) {
+					case "w": newY--; dir = 1; push = -1; isX = false; break;
+					case "a": newX--; dir = 2; push = -1; isX = true; break;
+					case "s": newY++; dir = 3; push = 1; isX = false; break;
+					case "d": newX++; dir = 0; push = 1; isX = true; break;
+					default: return;
+				}
+				(moveFrame == 3) ? moveFrame = 0 : moveFrame++;
+				baba.style.backgroundPositionX = -((moveFrame * 48) + (dir * 192)) + "px";
+				if (collide(newX, newY, push, isX)) return;
+				babaX = newX, babaY = newY;
+				baba.style.left = (babaX * 48) + "px", baba.style.top = (babaY * 48) + "px";
+			}
+
+
+			function nextFrame() {
+				(frame == 2) ? frame = 0 : frame++;
+				baba.style.backgroundPositionY = (frame * 48) + "px";
+				setTimeout(nextFrame, 150);
+			}
+			function getNumber(property) {return Number(property.slice(0, -2))}
+			function isStop(x, y) {return x == -1 || y == -1 || x == 15 || y == 12 || (matrix[x][y] != null && matrix[x][y].classList.contains("stop"))}
+			function collide(x, y, push, isX) {
+				if (isStop(x, y)) return true;
+				if (matrix[x][y] == null) return;
+
+				let pushed = [], ruleChanged;
+				do {
+					pushed.push([x, y]);
+					isX ? x += push : y += push;
+					if (x <= ruleEnd && (y == 4 || (!isX && (y == 3 || y == 5)))) ruleChanged = true;
+					if (isStop(x, y)) return true;
+				} while (matrix[x][y] != null);
+				pushed = pushed.reverse();
+				pushed.forEach(coord => {
+					let tile = matrix[coord[0]][coord[1]];
+					matrix[coord[0]][coord[1]] = null;
+					isX ? coord[0] += push : coord[1] += push;
+					matrix[coord[0]][coord[1]] = tile;
+					isX ? tile.style.left = (coord[0] * 48) + "px" : tile.style.top = (coord[1] * 48) + "px";
+				});
+
+				if (ruleChanged) readRule();
+				if (matrix[pushed[0][0]][pushed[0][1]] == document.getElementById("play")) {
+					matrix[12][0].classList.remove("invalid");
+					matrix[13][0].classList.remove("invalid");
+					matrix[14][0].classList.remove("invalid");
+					textSfx[Math.floor(Math.random() * 5)].play();
+					let music = new Audio("https://files.catbox.moe/qymx4b.mp3");
+					music.loop = true;
+					music.play();
+				};
+			}
+			function readRule() {
+				letters.forEach(letter => letter.classList.add("invalid"));
+
+				let x = 3, validLetters = [], pageIs = "";
+				while (matrix[x][4] != null) validLetters.push(matrix[x++][4]);
+				validLetters.forEach(letter => pageIs += ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"][letter.dataset.char]);
+				ruleEnd = x;
+
+				if (validPages.includes(pageIs)) page.src = pageIs + ".html";
+				else if (validTiles.includes(pageIs)) page.src = "tile.html?tile=" + pageIs;
+				else {page.src = ""; return};
+
+				validLetters.forEach(letter => letter.classList.remove("invalid"));
+				textSfx[Math.floor(Math.random() * 5)].play();
+				if (pageIs == "crap") setTimeout(() => {alert(":(")}, 101);
+			}
+		</script>
+	</body>
+</html>

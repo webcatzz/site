@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STARBOUND</title>
+    <link rel="icon" type="image/x-icon" href="assets/icon.png">
+    <link href="style.css" rel="stylesheet" type="text/css" media="all">
+    <style>
+      header {display: flex; justify-content: center; align-items: center; height: 100vh}
+      header img {width: 75%; animation: fadeIn 5s}
+      header span {color: #6f6f6f; position: fixed; bottom: 8px}
+
+      #ship-container {margin-top: 100vh; height: calc(100vh - 16px)}
+      #ship {background-image: url("assets/ship-broken.gif")}
+      #sail {width: 24px; height: 24px; margin-left: 264px; margin-bottom: 8px; background-image: url("assets/sail-broken.png")}
+      #sail-talk {background-image: url("assets/sail-text-broken.png")}
+    </style>
+  </head>
+  <body>
+    <header>
+      <img src="assets/title.png">
+      <span>(note: contains a lot of javascript and a bit of autoplay!)</span>
+    </header>
+    <div id="ship-container">
+      <div id="ship">
+        <a id="sail" href="ship.html">
+          <div id="sail-talk">
+            <span class="greyed">$status</span><br>
+            > Error: [ERR-068]<br>
+            <span class="action">> Please reboot.</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </body>
+</html>

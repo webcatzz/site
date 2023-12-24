@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homestuck</title>
+    <link rel="icon" type="image/png" href="assets/icon.png">
+    <style>
+      @font-face {font-family: "courier-std"; src: url('assets/Courier Std Bold.otf')}
+
+      html {scroll-behavior: smooth}
+      body {margin: 0; background-color: #535353; image-rendering: pixelated}
+      #container {
+        width: 590px; padding: 30px; padding-top: 20px; padding-bottom: 15.5px; margin: auto;
+        border: solid #c6c6c6; border-width: 15px 160px 30px 160px; background-color: #efefef;
+        position: relative;
+      }
+      .fakelink {color: #0000ee; text-decoration: underline; transition: 0.1s; cursor: not-allowed}
+      .fakelink:hover {opacity: 0.5}
+
+      #top {color: white; font: bold 10px/16px Arial; text-align: center; padding: 8px 0; margin: 0}
+      #green {color: #00ff5d}
+      #blue {color: #23d5f4}
+      #yellow {color: #f7f74a}
+      #orange {color: #ffb53d}
+
+      nav {color: gray; font: 14px/1.35 "courier-std"; width: 300px; padding: 8px; border: 2px solid #fbe61c; box-shadow: 0 -8px 0 #f2971e, 0 8px 0 #f2971e; border-left: none; border-right: none; box-sizing: border-box; background-color: black; position: absolute; top: 150px; right: -325px}
+      nav::after {content: url(assets/mouse.png); transform: translateY(100%); filter: drop-shadow(4px 4px 2px #00000040); position: absolute; bottom: 15px; right: 0}
+      nav a {display: block; color: white; text-decoration: none}
+      nav a::before {content: "> "; color: white; opacity: 0}
+      nav a:hover::before {opacity: 1}
+
+      header {font: 32px/1.15 "courier-std"; text-align: center; height: 430px; padding: 20px 30px; padding-bottom: 0; margin: -20px -30px; margin-bottom: -150px; background: linear-gradient(to bottom, transparent 90%, #efefef), url(assets/photos.png) top / 100%}
+      h1 {font: inherit; margin: 0}
+      h1 img {width: 100%; filter: drop-shadow(0 0 8px black)}
+      h2 {font: inherit; color: lightgray; margin: 0; margin-top: -15px; mix-blend-mode: difference}
+
+      main {font: 14px/1.35 "courier-std"; text-align: center}
+      p {padding-bottom: 5px}
+      main img {width: 100%}
+      h3 {font-size: 150%; text-align: center}
+      hr {height: 30px; margin: 30px -30px; border: none; background-color: #c6c6c6}
+
+      #beginning {margin-bottom: 13px; border-width: 2px; border-style: solid; border-image: linear-gradient(to bottom, black 2px, transparent 90%) 2}
+      #main, #history {text-align: left; text-indent: 1em}
+      #typing {display: block; width: auto; margin: 1em auto}
+      #karkat {color: #626262}
+      .left, .right, .center {display: block; max-width: 50%; margin: 15px; margin-top: 0; border: 5px inset #c6c6c6; box-sizing: border-box}
+      .left {float: left; margin-left: 0}
+      .right {float: right; margin-right: 0}
+      .center {width: 100%; max-width: 100%; margin: 15px auto}
+      .small {color: gray; font-size: 75%}
+      #music {display: grid; gap: 10px}
+      #music span {grid-column: 1 / 4; color: gray; text-align: center}
+      details {margin: 1em}
+      summary {cursor: pointer}
+
+      #next {font: 24px/1.15 Verdana; margin-top: 22.5px}
+      #next::before {content: "> "}
+      #nav-footer {display: flex; justify-content: space-between; font: bold 10px/1.15 Verdana; margin-top: 31px}
+      #nav-footer div:last-of-type a {color: #0004e8; text-decoration: underline; transition: 0.1s; cursor: not-allowed}
+      #nav-footer div:last-of-type a:hover {opacity: 0.5}
+      .hover {
+        color: #efefef; font-size: 8px; font-weight: lighter;
+        padding: 0 3.1px;
+        border-radius: 50%; background-color: #0004e8;
+        cursor: help;
+      }
+      .hover::after {content: "?"}
+
+
+      /* FOOTER */
+      #info-footer {
+        font-family: Verdana; text-align: center;
+        width: 907px; height: 102px; padding-top: 15px;
+        margin: 10px auto; margin-bottom: 3.5px; box-sizing: border-box;
+        background: url("assets/logo-mspa.png") left no-repeat, url("assets/logo-mspa.png") right no-repeat;
+      }
+      #info-footer div {margin-top: 3.5px}
+    </style>
+  </head>
+  <body>
+    <div id="top"><span id="green" class="fakelink">HOME</span> <img src="assets/candycorn.png"> <span id="blue" class="fakelink">READ</span> | <span id="blue" class="fakelink">INFO</span> <img src="assets/candycorn.png"> <span id="yellow" class="fakelink">SHOP</span> | <span id="yellow" class="fakelink">GAMES</span> <img src="assets/candycorn.png"> <span id="orange" class="fakelink">NEWS</span> | <span id="orange" class="fakelink">MORE</span></div>
+    <div id="container">
+      <header>
+        <h1><img id="title" src="assets/title.png" alt="HOMESTUCK"></h1>
+        <h2>a shrine! :3</h2>
+      </header>
+      <nav>
+        YOU THERE. NAVIGATE.
+        <a href="#intro">BOY. VIEW THIS INTRODUCTION</a>
+        <a href="#main">WHAT IS A "HOME". "STUCK".</a>
+      </nav>
+      <main>
+        <section id="intro">
+          <img id="beginning" src="assets/1.gif">
+          <p>A young woman stands in her bedroom. Many years ago, on April 13th, 2009, a young man did much the very same, at the very beginning of a now-notorious webcomic.</p>
+          <p>The young woman wonders if, maybe, you would like to know that that the webcomic of which we now speak is, in fact, dearly important to her. They wonder, also, if, perhaps, you would like to let her tell you about it. But only if you so desire, of course.</p>
+          <p>...</p>
+          <p>No?</p>
+          <p>Well, she can't hear you anyway.</p>
+        </section>
+        <hr>
+        <section id="main">
+          <h3>"So Let Me Tell You About Homestuck"</h3>
+          <img id="typing" src="assets/typing.gif">
+          <iframe style="border: 0; width: 100%; height: 42px;" src="https://bandcamp.com/EmbeddedPlayer/album=2738949176/size=small/bgcol=ffffff/linkcol=0687f5/track=2713449547/transparent=true/" seamless><a href="https://homestuck.bandcamp.com/album/homestuck-vol-9-10-with-s-collide-and-act-7">Homestuck Vol. 9-10 (with [S] Collide. and Act 7) by Homestuck</a></iframe>
+          <p>As a brief overview:</p>
+          <p>Homestuck is a webcomic. It spans <a href="https://www.homestuck.com/map/story">8,131 pages, 7 acts, 4 different universes, and 7 years of work</a>. It is notorious for its complicated plot, non-linear storytelling, <a href="https://www.homestuck.com/story/7448">convoluted causation loops</a>, <a href="https://www.homestuck.com/story/955">complete absence of a fourth wall</a>, <a href="https://www.homestuck.com/story/2392">dense romance systems</a>, <a href="https://www.homestuck.com/story/1093">snarky sense of humour</a>, and dedicated fanbase. In addition to simple panel-and-text pages, Homestuck also incorporated <a href="https://en.wikipedia.org/wiki/Adobe_Flash">Flash</a>-based interactive pages, walkaround games, and action-packed animations.</p>
+          <img class="right" src="assets/vagabond.gif">
+          <p>Homestuck is a story about four kids who play a game together. The game causes the apocalypse, turning Earth into a desert and transporting the protagonists into a new world called the Medium. There, they work together (and with and against several external forces) to understand the nature of the game they are being forced to play.</p>
+          <img class="left" src="assets/medium.png">
+          <p>Or, rather... the apocalypse was always already going to happen. From the very beginning of the story, all of Homestuck's characters are entangled in a clusterfuck causation loop of unimaginable scale. Playing the game is the first of many inevitable steps in the elaborate waltz Paradox Space has planned out for them from which there is no hope of escape, <a id="karkat" href="https://www.homestuck.com/story/1903">BECAUSE IF IT DIDN'T GO DOWN THIS WAY THEN HOW WERE YOU EVEN BORN, GET IT, WHICH IS ESPECIALLY PATHETIC SINCE PARADOX SPACE APPARENTLY WENT TO ALL THIS TROUBLE TO MAKE YOU JUST TO HAVE YOU FAIL AND DIE.</a> [sic].</p>
+          <p>Homestuck is special for many, many reasons. It's special for its distinctive style of storytelling that completely ignores linear chronology, for its meta-ness, for its extreme reader-interactivity, for the sheer amount of artists that contributed to it, for its puzzlebox world design, for its impeccable use of heavily abstracted and interconnected visual symbolism, for its fantastic variety of character voice lent by "typing quirks", for its fascinating outlook on narratives and authorship in general, and so on. <span class="small">(A biased side-note: the music is really damn good, especially the later albums. If you've got the time, they're deserving of a listen-through all on their own! There's so much fantastic music that was never used in Homestuck proper! Toby Fox worked on a lot of it, if that gets you interested.)</span></p>
+          <div id="music">
+            <iframe style="border: 0; width: 190px; height: 332px;" src="https://bandcamp.com/EmbeddedPlayer/album=1602610794/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/track=2473773337/transparent=true/" seamless><a href="https://homestuck.bandcamp.com/album/homestuck-vol-7-8-with-cherubim">Homestuck Vol. 7-8 (with Cherubim) by Homestuck</a></iframe>
+            <iframe style="border: 0; width: 190px; height: 332px;" src="https://bandcamp.com/EmbeddedPlayer/album=2738949176/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/track=1488886196/transparent=true/" seamless><a href="https://homestuck.bandcamp.com/album/homestuck-vol-9-10-with-s-collide-and-act-7">Homestuck Vol. 9-10 (with [S] Collide. and Act 7) by Homestuck</a></iframe>
+            <iframe style="border: 0; width: 190px; height: 332px;" src="https://bandcamp.com/EmbeddedPlayer/album=3203266517/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/track=46789947/transparent=true/" seamless><a href="https://homestuck.bandcamp.com/album/beyond-canon">Beyond Canon by Homestuck</a></iframe>
+            <span>(A selection of music from 11(!) albums. Last one has lyrics. Just want you to know that looking through the Homestuck albums for songs made me GROAN out load (/pos) so many times because I used to listen to these songs religiously and they bring back MEMORIES.)</span>
+          </div>
+          <details>
+            <summary class="small">And also... this one, I guess?</summary>
+            <iframe style="border: 0; width: 100%; height: 42px;" src="https://bandcamp.com/EmbeddedPlayer/album=2738949176/size=small/bgcol=ffffff/linkcol=0687f5/track=2706384300/transparent=true/" seamless><a href="https://homestuck.bandcamp.com/album/homestuck-vol-9-10-with-s-collide-and-act-7">Homestuck Vol. 9-10 (with [S] Collide. and Act 7) by Homestuck</a></iframe>
+          </details>
+          <p>Ok. But. Look. I could praise Homestuck all day. Let's talk, instead, about how Homestuck sucks.</p>
+        </section>
+        <hr>
+        <section id="history">
+          <img class="center" src="assets/beep.gif">
+          <p>ahhh i have to write this? me? fuuuck dude that sucks.</p>
+          <p>coming soon. ish</p>
+        </section>
+      </main>
+      <hr>
+      <div id="next"><a href="../../index.html">Return home.</a></div>
+      <div id="nav-footer"><div><span class="fakelink">Start Over</span> | <span class="fakelink">Go Back</span></div><div><span class="fakelink">Save Game</span> | <span class="fakelink">Auto-Save!</span> | <span class="fakelink">Load Game</span> | <span class="fakelink">Delete Game Data</span></div></div>
+    </div>
+    <div id="info-footer"><span class="fakelink">Contacts</span> | <span class="fakelink">Privacy Policy</span><div>© 2023 Me, Myself, and I</div></div>
+  </body>
+</html>

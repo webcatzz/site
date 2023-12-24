@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ᵍᵃᶻᵉ ⁱⁿᵗᵒ ᵗʰᵉ ᵇᵘʳˢᵗⁱⁿᵍ ˢᵘⁿ</title>
+    <style>
+      @font-face {font-family: "title"; src: url("../../assets/Bleo.ttf")}
+      @keyframes fade_color {from {color: black}}
+      @keyframes fade_opacity {from {opacity: 0}}
+      body {
+        display: flex; justify-content: center; align-items: center; flex-direction: column;
+        color: white; text-shadow: 0 0 1px; height: 100vh; margin: 0;
+        background:
+          linear-gradient(to right, transparent 40%, white, transparent 60%),
+          radial-gradient(circle at top, white, transparent, white),
+          linear-gradient(to bottom, #00b7fd, #20d6c7);
+        animation: 5s fade_color ease-in;
+        image-rendering: pixelated;
+      }
+      h1, p {mix-blend-mode: difference}
+      h1 {font: 3rem "title"; width: max-content; margin: 0; position: relative}
+      h1::before {
+        content: ""; height: 0.06em;
+        filter: drop-shadow(0 0 1px white);
+        background: radial-gradient(circle at center, white 60%, transparent);
+        animation: 5s fade_opacity ease-in;
+        position: absolute; left: -64px; bottom: 0.1em; right: -64px;
+      }
+      p {font: 0.9em sans-serif}
+
+
+      #clouds {
+        display: flex; justify-content: space-between;
+        filter: blur(4px); opacity: 0.75;
+        position: fixed; top: 0; right: 0; bottom: 0; left: 0;
+        pointer-events: none;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>< EYRIE ></h1>
+    <p>come back later...</p>
+    <div id="clouds">
+      <img src="assets/clouds-1.png">
+      <img src="assets/clouds-2.png">
+    </div>
+  </body>
+</html>

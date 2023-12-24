@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link href="style.css" rel="stylesheet" type="text/css" media="all">
+		<style>
+			body {display: flex; justify-content: center; align-items: center; padding: 0}
+			img {width: 48px}
+		</style>
+	</head>
+	<body>
+		<img src="assets/me.gif">
+		<script>
+			document.querySelector("img").src = "assets/" + new URLSearchParams(window.location.search).get("tile") + ".gif";
+		</script>
+	</body>
+</html>

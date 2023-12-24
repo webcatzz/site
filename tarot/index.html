@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>webcatz → middling arcana!</title>
+		<link rel="icon" type="image/png" href="../assets/icon.png">
+    <link rel="preload" href="back.png" as="image">
+    <link rel="preload" href="border.png" as="image">
+    <link rel="preload" href="pattern.png" as="image">
+		<link href="../global.css" rel="stylesheet" type="text/css" media="all">
+		<style>
+			@font-face {font-family: homemade-apple; src: url(../assets/fonts/homemade-apple.ttf)}
+			body {display: flex; flex-direction: column; color: white; height: 100vh; margin: 0; background: radial-gradient(at top, #03291abf, transparent 30%), linear-gradient(to bottom, black, transparent 30%), url(../assets/checkerboard-tilted.png) center / 240px #0d0b0e; overflow: hidden; image-rendering: auto}
+			#pretitle {font-style: italic; padding-top: 2.5em}
+			h1 {color: transparent; font: 3em homemade-apple; text-align: center; margin: 0; background: linear-gradient(to top right, white 25%, #00ffb7); background-clip: text; -webkit-background-clip: text}
+
+			#tarot-wrapper {display: flex; justify-content: center; align-items: center; gap: 128px; height: 100%; box-sizing: border-box}
+			@keyframes appear {from {opacity: 0; transform: translateY(-10%)} 75% {transform: translateY(1%)}}
+			.card-wrapper {display: flex; justify-content: stretch; color: black; width: 200px; aspect-ratio: 2.75/4.75; transition: filter 0.15s, scale 0.2s ease-in; animation: 1s appear ease-out backwards; cursor: pointer}
+			.card-wrapper:hover {scale: 1.01; filter: drop-shadow(0 0 16px #085134bf); transition-timing-function: ease-out}
+			.card-wrapper:nth-of-type(2) {animation-delay: 0.5s}
+			.card-wrapper:last-of-type {animation-delay: 1s}
+			.untouchable {pointer-events: none}
+
+			.back-face .card-front {display: none}
+			.front-face .card-back {display: none}
+			.card-back {width: 100%; height: 100%}
+			.card-front {display: flex; flex-direction: column; width: 206px; padding: 9% 8%; border-radius: 3px; border-image: url(border.png) 64 48 169 48 / 6.5% 10% 17% 10% repeat; box-sizing: border-box; background-color: #bcb893; overflow: hidden}
+			.card-image {width: 100%; height: 100%; padding: 10% 10%; box-sizing: border-box; opacity: 0.75}
+			.card-name {display: flex; justify-content: center; align-items: center; color: black; text-transform: uppercase; line-height: 0.8; height: 12%; margin-top: auto}
+			.card-name img {height: 10px; max-width: 100%}
+			.card-name .text {margin-top: 0.1em}
+			.space {display: inline-block; margin-right: 4px}
+
+      .gray {color: #546d5b60; font-family: monospace; text-align: center}
+			#bottom {color: #546d5b80; padding: 32px}
+			#bottom div {font-style: italic; margin-bottom: 1em}
+			#bottom a {color: inherit; text-decoration: underline; transition: color 0.2s}
+			#bottom a:hover {color: white}
+		</style>
+	</head>
+	<body>
+	  <div id="pretitle" class="gray">old legends tell of, aside the major & minor, a third...</div>
+		<h1>The Middling Arcana</h1>
+		<div id="tarot-wrapper">
+			<div class="card-wrapper back-face">
+				<div class="card-front">
+					<img class="card-image" src="pattern.png">
+					<div class="card-name"></div>
+				</div>
+				<img class="card-back" src="back.png">
+			</div>
+			<div class="card-wrapper back-face">
+				<div class="card-front">
+					<img class="card-image" src="pattern.png">
+					<div class="card-name"></div>
+				</div>
+				<img class="card-back" src="back.png">
+			</div>
+			<div class="card-wrapper back-face">
+				<div class="card-front">
+					<img class="card-image" src="pattern.png">
+					<div class="card-name"></div>
+				</div>
+				<img class="card-back" src="back.png">
+			</div>
+		</div>
+		<div id="bottom" class="gray">
+			<div>pick a card, any card... and click again to redraw it.</div>
+			<a href="../index.html">return home...</a>
+		</div>
+		<script>const formats=["The [THING]","The [ADJECTIVE] [THING]","[CONCEPT]","[ADJECTIVE] [CONCEPT]","[THING] of [CONCEPT]","The [THING]'s [CONCEPT]"],things=["Abyss","Angel","Anvil","Ashes","Beast","Beggar","Blade","Bridge","Chains","Chariot","Clock","Cloud","Compass","Corpse","Corridor","Crown","Crypt","Dancer","Depths","Desert","Devil","Dice","Dog","Door","Dove","Dusk","Earth","Emperor","Empress","End","Engine","Eye","Fires","Flame","Flute","Fluter","Fool","Fruit","Gambler","Gate","God","Grip","Hand","Hearth","Heir","Hermit","Hierophant","House","Husk","Jailer","Knife","Knight","Lamb","Lantern","Light","Lighthouse","Loom","Lovers","Lute","Machine","Magician","Magus","Man","Master","Maw","Maze","Meat","Moon","Mountain","Muse","Ocean","Poison","Popess","Puppet","Priestess","Prison","Prisoner","Road","Ruins","Sage","Sailor","Sand","Scholar","Scribe","Sea","Seal","Sheep","Shepherd","Ship","Shipwreck","Sky","Song","Soul","Spark","Sphinx","Star","Storm","String","Snow","Sovereign","Sun","Tear","Temple","Theft","Thief","Thread","Throne","Tide","Tightrope","Tomb","Tower","Traitor","Tree","Trick","Trickster","Voyage","Waves","Web","Whale","Wheel","Witch","Wolf","Wound"],concepts=["Ache","Ash","Beholding","Breath","Chaos","Creation","Day","Death","Decay","Delirium","Desire","Despair","Discord","Disgust","Dust","Endurance","Envy","Escape","Fate","Fear","Filth","Flight","Folly","Fortune","Genius","God","Greed","Havoc","Heaven","Hell","Humility","Illness","Intellect","Joy","Judgement","Justice","Lust","Madness","Night","Origin","Pain","Patience","Pride","Rest","Sacrifice","Secrets","Silence","Sloth","Strange","Strength","Temperance","Union","Weakness","Will","Wisdom","Wrath"],adjectives=["Absent","Aching","Acrid","Ancient","Black","Bloody","Brass","Broken","Burning","Burnt","Careless","Chained","Clouded","Cold","Cracked","Crying","Cryptic","Dancing","Dead","Divine","Doomed","Drowned","Feathered","Frail","Gleaming","Gold","Hanged","High","Icy","Iron","Last","Locked","Lone","Lost","Low","Mighty","Mortal","Odd","Old","Onyx","Red","Rotted","Sacred","Screaming","Shattered","Sheer","Shining","Spent","Still","Stone","Strange","Subtle","Torn","True","Unholy","Veiled","Watchful","White","Winged","Wounded"];for(const e of document.getElementsByClassName("card-wrapper"))e.onclick=()=>flipCard(e),e.querySelector(".card-image").style.transform="scaleX("+[1,-1][Math.floor(2*Math.random())]+") scaleY("+[1,-1][Math.floor(2*Math.random())]+")",e.querySelector(".card-back").style.transform="scaleX("+[1,-1][Math.floor(2*Math.random())]+") scaleY("+[1,-1][Math.floor(2*Math.random())]+")";function flipCard(e){e.classList.add("untouchable"),e.animate({transform:["scaleX(1)","scaleX(0)"]},{duration:1e3,easing:"ease-in"}).finished.then((()=>{let a=[];for(const e of generateCardName()){let r;"efghilnoprstuvw".includes(e)?(r=document.createElement("img"),r.src="letters/"+e+".png",r.alt=e):" "==e?(r=document.createElement("span"),r.className="space"):"."==e?(r=document.createElement("img"),r.src="letters/period.png",r.alt="."):(r=document.createElement("span"),r.className="text",r.textContent=e),a.push(r)}e.querySelector(".card-name").replaceChildren(...a),e.classList.replace("back-face","front-face"),e.classList.remove("untouchable"),e.animate({transform:["scaleX(0)","scaleX(1)"]},{duration:1e3,easing:"ease-out"})}))}function generateCardName(){let e=a(formats);return e.includes("[THING]")&&(e=e.replace("[THING]",a(things))),e.includes("[CONCEPT]")&&(e=e.replace("[CONCEPT]",a(concepts))),e.includes("[ADJECTIVE]")&&(e=e.replace("[ADJECTIVE]",a(adjectives))),Math.random()>.75&&(e+="."),e;function a(e){return e[Math.floor(Math.random()*e.length)]}}</script>
+	</body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>honeypop</title>
+		<script src="https://kit.fontawesome.com/c558359c24.js" crossorigin="anonymous"></script>
+		<style>
+			@font-face {font-family: "magazine"; src: url("assets/magazine.ttf")}
+			body {color: #ffeef4; font: bold 1em sans-serif; min-height: 100vh; margin: 0; background-color: #ffeef4; display: flex; justify-content: center; align-items: center}
+			a {color: inherit}
+
+			.bento {display: grid; grid-template-columns: 2fr 1fr 2fr; gap: 24px; max-width: 800px; padding: 32px}
+			.bento > div, .bento > a, #title {font-size: 2em; padding: 16px; border-radius: 16px; box-sizing: border-box; background-color: #e22f48}
+			.bento > a {text-decoration: none; transition: box-shadow 0.17s, border-radius 0.3s}
+			.bento > a:hover {box-shadow: 0 4px 8px #0000003d; border-radius: 12px}
+			.bento-item {aspect-ratio: 2; display: grid; grid-template-rows: 1fr max-content; gap: 8px}
+			.wide {grid-column: span 2}
+			.tall {grid-row: span 2}
+			.fill {aspect-ratio: auto}
+		
+			@keyframes appear {from {transform: translateY(2px); opacity: 0}}
+			@keyframes disappear {to {transform: translateY(2px); opacity: 0}}
+			.bento-item h2 {font-size: inherit; margin: 0; grid-column: 1; grid-row: 2}
+			.bento-item h2 span {font-family: magazine}
+			.prompt {font-size: 0.5em; margin-right: 8px; opacity: 0.75; animation: 0.1s disappear both; grid-column: 2; grid-row: 2; justify-self: end; align-self: center}
+			.bento-item:hover .prompt {animation-name: appear}
+			.bento-body {grid-column: 1/3}
+
+			#title {--accent: #f5a417; color: var(--accent); font: bold 4em/0 magazine; margin: 0; position: relative; background-color: var(--accent)}
+			#title, #title div {display: flex; justify-content: center; align-items: center}
+			#title div {position: absolute; top: 0; left: 0; right: 0; bottom: 0; overflow: hidden; pointer-events: none}
+			#title div span {color: #542b4d}
+			#about {background: url(assets/star.webp) center / 32px #e22f48}
+			#about .prompt {grid-row: 1; grid-column: 1}
+			#creata {background-image: linear-gradient(to top left, #ea4343, #e22f48)}
+			#creata img {width: 100%; height: 100%; grid-column: 1/3}
+			#tunes {aspect-ratio: 1; background: linear-gradient(to top right, #90cbe2, #7fbfed)}
+			#tunes .bento-body {display: grid; grid-template-columns: 1fr max-content; grid-auto-rows: max-content; gap: 8px}
+			.tune {display: flex; align-items: center; font-size: 0.5em; padding: 12px; border-radius: 16px; background-color: #ffffff3d; grid-column: 1/3}
+			.tune-state {aspect-ratio: 1; margin: -12px; margin-right: 0; height: calc(1em + 24px); border-radius: inherit; display: flex; justify-content: center; align-items: center; transition: background-color 0.2s}
+			.tune:active .tune-state {background-color: #ffffff3d}
+			.tune:hover {box-shadow: 0 0 0 1px white}
+			.tune:first-of-type {grid-column: 1}
+			#tune-icon {font-size: 0.75em; align-self: center}
+			#tune-more {font-size: 0.75em; line-height: 0.5; text-align: center; opacity: 0.75; grid-column: 1/3}
+			footer {color: #e6d9e0; font-weight: normal; text-align: center}
+
+			@media (max-width: 800px) {
+				body {font-size: 0.75em}
+				.bento {gap: 12px}
+				#title {padding: 12px}
+			}
+			@media (max-width: 580px) {
+				.bento {display: flex; flex-direction: column}
+				#title {order: -1; margin-bottom: 16px}
+				#about, #tunes {aspect-ratio: auto}
+			}
+		</style>
+	</head>
+	<body>
+		<div>
+			<div class="bento">
+				<a id="about" class="bento-item tall" href="">
+					<h2>a<span>b</span>out the webma<span>s</span>ter...</h2>
+					<div class="prompt">go to page <i class="fa-solid fa-angle-right"></i></div>
+				</a>
+				<h1 id="title" class="wide fill">
+					<span>honeypop</span>
+					<div aria-hidden="true"><span>honeypop</span></div>
+				</h1>
+				<a id="creata" class="bento-item wide tall fill" href="">
+					<h2>cre<span>a</span>ta</h2>
+					<div class="prompt">go to page <i class="fa-solid fa-angle-right"></i></div>
+					<img src="assets/1041uuu.gif">
+				</a>
+				<a id="tunes" class="bento-item" href="">
+					<h2>t<span>u</span>nes</h2>
+					<div class="prompt">go to page <i class="fa-solid fa-angle-right"></i></div>
+					<div class="bento-body">
+						<div class="tune"><div class="tune-state"><i class="fa-solid fa-play"></i></div><marquee scrollamount="4">Pages of Solemnity (Listless Library) - potatoTeto (Psuedoregalia OST)</marquee><audio src="https://files.catbox.moe/xl09z8.mp3"></audio></div>
+						<div id="tune-icon" aria-hidden="true"><i class="fa-solid fa-music"></i><audio></audio></div>
+						<div class="tune"><div class="tune-state"><i class="fa-solid fa-play"></i></div><marquee scrollamount="4">Pages of Solemnity (Listless Library) - potatoTeto (Psuedoregalia OST)</marquee><audio src="https://files.catbox.moe/xl09z8.mp3"></audio></div>
+						<div class="tune"><div class="tune-state"><i class="fa-solid fa-play"></i></div><marquee scrollamount="4">Pages of Solemnity (Listless Library) - potatoTeto (Psuedoregalia OST)</marquee><audio src="https://files.catbox.moe/xl09z8.mp3"></audio></div>
+						<div class="tune"><div class="tune-state"><i class="fa-solid fa-play"></i></div><marquee scrollamount="4">Pages of Solemnity (Listless Library) - potatoTeto (Psuedoregalia OST)</marquee><audio src="https://files.catbox.moe/xl09z8.mp3"></audio></div>
+						<div id="tune-more" aria-hidden="true">. . .</div>
+					</div>
+				</a>
+			</div>
+			<footer>layout by <a href="https://webcatz.neocities.org/">webcatz</a></footer>
+		</div>
+		<script>
+			const tuneElements = Array.from(document.getElementsByClassName("tune"));
+			var tuneIdx;
+			for (let i = 0; i < tuneElements.length; i++) {
+				tuneElements[i].onclick = event => {
+					event.preventDefault();
+					if (tuneIdx != null) {
+						tuneElements[tuneIdx].querySelector("audio").pause();
+						tuneElements[tuneIdx].querySelector("i").classList.replace("fa-pause", "fa-play");
+						tuneElements[tuneIdx].querySelector("marquee").stop();
+					}
+					if (tuneIdx != i) {
+						tuneElements[i].querySelector("audio").play();
+						tuneElements[i].querySelector("i").classList.replace("fa-play", "fa-pause");
+						tuneElements[i].querySelector("marquee").start();
+						tuneIdx = i;
+					} else {
+						tuneIdx = null;
+					}
+				};
+			}
+			document.body.onload = () => Array.from(document.querySelectorAll("marquee")).forEach(e => e.stop());
+		</script>
+	</body>
+</html>

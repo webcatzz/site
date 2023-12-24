@@ -1,0 +1,20 @@
+/* code edited from: https://aleclownes.com/2017/02/01/crt-display.html */
+/* feel free to rip for your own website! it's not technically my code, after all */
+
+/* note! the text-shadow color bleed looks awful when applied to black text on a light background. i recommend disabling it (adding "body {text_shadow: none}") on specific areas where you use black text! */
+/* (although sometimes it can look cool... for example, i disabled it on the musings and changelog/todo pages since it hampered readability, but i left it on hovered links and the navigation buttons on the right sidebar) */
+
+/* SCREEN-DOOR FX */
+body::before {
+  content: ""; display: block;
+  background:
+    linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%),
+    linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+  background-size: 100% 2px, 3px 100%;
+  position: fixed; top: 0; left: 0; bottom: 0; right: 0;
+  z-index: 999; pointer-events: none;
+}
+
+/* COLOR BLEED */
+body {text-shadow: 2px 0 1px rgba(0, 30, 255, 0.1), -2px 0 1px rgba(255, 0, 80, 0.1), 0 0 1px}
+img {filter: drop-shadow(4px 0 2px rgba(0, 30, 255, 0.1)) drop-shadow(-4px 0 2px rgba(255, 0, 80, 0.1))}

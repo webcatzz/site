@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>junery → misc.</title>
+    <link href="global.css" rel="stylesheet" type="text/css" media="all">
+    <style>
+      body {display: flex; gap: 32px; font: 0.8rem sans-serif; margin: 8px 32px; background: linear-gradient(91deg, transparent 50%, #0000001a 50%) center / 5% 100%, url(assets/wallpaper.png) repeat no-repeat bottom right / 20% auto, linear-gradient(to top, #241f1f 50%, #1f2423); overflow: hidden}
+
+      #pinboard {flex: 1; height: calc(100vh - 16px); box-shadow: 0 2px 8px black, 0 2px 4px black inset; border: 8px outset #543619; box-sizing: border-box; background: url('assets/corkboard.jpg') top left; position: relative}
+
+      .pin {
+        color: black; text-shadow: none;
+        width: min-content; height: min-content;
+        position: absolute; filter: drop-shadow(0 2px 2px black);
+        cursor: move;
+      }
+
+      .imglink img, .imglink a {display: block}
+      .imglink a {box-shadow: none; position: absolute; opacity: 0.25; transition: 0.1s}
+      .imglink a:hover {background-color: white}
+      /*.imglink a {background-color: #ff0000bf}*/
+
+      .framed {text-align: center; padding: 8px; box-shadow: 0 0 8px inset burlywood; background-color: white}
+      .framed::after {
+        content: ""; width: 150px; max-width: 75%; height: 30px;
+        transform: translateX(-50%);
+        background: url("assets/tape.png") no-repeat top center / 100%;
+        position: absolute; top: -10px; left: 50%;
+        opacity: 0.9; image-rendering: pixelated;
+      }
+      .framed:nth-of-type(even)::after {transform: translateX(-50%) scaleX(-1)}
+      .text {width: max-content; padding: 24px}
+
+      #sites {color: black; font-family: sans-serif; width: max-content; border-style: solid; border-width: 64px 111px 38px 197px; border-image: url(assets/text-file.png) 64 111 38 197; image-rendering: pixelated}
+      #sites-container {display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 2px; width: max-content; height: 166px; padding: 4px; margin: -13px -84px -11px -188px; background-color: white; overflow: auto; cursor: default}
+      #sites a, #sites img, .dud {display: block; width: 88px; height: 31px; margin: 0}
+      #sites a img:hover {opacity: 0.5}
+      @keyframes popup {from {scale: 0}}
+      #sites a[data-notes]:hover::after {content: attr(data-notes); display: block; color: black; width: max-content; max-width: 200px; padding: 0.6em; padding-left: calc(0.6em + 3.5px); border: 0 solid; border-image: url("assets/imessage.png") 25 25 25 32 fill / 12.5px 12.5px 12.5px 16px stretch; transform-origin: bottom left; animation: 0.1s popup; position: absolute; left: 226px; top: 0}
+      #sites .dud {display: inline-block; background-color: lightgray}
+      #mine {grid-column: 1/5; display: flex; justify-content: center; align-items: center; gap: 4px; margin-bottom: 4px; background-color: lightgray}
+      #utdr {grid-column: 1/5; width: 358px !important; height: auto}
+      #utdr img {width: 100%; height: auto}
+      #minimize, #maximize, #close {height: 19px; opacity: 0; position: absolute; top: -63px; cursor: pointer}
+      #minimize:hover, #maximine:hover, #close:hover {opacity: 1}
+      #minimize {width: 29px; background-color: #ffffff40; right: -30px}
+      #maximize {width: 26px; background-color: #ffffff40; right: -56px; display: none}
+      #close {width: 48px; background-color: #ff000040; right: -104px}
+
+      #side {color: white; font-size: 1rem; min-width: 240px; position: relative}
+      h1 {font-family: Magazine; text-shadow: 8px 4px black; background: linear-gradient(to right, #241f1f 50%, transparent 50%), linear-gradient(to bottom, transparent 49%, white, transparent 51%)}
+      #transring {image-rendering: pixelated}
+      .webring-prev, .webring-next {transition: 0.2s}
+      .webring-prev:hover, .webring-next:hover {scale: 1.05; filter: brightness(1.1)}
+      .webring-prev img, .webring-next img {transition: background-position-x 0.4s}
+      .webring-prev:hover img, .webring-next:hover img {background-position-x: 0}
+      .webring-prev:hover {transform: translateX(-2px)}
+      .webring-prev img {background: linear-gradient(to left, #ffc5cb40, transparent) no-repeat; background-position-x: 31px}
+      .webring-next:hover {transform: translateX(2px)}
+      .webring-next img {background: linear-gradient(to right, #ffc5cb40, transparent) no-repeat; background-position-x: -31px}
+      #return {display: flex; justify-content: center; align-items: center; height: 64px; color: #b3b9d1; font: bold 1.25em sans-serif; background-color: black; position: absolute; bottom: 0; left: 0; right: 0; transition: 0.1s}
+      #return:hover {color: black; text-decoration: none; box-shadow: 4px 4px black; bottom: 4px; right: 4px; background-color: #b3b9d1}
+      #return:active {color: white; background-color: white}
+    </style>
+  </head>
+  <body>
+    <div id="pinboard">
+      <img class="pin" style="top: 85px; right: 225px" src="assets/graphics/homecar.gif">
+      <div class="pin framed text" style="top: 32px; right: 24px; rotate: 2deg">
+        welc. 2 th. misc. pg.! you<br>can drag to move stuff around.
+      </div>
+      <div class="pin imglink" style="top: 100px; left: 10px; rotate: -1deg">
+        <img width="400" src="assets/greg.jpg">
+        <a style="top: 68px; left: 52px; width: 292px; height: 139.5px" href="https://murumart.neocities.org/g/gregrpg/greggame"></a>
+      </div>
+      <div class="pin imglink" style="bottom: -100px; left: 5px">
+        <img src="assets/newspaper.png">
+        <a style="top: 95px; left: 10px; width: 225px; height: 155px" href="https://www.sbnation.com/a/17776-football"></a>
+      </div>
+      <div class="pin imglink" style="top: 80px; right: 404px; rotate: 2deg">
+        <img width="128" src="assets/catcomic_angel.png">
+        <a style="top: 60px; right: 55px; bottom: 53px; left: 46px" href="astronaut.html#bottom"></a>
+      </div>
+      <div class="pin framed imglink" style="top: 12.5px; right: 340px">
+        <img src="assets/space.jpg">
+        <a style="top: 8px; right: 8px; bottom: 8px; left: 8px" href="https://apod.nasa.gov/apod"></a>
+      </div>
+      <div class="pin framed imglink" style="top: 27.5%; right: 4px; rotate: -1deg">
+        <img src="assets/armor.png">
+        armor txtr pack
+        <a style="top: 8px; right: 8px; bottom: 8px; left: 8px" href="https://files.catbox.moe/md9gcm.zip"></a>
+      </div>
+      <div class="pin imglink" style="bottom: 40px; left: 272px; rotate: -1deg">
+        <img width="128" src="assets/ask-the-ether.png">
+        <a style="top: 0; right: 0; bottom: 0; left: 0" href="https://www.asktheether.com/"></a>
+      </div>
+      <div class="pin imglink" style="bottom: 40px; left: 432px; rotate: 2deg">
+        <img width="128" src="assets/laikas_comet.png">
+        <a style="top: 0; right: 0; bottom: 0; left: 0" href="https://laikascomet.tumblr.com/post/715297986775826432"></a>
+      </div>
+      <div id="sites" class="pin" style="top: 50px; left: 100px">
+        <div id="sites-container">
+          <div id="mine">
+            <img src="assets/buttons/button-webcat.gif">
+            <img src="assets/buttons/button-stars.gif">
+          </div>
+          <a href="https://beebfreeb.neocities.org"><img src="assets/buttons/beebfreeb.gif"></a>
+          <a href="https://clouded.neocities.org"><img src="assets/buttons/clouded.jpg"></a>
+          <a href="https://cloverbell.neocities.org"><img src="assets/buttons/cloverbell.gif"></a>
+          <a href="https://coffeebug.neocities.org"><img src="assets/buttons/coffeebug.gif"></a>
+          <a href="https://corru.observer" data-notes="this is the coolest web-based shit i've seen in my life."><img src="assets/buttons/corru.gif"></a>
+          <a href="https://effe.neocities.org"><img src="assets/buttons/effe.gif"></a>
+          <a href="https://freakphone.neocities.org"><img src="assets/buttons/freakphone.gif"></a>
+          <a href="https://friday-girl.neocities.org"><img src="assets/buttons/friday-girl.gif"></a>
+          <a href="https://geckobone.neocities.org"><img src="assets/buttons/geckobone.png"></a>
+          <a href="https://ghostingpen.neocities.org"><img src="assets/buttons/ghostingpen.gif"></a>
+          <a href="https://gildedware.neocities.org"><img src="assets/buttons/gildedware.gif"></a>
+          <a href="https://glassyhouse.neocities.org"><img src="assets/buttons/glassyhouse.png"></a>
+          <a href="https://hog.neocities.org" data-notes="HOG"><img src="assets/buttons/hog.gif"></a>
+          <a href="https://icecreampizzer.neocities.org"><img src="assets/buttons/icecreampizzer.gif"></a>
+          <a href="https://jeanettes.neocities.org"><img src="assets/buttons/jeanettes.png"></a>
+          <a href="https://leusyth.neocities.org"><img src="assets/buttons/leusyth.png"></a>
+          <a href="https://localfool.neocities.org" data-notes="the site that inspired me to start mine. thanks"><img src="assets/buttons/localfool.png"></a>
+          <a href="https://metonym.neocities.org"><img src="assets/buttons/metonym.gif"></a>
+          <a href="https://moodlemcdoodle.neocities.org"><img src="assets/buttons/moodlemcdoodle.gif"></a>
+          <a href="https://ne0nbandit.neocities.org"><img src="assets/buttons/ne0nbandit.png"></a>
+          <a href="https://ninacti0n.neocities.org" data-notes="STYLE CRUNCHY. nina's cool"><img src="assets/buttons/ninacti0n.gif"></a>
+          <a href="https://nine-moonbeams.neocities.org" data-notes="beautiful!"><img src="assets/buttons/nine-moonbeams.gif"></a>
+          <a href="https://phrogee.neocities.org" data-notes="i love this site so goddamn much. it's like a html stress ball"><img src="assets/buttons/phrogee.gif"></a>
+          <a href="https://possum1827.neocities.org"><img src="assets/buttons/possum1827.gif"></a>
+          <a href="https://ratwalks.neocities.org"><img src="assets/buttons/ratwalks.png"></a>
+          <a href="https://redstring.neocities.org"><img src="assets/buttons/redstring.gif"></a>
+          <a href="https://robophobia.neocities.org" data-notes="one day... my music might sound as good as robo's... maybe"><img src="assets/buttons/robophobia.png"></a>
+          <a href="https://skelenby.neocities.org"><img src="assets/buttons/skelenby.png"></a>
+          <a href="https://sodabytes.neocities.org"><img src="assets/buttons/sodabytes.gif"></a>
+          <a href="https://splattacks.neocities.org"><img src="assets/buttons/splattacks.gif"></a>
+          <a href="https://starrs.neocities.org" data-notes="very cute... hope the webmaster will find time for it again."><img src="assets/buttons/starrs.gif"></a>
+          <a href="https://teethinvitro.neocities.org" data-notes="hi troy :teeht:"><img src="assets/buttons/teethinvitro.gif"></a>
+          <a href="https://theabsoluterealm.neocities.org" data-notes="very pretty!"><img src="assets/buttons/theabsoluterealm.gif"></a>
+          <a href="https://thekirbysphere.neocities.org"><img src="assets/buttons/thekirbysphere.png"></a>
+          <a href="https://troy-sucks.neocities.org" data-notes="hello aiden"><img src="assets/buttons/troy-sucks.gif"></a>
+          <a href="https://watcher.neocities.org"><img src="assets/buttons/watcher.gif"></a>
+          <a href="https://waxwings.neocities.org"><img src="assets/buttons/waxwings.png"></a>
+          <a href="https://yapi.lol"><img src="assets/buttons/yapi.gif"></a>
+          <a href="https://zenmai.neocities.org"><img src="assets/buttons/zenmai.gif"></a>
+          <div class="dud"></div>
+          <a id="utdr" href="https://deltarune.com/code"><img src="assets/graphics/utdr-webring.gif"></a>
+        </div>
+        <div id="minimize"></div>
+        <div id="maximize"></div>
+        <div id="close"></div>
+        <script>
+          var minimized = false
+          document.getElementById("minimize").onclick = function() {
+            if (minimized) {document.getElementById("sites").style.top = "50px"}
+            else {document.getElementById("sites").style.top = "calc(100vh - 44px)"};
+            minimized = !minimized;
+          };
+          document.getElementById("close").onclick = function() {
+            document.getElementById("sites").style.display = "none";
+          };
+        </script>
+      </div>
+      <div id="trans" class="pin imglink" style="right: 2px; bottom: 2px; rotate: 7.5deg; transition-duration: 0.2s; transition-timing-function: ease-in">
+        <img style="width: 128px" src="assets/trans-pin.png">
+        <a style="left: 8px; top: 8px; width: 112px; height: 112px; border-radius: 50%" href="trans.html"></a>
+      </div>
+      <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+      <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+      <script>
+        var zindex = 0
+        $( ".pin" ).draggable();
+        $( ".pin" ).on( "drag", function( event, ui ) {
+          $( event.target ).css( "z-index", zindex );
+          zindex += 1;
+          if (event.target.id == "trans") {
+            $( event.target ).css( "transition-property", "none" );
+          };
+        });
+        
+        $( "#trans" ).on( "dragstop", function (event, ui) {
+          $( event.target ).css( "transition-property", "top" );
+          $( event.target ).css( "top", "calc(100vh - 160px)" );
+        });
+      </script>
+    </div>
+    <div id="side">
+      <h1>misc.</h1>
+      <div id="transring">
+        <script type="text/javascript" src="https://transring.neocities.org/onionring-variables.js"></script>
+        <script type="text/javascript" src="https://transring.neocities.org/onionring-widget.js"></script>
+      </div>
+      <a id="return" href="index.html">return home?</a>
+    </div>
+  </body>
+</html>
