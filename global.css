@@ -1,21 +1,33 @@
-body {image-rendering: pixelated}
+:root {
+  --white: #f4f3f0;
+  --light-gray:#b6b2a8;
+  --gray: #858278;
+  --dark-gray: #575452;
+  --off-black: #282625;
+  --black: #121212;
+  --blue: #32a7e2;
+  --red: #e23254;
+  --yellow: #e2a732;
+}
+body {margin: 0; image-rendering: pixelated}
 
-/* text styling */
+/* inline styling */
 a {text-decoration: none}
 .titled, .hover {cursor: help}
 
-/* element styling */
-button {all: unset; cursor: pointer}
+/* block styling */
+button {all: unset}
 img, audio, button, input, marquee, iframe {display: block}
-summary {cursor: pointer; user-select: none}
+button, summary {cursor: pointer}
+summary {user-select: none}
 summary::marker {line-height: 0}
 iframe {border: none}
 audio {width: 100%}
 
 /* classes */
 .center {display: flex; justify-content: center; align-items: center; flex-direction: column}
-body.center {height: 100vh; margin: 0}
+body.center {min-height: 100vh}
 
 /* notes */
-.stickynote {color: black; font: 0.875rem/1.25 sans-serif; width: 128px; aspect-ratio: 1; padding: 16px; box-shadow: 0 4px 8px #0000001a; background-color: #ffe176; clip-path: polygon(0 25%, 0 0, 100% 0, 100% 25%, calc(100% + 8px) calc(100% + 12px), 50% calc(100% + 3px), -8px calc(100% + 12px)); z-index: 10}
+.stickynote {color: black; font: 0.875rem/1.25 sans-serif; width: 128px; aspect-ratio: 1; padding: 16px; box-shadow: 0 4px 8px #0000001a; background-color: #ffe176; clip-path: polygon(0 25%, 0 0, 100% 0, 100% 25%, calc(100% + 8px) calc(100% + 12px), 50% calc(100% + 3px), -8px calc(100% + 12px))}
 .stickynote a:hover {text-decoration: underline}

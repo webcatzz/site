@@ -1,0 +1,29 @@
+# to do
+
+write cat/blog/2
+shrines:
+  magnus archives
+  17776
+  night in the woods
+
+fix for mobile:
+  blog page
+  discord page touch events
+  middling arcana
+  beepbox webring
+
+fix for webkit:
+  image modal
+  middling arcana card labels
+
+
+# to upload
+
+index (v5.1)
+art/index (removed modal)
+beepbox-webring/index (stylesheet format change)
+blog/index (audio player change)
+cat/gallery (new doodle)
+cat/index (new music + audio player change)
+tunes/index (styling tweaks)
+lib/audio-player.js (marquee options removed)

@@ -22,7 +22,9 @@ h2 {font-size: 1.25em; margin-top: -19.2px; margin-left: 12px; margin-bottom: 2r
 #grid img:nth-of-type(2) {grid-column: span 2; aspect-ratio: 2; object-fit: cover}
 #grid img:hover {box-shadow: 0 0.5px 2px pink; z-index: 1}
 
-@media (max-width: 664px) {#back {position: fixed; top: unset; bottom: 16px; right: 16px}}
+@media (max-width: 664px) {
+	#back {position: fixed; top: unset; bottom: 16px; right: 16px}
+}
 		</style>
 	</head>
 	<body>
@@ -36,7 +38,9 @@ h2 {font-size: 1.25em; margin-top: -19.2px; margin-left: 12px; margin-bottom: 2r
 				<img src="oct 17, 2023.png" title="oct 17, 2023">
 			</div>
 		</div>
-		<script src="../lib/modal.js"></script>
-		<script>createModal(document.getElementById("grid").children, "#ffc0cb", "#ffffff");</script>
+		<script>
+for (const img of document.getElementsByTagName("img")) img.onclick = openImg;
+function openImg(e) {open(e.target.src, "_blank")}
+		</script>
 	</body>
 </html>

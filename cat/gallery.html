@@ -27,6 +27,10 @@ h2 {text-align: center; text-shadow: 0 -0.1em var(--panel-bg), 0.1em -0.1em var(
 		<h2>gallery</h2>
 		<div class="panel">this is less of a traditional website "art gallery" and... more of a doodle museum, for keeping track of how my concepts changed over time.</div>
 		<div id="grid">
+			<div>
+				<img src="assets/art/23-12-17.png" loading="lazy">
+				<div class="caption">art from an aggie</div>
+			</div>
 			<img src="assets/art/23-11-06.png" loading="lazy">
 			<div>
 				<img src="assets/art/23-10-15.png" loading="lazy" title="bunny girl appears">
@@ -78,6 +82,6 @@ h2 {text-align: center; text-shadow: 0 -0.1em var(--panel-bg), 0.1em -0.1em var(
 			</div>
 		</div>
 		<script src="../lib/modal.js"></script>
-		<script>createModal(document.getElementById("grid").getElementsByTagName("img"), "#90a4a5", "#ffffff");</script>
+		<script>createModal(document.getElementById("grid").getElementsByTagName("img"), {color: "#90a4a5", bgColor: "#ffffff"});</script>
 	</body>
 </html>

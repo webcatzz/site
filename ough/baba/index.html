@@ -64,7 +64,7 @@
 		</div>
 		<iframe id="page"></iframe>
 		<script>
-			const baba = document.getElementById("baba"), letters = Array.from(document.getElementsByClassName("letter")), textSfx = [new Audio("https://files.catbox.moe/fyel6n.ogg"), new Audio("https://files.catbox.moe/3ar63v.ogg"), new Audio("https://files.catbox.moe/euk8zy.ogg"), new Audio("https://files.catbox.moe/g0kclx.ogg"), new Audio("https://files.catbox.moe/t25gkz.ogg")], page = document.getElementById("page");
+			const baba = document.getElementById("baba"), letters = Array.from(document.getElementsByClassName("letter")), textSfx = [new Audio("assets/word-1.ogg"), new Audio("assets/word-2.ogg"), new Audio("assets/word-3.ogg"), new Audio("assets/word-4.ogg"), new Audio("assets/word-5.ogg")], page = document.getElementById("page");
 			const validPages = ["home", "about", "origin", "special", "more"], validTiles = ["belt", "bolt", "bug", "crab", "ghost", "me", "mob", "tile"];
 			var babaX = 5, babaY = 1, frame = 0, moveFrame = 0, ruleEnd = 7;
 			var matrix = [
@@ -93,7 +93,6 @@
 			});
 			document.body.focus();
 			page.src = "home.html";
-			nextFrame();
 
 			document.body.onkeypress = event => {
 				let newX = babaX, newY = babaY, dir, push, isX;
@@ -112,11 +111,10 @@
 			}
 
 
-			function nextFrame() {
+			setInterval(() => {
 				(frame == 2) ? frame = 0 : frame++;
 				baba.style.backgroundPositionY = (frame * 48) + "px";
-				setTimeout(nextFrame, 150);
-			}
+			}, 150);
 			function getNumber(property) {return Number(property.slice(0, -2))}
 			function isStop(x, y) {return x == -1 || y == -1 || x == 15 || y == 12 || (matrix[x][y] != null && matrix[x][y].classList.contains("stop"))}
 			function collide(x, y, push, isX) {
@@ -145,7 +143,7 @@
 					matrix[13][0].classList.remove("invalid");
 					matrix[14][0].classList.remove("invalid");
 					textSfx[Math.floor(Math.random() * 5)].play();
-					let music = new Audio("https://files.catbox.moe/qymx4b.mp3");
+					let music = new Audio("assets/music.mp3");
 					music.loop = true;
 					music.play();
 				};

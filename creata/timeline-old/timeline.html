@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>💫 creata</title>
+		<!--link rel="icon" type="image/png" href="assets/icon.png"-->
+		<link href="../global.css" rel="stylesheet" type="text/css" media="all">
+		<link href="timeline.css" rel="stylesheet" type="text/css" media="all">
+	</head>
+	<body>
+		<nav>
+			<a href="#tad">tad</a>
+			<a href="#eyrie">eyrie</a>
+			<a href="#outward">outward</a>
+			<a href="#wizardgame">wizardgame</a>
+			<a href="#breaktime">breaktime</a>
+			<a href="#catcomic">cat comic</a>
+			<a href="#lbau">lbau</a>
+		</nav>
+		<section id="landing">
+			<img id="comet" src="assets/timeline/landing_comet.png">
+      <h1><span>creata</span></h1>
+      <div id="infobox">i have a lot of brainchildren, most of which have ended up being left by the wayside. this is a rough timeline serving to document all of them (starting from early 2022).</div>
+		</section>
+		<section id="tad">
+			<header>
+				<h2>> textbox adventure demo</h2>
+				<img class="status" src="assets/timeline/status_onhold.png" alt="on hold">
+			</header>
+			<div class="content">
+				<p>"<b>textbox adventure demo</b>", also sometimes referred to as "<b>present past</b>" but hereafter referred to as "<b>tad</b>", was an untitled video game project started on <b>december 29th, 2021</b>. tad originated from a UI concept for a friend's video game (hence the alternative title), which, much like tad itself, never ended up getting finished. tad was the first godot project of mine in recent memory.</p>
+        <div class="aside">
+          <img src="assets/timeline/tad_screenshot.png">
+          <div>A screenshot of the "test" room.</div>
+        </div>
+        <p>in tad, the player would navigate and interact with the world by <b>entering commands into a textbox</b>. this was chosen for two reasons: one, it introduced a sense of distance between the player (and, by extension, the player character) and the world around them; and two, textbox input can be easily interfered with (a trick that would've been used extensively by GHOST). <b>the world was split into "rooms"</b>, which were made up of a dictionary (used to store miscellaneous data like texture paths and music to play) and a gdscript file which would be queried to process inputted commands. tad's color palette was directly ripped from a game called "loop hero".</p>
+        <p>the premise goes like this: the protagonist's parents die, <b>leaving the protagonist's childhood home to him as his inheritance</b>. the player arrives at the house, enters, and then quickly realizes that all the openings on the house, instead of leading outside, lead into more house.</p>
+        <p>during the course of the game, the player would meet a <b>friendly(?) spirit named GHOST</b>, who would guide them through various "memory" sequences toward their goal of escape. however, GHOST would slowly assume control over the flow of the story, and later even begin to <b>interfere with the player's inputs</b>. the player would also be accompanied, over telephone, by a friend whose purpose was to be a skeptical anchor to the world outside.</p>
+        <div class="aside">
+          <audio controls src="https://drive.google.com/uc?id=1pruPsFgDO21G99Sj_LKuYYW09MpZ2u2n"></audio>
+          <div>The original music that would've played when you first meet GHOST (one of the first things I made in Beepbox). The last four measures sound like a teasing nursery rhyme--it would've been GHOST's big leitmotif.</div>
+        </div>
+        <p>beyond this, <b>the specifics of the story were not all that worked out</b>. i knew that GHOST would eventually ask for the protagonist's flipphone and, if the player gave it over, destroy it. <b>there were two endings planned</b>, and this would've been the big "which ending are you going to get?" decision. the protagonist's feelings towards his family are complicated, and i wanted to deal with grief in relation to that. i also had vague ideas of the climax: GHOST would force the player to undertake some terrible... thing... by overwriting all player inputs with the commands it wanted.</p>
+        <p>however, tad <b>ran into issues when it came to its controls</b>. due to the way i had originally implemented "objects" in rooms, i had no way of signaling to the player what was interactable and what wasn't. also, at the time i was worried that the controls would quickly get annoying. also also, the task of making art for every single room ended up being pretty intimidating.</p>
+        <img src="assets/timeline/tad_gear.gif" alt="a pixelart gif of a rusty spinning gear.">
+        <p>i started <b>porting tad to godot 4</b> in may 2023 with some added ui features and a shorter story, but was quickly distracted by other things. i made this cool gear gif though for the new settings menu. i still want to come back to tad when i have time, but the opportunity has yet to present itself.</p>
+			</div>
+		</section>
+		<section id="eyrie">
+			<header>
+				<h2>< EYRIE ></h2>
+				<img class="status" src="assets/timeline/status_abandoned.png" alt="abandoned">
+			</header>
+			<div class="content">
+				<p><b>eyrie</b> was an extremely short-lived comic idea conceptualized around october of 2022. i mention it here only because it inspired later projects like <a href="catcomic">cat comic</a>.</p>
+				<p>essentially, it was a short comic revolving around the journey to an extremely theocratic nation's capital. it involved a black-and-white (literally and figuratively, ha) "dreaming world" which depicted places or people as they appeared in public perception—later, when i learned what it was, i likened it to persona's momentos. the capital's distinctive feature was a large tower (the titular eyrie), which in the dreaming world seemed to appear as a lighthouse, a landmark which was later repurposed for the capital in <a href="catcomic">cat comic</a>. the comic followed a masked paladin who had lost their holy powers, a concept which was later repurposed in <a href="wizardgame">wizard game</a>.</p>
+				<p>the idea never went anywhere because (1) almost nothing was planned out besides what i've just talked about, (2) my art skills weren't quite there yet, and (3) i wasn't attached enough to the concept, either.</p>
+			</div>
+		</section>
+		<section id="outward">
+			<header>
+				<h2>outward</h2>
+				<img class="status" src="assets/timeline/status_abandoned.png" alt="abandoned">
+			</header>
+			<div class="content">
+				<div class="main">
+					<img class="aside" src="assets/timeline/outward-street.png">
+					<p><b>outward</b> was a video game project started on the 27th of november, 2022. it was a ui-based game about navigating a strange world in search of answers (also, spoiler, something something depression metaphor). outward was originally inspired by the off-putting concept art in <a href="https://tofupixel.tumblr.com/post/705542521697271808/tofupixel-the-cat-game-of-my-dreams">this post by tofupixel</a>.</p>
+					<p>outward was set in <b>a world Suspended just before its end</b>—however, that Suspension is slowly unraveling. the player ends up in this world... somehow... at one point, i think the plan was that outward's world is actually a sickness-fueled fever dream that the actual protagonist is experiencing, with "waking-world" cutscenes interspersed throughout the story that would influence the "dreaming-world" story as well. dunno how much i like that idea.</p>
+					<img class="aside non-pxl" src="assets/timeline/outward-planning.png">
+					<p>outward was supposed to have 3 areas (well, 4, technically), each with a small self-contained story & boss. along the way, the player would be haunted by ANGELs, messengers of the final boss. in the end, the player would approach <b>the wizard's tower at the center of the city</b> (the wizard being the one responsible for the Suspension). the apprentice would've pretended they were the real wizard, while the actual wizard would've been inside the tower being mentally ill on a sunday weekend #girl. eventually, <b>the Suspension would've broken</b>, leading to a final boss fight with a personification of entropy (aided by the people you helped along the way (power of friendship or something or other)). or you could've not done all that—the alternate ending would've been "just do nothing and watch the End of the World like a firework show, with a can of beer and a bag of chips."</p>
+					<div class="gallery non-pxl">
+						<img src="assets/timeline/outward-old.png">
+						<img src="assets/timeline/outward-battlemockup.gif">
+						<img src="assets/timeline/outward-battle.png">
+						<img src="assets/timeline/outward-dungeonmap.png">
+						<img src="assets/timeline/outward-new.png">
+					</div>
+					<img height="400" class="aside non-pxl" src="assets/timeline/outward-concept.png">
+					<p>outward dealt a lot with <b>meaninglessness</b> and <b>questions of choice</b>: is it worth it to rail against an inevitable apocalypse? (spoiler: it is). isn't it better to just give up? (spoiler: it isn't). in fact, the final boss would've been visually themed around the "choice box" ui elements you use throughout the game to navigate and interact. also, i tried to keep circles and spirals at the forefront of the visual toolkit — choices were arranged around "objects" in a circle (something that was inspired by disco elysium), the final boss and the setting itself were both built off the image of a spiral.</p>
+					<p>outward tried to <b>solve the problem i had with tad</b> by, instead of drawing art for each location, taking free images & pixelating & hue-shifting. however, the <b>problems with controls remained</b>—clicking buttons repeatedly to navigate didn't turn out to be all that fun, and i didn't change up the formula at all, so it ended up being a fatal problem. also, i didn't spend enough time on ironing out the details of the story.</p>
+					<p>i still like a lot of the ideas i had for outward, though. maybe i'll make the spare ones into something smaller one day.</p>
+				</div>
+			</div>
+		</section>
+		<section id="wizardgame">
+			<header>
+				<h2>wizardgame</h2>
+				<img class="status" src="assets/timeline/status_abandoned.png" alt="abandoned">
+			</header>
+			<div class="content">
+        <p><span id="first-letter">w</span>izard game, sometimes humorously misreferred to as "weezer game", was an RPG project started on december 3rd, 2023. it was inspired by super lesbian animal rpg.</p>
+      </div>
+		</section>
+		<section id="breaktime">
+			<header>
+				<h2>breaktime</h2>
+				<img class="status" src="assets/timeline/status_abandoned.png" alt="abandoned">
+			</header>
+			<div class="content">
+        <p><b>breaktime</b> was a <b>grid-based isometric dungeon-crawler</b> set in a shitty office, where the goal is to reach your boss and ask for a week off. it was started on march 25th, 2023 (at the time i was playing a lot of hades).</p>
+        <p>breaktime was born out of <b>frustration over never finishing anything</b>, which contributed negatively to its lifespan. it was intended to be a shorter game that i could finish just to say i'd finished something, but ended up getting big enough that my limited motivation wasn't enough to fuel me through finishing it. guess i learned a lesson here!</p>
+				<div class="gallery">
+					<img src="assets/timeline/break_1.png">
+					<img src="assets/timeline/break_2.png">
+					<img src="assets/timeline/break_3.png">
+				</div>
+        <p>breaktime featured many mechanics <b>themed off of common workplace hazards</b>:</p>
+        <ul>
+          <li>fax machines (that, when triggered, shoot out super-fast faxes that slice you in half)</li>
+          <li>paper airplanes (colorful, but pointy)</li>
+          <li>water puddles (slippery, can also be electrified if wires run through them)</li>
+          <li>electricity boxes with switches for toggling the lights (and the water electrification!)</li>
+          <li>pressure plates? you know how it is.</li>
+          <li>stray stacks of paper that you can squish for fun. they regenerate on their own</li>
+          <li>a super chill (read: ineffective) supervisor</li>
+          <li>a super uptight assistant supervisor who WILL kill you if she catches you not working</li>
+          <li>secret lesbian workplace romance</li>
+        </ul>
+				<img class="titled" src="assets/timeline/break_cast.gif" title="the breaktime cast, featuring: jim (terribly Normal man), blue (the IT girl), holly (the overperformer), adrien (pronounced frenchly), and greg (from murumart's greg rpg)." alt="the breaktime cast, featuring: jim, blue, holly, adrien (pronounced frenchly), and greg (from murumart's greg rpg).">
+        <p>each time you died, you would be sent back to a hub room. the character you played as would be randomized out of a set of 6 (minus the character you played as last, who would not appear in the hub room (they died LOL)). there was a half-finished system for delivering things back to the hub room: water (obtained from in-dungeon water dispensers) could be given to a sentient plastic plant for a bonus point of defense for the next run, and it was planned that you could gift coffee to your supervisor to increase your maximum health. also, a "employee of the day" system incentivized you to talk to the other employees for another free defense point.</p>
+        <p>in retrospect, i don't think this game felt good to play. i dunno. some parts were nicely challenging, but the grid-based movement system didn't allow for a lot of skillful maneuvering. i made a lot of cool music for it though! you can check that out on the <a href="../tunes/index.html?cassette=3">tunes page</a>.</p>
+			</div>
+		</section>
+		<section id="catcomic">
+			<header>
+				<h2>cat comic</h2>
+				<img class="status" src="assets/timeline/status_wip.png" alt="in development">
+			</header>
+			<div class="content">
+				<img class="aside non-pxl" src="assets/timeline/catcomic_moon.png">
+				<p><b>cat comic</b> (working title) is a <b>worldbuilding & comic project</b> started on april 13th, 2023. it takes place in the world of <b>aerie</b>. some time ago, the land below the clouds was made uninhabitable—however, civilization persists among the clouds!</p>
+        <p>catcomic came to be in a "what-the-hell-let's-do-this" moment while watching <a href="https://youtu.be/8mcsA_ETjwo">this bdubs video</a>—i really liked the episode's build, and i wanted to base something off a similar whimsical aesthetic. i'm taking inspiration from <a href="https://beebfreeb.neocities.org/dreamland">daisy in dreamland</a>'s pixelly artstyle and a bit from <a href="https://laikascomet.tumblr.com">laika's comet</a>'s general aesthetic. also, in order to avoid repeating previous mistakes (hopefully), i'm approaching this as much more of a <b>longform project</b>. this thing's gonna take a lot of time, and i'm expecting that!</p>
+        <p>catcomic is still in its early stages, so i dont want to talk about it too much in case i end up changing or accidentally spoiling something. sorry LOL</p>
+			</div>
+		</section>
+		<section id="lbau">
+			<header>
+				<h2>let's build a universe</h2>
+				<img class="status" src="assets/timeline/status_wip.png" alt="in development">
+			</header>
+			<div class="content">
+				<p><b>let's build a universe</b>, abbreviated as lbau, is a 2d <b>physics-based puzzle game</b> centered around particles (and is also a school project i have to do over the summer).</p>
+        <p>lbau starts right at the very beginning of the universe, and has you work your way up 2048-style all the way <b>from simple quarks to complex molecules</b>. lbau has multiple levels, in each of which you try to assemble a certain particle out of those given to you. particles are combined by clicking and dragging to <b>slingshot them into each other</b>, a la golf. however, not a la golf, inter-particle forces like magnetism, charge, and gravity will <b>interfere with how particles move</b>.</p>
+        <p>lbau might have a story—if it does, it'll be a loose one. i have one ending scene in mind that i really like, involving that one "causality billiard table" comparison. we'll see.</p>
+			</div>
+		</section>
+	</body>
+</html>

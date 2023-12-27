@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>WEB is CATZ</title>
+		<link rel="icon" type="image/png" href="assets/baba.gif">
+		<style>
+			body {display: flex; height: 100vh; margin: 0; background-color: black; image-rendering: pixelated}
+
+			#game-wrapper {flex: 1; display: flex; justify-content: center; align-items: center; padding: 48px; background-color: #15181f}
+			#game {width: 720px; height: 576px; background-color: black; position: relative}
+			#game > * {width: 48px; height: 48px; position: absolute; transition: top 0.1s, left 0.1s}
+			#game img {display: block}
+			#baba {background: url(assets/baba.png) top left / 768px}
+			.letter {background: url(assets/text-letters.gif) top left / 1248px}
+			.invalid {filter: brightness(45%)}
+
+			#page {flex: 1; height: 100%; border: none}
+		</style>
+	</head>
+	<body>
+		<div id="game-wrapper">
+			<div id="game">
+				<div data-pos="5 1" id="baba"></div>
+				<!-- globals -->
+				<img data-pos="0 0" data-tile="text" data-type="push" src="assets/text-baba.gif">
+				<img data-pos="1 0" data-tile="text" data-type="push" src="assets/text-is.gif">
+				<img data-pos="2 0" data-tile="text" data-type="push" src="assets/text-you.gif">
+				<img data-pos="0 1" data-tile="text" data-type="push" src="assets/text-tile.gif">
+				<img data-pos="1 1" data-tile="text" data-type="push" src="assets/text-is.gif">
+				<img data-pos="2 1" data-tile="text" data-type="push" src="assets/text-stop.gif">
+				<img data-pos="0 2" data-tile="tile" data-type="stop" src="assets/tile.gif">
+				<!-- music -->
+				<img data-pos="12 0" data-tile="text" data-type="push" class="invalid" src="assets/text-music.gif">
+				<img data-pos="13 0" data-tile="text" data-type="push" class="invalid" src="assets/text-is.gif">
+				<img data-pos="14 1" data-tile="text" data-type="push" class="invalid" src="assets/text-play.gif">
+				<img data-pos="11 0" data-tile="tile" data-type="stop" src="assets/tile.gif">
+				<img data-pos="12 1" data-tile="tile" data-type="stop" src="assets/tile.gif">
+				<!-- page -->
+				<img data-pos="1 4" data-tile="tile" data-type="stop" src="assets/tile.gif">
+				<img data-pos="2 4" data-tile="tile" data-type="stop" src="assets/tile.gif">
+				<img data-pos="1 4" data-tile="text" data-type="push" src="assets/text-page.gif">
+				<img data-pos="2 4" data-tile="text" data-type="push" src="assets/text-is.gif">
+				<img data-pos="1 5" data-tile="tile" data-type="stop" src="assets/tile.gif">
+				<!-- me -->
+				<img data-pos="0 9" data-tile="me" data-type="stop" src="assets/me.gif">
+				<img data-pos="1 9" data-tile="me" data-type="stop" src="assets/me.gif">
+				<img data-pos="3 9" data-tile="me" data-type="stop" src="assets/me.gif">
+				<img data-pos="3 10" data-tile="me" data-type="stop" src="assets/me.gif">
+				<img data-pos="3 11" data-tile="me" data-type="stop" src="assets/me.gif">
+				<img data-pos="0 11" data-tile="text" data-type="push" src="assets/text-me.gif">
+				<img data-pos="1 11" data-tile="text" data-type="push" src="assets/text-is.gif">
+				<img data-pos="2 11" data-tile="text" data-type="push" src="assets/text-stop.gif">
+				<img data-pos="4 11" data-tile="text" data-type="push" src="assets/text-bug.gif">
+				<!-- water -->
+				<img data-pos="12 8" data-tile="water" data-type="defeat" src="assets/water-h.gif">
+				<img data-pos="13 10" data-tile="tile" data-type="stop" src="assets/tile.gif">
+				<!-- N --> <div data-pos="13 10" data-tile="letter" data-type="push" class="letter invalid" data-char="13"></div>
+				<!-- letters -->
+				<!-- H --> <div data-pos="3 4" data-tile="letter" data-type="push" class="letter" data-char="7"></div>
+				<!-- O --> <div data-pos="4 4" data-tile="letter" data-type="push" class="letter" data-char="14"></div>
+				<!-- M --> <div data-pos="5 4" data-tile="letter" data-type="push" class="letter" data-char="12"></div>
+				<!-- E --> <div data-pos="6 4" data-tile="letter" data-type="push" class="letter" data-char="4"></div>
+				<!-- A --> <div data-pos="3 5" data-tile="letter" data-type="push" class="letter invalid" data-char="0"></div>
+				<!-- B --> <div data-pos="4 5" data-tile="letter" data-type="push" class="letter invalid" data-char="1"></div>
+				<!-- U --> <div data-pos="6 5" data-tile="letter" data-type="push" class="letter invalid" data-char="20"></div>
+				<!-- T --> <div data-pos="7 5" data-tile="letter" data-type="push" class="letter invalid" data-char="19"></div>
+				<!-- R --> <div data-pos="11 3" data-tile="letter" data-type="push" class="letter invalid" data-char="17"></div>
+				<!-- I --> <div data-pos="11 4" data-tile="letter" data-type="push" class="letter invalid" data-char="8"></div>
+				<!-- G --> <div data-pos="11 5" data-tile="letter" data-type="push" class="letter invalid" data-char="6"></div>
+				<!-- I --> <div data-pos="12 3" data-tile="letter" data-type="push" class="letter invalid" data-char="8"></div>
+				<!-- S --> <div data-pos="2 7" data-tile="letter" data-type="push" class="letter invalid" data-char="18"></div>
+				<!-- C --> <div data-pos="3 7" data-tile="letter" data-type="push" class="letter invalid" data-char="2"></div>
+				<!-- P --> <div data-pos="4 7" data-tile="letter" data-type="push" class="letter invalid" data-char="15"></div>
+				<!-- L --> <div data-pos="5 7" data-tile="letter" data-type="push" class="letter invalid" data-char="11"></div>
+			</div>
+		</div>
+		<iframe id="page"></iframe>
+		<script>
+			const baba = document.getElementById("baba"), letters = Array.from(document.getElementsByClassName("letter")), textSfx = [new Audio("assets/word-1.ogg"), new Audio("assets/word-2.ogg"), new Audio("assets/word-3.ogg"), new Audio("assets/word-4.ogg"), new Audio("assets/word-5.ogg")], page = document.getElementById("page");
+			const validPages = ["home", "about", "origin", "special", "more"];
+			const validTiles = ["belt", "bolt", "bug", "crab", "ghost", "me", "mob", "tile"];
+			// pages to add: RING, UTAH, MUTE, GIN, HAG, COMBUST, CUBE
+			var babaX = 5, babaY = 1, frame = 0, moveFrame = 0, ruleEnd = 7;
+			var stopTiles = ["tile"], pushTiles = ["text", "letter"];
+			var level = [
+				[[], [], [], [], [], [], [], [], [], [], [], []],
+				[[], [], [], [], [], [], [], [], [], [], [], []],
+				[[], [], [], [], [], [], [], [], [], [], [], []],
+				[[], [], [], [], [], [], [], [], [], [], [], []],
+				[[], [], [], [], [], [], [], [], [], [], [], []],
+				[[], [], [], [], [], [], [], [], [], [], [], []],
+				[[], [], [], [], [], [], [], [], [], [], [], []],
+				[[], [], [], [], [], [], [], [], [], [], [], []],
+				[[], [], [], [], [], [], [], [], [], [], [], []],
+				[[], [], [], [], [], [], [], [], [], [], [], []],
+				[[], [], [], [], [], [], [], [], [], [], [], []],
+				[[], [], [], [], [], [], [], [], [], [], [], []],
+				[[], [], [], [], [], [], [], [], [], [], [], []],
+				[[], [], [], [], [], [], [], [], [], [], [], []],
+				[[], [], [], [], [], [], [], [], [], [], [], []]
+			];
+			Array.from(document.getElementById("game").children).forEach(tile => {
+				let pos = tile.dataset.pos.split(" ");
+				level[pos[0]][pos[1]].push(tile);
+				tile.style.left = (pos[0] * 48) + "px", tile.style.top = (pos[1] * 48) + "px";
+				if (tile.dataset.tile == "letter") tile.style.backgroundPositionX = (tile.dataset.char * -48) + "px";
+			});
+
+			document.body.onkeypress = event => {
+				let newX = babaX, newY = babaY, push, isX, dir;
+				switch (event.key) {
+					case "w": push = -1, isX = false, dir = 1; break;
+					case "a": push = -1, isX = true, dir = 2; break;
+					case "s": push = 1, isX = false, dir = 3; break;
+					case "d": push = 1, isX = true, dir = 0; break;
+					default: return;
+				}
+				(moveFrame == 3) ? moveFrame = 0 : moveFrame++;
+				baba.style.backgroundPositionX = -((moveFrame * 48) + (dir * 192)) + "px";
+				let newPos = moveTile(baba, babaX, babaY, push, isX);
+				if (newPos) [babaX, babaY] = newPos;
+			}
+
+			function moveTile(tile, x, y, push, isX) {
+				let newX = x, newY = y;
+				isX ? newX += push : newY += push;
+				if (newX == -1 || newY == -1 || newX == 15 || newY == 12) return;
+				if (level[newX][newY].length != 0) {
+					let type = getType(newX, newY);
+					if (type[0] == "stop") return;
+					if (type[0] == "push") {
+						let move = moveTile(level[newX][newY][type[1]], newX, newY, push, isX);
+						if (move == null) return;
+					}
+				}
+
+				level[x][y].splice(level[x][y].indexOf(tile), 1);
+				level[newX][newY].push(tile);
+				tile.style.left = (newX * 48) + "px", tile.style.top = (newY * 48) + "px";
+				return [newX, newY];
+			}
+			function getType(x, y) {
+				for (let i = 0; i < level[x][y].length; i++) {
+					return [level[x][y][i].dataset.type, i];
+				}
+			}
+
+			nextFrame();
+			function nextFrame() {
+				(frame == 2) ? frame = 0 : frame++;
+				baba.style.backgroundPositionY = (frame * 48) + "px";
+				setTimeout(nextFrame, 150);
+			}
+		</script>
+	</body>
+</html>

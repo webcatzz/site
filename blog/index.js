@@ -26,10 +26,11 @@ for (const el of document.getElementsByClassName("mood")) el.firstElementChild.t
 function meow() {new Audio(["https://files.catbox.moe/dmdijd.mp3", "https://files.catbox.moe/tm6s1o.mp3"][Math.floor(Math.random() * 2)]).play()}
 
 // images
-for (const img of document.getElementById("main-wrapper").querySelectorAll("img:not(.no-modal)")) img.onclick = openImg;
+for (const img of document.querySelectorAll("main img:not(.no-modal)")) img.onclick = openImg;
 function openImg(e) {window.open(e.target.src).focus()}
 
 // music
+const audioEls = document.getElementById("audio-player").children;
 createAudioPlayer([
   {title: "10 PM (Sunny) - Kazumi Totaka (Animal Crossing: New Horizons OST)", link: "https://files.catbox.moe/6thmxx.mp3"},
   {title: "blogger sits alone at night - coffeebug (MIDIfreak)", link: "https://files.catbox.moe/zhcwni.mp3"},
@@ -41,9 +42,13 @@ createAudioPlayer([
   {title: "Music for Animal Cafés - nobonoko (Music for Animal Cafés)", link: "https://files.catbox.moe/63er7i.mp3"},
   {title: "killer tune kills me - KIRINJI, YonYon", link: "https://files.catbox.moe/94cu6j.mp3"}
 ],{
-  playButton: document.getElementById("audio-play"),
-  skipButton: document.getElementById("audio-skip"),
-  title: document.getElementById("audio-title"),
-  titleWrapsMarquee: true, verticalMarquee: true,
+  playButton: audioEls[0],
+  skipButton: audioEls[1],
   shuffle: true,
+  onEnded: () => {
+    let title = document.createElement("marquee");
+    title.direction = "up";
+    title.appendChild(document.createElement("span")).textContent = playlist[playlistIdx].title;
+    audioEls[2].replaceWith(title);
+  }
 });

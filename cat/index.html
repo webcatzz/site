@@ -20,7 +20,7 @@ h1 {color: transparent; font-size: 4em; font-weight: bold; margin: 0; background
 #landing p:last-of-type .hover::before {content: "hover! →"; color: var(--light); font-family: ms-serif; font-style: italic; letter-spacing: 0.05em; width: max-content; opacity: 0.5; position: absolute; right: calc(100% + 32px)}
 
 #news {width: 200px; padding: 16px; margin: -16px; margin-bottom: 0; border-radius: 12px; background: url(assets/blog.png) center; overflow-y: auto; contain: size}
-#news > a {width: 200px; margin-bottom: 16px; box-sizing: border-box}
+#news > a {margin-bottom: 16px}
 .news-cover {aspect-ratio: 1; object-fit: cover; margin-bottom: 10px; image-rendering: auto}
 .news-title {font-size: 1.25em; font-weight: bold; margin-bottom: 4px}
 .news-title img {width: 0.75em; display: inline}
@@ -39,7 +39,7 @@ h1 {color: transparent; font-size: 4em; font-weight: bold; margin: 0; background
 
 #audio-player {color: var(--light); line-height: 1; padding: 8px 16px; border-radius: 12px; background-color: white; display: grid; grid-template-columns: max-content 1fr max-content max-content; margin-bottom: 8px}
 #audio-listing {font-size: 0.75em; margin-right: 8px; opacity: 0.75; align-self: center}
-#audio-title, #audio-source {text-overflow: ellipsis; white-space: nowrap; overflow: hidden}
+#audio-title, #audio-source {text-overflow: ellipsis; white-space: nowrap; overflow: hidden; cursor: help}
 #audio-source {grid-column: 1/3; font-size: 0.875em}
 #audio-player button {font-size: 0.875em; width: 1em; padding: 6px; margin: -4px 0; border-radius: 4px; display: flex !important; justify-content: center; align-items: center; grid-row: 1/3; cursor: pointer; transition: color 0.01s, background-color 0.05s}
 #audio-player button:hover {background-color: var(--panel-bg)}
@@ -76,6 +76,12 @@ footer a {width: 50%; margin: auto; opacity: 0.5; display: block}
 				<div class="pixel small">inspirations: <a href="https://www.homestuck.com">homestuck</a>, <a href="https://beebfreeb.neocities.org/dreamland">daisy in dreamland</a>, <a href="https://laikascomet.tumblr.com">laika's comet</a></div>
 			</div>
 			<div id="news">
+				<a class="panel hover-shadow" href="blog/2.html">
+					<img src="blog/assets/cc.png" class="news-cover fit-top">
+					<div class="news-title"><img src="blog/icons/earth.png"> worldbuilding: floating cities!</div>
+					<span class="pixel news-tag">blog</span>
+					<span class="pixel news-date">nov 30, 2023</span>
+				</a>
 				<a class="panel hover-shadow" href="blog/1.html">
 					<img src="blog/assets/clothesline.png" class="news-cover fit-top">
 					<div class="news-title"><img src="blog/icons/earth.png"> on aerie</div>
@@ -113,16 +119,27 @@ footer a {width: 50%; margin: auto; opacity: 0.5; display: block}
 					<div id="audio-source" class="pixel">Feed me Jack - Chumpfrey</div>
 					<button id="audio-play"><i class="fa-solid fa-play"></i></button>
 					<button id="audio-skip"><i class="fa-solid fa-forward"></i></button>
-					<script src="../lib/audio-player.js"></script>
 				</div>
 				<img src="assets/rollingstars.gif">
 			</div>
 		</div>
 		<a id="back" href="../index.html">← back home</a>
 		<footer class="wide" aria-hidden="true"><a href="poem.html"><img src="assets/moon-fade.png"></a></footer>
+		<script src="../lib/audio-player.js"></script>
 		<script>
 window.onscroll=()=>{if(window.scrollY<388)document.body.style.backgroundPositionY="bottom, "+(window.scrollY/2)+"px"}
-createAudioPlayer([{title:"Interlude",source:"Feed Me Jack - Chumpfrey",link:"https://files.catbox.moe/z3v4tu.mp3"},{title:"(forever?????????)",source:"glass beach - the first glass beach album",link:"https://files.catbox.moe/cfryqz.mp3"},{title:"bloodflow.wav",source:"classic j - jjjjjjjjjjjjjjjjjjjjjjjj",link:"https://files.catbox.moe/nxnt01.mp3"},{title:"cloudy out",source:" eel valley - long week",link:"https://files.catbox.moe/1vh92t.mp3"},{title:"angel surveillance",source:"bubblebaath",link:"https://files.catbox.moe/wd3btp.mp3"},{title:"Astronaut",source:"Jack Stauber's Micropop - Micropop",link:"https://files.catbox.moe/4by8pa.mp3"}],{playButton:document.getElementById("audio-play"),skipButton:document.getElementById("audio-skip"),title:document.getElementById("audio-title"),source:document.getElementById("audio-source"),onAudioEnded:()=>document.getElementById("audio-listing").textContent="track "+(playlistIdx+1)+" of "+playlist.length});
+createAudioPlayer([
+	{title:"Interlude",source:"Feed Me Jack - Chumpfrey",link:"https://files.catbox.moe/z3v4tu.mp3"},
+	{title:"(forever?????????)",source:"glass beach - the first glass beach album",link:"https://files.catbox.moe/cfryqz.mp3"},
+	{title:"ゆめうつつ (Half Asleep)",source:"Lamp - ランプ幻想",link:"https://files.catbox.moe/gvw3j5.mp3"},
+	{title:"bloodflow.wav",source:"classic j - jjjjjjjjjjjjjjjjjjjjjjjj",link:"https://files.catbox.moe/nxnt01.mp3"},
+	{title:"cloudy out",source:" eel valley - long week",link:"https://files.catbox.moe/1vh92t.mp3"},
+	{title:"angel surveillance",source:"bubblebaath",link:"https://files.catbox.moe/wd3btp.mp3"},
+	{title:"Astronaut",source:"Jack Stauber's Micropop - Micropop",link:"https://files.catbox.moe/4by8pa.mp3"},
+],{
+	playButton:document.getElementById("audio-play"),skipButton:document.getElementById("audio-skip"),title:document.getElementById("audio-title"),
+	onEnded:()=>{document.getElementById("audio-source").textContent = playlist[playlistIdx].source,document.getElementById("audio-listing").textContent="track "+(playlistIdx+1)+" of "+playlist.length,document.getElementById("audio-title").title=playlist[playlistIdx].title,document.getElementById("audio-source").title=playlist[playlistIdx].source},
+});
 		</script>
 	</body>
 </html>
