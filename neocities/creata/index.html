@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>creata</title>
+		<link rel="icon" href="../assets/icon.svg">
+		<link rel="stylesheet" href="../global.css">
+		<style>
+			@font-face {font-family: ms-serif; src: url(../assets/fonts/ms-serif.ttf)}
+			body {margin: 0; background: url(../assets/checkerboard-tilted.png) center / 320px #0a0a0b; overflow-x: hidden; position: relative}
+			body::before, body::after {content: "creata"; color: transparent; -webkit-text-stroke: 1px #fafdff; font: bold 20em sans-serif; letter-spacing: 0.05em; position: absolute; pointer-events: none}
+			body::before {top: -0.1em; left: 0}
+			body::after {bottom: 0; right: -0.05em}
+
+			header {font: bold 6.5em sans-serif; margin-bottom: -0.8em; position: relative; z-index: 1}
+			h1, .color-ladder {letter-spacing: 0.05em; width: max-content; margin: auto; margin-top: -0.8em}
+			h1 {color: black; font-size: inherit; text-shadow: 0 -1px #fafdff}
+			.color-ladder {user-select: none}
+			#r {color: #d62411; font-size: 95%}
+			#o {color: #ff8426; font-size: 90%}
+			#y {color: #ffd100; font-size: 85%}
+			#g {color: #10d275; font-size: 80%}
+			#b {color: #68aed4; font-size: 75%}
+			#p {color: #ff2674; font-size: 70%; margin-top: 0}
+
+			#main {color: white; padding: 96px 16px 128px 16px; clip-path: polygon(0 32px, 100% 0, 100% calc(100% - 8px), 0 100%); background: /*linear-gradient(130deg, transparent 50%, #ece6ea 50%, #ece6ea 52.5%, #f9ab15 52.5%, #f9ab15 55%, #ff4240 55%, #ff4240 57.5%, #f50141 57.5%, #f50141 60%, #c50250 60%, #c50250 62.5%, transparent 62.5%),*/ linear-gradient(225deg, #ffa430, transparent), linear-gradient(to bottom, #fa7a23 1px, transparent 1px) no-repeat repeat top / 100% 4px fixed #ff8426; image-rendering: pixelated}
+			#current {color: #ffffffbf; font-family: ms-serif; width: max-content; padding: 8px 16px; margin: auto; border: 1px solid #ffffff80; cursor: help}
+			#current ul, li {color: white; padding: 0; display: inline}
+			#current li:not(:first-of-type)::before {content: " / "; color: #ffffff80}
+			nav {display: flex; flex-direction: column}
+			.select {display: flex; align-items: center; gap: 32px; color: inherit; width: 100%; max-width: 768px; margin: auto; margin-top: -32px; cursor: pointer}
+			.select:first-of-type {margin-top: 0; z-index: 6}
+			.select:nth-of-type(2) {z-index: 5}
+			.select:nth-of-type(3) {z-index: 4}
+			.select:nth-of-type(4) {z-index: 3}
+			.select:nth-of-type(5) {z-index: 2}
+			.select:nth-of-type(6) {z-index: 1}
+			.select:not([href]) {opacity: 0.5; cursor: not-allowed}
+			.select:hover {background: linear-gradient(to bottom, transparent 20%, #ffffff20 20%, #ffffff20 80%, transparent 80%); z-index: 10}
+			.icon {min-width: 224px; filter: drop-shadow(-32px 48px #00000020); transition: 0.2s}
+			.select:hover .icon {margin-left: 16px; filter: drop-shadow(-40px 48px #00000020)}
+			.line {flex: 1; height: 1px; margin-left: 8px; background-color: white; position: relative}
+			.line::before {content: ""; width: 8px; height: 8px; border: 1px solid white; border-radius: 50%; box-sizing: border-box; position: absolute; left: -8px; top: -3.5px}
+			.label {display: block; font-family: ms-serif; text-align: right; letter-spacing: 0.2em; text-overflow: ellipsis; white-space: nowrap; margin-right: 16px; overflow: hidden}
+			.select:hover .label::after {content: " <"}
+
+			/* #timeline {display: block; color: white; font-family: ms-serif; letter-spacing: 0.2em; padding: 32px; margin: 32px auto; opacity: 0.5; transition: opacity 0.2s}
+			#timeline:hover {letter-spacing: 0.3em; opacity: 1} */
+
+			footer {display: flex; gap: 32px; width: max-content; padding: 64px 0; margin: auto}
+			.dot {width: 8px; height: 8px; border-radius: 50%; box-shadow: 0 0 0 16px black; transition: 0.1s; cursor: pointer; z-index: 1}
+			.dot:hover {width: 16px; height: 16px; margin: -4px}
+			.dot:active {border: 8px solid #ffffff80; box-sizing: border-box}
+			.dot:first-of-type {background-color: #d62411}
+			.dot:nth-of-type(2) {background-color: #ff8426}
+			.dot:nth-of-type(3) {background-color: #ffd100}
+			.dot:nth-of-type(4) {background-color: #10d275}
+			.dot:nth-of-type(5) {background-color: #68aed4}
+			.dot:last-of-type {background-color: #ff2674}
+
+			#back {color: black; font-family: sans-serif; font-weight: bold; width: max-content; padding: 12px 16px; margin: auto; margin-bottom: 64px; background-color: white; display: block; transition: background-color 0.1s}
+			#back:hover {background-color: #ff8426}
+
+			@media (max-width: 600px) {
+				body::before, body::after {content: none}
+				#current {width: auto; margin-bottom: 16px}
+				nav {gap: 0}
+				.select {flex-direction: column; gap: 0; margin: 0 auto}
+				.icon {transition: filter 0.2s}
+				.select:hover .icon {margin: 0; scale: 1.05; filter: drop-shadow(-56px 48px #00000020)}
+				.line {display: none}
+				.label {margin: 8px 0}
+				.select:hover .label::before {content: "> "}
+			}
+		</style>
+	</head>
+	<body>
+		<header>
+			<div id="p" class="color-ladder" aria-hidden="true">creata</div>
+			<div id="b" class="color-ladder" aria-hidden="true">creata</div>
+			<div id="g" class="color-ladder" aria-hidden="true">creata</div>
+			<div id="y" class="color-ladder" aria-hidden="true">creata</div>
+			<div id="o" class="color-ladder" aria-hidden="true">creata</div>
+			<div id="r" class="color-ladder" aria-hidden="true">creata</div>
+			<h1>creata</h1>
+		</header>
+		<div id="main">
+			<div id="current">currently working on:<ul>
+  			<li>"cat comic"</li>
+  			<li>"bad dream"</li>
+  			<li>a web-based apple freeform clone</li>
+  		</ul></div>
+			<nav>
+				<a class="select" href="https://webcatz.itch.io/">
+					<img class="icon" src="assets/jams.png">
+					<div class="line"></div>
+					<div class="label">gamejam games</div>
+				</a>
+				<a class="select" href="../cat/index.html">
+					<img class="icon" src="assets/cat-comic.png">
+					<div class="line"></div>
+					<div class="label">cat comic</div>
+				</a>
+				 <a class="select">
+					<img class="icon" src="assets/lbau.png">
+					<div class="line"></div>
+					<div class="label">let's build a universe (page not up yet)</div>
+				</a>
+				<a class="select" href="timeline.html">
+					<img class="icon" src="assets/timeline.png">
+					<div class="line"></div>
+					<div class="label">project timeline...</div>
+				</a>
+			</nav>
+		</div>
+		<footer aria-hidden="true">
+			<div class="dot" data-sfx="https://files.catbox.moe/mvzhzv.mp3"></div>
+			<div class="dot" data-sfx="https://files.catbox.moe/u0o9ju.mp3"></div>
+			<div class="dot" data-sfx="https://files.catbox.moe/abv9al.mp3"></div>
+			<div class="dot" data-sfx="https://files.catbox.moe/6eq5se.mp3"></div>
+			<div class="dot" data-sfx="https://files.catbox.moe/pg3b68.mp3"></div>
+			<div class="dot" data-sfx="https://files.catbox.moe/jg18w3.mp3"></div>
+			<script>Array.prototype.forEach.call(document.getElementsByClassName("dot"), dot => dot.onclick = () => new Audio(dot.dataset.sfx).play());</script>
+		</footer>
+		<a id="back" href="../index.html">← back to index</a>
+	</body>
+</html>

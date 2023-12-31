@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>webcatz → resources!</title>
+		<link rel="icon" href="../assets/icon.svg">
+		<link rel="stylesheet" href="../global.css">
+		<script src="https://kit.fontawesome.com/c558359c24.js" crossorigin="anonymous"></script>
+		<style>
+			@font-face {font-family: "old-london"; src: url("../assets/fonts/old-london.ttf")}
+			@font-face {font-family: "merriweather"; src: url("../assets/fonts/merriweather.ttf")}
+			body {color: white; max-width: 800px; margin: auto; background: radial-gradient(black 50%, transparent) fixed, url(../assets/checkerboard-tilted.png) #130f18; image-rendering: auto}
+
+			header {display: flex; align-items: center; gap: 4em; padding: 0.5em 2em; background: url(../assets/checkerboard-tilted.png) repeat no-repeat bottom / auto 60%, linear-gradient(to top, #130f18 60%, transparent 60%)}
+			h1 {color: black; font: 8em old-london, serif; text-shadow: -1px -2px white, 0 -0.05em blue, 0.1em -0.05em blue, 0.1em 0 blue, 0.1em 0.075em blue, 0 0.075em blue, -0.1em 0.075em blue, -0.1em 0 blue, -0.1em -0.05em blue, 0.1em 0.1em 0.25em #00000080; margin: 0 0.1em}
+			header div {flex: 1; height: 1px; margin-right: -2em; background-color: gray}
+			header div::before {content: ""; display: block; width: 8px; height: 8px; margin-top: -4.5px; margin-left: 1px; border: 1px solid gray; rotate: 45deg}
+			#landing {display: flex; justify-content: center; align-items: center; color: #c6c1d0; font-family: merriweather; line-height: 1.75; padding: 96px 64px; background: linear-gradient(to bottom, black, transparent 25%, transparent 75%, black), url(../assets/paint-splatter.png) no-repeat bottom -256px right -192px, url(../assets/paint.png) center / cover}
+			header, #landing {border-bottom: 1px solid #404040}
+
+			#grid {display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: masonry; gap: 2em; padding: 2em 0}
+			#select-wrapper {grid-column: 2; position: relative}
+			#select-wrapper i {color: gray; font-size: 0.75em; transform: translateY(-50%); position: absolute; top: 50%; right: 16px}
+			select {color: gray; font: 0.75em merriweather; width: 100%; padding: 8px 16px; border: 1px solid #404040; border-radius: 10px; background-color: #101010; cursor: pointer; transition: 0.5s; appearance: none}
+			select:hover {color: white; box-shadow: 0 1px 4px #0000ff80}
+
+			@keyframes lift {10% {scale: 0.99} to {scale: 1.05}}
+			@keyframes drop {from {scale: 1.05} 25% {scale: 0.99} to {scale: 1}}
+			@keyframes appear {from {transform: translateY(10%); opacity: 0}}
+			@keyframes disappear {to {transform: translateY(10%); opacity: 0}}
+			.card-wrapper {perspective: 1000px}
+			.card {border-radius: 5px; background-color: #101010; transition: background-color 0.5s, box-shadow 0.5s; animation: 0.25s drop}
+			.card img {width: 100%; aspect-ratio: 2; border-top-left-radius: inherit; border-top-right-radius: inherit}
+			.title-row {display: flex; align-items: center; padding: 4px 24px; background: linear-gradient(to left, #0000ff30, transparent) no-repeat 384px 0; transition: background-position-x 0.6s}
+			.title-row:first-child {border-top-left-radius: inherit; border-top-right-radius: inherit}
+			.title {font: 2em old-london; margin-right: 0.25em}
+			.tag, .link {font: 0.75em merriweather; padding: 4px 8px; }
+			.tag, .link:hover {color: black; background-color: blue}
+			.link {display: block; color: blue; animation: 0.2s disappear both}
+			.link:first-of-type {animation-delay: 0.1s; margin-left: auto}
+			.link:last-of-type {margin-right: -8px}
+			.link:hover {color: black; background-color: blue}
+			.text {color: gray; font: 0.75em/1.75 merriweather; padding: 16px; padding-top: 0px}
+			.card:hover {box-shadow: 0 0 8px inset #202020, 0 4px 16px #0000ff40; background-color: black; animation: 0.5s lift forwards}
+			.card:active {animation: 0.25s drop}
+			.card:hover .title-row {background-position-x: 0}
+			.card:hover .link {animation-name: appear}
+			.hidden {display: none}
+			
+			#back {color: white; font: 0.75em merriweather; writing-mode: vertical-rl; text-orientation: upright; padding: 16px 8px; padding-bottom: 32px; background-color: blue; opacity: 0.25; clip-path: polygon(0 0, 100% 0, 100% 100%, 50% calc(100% - 16px), 0 100%); position: fixed; top: 0; right: calc(50vw + 432px); transition: letter-spacing 0.4s, opacity 0.2s}
+			#back:hover {letter-spacing: 0.1em; opacity: 1}
+			@media (max-width: 928px) {
+				#grid {padding: 2em 64px; display: flex; flex-direction: column}
+				#back {left: auto; right: 32px}
+			}
+		</style>
+	</head>
+	<body>
+		<header>
+			<h1>rsrcS.</h1>
+			<div></div>
+		</header>
+		<div id="landing">welcome to my resources page! feel free to browse, rip, pull inspiration from, whatever. ask me before snatching anything else on the website, though.</div>
+		<div id="grid">
+			<div id="select-wrapper"><select><option value="">none</option><option value="layout">layouts</option><option value="code">code snippets</option></select><i aria-hidden="true" class="fa-solid fa-chevron-down"></i></div>
+			<div class="card-wrapper code"><div class="card">
+				<div class="title-row">
+					<div class="title">audio player</div>
+					<span class="tag">code</span>
+					<a class="link" href="../lib/audio-player.js" target="_blank">view <i class="fa-solid fa-angle-right"></i></a>
+				</div>
+				<div class="text">the common audio player script i use around the website.</div>
+			</div></div>
+			<div class="card-wrapper code"><div class="card">
+				<div class="title-row">
+					<div class="title">image modal</div>
+					<span class="tag">code</span>
+					<a class="link" href="../lib/modal.css" target="_blank">view css <i class="fa-solid fa-angle-right"></i></a>
+					<a class="link" href="../lib/modal.js" target="_blank">view js <i class="fa-solid fa-angle-right"></i></a>
+				</div>
+				<div class="text">the common image viewer script i use around the website.</div>
+			</div></div>
+			<div class="card-wrapper layout"><div class="card">
+				<img src="honeypop.png">
+				<div class="title-row">
+					<div class="title">honeypop</div>
+					<span class="tag">layout</span>
+					<a class="link" href="https://docs.google.com/uc?id=1cJuv1SyF2wFMeM-3kOsGjCHPSrqrb4BO" onclick="alert('Hi! Thanks for downloading! Make sure to replace the Font Awesome kit in the page <head> with your own (which you can get at https:\/\/fontawesome.com/). I have my kit configured to only work on my domain. Sorry!')"><i class="fa-solid fa-download"></i> download</a>
+					<a class="link" href="honeypop/index.html" target="_blank">view <i class="fa-solid fa-angle-right"></i></a>
+				</div>
+				<div class="text">wanted to mess around with lighter colors and a more traditional bento layout. responsive.</div>
+			</div></div>
+			<div class="card-wrapper code"><div class="card">
+				<img src="3d-card.png">
+				<div class="title-row">
+					<div class="title">3d card js</div>
+					<span class="tag">code</span>
+					<a class="link" href="https://codepen.io/webcatz/pen/ExGaveR" target="_blank">1 card <i class="fa-solid fa-angle-right"></i></a>
+					<a class="link" href="https://codepen.io/webcatz/pen/ZEVYJNr" target="_blank">2+ cards <i class="fa-solid fa-angle-right"></i></a>
+				</div>
+				<div class="text">code for that 3d card effect you're looking at right now!</div>
+			</div></div>
+			<div class="card-wrapper layout"><div class="card">
+				<img src="homestuck.png">
+				<div class="title-row">
+					<div class="title">homestuck</div>
+					<span class="tag">layout</span>
+					<a class="link" href="https://docs.google.com/uc?id=1kOzXa4B0TRTJOz0psRJAnHp1o7FugbAx"><i class="fa-solid fa-download"></i> download</a>
+					<a class="link" href="homestuck/index.html" target="_blank">view <i class="fa-solid fa-angle-right"></i></a>
+				</div>
+				<div class="text">a much cleaner, nearly perfect replica of the homestuck website's layout. responsive.</div>
+			</div></div>
+		</div>
+		<script>
+const hoverStart = event => {hoveredCard = event.currentTarget; refreshXY()}, hoverEnd = () => {hoveredCard.removeAttribute("style")};
+for (const card of document.getElementsByClassName("card")) card.onmouseenter = hoverStart, card.onmousemove = hoverEffect, card.onmouseout = hoverEnd;
+window.onscroll = () => {if (hoveredCard) refreshXY()};
+
+let hoveredCard, cardX, cardY;
+function hoverEffect() {
+	let mouseX = (window.event.x - cardX) / hoveredCard.clientWidth, mouseY = (cardY - window.event.y) / hoveredCard.clientHeight;
+	hoveredCard.style.transform = "rotateX(" + mouseY * 15 + "deg) rotateY(" + mouseX * 15 + "deg)", hoveredCard.style.filter = "brightness(" + (1 + mouseY * 0.1) + ")";
+}
+
+function refreshXY() {
+	let cardRect = hoveredCard.getBoundingClientRect();
+	cardX = cardRect.left + cardRect.width / 2, cardY = cardRect.top + cardRect.height / 2;
+}
+
+document.querySelector("select").onchange = (event) => {
+	let filter = event.target.value;
+	if (filter) for (const e of document.getElementsByClassName("card-wrapper")) e.classList[1] == filter ? e.classList.remove("hidden") : hideElement(e);
+	else for (const e of document.getElementsByClassName("card-wrapper")) e.classList.remove("hidden");
+
+	function hideElement(el) {el.animate({scale: ["1", "0.75"], opacity: ["1", "0"]}, 100).finished.then(() => el.classList.add("hidden"))}
+}
+		</script>
+		<a id="back" href="../index.html">back home...</a>
+	</body>
+</html>

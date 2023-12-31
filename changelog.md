@@ -1,5 +1,6 @@
-# 28.12.23
+# 1.1.24
 - updated [index](index.html) to v5.1!
+- added [about page](about.html)
 - changed site icon to the dizzy emoji
 - the site is now deployed [from github](https://github.com/web-catz/website)!
 - a lot of a lot of smaller changes!
@@ -68,7 +69,7 @@
 # 18.8.23
 - added some new fonts into my font cauldron...
 - prettied up changelog
-- [h](assets/h.png)
+- ![h](assets/h.png)
 - mixed in some stuff with the link widgets. aka got sillay
 - song player now displays position in playlist. also added "paramnesiac" by still crisp and "i feel like" by sockspace
 - space background now scrolls with you

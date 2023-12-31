@@ -1,4 +1,3 @@
-# to do
 
 write cat/blog/2
 shrines:
@@ -16,14 +15,4 @@ fix for webkit:
   image modal
   middling arcana card labels
 
-
-# to upload
-
-index (v5.1)
-art/index (removed modal)
-beepbox-webring/index (stylesheet format change)
-blog/index (audio player change)
-cat/gallery (new doodle)
-cat/index (new music + audio player change)
-tunes/index (styling tweaks)
-lib/audio-player.js (marquee options removed)
+figure out how to build the blog out of markdown files

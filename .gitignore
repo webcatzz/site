@@ -1,34 +1,4 @@
-# unnecessary
-offsite/
-assets/ogs/
-lib/readables/
-boilerplate.html
-*.mp3
-*.aseprite
-
-# unwanted
-cat/comic/
-cat/comic-old/
-cat/wiki/
-cat/chara.css
-cat/chara.html
-ough/17776/
-ough/disco-elysium/
-ough/homestuck/
-ough/homestuck-old/
-ough/nitw/
-ough/starbound/
-ough/sword-and-sworcery/
-about-copy.html
-about-old.html
-about.html
-guestbook-backup.txt
-index-old.css
-index-old.html
-links-old-but-even-newer.html
-links-old-but-newer.html
-links-old.html
-music.html
-
-# mac
+/.vscode/
+/offsite/
+/guestbook-backup.txt
 .DS_STORE

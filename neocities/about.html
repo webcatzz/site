@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>webcatz //→ about!</title>
+	<link rel="icon" href="assets/icon.svg">
+	<script defer src="https://kit.fontawesome.com/c558359c24.js" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="global.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Indie Flower">
+	<style>
+:root {--white: #dfddce; --yellow-2: #fbd43b}
+@font-face {font-family: ms-serif; src: url(assets/fonts/ms-serif.ttf)}
+body {
+	display: flex;
+	max-width: 1150px; height: 100vh; background-color: var(--black); margin: auto;
+	user-select: none;
+}
+button, #player-slider, #explode {cursor: url(assets/cursor-pointer.png) 2 0, pointer}
+
+
+/* left */
+
+#left {
+	color: var(--black);
+	display: flex; flex-direction: column;
+	contain: paint; width: 250px; padding: 8px;
+	background-color: var(--yellow-2);
+}
+#left-star {font-size: 2em; height: 0}
+#left-body {writing-mode: vertical-rl; text-orientation: upright}
+h1 {
+	font-size: 6em; letter-spacing: -0.25em; line-height: 1; white-space: nowrap; margin: 0;
+	& span {display: inline-block; height: 0.25em; transform: translate(0.5em, -0.35em); pointer-events: none}
+}
+#subtitle {font-size: 0.875em; letter-spacing: 0.25em; line-height: 0.25}
+#left-footer {
+	display: flex; align-items: end; contain: strict; padding: 0 8px; margin: -8px -8px 0; flex: 1;
+	& div {font-size: 30em; margin-left: -0.25em; margin-bottom: -0.45em}
+	& a {text-align: right; padding: 8px}
+}
+
+#audio-player {margin: 16px 8px}
+#player-select-wrapper {display: flex; align-items: center; margin: 0 0.5em; position: relative; & i {text-align: center; width: 1em; position: absolute; right: 0; pointer-events: none}}
+#player-select {all: unset; font: bold 1.25em/1.4 "Indie Flower"; text-overflow: ellipsis; width: 100%; padding-right: 1em; box-sizing: border-box; overflow: hidden; cursor: url(assets/cursor-pointer.png), pointer; &:hover {text-decoration: underline}}
+#player-body {
+	display: flex; align-items: center; gap: 1em;
+	height: 2.5em; padding: 0 1em 0 1.15em;
+	border: 2px solid; border-radius: 1.25em;
+	grid-column: 1/3;
+	& i {font-size: 1em; line-height: 1.5; text-align: center; width: 1em}
+	& div:last-of-type {font-size: 2.75em; height: 1.24em}
+}
+#player-slider {
+	position: relative; align-self: stretch; flex: 1;
+	& div {
+		background-color: var(--black); transform: translateY(-50%); position: absolute; left: 0; top: 50%; pointer-events: none;
+		&:first-of-type {height: 2px; right: 0}
+		&:last-of-type {width: 2px; height: 6px}
+	}
+}
+
+
+/* main */
+
+main {
+	color: var(--white); line-height: 1.6;
+	display: grid; grid-template: 1fr max-content / 1fr 250px; gap: 1em;
+	padding: 2em; background-color: var(--black);
+	border: 8px solid var(--yellow-2); border-left: none;
+	flex: 1; user-select: text;
+}
+h2 {
+	font-size: 2em; display: flex; align-items: center; margin-bottom: 1.2em; position: relative;
+	& div {color: var(--black); display: flex; align-items: center; height: 64px; background-color: var(--white); clip-path: polygon(16px 16px, 208px 4px, 240px 40px, 196px 60px, 32px 56px); position: absolute; left: 0; user-select: none}
+	&:first-of-type {margin-top: 0.5em}
+}
+p {letter-spacing: 0.01em; max-width: 450px}
+a {color: inherit; text-decoration: underline}
+b {color: var(--black); padding: 0.1em 0.2em; background-color: var(--white)}
+.small {font-size: 0.75em}
+
+figure {
+	margin: 0;
+	& img {width: 100%; clip-path: polygon(0 0, 100% 0, 100% 100%, 0 calc(100% - 12px)); opacity: 0.75}
+	& figcaption {text-align: center}
+}
+
+.box {
+	padding: 1em; border: 2px solid;
+	& header {color: var(--black); font: bold 1em ms-serif; letter-spacing: 0.05em; padding: 0 1em; background-color: var(--white); margin: -1em; margin-bottom: 1em}
+}
+
+#main {overflow-y: auto}
+.graphic-row {display: flex; gap: 4px; margin-top: 4px}
+
+#links {
+	display: flex; flex-direction: column;
+	& div {contain: size; padding: 1em; margin: -1em; overflow-y: auto; flex: 1}
+	& a {font-size: 1.1em; font-weight: bold; text-decoration: none; padding: 0.25em 0.5em; display: block}
+}
+#profile {color: white; background: url(https://neocities.org/img/cat.png) no-repeat right / auto 225%, linear-gradient(to top, #ed3351 2px, #5b95a0 2px)}
+#publictransit {color: red; font-family: serif; background: url(https://publictransit.neocities.org/wizard-2.png) no-repeat top right / 30%, linear-gradient(#000000e0, #000000e0), url(https://publictransit.neocities.org/indexbg.png) center / cover}
+#publictransit span {color: transparent; background-image: linear-gradient(to bottom right, #5bcefa, white, #f5a8b8); background-clip: text; -webkit-background-clip: text}
+#itch {color: white; background-color: #fa5c5c}
+#github {color: #e6edf3; font-weight: normal !important; letter-spacing: 0.01em; background: url(assets/github.svg) no-repeat right / auto 140% #0d1117}
+	</style>
+</head>
+<body>
+	<div id="left">
+
+		<div id="left-star" aria-hidden="true">˗ˏˋ ★ ˎˊ˗</div>
+		<div id="left-body">
+			<h1>JUNE<span aria-hidden="true">ᝰ</span></h1>
+			<div id="subtitle">the webm✮str‼</div>
+		</div>
+		<div id="left-footer">
+			<div aria-hidden="true">𖦹</div>
+			<a href="index.html">← back</a>
+		</div>
+
+		<div id="audio-player">
+			<div id="player-select-wrapper">
+				<select id="player-select"></select>
+				<i class="fa-solid fa-angle-down"></i>
+			</div>
+			<div id="player-body">
+				<button id="player-button" aria-label="play"><i class="fa-solid fa-play"></i></button>
+				<div id="player-slider" role="slider" aria-valuemin="0"><div aria-hidden="true"></div><div aria-hidden="true"></div></div>
+				<div aria-hidden="true">༝༚༝༚</div>
+			</div>
+		</div>
+
+	</div>
+	<main>
+
+		<div id="main">
+			<h2>who's this loser?<div aria-hidden="true">who's this loser?</div></h2>
+
+			<p>my name is <b>june</b> (she/they), and i'm the <a href="https://justinjackson.ca/webmaster/" target="_blank">fucking webmaster</a> of this fine establishment! i like to pretend i make things. scientists are still undecided whether this is true.</p>
+
+			<p class="small">this page is super under construction!! there will b more here later but for now Listen to my music boy.</p>
+
+			<p class="small"><b>likes:</b> coding, doodling, cats, my shitty emo music &lt;3, black tea, pixels, glass beach, like the first half of autumn</p>
+			<p class="small"><b>dislikes:</b> fucking up my sleep schedule but god knows i do it anyway</p>
+			<p class="small"><b>favorite color:</b> yellow</p>
+			<p class="small"><b>favorite media:</b> 17776, deltarune, the magnus archives, disco elysium, night in the woods, welcome to night vale</p>
+			<p class="small"><b>near-death experience count:</b> three</p>
+			<p class="small"><b>names i would go by if i was cooler:</b> cass(ette), OK</p>
+		</div>
+
+		<figure>
+			<img id="photo" src="assets/hello-melancholic.png">
+			<figcaption>text</figcaption>
+		</figure>
+
+		<div class="box">
+			<header>graphics...</header>
+			<div class="graphic-row">
+				<img src="assets/buttons/queer-coded.png">
+				<img src="assets/buttons/go-straight-to-hell.gif">
+				<img src="assets/buttons/gregdock.gif">
+				<img src="assets/buttons/time-travel.png">
+				<img src="assets/buttons/I-WARNED-YOU-DOG.gif">
+			</div>
+			<div class="graphic-row">
+				<img src="assets/blinkies/connection.gif">
+				<img src="assets/blinkies/glitcu.png">
+				<img id="explode" src="assets/blinkies/explode.gif">
+			</div>
+			<div class="graphic-row">
+				<img src="assets/blinkies/transgenderattackbeam.gif">
+				<img src="assets/blinkies/fangs.gif">
+				<img src="assets/blinkies/uhh.gif">
+			</div>
+		</div>
+
+		<div class="box" id="links">
+			<header>find me elsewhere...</header>
+			<div>
+				<a id="profile" href="https://neocities.org/site/webcatz">site profile</a>
+				<a id="publictransit" href="https://publictransit.neocities.org/">public<span>trans</span>it</a>
+				<a id="itch" href="https://webcatz.itch.io/">itch.io</a>
+				<a id="github" href="https://github.com/web-catz">github</a>
+				<a id="status-cafe" href="https://status.cafe/users/webcatz">status.cafe</a>
+			</div>
+		</div>
+
+	</main>
+	<script src="lib/audio-player.js"></script>
+	<script>
+const select = document.getElementById("player-select");
+AudioPlayer.create([
+	{title: "bedroom community - glass beach", src: "https://files.catbox.moe/xjtfdi.mp3"},
+	{title: "yoshis island - glass beach", src: "https://files.catbox.moe/dyjrl2.mp3"},
+	{title: "pipeline punch - newgrounds death rugby", src: "https://files.catbox.moe/xiu5lo.mp3"},
+	{title: "who the fuck is mark? - newgrounds death rugby", src: "https://files.catbox.moe/mw2zbl.mp3"},
+	{title: "our story - stomach book", src: "https://files.catbox.moe/jdevhs.mp3"},
+	{title: "foe paw - the j. arthur keenes band", src: "https://files.catbox.moe/w4ohjm.mp3"},
+	{title: "friend - bo en", src: "https://files.catbox.moe/lbco05.mp3"},
+	{title: "sail away - the long faces", src: "https://files.catbox.moe/jadzwk.mp3"},
+	{title: "times to die - car seat headrest", src: "https://files.catbox.moe/x2elyz.mp3"},
+	{title: "two time - jack stauber's micropop", src: "https://files.catbox.moe/o5z68g.mp3"},
+	{title: "sweet hibiscus tea - penelope scott", src: "https://files.catbox.moe/br9od1.mp3"},
+	{title: "bloom - ネクライトーキー", src: "https://files.catbox.moe/3k5pe9.mp3"},
+	{title: "心に雲を持つ少年 - sunny day service", src: "https://files.catbox.moe/q2jhlp.mp3"},
+],{
+	playButton: document.getElementById("player-button"),
+	slider: document.getElementById("player-slider"),
+	sliderThumb: document.getElementById("player-slider").querySelector("div:last-of-type"),
+	shuffle: true,
+	onended: () => select.value = AudioPlayer.idx
+});
+for (let i = 0; i < AudioPlayer.list.length; i++) {
+	let option = select.appendChild(document.createElement("option"));
+	option.label = AudioPlayer.list[i].title, option.value = i;
+}
+select.onchange = () => {
+	AudioPlayer.idx = Number(select.value) - 1;
+	AudioPlayer.next();
+}
+
+document.getElementById("explode").onclick = e => {
+	let gif = document.createElement("img");
+	gif.src = "assets/spr_realisticexplosion.gif";
+	gif.style.position = "fixed", gif.style.left = e.pageX - 35.5 + "px", gif.style.top = e.pageY - 50 + "px";
+	gif.style.pointerEvents = "none";
+	document.getElementById("explode").after(gif);
+	setTimeout(() => gif.remove(), 1000);
+}
+	</script>
+</body>
+</html>
