@@ -83,7 +83,7 @@ var tracklist = [{
   },{
     "name": "snippet",
     "hash": "j5N07Unnamedn601s2k0l0he03t2ma7g0kj0fr1O_U00000000000000i0o454332T0v0fu00f0000qpt058aj050630Oa3b1d040w0h0E1abT0v0pu00f0000qh410Oa5bd040w1h0E0T0v0pu00f0000qh410Oa5bd040w2h0E0T0v0ku00f0000qh410Oa3bd060w5h0E0T0v0pu00f0000qp4020Oa3bd040w1h0E1abT1v0pu01f030j12sd2hd00q8I030ed1d82jb003500Oad060A8F9B0Qb774PdbadR4040E1628T9v0pu00f0000q00d040E0b28p050k1zEi00014Fo00000000000y6g8yC28p05ct1j9kJqRx4cw000000828p000000024gw0000Nz6coNz6co00000000000w40000248h38kM0000000000p299G1QWt9F0H43FQWjgj1o5g5EG0Hjdv0kGwGOByzeoj3dvjFjeDSipvxqZePNhAWtehQB6zhFQGteChXW0IgehOd79kVegZ3xwJAy10FBYwwGl6iEMt7kkqB6DiFkZhiGkql6FhQB6DhFQ66nO4m6hOcWcuMkGt6HiGkZhhFQqBa5A00FyWa0wGxUKM1p6hjj5QR6Bje_g7MgYweM1Zay0-Fj5OiJ0QPNvGcyDRdhooKBfyNG81bx7s840E0hMhOJxB-T4MOflzryChXtiFkFQWteDjFFyWtaCnWjpmbleDjFQWteDjFXiZRlIGBiDjFQWteDBHZcRZ4MPnQbFB-JUgjEFIcIQlmm5HOBjbZAChXdiFjFQWtCDjIRqqoKDiXdKXlGDjFQWteDjJmJVmFxi8YUh240AwB085cZ7Q5ypULKLEhgm6uzUpwm6tfAsBcRZRZ80jOZcnn5E2w5cZ4Q0mg1kNt4bge9E2Q1q1OFHxq1Nd0mg5E7aw1feSihG4kVVSOye8h3008a4wvWFUnDxcp7A1qG0hUKw1qU1G0E07EUpG0k3bQspg0a39WeiU052mZ7cA0000",
-    "note": "this one was supposed to be a title theme which is why it has that weird intro bit (it's a space for logos and whatever like loop hero has) and why it has a bunch of tad motifs smushed into it",
+    "note": "this one was supposed to be a title theme which is why it has that weird intro bit and why it has a bunch of tad motifs smushed into it",
     "date": [25, 6, 2023],
     "tags": ["tad"]
   },{
