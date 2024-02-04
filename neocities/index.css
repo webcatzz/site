@@ -48,7 +48,7 @@ h1 {
   display: flex; justify-content: space-between; align-items: center;
   background-color: var(--black); padding: 0.25em 1em; border-bottom: 1px solid var(--off-black);
   position: fixed; top: 0; left: 0; right: 0; z-index: 3;
-  & span:first-of-type {color: transparent; font-weight: bold; letter-spacing: 0.05em; background-image: linear-gradient(45deg, var(--blue) 10%, var(--red), var(--yellow) 90%); background-clip: text}
+  & span:first-of-type {color: transparent; font-weight: bold; letter-spacing: 0.05em; background-image: linear-gradient(45deg, var(--blue) 10%, var(--red), var(--yellow) 90%); background-clip: text; -webkit-background-clip: text}
   & span:last-of-type {color: var(--dark-gray); font-family: ms-serif; font-size: 0.75em; letter-spacing: 0.025em}
 }
 
