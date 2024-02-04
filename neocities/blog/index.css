@@ -38,11 +38,11 @@ nav a, #back {
   &:active {background-color: white}
   & i {margin-right: 0.25em}
 }
-/* nav a:first-of-type::after {
+.new::after {
   content: " (new! ✨)"; color: transparent; line-height: 0; background-image: linear-gradient(to right, #ff8426, #ffd100); background-clip: text; -webkit-background-clip: text;
   &:hover {color: black}
   &:active {color: white}
-} */
+}
 .line {
   color: #201c1080;
   display: flex; align-items: center; gap: 1em;
