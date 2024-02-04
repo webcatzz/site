@@ -272,7 +272,7 @@ ignore-me/
 
     <p>we're not done just yet! we need to set our <code class="decl">dist_dir</code>—that's the folder whose files will be uploaded to neocities. when this workflow is run, it'll upload all files inside the <code class="decl">dist_dir</code> folder to neocities. if even one of those files is incompatible—like mp3 files on an free account—the upload will fail.</p>
 
-    <p>that's exactly why you can't deploy your site folder, and why we're storing your actual site files inside a subfolder—the site folder contains the .git folder and your .gitignore, both of which neocities will reject. you'll need to set <code class="decl">dist_dir</code> to the name of the folder your site files are in. for example, mine is set up like so:</p>
+    <p>that's exactly why you can't just directly deploy a folder with your site files, and why we're storing your site files inside a subfolder—the site folder contains the .git folder and your .gitignore, both of which neocities will reject. you'll need to set <code class="decl">dist_dir</code> to the name of the subfolder your site files are in. for example, mine is set up like so:</p>
 
     <pre><code>
 <span class="decl">dist_dir</span>: <span class="string">neocities</span>
