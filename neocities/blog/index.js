@@ -28,11 +28,6 @@ for (const el of document.getElementsByClassName("mood")) el.firstElementChild.t
 function meow() {new Audio(["https://files.catbox.moe/dmdijd.mp3", "https://files.catbox.moe/tm6s1o.mp3"][Math.floor(Math.random() * 2)]).play()}
 
 
-// images
-for (const img of document.querySelectorAll("main img:not(.no-modal)")) img.onclick = openImg;
-function openImg(e) {window.open(e.target.src).focus()}
-
-
 // music
 const audioEls = document.getElementById("audio-player").children;
 AudioPlayer.create([
@@ -43,8 +38,7 @@ AudioPlayer.create([
   {title: "Fall (Raven's Descent) - ConcernedApe (Stardew Valley OST)", src: "https://files.catbox.moe/n5z24r.mp3"},
   {title: "Box Has Key (Temple Ruins) - Arvi Teikari (Baba is You OST)", src: "https://files.catbox.moe/xgna8y.mp3"},
   {title: "The Tempest - Louie Zong (Wanderer)", src: "https://files.catbox.moe/xw3n4f.mp3"},
-  {title: "Music for Animal Cafés - nobonoko (Music for Animal Cafés)", src: "https://files.catbox.moe/63er7i.mp3"},
-  {title: "killer tune kills me - KIRINJI, YonYon", src: "https://files.catbox.moe/94cu6j.mp3"}
+  {title: "Music for Animal Cafés - nobonoko (Music for Animal Cafés)", src: "https://files.catbox.moe/63er7i.mp3"}
 ],{
   playButton: audioEls[0],
   skipButton: audioEls[1],

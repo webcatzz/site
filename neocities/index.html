@@ -14,9 +14,9 @@
 	<script defer src="index.js"></script>
 </head>
 <body>
-	<header>
-		<h1><span>w</span><span>e</span><span>b</span><span>c</span><span>a</span><span>t</span><span>z</span></h1>
-	</header>
+	<header><h1><span>w</span><span>e</span><span>b</span><span>c</span><span>a</span><span>t</span><span>z</span></h1></header>
+	<div id="scroll-header" aria-hidden="true"><span>webcatz</span><span>© 2022</span></div>
+
 	<nav>
 
 		<!-- about + audio player -->
@@ -65,23 +65,29 @@
 			<img class="hfill" src="assets/wires.gif">
 		</div>
 
-		<!-- headlines -->
-		<marquee id="news" class="lcd grid-wide after-insert" aria-hidden="true">
-			<span id="gb"><script>document.getElementById("gb").textContent = Math.round((new Date(2024, 0, 19) - new Date()) / 86400000) + " days until the second glass beach album!";</script></span>
-			<span>"I should learn to code", and other horrible life decisions</span>
-			<span>Stabbing people a-OK "as long as you're weird about it", confirms angelic messenger</span>
-			<span>World's tallest burger swallowed easily by rather smug-looking snake</span>
-			<span>AND WHAT WAS HER SISTER?? A PRINCESS!!! THE WICKED WITCH OF THE EASTT, BRO!!!!</span>
-			<span>Blood-stained girl holding knife pleads not guilty: "I didn't do it. You have no proof I did it."</span>
-			<img src="assets/spr_realisticexplosion.gif">
-			<span>Statue of Liberty "vanished without a trace", experts say</span>
-			<span>Mysterious "mustachioed statue" sighted on the New York coast</span>
-			<span>Exclusive interview with premier economist: "Sure, stocks are up, I guess. This whole thing is made up, anyway"</span>
-			<span>There is basically no downside to gluing your eyes shut in exchange for badass spells</span>
-			<span>🦂</span>
-			<span>Real darkness has love for a face. The first death is in the heart.</span>
-			<span>"Meow", says local cat, "mrrp."</span>
-		</marquee>
+		<div id="news-wrapper" class="grid-wide after-insert">
+
+			<!-- headlines -->
+			<marquee id="news" class="lcd grid-wide" aria-hidden="true">
+				<span>"I should learn to code", and other horrible life decisions</span>
+				<span>Stabbing people a-OK "as long as you're weird about it", confirms angelic messenger</span>
+				<span>World's tallest burger swallowed easily by rather smug-looking snake</span>
+				<span>AND WHAT WAS HER SISTER?? A PRINCESS!!! THE WICKED WITCH OF THE EASTT, BRO!!!!</span>
+				<span>Blood-stained girl holding knife pleads not guilty: "I didn't do it. You have no proof I did it."</span>
+				<img src="assets/spr_realisticexplosion.gif">
+				<span>Statue of Liberty "vanished without a trace", experts say</span>
+				<span>Mysterious "mustachioed statue" sighted on the New York coast</span>
+				<span>MUTILATION AUTONOMY</span>
+				<span>Exclusive interview with premier economist: "Sure, stocks are up, I guess. This whole thing is made up, anyway"</span>
+				<span>There is basically no downside to gluing your eyes shut in exchange for badass spells</span>
+				<span>🦂</span>
+				<span>Real darkness has love for a face. The first death is in the heart.</span>
+				<span>"Meow", says local cat, "mrrp."</span>
+			</marquee>
+
+			<iframe id="increment" loading="lazy" src="https://incr.easrng.net/badge?key=webcatz" style="background: url(//incr.easrng.net/bg.gif)"></iframe>
+			
+		</div>
 
 		<!-- shrines -->
 		<div id="shrines" class="grid-tall flex-col">
@@ -114,7 +120,31 @@
 		</a>
 
 		<!-- cat comic -->
-		<a id="cat" class="after-insert" href="cat/index.html">cat comic</a>
+		<a id="cat" class="after-insert" href="cat/index.html"><img src="assets/cat-comic-button.png" alt="cat comic"></a>
+
+		<div class="flex grid-wide">
+
+			<!-- discord -->
+			<a id="discord" href="discord.html">
+				<div id="dc-banner" aria-hidden="true"></div>
+				<div id="dc-icon" aria-hidden="true">
+					<i id="dc-icon" class="fa-solid fa-circle-user"></i>
+					<div id="dc-status"></div>
+				</div>
+				<div id="dc-body">discord icon tester!</div>
+			</a>
+
+			<!-- how-to's -->
+			<a id="how-to" href="how-to/index.html">
+				<div class="title">june's how-to's</div>
+				<div class="fake-text" aria-hidden="true">███ ████████ █████</div>
+				<div class="fake-text" aria-hidden="true">█████ ██ ██████</div>
+			</a>
+
+			<!-- tarot -->
+			<a id="tarot" href="tarot/index.html"></a>
+
+		</div>
 
 		<div id="links-wrapper" class="grid-wide">
 
@@ -128,24 +158,19 @@
 
 			<!-- beepbox webring -->
 			<div id="tools">
-				<a data-tooltip="discord icon tester" href="discord.html"><i class="fa-solid fa-circle-user"></i></a>
 				<a data-tooltip="<span>-ify" href="span-ify.html"><i class="fa-solid fa-code"></i></a>
 				<a data-tooltip="resources" href="resources/index.html"><i class="fa-solid fa-hard-drive"></i></a>
-				<a data-tooltip="the middling arcana" href="tarot/index.html"><i class="fa-solid fa-wand-sparkles"></i></a>
 			</div>
 
 			<!-- lightswitch -->
 			<img id="lightswitch" src="assets/lightswitch.png" aria-hidden="true">
 
 		</div>
+		
+		<!-- laser pointer -->
+		<div id="laser-pointer" aria-hidden="true"></div>
 
 	</nav>
-
-	<!-- haunted sticky notes -->
-	<a href="https://coffeebug.bandcamp.com/album/haunted-sticky-notes" style="text-align: center; display: flex; flex-direction: column; justify-content: center; gap: 0.25em; contain: strict; max-width: 650px; min-height: 128px; padding: 0.5em 1em; box-sizing: border-box; box-shadow: 0 0 16px -4px #ac352f; background: url(assets/hsn-banner.png) center / cover; margin: 0 auto 6em">
-		<div style="color: #39201b; font: bold 2.5em vcr; text-shadow: -0.03em -0.03em #ac352f, 0.03em 0.03em #ac352f, -0.06em -0.06em #39201b80, 0.06em 0.06em #39201b80">haunted sticky notes</div>
-		<div style="color: #8f837c; font-family: ms-serif; letter-spacing: 0.1em">an album by <img src="https://midifreak.online/coffeebug.gif" alt="coffeebug" style="display: inline; vertical-align: middle; height: 1.5em; filter: brightness(0.525) hue-rotate(120deg) contrast(150%)"> // this jan 11</div>
-	</a>
 
 	<!-- chatbox -->
 	<details id="chatbox">
@@ -153,6 +178,6 @@
 		<iframe loading="lazy" src="https://www5.cbox.ws/box/?boxid=945396&boxtag=hv4PfV"></iframe>	
 	</details>
 
-	<footer>you've reached the bottom of the page! for miscellaneous inquiries <a href="mailto:crowsthyme@gmail.com" target="_blank">mail me at crowsthyme@gmail.com</a> • © 2023</footer>
+	<footer>you've reached the bottom of the page! for miscellaneous inquiries, <a href="mailto:crowsthyme@gmail.com" target="_blank">mail me at crowsthyme@gmail.com</a> ^_^</footer>
 </body>
 </html>

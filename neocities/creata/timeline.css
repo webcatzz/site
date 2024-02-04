@@ -1,14 +1,14 @@
 @font-face {font-family: ms-serif; src: url(../assets/fonts/ms-serif.ttf)}
-body {color: white; font-family: ms-serif; margin: 0; margin-top: 8px; background: url(assets/timeline.png) no-repeat center -56px / 400px, linear-gradient(to right, #070b09, transparent, #070b09), url(../assets/checkerboard-tilted-purple.png) top #0d0d0d; image-rendering: pixelated}
+body {color: var(--white); font-family: ms-serif; margin: 0; margin-top: 8px; background: url(assets/timeline.png) no-repeat center -56px / 400px, linear-gradient(to right, #070b09, transparent, #070b09), url(../assets/checkerboard-tilted-purple.png) top #0d0d0d; image-rendering: pixelated}
 h1 {all: unset; display: block; text-align: center; padding: 32px 0; filter: drop-shadow(-0.1em 0 black) drop-shadow(-0.1em 0 black) drop-shadow(0.1em 0 black) drop-shadow(0.1em 0 black) drop-shadow(0 0.1em black) drop-shadow(0 0.1em black) drop-shadow(0 -0.1em black) drop-shadow(0 -0.1em black)}
-h1 span {color: gray}
-main {max-width: 768px; margin: auto; border-left: 4px solid white; background-color: black}
+h1 span {color: var(--gray)}
+main {max-width: 768px; margin: auto; border-left: 4px solid var(--white); background-color: black}
 
 .entry {display: flex; align-items: center; position: relative}
 .entry::before {content: ""; width: 20px; height: 16px; background: url(assets/timeline/stop.png) center / cover; position: absolute; right: calc(100% - 8px)}
 .date {color: #404040; font-size: 0.75rem; width: max-content; position: absolute; right: calc(100% + 32px)}
 .insert {color: #404040; padding: 16px 32px; justify-content: space-between;}
-details {--font: inherit; --font-size: 1em/1.6; --col: white; --accent: white; --panel-bg: transparent; --bg: black; --aside-margin: 0px; --aside-col: gray; --aside-bg: black}
+details {--font: inherit; --font-size: 1em/1.6; --col: var(--white); --accent: var(--white); --panel-bg: transparent; --bg: black; --aside-margin: 0px; --aside-col: gray; --aside-bg: black}
 .button {justify-content: space-between; font-size: 1.5em; text-decoration: none; height: 32px; padding: 32px; padding-left: 64px; position: relative; transition: background-color 0.05s}
 .button::before {content: ""; width: 20px; height: 16px; background: url(assets/timeline/stop.png) center / cover; position: absolute; right: calc(100% - 8px)}
 details[open] summary {background-color: #0d0d0d}
@@ -53,9 +53,9 @@ div.centered {max-width: 400px; font-size: 0.75em}
   --color: black;
   --accent: black;
   --panel-bg: #ffffffe6;
-  --bg: linear-gradient(to right, transparent 60%, white, transparent 80%), radial-gradient(circle at 70% top, white 10%, transparent, white), url(assets/timeline/eyrie_clouds_1.png) no-repeat left, url(assets/timeline/eyrie_clouds_2.png) no-repeat right, linear-gradient(to bottom, #00b7fd, #20d6c7);
+  --bg: linear-gradient(to right, transparent 60%, var(--white), transparent 80%), radial-gradient(circle at 70% top, var(--white) 10%, transparent, var(--white)), url(assets/timeline/eyrie_clouds_1.png) no-repeat left, url(assets/timeline/eyrie_clouds_2.png) no-repeat right, linear-gradient(to bottom, #00b7fd, #20d6c7);
 }
-#eyrie .content {padding: 8px 32px; border-radius: 2px; border: 2px solid white}
+#eyrie .content {padding: 8px 32px; border-radius: 2px; border: 2px solid var(--white)}
 #eyrie b, #eyrie a {font-weight: bold}
 
 /* outward */
@@ -82,8 +82,8 @@ div.centered {max-width: 400px; font-size: 0.75em}
 #cat {
   --font: sans-serif;
   --color: black;
-  --accent: white;
-  --bg: url(assets/timeline/catcomic_gradient.png) repeat no-repeat bottom, url(assets/timeline/catcomic_moon.png) no-repeat left 50% bottom -100px, url(assets/timeline/catcomic_clouds.png) repeat no-repeat top white;
+  --accent: var(--white);
+  --bg: url(assets/timeline/catcomic_gradient.png) repeat no-repeat bottom, url(assets/timeline/catcomic_moon.png) no-repeat left 50% bottom -100px, url(assets/timeline/catcomic_clouds.png) repeat no-repeat top var(--white);
 }
 #cat .content {padding: 32px}
 #cat b, #cat a {text-shadow: -1px -1px black, 0 -1px black, 1px -1px black, 1px 0 black, 1px 1px black, 0 1px black, -1px 1px black, -1px 0 black}
@@ -98,4 +98,4 @@ div.centered {max-width: 400px; font-size: 0.75em}
 #lbau .content {text-shadow: 0 2px 0 black; padding: 32px}
 
 /* return link */
-#back {display: block; color: white; text-align: center; text-decoration: none; width: 100%; padding: 16px 0; margin-top: 128px; background: linear-gradient(225deg, #ffa430, transparent), linear-gradient(to bottom, #fa7a23 1px, transparent 1px) no-repeat repeat top / 100% 4px fixed #ff8426}
+#back {display: block; color: var(--white); text-align: center; text-decoration: none; width: 100%; padding: 16px 0; margin-top: 128px; background: linear-gradient(225deg, #ffa430, transparent), linear-gradient(to bottom, #fa7a23 1px, transparent 1px) no-repeat repeat top / 100% 4px fixed #ff8426}

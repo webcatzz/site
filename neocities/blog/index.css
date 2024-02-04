@@ -4,14 +4,14 @@
 body {display: flex; justify-content: center; align-items: center; color: #201c10; font: 1em sans-serif; height: 100vh; margin: 0; background: linear-gradient(to right, #ffffff10 1px, transparent 1px) center / 64px 64px, linear-gradient(to top, #ffffff10 1px, transparent 1px) center / 64px 64px, var(--background) no-repeat center / cover fixed; image-rendering: auto; overflow: hidden; user-select: none}
 body::before {content: ""; mask: linear-gradient(to top, white, transparent 50%); -webkit-mask: linear-gradient(to top, white, transparent 50%); background: url(assets/checkerboard.png) bottom / 240px; position: fixed; top: 0; right: 0; bottom: 0; left: 0}
 @keyframes open {from {filter: brightness(0.5); transform: scaleX(0)}}
-#wrapper {display: flex; justify-content: center; align-items: center; width: max-content; rotate: -1deg; position: relative; animation: open 1s; image-rendering: pixelated; scrollbar-color: #a7824160 #b3863710}
+#wrapper {display: flex; justify-content: center; align-items: center; width: max-content; rotate: -1deg; position: relative; animation: open 1s; image-rendering: pixelated; scrollbar-color: var(--button) transparent}
 #index, #main-wrapper {width: 464px; height: 100%; aspect-ratio: 250 / 364; box-sizing: border-box; background-size: 100%}
 #rosebed {width: 1184px; transform: translateY(36px); rotate: 1deg; position: absolute; z-index: -1}
 #credit {color: #ffffff40; font-size: 0.75em; position: fixed; bottom: 8px; right: 8px}
 #credit a {color: inherit; text-decoration: underline}
 i {text-align: center; width: 1em}
 
-/* INDEX */
+/* index */
 #index {display: flex; flex-direction: column; padding: 72px 48px 48px 56px; background-image: url("assets/notebook-left.png"); position: relative}
 h1 {display: flex; gap: 0.5em; font: bold 3em sans-serif; margin: 0; rotate: 1deg}
 h1::after {content: ""; flex: 1; align-self: center; height: 2px; background-color: #201c1080}
@@ -24,7 +24,7 @@ h1 img {width: 100%; margin-right: -0.5em}
 #stamp-3 {bottom: 48px; right: 24px; rotate: 1deg}
 #stamp-4 {bottom: 256px; left: 32px; rotate: -1deg}
 
-/* LINKS */
+/* links */
 nav {flex: 1; display: grid; grid-template-columns: 1fr 1fr; grid-auto-rows: max-content; align-items: start; gap: 1px 16px; height: 100%; padding: 8px; padding-bottom: 24px; margin: 16px -8px; border-radius: 4px; overflow-y: auto; position: relative}
 nav h2, .wide {grid-column: 1/3}
 .tall {grid-row: span 2; align-self: stretch}
@@ -92,10 +92,10 @@ article a {color: #1a4176; text-decoration: underline}
 article ul {padding-left: 2em}
 article li {padding-left: 0.5em}
 
-article img:not(.no-modal) {cursor: pointer}
 .hover {border-bottom: 2px dotted #b38637}
 .pixel {font-family: ms-serif; letter-spacing: 0.05em}
 
+/* images */
 figure {margin: 0}
 figcaption {color: #201c10bf; font: 0.875em ms-serif; text-align: center; letter-spacing: 0.05em; margin: 0.5em}
 .photo {
@@ -121,23 +121,21 @@ figcaption {color: #201c10bf; font: 0.875em ms-serif; text-align: center; letter
 .float-right {float: right; clear: right; margin-left: 1em}
 .render-pixel {image-rendering: pixelated}
 
-.flex {rotate: 0deg; display: flex; gap: 1em}
-.flex > * {width: 100%; rotate: 1deg; flex: 1}
-
 /* block elements */
-details {rotate: 0deg}
+.pass-rot {rotate: 0deg !important; & > * {rotate: 1deg}}
+
+/* details */
 details > div {padding: 0.5em; border-radius: 12px; background-color: var(--button)}
-details > div > * {rotate: 1deg}
-summary {width: max-content; padding: 0 0.5em; border-radius: 12px; background-color: var(--button)}
+summary {width: max-content; padding: 0 0.5em; border-radius: 12px; background-color: var(--button); rotate: 0deg !important}
 summary::marker {color: #b38637}
 summary:hover {background-color: var(--button-hover)}
 details[open] summary {border-bottom-left-radius: 0; border-bottom-right-radius: 0}
 details[open] > div {border-top-left-radius: 0}
 
+/* layouts */
 .grid {display: grid; grid-template-columns: 1fr 1fr}
 .grid img {width: 100%; aspect-ratio: 1; object-fit: cover}
-.flex {display: flex; gap: 0.5em; padding: 8px; margin: -8px; overflow-x: auto; rotate: 0deg}
-.flex > * {rotate: 1deg}
+.flex {display: flex; gap: 0.5em; padding: 8px; margin: -8px; overflow-x: auto}
 .flex .photo::before {scale: 0.5}
 /* .locked {color: #795838; padding: 16px; border-radius: 12px; background-color: #b3863720}
 .locked input {font: inherit; max-width: 100%; margin-top: 4px; border: none; border-bottom: 1px solid #795838; background-color: transparent; appearance: none} */

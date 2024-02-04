@@ -66,6 +66,15 @@ document.getElementById("tunes").querySelector("iframe").src = getURL(tracklist[
 tracklist = null;
 
 
+// laser pointer
+var laserPoints = 0;
+document.getElementById("laser-pointer").onclick = () => {
+  let laser = document.getElementById("laser-pointer");
+  laser.style.left = Math.random() * window.innerWidth + "px", laser.style.top = Math.random() * (window.innerHeight - 288) + 288 + "px";
+	if (++laserPoints == 4) window.open("https://www.youtube-nocookie.com/embed/fwB8nbI4TuM?si=ghaXscYy5DPXzkhv", "_blank");
+}
+
+
 // clicksplosion effect (adapted from http://www.mf2fm.com/rv)
 
 const starWrapper = document.body.appendChild(document.createElement("div"));
@@ -123,82 +132,82 @@ async function explode(stars) {
 
 // chatbox
 
-let chatboxi = 0;
-document.getElementById("chatbox").addEventListener("toggle", loadChatbox, {once: true});
-function loadChatbox() {
-  loadEntries(chatboxi, 25);
-  let wrapper = document.getElementById("chatbox").children[1];
-  wrapper.onscrollend = () => {if (wrapper.scrollTop == 0) {
-    let oldHeight = wrapper.scrollHeight;
-    loadEntries(chatboxi += 25, 25);
-    wrapper.scrollTop = wrapper.scrollHeight - oldHeight - 32;
-  }}, wrapper.scrollTop = wrapper.scrollHeight;
+// let chatboxi = 0;
+// document.getElementById("chatbox").addEventListener("toggle", loadChatbox, {once: true});
+// function loadChatbox() {
+//   loadEntries(chatboxi, 25);
+//   let wrapper = document.getElementById("chatbox").children[1];
+//   wrapper.onscrollend = () => {if (wrapper.scrollTop == 0) {
+//     let oldHeight = wrapper.scrollHeight;
+//     loadEntries(chatboxi += 25, 25);
+//     wrapper.scrollTop = wrapper.scrollHeight - oldHeight - 32;
+//   }}, wrapper.scrollTop = wrapper.scrollHeight;
 
-  let form = document.getElementById("chatbox-form");
-  form.reset();
-  form.onsubmit = e => {
-    // duplicate junes
-    if (form.querySelector("input[name=\"name\"]").value == "june") {
-      alert("sorry doppeljune. that user's taken");
-      e.preventDefault();
-      return;
-    }
+//   let form = document.getElementById("chatbox-form");
+//   form.reset();
+//   form.onsubmit = e => {
+//     // duplicate junes
+//     if (form.querySelector("input[name=\"name\"]").value == "june") {
+//       alert("sorry doppeljune. that user's taken");
+//       e.preventDefault();
+//       return;
+//     }
 
-    let textInput = form.querySelector("input[name=\"text\"]");
-    // sanitizing html
-    for (let i = 0; (i = textInput.value.indexOf("<", i)) != -1; i += 2) {
-      textInput.value = textInput.value.slice(0, i) + "\\" + textInput.value.slice(i);
-    }
-    // adding links
-    for (let i = 0; (i = textInput.value.indexOf("https://", i)) != -1; i = textInput.value.indexOf("</a>", i)) {
-      let end = textInput.value.indexOf(" ", i), link = textInput.value.slice(i, end);
-      textInput.value = textInput.value.slice(0, i) + "<a href=\"" + link + "\">" + link + "</a>" + textInput.value.slice(end);
-    }
+//     let textInput = form.querySelector("input[name=\"text\"]");
+//     // sanitizing html
+//     for (let i = 0; (i = textInput.value.indexOf("<", i)) != -1; i += 2) {
+//       textInput.value = textInput.value.slice(0, i) + "\\" + textInput.value.slice(i);
+//     }
+//     // adding links
+//     for (let i = 0; (i = textInput.value.indexOf("https://", i)) != -1; i = textInput.value.indexOf("</a>", i)) {
+//       let end = textInput.value.indexOf(" ", i), link = textInput.value.slice(i, end);
+//       textInput.value = textInput.value.slice(0, i) + "<a href=\"" + link + "\">" + link + "</a>" + textInput.value.slice(end);
+//     }
 
-    // timestamping
-    let time = new Date;
-    form.querySelector("input[type=\"hidden\"]").value = `${time.getUTCFullYear()}-${formatNum(time.getUTCMonth() + 1)}-${formatNum(time.getUTCDate())}T${formatNum(time.getUTCHours())}:${formatNum(time.getUTCMinutes())}:${formatNum(time.getUTCSeconds())}.${formatNum(time.getUTCMilliseconds(), 3)}Z`;
+//     // timestamping
+//     let time = new Date;
+//     form.querySelector("input[type=\"hidden\"]").value = `${time.getUTCFullYear()}-${formatNum(time.getUTCMonth() + 1)}-${formatNum(time.getUTCDate())}T${formatNum(time.getUTCHours())}:${formatNum(time.getUTCMinutes())}:${formatNum(time.getUTCSeconds())}.${formatNum(time.getUTCMilliseconds(), 3)}Z`;
 
-    function formatNum(num, length = 2) {return String(num).padStart(length, "0")}
-  }
-}
-function loadEntries(from, length) {
-  let wrapper = document.getElementById("chatbox").children[1], currentDate = new Date;
-  fetch("https://thought-out-guards.000webhostapp.com/entries.php").then(res => res.json()).then(entries => {
-    let end = entries.length - from;
-    entries = entries.slice(end - length, end);
+//     function formatNum(num, length = 2) {return String(num).padStart(length, "0")}
+//   }
+// }
+// function loadEntries(from, length) {
+//   let wrapper = document.getElementById("chatbox").children[1], currentDate = new Date;
+//   fetch("https://thought-out-guards.000webhostapp.com/entries.php").then(res => res.json()).then(entries => {
+//     let end = entries.length - from;
+//     entries = entries.slice(end - length, end);
 
-    let els = [];
-    for (const entry of entries) {
-      let el = create("article", {class: "comment"});
-      // icon
-      if (entry.icon) el.appendChild(create("img", {src: entry.icon, loading: "lazy", class: "comment-icon"}));
-      // header
-      let header = el.appendChild(document.createElement("header")), name = header.appendChild(create("div", {text: entry.name, class: "comment-name"})), date = new Date(entry.time);
-      if (entry.name == "june") {
-        name.classList.add("webmaster");
-        name.appendChild(create("i", {class: "fa-solid fa-paw"}));
-      }
-      if (entry.link) header.appendChild(create("a", {href: entry.link, class: "comment-link", children: [create("i", {class: "fa-solid fa-arrow-up-right-from-square"})]}));
-      header.appendChild(create("div", {text: toRelative(date), title: date.toLocaleString('en-GB', {day: "numeric", month: "long", year: "numeric", hourCycle: "h12", hour: "numeric", minute: "numeric"}), class: "comment-time"}));
-      // text
-      el.appendChild(create("div", {innerHTML: entry.text}));
-      els.push(el);
-    }
-    wrapper.prepend(...els);
-  });
+//     let els = [];
+//     for (const entry of entries) {
+//       let el = create("article", {class: "comment"});
+//       // icon
+//       if (entry.icon) el.appendChild(create("img", {src: entry.icon, loading: "lazy", class: "comment-icon"}));
+//       // header
+//       let header = el.appendChild(document.createElement("header")), name = header.appendChild(create("div", {text: entry.name, class: "comment-name"})), date = new Date(entry.time);
+//       if (entry.name == "june") {
+//         name.classList.add("webmaster");
+//         name.appendChild(create("i", {class: "fa-solid fa-paw"}));
+//       }
+//       if (entry.link) header.appendChild(create("a", {href: entry.link, class: "comment-link", children: [create("i", {class: "fa-solid fa-arrow-up-right-from-square"})]}));
+//       header.appendChild(create("div", {text: toRelative(date), title: date.toLocaleString('en-GB', {day: "numeric", month: "long", year: "numeric", hourCycle: "h12", hour: "numeric", minute: "numeric"}), class: "comment-time"}));
+//       // text
+//       el.appendChild(create("div", {innerHTML: entry.text}));
+//       els.push(el);
+//     }
+//     wrapper.prepend(...els);
+//   });
 
-  function toRelative(date) {
-    if (currentDate.getMonth() == date.getMonth()) {
-      if (currentDate.getDate() == date.getDate()) {
-        if (currentDate.getHours() == date.getHours()) {
-          if (currentDate.getMinutes() == date.getMinutes()) return "now";
-          else return currentDate.getMinutes() - date.getMinutes() + " minutes ago";
-        } else return currentDate.getHours() - date.getHours() + " hours ago";
-      } else return currentDate.getDate() - date.getDate() + " days ago";
-    } else return currentDate.getMonth() - date.getMonth() + " months ago";
-  }
-}
+//   function toRelative(date) {
+//     if (currentDate.getMonth() == date.getMonth()) {
+//       if (currentDate.getDate() == date.getDate()) {
+//         if (currentDate.getHours() == date.getHours()) {
+//           if (currentDate.getMinutes() == date.getMinutes()) return "now";
+//           else return currentDate.getMinutes() - date.getMinutes() + " minutes ago";
+//         } else return currentDate.getHours() - date.getHours() + " hours ago";
+//       } else return currentDate.getDate() - date.getDate() + " days ago";
+//     } else return currentDate.getMonth() - date.getMonth() + " months ago";
+//   }
+// }
 
 
 function create(tag, options = {}) {

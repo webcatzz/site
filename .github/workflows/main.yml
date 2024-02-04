@@ -16,6 +16,13 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
+    # - name: Writing blog file
+    #   uses: /.github/markdown-html-insert
+    #   with:
+    #     md-dir: /neocities/blog/md/
+    #     template: /neocities/blog/template.html
+    #     output: /neocities/blog/index.html
+
     - name: Deploying to Neocities
       uses: bcomnes/deploy-to-neocities@v1.1.21
       with:

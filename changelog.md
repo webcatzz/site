@@ -1,3 +1,23 @@
+# latest
+- on the index...
+	- restyled some buttons
+	- added scrolling header
+	- added increment button
+	- readded laser pointer
+- added [june's how-to's](how-to/index.html)
+- added [#dailymspaint archive](art/dailymspaint/index.html)
+- redid [creata page](creata/index.html)
+- readded image modal script, now a lot simpler
+
+# 4.2.24
+- [discord icon tester](discord.html) bugfixing
+
+# 3.2.24
+- rewrote [discord icon tester](discord.html) from scratch, now with history and prettier ui
+
+# 4.1.24
+- beepbox webring widget got broken at some point. fixed!
+
 # 1.1.24
 - updated [index](index.html) to v5.1!
 - added [about page](about.html)

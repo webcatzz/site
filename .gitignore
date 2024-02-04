@@ -1,21 +1,26 @@
+# unnecessary
 /.vscode/
 /offsite/
+/neocities/assets/ogs/
+/neocities/cat/blog/0.html
 /guestbook-backup.txt
+/to-do.txt
 .DS_STORE
 
-# ergonomics
-/neocities/assets/ogs/
-/neocities/blog/md/
-
 # unfinished
-/neocities/cat/blog/0.html
 /neocities/cat/blog/2.html
 /neocities/cat/comic/
 /neocities/cat/comic-old/
 /neocities/cat/wiki/
+/neocities/cat/wiki-old/
 /neocities/cat/chara.css
 /neocities/cat/chara.html
+/neocities/cat/test.html
+
 /neocities/creata/timeline-old
+
+/neocities/howto/
+
 /neocities/ough/17776/
 /neocities/ough/disco-elysium/
 /neocities/ough/homestuck/
@@ -23,12 +28,21 @@
 /neocities/ough/nitw/
 /neocities/ough/starbound/
 /neocities/ough/sword-and-sworcery/
+
+/neocities/resources/cassette/
+/neocities/resources/stained-glass/
+/neocities/resources/subspace/
+
 /neocities/about-copy.html
 /neocities/about-newer.html
 /neocities/about-old.html
+
+/neocities/brainless.html
+
+/neocities/music-old.html
 /neocities/music.html
 
-# cannot go on neocities
+# can't go on neocities
 *.mp*
 *.ogg
 *.wav

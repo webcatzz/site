@@ -8,5 +8,6 @@ var sites = [
   "https://robophobia.org/",
   "https://fizzsea.neocities.org/",
   "https://tim-of-the-valley.neocities.org/",
-  "https://foggybear42.neocities.org/"
+  "https://foggybear42.neocities.org/",
+  "https://mechagic.neocities.org/",
 ];
