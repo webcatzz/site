@@ -111,27 +111,27 @@ button {text-align: center; box-sizing: border-box}
 			<h2>memberlist!</h2>
 		</div>
 		<script>
-		  // memberlist
-		  let list = "";
-		  sites.forEach(site => list += `<li><a href='${site}'>${new URL(site).hostname}</a></li>`);
-      document.getElementById('memberlist').insertAdjacentHTML('beforeend', `<ul>${list}</ul>`);
-		  
-			// widget copier
-			function copyCode(type, button) {
-				switch (type) {
-					case "song":
-						let songInput = document.getElementById("song-input");
-						if (songInput.value != "") navigator.clipboard.writeText(`<div id="beepbox-webring" data-song="${songInput.value}"><script type="text/javascript" src="https://webcatz.neocities.org/beepbox-webring/data.js"><\/script><script type="text/javascript" src="https://webcatz.neocities.org/beepbox-webring/widget.js"><\/script></div>`);
-						else {
-							songInput.animate({borderColor: ["red", "#444"]}, 500);
-							return;
-						}
-						break;
-					case "button": navigator.clipboard.writeText('<div id="beepbox-webring"><script type="text/javascript" src="https://webcatz.neocities.org/beepbox-webring/data.js"><\/script><script type="text/javascript" src="https://webcatz.neocities.org/beepbox-webring/button-widget.js"><\/script></div>'); break;
-				}
-				button.innerText = "copied!";
-				setTimeout(() => {button.innerText = "copy!"}, 1000);
-			}
+// memberlist
+document.querySelector("#memberlist h2").textContent += " (" + sites.length + ")";
+let list = document.getElementById("memberlist").appendChild(document.createElement("ul"));
+for (const site of sites) {
+	let link = list.appendChild(document.createElement("li")).appendChild(document.createElement("a"));
+	link.href = site, link.textContent = new URL(site).hostname;
+}
+
+// widget copier
+function copyCode(type, button) {
+	if (type == "song") {
+		let songInput = document.getElementById("song-input");
+		if (songInput.value) navigator.clipboard.writeText('<div id="beepbox-webring" data-song="' + songInput.value + '"><script type="text/javascript" src="https://webcatz.neocities.org/beepbox-webring/data.js"><\/script><script type="text/javascript" src="https://webcatz.neocities.org/beepbox-webring/widget.js"><\/script></div>');
+		else {
+			songInput.animate({borderColor: ["red", "#444"]}, 500);
+			return;
+		}
+	} else if (type == "button") navigator.clipboard.writeText('<div id="beepbox-webring"><script type="text/javascript" src="https://webcatz.neocities.org/beepbox-webring/data.js"><\/script><script type="text/javascript" src="https://webcatz.neocities.org/beepbox-webring/button-widget.js"><\/script></div>');
+	button.innerText = "copied!";
+	setTimeout(() => button.innerText = "copy!", 1000);
+}
 		</script>
 	</body>
 </html>
