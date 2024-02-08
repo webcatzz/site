@@ -1,3 +1,41 @@
+/* audio-player.js by june @ webcatz.neocities.org
+
+how to use:
+1. save the script in a javascript file somewhere on your site (e.g. filename.js)
+2. include the following tag somewhere in a page's <head></head>:
+<script src="filename.js"></script>
+3. add a new <script></script>, somewhere after the old one. here's some template code to put inside it:
+AudioPlayer.create([
+  {title: "Pages of Solemnity - Pseudoregalia OST", src: "https://files.catbox.moe/xl09z8.mp3"},
+  {title: "Pages of Solemnity - Pseudoregalia OST", src: "https://files.catbox.moe/xl09z8.mp3"},
+  {title: "Pages of Solemnity - Pseudoregalia OST", src: "https://files.catbox.moe/xl09z8.mp3"},
+],{
+  playButton: document.getElementById("play"),
+  skipButton: document.getElementById("skip"),
+  title: document.getElementById("title"),
+  shuffle: true,
+});
+
+3.1. here's a list of all possible settings. all of them are optional!
+playButton: HTMLElement, // html element that will toggle playback when clicked
+noIcon: true/false, // set this to true unless you have a fontawesome icon inside the playButton. false by default
+skipButton: HTMLElement, // html element that will skip the current track when clicked
+title: HTMLElement, // html element that will display the title of the current track
+slider: HTMLElement, // slider that will show audio progress. a <input type="range"> isn't allowed—it should be a custom slider! the script takes care of all the custom slider code, you just need to add a <div role="slider"></div> and style it however you want
+sliderThumb: HTMLElement, // thumb shown on the slider. must be inside the slider
+sliderProgress: HTMLElement, // progress bar shown on the slider. must be inside the slider
+shuffle: true/false, // shuffles the playlist randomly. false by default
+onended: Function, // a function that will run every time a track ends. for adding your own functionality
+
+3.2. if you're adding custom functionality, here's a list of AudioPlayer's properties:
+audio // the audio object playing the track
+list // an array of objects representing the playlist
+idx // the current index in the playlist
+on(event, func) // runs addEventListener() on the audio oject
+next() // ends the current track
+
+*/
+
 const AudioPlayer = {
   audio: new Audio, idx: -1,
   on: function (event, func) {this.audio.addEventListener(event, func)},

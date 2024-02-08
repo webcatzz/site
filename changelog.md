@@ -1,4 +1,4 @@
-# latest
+# 4.2.24
 - on the index...
 	- restyled some buttons
 	- added scrolling header
@@ -7,10 +7,8 @@
 - added [june's how-to's](how-to/index.html)
 - added [#dailymspaint archive](art/dailymspaint/index.html)
 - redid [creata page](creata/index.html)
-- readded image modal script, now a lot simpler
-
-# 4.2.24
 - [discord icon tester](discord.html) bugfixing
+- readded image modal script, now a lot simpler
 
 # 3.2.24
 - rewrote [discord icon tester](discord.html) from scratch, now with history and prettier ui

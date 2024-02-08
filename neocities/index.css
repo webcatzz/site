@@ -8,14 +8,15 @@ body {
   user-select: none;
 }
 
+/* haiiiiii ^_^ */
+
 
 /* title */
 
 header {
   display: flex; justify-content: center; align-items: center;
   height: 144px; background:
-    /* url("data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 100 100\"><text y=\".9em\" font-size=\"90\">💫</text></svg>") no-repeat center / 128px, */
-    radial-gradient(circle at center, var(--black) 20em, var(--white) 20em, var(--white) 21em, transparent 21em),
+    radial-gradient(circle at center, var(--black) 20em, var(--white) 20em, var(--white) 21em, var(--red) 21em, var(--red) 21.25em, var(--white) 21.25em, var(--white) 21.5em, transparent 21.5em, transparent 21.625em, var(--white) 21.625em, var(--white) 21.75em, transparent 21.75em),
     url(assets/banner.png) repeat-x center var(--black);
   box-shadow: 0 0 16px var(--black);
   animation: 60s flow linear infinite;
@@ -45,12 +46,14 @@ h1 {
 }
 
 #scroll-header {
-  display: flex; justify-content: space-between; align-items: center;
+  display: flex; align-items: center; gap: 1em;
   background-color: var(--black); padding: 0.25em 1em; border-bottom: 1px solid var(--off-black);
   position: fixed; top: 0; left: 0; right: 0; z-index: 3;
-  & span:first-of-type {color: transparent; font-weight: bold; letter-spacing: 0.05em; background-image: linear-gradient(45deg, var(--blue) 10%, var(--red), var(--yellow) 90%); background-clip: text; -webkit-background-clip: text}
-  & span:last-of-type {color: var(--dark-gray); font-family: ms-serif; font-size: 0.75em; letter-spacing: 0.025em}
 }
+#scroll-title {color: transparent; font-weight: bold; letter-spacing: 0.05em; background-image: linear-gradient(45deg, var(--blue) 10%, var(--red), var(--yellow) 90%); background-clip: text; -webkit-background-clip: text}
+#scroll-subtitle, #scroll-copyright {color: var(--dark-gray); font-family: ms-serif; font-size: 0.75em; letter-spacing: 0.025em}
+#scroll-subtitle {color: var(--off-black)}
+#scroll-copyright {margin-left: auto}
 
 
 /* nav (middle) */
@@ -348,7 +351,7 @@ a:not([href]):hover {outline: none; filter: grayscale(1); cursor: not-allowed}
     padding: 0.25em 0;
     background-color: var(--off-black);
   }
-  & iframe {height: 450px}
+  & iframe {width: 250px; height: 450px}
   /* & > div {
     font-size: 0.75em;
     display: flex; flex-direction: column; gap: 0.5em;
@@ -405,6 +408,7 @@ footer {
 /* mobile */
 @media (max-width: 600px) {
   nav {display: flex; flex-direction: column; padding: 4em 8px}
+  .flex {font-size: 0.75em}
 
   #about-wrapper {flex-direction: column-reverse}
   #about {contain: none; margin-top: 0}
@@ -415,10 +419,11 @@ footer {
   #shrines {height: 300px}
   #blog {font-size: 4em}
   #art {font-size: 2em; height: 3.5em}
+  #cat {height: 8em; margin: 0; & img {width: 97.5%}}
   #links-wrapper {display: flex; flex-direction: column}
   #links {height: 0.75em}
   #tools a {padding: 0.75em 0}
-  #lightswitch {display: none}
+  #laser-pointer, #lightswitch {display: none}
 
   .after-insert {margin-top: 0}
   #ac {scale: 0.8; transform-origin: left; margin: -0.5em 0}
