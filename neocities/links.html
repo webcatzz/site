@@ -14,16 +14,21 @@
 @font-face {font-family: print; src: url(assets/fonts/magazine.ttf)}
 body {
   color: var(--white); font-family: sans-serif;
-  display: flex; flex-direction: row-reverse; gap: 32px;
-  height: calc(100vh - 16px);
+  display: flex; flex-direction: row-reverse;
+  height: 100vh;
   background: linear-gradient(91deg, transparent 50%, #0000001a 50%) center / 5% 100%, url(assets/wallpaper.png) repeat no-repeat bottom right / 20% auto, linear-gradient(to top, #241f1f 50%, #1f2423);
-  margin: 8px 32px; overflow: hidden;
+  overflow: hidden;
   user-select: none;
 }
-#side {line-height: 1.6; display: flex; flex-direction: column; width: 240px}
-h1 {font: 2.5em print; display: flex; gap: 0.5em; margin-bottom: 0.1em; &::after {content: ""; height: 1px; background-color: var(--gray); flex: 1; align-self: center}}
-p {color: var(--light-gray); font-size: 0.875em; margin-bottom: 0}
-#webrings {display: flex; flex-direction: column; align-items: center; gap: 0.75em; margin: 3em 0; flex: 1; overflow-y: scroll}
+
+#side {
+  color: var(--black); line-height: 1.6;
+  display: flex; flex-direction: column;
+  width: 348px; background: url(assets/paper-bg.gif) white;
+}
+h1 {font: 3em print; letter-spacing: -0.1em; display: flex; gap: 0.5em; padding: 16px 24px; border-bottom: 1px solid var(--gray); margin-block: 0; &::after {content: ""; height: 8px; background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAMAAABFaP0WAAAAAXNSR0IArs4c6QAAAAZQTFRFAAAAAAAApWe5zwAAAAJ0Uk5TAP9bkSK1AAAADklEQVQImWNgZGBgYAQAAAwAA/QhnyoAAAAASUVORK5CYII=) top left / 4px; flex: 1; align-self: center}}
+p {color: var(--dark-gray); font-size: 0.875em; margin-inline: 24px; margin-bottom: 0}
+#webrings {display: flex; flex-direction: column; align-items: center; gap: 0.75em; padding: 12px; border: 1px solid var(--gray); margin: 1em 12px; flex: 1; overflow-y: auto}
 #beepbox-webring {display: grid; grid-template: "main main" "left right"; gap: 0}
 #beepbox-main {border-bottom-left-radius: 0; border-bottom-right-radius: 0; grid-area: main}
 .beepbox-arrow {
@@ -33,20 +38,18 @@ p {color: var(--light-gray); font-size: 0.875em; margin-bottom: 0}
   &:last-of-type {border-bottom-left-radius: 0}
 }
 #back {
-  color: var(--gray); font-size: 1.2em; font-style: italic; letter-spacing: 0.1em; line-height: 1.4;
-  display: flex; flex-direction: column; justify-content: center; align-items: end;
-  contain: paint; height: 1.6em; padding: 0.75em 1em; padding-right: calc(1em + 32px);
-  background: linear-gradient(var(--yellow) 33%, var(--red) 33%, var(--red) 66%, var(--blue) 66%) no-repeat left / 4px var(--black);
-  margin-bottom: 16px; margin-right: -32px;
-  & div:nth-of-type(2) {color: var(--white); transition: letter-spacing 0.2s cubic-bezier(.09,.39,0,1.5)}
-  &:hover div:nth-of-type(2) {letter-spacing: 0.25em; transition: letter-spacing 0.75s}
+  color: inherit;
+  display: flex; justify-content: center; align-items: center;
+  background: url(assets/sticky-note.png) center / cover;
+  width: 45%; aspect-ratio: 478/529; padding-top: 5%; box-sizing: border-box; margin-top: -128px; margin-right: 12px; margin-bottom: 16px; align-self: end;
+  &:hover {text-decoration: underline}
 }
 
 #corkboard {
   background: url('assets/corkboard.jpg') top left;
   border: 8px outset #4f3620; box-sizing: border-box;
   box-shadow: 4px 2px 16px -1px black inset;
-  flex: 1; position: relative;
+  flex: 1; position: relative; margin: 8px 32px;
   & > * {
     width: max-content; height: max-content; position: absolute; cursor: grab;
     &:active {cursor: grabbing}
@@ -121,17 +124,13 @@ p {color: var(--light-gray); font-size: 0.875em; margin-bottom: 0}
 <body>
   <div id="side">
     <h1>links</h1>
-    <p>welcome to the links page! you can drag stuff around.</p>
+    <p>welcome to the links page! you can click + hold to drag stuff around.</p>
     <div id="webrings">
       <div id="transring"><script defer src="https://transring.neocities.org/onionring-variables.js"></script><script defer src="https://transring.neocities.org/onionring-widget.js"></script></div>
       <div id="beepbox-webring" data-song="https://jummbus.bitbucket.io/player/#song=j5N05intron621s1k8l05e07t2ma7g0cj07r1O_U000000000000000000i0o333222T0v0pu00f0000qg510Oavd040w3h0E0T0v0pu00f0000qg410Oad040w2h0E0T0v0pu00f0000qh410Oa3bd040w5h0E0T7v0pu07f050p61770q72d42g300q1Z021a90k70060630Oa7bvd160HT-SRJJJJIAAAAAh0IaE1c11T5v0fu05f060lc2dd2j02e02fd17800q8540Oaad060HK_Sziiirrqih99h0E0T0v0pu00f0000qgk1630Oad040w3h0E0T4v0pu04f1a0q150Oa3b1z6666ji8k8k3jSBKSJJAArriiiiii07JCABrzrrrrrrr00YrkqHrsrrrrjr005zrAqzrjzrrqr1jRjrqGGrrzsrsA099ijrABJJJIAzrrtirqrqjqixzsrAjrqjiqaqqysttAJqjikikrizrHtBJJAzArzrIsRCITKSS099ijrAJS____Qg99habbCAYrDzh00E0T2v0pu02f180q140Oa3bd030w0E0T9v0pu00f0000q00d040E0b4yd5lClmo0004zgid180000000wo410g41014i4h4h4g00wh4h4h00014h4h400800000000000g02p26BCKwqYaQNtmzlAGlaBmEQp2LiFkFbj2RhqEJ8mIbj5FyRNqwJcmCbiEl1qoJcmEbHxqoJcmAbk5FyQNqwJgmCbj5FkawJcmCbk5R0JcmCbi5G2QNqoJgmKbj5FyRq5mwhI0LQUQNtlhFlataBmEQqJqBiFlWRuLnFkGluzhHRWlaBnRlmHlFkGlmzhGSalaB8lWZuLiFkGZ6znHQGlaKm6tfEmcjexRtea5xDjW9aOdkei8mhJfBFIH509PqgI8hkNtezjAGlaBkEQp2NiFkFbj7E85xyWkhW21f5S0qWz6CbE3hE6bg5E6zgcmwbE3hE6bg5E7gwkNt0bg5E2Q1q0J0mwbg5E2Q1q0J0mwbg5E2Q1g9V7g5E2Q1qp6b3CW1OGoEw00jFQ3FY58__7yWfFHNaE2f5Qyjnvk000"><script defer src="beepbox-webring/data.js"></script><script defer src="beepbox-webring/widget.js"></script></div>
       <div id="mobring"><script defer src="https://sugarforbrains.neocities.org/mobring/onionring-variables.js"></script><script defer src="https://sugarforbrains.neocities.org/mobring/basic-widget.js"></script></div>
     </div>
-    <a id="back" href="index.html" target="_self">
-      <div>go back...?</div>
-      <div aria-hidden="true">go back...?</div>
-      <div aria-hidden="true">go back...?</div>
-    </a>
+    <a id="back" href="index.html" target="_self">go back...?</a>
   </div>
 
   <div id="corkboard">
@@ -248,7 +247,7 @@ p {color: var(--light-gray); font-size: 0.875em; margin-bottom: 0}
         <img src="assets/buttons/others/publictransit.gif">
       </a>
       <a href="https://robophobia.neocities.org" data-comment="absolutely bumping tunes!">
-        <img src="assets/buttons/others/robophobia.png">
+        <img src="assets/buttons/others/robophobia.gif">
       </a>
       <a href="https://skelenby.neocities.org">
         <img src="assets/buttons/others/skelenby.png">

@@ -1,3 +1,6 @@
+# 9.2.24
+- tweaked [links page](links.html)
+
 # 4.2.24
 - on the index...
 	- restyled some buttons

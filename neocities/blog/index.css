@@ -25,7 +25,7 @@ h1 img {width: 100%; margin-right: -0.5em}
 #stamp-4 {bottom: 256px; left: 32px; rotate: -1deg}
 
 /* links */
-nav {flex: 1; display: grid; grid-template-columns: 1fr 1fr; grid-auto-rows: max-content; align-items: start; gap: 1px 16px; height: 100%; padding: 8px; padding-bottom: 24px; margin: 16px -8px; border-radius: 4px; overflow-y: auto; position: relative}
+nav {flex: 1; display: grid; grid-template-columns: 1fr 1fr; grid-auto-rows: max-content; align-items: start; gap: 1px 16px; height: 100%; padding: 8px; padding-bottom: 256px; margin: 16px -8px; border-radius: 4px; overflow-y: auto; position: relative}
 nav h2, .wide {grid-column: 1/3}
 .tall {grid-row: span 2; align-self: stretch}
 nav h2 {color: #201c1080; font: 1em ms-serif; font-size: inherit; margin: 0}
@@ -97,6 +97,7 @@ article li {padding-left: 0.5em}
 
 /* images */
 figure {margin: 0}
+figure img {max-width: 100%}
 figcaption {color: #201c10bf; font: 0.875em ms-serif; text-align: center; letter-spacing: 0.05em; margin: 0.5em}
 .photo {
   image-rendering: auto;

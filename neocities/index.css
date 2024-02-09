@@ -1,14 +1,12 @@
 @font-face {font-family: ms-serif; src: url(assets/fonts/ms-serif.ttf)}
 @font-face {font-family: print; src: url(assets/fonts/magazine.ttf)}
 @font-face {font-family: vcr; src: url(assets/fonts/vcr.ttf)}
-:root {--wobble: cubic-bezier(.09,.39,0,2.75)}
+:root {--wobble: cubic-bezier(.09,.39,0,2.75); scrollbar-color: var(--off-black) var(--black)}
 body {
   color: var(--white); line-height: 1.4;
   background-color: var(--black); margin: 0; position: relative;
   user-select: none;
 }
-
-/* haiiiiii ^_^ */
 
 
 /* title */

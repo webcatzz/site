@@ -121,7 +121,7 @@
 
     <details class="box">
       <summary class="title">how do i get a folder's path?</summary>
-      <p>you can either (1) right click a folder, hold the "option" key, and click "copy as pathname", or (2) just drag the folder onto the terminal window.</p>
+      <p>you can either (1) right click a folder, hold the "option" key on mac or the shift key on windows, and click the copy as pathname option, or (2) just drag the folder onto the terminal window.</p>
     </details>
 
     <p>the command line will now execute commands from inside your site folder. follow these steps to turn it into your local repository:</p>
@@ -278,7 +278,7 @@ ignore-me/
 <span class="decl">dist_dir</span>: <span class="string">neocities</span>
     </code></pre>
 
-    <p>and that's it! if you want to, now is the time to download a backup of your neocities files in case you're about to accidentally delete something that's not in your repository. run <code>git push</code> again. your neocities should now update (this might take 30 seconds or so).</p>
+    <p>and that's it! if you want to, now is the time to download a backup of your neocities files in case you're about to accidentally delete something that's not in your repository. run <code>git push</code> again. your neocities should now update (this might take up to 10 seconds or so).</p>
 
     <p>open your repository on github and click the "actions" tab at the top. if anything goes wrong during the deployment, you can investigate it here and then rerun the workflow (click the failed entry and then "re-run job" in the top right) once you've fixed the issue. usually, the problem is that one of your files is incompatible with neocities—make sure your .gitignore is accurate.</p>
 
@@ -289,13 +289,8 @@ ignore-me/
       <p>right now, the code i'm using to deploy to neocities does not offer any functionality for customizing the little feed update. i asked the owner about it and they set up <a href="https://github.com/bcomnes/async-neocities/issues/80">an issue for it here</a>. they also set up an issue for allowing <a href="https://github.com/bcomnes/deploy-to-neocities/issues/133">directly deploying the site folder</a> by automatically excluding all the incompatible git-related files. if either the owner or a contributor drafts some working code for them, they'll get added.</p>
       <p>also, once i figure it out, i'm eventually gonna add a how-to on building an html blog page out of markdown files using a github workflow. keep an eye out for that.</p>
     </div>
-    
-
-
-
 
     <a id="back" class="title" target="_self" href="index.html">← go back...</a>
-
 
     <script>
 let input = document.querySelector("#mac-check input");
