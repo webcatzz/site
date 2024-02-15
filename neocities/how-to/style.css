@@ -4,10 +4,10 @@
 }
 
 /* wrapper stuff */
-body {color: var(--black); letter-spacing: 0.0625em; display: flex; min-height: 100vh; background-color: var(--light); image-rendering: auto}
+body {color: var(--black); letter-spacing: 0.0625em; background-color: var(--light); image-rendering: auto}
 #wrapper {
   line-height: 1.4;
-  max-width: 650px; padding: 2em 5em;
+  max-width: 650px; min-height: calc(100vh - 4em); padding: 2em 5em;
   background-color: var(--white); border-inline: 1px solid var(--dark); box-shadow: 0 0 32px -4px #c1a99680;
   margin-inline: auto;
 }

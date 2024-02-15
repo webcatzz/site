@@ -37,9 +37,10 @@ button, summary, #back {color: white; padding: 6px 14px; border: none; border-ra
 button:hover, summary:hover, #back:hover {background-color: #555}
 button {text-align: center; box-sizing: border-box}
 
-#about p:last-of-type, #rules p:last-of-type, #join p:last-of-type, #widget p:last-of-type {margin-bottom: 0}
+#about > *:last-of-type, #rules > *:last-of-type, #join > *:last-of-type, #widget > *:last-of-type {margin-bottom: 0}
 #rules summary::marker {color: #00f3fe}
 #join summary::marker {color: #ffff4a}
+#widgets {align-items: start}
 #widget summary::marker {color: #ff9759}
 #widget2-button {width: 100%; margin-top: 1em}
 
@@ -48,15 +49,6 @@ button {text-align: center; box-sizing: border-box}
 #memberlist li a {display: block; padding: 12px 16px}
 
 #back {display: block; text-decoration: none; width: max-content; margin: 64px auto}
-
-#widget1 {display: flex; align-items: center; gap: 8px; font: 1rem/1.1 sans-serif; max-width: 100%}
-#widget1-main {flex: 1; color: #999; text-align: center; padding: 8px 12px; border: 4px solid #222; border-radius: 5px; background-color: black}
-#widget1-main a {color: #98f; font-weight: bold; text-decoration: underline}
-#widget1-frame {width: 100%; height: 64px; margin-top: 8px}
-.widget1-arrow {display: block; width: 14px; padding: 8px; border-radius: 5px; background-color: #444; cursor: pointer}
-.widget1-arrow:hover {background: #555}
-
-#widget2 {display: flex; align-items: center; gap: 4px}
 		</style>
 	</head>
 	<body>
@@ -78,27 +70,25 @@ button {text-align: center; box-sizing: border-box}
 			</details>
 			<details id="join">
 				<summary>how do i join?</summary>
-				<p>reviewed the rules? great! send an email with your site url to "crowsthyme@gmail.com" with the subject line "beepbox webring"!</p>
+				<p>reviewed the rules? great! send an email containing your site url to "crowsthyme@gmail.com" with the subject line "beepbox webring"!</p>
 				<p>then just be patient and i'll add you when i have time!</p>
 			</details>
 			<details id="widget">
 				<summary>i'm in the webring—now what?</summary>
 				<p>congratulations! if you haven't already, choose a widget and put it on your site:</p>
-				<div class="flex">
+				<div id="widgets" class="flex">
 					<div class="bordered">
 						<h3>song widget</h3>
-						<div id="widget1"><img class="widget1-arrow" src="left.png"><div id="widget1-main"><div>this site is part of the <a href="">beepbox webring</a>!</div><iframe id="widget1-frame" src="https://www.beepbox.co/player/#song=9n31s0k0l00e03t2ma7g0fj07r1i0o432T1v1u39f0qwx10l611d08A0F0B0Q38e0Pa610E3b8618626T1v1u3df0qwx10p511d08AcFbBfQ269cP969bE2bi7iT1v1ue1f0q0y10n73d4aA0F0B7Q0000Pe600E2bb619T2v1u15f10w4qw02d03w0E0b4h400000000h4g000000014h000000004h400000000p16000000"></iframe></div><img class="widget1-arrow" src="right.png"></div>
+						<script src="ring.js" data-song="https://www.beepbox.co/player/#song=9n31s0k0l00e03t2ma7g0fj07r1i0o432T1v1u39f0qwx10l611d08A0F0B0Q38e0Pa610E3b8618626T1v1u3df0qwx10p511d08AcFbBfQ269cP969bE2bi7iT1v1ue1f0q0y10n73d4aA0F0B7Q0000Pe600E2bb619T2v1u15f10w4qw02d03w0E0b4h400000000h4g000000014h000000004h400000000p16000000"></script>
 						<p>copy the widget code using the button below: (paste a beepbox/etc. song player link in the textbox first, though)</p>
 						<div class="flex">
 							<input id="song-input" type="text" placeholder="paste a beepbox/etc. song player url...">
 							<button onclick="copyCode('song', this)">copy!</button>
 						</div>
-						<p>paste that HTML wherever you want your widget to be, and then include this stylesheet link somewhere in that page's &lt;head&gt; tag:</p>
-						<textarea><link rel="stylesheet" href="https://webcatz.neocities.org/beepbox-webring/widget.css"></textarea>
 					</div>
 					<div class="bordered">
 						<h3>button widget</h3>
-						<div id="widget2"><img src="button-left.png"><img src="button.png"><img src="button-right.png"></div>
+						<script src="ring.js"></script>
 						<p>copy the widget code using the button below:</p>
 						<button id="widget2-button" onclick="copyCode('button', this)">copy!</button>
 					</div>
@@ -112,9 +102,9 @@ button {text-align: center; box-sizing: border-box}
 		</div>
 		<script>
 // memberlist
-document.querySelector("#memberlist h2").textContent += " (" + sites.length + ")";
+document.querySelector("#memberlist h2").textContent += " (" + bpSites.length + ")";
 let list = document.getElementById("memberlist").appendChild(document.createElement("ul"));
-for (const site of sites) {
+for (const site of bpSites) {
 	let link = list.appendChild(document.createElement("li")).appendChild(document.createElement("a"));
 	link.href = site, link.textContent = new URL(site).hostname;
 }
@@ -123,12 +113,12 @@ for (const site of sites) {
 function copyCode(type, button) {
 	if (type == "song") {
 		let songInput = document.getElementById("song-input");
-		if (songInput.value) navigator.clipboard.writeText('<div id="beepbox-webring" data-song="' + songInput.value + '"><script type="text/javascript" src="https://webcatz.neocities.org/beepbox-webring/data.js"><\/script><script type="text/javascript" src="https://webcatz.neocities.org/beepbox-webring/widget.js"><\/script></div>');
+		if (songInput.value) navigator.clipboard.writeText('<script src="https://webcatz.neocities.org/beepbox-webring/ring.js" data-song="' + songInput.value + '"><\/script>');
 		else {
 			songInput.animate({borderColor: ["red", "#444"]}, 500);
 			return;
 		}
-	} else if (type == "button") navigator.clipboard.writeText('<div id="beepbox-webring"><script type="text/javascript" src="https://webcatz.neocities.org/beepbox-webring/data.js"><\/script><script type="text/javascript" src="https://webcatz.neocities.org/beepbox-webring/button-widget.js"><\/script></div>');
+	} else if (type == "button") navigator.clipboard.writeText('<script src="https://webcatz.neocities.org/beepbox-webring/ring.js"><\/script>');
 	button.innerText = "copied!";
 	setTimeout(() => button.innerText = "copy!", 1000);
 }
