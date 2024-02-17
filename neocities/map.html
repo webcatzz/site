@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>webcatz //→ links!</title>
+  <link rel="icon" href="assets/icon.svg">
+  <link rel="stylesheet" href="global.css">
+  <style>
+body {color: var(--white); font-size: 16px; background-color: var(--black); padding-block: 64px}
+#main {max-width: 600px; margin-inline: auto; position: relative}
+
+ul {list-style-type: none; padding-left: 0}
+ul ul {margin-left: 1.5em}
+li {margin-block: 1em}
+li::before {content: ""; vertical-align: middle; display: inline-block; width: 1em; height: 1em; background-color: var(--white); border: 4px solid var(--off-black); border-radius: 50%; margin-top: -2px; margin-inline: 1em}
+a {color: inherit}
+a:hover {font-weight: bold}
+
+#canvas {position: absolute; inset: 0; z-index: -1}
+  </style>
+</head>
+<body>
+  <div id="main">
+    <h1>map</h1>
+    <ul>
+      <li data-color="#575452"><a href="index.html">index</a></li>
+      <li><a href="about.html">about</a></li>
+      <!-- creata -->
+      <li><a href="creata/index.html">creata</a>
+        <ul>
+          <li><a href="cat/index.html">cat comic</a></li>
+          <li><a href="tunes/index.html">tunes</a></li>
+          <li><a href="art/index.html">art</a></li>
+        </ul>
+      </li>
+      <!-- writing -->
+      <li><a href="blog/index.html">blog</a></li>
+      <li><a href="how-to/index.html">how-to</a></li>
+      <!-- shrines -->
+      <li><span style="text-decoration: line-through">ough</span>
+        <ul>
+          <li><a href="ough/baba/index.html">baba is you</a></li>
+          <li><a href="ough/izutsumi/index.html">izutsumi</a></li>
+          <li><a href="ough/mob-psycho.html">mob psycho 100</a></li>
+        </ul>
+      </li>
+      <!-- resources -->
+      <li><a href="resources/index.html">resources</a>
+        <ul>
+          <li><a href="discord.html">discord</a></li>
+          <li><a href="webstring/index.html">webstring</a></li>
+          <li><a href="tarot/index.html">middling arcana</a></li>
+          <li><a href="span-ify.html">span-ify</a></li>
+        </ul>
+      </li>
+      <!-- links -->
+      <li><a href="beepbox-webring/index.html">beepbox webring</a></li>
+      <li><a href="links.html">links</a></li>
+    </ul>
+    <canvas id="canvas"></canvas>
+  </div>
+  <script>
+const ctx = document.getElementById("canvas").getContext("2d");
+ctx.canvas.width = document.getElementById("main").offsetWidth;
+ctx.canvas.height = document.getElementById("main").offsetHeight;
+ctx.lineWidth = 16;
+
+const colors = [
+  getComputedStyle(canvas).getPropertyValue("--blue"),
+  getComputedStyle(canvas).getPropertyValue("--red"),
+  getComputedStyle(canvas).getPropertyValue("--yellow"),
+];
+
+let i = 0;
+for (const link of document.querySelectorAll("#main > ul > li")) {
+  ctx.strokeStyle = link.dataset.color ?? colors[++i % colors.length];
+  ctx.beginPath();
+  ctx.moveTo(-8, link.offsetTop - 48);
+  ctx.lineTo(28, link.offsetTop + 10);
+  for (const sublink of link.querySelectorAll("ul li")) {
+    ctx.lineTo(sublink.offsetLeft + 28, sublink.offsetTop + 10);
+  }
+  ctx.stroke();
+}
+  </script>
+</body>
+</html>

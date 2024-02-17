@@ -28,14 +28,6 @@ body {
 h1 {font: 3em print; letter-spacing: -0.1em; display: flex; gap: 0.5em; padding: 16px 24px; border-bottom: 1px solid var(--gray); margin-block: 0; &::after {content: ""; height: 8px; background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAMAAABFaP0WAAAAAXNSR0IArs4c6QAAAAZQTFRFAAAAAAAApWe5zwAAAAJ0Uk5TAP9bkSK1AAAADklEQVQImWNgZGBgYAQAAAwAA/QhnyoAAAAASUVORK5CYII=) top left / 4px; flex: 1; align-self: center}}
 p {color: var(--dark-gray); font-size: 0.875em; margin-inline: 24px; margin-bottom: 0}
 #webrings {display: flex; flex-direction: column; align-items: center; gap: 0.75em; padding: 12px; border: 1px solid var(--gray); margin: 1em 12px; flex: 1; overflow-y: auto}
-#beepbox-webring {display: grid; grid-template: "main main" "left right"; gap: 0}
-#beepbox-main {border-bottom-left-radius: 0; border-bottom-right-radius: 0; grid-area: main}
-.beepbox-arrow {
-  border-top-left-radius: 0; border-top-right-radius: 0;
-  & img {margin: auto}
-  &:first-of-type {border-right: 2px solid #222; border-bottom-right-radius: 0}
-  &:last-of-type {border-bottom-left-radius: 0}
-}
 #back {
   color: inherit;
   display: flex; justify-content: center; align-items: center;

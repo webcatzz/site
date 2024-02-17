@@ -323,6 +323,13 @@ a:not([href]):hover {outline: none; filter: grayscale(1); cursor: not-allowed}
   #lightswitch {opacity: 0.2; scale: -1; position: relative; z-index: 10}
 }
 
+/* sitemap */
+#map {
+  color: var(--dark-gray); font-family: ms-serif; font-size: 0.875em; letter-spacing: 0.025em;
+  text-align: center;
+  &:hover {text-decoration: underline; outline: none}
+}
+
 /* laser pointer */
 @keyframes move {from {transform: translate(-1px, -1px)} to {transform: translate(1px, 0.5px)}}
 #laser-pointer {
