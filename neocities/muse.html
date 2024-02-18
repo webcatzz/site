@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>webcatz //→ muse ariadne</title>
+	<link rel="icon" href="assets/icon.svg">
+	<link rel="stylesheet" href="global.css">
+  <style>
+body {color: var(--white); line-height: 1.4; background: linear-gradient(75deg, transparent, var(--black) 10%, var(--black) 90%, transparent) fixed, url(assets/dots-black.png) var(--black) fixed; width: max-content; padding: 2em 1em; margin-inline: auto}
+
+#header {display: flex; align-items: center; gap: 0.5em}
+h1 {margin-right: auto}
+a {color: var(--dark-gray); text-decoration: underline}
+
+h2 {
+  color: var(--light-gray); font-size: 1em; font-weight: normal; font-style: italic;
+  display: flex; align-items: center; gap: 1em;
+  background: linear-gradient(to bottom, var(--black), transparent 15%, transparent 85%, var(--black)), url(assets/ariadne.png);
+  max-width: 700px; aspect-ratio: 7;
+  padding: 1em; border-right: 1px solid var(--off-black); box-sizing: border-box;
+  margin-block: 0;
+
+  &::before {content: attr(data-week); font-family: monospace; font-style: normal; align-self: start}
+  &[aria-hidden] {
+    position: relative;
+    &::after {
+      content: "x"; color: var(--dark-gray); font-size: 2em;
+      text-shadow: -0.05em 0 var(--black), -0.05em 0.05em var(--black), 0 0.05em var(--black), 0.05em 0.05em var(--black), 0.05em 0 var(--black), 0.05em -0.05em var(--black), 0 -0.05em var(--black), -0.05em -0.05em var(--black);
+      transform: translate(-50%, -50%);
+      position: absolute; top: 50%; left: 50%;
+    }
+  }
+}
+pre {font: inherit; padding: 1.5em 2em}
+
+#top {text-align: center; display: block; margin-block: 4em}
+  </style>
+</head>
+<body>
+  <div id="header">
+    <h1>muse ariadne</h1>
+    <a href="https://museariadne.neocities.org">muse</a>
+    <a href="index.html">home</a>
+  </div>
+
+  <article>
+    <h2 data-week="feb 12">a worldly place that is a threshold for you. this can mean anything—maybe it's some place between end and beginning, forward and backward, past and present, here and there, friends and lovers, or something else entirely!</h2>
+    <pre>
+where the steps collapse into the sea
+heavy under the weight of the air
+where the doves stand upon the waters
+building an olive tree out of twigs
+sits the bus stop on a cliff
+next stop vapor and a quick death
+
+spiraling compass proffered skyward
+needle point digs into skin
+my map does not match these roads
+these are my palmlines
+these are the shadows of the shadows
+of the powerlines hung with dead birds
+
+the sun came down to beg me
+pack up everything you have been
+here are your cardboard boxes
+death comes quickly like a stone
+when the waters crash down you will not be there
+run away
+
+but
+am i doing it right
+am i labeling these right
+when i am gone will you find
+what you are looking for here
+when you are gone will they find
+what they are looking for here
+
+will it be a way out or a viking burial
+taking flight or a bus off a cliff
+am i a bird or a flying fish
+to be caught in the fisher's net
+to be caught in the duct tape and cable
+am i capable of meeting your eye
+am i capable of staring into the blinding sun
+
+i am on the bus leaving home
+i am waving goodbye from the bus stop
+eerie silence tensed like an animal
+as the duct tape bursts
+as the waterfalls reach out of the sky
+fumbled disappearing trick
+
+will i be there
+    </pre>
+  </article>
+
+  <h2 data-week="feb 5" aria-hidden="true">what ways writing plays a role in your life-- why do you like it? is it hard? what's your relationship with it? be as abstract or direct as you'd like.</h2>
+
+  <a id="top" href="">back to top</a>
+</body>
+</html>
