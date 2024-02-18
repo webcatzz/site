@@ -20,6 +20,7 @@ AudioPlayer.create([
 ],{
   playButton: audioEls[3],
   skipButton: audioEls[5],
+  insertIcons: true,
   slider: audioEls[4],
   sliderThumb: audioEls[4].children[2],
   sliderProgress: audioEls[4].children[1],

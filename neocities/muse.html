@@ -7,11 +7,16 @@
 	<link rel="icon" href="assets/icon.svg">
 	<link rel="stylesheet" href="global.css">
   <style>
-body {color: var(--white); line-height: 1.4; background: linear-gradient(75deg, transparent, var(--black) 10%, var(--black) 90%, transparent) fixed, url(assets/dots-black.png) var(--black) fixed; width: max-content; padding: 2em 1em; margin-inline: auto}
+body {color: var(--white); line-height: 1.4; background: linear-gradient(75deg, transparent, var(--black) 10%, var(--black) 90%, transparent) fixed, url(assets/dots-black.png) var(--black) fixed; width: max-content; padding: 4em 1em; margin-inline: auto}
 
 #header {display: flex; align-items: center; gap: 0.5em}
-h1 {margin-right: auto}
+h1 {margin-block: 0; margin-right: auto}
 a {color: var(--dark-gray); text-decoration: underline}
+
+#audio-player {color: var(--dark-gray); font-size: 0.875em; line-height: 1; display: flex; align-items: center; gap: 1em; padding-block: 0.5em; margin-bottom: 2em}
+#slider {display: flex; align-items: center; flex: 1; position: relative; align-self: stretch; cursor: pointer}
+#track {background: url("data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 32 32\"><text y=\".9em\" font-size=\"28.8\">🧶</text></svg>") no-repeat center / 300%; height: 1px; flex: 1; pointer-events: none}
+#thumb {margin-bottom: -0.3em; position: absolute; pointer-events: none}
 
 h2 {
   color: var(--light-gray); font-size: 1em; font-weight: normal; font-style: italic;
@@ -22,15 +27,6 @@ h2 {
   margin-block: 0;
 
   &::before {content: attr(data-week); font-family: monospace; font-style: normal; align-self: start}
-  &[aria-hidden] {
-    position: relative;
-    &::after {
-      content: "x"; color: var(--dark-gray); font-size: 2em;
-      text-shadow: -0.05em 0 var(--black), -0.05em 0.05em var(--black), 0 0.05em var(--black), 0.05em 0.05em var(--black), 0.05em 0 var(--black), 0.05em -0.05em var(--black), 0 -0.05em var(--black), -0.05em -0.05em var(--black);
-      transform: translate(-50%, -50%);
-      position: absolute; top: 50%; left: 50%;
-    }
-  }
 }
 pre {font: inherit; padding: 1.5em 2em}
 
@@ -42,6 +38,15 @@ pre {font: inherit; padding: 1.5em 2em}
     <h1>muse ariadne</h1>
     <a href="https://museariadne.neocities.org">muse</a>
     <a href="index.html">home</a>
+  </div>
+  <div id="audio-player">
+    <button id="play"></button>
+    <a id="song-title" target="_blank"></a>
+    <div id="slider">
+      <div id="track"></div>
+      <div id="thumb">🧶</div>
+    </div>
+    <button id="skip"></button>
   </div>
 
   <article>
@@ -90,13 +95,34 @@ eerie silence tensed like an animal
 as the duct tape bursts
 as the waterfalls reach out of the sky
 fumbled disappearing trick
-
 will i be there
     </pre>
   </article>
 
-  <h2 data-week="feb 5" aria-hidden="true">what ways writing plays a role in your life-- why do you like it? is it hard? what's your relationship with it? be as abstract or direct as you'd like.</h2>
+  <h2 data-week="feb 5" aria-hidden="true"></h2>
 
-  <a id="top" href="">back to top</a>
+  <a id="top" href="#">back to top</a>
+  <script src="lib/audio-player.js"></script>
+  <script>
+AudioPlayer.create([
+  {title: "semifervant - coffeebug", src: "https://files.catbox.moe/5z8a1t.mp3", link: "https://coffeebug.bandcamp.com/album/haunted-sticky-notes"},
+  {title: "feelingemptyafterastorm - coffeebug", src: "https://files.catbox.moe/y0ost1.mp3", link: "https://coffeebug.bandcamp.com/album/haunted-sticky-notes"},
+  {title: "desolatehallway (bonus) - coffeebug", src: "https://files.catbox.moe/rnv52d.mp3", link: "https://coffeebug.bandcamp.com/album/haunted-sticky-notes"},
+  {title: "music box (bonus) - coffeebug", src: "https://files.catbox.moe/ntf6g3.mp3", link: "https://coffeebug.bandcamp.com/album/haunted-sticky-notes"},
+  {title: "a prelude - bridget", src: "https://files.catbox.moe/jzu0x0.mp3", link: "https://bridget.party/music"},
+  {title: "shortcut - bridget", src: "https://files.catbox.moe/tabgiy.mp3", link: "https://bridget.party/music"},
+  {title: "portobello railway - bridget", src: "https://files.catbox.moe/9ek47k.mp3", link: "https://bridget.party/music"},
+  {title: "(forever?????????) - glass beach", src:"https://files.catbox.moe/cfryqz.mp3", link: "https://glassbeach.bandcamp.com/album/the-first-glass-beach-album"}
+],{
+  playButton: document.getElementById("play"),
+  skipButton: document.getElementById("skip"),
+  insertIcons: true,
+  title: document.getElementById("song-title"),
+  slider: document.getElementById("slider"),
+  sliderThumb: document.getElementById("thumb"),
+  shuffle: true,
+  onended: () => document.getElementById("song-title").href = AudioPlayer.list[AudioPlayer.idx].link
+});
+  </script>
 </body>
 </html>

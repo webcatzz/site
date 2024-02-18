@@ -1,5 +1,4 @@
-# 9.2.24
-- tweaked [links page](links.html)
+you're better off reading the commit log for newer changes.
 
 # 4.2.24
 - on the index...

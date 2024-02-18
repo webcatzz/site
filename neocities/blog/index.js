@@ -46,6 +46,7 @@ AudioPlayer.create([
 ],{
   playButton: audioEls[0],
   skipButton: audioEls[1],
+  insertIcons: true,
   shuffle: true,
   onended: () => {
     let title = document.createElement("marquee");

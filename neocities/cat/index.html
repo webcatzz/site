@@ -117,8 +117,8 @@ footer a {width: 50%; margin: auto; opacity: 0.5; display: block}
 					<div id="audio-listing" class="pixel">track 1 of 11</div>
 					<div id="audio-title">Interlude</div>
 					<div id="audio-source" class="pixel">Feed me Jack - Chumpfrey</div>
-					<button id="audio-play"><i class="fa-solid fa-play"></i></button>
-					<button id="audio-skip"><i class="fa-solid fa-forward"></i></button>
+					<button id="audio-play"></button>
+					<button id="audio-skip"></button>
 				</div>
 				<img src="assets/rollingstars.gif">
 			</div>
@@ -141,13 +141,14 @@ AudioPlayer.create([
 ],{
 	playButton: document.getElementById("audio-play"),
 	skipButton: document.getElementById("audio-skip"),
+	insertIcons: true,
 	title: document.getElementById("audio-title"),
-});
-AudioPlayer.on("ended", () => {
-	document.getElementById("audio-source").textContent = AudioPlayer.list[AudioPlayer.idx].source;
-	document.getElementById("audio-listing").textContent = "track " + (AudioPlayer.idx + 1) + " of " + AudioPlayer.list.length;
-	document.getElementById("audio-title").title = AudioPlayer.list[AudioPlayer.idx].title;
-	document.getElementById("audio-source").title = AudioPlayer.list[AudioPlayer.idx].source;
+	onended: () => {
+		document.getElementById("audio-source").textContent = AudioPlayer.list[AudioPlayer.idx].source;
+		document.getElementById("audio-listing").textContent = "track " + (AudioPlayer.idx + 1) + " of " + AudioPlayer.list.length;
+		document.getElementById("audio-title").title = AudioPlayer.list[AudioPlayer.idx].title;
+		document.getElementById("audio-source").title = AudioPlayer.list[AudioPlayer.idx].source;
+	}
 });
 		</script>
 	</body>
