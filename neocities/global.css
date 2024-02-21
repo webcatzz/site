@@ -31,3 +31,13 @@ body.center {min-height: 100vh}
 /* notes */
 .stickynote {color: black; font: 0.875rem/1.25 sans-serif; width: 128px; aspect-ratio: 1; padding: 16px; box-shadow: 0 4px 8px #0000001a; background-color: #ffe176; clip-path: polygon(0 25%, 0 0, 100% 0, 100% 25%, calc(100% + 8px) calc(100% + 12px), 50% calc(100% + 3px), -8px calc(100% + 12px))}
 .stickynote a:hover {text-decoration: underline}
+
+/* construction */
+#construction {
+  font: normal 0.875rem/1 sans-serif;
+  display: flex; align-items: center; gap: 0.5em;
+  background-color: #f4f3f0;
+  width: min-content; height: 2em; padding: 0.25em; padding-right: 0.5em;
+  border: 1px solid #b6b2a8; margin-inline: auto;
+  &::before {content: url(assets/construction.gif)}
+}
