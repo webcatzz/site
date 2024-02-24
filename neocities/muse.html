@@ -5,9 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>webcatz //→ muse ariadne</title>
 	<link rel="icon" href="assets/icon.svg">
+  <script defer src="lib/image-modal.js" data-select="img"></script>
 	<link rel="stylesheet" href="global.css">
   <style>
-body {color: var(--white); line-height: 1.4; background: linear-gradient(75deg, transparent, var(--black) 10%, var(--black) 90%, transparent) fixed, url(assets/dots-black.png) var(--black) fixed; width: max-content; padding: 4em 1em; margin-inline: auto}
+body {color: var(--white); line-height: 1.4; background: linear-gradient(75deg, transparent, var(--black) 10%, var(--black) 90%, transparent) fixed, url(assets/dots-black.png) var(--black) fixed; max-width: max-content; padding: 4em 1em; margin-inline: auto}
 
 #header {display: flex; align-items: center; gap: 0.5em}
 h1 {margin-block: 0; margin-right: auto}
@@ -20,15 +21,15 @@ a {color: var(--dark-gray); text-decoration: underline}
 
 h2 {
   color: var(--light-gray); font-size: 1em; font-weight: normal; font-style: italic;
-  display: flex; align-items: center; gap: 1em;
-  background: linear-gradient(to bottom, var(--black), transparent 15%, transparent 85%, var(--black)), url(assets/ariadne.png);
-  max-width: 700px; aspect-ratio: 7;
-  padding: 1em; border-right: 1px solid var(--off-black); box-sizing: border-box;
+  display: flex; gap: 1em;
+  background: url(assets/ariadne.png) repeat-x; max-width: 701px; min-height: 100px;
+  padding: 1em; box-sizing: border-box;
   margin-block: 0;
 
-  &::before {content: attr(data-week); font-family: monospace; font-style: normal; align-self: start}
+  &::before {content: attr(data-week); font-family: monospace; font-size: 0.875em; font-style: normal}
 }
-pre {font: inherit; padding: 1.5em 2em}
+pre {font: inherit; white-space: pre-wrap; contain: inline-size; padding: 1.5em 2em}
+.comment {color: var(--gray); font-size: 0.75em}
 
 #top {text-align: center; display: block; margin-block: 4em}
   </style>
@@ -43,11 +44,128 @@ pre {font: inherit; padding: 1.5em 2em}
     <button id="play"></button>
     <a id="song-title" target="_blank"></a>
     <div id="slider">
-      <div id="track"></div>
-      <div id="thumb">🧶</div>
+      <div id="track" aria-hidden="true"></div>
+      <div id="thumb" aria-hidden="true">🧶</div>
     </div>
     <button id="skip"></button>
   </div>
+
+  <article>
+    <h2 data-week="feb 19">a piece inspired by two famous dali paintings, <img width="125px" src="https://i.postimg.cc/Rq5xwH5d/persistenceofmemory.jpg" alt="the persistence of memory"> and <img width="125px" src="https://i.postimg.cc/cL3rqRLx/theelephants.jpg" alt="the elephants">. consider exploring movement, slowness/speed, heat/cold, and warped sensations.</h2>
+    <pre>
+vast tarmac ocean.
+<span class="comment">(i usually pick imagery for the idea, not the other way around. this was interesting!)</span>
+<span class="comment">(also: one of my earliest nightmares i can remember is the floor melting and sucking me in. i'll try to capture that)</span>
+
+when the world ended
+the sun burnt out my eyes
+haunting angel goes unseen
+but not unfelt
+in the wake it leaves in the rippling heat
+bright shadows of lighthouse panopticon
+heart in a ribcage, caught
+in the headlights
+of a car that suddenly
+swerves through the floor
+asphalt mad with hunger
+leave me shaking
+and alone
+
+eat me! heat me!
+i am the only cold thing in this world
+roads into rivers of
+dripping bubbling tar
+heat into hunger for
+dripping skin and fat
+roads into rivers into
+vast tarmac ocean
+all roads lead to rome
+the great city stretched like taffy
+bottomless parking lot
+
+haul yourself out of the starving sea
+but tar sticks eternal
+leaden and lethargic
+where do you think you're going?
+don't bite off more than you can chew
+a clogged windpipe is still drowning
+don't you know the saying?
+roads to rivers to rome, over and over
+a frozen pheonix dies eventually
+swim or your lungs stop working,
+but swimming starves the lungs just as well
+two ways to hell, why try
+sit, let the earth eat you!
+nowhere to run, asphalt into lava flow
+nowhere to run, tar up the nose and behind the
+eyes still trained on the thing in the sky (sigh)
+lighthouse above the pitch, where sinners go to die
+"stay in your assigned cell,"
+
+hopscotch
+across the thousand scorching metal hulls
+the thousand poison air fresheners
+dance on burnt toes across burnt out headlights
+(ignore the tar heavy on the shoulders)
+performance for your endless gaze
+(frozen hands fumble on the keys)
+a stage made of family cars
+sinking slowly, slowly down
+towed into ink deathgrip, eaten alive
+in dusty garage drowse
+
+above, above
+the place where tar lets free
+there's a two millimeter hole into heaven
+in the cupola above the sea
+but the devil follows me like a begging dog
+the light in the light in the sky
+traps me in a falling funhouse
+butterflies grow eyes
+that all look like yours
+wards against the beast in the dark
+aren't you ashamed?
+when the warden turns his lantern to you
+ridges of your maw cast in stark relief
+aren't you ashamed?
+oh, idiot animal
+
+as above, so below
+death in two suits
+choose your own adventure
+only has one last page
+analyzing star charts and tabloids
+maps that only label oceans
+the doctor concludes i grind my teeth
+because im anxious when i sleep
+i starve for something
+i am unable to eat
+i can't help dreaming of
+when you smear my face as glistening paint
+when your hands swim through my thawing guts
+when you tug my flesh from my body
+body heat gently melting skin
+i can't help the terror
+pavlovian flinch
+i can't see, i can't see
+everyone wants to eat me
+is god a lover or a warden
+do i disgust you
+o slow blinking eye
+i disgust myself
+so what can i ask of you
+and i don't know
+one day i'll be there with you
+in the cupola above the sea
+till then i fall before the light
+of that blinding beacon
+impossibly tall
+slip back into the tar
+life returns to its roots
+trapped in a parked car
+left in drive
+    </pre>
+  </article>
 
   <article>
     <h2 data-week="feb 12">a worldly place that is a threshold for you. this can mean anything—maybe it's some place between end and beginning, forward and backward, past and present, here and there, friends and lovers, or something else entirely!</h2>
