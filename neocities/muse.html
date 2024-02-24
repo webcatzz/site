@@ -8,7 +8,7 @@
   <script defer src="lib/image-modal.js" data-select="img"></script>
 	<link rel="stylesheet" href="global.css">
   <style>
-body {color: var(--white); line-height: 1.4; background: linear-gradient(75deg, transparent, var(--black) 10%, var(--black) 90%, transparent) fixed, url(assets/dots-black.png) var(--black) fixed; max-width: max-content; padding: 4em 1em; margin-inline: auto}
+body {color: var(--white); line-height: 1.4; background: linear-gradient(75deg, transparent, var(--black) 10%, var(--black) 90%, transparent) fixed, url(assets/dots-black.png) var(--black) fixed; max-width: 701px; padding: 4em 1em; margin-inline: auto}
 
 #header {display: flex; align-items: center; gap: 0.5em}
 h1 {margin-block: 0; margin-right: auto}
@@ -22,13 +22,14 @@ a {color: var(--dark-gray); text-decoration: underline}
 h2 {
   color: var(--light-gray); font-size: 1em; font-weight: normal; font-style: italic;
   display: flex; gap: 1em;
-  background: url(assets/ariadne.png) repeat-x; max-width: 701px; min-height: 100px;
+  background: url(assets/ariadne.png) repeat-x; min-height: 100px;
   padding: 1em; box-sizing: border-box;
   margin-block: 0;
 
   &::before {content: attr(data-week); font-family: monospace; font-size: 0.875em; font-style: normal}
 }
 pre {font: inherit; white-space: pre-wrap; contain: inline-size; padding: 1.5em 2em}
+p {margin-inline: 2em; h2 + & {padding-top: 1.5em} &:last-of-type {padding-bottom: 5.7em}}
 .comment {color: var(--gray); font-size: 0.75em}
 
 #top {text-align: center; display: block; margin-block: 4em}
@@ -154,14 +155,13 @@ do i disgust you
 o slow blinking eye
 i disgust myself
 so what can i ask of you
-and i don't know
+i don't know
 one day i'll be there with you
 in the cupola above the sea
 till then i fall before the light
 of that blinding beacon
 impossibly tall
 slip back into the tar
-life returns to its roots
 trapped in a parked car
 left in drive
     </pre>
@@ -218,7 +218,7 @@ will i be there
     </pre>
   </article>
 
-  <h2 data-week="feb 5" aria-hidden="true"></h2>
+  <h2 data-week="feb 5" aria-hidden="true"><!--what ways does writing plays a role in your life—why do you like it? is it hard? what's your relationship with it? be as abstract or direct as you'd like.--></h2>
 
   <a id="top" href="#">back to top</a>
   <script src="lib/audio-player.js"></script>
