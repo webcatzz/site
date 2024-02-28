@@ -81,7 +81,8 @@ const captures = {
     date: "may 31st '23",
     subpages: [
       "about",
-      "blog"
+      "blog",
+      "screenshots"
     ]
   },
   rouxls: {
@@ -168,7 +169,7 @@ function viewCapture(key) {
 }
 function view(src) {
   document.getElementById("view").src = "";
-  document.getElementById("view").src = src + ".png";
+  document.getElementById("view").src = src + (src == "stars-screenshots" ? ".jpg" : ".png");
 }
   </script>
 </body>

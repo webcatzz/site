@@ -34,7 +34,7 @@ body.center {min-height: 100vh}
 
 /* construction */
 #construction {
-  font: normal 0.875rem/1 sans-serif;
+  color: #121212; font: normal 0.875rem/1 sans-serif;
   display: flex; align-items: center; gap: 0.5em;
   background-color: #f4f3f0;
   width: min-content; height: 2em; padding: 0.25em; padding-right: 0.5em;

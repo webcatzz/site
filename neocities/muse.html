@@ -14,23 +14,47 @@ body {color: var(--white); line-height: 1.4; background: linear-gradient(75deg, 
 h1 {margin-block: 0; margin-right: auto}
 a {color: var(--dark-gray); text-decoration: underline}
 
-#audio-player {color: var(--dark-gray); font-size: 0.875em; line-height: 1; display: flex; align-items: center; gap: 1em; padding-block: 0.5em; margin-bottom: 2em}
+#audio-player {color: var(--dark-gray); font-size: 0.875em; line-height: 1; display: flex; align-items: center; gap: 1em; padding-block: 0.5em}
 #slider {display: flex; align-items: center; flex: 1; position: relative; align-self: stretch; cursor: pointer}
 #track {background: url("data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 32 32\"><text y=\".9em\" font-size=\"28.8\">🧶</text></svg>") no-repeat center / 300%; height: 1px; flex: 1; pointer-events: none}
 #thumb {margin-bottom: -0.3em; position: absolute; pointer-events: none}
 
+#weekdays {
+  display: flex; margin-block: 2em 1em;
+  & div {
+    color: var(--off-black);
+    font-size: 0.75em; font-weight: bold; letter-spacing: 0.1em;
+    text-transform: uppercase; text-align: center;
+    flex: 1;
+  }
+}
+
 h2 {
   color: var(--light-gray); font-size: 1em; font-weight: normal; font-style: italic;
   display: flex; gap: 1em;
-  background: url(assets/ariadne.png) repeat-x; min-height: 100px;
+  background: url(assets/ariadne.png) repeat-x;
+  min-height: 100px;
   padding: 1em; box-sizing: border-box;
   margin-block: 0;
 
-  &::before {content: attr(data-week); font-family: monospace; font-size: 0.875em; font-style: normal}
+  &::before {content: attr(data-week); color: var(--gray); font-family: monospace; font-size: 0.875em; font-style: normal}
 }
+.mon, .tue, .wed, .thu, .fir, .sat, .sun {
+  background:
+    url("data:image/svg+xml;utf8,<svg width=\"100\" stroke=\"%23282625\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 100 100\"><line x1=\"0\" y1=\"0\" x2=\"100\" y2=\"100\"/><line x1=\"100\" y1=\"0\" x2=\"0\" y2=\"100\"/></svg>") no-repeat,
+    url(assets/ariadne.png) repeat-x;
+}
+.tue {background-position-x: 100px, 0}
+.wed {background-position-x: 200px, 0}
+.thu {background-position-x: 300px, 0}
+.fri {background-position-x: 400px, 0}
+.sat {background-position-x: 500px, 0}
+.sun {background-position-x: 600px, 0}
+
+
 pre {font: inherit; white-space: pre-wrap; contain: inline-size; padding: 1.5em 2em}
 p {margin-inline: 2em; h2 + & {padding-top: 1.5em} &:last-of-type {padding-bottom: 5.7em}}
-.comment {color: var(--gray); font-size: 0.75em}
+.gray {color: var(--dark-gray); font-size: 0.75em}
 
 #top {text-align: center; display: block; margin-block: 4em}
   </style>
@@ -50,13 +74,18 @@ p {margin-inline: 2em; h2 + & {padding-top: 1.5em} &:last-of-type {padding-botto
     </div>
     <button id="skip"></button>
   </div>
+  <div id="weekdays" aria-hidden="true"><div>MON</div><div>TUE</div><div>WED</div><div>THU</div><div>FRI</div><div>SAT</div><div>SUN</div></div>
 
   <article>
-    <h2 data-week="feb 19">a piece inspired by two famous dali paintings, <img width="125px" src="https://i.postimg.cc/Rq5xwH5d/persistenceofmemory.jpg" alt="the persistence of memory"> and <img width="125px" src="https://i.postimg.cc/cL3rqRLx/theelephants.jpg" alt="the elephants">. consider exploring movement, slowness/speed, heat/cold, and warped sensations.</h2>
+    <h2 data-week="feb 26">write about echoes, sound, and reverberation. what is an echo—just sound or something more? how can it reverberate through past, present, and future? can emotion be an echo in that way? what else can be?</h2>
+  </article>
+
+  <article>
+    <h2 data-week="feb 19" class="sat">a piece inspired by two famous dali paintings, <img width="125px" src="https://i.postimg.cc/Rq5xwH5d/persistenceofmemory.jpg" alt="the persistence of memory"> and <img width="125px" src="https://i.postimg.cc/cL3rqRLx/theelephants.jpg" alt="the elephants">. consider exploring movement, slowness/speed, heat/cold, and warped sensations.</h2>
     <pre>
 vast tarmac ocean.
-<span class="comment">(i usually pick imagery for the idea, not the other way around. this was interesting!)</span>
-<span class="comment">(also: one of my earliest nightmares i can remember is the floor melting and sucking me in. i'll try to capture that)</span>
+<span class="gray">i usually pick imagery for the idea, not the other way around. this was interesting!
+one of my earliest nightmares i can remember is the floor melting and sucking me in. i'll try to capture that</span>
 
 when the world ended
 the sun burnt out my eyes
@@ -168,7 +197,7 @@ left in drive
   </article>
 
   <article>
-    <h2 data-week="feb 12">a worldly place that is a threshold for you. this can mean anything—maybe it's some place between end and beginning, forward and backward, past and present, here and there, friends and lovers, or something else entirely!</h2>
+    <h2 data-week="feb 12" class="sun">a worldly place that is a threshold for you. this can mean anything—maybe it's some place between end and beginning, forward and backward, past and present, here and there, friends and lovers, or something else entirely!</h2>
     <pre>
 where the steps collapse into the sea
 heavy under the weight of the air
@@ -218,7 +247,7 @@ will i be there
     </pre>
   </article>
 
-  <h2 data-week="feb 5" aria-hidden="true"><!--what ways does writing plays a role in your life—why do you like it? is it hard? what's your relationship with it? be as abstract or direct as you'd like.--></h2>
+  <h2 data-week="feb 5"><!--what ways does writing plays a role in your life—why do you like it? is it hard? what's your relationship with it? be as abstract or direct as you'd like.--></h2>
 
   <a id="top" href="#">back to top</a>
   <script src="lib/audio-player.js"></script>

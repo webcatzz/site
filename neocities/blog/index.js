@@ -18,11 +18,8 @@ if (Math.random() > 0.95) document.querySelector("h1").innerHTML = '<img src="as
 const main = document.querySelector("main"), navLinks = document.querySelector("nav").getElementsByTagName("a");
 for (const link of navLinks) link.onclick = onLinkClicked;
 function onLinkClicked(e) {main.scrollTo({top: main.children[Array.prototype.indexOf.call(navLinks, e.target)].offsetTop - 48, behavior: "smooth"})}
-
-// url param scroll
-let params = new URLSearchParams(window.location.search);
-if (params.has("entry")) main.scrollTo({top: main.children[main.childElementCount - params.get("entry")].offsetTop - 48, behavior: "smooth"});
-
+// url hash scroll
+if (location.hash) main.scrollTo({top: main.children[main.childElementCount - Number(location.hash.substring(1))].offsetTop - 48, behavior: "smooth"});
 // "new" marker
 navLinks[0].classList.add("new");
 
