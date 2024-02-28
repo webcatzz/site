@@ -267,9 +267,10 @@ class Atom extends Particle {
         // covalent
         else if (
           need1 > 0 && need2 > 0 &&
-          need1 % 2 == 1 && need2 % 2 == 1
+          need1 % 2 == 1 || need2 % 2 == 1 ||
+          need1 == need2
         ) {
-          new Bond(this, atom, "covalent", Math.abs(need1));
+          new Bond(this, atom, "covalent", Math.min(Math.abs(need1), Math.abs(need2)));
         }
       }
     }
@@ -308,7 +309,7 @@ class Atom extends Particle {
     if (group < 3 || group > 12) {
       let valence = this.cloud.findIndex(el => el == 0) - 1, valenceNum = this.cloud[valence];
       if (valenceNum == 8 || valence == 1 && valenceNum == 2) return 0;
-      else if (valenceNum < 4) return -valenceNum;
+      else if (valenceNum < 4) return valence == 1 ? valenceNum : -valenceNum;
       else return 8 - valenceNum;
     }
     return 0;
