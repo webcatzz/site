@@ -61,16 +61,27 @@ onresize = () => canvas.el.width = innerWidth, canvas.el.height = innerHeight;
 
 // physics
 const physics = {
-  els: [],
-  add: el => physics.els.push(el),
-  remove: el => physics.els.splice(physics.els.indexOf(el), 1),
+  atoms: [],
+  bonds: [],
+  add: (el, arr) => arr.push(el),
+  remove: (el, arr) => arr.splice(arr.indexOf(el), 1),
+
   tick: () => {
-    for (const el of physics.els) el.tick();
+    // atoms
+    for (let i = 0; i < physics.atoms.length; i++) {
+      physics.atoms[i].tick();
+      if (physics.atoms[i].electronNeed) for (let j = i + 1; j < physics.atoms.length; j++) {
+        if (physics.atoms[j].electronNeed && !physics.atoms[i].isBonded(physics.atoms[j]) && physics.near(physics.atoms[i], physics.atoms[j], 128)) {
+          physics.atoms[i].checkReact(physics.atoms[j]);
+        }
+      }
+    }
+    // bonds
+    for (const bond of physics.bonds) bond.tick();
   },
 
   near: (a, b, distance) => {
-    if (Math.abs(a.x - b.x) > distance) return false;
-    if (Math.abs(a.y - b.y) > distance) return false;
+    if (Math.abs(a.x - b.x) > distance || Math.abs(a.y - b.y) > distance) return false;
     if ((a.x - b.x) ** 2 + (a.y - b.y) ** 2 < distance ** 2) return true;
   }
 }
@@ -99,22 +110,27 @@ class Bond {
   static incr = 0;
   a; b; electrons; key;
 
-  constructor(particle1, particle2, type, electrons) {
-    if (particle1.getElectronNeed() < particle2.getElectronNeed())
-      this.a = particle1, this.b = particle2;
+  constructor(particle1, particle2, type) {
+    // ordering
+    if (particle1.electronNeed < particle2.electronNeed) this.a = particle1, this.b = particle2;
+    else if (particle1.electronNeed > particle2.electronNeed) this.a = particle2, this.b = particle1;
+    else if (particle1.p < particle2.p) this.a = particle1, this.b = particle2;
     else this.a = particle2, this.b = particle1;
-
-    this.electrons = electrons;
+    // grabbing electrons
+    this.type = type;
+    if (this.type == "ionic") this.electrons = Math.abs(this.a.electronNeed);
+    else this.electrons = Math.min(Math.abs(this.a.electronNeed), Math.abs(this.b.electronNeed));
+    // updating atoms' bonds and electrons
     this.a.bonds.push(this);
     this.b.bonds.push(this);
-    this.a.addElectrons(type == "ionic" ? -electrons : electrons);
-    this.b.addElectrons(electrons);
-
+    this.a.addElectrons(this.type == "ionic" ? -this.electrons : this.electrons);
+    this.b.addElectrons(this.electrons);
+    // adding to canvas & physics
     this.key = "bond" + ++Bond.incr;
-    physics.add(this);
-
-    if (type == "ionic") console.log("Bonded:\n", -electrons, this.a, "\n ", electrons, this.b);
-    else console.log("Bonded: (", electrons, ")\n", this.a, "\n", this.b);
+    physics.add(this, physics.bonds);
+    // debug
+    if (type == "ionic") console.log("Bonded:\n", -this.electrons, this.a, "\n ", this.electrons, this.b);
+    else console.log("Bonded: (", this.electrons, ")\n", this.a, "\n", this.b);
   }
 
   tick() {
@@ -122,7 +138,7 @@ class Bond {
     let dy = (this.b.y - this.a.y - 64) / 100;
     this.a.applyVelocity(dx, dy);
     this.b.applyVelocity(-dx, -dy);
-
+    // drawing
     canvas.set(this.key, "line", {
       color: palette.black, width: 4,
       coords: [
@@ -130,20 +146,20 @@ class Bond {
         this.b.x, this.b.y,
       ]
     });
-    for (let i = this.electrons; i > 0; i--) canvas.set(this.key + "-" + i, "circle", {
-      color: palette.red, border: palette.red, width: 4,
-      radius: 4,
-      x: this.a.x + (this.b.x - this.a.x) / 2 - (this.electrons.length - this.electrons.length / 2 + i) * 8,
-      y: this.a.y + (this.b.y - this.a.y) / 2 - (this.electrons.length - this.electrons.length / 2 + i) * 8,
-    });
+    // for (let i = this.electrons; i > 0; i--) canvas.set(this.key + "-" + i, "circle", {
+    //   color: palette.white, border: palette.black, width: 4,
+    //   radius: 4,
+    //   x: this.a.x + (this.b.x - this.a.x) / 2 - (this.electrons.length - this.electrons.length / 2 + i) * 8,
+    //   y: this.a.y + (this.b.y - this.a.y) / 2 - (this.electrons.length - this.electrons.length / 2 + i) * 8,
+    // });
   }
 
   remove() {
-    physics.remove(this);
+    physics.remove(this, physics.bonds);
     canvas.remove(this.key);
     for (let i = this.electrons; i > 0; i--) canvas.remove(this.key + "-" + i);
     this.a.addElectrons(this.electrons);
-    this.b.addElectrons(type == "ionic" ? -this.electrons : this.electrons);
+    this.b.addElectrons(this.type == "ionic" ? -this.electrons : this.electrons);
     this.a.bonds.splice(this.a.bonds.indexOf(this));
     this.b.bonds.splice(this.b.bonds.indexOf(this));
   }
@@ -160,9 +176,6 @@ class Particle extends HTMLElement {
     this.classList.add("colored", "particle");
     this.setColor(palette.random());
     this.addEventListener("mousedown", this.drag);
-  }
-  connectedCallback() {
-    physics.add(this);
   }
 
   set x(value) {this.style.left = value + "px"}
@@ -207,10 +220,6 @@ class Particle extends HTMLElement {
     });
   }
 
-  disconnectedCallback() {
-    physics.remove(this);
-  }
-
   static get observedAttributes() {return ["x", "y", "color"]}
   attributeChangedCallback(name, oldValue, value) {
     if (name == "color") this.setColor(palette[value]);
@@ -241,39 +250,32 @@ class Atom extends Particle {
     this.classList.add("atom");
   }
   connectedCallback() {
-    super.connectedCallback();
     // visuals
     this.setColor(this.getColor());
     this.style.width = 25 + this.getPeriod() * 5 + "px";
     this.label = this.appendChild(document.createElement("span"));
     this.updateSymbol();
-
+    // updating cloud
     this.addElectrons(this.p);
+    // physics
+    physics.add(this, physics.atoms);
   }
 
   get name() {return Atom.symbols[this.p]}
   set name(value) {this.p = Atom.symbols.indexOf(value)}
 
   // bonds & reactions
-  tick() {
-    super.tick();
-    let need1 = this.getElectronNeed();
-    if (need1 != 0) for (const atom of document.getElementsByTagName("lbau-atom")) {
-      if (atom != this && !this.isBonded(atom) && physics.near(this, atom, 128)) {
-        let need2 = atom.getElectronNeed();
-        if (need2 == 0) continue;
-        // ionic
-        else if (need1 === -need2) new Bond(this, atom, "ionic", Math.abs(need1));
-        // covalent
-        else if (
-          need1 > 0 && need2 > 0 &&
-          need1 % 2 == 1 || need2 % 2 == 1 ||
-          need1 == need2
-        ) {
-          new Bond(this, atom, "covalent", Math.min(Math.abs(need1), Math.abs(need2)));
-        }
-      }
-    }
+  electronNeed;
+  checkReact(atom) {
+    // ionic
+    if (this.electronNeed === -atom.electronNeed)
+      new Bond(this, atom, "ionic");
+    // covalent
+    else if (
+      this.electronNeed > 0 && atom.electronNeed > 0 &&
+      this.electronNeed % 2 == 1 || atom.electronNeed % 2 == 1 ||
+      this.electronNeed == atom.electronNeed
+    ) new Bond(this, atom, "covalent");
   }
   isBonded(atom) {
     for (const bond of this.bonds) if (bond.a == atom || bond.b == atom) return true;
@@ -288,6 +290,15 @@ class Atom extends Particle {
       num = Math.min(num, 0);
       while (num++ < 0) this.cloud[this.getValenceShell()]--;
     }
+    // updating electron need
+    let group = this.getGroup();
+    if (group < 3 || group > 12) {
+      let valence = this.cloud.findIndex(el => el == 0) - 1, valenceNum = this.cloud[valence];
+      if (valenceNum == 8 || valence == 1 && valenceNum == 2) this.electronNeed = 0;
+      else if (valenceNum < 4) this.electronNeed = valence == 1 ? valenceNum : -valenceNum;
+      else this.electronNeed = 8 - valenceNum;
+    }
+    return 0;
   }
   getValenceShell() {
     if (this.cloud[1] < 2) return 1; // 1s
@@ -303,16 +314,6 @@ class Atom extends Particle {
     else if (this.cloud[4] < 25) return 4; // 4f
     else if (this.cloud[5] < 18) return 5; // 5d
     else if (this.cloud[6] < 8) return 6; // 6p
-  }
-  getElectronNeed() {
-    let group = this.getGroup();
-    if (group < 3 || group > 12) {
-      let valence = this.cloud.findIndex(el => el == 0) - 1, valenceNum = this.cloud[valence];
-      if (valenceNum == 8 || valence == 1 && valenceNum == 2) return 0;
-      else if (valenceNum < 4) return valence == 1 ? valenceNum : -valenceNum;
-      else return 8 - valenceNum;
-    }
-    return 0;
   }
 
   // groups & periods
@@ -372,6 +373,9 @@ class Atom extends Particle {
     else if (name == "p") this.p = Number(value);
   }
 
+  disconnectedCallback() {
+    physics.remove(this, physics.atoms);
+  }
 }
 
 
@@ -405,3 +409,36 @@ for (let i = 1; i < Atom.symbols.length; i++) {
   }
 }
 document.getElementById("table").appendChild(document.createElement("div")).classList.add("colored", "empty");
+
+
+// loading level
+for (const item of [
+  [
+    {type: "atom", name: "Na", x: 400, y: 400},
+    {type: "atom", name: "H", x: 500, y: 200},
+    {type: "atom", name: "Cl", x: 800, y: 300},
+    {type: "atom", name: "Ag", x: 600, y: 400},
+    {type: "atom", name: "Cl", x: 1000, y: 500},
+    // {type: "bond", a: 2, b: 4, kind: "ionic"}
+  ],
+  [
+    {type: "atom", name: "Na", x: 400, y: 400},
+  ]
+][location.hash ? location.hash.substring(1) : 0]) {
+  if (item.type == "atom") {
+    let atom = new Atom();
+    atom.name = item.name;
+    atom.x = item.x;
+    atom.y = item.y;
+    document.body.appendChild(atom);
+  } else if (item.type == "bond") {
+    new Bond(physics.atoms[item.a], physics.atoms[item.b], item.kind);
+  }
+}
+
+function exportJSON() {
+  let arr = [];
+  for (const atom of physics.atoms) arr.push({type: "atom", name: atom.name, x: atom.x, y: atom.y});
+  for (const bond of physics.bonds) arr.push({type: "bond", a: physics.atoms.indexOf(bond.a), b: physics.atoms.indexOf(bond.b), kind: bond.type});
+  console.log(JSON.stringify(arr));
+}

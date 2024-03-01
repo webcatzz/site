@@ -50,9 +50,17 @@ button {background-image: url(../assets/dots.png); margin-left: 2em}
   <h1>june's super cool super easy webring template</h1>
   <p>hey you! are you interested in making a webring? do you not know anything about coding? well boy howdy are you in luck.</p>
   <p>introducing: <b>webstring.js</b>! this script is intended as a super-simple alternative to garlic.garden's excellent <a href="https://garlic.garden/onionring/">onionring</a>.</p>
+
+  <h2>how is this different from onionring?</h2>
+  <ul>
+    <li>absolutely everything is contained within a <b>single file</b>, for ease of editing & use.</li>
+    <li>it's <b>compact</b>—not counting the settings object, the code is only 8 lines long.</li>
+    <li>there's customization options! want to use a stylesheet? add multiple widgets? scroll down and ask the wizard.</li>
+  </ul>
+
   <h2>how do i use webstring?</h2>
   <p>you can <a href="webstring.js" target="_blank">view the script here</a>. copy it into a new javascript file (ending with ".js") somewhere on your site.</p>
-  <p>this is the only part you need to worry about:</p>
+  <p>this is the settings object, the only part you need to worry about:</p>
   <pre>
 <span class="key">webring</span> <span class="operator">=</span> <span class="bracket1">{</span> <span class="comment">// webring settings</span>
 
@@ -73,12 +81,13 @@ button {background-image: url(../assets/dots.png); margin-left: 2em}
   <span class="key">errorMessage:</span> <span class="string">"&lt;div>This site isn't part of the webring yet.&lt;/div>"</span>,
 
 <span class="bracket1">}</span>;</pre>
+  <p>the settings object is where all the information about your webring is kept.</p>
   <ul>
     <li><b>sites</b> is a list of all the sites in the webring. each url has to be enclosed in quotes and followed with a comma, like so: <code>"url",</code></li>
     <li><b>widget</b> is the html that'll be inserted as your widget. the PREV and NEXT get replaced with the urls of the previous and next sites in the webring respectively.</li>
     <li><b>error</b> is the html that'll be inserted instead when a site isn't in your webring.</li>
   </ul>
-  <p>i <i>highly</i> recommend giving your widget an <code>id=""</code> with the name of your webring, otherwise it is nearly impossible for webring members to use custom css on their widgets.</p>
+  <p>i <i>highly</i> recommend giving your widget an <code>id=""</code> with the name of your webring, otherwise it is nearly impossible for webring members to add custom css to their widgets.</p>
 
   <h2>how do i add the widget?</h2>
   <p>wherever you'd like the widget to be, just link the script:</p>
@@ -94,7 +103,7 @@ button {background-image: url(../assets/dots.png); margin-left: 2em}
 
   <div id="copy-machine" class="box">
     <div id="settings">
-      <label for="random">random site button</label>
+      <label for="random">random site link</label>
       <input id="random" name="random" type="checkbox">
       <label for="stylesheet">widget stylesheet</label>
       <input id="stylesheet" name="stylesheet" type="checkbox">

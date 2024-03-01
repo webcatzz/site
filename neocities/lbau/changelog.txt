@@ -1,0 +1,8 @@
+# changelog
+
+1/3   optimized nearby atom detection & moved it from atoms to physics object
+      electron needs now stored instead of recalculating every tick
+      game objects now loaded from js object, for json level storage later
+      added title screen
+
+starting from march 1
