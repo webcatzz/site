@@ -1,6 +1,38 @@
 oncontextmenu = () => {return false};
 
-// colors
+// game
+const game = {
+  root: document.getElementById("root"),
+  size: () => {return [game.root.parentElement.offsetWidth, game.root.parentElement.offsetHeight]},
+
+  atoms: [], bonds: [],
+  add: (el, arr) => arr.push(el),
+  remove: (el, arr) => arr.splice(arr.indexOf(el), 1),
+
+  tick: () => {
+    // atoms
+    for (let i = 0; i < game.atoms.length; i++) {
+      game.atoms[i].tick();
+      if (game.atoms[i].electronNeed) for (let j = i + 1; j < game.atoms.length; j++) {
+        if (game.atoms[j].electronNeed && !game.atoms[i].isBonded(game.atoms[j]) && game.near(game.atoms[i], game.atoms[j], 128)) {
+          game.atoms[i].checkReact(game.atoms[j]);
+        }
+      }
+    }
+    // bonds
+    for (const bond of game.bonds) bond.tick();
+    // canvas
+    canvas.redraw();
+  },
+  near: (a, b, distance) => {
+    if (Math.abs(a.x - b.x) > distance || Math.abs(a.y - b.y) > distance) return false;
+    return (a.x - b.x) ** 2 + (a.y - b.y) ** 2 < distance ** 2;
+  }
+}
+setInterval(game.tick, 100/6);
+
+
+// color palette
 const palette = {
   colors: ["red", "yellow", "green", "blue", "purple", "white", "gray", "black"],
   random: function () {return this[this.colors[Math.floor(Math.random() * this.colors.length)]]}
@@ -11,81 +43,44 @@ for (const color of palette.colors) palette[color] = getComputedStyle(document.b
 // canvas
 const canvas = {
   el: document.querySelector("canvas"),
-  memory: {},
 
-  redraw: function () {
-    this.ctx.clearRect(0, 0, canvas.el.width, canvas.el.height);
-    for (const arguments of Object.values(this.memory)) this.draw(...arguments);
+  redraw: () => {
+    canvas.ctx.clearRect(0, 0, canvas.el.width, canvas.el.height);
+    for (const bond of game.bonds) bond.draw();
+    if (canvas.trajectory) canvas.draw("line", canvas.trajectory);
   },
 
-  set: function (key, type, opts) {
-    this.memory[key] = [type, opts];
-    this.redraw();
-  },
-  remove: function (key) {
-    delete this.memory[key];
-    this.redraw();
-  },
-
-  draw: function (type, opts) {
-    this.ctx.beginPath();
+  draw: (type, opts) => {
+    canvas.ctx.beginPath();
 
     if (type == "line") {
-      this.ctx.moveTo(opts.coords[0] + cameraX, opts.coords[1] + cameraY);
-      for (let i = 2; i < opts.coords.length; i++) this.ctx.lineTo(opts.coords[i] + cameraX, opts.coords[++i] + cameraY);
+      canvas.ctx.moveTo(opts.coords[0] + cameraX, opts.coords[1] + cameraY);
+      for (let i = 2; i < opts.coords.length; i++) canvas.ctx.lineTo(opts.coords[i] + cameraX, opts.coords[++i] + cameraY);
 
-      if (opts.color) this.ctx.strokeStyle = opts.color;
-      if (opts.width) this.ctx.lineWidth = opts.width;
-      if (opts.dashed) this.ctx.setLineDash([8,4]);
-      this.ctx.stroke();
-      if (opts.dashed) this.ctx.setLineDash([]);
-    } else if (type == "circle") {
-      this.ctx.arc(opts.x + cameraX, opts.y + cameraY, opts.radius, 0, Math.PI * 2);
+      if (opts.color) canvas.ctx.strokeStyle = opts.color;
+      if (opts.width) canvas.ctx.lineWidth = opts.width;
+      if (opts.dashed) canvas.ctx.setLineDash([8,4]);
+      canvas.ctx.stroke();
+      if (opts.dashed) canvas.ctx.setLineDash([]);
+    }
+    else if (type == "circle") {
+      canvas.ctx.arc(opts.x + cameraX, opts.y + cameraY, opts.radius, 0, Math.PI * 2);
       if (opts.color) {
-        this.ctx.fillStyle = opts.color;
-        this.ctx.fill();
+        canvas.ctx.fillStyle = opts.color;
+        canvas.ctx.fill();
       }
       if (opts.border) {
-        this.ctx.strokeStyle = opts.border;
-        if (opts.width) this.ctx.strokeWidth = opts.width;
-        this.ctx.stroke();
+        canvas.ctx.strokeStyle = opts.border;
+        if (opts.width) canvas.ctx.strokeWidth = opts.width;
+        canvas.ctx.stroke();
       }
     }
 
   },
 };
 canvas.ctx = canvas.el.getContext("2d");
-canvas.el.width = innerWidth, canvas.el.height = innerHeight;
-onresize = () => canvas.el.width = innerWidth, canvas.el.height = innerHeight;
-
-
-// physics
-const physics = {
-  atoms: [],
-  bonds: [],
-  add: (el, arr) => arr.push(el),
-  remove: (el, arr) => arr.splice(arr.indexOf(el), 1),
-
-  tick: () => {
-    // atoms
-    for (let i = 0; i < physics.atoms.length; i++) {
-      physics.atoms[i].tick();
-      if (physics.atoms[i].electronNeed) for (let j = i + 1; j < physics.atoms.length; j++) {
-        if (physics.atoms[j].electronNeed && !physics.atoms[i].isBonded(physics.atoms[j]) && physics.near(physics.atoms[i], physics.atoms[j], 128)) {
-          physics.atoms[i].checkReact(physics.atoms[j]);
-        }
-      }
-    }
-    // bonds
-    for (const bond of physics.bonds) bond.tick();
-  },
-
-  near: (a, b, distance) => {
-    if (Math.abs(a.x - b.x) > distance || Math.abs(a.y - b.y) > distance) return false;
-    if ((a.x - b.x) ** 2 + (a.y - b.y) ** 2 < distance ** 2) return true;
-  }
-}
-setInterval(physics.tick, 100/6);
+[canvas.el.width, canvas.el.height] = game.size();
+onresize = () => [canvas.el.width, canvas.el.height] = game.size();
 
 
 // camera
@@ -97,8 +92,8 @@ canvas.el.onmousedown = () => {
 function moveCamera(e) {
   cameraX += e.movementX;
   cameraY += e.movementY;
-  document.body.style.left = cameraX + "px";
-  document.body.style.top = cameraY + "px";
+  game.root.style.left = cameraX + "px";
+  game.root.style.top = cameraY + "px";
 }
 
 
@@ -108,13 +103,13 @@ function moveCamera(e) {
 // bonds
 class Bond {
   static incr = 0;
-  a; b; electrons; key;
+  a; b; electrons;
 
   constructor(particle1, particle2, type) {
     // ordering
-    if (particle1.electronNeed < particle2.electronNeed) this.a = particle1, this.b = particle2;
-    else if (particle1.electronNeed > particle2.electronNeed) this.a = particle2, this.b = particle1;
-    else if (particle1.p < particle2.p) this.a = particle1, this.b = particle2;
+    if (particle1.electronNeed > particle2.electronNeed) this.a = particle1, this.b = particle2;
+    else if (particle1.electronNeed < particle2.electronNeed) this.a = particle2, this.b = particle1;
+    else if (particle1.p > particle2.p) this.a = particle1, this.b = particle2;
     else this.a = particle2, this.b = particle1;
     // grabbing electrons
     this.type = type;
@@ -123,23 +118,34 @@ class Bond {
     // updating atoms' bonds and electrons
     this.a.bonds.push(this);
     this.b.bonds.push(this);
-    this.a.addElectrons(this.type == "ionic" ? -this.electrons : this.electrons);
-    this.b.addElectrons(this.electrons);
-    // adding to canvas & physics
-    this.key = "bond" + ++Bond.incr;
-    physics.add(this, physics.bonds);
+    this.a.addElectrons(this.electrons);
+    this.b.addElectrons(this.type == "ionic" ? -this.electrons : this.electrons);
+    // physics
+    if (this.a.bonds.length > this.b.bonds.length) this.a.updateBonds();
+    else this.b.updateBonds();
+    game.add(this, game.bonds);
     // debug
-    if (type == "ionic") console.log("Bonded:\n", -this.electrons, this.a, "\n ", this.electrons, this.b);
+    if (type == "ionic") console.log("Bonded:\n", this.electrons, this.a, "\n ", -this.electrons, this.b);
     else console.log("Bonded: (", this.electrons, ")\n", this.a, "\n", this.b);
   }
 
+  vector = {x: 0, y: -64};
+  set rotation(value) {
+    this.vector.x = -64 * Math.sin(value);
+    this.vector.y = -64 * Math.cos(value);
+  }
   tick() {
-    let dx = (this.b.x - this.a.x - 64) / 100;
-    let dy = (this.b.y - this.a.y - 64) / 100;
-    this.a.applyVelocity(dx, dy);
-    this.b.applyVelocity(-dx, -dy);
-    // drawing
-    canvas.set(this.key, "line", {
+    this.a.applyVelocity(
+      (this.b.x - this.a.x - this.vector.x) / 100,
+      (this.b.y - this.a.y - this.vector.y) / 100,
+    );
+    this.b.applyVelocity(
+      (this.vector.x + this.a.x - this.b.x) / 100,
+      (this.vector.y + this.a.y - this.b.y) / 100,
+    );
+  }
+  draw() {
+    canvas.draw("line", {
       color: palette.black, width: 4,
       coords: [
         this.a.x, this.a.y,
@@ -155,8 +161,7 @@ class Bond {
   }
 
   remove() {
-    physics.remove(this, physics.bonds);
-    canvas.remove(this.key);
+    game.remove(this, game.bonds);
     for (let i = this.electrons; i > 0; i--) canvas.remove(this.key + "-" + i);
     this.a.addElectrons(this.electrons);
     this.b.addElectrons(this.type == "ionic" ? -this.electrons : this.electrons);
@@ -177,6 +182,7 @@ class Particle extends HTMLElement {
     this.setColor(palette.random());
     this.addEventListener("mousedown", this.drag);
   }
+  add() {root.appendChild(this)}
 
   set x(value) {this.style.left = value + "px"}
   set y(value) {this.style.top = value + "px"}
@@ -204,20 +210,20 @@ class Particle extends HTMLElement {
     addEventListener("mousemove", listener);
     addEventListener("mouseup", e => {
       removeEventListener("mousemove", listener);
-      canvas.remove("trajectory");
+      delete canvas.trajectory;
       this.applyVelocity((this.x - e.x + cameraX) / 3, (this.y - e.y + cameraY) / 3);
     }, {once: true});
   }
   drawTrajectory(e) {
-    canvas.set("trajectory", "line", {
+    canvas.trajectory = {
       color: this.color, width: 2, dashed: true,
       coords: [
         this.x,
         this.y,
         this.x + 2 * (this.x - e.x + cameraX),
-        this.y + 2 * (this.y - e.y + cameraY),
+        this.y + 2 * (this.y - e.y + cameraY)
       ]
-    });
+    };
   }
 
   static get observedAttributes() {return ["x", "y", "color"]}
@@ -258,7 +264,7 @@ class Atom extends Particle {
     // updating cloud
     this.addElectrons(this.p);
     // physics
-    physics.add(this, physics.atoms);
+    game.add(this, game.atoms);
   }
 
   get name() {return Atom.symbols[this.p]}
@@ -280,6 +286,12 @@ class Atom extends Particle {
   isBonded(atom) {
     for (const bond of this.bonds) if (bond.a == atom || bond.b == atom) return true;
     return false;
+  }
+  updateBonds() {
+    for (let i = 0; i < this.bonds.length; i++) {
+      this.bonds[i].rotation = i * 2 * Math.PI / this.bonds.length;
+      // console.log(i * 2 * Math.PI / this.bonds.length, "/", this.bonds.length, this.name, this.bonds[i].b.name);
+    }
   }
 
   // electron cloud
@@ -357,14 +369,15 @@ class Atom extends Particle {
 
   // visuals
   updateSymbol() {this.label.textContent = this.name}
-  getColor() {
+  getColorName() {
     let type = this.getType();
-    if (["Alkaline earth metal", "Noble gas"].includes(type)) return palette.red;
-    if (["Metalloid", "Actinide"].includes(type)) return palette.yellow;
-    if (["Alkali metal", "Post-transition metal"].includes(type)) return palette.green;
-    if (["Reactive non-metal", "Lathanide"].includes(type)) return palette.blue;
-    if (["Transition metal"].includes(type)) return palette.purple;
+    if (["Alkaline earth metal", "Noble gas"].includes(type)) return "red";
+    if (["Metalloid", "Actinide"].includes(type)) return "yellow";
+    if (["Alkali metal", "Post-transition metal"].includes(type)) return "green";
+    if (["Reactive non-metal", "Lathanide"].includes(type)) return "blue";
+    if (["Transition metal"].includes(type)) return "purple";
   }
+  getColor() {return palette[this.getColorName()]}
 
   static get observedAttributes() {return super.observedAttributes.concat(["name", "p"])}
   attributeChangedCallback(name, oldValue, value) {
@@ -374,45 +387,38 @@ class Atom extends Particle {
   }
 
   disconnectedCallback() {
-    physics.remove(this, physics.atoms);
+    game.remove(this, game.atoms);
   }
 }
-
-
-
-
-
 
 
 // defining custom classes
 window.customElements.define("lbau-atom", Atom);
 
 
-
-
 // periodic table
+for (let i = 1; i <= 18; i++) {
+  let head = document.getElementById("table").appendChild(document.createElement("div"));
+  head.className = "head", head.textContent = i;
+}
 for (let i = 1; i < Atom.symbols.length; i++) {
-  if ((i >= 58 && i <= 71) || (i >= 90 && i <= 103)) continue;
+  if (i == 58) i = 72;
+  else if (i == 90) i = 104;
 
   let cell = document.getElementById("table").appendChild(document.createElement("div"));
   let atom = new Atom; atom.p = i;
-  cell.classList.add("colored");
-  cell.style.setProperty("--color", atom.getColor());
-  cell.textContent = Atom.symbols[i];
-  cell.onmousedown = function () {
-    let atom = new Atom;
-    atom.name = this.textContent;
-    atom.x = this.offsetLeft + this.parentElement.offsetLeft + this.offsetWidth / 2;
-    atom.y = this.offsetTop + this.parentElement.offsetTop + this.offsetHeight / 2;
-    document.body.appendChild(atom);
-    atom.drag();
-  }
+  cell.classList.add("colored", atom.getColorName(), "cell");
+  cell.textContent = atom.name;
+
+  if (i == 2) cell.style.gridColumn = 18;
+  else if (i == 5 || i == 13) cell.style.gridColumn = 13;
 }
-document.getElementById("table").appendChild(document.createElement("div")).classList.add("colored", "empty");
+document.getElementById("table").appendChild(document.createElement("div")).classList.add("colored", "gray", "halftone", "cell", "empty");
+document.querySelector("header button").onclick = () => document.getElementById("info").classList.toggle("hidden");
 
 
 // loading level
-for (const item of [
+load([
   [
     {type: "atom", name: "Na", x: 400, y: 400},
     {type: "atom", name: "H", x: 500, y: 200},
@@ -424,21 +430,44 @@ for (const item of [
   [
     {type: "atom", name: "Na", x: 400, y: 400},
   ]
-][location.hash ? location.hash.substring(1) : 0]) {
-  if (item.type == "atom") {
-    let atom = new Atom();
-    atom.name = item.name;
-    atom.x = item.x;
-    atom.y = item.y;
-    document.body.appendChild(atom);
-  } else if (item.type == "bond") {
-    new Bond(physics.atoms[item.a], physics.atoms[item.b], item.kind);
+][location.hash ? location.hash.substring(1) : 0]);
+function load(data) {
+  for (const item of data) {
+    if (item.type == "atom") {
+      let atom = new Atom();
+      atom.name = item.name;
+      atom.x = item.x;
+      atom.y = item.y;
+      atom.add();
+    } else if (item.type == "bond") {
+      new Bond(game.atoms[item.a], game.atoms[item.b], item.kind);
+    }
   }
 }
 
 function exportJSON() {
   let arr = [];
-  for (const atom of physics.atoms) arr.push({type: "atom", name: atom.name, x: atom.x, y: atom.y});
-  for (const bond of physics.bonds) arr.push({type: "bond", a: physics.atoms.indexOf(bond.a), b: physics.atoms.indexOf(bond.b), kind: bond.type});
+  for (const atom of game.atoms) arr.push({type: "atom", name: atom.name, x: atom.x, y: atom.y});
+  for (const bond of game.bonds) arr.push({type: "bond", a: game.atoms.indexOf(bond.a), b: game.atoms.indexOf(bond.b), kind: bond.type});
   console.log(JSON.stringify(arr));
+}
+
+
+// debug
+oncontextmenu = e => {
+  let input = game.root.appendChild(document.createElement("input"));
+  input.style = `position: absolute; left: ${e.x - cameraX}px; top: ${e.y - cameraY - document.querySelector("header").offsetHeight}px`;
+  input.focus();
+  input.onblur = () => input.remove();
+  input.onkeydown = e => {if (e.key == "Enter") {
+    if (Atom.symbols.includes(input.value)) {
+      let atom = new Atom;
+      atom.name = input.value;
+      atom.x = input.offsetLeft;
+      atom.y = input.offsetTop;
+      atom.add();
+    }
+    input.blur();
+  }}
+  return false;
 }

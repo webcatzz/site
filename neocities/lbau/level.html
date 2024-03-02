@@ -9,11 +9,27 @@
   <script defer src="level.js"></script>
 </head>
 <body>
-  <canvas></canvas>
+  <header>
+    <div>level 1</div>
+    <h1 class="green">cosmic egg</h1>
+    <button class="colored yellow">table</button>
+    <button class="colored blue">settings</button>
+    <button class="colored red">quit</button>
+  </header>
 
-  <div id="table"></div>
+  <div id="game">
+    
+    <canvas></canvas>
+    <div id="root"></div>
 
-  <h1 style="position: fixed; top: 0.5em; left: 0.5em; pointer-events: none">atomism</h1>
+    <div id="info" class="hidden">
+      <div id="pane">
+        <h2 class="blue">Hydrogen</h2>
+      </div>
+      <div id="table"></div>
+    </div>
+
+  </div>
 
   <div style="position: fixed; bottom: 0; left: 0; z-index: 10">
     <div>wip version of lbau.</div>

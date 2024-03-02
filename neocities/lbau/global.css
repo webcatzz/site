@@ -15,15 +15,13 @@ canvas {position: fixed; inset: 0}
 h1 {
   color: var(--white);
   font-size: 3em; font-style: italic; letter-spacing: 0.1em;
-  text-shadow: 0 -0.05em var(--black), 0.1em -0.05em var(--black), 0.2em 0 var(--black), 0.1em 0.1em var(--red), 0 0.1em var(--black), -0.05em 0.1em var(--black), -0.05em 0 var(--black), -0.05em -0.1em var(--black);
+  text-shadow: 0 -0.05em var(--black), 0.1em -0.05em var(--black), 0.2em 0 var(--black), 0.1em 0.1em var(--color, var(--red)), 0 0.1em var(--black), -0.05em 0.1em var(--black), -0.05em 0 var(--black), -0.05em -0.1em var(--black);
   margin-block: 0;
 
   &::first-letter {font-size: 1.5em; line-height: 0}
 }
 
-button {
-  all: unset; padding: 0.25em; cursor: pointer;
-}
+button {all: unset; padding: 0.25em; cursor: pointer}
 
 .colored {
   font-size: 20px; font-weight: bold; letter-spacing: 0.05em;
@@ -39,3 +37,6 @@ button {
 .white {--color: var(--white)}
 .gray {--color: var(--gray)}
 .black {--color: var(--black)}
+.halftone {background-image: url(halftone.png); background-position: center}
+
+.hidden {display: none !important}

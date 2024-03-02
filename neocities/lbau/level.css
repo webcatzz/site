@@ -1,6 +1,48 @@
-body {position: relative; overflow: hidden; cursor: grab}
-body:active {cursor: grabbing}
-canvas {position: fixed; inset: 0}
+body {display: flex; flex-direction: column; height: 100vh; overflow: hidden}
+header {
+  display: flex;
+  background-color: var(--white); border-bottom: 4px solid var(--black);
+  z-index: 1;
+
+  & div {font-weight: bold; align-self: end}
+}
+h1 {line-height: 0.875; margin-right: auto}
+
+#game {contain: strict; position: relative; flex: 1; cursor: grab}
+#game:active {cursor: grabbing}
+canvas {position: absolute; inset: 0}
+#root {position: absolute}
+
+#info {
+  display: flex;
+  background-color: var(--white);
+  position: absolute; inset: 0;
+  cursor: auto;
+}
+#pane {
+  width: 350px; padding: 2em 4em;
+  border-right: 4px solid var(--black);
+
+  & h2 {
+    background: linear-gradient(to top, transparent 0.6em, var(--white) 0.6em), linear-gradient(to right, var(--white) 0.3em, transparent 0.3em) var(--color);
+    margin-top: 0;
+  }
+}
+#table {
+  display: grid; grid-template-columns: repeat(18, max-content);
+  background-color: var(--white);
+  margin: auto;
+}
+.head {
+  color: var(--gray); font-size: 0.75em; text-align: center; padding-bottom: 1.5em;
+}
+.cell {
+  display: flex; justify-content: center; align-items: center;
+  width: 35px; aspect-ratio: 1; margin: -2px;
+  cursor: pointer;
+
+  &.empty {width: unset; aspect-ratio: unset; grid-column: 8/19}
+}
 
 
 /* game objects */
@@ -28,21 +70,5 @@ canvas {position: fixed; inset: 0}
     background-color: var(--black);
     width: 12px; aspect-ratio: 1; border-radius: 50%;
     position: absolute; left: 50%;
-  }
-}
-
-
-/* periodic table */
-#table {
-  display: grid; grid-template-columns: repeat(18, max-content);
-  position: absolute; left: 1200px; top: -150px;
-
-  & div {
-    display: flex; justify-content: center; align-items: center;
-    width: 35px; aspect-ratio: 1; margin: -2px;
-
-    &:nth-of-type(2) {grid-column: 18}
-    &:nth-of-type(5), &:nth-of-type(13) {grid-column: 13}
-    &.empty {background: url(halftone.png) center var(--gray);; width: unset; aspect-ratio: unset; grid-column: 8/19}
   }
 }
