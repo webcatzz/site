@@ -1,0 +1,1 @@
+document.body.innerHTML = document.body.innerHTML.replaceAll(" album", " <img class=\"album-repl\" src=\"album.png\" alt=\"album\">");

@@ -16,9 +16,16 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
-    - name: Deploying to Neocities
+    - name: deploying webcatz
       uses: bcomnes/deploy-to-neocities@v1.1.21
       with:
         api_token: ${{ secrets.NEOCITIES_API_TOKEN }}
         cleanup: true
         dist_dir: neocities
+    
+    - name: deploying underpass
+      uses: bcomnes/deploy-to-neocities@v1.1.21
+      with:
+        api_token: ${{ secrets.UNDERPASS_TOKEN }}
+        cleanup: true
+        dist_dir: underpass

@@ -1,0 +1,73 @@
+:root {
+  --white: #f4f3f0;
+  --light-gray: #b6b2a8;
+  --gray: #858278;
+  --dark-gray: #575452;
+  --black: #121212;
+}
+h1, h2 {margin-block: 0}
+.album-repl {display: inline-block; height: 1em; vertical-align: middle}
+.bordered {background-color: var(--white); border: 2px solid; border-bottom-width: 12px}
+
+body {
+  color: var(--black); font-family: Helvetica, sans-serif;
+  background-color: var(--white); margin: 0; image-rendering: pixelated;
+
+  & > header {
+    display: flex;
+    background-color: var(--white); padding-inline: 1em;
+    position: sticky; top: 0; z-index: 2;
+
+    & a {color: inherit}
+    & > a {
+      font-size: 0.875em;
+      display: flex; justify-content: center; align-items: center; gap: 0.5em;
+      padding-inline: 1em; border-right: 1px solid var(--light-gray);
+
+      &:first-of-type {border-left: 1px solid var(--light-gray)}
+      &:hover {
+        background-color: inherit;
+        box-shadow: 0 -4px var(--light-gray);
+        transform: translateY(4px);
+        z-index: 1;
+      }
+      &:active {
+        box-shadow: 0 2px var(--light-gray);
+        transform: translateY(-2px);
+      }
+    }
+    &::after {
+      content: "";
+      background: url(dither.png) top / 4px; height: 4px;
+      position: absolute; left: 0; right: 0; bottom: -4px;
+    }
+  }
+}
+h1 {
+  font-size: 1em;
+  text-decoration: 2px underline;
+  padding-block: 0.5em; margin-right: auto;
+}
+
+
+a {color: #32a7e2}
+i {font-family: serif; font-size: 1.125em; line-height: 0}
+i img {transform: skew(-15deg)}
+sup {font-size: 0.625em; line-height: 0}
+blockquote {
+  padding-inline: 1em; margin: 2em 0; position: relative;
+
+  &::before {content: "❝"; margin-left: -0.7em; margin-top: -0.375em}
+  &::after {content: "❞"; right: -0.45em; bottom: -0.8em}
+  &::before, &::after {
+    color: var(--mid-light); font-size: 4em;
+    position: absolute;
+  }
+  & p:last-of-type {margin-bottom: 0}
+  & .speaker, & footer {
+    color: var(--mid-light); font-size: 0.625em; font-weight: bold;
+    letter-spacing: 0.05em; text-transform: uppercase;
+  }
+  & footer {font-style: italic; text-align: right}
+}
+li {padding-left: 0.5em; &::marker {color: var(--mid); font-size: 0.75em}}

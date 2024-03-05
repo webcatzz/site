@@ -1,0 +1,60 @@
+article {
+  --fore: var(--black);
+  --mid-light: var(--light-gray);
+  --mid: var(--gray);
+  --mid-dark: var(--dark-gray);
+  --back: var(--white);
+  --dither: url(dither.png);
+
+  color: var(--fore); letter-spacing: 0.0125em; line-height: 1.4;
+  background-color: var(--back);
+  padding: 5em calc(50vw - 300px) 6em;
+
+  & > header {
+    line-height: 1;
+    display: grid; grid-template-columns: max-content 1fr; column-gap: 1em;
+    background: linear-gradient(to right, var(--back) 33%, transparent), var(--dither) repeat-x right / 4px;
+    padding-block: 0.5em; margin-bottom: 1.5em;
+  }
+  & > footer {color: var(--mid-light); font-size: 0.5em; text-align: right}
+
+  &:nth-last-of-type(even) {
+    --fore: var(--white);
+    --mid-light: var(--dark-gray);
+    --mid-dark: var(--light-gray);
+    --back: var(--black);
+    --dither: url(dither-dark.png);
+
+    & :is(iframe, .tracklist) {float: right}
+    & iframe {margin-right: 0; margin-left: 2em}
+    & .album-repl {filter: invert()}
+  }
+}
+h2 {font-family: serif; font-size: 1.6875em; align-self: end}
+.subtitle {font-size: 0.875em}
+.emoji {font-size: 2em; grid-row: 1/3; align-self: center}
+
+/* article elements */
+iframe {
+  display: block; float: left;
+  background-image: var(--dither); background-size: 4px;
+  width: 350px; height: 350px;
+  outline: 1em solid var(--back);
+  margin-right: 2em; margin-bottom: 1em;
+  position: sticky; top: -248px; z-index: 1;
+  image-rendering: auto;
+}
+.tracklist {
+  color: var(--mid-dark); font-size: 0.75em;
+  float: left; clear: both;
+  padding-left: 2em; margin: 0 4em 1em 0;
+
+  & ol {padding-left: 0; margin-block: 0; margin-bottom: 1em}
+  & div {color: var(--mid); font-size: 0.75em}
+}
+.rating {
+  font-size: 2em; text-align: right; clear: both;
+  background: linear-gradient(to left, var(--back) 33%, transparent), var(--dither) repeat-x right / 4px;
+  margin-top: 1.5em;
+  & svg {width: 2em}
+}
