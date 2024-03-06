@@ -1,10 +1,14 @@
 # changelog
 
+6/3   oh god i dont know.
+3/3   bonds now display number of electrons
+      starting adding electronegativity values
 2/3   added header bar to level scene
       expanded physics object into game object
       removed canvas memory, optimized canvas bond/trajectory-drawing
       added rudimentary periodic table screen
       bonds now auto-distance themselves from each other (still a tad buggy)
+      fixed header offsetting trajectory y coordinate
 1/3   optimized nearby atom detection & moved it from atoms to physics object
       electron needs now stored instead of recalculating every tick
       game objects now loaded from js object, for json level storage later

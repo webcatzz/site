@@ -4,11 +4,14 @@ oncontextmenu = () => {return false};
 const game = {
   root: document.getElementById("root"),
   size: () => {return [game.root.parentElement.offsetWidth, game.root.parentElement.offsetHeight]},
+  headerY: document.querySelector("header").offsetHeight,
 
   atoms: [], bonds: [],
   add: (el, arr) => arr.push(el),
   remove: (el, arr) => arr.splice(arr.indexOf(el), 1),
 
+  start: () => game.interval = setInterval(game.tick, 100/6),
+  pause: () => clearInterval(game.interval),
   tick: () => {
     // atoms
     for (let i = 0; i < game.atoms.length; i++) {
@@ -24,12 +27,17 @@ const game = {
     // canvas
     canvas.redraw();
   },
+
+  inBounds: (x, y) => {
+    let size = game.size();
+    return x > -cameraX && x < -cameraX + size[0] && y > -cameraY && y < -cameraY + size[1];
+  },
   near: (a, b, distance) => {
     if (Math.abs(a.x - b.x) > distance || Math.abs(a.y - b.y) > distance) return false;
     return (a.x - b.x) ** 2 + (a.y - b.y) ** 2 < distance ** 2;
   }
 }
-setInterval(game.tick, 100/6);
+game.start();
 
 
 // color palette
@@ -54,9 +62,8 @@ const canvas = {
     canvas.ctx.beginPath();
 
     if (type == "line") {
-      canvas.ctx.moveTo(opts.coords[0] + cameraX, opts.coords[1] + cameraY);
-      for (let i = 2; i < opts.coords.length; i++) canvas.ctx.lineTo(opts.coords[i] + cameraX, opts.coords[++i] + cameraY);
-
+      canvas.ctx.moveTo(opts.x1 + cameraX, opts.y1 + cameraY);
+      canvas.ctx.lineTo(opts.x2 + cameraX, opts.y2 + cameraY);
       if (opts.color) canvas.ctx.strokeStyle = opts.color;
       if (opts.width) canvas.ctx.lineWidth = opts.width;
       if (opts.dashed) canvas.ctx.setLineDash([8,4]);
@@ -75,25 +82,38 @@ const canvas = {
         canvas.ctx.stroke();
       }
     }
-
-  },
+    else if (type == "text") {
+      canvas.ctx.fillStyle = opts.color;
+      opts.x += cameraX;
+      opts.y += cameraY + 2;
+      let metrics = canvas.ctx.measureText(opts.text);
+      canvas.ctx.clearRect(opts.x - metrics.width/2, opts.y - 12, metrics.width, 16);
+      canvas.ctx.fillText(opts.text, opts.x, opts.y);
+    }
+  }
 };
 canvas.ctx = canvas.el.getContext("2d");
 [canvas.el.width, canvas.el.height] = game.size();
 onresize = () => [canvas.el.width, canvas.el.height] = game.size();
+canvas.ctx.font = "bold 12px sans-serif", canvas.ctx.textAlign = "center";
 
 
 // camera
 var cameraX = 0, cameraY = 0;
 canvas.el.onmousedown = () => {
+  game.pause();
   addEventListener("mousemove", moveCamera);
-  addEventListener("mouseup", () => removeEventListener("mousemove", moveCamera), {once: true});
+  addEventListener("mouseup", () => {
+    removeEventListener("mousemove", moveCamera);
+    game.start();
+  }, {once: true});
 }
 function moveCamera(e) {
   cameraX += e.movementX;
   cameraY += e.movementY;
   game.root.style.left = cameraX + "px";
   game.root.style.top = cameraY + "px";
+  canvas.redraw();
 }
 
 
@@ -111,8 +131,12 @@ class Bond {
     else if (particle1.electronNeed < particle2.electronNeed) this.a = particle2, this.b = particle1;
     else if (particle1.p > particle2.p) this.a = particle1, this.b = particle2;
     else this.a = particle2, this.b = particle1;
+    // type
+    let polarization = Atom.data[this.a.p].electronegativity - Atom.data[this.b.p].electronegativity;
+    if (polarization < 0.4) this.type = "covalent";
+    else if (polarization > 1.7) this.type = "ionic";
+    else this.type = "polar-covalent";
     // grabbing electrons
-    this.type = type;
     if (this.type == "ionic") this.electrons = Math.abs(this.a.electronNeed);
     else this.electrons = Math.min(Math.abs(this.a.electronNeed), Math.abs(this.b.electronNeed));
     // updating atoms' bonds and electrons
@@ -125,8 +149,24 @@ class Bond {
     else this.b.updateBonds();
     game.add(this, game.bonds);
     // debug
-    if (type == "ionic") console.log("Bonded:\n", this.electrons, this.a, "\n ", -this.electrons, this.b);
-    else console.log("Bonded: (", this.electrons, ")\n", this.a, "\n", this.b);
+    console.log(`New ${this.type} (%c${Atom.data[this.a.p].electronegativity}%c - %c${Atom.data[this.b.p].electronegativity}%c = %c${Atom.data[this.a.p].electronegativity - Atom.data[this.b.p].electronegativity}%c) bond formed:
+\t%c${(this.a.symbol + " ").substring(0, 2)}%c gained %c${this.electrons}%c electron(s), with a new need of %c${this.a.electronNeed}%c and charge of %c${this.a.charge}%c
+\t%c${(this.b.symbol + " ").substring(0, 2)}%c ${this.type == "ionic" ? "lost  " : "gained"} %c${this.electrons}%c electron(s), with a new need of %c${this.b.electronNeed}%c and charge of %c${this.b.charge}%c`,
+
+      "color: " + palette.green, "",
+      "color: " + palette.green, "",
+      "color: " + palette.green, "",
+
+      "color: " + this.a.getColor(), "",
+      "color: " + palette.green, "",
+      "color: " + palette.green, "",
+      "color: " + palette.green, "",
+
+      "color: " + this.b.getColor(), "",
+      "color: " + palette.green, "",
+      "color: " + palette.green, "",
+      "color: " + palette.green, "",
+    );
   }
 
   vector = {x: 0, y: -64};
@@ -136,31 +176,31 @@ class Bond {
   }
   tick() {
     this.a.applyVelocity(
-      (this.b.x - this.a.x - this.vector.x) / 100,
-      (this.b.y - this.a.y - this.vector.y) / 100,
+      (this.b.x - this.a.x - this.vector.x) / 10,
+      (this.b.y - this.a.y - this.vector.y) / 10,
     );
     this.b.applyVelocity(
-      (this.vector.x + this.a.x - this.b.x) / 100,
-      (this.vector.y + this.a.y - this.b.y) / 100,
+      (this.vector.x + this.a.x - this.b.x) / 10,
+      (this.vector.y + this.a.y - this.b.y) / 10,
     );
   }
   draw() {
-    canvas.draw("line", {
-      color: palette.black, width: 4,
-      coords: [
-        this.a.x, this.a.y,
-        this.b.x, this.b.y,
-      ]
-    });
-    // for (let i = this.electrons; i > 0; i--) canvas.set(this.key + "-" + i, "circle", {
-    //   color: palette.white, border: palette.black, width: 4,
-    //   radius: 4,
-    //   x: this.a.x + (this.b.x - this.a.x) / 2 - (this.electrons.length - this.electrons.length / 2 + i) * 8,
-    //   y: this.a.y + (this.b.y - this.a.y) / 2 - (this.electrons.length - this.electrons.length / 2 + i) * 8,
-    // });
+    if (game.inBounds(this.a.x, this.a.y) && game.inBounds(this.b.x, this.b.y)) {
+      canvas.draw("line", {
+        color: palette.black, width: 4,
+        x1: this.a.x, y1: this.a.y,
+        x2: this.b.x, y2: this.b.y,
+      });
+      canvas.draw("text", {
+        text: String(this.electrons),
+        color: palette.black,
+        x: this.a.x + (this.b.x - this.a.x) / 2,
+        y: this.a.y + (this.b.y - this.a.y) / 2,
+      });
+    }
   }
 
-  remove() {
+  break() {
     game.remove(this, game.bonds);
     for (let i = this.electrons; i > 0; i--) canvas.remove(this.key + "-" + i);
     this.a.addElectrons(this.electrons);
@@ -211,18 +251,16 @@ class Particle extends HTMLElement {
     addEventListener("mouseup", e => {
       removeEventListener("mousemove", listener);
       delete canvas.trajectory;
-      this.applyVelocity((this.x - e.x + cameraX) / 3, (this.y - e.y + cameraY) / 3);
+      this.applyVelocity((this.x - e.x + cameraX) / 3, (this.y - e.y + cameraY + game.headerY) / 3);
     }, {once: true});
   }
   drawTrajectory(e) {
     canvas.trajectory = {
       color: this.color, width: 2, dashed: true,
-      coords: [
-        this.x,
-        this.y,
-        this.x + 2 * (this.x - e.x + cameraX),
-        this.y + 2 * (this.y - e.y + cameraY)
-      ]
+      x1: this.x,
+      y1: this.y,
+      x2: this.x + 2 * (this.x - e.x + cameraX),
+      y2: this.y + 2 * (this.y - e.y + cameraY + game.headerY)
     };
   }
 
@@ -237,17 +275,357 @@ class Particle extends HTMLElement {
 // atoms
 class Atom extends Particle {
   static symbols = ["?", "H", "He", "Li", "Be", "B", "C", "N", "O", "F", "Ne", "Na", "Mg", "Al", "Si", "P", "S", "Cl", "Ar", "K", "Ca", "Sc", "Ti", "V", "Cr", "Mn", "Fe", "Co", "Ni", "Cu", "Zn", "Ga", "Ge", "As", "Se", "Br", "Kr", "Rb", "Sr", "Y", "Zr", "Nb", "Mo", "Tc", "Ru", "Rh", "Pg", "Ag", "Cd", "In", "Sn", "Sb", "Te", "I", "Xe", "Cs", "Ba", "La", "Ce", "Pr", "Nd", "Pm", "Sm", "Eu", "Gd", "Tb", "Dy", "Ho", "Er", "Tm", "Yb", "Lu", "Hf", "Ta", "W", "Re", "Os", "Ir", "Pt", "Au", "Hg", "Tl", "Pb", "Bi", "Po", "At", "Rn", "Fr", "Ra", "Ac", "Th", "Pa", "U", "Np", "Pu", "Am", "Cm", "Bk", "Cf", "Es", "Fm", "Md", "No", "Lr", "Rf", "Db", "Sg", "Bh"];
+  static data = {
+    1: {
+      symbol: "H",
+      name: "hydrogen",
+      electronegativity: 2.2
+    },
+    2: {
+      symbol: "He",
+      name: "helium"
+    },
+    3: {
+      symbol: "Li",
+      name: "lithium",
+      electronegativity: 0.98
+    },
+    4: {
+      symbol: "Be",
+      name: "beryllium",
+      electronegativity: 1.57
+    },
+    5: {
+      symbol: "B",
+      name: "boron",
+      electronegativity: 2.04
+    },
+    6: {
+      symbol: "C",
+      name: "carbon",
+      electronegativity: 2.55
+    },
+    7: {
+      symbol: "N",
+      name: "nitrogen",
+      electronegativity: 3.04
+    },
+    8: {
+      symbol: "O",
+      name: "oxygen",
+      electronegativity: 3.44
+    },
+    9: {
+      symbol: "F",
+      name: "fluorine",
+      electronegativity: 3.98
+    },
+    10: {
+      symbol: "Ne",
+      name: "neon"
+    },
+    11: {
+      symbol: "Na",
+      name: "sodium",
+      electronegativity: 0.93
+    },
+    12: {
+      symbol: "Mg",
+      name: "magnesium",
+      electronegativity: 1.31
+    },
+    13: {
+      symbol: "Al",
+      name: "alumnium",
+      electronegativity: 1.61
+    },
+    14: {
+      symbol: "Si",
+      name: "silicon",
+      electronegativity: 1.90
+    },
+    15: {
+      symbol: "P",
+      name: "phosphorus",
+      electronegativity: 2.19
+    },
+    16: {
+      symbol: "S",
+      name: "sulfur",
+      electronegativity: 2.58
+    },
+    17: {
+      symbol: "Cl",
+      name: "chlorine",
+      electronegativity: 3.16
+    },
+    18: {
+      symbol: "Ar",
+      name: "argon"
+    },
+    19: {
+      symbol: "K",
+      name: "potassium",
+      electronegativity: 0.82
+    },
+    20: {
+      symbol: "Ca",
+      name: "calcium",
+      electronegativity: 1
+    },
+    21: {
+      symbol: "Sc",
+      name: "scandium",
+      electronegativity: 1.36
+    },
+    22: {
+      symbol: "Ti",
+      name: "titanium",
+      electronegativity: 1.54
+    },
+    23: {
+      symbol: "V",
+      name: "vanadium",
+      electronegativity: 1.63
+    },
+    24: {
+      symbol: "Cr",
+      name: "chromium",
+      electronegativity: 1.66
+    },
+    25: {
+      symbol: "Mn",
+      name: "manganese",
+      electronegativity: 1.55
+    },
+    26: {
+      symbol: "Fe",
+      name: "iron",
+      electronegativity: 1.83
+    },
+    27: {
+      symbol: "Co",
+      name: "cobalt",
+      electronegativity: 1.88
+    },
+    28: {
+      symbol: "Ni",
+      name: "nickel",
+      electronegativity: 1.91
+    },
+    29: {
+      symbol: "Cu",
+      name: "copper",
+      electronegativity: 1.90
+    },
+    30: {
+      symbol: "Zn",
+      name: "zinc",
+      electronegativity: 1.65
+    },
+    31: {
+      symbol: "Ga",
+      name: "gallium",
+      electronegativity: 1.81
+    },
+    32: {
+      symbol: "Ge",
+      name: "germanium",
+      electronegativity: 2.01
+    },
+    33: {
+      symbol: "As",
+      name: "arsenic",
+      electronegativity: 2.18
+    },
+    34: {
+      symbol: "Se",
+      name: "sellenium",
+      electronegativity: 2.55
+    },
+    35: {
+      symbol: "Br",
+      name: "bromine",
+      electronegativity: 2.96
+    },
+    36: {
+      symbol: "Kr",
+      name: "krypton",
+      electronegativity: 3
+    },
+    37: {
+      symbol: "Rb",
+      name: "rubidium",
+      electronegativity: 0.82
+    },
+    38: {
+      symbol: "Sr",
+      name: "strontium",
+      electronegativity: 0.95
+    },
+    39: {
+      symbol: "Y",
+      name: "yttrium",
+      electronegativity: 1.22
+    },
+    40: {
+      symbol: "Zr",
+      name: "zirconium",
+      electronegativity: 1.33
+    },
+    41: {
+      symbol: "Nb",
+      name: "niobium",
+      electronegativity: 1.6
+    },
+    42: {
+      symbol: "Mo",
+      name: "molybdenum",
+      electronegativity: 2.16
+    },
+    43: {
+      symbol: "Tc",
+      name: "technetium",
+      electronegativity: 1.9
+    },
+    44: {
+      symbol: "Ru",
+      name: "ruthenium",
+      electronegativity: 2.2
+    },
+    45: {
+      symbol: "Rh",
+      name: "rhodium",
+      electronegativity: 2.82
+    },
+    46: {
+      symbol: "Pd",
+      name: "palladium",
+      electronegativity: 2.2
+    },
+    47: {
+      symbol: "Ag",
+      name: "silver",
+      electronegativity: 1.93
+    },
+    48: {
+      symbol: "Cd",
+      name: "cadmium",
+      electronegativity: 1.69
+    },
+    49: {
+      symbol: "In",
+      name: "indium",
+      electronegativity: 1.78
+    },
+    50: {
+      symbol: "Sn",
+      name: "tin"
+    },
+    51: {
+      symbol: "Sb",
+      name: "antimony"
+    },
+    52: {
+      symbol: "Te",
+      name: "tellurium"
+    },
+    53: {
+      symbol: "I",
+      name: "iodine"
+    },
+    54: {
+      symbol: "Xe",
+      name: "xenon"
+    },
+    55: {
+      symbol: "Cs",
+      name: "caesium"
+    },
+    56: {
+      symbol: "Ba",
+      name: "barium"
+    },
+    72: {
+      symbol: "Hf",
+      name: "hafnium"
+    },
+    73: {
+      symbol: "Ta",
+      name: "tantalum"
+    },
+    74: {
+      symbol: "W",
+      name: "tungsten"
+    },
+    75: {
+      symbol: "Re",
+      name: "rhenium"
+    },
+    76: {
+      symbol: "Os",
+      name: "osmium"
+    },
+    77: {
+      symbol: "Ir",
+      name: "iridium"
+    },
+    78: {
+      symbol: "Pt",
+      name: "platinum"
+    },
+    79: {
+      symbol: "Au",
+      name: "gold"
+    },
+    80: {
+      symbol: "Hg",
+      name: "mercury"
+    },
+    81: {
+      symbol: "Tl",
+      name: "thallium"
+    },
+    82: {
+      symbol: "Pb",
+      name: "lead"
+    },
+    83: {
+      symbol: "Bi",
+      name: "bismuth"
+    },
+    84: {
+      symbol: "Po",
+      name: "polonium"
+    },
+    85: {
+      symbol: "At",
+      name: "astatine"
+    },
+    86: {
+      symbol: "Rn",
+      name: "radon"
+    },
+    87: {
+      symbol: "Fr",
+      name: "francium"
+    },
+    88: {
+      symbol: "Ra",
+      name: "radium"
+    },
+  }
 
   p; n;
-  cloud = [
-    null,
-    0, // {total: 0, s: 0},
-    0, // {total: 0, s: 0, p: 0},
-    0, // {total: 0, s: 0, p: 0, d: 0},
-    0, // {total: 0, s: 0, p: 0, d: 0, f: 0},
-    0, // {total: 0, s: 0, p: 0, d: 0},
-    0, // {total: 0, s: 0, p: 0},
-  ];
+  cloud = {
+    charge: 0,
+    1: 0, // {total: 0, s: 0},
+    2: 0, // {total: 0, s: 0, p: 0},
+    3: 0, // {total: 0, s: 0, p: 0, d: 0},
+    4: 0, // {total: 0, s: 0, p: 0, d: 0, f: 0},
+    5: 0, // {total: 0, s: 0, p: 0, d: 0},
+    6: 0, // {total: 0, s: 0, p: 0},
+  };
   bonds = [];
   label;
 
@@ -263,25 +641,52 @@ class Atom extends Particle {
     this.updateSymbol();
     // updating cloud
     this.addElectrons(this.p);
+    this.cloud.charge = 0;
     // physics
     game.add(this, game.atoms);
+    // hover
+    this.onmouseover = () => hover(this, this.getName(), this.x + cameraX, this.y + cameraY + (this.clientWidth / 2) + 60);
+    // debug
+    console.log(
+      `New atom %c${(this.symbol + " ").substring(0, 2)}%c with need %c${this.electronNeed}`,
+      "color: " + this.getColor(), "",
+      "color: " + palette.green
+    )
   }
 
-  get name() {return Atom.symbols[this.p]}
-  set name(value) {this.p = Atom.symbols.indexOf(value)}
+  get symbol() {return Atom.symbols[this.p]}
+  set symbol(value) {this.p = Atom.symbols.indexOf(value)}
+  getName() {
+    let name = Atom.data[this.p].name;
+
+    if (this.cloud.charge < 0 && this.bonds.length == 1 && this.bonds[0].type != "covalent") {
+      let suffix;
+      if (name.endsWith("ine")) suffix = name.length - 3;
+      else if (this.p == 8) suffix = 2;
+      else if (this.p == 16) suffix = 4;
+      else suffix = name.lastIndexOf("o");
+      name = name.substring(0, suffix) + "ide";
+    }
+
+    if (this.cloud.charge) name += "<sup>" + this.charge + "</sup>"
+    
+    return name;
+  }
+  get charge() {return this.cloud.charge > 0 ? this.cloud.charge + "+" : -this.cloud.charge + "-"}
 
   // bonds & reactions
   electronNeed;
   checkReact(atom) {
-    // ionic
-    if (this.electronNeed === -atom.electronNeed)
-      new Bond(this, atom, "ionic");
-    // covalent
-    else if (
-      this.electronNeed > 0 && atom.electronNeed > 0 &&
-      this.electronNeed % 2 == 1 || atom.electronNeed % 2 == 1 ||
-      this.electronNeed == atom.electronNeed
-    ) new Bond(this, atom, "covalent");
+    if (
+      Math.abs(this.electronNeed) === Math.abs(atom.electronNeed) ||
+      this.electronNeed >= 0 && atom.electronNeed >= 0
+    ) new Bond(this, atom);
+    
+    else console.log(
+      `%c${this.symbol}%c (%c${this.electronNeed}%c) and %c${atom.symbol}%c (%c${atom.electronNeed}%c) did not react`,
+      "color: " + this.getColor(), "", "color: " + palette.green, "",
+      "color: " + this.getColor(), "", "color: " + palette.green, "",
+    );
   }
   isBonded(atom) {
     for (const bond of this.bonds) if (bond.a == atom || bond.b == atom) return true;
@@ -290,26 +695,28 @@ class Atom extends Particle {
   updateBonds() {
     for (let i = 0; i < this.bonds.length; i++) {
       this.bonds[i].rotation = i * 2 * Math.PI / this.bonds.length;
-      // console.log(i * 2 * Math.PI / this.bonds.length, "/", this.bonds.length, this.name, this.bonds[i].b.name);
     }
   }
 
   // electron cloud
   addElectrons(num = 1) {
     if (num > 0) {
-      while (num-- > 0) this.cloud[this.getValenceShell()]++;
+      while (num-- > 0) {
+        this.cloud[this.getValenceShell()]++;
+        this.cloud.charge--;
+      }
     } else {
       num = Math.min(num, 0);
-      while (num++ < 0) this.cloud[this.getValenceShell()]--;
+      while (num++ < 0) {
+        this.cloud[this.getValenceShell()]--;
+        this.cloud.charge++;
+      }
     }
     // updating electron need
-    let group = this.getGroup();
-    if (group < 3 || group > 12) {
-      let valence = this.cloud.findIndex(el => el == 0) - 1, valenceNum = this.cloud[valence];
-      if (valenceNum == 8 || valence == 1 && valenceNum == 2) this.electronNeed = 0;
-      else if (valenceNum < 4) this.electronNeed = valence == 1 ? valenceNum : -valenceNum;
-      else this.electronNeed = 8 - valenceNum;
-    }
+    let valence = this.getValenceShell(), valenceNum = this.cloud[valence];
+    if (valenceNum == 8 || valence == 1 && valenceNum == 2) this.electronNeed = 0;
+    else if (valenceNum < 4) this.electronNeed = valence == 1 ? valenceNum : -valenceNum;
+    else this.electronNeed = 8 - valenceNum;
     return 0;
   }
   getValenceShell() {
@@ -368,7 +775,7 @@ class Atom extends Particle {
   }
 
   // visuals
-  updateSymbol() {this.label.textContent = this.name}
+  updateSymbol() {this.label.textContent = this.symbol}
   getColorName() {
     let type = this.getType();
     if (["Alkaline earth metal", "Noble gas"].includes(type)) return "red";
@@ -388,6 +795,7 @@ class Atom extends Particle {
 
   disconnectedCallback() {
     game.remove(this, game.atoms);
+    for (const bond of this.bonds) bond.break();
   }
 }
 
@@ -408,7 +816,7 @@ for (let i = 1; i < Atom.symbols.length; i++) {
   let cell = document.getElementById("table").appendChild(document.createElement("div"));
   let atom = new Atom; atom.p = i;
   cell.classList.add("colored", atom.getColorName(), "cell");
-  cell.textContent = atom.name;
+  cell.textContent = atom.symbol;
 
   if (i == 2) cell.style.gridColumn = 18;
   else if (i == 5 || i == 13) cell.style.gridColumn = 13;
@@ -420,22 +828,22 @@ document.querySelector("header button").onclick = () => document.getElementById(
 // loading level
 load([
   [
-    {type: "atom", name: "Na", x: 400, y: 400},
-    {type: "atom", name: "H", x: 500, y: 200},
-    {type: "atom", name: "Cl", x: 800, y: 300},
-    {type: "atom", name: "Ag", x: 600, y: 400},
-    {type: "atom", name: "Cl", x: 1000, y: 500},
+    {type: "atom", symbol: "Na", x: 400, y: 400},
+    {type: "atom", symbol: "H", x: 500, y: 200},
+    {type: "atom", symbol: "Cl", x: 800, y: 300},
+    {type: "atom", symbol: "Ag", x: 600, y: 400},
+    {type: "atom", symbol: "Cl", x: 1000, y: 500},
     // {type: "bond", a: 2, b: 4, kind: "ionic"}
   ],
   [
-    {type: "atom", name: "Na", x: 400, y: 400},
+    {type: "atom", symbol: "Na", x: 400, y: 400},
   ]
 ][location.hash ? location.hash.substring(1) : 0]);
 function load(data) {
   for (const item of data) {
     if (item.type == "atom") {
       let atom = new Atom();
-      atom.name = item.name;
+      atom.symbol = item.symbol;
       atom.x = item.x;
       atom.y = item.y;
       atom.add();
@@ -447,7 +855,7 @@ function load(data) {
 
 function exportJSON() {
   let arr = [];
-  for (const atom of game.atoms) arr.push({type: "atom", name: atom.name, x: atom.x, y: atom.y});
+  for (const atom of game.atoms) arr.push({type: "atom", symbol: atom.symbol, x: atom.x, y: atom.y});
   for (const bond of game.bonds) arr.push({type: "bond", a: game.atoms.indexOf(bond.a), b: game.atoms.indexOf(bond.b), kind: bond.type});
   console.log(JSON.stringify(arr));
 }
@@ -462,7 +870,7 @@ oncontextmenu = e => {
   input.onkeydown = e => {if (e.key == "Enter") {
     if (Atom.symbols.includes(input.value)) {
       let atom = new Atom;
-      atom.name = input.value;
+      atom.symbol = input.value;
       atom.x = input.offsetLeft;
       atom.y = input.offsetTop;
       atom.add();

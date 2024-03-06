@@ -13,6 +13,8 @@ h1 {line-height: 0.875; margin-right: auto}
 canvas {position: absolute; inset: 0}
 #root {position: absolute}
 
+.hover {font-size: 0.75em; padding: 0.25em; border-width: 0.2em; transform: translateX(-50%); position: absolute; pointer-events: none}
+
 #info {
   display: flex;
   background-color: var(--white);
