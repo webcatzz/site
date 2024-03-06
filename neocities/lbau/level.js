@@ -659,7 +659,11 @@ class Atom extends Particle {
   getName() {
     let name = Atom.data[this.p].name;
 
-    if (this.cloud.charge < 0 && this.bonds.length == 1 && this.bonds[0].type != "covalent") {
+    if (
+      this.bonds.length == 1 &&
+      this.bonds[0].type == "ionic" &&
+      this.cloud.charge < 0
+    ) {
       let suffix;
       if (name.endsWith("ine")) suffix = name.length - 3;
       else if (this.p == 8) suffix = 2;
@@ -681,7 +685,7 @@ class Atom extends Particle {
       Math.abs(this.electronNeed) === Math.abs(atom.electronNeed) ||
       this.electronNeed >= 0 && atom.electronNeed >= 0
     ) new Bond(this, atom);
-    
+
     else console.log(
       `%c${this.symbol}%c (%c${this.electronNeed}%c) and %c${atom.symbol}%c (%c${atom.electronNeed}%c) did not react`,
       "color: " + this.getColor(), "", "color: " + palette.green, "",
