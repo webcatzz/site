@@ -3,52 +3,53 @@
 @font-face {font-family: vcr; src: url(assets/fonts/vcr.ttf)}
 :root {--wobble: cubic-bezier(.09,.39,0,2.75); scrollbar-color: var(--off-black) var(--black)}
 body {
-  color: var(--white); line-height: 1.4;
-  background-color: var(--black); margin: 0; position: relative;
-  user-select: none;
+	color: var(--white); line-height: 1.4;
+	background-color: var(--black); margin: 0; position: relative;
+	user-select: none;
 }
 
 
 /* title */
 
 header {
-  display: flex; justify-content: center; align-items: center;
-  height: 144px; background:
-    radial-gradient(circle at center, var(--black) 20em, var(--white) 20em, var(--white) 21em, var(--red) 21em, var(--red) 21.25em, var(--white) 21.25em, var(--white) 21.5em, transparent 21.5em, transparent 21.625em, var(--white) 21.625em, var(--white) 21.75em, transparent 21.75em),
-    url(assets/banner.png) repeat-x center var(--red);
-  box-shadow: 0 0 16px var(--black);
-  animation: 60s flow linear infinite;
-  position: relative; z-index: 4;
+	display: flex; justify-content: center; align-items: center;
+	height: 144px; background:
+		radial-gradient(circle at center, var(--black) 20em, var(--white) 20em, var(--white) 21em, var(--red) 21em, var(--red) 21.25em, var(--white) 21.25em, var(--white) 21.5em, transparent 21.5em, transparent 21.625em, var(--white) 21.625em, var(--white) 21.75em, transparent 21.75em),
+		url(assets/banner.png) repeat-x center var(--red);
+	box-shadow: 0 0 16px var(--black);
+	animation: 60s flow linear infinite;
+	position: relative; z-index: 4;
 }
 
 @keyframes fairylight {
-  0% {text-shadow: 0 -0.1em var(--blue), 0.1em -0.1em var(--blue), 0.1em 0 var(--blue), 0.1em 0.1em var(--blue), 0 0.1em var(--blue), -0.1em 0.1em var(--blue), -0.1em 0 var(--blue), -0.1em -0.1em var(--blue)}
-  25% {text-shadow: 0 -0.1em var(--red), 0.1em -0.1em var(--red), 0.1em 0 var(--red), 0.1em 0.1em var(--red), 0 0.1em var(--red), -0.1em 0.1em var(--red), -0.1em 0 var(--red), -0.1em -0.1em var(--red)}
-  50% {text-shadow: 0 -0.1em var(--yellow), 0.1em -0.1em var(--yellow), 0.1em 0 var(--yellow), 0.1em 0.1em var(--yellow), 0 0.1em var(--yellow), -0.1em 0.1em var(--yellow), -0.1em 0 var(--yellow), -0.1em -0.1em var(--yellow)}
-  75% {text-shadow: 0 -0.1em var(--white), 0.1em -0.1em var(--white), 0.1em 0 var(--white), 0.1em 0.1em var(--white), 0 0.1em var(--white), -0.1em 0.1em var(--white), -0.1em 0 var(--white), -0.1em -0.1em var(--white)}
+	0% {text-shadow: 0 -0.1em var(--blue), 0.1em -0.1em var(--blue), 0.1em 0 var(--blue), 0.1em 0.1em var(--blue), 0 0.1em var(--blue), -0.1em 0.1em var(--blue), -0.1em 0 var(--blue), -0.1em -0.1em var(--blue)}
+	25% {text-shadow: 0 -0.1em var(--red), 0.1em -0.1em var(--red), 0.1em 0 var(--red), 0.1em 0.1em var(--red), 0 0.1em var(--red), -0.1em 0.1em var(--red), -0.1em 0 var(--red), -0.1em -0.1em var(--red)}
+	50% {text-shadow: 0 -0.1em var(--yellow), 0.1em -0.1em var(--yellow), 0.1em 0 var(--yellow), 0.1em 0.1em var(--yellow), 0 0.1em var(--yellow), -0.1em 0.1em var(--yellow), -0.1em 0 var(--yellow), -0.1em -0.1em var(--yellow)}
+	75% {text-shadow: 0 -0.1em var(--white), 0.1em -0.1em var(--white), 0.1em 0 var(--white), 0.1em 0.1em var(--white), 0 0.1em var(--white), -0.1em 0.1em var(--white), -0.1em 0 var(--white), -0.1em -0.1em var(--white)}
 }
 
 h1 {
-  color: var(--black); font-size: 4em; margin: 0;
-  display: flex; justify-content: center; align-items: end; gap: 0.15em;
-  & span {
-    animation: 4s fairylight step-end infinite;
-    &:nth-of-type(1) {animation-delay: -6s; rotate: -2deg}
-    &:nth-of-type(2) {animation-delay: -5s; rotate: -4deg; margin-bottom: 0.05em; text-decoration: overline dotted 0.01em}
-    &:nth-of-type(3) {animation-delay: -4s; margin-left: -0.05em}
-    &:nth-of-type(4) {animation-delay: -3s; rotate: 3deg; text-decoration: underline wavy 0.01em}
-    &:nth-of-type(5) {animation-delay: -2s; rotate: -2deg; margin-bottom: -0.05em}
-    &:nth-of-type(6) {animation-delay: -1s}
-    &:nth-of-type(7) {rotate: 4deg}
-  }
+	color: var(--black); font-size: 4em; margin: 0;
+	display: flex; justify-content: center; align-items: end; gap: 0.15em;
+	& span {
+		animation: 4s fairylight step-end infinite;
+		&:nth-of-type(1) {animation-delay: -6s; rotate: -2deg}
+		&:nth-of-type(2) {animation-delay: -5s; rotate: -4deg; margin-bottom: 0.05em; text-decoration: overline dotted 0.01em}
+		&:nth-of-type(3) {animation-delay: -4s; margin-left: -0.05em}
+		&:nth-of-type(4) {animation-delay: -3s; rotate: 3deg; text-decoration: underline wavy 0.01em}
+		&:nth-of-type(5) {animation-delay: -2s; rotate: -2deg; margin-bottom: -0.05em}
+		&:nth-of-type(6) {animation-delay: -1s}
+		&:nth-of-type(7) {rotate: 4deg}
+	}
 }
 
 #scroll-header {
-  display: flex; align-items: center; gap: 1em;
-  background-color: var(--black); padding: 0.25em 1em; border-bottom: 1px solid var(--off-black);
-  position: fixed; top: 0; left: 0; right: 0; z-index: 3;
+	display: flex; align-items: center; gap: 1em;
+	background-color: var(--black); padding: 0.25em 1em; border-bottom: 1px solid var(--off-black);
+	position: fixed; top: 0; left: 0; right: 0; z-index: 3;
 }
-#scroll-title {color: transparent; font-weight: bold; letter-spacing: 0.05em; background: url(assets/space.png) 32px top; background-clip: text; -webkit-background-clip: text}
+/* #scroll-title {color: transparent; font-weight: bold; letter-spacing: 0.05em; background-image: linear-gradient(45deg, var(--blue) 10%, var(--red), var(--yellow) 90%); background-clip: text; -webkit-background-clip: text} */
+#scroll-title {color: transparent; font-weight: bold; letter-spacing: 0.05em; background: url(assets/scroll-header-bg.png) center / cover; background-clip: text; -webkit-background-clip: text}
 #scroll-subtitle, #scroll-copyright {color: var(--dark-gray); font-family: ms-serif; font-size: 0.75em; letter-spacing: 0.025em}
 #scroll-subtitle {color: var(--off-black)}
 #scroll-copyright {margin-left: auto}
@@ -57,10 +58,10 @@ h1 {
 /* nav (middle) */
 
 nav {
-  display: grid; grid-template-columns: 1fr 1fr; gap: 1em;
-  max-width: 650px; padding: 6em 0; margin: auto;
+	display: grid; grid-template-columns: 1fr 1fr; gap: 1em;
+	max-width: 650px; padding: 6em 0; margin: auto;
 
-  & a:hover, summary:hover {outline: 4px solid #f4f3f040; outline-offset: 2px}
+	& a:hover, summary:hover {outline: 4px solid #f4f3f040; outline-offset: 2px}
 }
 a {color: inherit}
 a:not([href]):hover {outline: none; filter: grayscale(1); cursor: not-allowed}
@@ -75,84 +76,84 @@ a:not([href]):hover {outline: none; filter: grayscale(1); cursor: not-allowed}
 
 /* about */
 #about {
-  color: var(--black); font-size: 1.5em; letter-spacing: 0.05em;
-  display: flex; flex-direction: column; justify-content: center; align-items: end;
-  padding-right: 0.2em;
-  contain: strict; background-color: var(--red);
-  flex: 1; margin-top: 1em;
+	color: var(--black); font-size: 1.5em; letter-spacing: 0.05em;
+	display: flex; flex-direction: column; justify-content: center; align-items: end;
+	padding-right: 0.2em;
+	contain: strict; background-color: var(--red);
+	flex: 1; margin-top: 1em;
 
-  & div:nth-of-type(even) {font-style: italic}
+	& div:nth-of-type(even) {font-style: italic}
 }
 
 /* creata */
 #creata-wrapper {gap: 0; margin-bottom: -1em}
 #cats {width: 92px; margin-top: -44px; margin-bottom: -20px; margin-right: 8px; align-self: end; z-index: 1}
 #creata {
-  contain: inline-size paint; background-color: var(--yellow); flex: 1;
-  & > span {font-size: 9em; font-weight: bold; letter-spacing: -0.1em; line-height: 1; margin-left: -0.25em}
-  & span span {font-family: print}
+	contain: inline-size paint; background-color: var(--yellow); flex: 1;
+	& > span {font-size: 9em; font-weight: bold; letter-spacing: -0.1em; line-height: 1; margin-left: -0.25em}
+	& span span {font-family: print}
 }
 
 /* audio player */
 .lcd {color: #daf1b6; font-family: ms-serif; background-color: #232d1d}
 #audio-player {
-  display: grid; grid-template-columns: max-content 1fr max-content; row-gap: 4px;
-  position: relative;
+	display: grid; grid-template-columns: max-content 1fr max-content; row-gap: 4px;
+	position: relative;
 
-  & div.lcd {color: #daf1b680; font-size: 0.75em; padding: 0 0.5em; display: flex; align-items: center}
-  & button {
-    text-align: center; background: var(--off-black); transition: transform 0.1s, box-shadow 0.1s;
-    &:hover {transform: translateY(-2px); box-shadow: 0 2px}
-    &:active {transform: translateY(2px); box-shadow: none}
-  }
-  #seek-bar {
-    height: 24px; contain: size;
-    margin: 0 4px; position: relative;
-    cursor: pointer;
+	& div.lcd {color: #daf1b680; font-size: 0.75em; padding: 0 0.5em; display: flex; align-items: center}
+	& button {
+		text-align: center; background: var(--off-black); transition: transform 0.1s, box-shadow 0.1s;
+		&:hover {transform: translateY(-2px); box-shadow: 0 2px}
+		&:active {transform: translateY(2px); box-shadow: none}
+	}
+	#seek-bar {
+		height: 24px; contain: size;
+		margin: 0 4px; position: relative;
+		cursor: pointer;
 
-    & > * {position: absolute; top: 50%; left: 0; pointer-events: none}
-    & div {
-      height: 8px; margin-top: -4px;
-      &:first-of-type {background-color: var(--off-black); right: 0}
-      &:last-of-type {width: 0; background: url(assets/space.png)}
-    }
-    & img {
-      width: 24px; height: 24px; margin-top: -12px; image-rendering: auto; transition: rotate 0.2s;
-      &:hover {rotate: -5deg}
-      &:active {rotate: 15deg}
-    }
-  }
+		& > * {position: absolute; top: 50%; left: 0; pointer-events: none}
+		& div {
+			height: 8px; margin-top: -4px;
+			&:first-of-type {background-color: var(--off-black); right: 0}
+			&:last-of-type {width: 0; background: url(assets/space.png)}
+		}
+		& img {
+			width: 24px; height: 24px; margin-top: -12px; image-rendering: auto; transition: rotate 0.2s;
+			&:hover {rotate: -5deg}
+			&:active {rotate: 15deg}
+		}
+	}
 }
 
 @keyframes awful {from {padding-left: 0} to {padding-left: calc(100% - 20px)}}
 #awful-fucking-thing {
-  animation: 60s awful linear infinite alternate;
-  position: absolute; left: 0; right: 0; bottom: 100%;
-  & img {cursor: pointer}
+	animation: 60s awful linear infinite alternate;
+	position: absolute; left: 0; right: 0; bottom: 100%;
+	& img {cursor: pointer}
 }
 .nightcore {
-  background-image: url(assets/sparkles.gif); background-size: 100%;
-  #awful-fucking-thing {animation-duration: 1s; cursor: pointer}
+	background-image: url(assets/sparkles.gif); background-size: 100%;
+	#awful-fucking-thing {animation-duration: 1s; cursor: pointer}
 }
 
 /* tunes */
 @keyframes spin {to {rotate: 360deg}}
 #tunes {
-  contain: paint;
-  padding: 0.75em 1em 0.75em 2em; background: url(assets/blue-cloud.png) center var(--blue);
-  transform: skewY(-2deg); margin: -0.25em -0.5em;
-  display: grid; grid-template-columns: max-content 1fr;
-  z-index: 2; /* bc of wires */
+	contain: paint;
+	padding: 0.75em 1em 0.75em 2em; background: url(assets/blue-cloud.png) center var(--blue);
+	transform: skewY(-2deg); margin: -0.25em -0.5em;
+	display: grid; grid-template-columns: max-content 1fr;
+	z-index: 2; /* bc of wires */
 
-  .title {font-size: 1.5em; font-weight: bold; text-shadow: 0 -0.1em var(--black), 0.1em -0.1em var(--black), 0.15em 0 var(--black), 0.15em 0.15em var(--black), 0 0.15em var(--black), -0.1em 0.1em blue, -0.1em 0 var(--black), -0.1em -0.1em var(--black)}
-  #track-name {
-    font-family: ms-serif; letter-spacing: 0.1em;
-    padding-left: 0.25em; padding-right: 0.4em;
-    background-color: var(--black); margin: 0 4px;
-    justify-self: start;
-  }
-  & iframe {width: calc(100% - 4em); height: 80px; margin-top: 4px; margin-left: 4em; background-color: black}
-  & img {position: absolute; top: -89.25px; left: -145.5px; z-index: -1; animation: 15s spin steps(180) infinite}
+	.title {font-size: 1.5em; font-weight: bold; text-shadow: 0 -0.1em var(--black), 0.1em -0.1em var(--black), 0.15em 0 var(--black), 0.15em 0.15em var(--black), 0 0.15em var(--black), -0.1em 0.1em blue, -0.1em 0 var(--black), -0.1em -0.1em var(--black)}
+	#track-name {
+		font-family: ms-serif; letter-spacing: 0.1em;
+		padding-left: 0.25em; padding-right: 0.4em;
+		background-color: var(--black); margin: 0 4px;
+		justify-self: start;
+	}
+	& iframe {width: calc(100% - 4em); height: 80px; margin-top: 4px; margin-left: 4em; background-color: black}
+	& img {position: absolute; top: -89.25px; left: -145.5px; z-index: -1; animation: 15s spin steps(180) infinite}
 }
 
 #news-wrapper {display: flex; align-items: center; gap: inherit}
@@ -160,83 +161,83 @@ a:not([href]):hover {outline: none; filter: grayscale(1); cursor: not-allowed}
 
 /* headlines */
 #news {
-  & img {display: inline-block; width: 96px; height: 1em}
-  & span:not(:last-of-type), & img {margin-right: 64px}
+	& img {display: inline-block; width: 96px; height: 1em}
+	& span:not(:last-of-type), & img {margin-right: 64px}
 }
 
 /* shrines */
 #shrines {
-  color: var(--off-black); --white: #f7f6e0;
-  position: relative;
+	color: var(--off-black); --white: #f7f6e0;
+	position: relative;
 
-  .title {
-    font-size: 2.25em; font-weight: bold; text-shadow: 0 -0.1em var(--white), 0.1em -0.1em var(--white), 0.1em 0 var(--white), 0.1em 0.1em var(--white), 0 0.1em var(--white), -0.1em 0.1em var(--white), -0.1em 0 var(--white), -0.1em -0.1em var(--white);
-    rotate: 2deg; position: absolute; top: -2px; right: -4px; z-index: 1;
-  }
-  .body {
-    padding-bottom: 3em; contain: size; flex: 1;
-    background: url(assets/leaves.png) center / 224px 224px, url(assets/green-tile.png) center #668237; top: 0; bottom: 0; overflow-y: scroll;
-    scrollbar-color: #87915a #5b772e;
-    & a {
-      display: block; width: 55%; padding: 0.75em; margin-bottom: -1em; box-shadow: 0 2px 8px #00000040; background-color: var(--white);
-      &:nth-of-type(odd) {margin-left: -5%; rotate: -2deg}
-      &:nth-of-type(even) {margin-left: 15%; rotate: 2deg}
-      &:hover {rotate: 0deg; transition: rotate 0.2s var(--wobble)}
-    }
-    & img {object-fit: cover; aspect-ratio: 1; margin-bottom: 8px}
-  }
+	.title {
+		font-size: 2.25em; font-weight: bold; text-shadow: 0 -0.1em var(--white), 0.1em -0.1em var(--white), 0.1em 0 var(--white), 0.1em 0.1em var(--white), 0 0.1em var(--white), -0.1em 0.1em var(--white), -0.1em 0 var(--white), -0.1em -0.1em var(--white);
+		rotate: 2deg; position: absolute; top: -2px; right: -4px; z-index: 1;
+	}
+	.body {
+		padding-bottom: 3em; contain: size; flex: 1;
+		background: url(assets/leaves.png) center / 224px 224px, url(assets/green-tile.png) center #668237; top: 0; bottom: 0; overflow-y: scroll;
+		scrollbar-color: #87915a #5b772e;
+		& a {
+			display: block; width: 55%; padding: 0.75em; margin-bottom: -1em; box-shadow: 0 2px 8px #00000040; background-color: var(--white);
+			&:nth-of-type(odd) {margin-left: -5%; rotate: -2deg}
+			&:nth-of-type(even) {margin-left: 15%; rotate: 2deg}
+			&:hover {rotate: 0deg; transition: rotate 0.2s var(--wobble)}
+		}
+		& img {object-fit: cover; aspect-ratio: 1; margin-bottom: 8px}
+	}
 }
 
 /* status */
 #statuscafe {
-  color: var(--black);
-  padding: 1em;
-  background-color: var(--white);
-  border-radius: 0.75em;
+	color: var(--black);
+	padding: 1em;
+	background-color: var(--white);
+	border-radius: 0.75em;
 
-  #statuscafe-username {color: var(--light-gray); font-size: 0.5em; font-weight: bold; text-transform: uppercase; letter-spacing: 0.075em; margin-block: -0.5em 0.25em}
-  & a {text-decoration: underline; &:hover {color: var(--blue)}}
-  &::after {
-    content: ""; display: block;
-    width: 1.5em; height: 1.5em; background-color: inherit; rotate: 45deg;
-    margin-inline: auto; margin-bottom: -1.5em;
-  }
+	#statuscafe-username {color: var(--light-gray); font-size: 0.5em; font-weight: bold; text-transform: uppercase; letter-spacing: 0.075em; margin-block: -0.5em 0.25em}
+	& a {text-decoration: underline; &:hover {color: var(--blue)}}
+	&::after {
+		content: ""; display: block;
+		width: 1.5em; height: 1.5em; background-color: inherit; rotate: 45deg;
+		margin-inline: auto; margin-bottom: -1.5em;
+	}
 }
 
 /* blog */
 #blog {
-  color: #fdf7e6; font-size: 3.5em; font-weight: bold; line-height: 0.65;
-  display: flex; justify-content: start; align-items: end;
-  aspect-ratio: 2;
-  background: url(assets/blog-stamp.png) center / 100%; background-clip: padding-box; 
-  border: 8px solid; border-image: url(assets/stamp-border.png) 4 / 8px round;
-  rotate: 1deg;
-  transition: background-size 0.1s;
+	color: #fdf7e6; font-size: 3.5em; font-weight: bold; line-height: 0.65;
+	display: flex; justify-content: start; align-items: end;
+	aspect-ratio: 2;
+	background: url(assets/blog-stamp.png) center / 100%; background-clip: padding-box; 
+	border: 8px solid; border-image: url(assets/stamp-border.png) 4 / 8px round;
+	rotate: 1deg;
+	transition: background-size 0.1s;
 
-  &:hover:not(:active) {background-size: 110%; transition: background-size 1.5s var(--wobble)}
+	&:hover:not(:active) {background-size: 110%; transition: background-size 1.5s var(--wobble)}
 }
 
 /* art */
 #art {
-  color: var(--black); font-size: 2em; font-weight: bold; letter-spacing: 0.05em; line-height: initial;
-  display: flex; justify-content: center; align-items: center;
-  padding-top: 3em;
-  background-color: var(--red);
-  margin-top: -3em;
+	color: var(--black); font-size: 2em; font-weight: bold; letter-spacing: 0.05em; line-height: initial;
+	display: flex; justify-content: center; align-items: center;
+	padding-top: 3em;
+	background-color: var(--red);
+	margin-top: -3em;
 
-  & div {
-    transform: skewX(-30deg);
-    margin-bottom: 0.1em; margin-right: 0.5em;
-  }
+	& div {
+		transform: skewX(-30deg);
+		margin-bottom: 0.1em; margin-right: 0.5em;
+	}
 }
 
 /* cat comic */
 #cat {
-  display: flex; align-items: end;
-  background: url(assets/blue-cloud.png) 5% 65% var(--blue);
-  aspect-ratio: 2.25; margin-bottom: -2.5em; position: relative;
-  & img {width: 100%; height: 87.5%; object-fit: cover; object-position: top}
-  &::after {content: ""; height: 14px; background: linear-gradient(to top, transparent 1px, var(--black) 1px, var(--black) 5px, transparent 5px, transparent 7px, var(--black) 7px, var(--black) 9px, transparent 9px, transparent 13px, var(--black) 13px, var(--black) 14px, transparent 14px); position: absolute; left: 0; right: 0; bottom: 0}
+	display: flex; align-items: end;
+	background: url(assets/blue-cloud.png) 5% 65% var(--blue);
+	aspect-ratio: 2.25; margin-bottom: -2.5em; position: relative;
+	& img {width: 100%; height: 87.5%; object-fit: cover; object-position: top}
+	&::after {content: ""; height: 14px; background: linear-gradient(to top, transparent 1px, var(--black) 1px, var(--black) 5px, transparent 5px, transparent 7px, var(--black) 7px, var(--black) 9px, transparent 9px, transparent 13px, var(--black) 13px, var(--black) 14px, transparent 14px); position: absolute; left: 0; right: 0; bottom: 0}
 }
 
 /* discord */
@@ -249,23 +250,23 @@ a:not([href]):hover {outline: none; filter: grayscale(1); cursor: not-allowed}
 
 /* how-to's */
 #how-to {
-  color: var(--white); line-height: initial;
-  contain: paint; background-color: var(--yellow); padding: 1em 0.5em 0.5em; flex: 3;
-  rotate: -1deg; position: relative; transition: rotate 0.4s var(--wobble);
-  & .title {
-    font-size: 2em; font-weight: bold;
-    padding-inline: 0.5em; border: 1px solid; flex: 1;
-  }
-  & .fake-text {margin-top: 0.5em}
-  &::after {
-    content: "";
-    border: 1em solid var(--white); border-top-color: var(--black); border-right-color: var(--black);
-    box-shadow: 0 4px 8px -2px #00000060;
-    position: absolute; top: 0; right: 0;
-    transition: border-width 0.2s;
-  }
-  &:hover {rotate: 0deg; transition-duration: 0.2s}
-  &:hover::after {border-width: 0; transition-duration: 0.1s}
+	color: var(--white); line-height: initial;
+	contain: paint; background-color: var(--yellow); padding: 1em 0.5em 0.5em; flex: 3;
+	rotate: -1deg; position: relative; transition: rotate 0.4s var(--wobble);
+	& .title {
+		font-size: 2em; font-weight: bold;
+		padding-inline: 0.5em; border: 1px solid; flex: 1;
+	}
+	& .fake-text {margin-top: 0.5em}
+	&::after {
+		content: "";
+		border: 1em solid var(--white); border-top-color: var(--black); border-right-color: var(--black);
+		box-shadow: 0 4px 8px -2px #00000060;
+		position: absolute; top: 0; right: 0;
+		transition: border-width 0.2s;
+	}
+	&:hover {rotate: 0deg; transition-duration: 0.2s}
+	&:hover::after {border-width: 0; transition-duration: 0.1s}
 }
 
 /* middling arcana */
@@ -274,73 +275,73 @@ a:not([href]):hover {outline: none; filter: grayscale(1); cursor: not-allowed}
 /* links */
 #links-wrapper {display: grid; grid-template-columns: 3fr 2fr max-content; gap: inherit}
 #links {
-  color: var(--black); font-size: 10em; font-weight: bold; line-height: 0.55; text-align: center;
-  contain: size paint;
-  background-color: var(--yellow);
+	color: var(--black); font-size: 10em; font-weight: bold; line-height: 0.55; text-align: center;
+	contain: size paint;
+	background-color: var(--yellow);
 }
 
 /* beepbox */
 #beepbox {
-  font-size: 1.25em; letter-spacing: 0.05em; text-align: center;
-  padding: 0.75em; background: url(beepbox-webring/background.png) repeat no-repeat center black;
-  border: 4px solid #222; border-radius: 5px;
-  
-  & span {color: #98f}
+	font-size: 1.25em; letter-spacing: 0.05em; text-align: center;
+	padding: 0.75em; background: url(beepbox-webring/background.png) repeat no-repeat center black;
+	border: 4px solid #222; border-radius: 5px;
+	
+	& span {color: #98f}
 }
 
 /* tools */
 #tools {
-  color: var(--light-gray); display: flex;
-  &:active {z-index: 1}
-  & a {
-    font-size: 1.5em;
-    display: flex; justify-content: center; align-items: center;
-    background-color: var(--off-black);
-    border-right: 2px solid var(--black);
-    flex: 1;
-    & i {pointer-events: none}
-    &:first-of-type {border-top-left-radius: 8px; border-bottom-left-radius: 8px}
-    &:last-of-type {border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-right: none}
-    &:hover {
-      z-index: 1;
-      &:not(:active) {position: relative; &::after {
-        content: attr(data-tooltip); font-size: 0.6em;
-        width: max-content; padding: 0.1em 0.5em;
-        background-color: var(--off-black); border-radius: 4px;
-        position: absolute; top: calc(100% + 1em);
-      }}
-    }
-    &:active {color: var(--gray); background-color: var(--black); z-index: -1}
-  }
+	color: var(--light-gray); display: flex;
+	&:active {z-index: 1}
+	& a {
+		font-size: 1.5em;
+		display: flex; justify-content: center; align-items: center;
+		background-color: var(--off-black);
+		border-right: 2px solid var(--black);
+		flex: 1;
+		& i {pointer-events: none}
+		&:first-of-type {border-top-left-radius: 8px; border-bottom-left-radius: 8px}
+		&:last-of-type {border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-right: none}
+		&:hover {
+			z-index: 1;
+			&:not(:active) {position: relative; &::after {
+				content: attr(data-tooltip); font-size: 0.6em;
+				width: max-content; padding: 0.1em 0.5em;
+				background-color: var(--off-black); border-radius: 4px;
+				position: absolute; top: calc(100% + 1em);
+			}}
+		}
+		&:active {color: var(--gray); background-color: var(--black); z-index: -1}
+	}
 }
 
 /* lightswitch */
 @keyframes appear {from {opacity: 0}}
 #lightswitch {cursor: pointer; &:hover {outline: 4px solid #f4f3f040; outline-offset: 2px}}
 .lights-off {
-  &::before {content: ""; background-color: black; position: absolute; inset: 0; z-index: 10}
-  &::after {content: url(assets/chill.gif); transform: translate(-50%, -50%); opacity: 0.33; position: fixed; top: 50%; left: 50%; z-index: 10; animation: 30s appear; pointer-events: none}
-  #lightswitch {opacity: 0.2; scale: -1; position: relative; z-index: 10}
+	&::before {content: ""; background-color: black; position: absolute; inset: 0; z-index: 10}
+	&::after {content: url(assets/chill.gif); transform: translate(-50%, -50%); opacity: 0.33; position: fixed; top: 50%; left: 50%; z-index: 10; animation: 30s appear; pointer-events: none}
+	#lightswitch {opacity: 0.2; scale: -1; position: relative; z-index: 10}
 }
 
 /* sitemap */
 #map {
-  color: var(--dark-gray); font-family: ms-serif; font-size: 0.875em; letter-spacing: 0.025em;
-  text-align: center;
-  &:hover {text-decoration: underline; outline: none}
+	color: var(--dark-gray); font-family: ms-serif; font-size: 0.875em; letter-spacing: 0.025em;
+	text-align: center;
+	&:hover {text-decoration: underline; outline: none}
 }
 
 /* laser pointer */
 @keyframes move {from {transform: translate(-1px, -1px)} to {transform: translate(1px, 0.5px)}}
 #laser-pointer {
-  width: 8px; height: 8px;
-  background-color: #e2325480; border-radius: 50%;
-  box-shadow: 0 0 8px var(--red);
-  position: absolute;
-  left: calc(50vw + 335px); top: 480px;
-  z-index: 10;
-  transition: ease-in 0.05s; animation: 1s move infinite alternate;
-  cursor: pointer; 
+	width: 8px; height: 8px;
+	background-color: #e2325480; border-radius: 50%;
+	box-shadow: 0 0 8px var(--red);
+	position: absolute;
+	left: calc(50vw + 335px); top: 480px;
+	z-index: 10;
+	transition: ease-in 0.05s; animation: 1s move infinite alternate;
+	cursor: pointer; 
 }
 
 
@@ -348,62 +349,62 @@ a:not([href]):hover {outline: none; filter: grayscale(1); cursor: not-allowed}
 /* chatbox */
 
 #chatbox {
-  width: 250px;
-  background-color: var(--black);
-  position: fixed; bottom: 0; right: 0; z-index: 2;
+	width: 250px;
+	background-color: var(--black);
+	position: fixed; bottom: 0; right: 0; z-index: 2;
 
-  & summary {
-    color: var(--black); font-size: 1.25em; font-weight: bold; letter-spacing: 0.05em; text-align: center;
-    padding: 0.25em 0;
-    background-color: var(--off-black);
-  }
-  & iframe {width: 250px; height: 450px}
-  /* & > div {
-    font-size: 0.75em;
-    display: flex; flex-direction: column; gap: 0.5em;
-    contain: size; height: 320px; padding: 0.5em;
-    overflow-y: auto; overscroll-behavior: contain;
-  } */
+	& summary {
+		color: var(--black); font-size: 1.25em; font-weight: bold; letter-spacing: 0.05em; text-align: center;
+		padding: 0.25em 0;
+		background-color: var(--off-black);
+	}
+	& iframe {width: 250px; height: 450px}
+	/* & > div {
+		font-size: 0.75em;
+		display: flex; flex-direction: column; gap: 0.5em;
+		contain: size; height: 320px; padding: 0.5em;
+		overflow-y: auto; overscroll-behavior: contain;
+	} */
 }
 /* #chatbox-form {
-  font-size: 0.875em;
-  display: grid; grid-template: max-content 3em / 1fr 1fr 5em; column-gap: 0.5em;
-  padding: 0.5em; background-color: var(--off-black);
+	font-size: 0.875em;
+	display: grid; grid-template: max-content 3em / 1fr 1fr 5em; column-gap: 0.5em;
+	padding: 0.5em; background-color: var(--off-black);
 
-  & input {
-    color: inherit; font: inherit;
-    width: 100%; padding: 0; background-color: transparent; border: none;
-    appearance: none;
-    &[type="text"] {
-      border-bottom: 1px solid var(--dark-gray);
-      &::placeholder {color: var(--gray)}
-      &:focus {outline: 2px solid var(--blue); outline-offset: 2px}
-    }
-    &[type="submit"] {
-      color: var(--light-gray);
-      padding: 0 0.5em; border: 1px solid var(--dark-gray); margin: 6px 0;
-      cursor: pointer;
-    }
-  }
+	& input {
+		color: inherit; font: inherit;
+		width: 100%; padding: 0; background-color: transparent; border: none;
+		appearance: none;
+		&[type="text"] {
+			border-bottom: 1px solid var(--dark-gray);
+			&::placeholder {color: var(--gray)}
+			&:focus {outline: 2px solid var(--blue); outline-offset: 2px}
+		}
+		&[type="submit"] {
+			color: var(--light-gray);
+			padding: 0 0.5em; border: 1px solid var(--dark-gray); margin: 6px 0;
+			cursor: pointer;
+		}
+	}
 }
 .comment {
-  & header {all: unset; display: flex; align-items: center}
-  .comment-icon {width: 2.5em; height: 2.5em; margin-right: 0.5em; float: left}
-  .comment-name {color: var(--gray); &.webmaster {color: var(--yellow); & i {rotate: 15deg; margin-left: 0.4em}}}
-  .comment-link {font-size: 0.75em; margin-left: 1em}
-  .comment-time {color: var(--dark-gray); font-size: 0.75em; margin-left: auto; cursor: help}
-  & a {color: var(--blue)}
+	& header {all: unset; display: flex; align-items: center}
+	.comment-icon {width: 2.5em; height: 2.5em; margin-right: 0.5em; float: left}
+	.comment-name {color: var(--gray); &.webmaster {color: var(--yellow); & i {rotate: 15deg; margin-left: 0.4em}}}
+	.comment-link {font-size: 0.75em; margin-left: 1em}
+	.comment-time {color: var(--dark-gray); font-size: 0.75em; margin-left: auto; cursor: help}
+	& a {color: var(--blue)}
 } */
 
 
 /* footer */
 
 footer {
-  color: var(--dark-gray); font-family: ms-serif; font-size: 0.875em; letter-spacing: 0.025em; text-align: center;
-  padding: 1em; border-top: 1px solid var(--off-black);
+	color: var(--dark-gray); font-family: ms-serif; font-size: 0.875em; letter-spacing: 0.025em; text-align: center;
+	padding: 1em; border-top: 1px solid var(--off-black);
 
-  & a {text-decoration: underline; &:hover {color: var(--blue)}}
-  /* &::before {content: "© 2023"; position: absolute; left: 1em} */
+	& a {text-decoration: underline; &:hover {color: var(--blue)}}
+	/* &::before {content: "© 2023"; position: absolute; left: 1em} */
 }
 
 
@@ -413,7 +414,7 @@ footer {
 
 /* mobile */
 @media (max-width: 600px) {
-  nav {font-size: 0.5em; padding: 4em 8px}
+	nav {font-size: 0.5em; padding: 4em 8px}
 
-  #chatbox {display: none}
+	#chatbox {display: none}
 }

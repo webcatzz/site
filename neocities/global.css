@@ -1,13 +1,13 @@
 :root {
-  --white: #f4f3f0;
-  --light-gray: #b6b2a8;
-  --gray: #858278;
-  --dark-gray: #575452;
-  --off-black: #282625;
-  --black: #121212;
-  --blue: #32a7e2;
-  --red: #e23254;
-  --yellow: #e2a732;
+	--white: #f4f3f0;
+	--light-gray: #b6b2a8;
+	--gray: #858278;
+	--dark-gray: #575452;
+	--off-black: #282625;
+	--black: #121212;
+	--blue: #32a7e2;
+	--red: #e23254;
+	--yellow: #e2a732;
 }
 body {font-family: Helvetica, sans-serif; margin: 0; cursor: url(assets/cursor.png), auto; image-rendering: pixelated}
 
@@ -34,10 +34,10 @@ body.center {min-height: 100vh}
 
 /* construction */
 #construction {
-  color: #121212; font: normal 0.875rem/1 sans-serif;
-  display: flex; align-items: center; gap: 0.5em;
-  background-color: #f4f3f0;
-  width: min-content; height: 2em; padding: 0.25em; padding-right: 0.5em;
-  border: 1px solid #b6b2a8; margin-inline: auto;
-  &::before {content: url(assets/construction.gif)}
+	color: #121212; font: normal 0.875rem/1 sans-serif;
+	display: flex; align-items: center; gap: 0.5em;
+	background-color: #f4f3f0;
+	width: min-content; height: 2em; padding: 0.25em; padding-right: 0.5em;
+	border: 1px solid #b6b2a8; margin-inline: auto;
+	&::before {content: url(assets/construction.gif)}
 }
