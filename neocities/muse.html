@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>webcatz //→ muse ariadne</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>webcatz //→ muse ariadne</title>
 	<link rel="icon" href="assets/icon.svg">
-  <script defer src="lib/image-modal.js" data-select="img"></script>
+	<script defer src="lib/image-modal.js" data-select="img"></script>
 	<link rel="stylesheet" href="global.css">
-  <style>
+	<style>
 body {color: var(--white); line-height: 1.4; background: linear-gradient(75deg, transparent, var(--black) 10%, var(--black) 90%, transparent) fixed, url(assets/dots-black.png) var(--black) fixed; max-width: 701px; padding: 4em 1em; margin-inline: auto}
 
 #header {display: flex; align-items: center; gap: 0.5em}
@@ -20,29 +20,29 @@ a {color: var(--dark-gray); text-decoration: underline}
 #thumb {margin-bottom: -0.3em; position: absolute; pointer-events: none}
 
 #weekdays {
-  display: flex; margin-block: 2em 1em;
-  & div {
-    color: var(--off-black);
-    font-size: 0.75em; font-weight: bold; letter-spacing: 0.1em;
-    text-transform: uppercase; text-align: center;
-    flex: 1;
-  }
+	display: flex; margin-block: 2em 1em;
+	& div {
+		color: var(--off-black);
+		font-size: 0.75em; font-weight: bold; letter-spacing: 0.1em;
+		text-transform: uppercase; text-align: center;
+		flex: 1;
+	}
 }
 
 h2 {
-  color: var(--light-gray); font-size: 1em; font-weight: normal; font-style: italic;
-  display: flex; gap: 1em;
-  background: url(assets/ariadne.png) repeat-x;
-  min-height: 100px;
-  padding: 1em; box-sizing: border-box;
-  margin-block: 0;
+	color: var(--light-gray); font-size: 1em; font-weight: normal; font-style: italic;
+	display: flex; gap: 1em;
+	background: url(assets/ariadne.png) repeat-x;
+	min-height: 100px;
+	padding: 1em; box-sizing: border-box;
+	margin-block: 0;
 
-  &::before {content: attr(data-week); color: var(--gray); font-family: monospace; font-size: 0.875em; font-style: normal}
+	&::before {content: attr(data-week); color: var(--gray); font-family: monospace; font-size: 0.875em; font-style: normal}
 }
 .mon, .tue, .wed, .thu, .fir, .sat, .sun {
-  background:
-    url("data:image/svg+xml;utf8,<svg width=\"100\" stroke=\"%23282625\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 100 100\"><line x1=\"0\" y1=\"0\" x2=\"100\" y2=\"100\"/><line x1=\"100\" y1=\"0\" x2=\"0\" y2=\"100\"/></svg>") no-repeat,
-    url(assets/ariadne.png) repeat-x;
+	background:
+		url("data:image/svg+xml;utf8,<svg width=\"100\" stroke=\"%23282625\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 100 100\"><line x1=\"0\" y1=\"0\" x2=\"100\" y2=\"100\"/><line x1=\"100\" y1=\"0\" x2=\"0\" y2=\"100\"/></svg>") no-repeat,
+		url(assets/ariadne.png) repeat-x;
 }
 .tue {background-position-x: 100px, 0}
 .wed {background-position-x: 200px, 0}
@@ -58,29 +58,33 @@ pre {font: inherit; white-space: pre-wrap; contain: inline-size; padding: 1.5em 
 p {margin-inline: 2em; h2 + & {padding-top: 1.5em} &:last-of-type {padding-bottom: 5.7em}}
 
 #top {text-align: center; display: block; margin-block: 4em}
-  </style>
+	</style>
 </head>
 <body>
-  <div id="header">
-    <h1>muse ariadne</h1>
-    <a href="https://museariadne.neocities.org">muse</a>
-    <a href="index.html">home</a>
-  </div>
-  <div id="audio-player">
-    <button id="play"></button>
-    <a id="song-title" target="_blank"></a>
-    <div id="slider">
-      <div id="track" aria-hidden="true"></div>
-      <div id="thumb" aria-hidden="true">🧶</div>
-    </div>
-    <button id="skip"></button>
-  </div>
-  <div id="weekdays" aria-hidden="true"><div>MON</div><div>TUE</div><div>WED</div><div>THU</div><div>FRI</div><div>SAT</div><div>SUN</div></div>
+	<div id="header">
+		<h1>muse ariadne</h1>
+		<a href="https://museariadne.neocities.org">muse</a>
+		<a href="index.html">home</a>
+	</div>
+	<div id="audio-player">
+		<button id="play"></button>
+		<a id="song-title" target="_blank"></a>
+		<div id="slider">
+			<div id="track" aria-hidden="true"></div>
+			<div id="thumb" aria-hidden="true">🧶</div>
+		</div>
+		<button id="skip"></button>
+	</div>
+	<div id="weekdays" aria-hidden="true"><div>MON</div><div>TUE</div><div>WED</div><div>THU</div><div>FRI</div><div>SAT</div><div>SUN</div></div>
 
-  <article>
-    <h2 data-week="mar 4">take time to explore different structures of whatever you like to write. for poetry, consider writing a pantoum, ghazal, or abecedarian (some of my favorites). for an essay or fiction, consider writing vignettes, something in epistolary form, a diptych/triptych piece, a frame story, or a circular narrative.</h2>
-    <div class="gray">i wrote this calligram last week, but it fits for the prompt so sue me.</div>
-    <pre style="font: 1em monospace">
+	<article>
+		<h2 data-week="mar 11">explore a life cycle in some kind of writing. for example, you could use metamorphosis, diapause/hibernation, paedogenesis [very weird], puberty, the salmon life cycle, the amphibian life cycle, or something else entirely! you don't have to be direct-- just start here and get inspired.</h2>
+	</article>
+
+	<article>
+		<h2 data-week="mar 4">take time to explore different structures of whatever you like to write. for poetry, consider writing a pantoum, ghazal, or abecedarian (some of my favorites). for an essay or fiction, consider writing vignettes, something in epistolary form, a diptych/triptych piece, a frame story, or a circular narrative.</h2>
+		<div class="gray">i wrote this calligram last week, but it fits for the prompt so sue me.</div>
+		<pre style="font: 1em monospace">
 ----| |---------------------| |----
     =o=			    =o=
     " "			    " "
@@ -106,13 +110,13 @@ shadow, immaterial and disappearing
 around the finger tips. a fleshless
 divine i will gnaw till all that is
 left are perfect noble marble bones
-    </pre>
-  </article>
+		</pre>
+	</article>
 
-  <article>
-    <h2 data-week="feb 26" class="thu">write about echoes, sound, and reverberation. what is an echo—just sound or something more? how can it reverberate through past, present, and future? can emotion be an echo in that way? what else can be?</h2>
-    <div class="gray">i preface this entry: any references to self-immolation have little to do with aaron bushnell. still—free palestine</div>
-    <img width="100%" src="assets/centennial-bulb.png" loading="lazy" alt="
+	<article>
+		<h2 data-week="feb 26" class="thu">write about echoes, sound, and reverberation. what is an echo—just sound or something more? how can it reverberate through past, present, and future? can emotion be an echo in that way? what else can be?</h2>
+		<div class="gray">i preface this entry: any references to self-immolation have little to do with aaron bushnell. still—free palestine</div>
+		<img width="100%" src="assets/centennial-bulb.png" loading="lazy" alt="
 A. The Death of the Author
 
 The Centennial Light is the world's longest-lasting light bulb, burning since 1901, and almost never turned off. It is located at
@@ -240,104 +244,104 @@ C. On the evening of March 20, 2013, the general public witnessed, through a ded
 
 The fossil record of fire first appears with
 destruction of the Library of Alexandria,
-    ">
-    <!-- <div id="space">
-      <style>
+		">
+		<!-- <div id="space">
+			<style>
 #space .section {
-  position: relative;
-  & > * {position: absolute}
+	position: relative;
+	& > * {position: absolute}
 }
-      </style>
+			</style>
 
-      <div class="section" style="height: 430px; z-index: 1">
-        <img loading="lazy" width="600" style="right: 0" src="assets/centennial-bulb/bulb.png">
-        <img loading="lazy" width="500" style="top: 50px" src="assets/centennial-bulb/death-of-the-author.png">
-        <img loading="lazy" width="400" style="top: 130px; left: 130px" src="assets/centennial-bulb/wiki-impact.png">
-        <img loading="lazy" width="680" style="top: 100px" src="assets/centennial-bulb/wiki-intro.png">
-        <img loading="lazy" width="400" style="top: 340px; left: 250px" src="assets/centennial-bulb/narratives.png">
-        <img loading="lazy" width="200" style="top: 300px; left: 170px" src="assets/centennial-bulb/wiki-parallels.png">
-      </div>
+			<div class="section" style="height: 430px; z-index: 1">
+				<img loading="lazy" width="600" style="right: 0" src="assets/centennial-bulb/bulb.png">
+				<img loading="lazy" width="500" style="top: 50px" src="assets/centennial-bulb/death-of-the-author.png">
+				<img loading="lazy" width="400" style="top: 130px; left: 130px" src="assets/centennial-bulb/wiki-impact.png">
+				<img loading="lazy" width="680" style="top: 100px" src="assets/centennial-bulb/wiki-intro.png">
+				<img loading="lazy" width="400" style="top: 340px; left: 250px" src="assets/centennial-bulb/narratives.png">
+				<img loading="lazy" width="200" style="top: 300px; left: 170px" src="assets/centennial-bulb/wiki-parallels.png">
+			</div>
 
-      <div class="section" style="height: 690px">
-        <img loading="lazy" width="700" src="assets/centennial-bulb/stars.png">
-        <img loading="lazy" width="450" style="top: 220px; right: 0; clip-path: polygon(0 0, 80% 0, 100% 90%, 5% 100%)" src="assets/centennial-bulb/vent.png">
+			<div class="section" style="height: 690px">
+				<img loading="lazy" width="700" src="assets/centennial-bulb/stars.png">
+				<img loading="lazy" width="450" style="top: 220px; right: 0; clip-path: polygon(0 0, 80% 0, 100% 90%, 5% 100%)" src="assets/centennial-bulb/vent.png">
 
-        <img loading="lazy" width="200" style="top: 30px; right: 200px" src="assets/centennial-bulb/saw-that.png">
-        <img loading="lazy" width="550" style="top: 30px; left: 0" src="assets/centennial-bulb/ea.png">
-        <img loading="lazy" width="500" style="top: 60px; left: 40px" src="assets/centennial-bulb/fuel.png">
-        <img loading="lazy" width="600" style="top: 80px; left: 20px" src="assets/centennial-bulb/wiki-culture-hero.png">
-        <img loading="lazy" width="700" style="top: 120px" src="assets/centennial-bulb/wiki-dubious.png">
-        <img loading="lazy" width="600" style="top: 160px; right: 10px" src="assets/centennial-bulb/wiki-historical.png">
-        <img loading="lazy" width="300" style="top: 250px; left: 20px" src="assets/centennial-bulb/immolation.png">
-        <img loading="lazy" width="300" style="top: 285px; left: 20px" src="assets/centennial-bulb/disturbing.png">
-        <img loading="lazy" width="200" style="top: 305px; left: 100px" src="assets/centennial-bulb/death-of-the-author.png">
+				<img loading="lazy" width="200" style="top: 30px; right: 200px" src="assets/centennial-bulb/saw-that.png">
+				<img loading="lazy" width="550" style="top: 30px; left: 0" src="assets/centennial-bulb/ea.png">
+				<img loading="lazy" width="500" style="top: 60px; left: 40px" src="assets/centennial-bulb/fuel.png">
+				<img loading="lazy" width="600" style="top: 80px; left: 20px" src="assets/centennial-bulb/wiki-culture-hero.png">
+				<img loading="lazy" width="700" style="top: 120px" src="assets/centennial-bulb/wiki-dubious.png">
+				<img loading="lazy" width="600" style="top: 160px; right: 10px" src="assets/centennial-bulb/wiki-historical.png">
+				<img loading="lazy" width="300" style="top: 250px; left: 20px" src="assets/centennial-bulb/immolation.png">
+				<img loading="lazy" width="300" style="top: 285px; left: 20px" src="assets/centennial-bulb/disturbing.png">
+				<img loading="lazy" width="200" style="top: 305px; left: 100px" src="assets/centennial-bulb/death-of-the-author.png">
 
-        <img loading="lazy" width="200" style="top: 480px; left: 35px" src="assets/centennial-bulb/record.png">
-        <img loading="lazy" width="30" style="top: 450px; left: 40px" src="assets/centennial-bulb/b.png">
-        <img loading="lazy" width="300" style="top: 450px; left: 90px" src="assets/centennial-bulb/natural-selection.png">
-        <img loading="lazy" width="65" style="top: 475px; left: 100px" src="assets/centennial-bulb/and-death.png">
-        <img loading="lazy" width="450" style="top: 510px; right: 20px" src="assets/centennial-bulb/wiki-vent.png">
-        <img loading="lazy" width="150" style="top: 570px; left: 60px" src="assets/centennial-bulb/1000.png">
-        <img loading="lazy" width="100" style="top: 590px; left: 85px" src="assets/centennial-bulb/matter.png">
-      </div>
+				<img loading="lazy" width="200" style="top: 480px; left: 35px" src="assets/centennial-bulb/record.png">
+				<img loading="lazy" width="30" style="top: 450px; left: 40px" src="assets/centennial-bulb/b.png">
+				<img loading="lazy" width="300" style="top: 450px; left: 90px" src="assets/centennial-bulb/natural-selection.png">
+				<img loading="lazy" width="65" style="top: 475px; left: 100px" src="assets/centennial-bulb/and-death.png">
+				<img loading="lazy" width="450" style="top: 510px; right: 20px" src="assets/centennial-bulb/wiki-vent.png">
+				<img loading="lazy" width="150" style="top: 570px; left: 60px" src="assets/centennial-bulb/1000.png">
+				<img loading="lazy" width="100" style="top: 590px; left: 85px" src="assets/centennial-bulb/matter.png">
+			</div>
 
-      <div class="section" style="height: 520px">
-        <img loading="lazy" width="500" style="top: 140px; right: 30px" src="assets/centennial-bulb/imaging.png">
-        <img loading="lazy" width="300" height="20" style="top: 450px; left: 10px" src="assets/centennial-bulb/ttou.png">
-        <img loading="lazy" width="200" style="top: 470px; left: 0" src="assets/centennial-bulb/decision-fatigue.png">
+			<div class="section" style="height: 520px">
+				<img loading="lazy" width="500" style="top: 140px; right: 30px" src="assets/centennial-bulb/imaging.png">
+				<img loading="lazy" width="300" height="20" style="top: 450px; left: 10px" src="assets/centennial-bulb/ttou.png">
+				<img loading="lazy" width="200" style="top: 470px; left: 0" src="assets/centennial-bulb/decision-fatigue.png">
 
-        <img loading="lazy" width="400" style="top: 400px; right: 0" src="assets/centennial-bulb/pictures.png">
-        <img loading="lazy" width="600" src="assets/centennial-bulb/eating.png">
+				<img loading="lazy" width="400" style="top: 400px; right: 0" src="assets/centennial-bulb/pictures.png">
+				<img loading="lazy" width="600" src="assets/centennial-bulb/eating.png">
 
-        <img loading="lazy" width="250" style="top: 0" src="assets/centennial-bulb/orchids.png">
-        <img loading="lazy" width="400" style="top: 40px" src="assets/centennial-bulb/hello.png">
-        <img loading="lazy" width="350" style="top: 70px" src="assets/centennial-bulb/graffiti.png">
-        <img loading="lazy" width="250" style="top: 90px" src="assets/centennial-bulb/orchids2.png">
-        <img loading="lazy" width="270" style="top: 130px" src="assets/centennial-bulb/to-the-makers.png">
-        <img loading="lazy" width="150" style="top: 150px" src="assets/centennial-bulb/selected.png">
+				<img loading="lazy" width="250" style="top: 0" src="assets/centennial-bulb/orchids.png">
+				<img loading="lazy" width="400" style="top: 40px" src="assets/centennial-bulb/hello.png">
+				<img loading="lazy" width="350" style="top: 70px" src="assets/centennial-bulb/graffiti.png">
+				<img loading="lazy" width="250" style="top: 90px" src="assets/centennial-bulb/orchids2.png">
+				<img loading="lazy" width="270" style="top: 130px" src="assets/centennial-bulb/to-the-makers.png">
+				<img loading="lazy" width="150" style="top: 150px" src="assets/centennial-bulb/selected.png">
 
-        <img loading="lazy" width="350" style="top: 100px; right: 20px" src="assets/centennial-bulb/contents.png">
-        <img loading="lazy" width="300" style="top: 200px; left: 10px" src="assets/centennial-bulb/controversial.png">
+				<img loading="lazy" width="350" style="top: 100px; right: 20px" src="assets/centennial-bulb/contents.png">
+				<img loading="lazy" width="300" style="top: 200px; left: 10px" src="assets/centennial-bulb/controversial.png">
 
-        <img loading="lazy" width="470" style="top: 477px; right: 40px" src="assets/centennial-bulb/wiki-parkes.png">
-        <img loading="lazy" width="250" style="top: 640px; right: 80px" src="assets/centennial-bulb/lost.png">
-      </div>
+				<img loading="lazy" width="470" style="top: 477px; right: 40px" src="assets/centennial-bulb/wiki-parkes.png">
+				<img loading="lazy" width="250" style="top: 640px; right: 80px" src="assets/centennial-bulb/lost.png">
+			</div>
 
-      <div class="section" style="height: 450px">
-        <img loading="lazy" width="250" style="top: 235px; right: 0" src="assets/centennial-bulb/pollution.png">
-        <img loading="lazy" width="420" style="top: -20px; left: 50px" src="assets/centennial-bulb/fast-radio-burst.png">
+			<div class="section" style="height: 450px">
+				<img loading="lazy" width="250" style="top: 235px; right: 0" src="assets/centennial-bulb/pollution.png">
+				<img loading="lazy" width="420" style="top: -20px; left: 50px" src="assets/centennial-bulb/fast-radio-burst.png">
 
-        <img loading="lazy" width="650" src="assets/centennial-bulb/wiki-peryton.png">
-        <img loading="lazy" width="550" style="top: 24px; left: 15px" src="assets/centennial-bulb/wiki-peryton1.png">
-        <img loading="lazy" width="700" style="top: 60px" src="assets/centennial-bulb/wiki-peryton3.png">
-        <img loading="lazy" width="200" style="top: 82px; left: 120px" src="assets/centennial-bulb/peryton-creator.png" alt="(historical versions featured winged stags, Borges is thus clearly not the inventor of the concept)">
+				<img loading="lazy" width="650" src="assets/centennial-bulb/wiki-peryton.png">
+				<img loading="lazy" width="550" style="top: 24px; left: 15px" src="assets/centennial-bulb/wiki-peryton1.png">
+				<img loading="lazy" width="700" style="top: 60px" src="assets/centennial-bulb/wiki-peryton3.png">
+				<img loading="lazy" width="200" style="top: 82px; left: 120px" src="assets/centennial-bulb/peryton-creator.png" alt="(historical versions featured winged stags, Borges is thus clearly not the inventor of the concept)">
 
-        <img loading="lazy" width="200" style="top: 120px; left: 90px" src="assets/centennial-bulb/ad-astra.png">
-        <img loading="lazy" width="500" style="top: 145px; left: 90px" src="assets/centennial-bulb/ad.png">
-        <img loading="lazy" width="170" style="top: 160px; left: 90px" src="assets/centennial-bulb/astra.png">
+				<img loading="lazy" width="200" style="top: 120px; left: 90px" src="assets/centennial-bulb/ad-astra.png">
+				<img loading="lazy" width="500" style="top: 145px; left: 90px" src="assets/centennial-bulb/ad.png">
+				<img loading="lazy" width="170" style="top: 160px; left: 90px" src="assets/centennial-bulb/astra.png">
 
-        <img loading="lazy" width="550" style="top: 200px; right: 20px" src="assets/centennial-bulb/wiki-peryton2.png" alt="a peryton casts the shadow of a man, it kills one during its lifetime">
-        <img loading="lazy" width="10" style="top: 240px; left: 185px" src="assets/centennial-bulb/o.png">
-        <img loading="lazy" width="270" style="top: 237px; left: 200px" src="assets/centennial-bulb/hand-blown.png">
+				<img loading="lazy" width="550" style="top: 200px; right: 20px" src="assets/centennial-bulb/wiki-peryton2.png" alt="a peryton casts the shadow of a man, it kills one during its lifetime">
+				<img loading="lazy" width="10" style="top: 240px; left: 185px" src="assets/centennial-bulb/o.png">
+				<img loading="lazy" width="270" style="top: 237px; left: 200px" src="assets/centennial-bulb/hand-blown.png">
 
-        <img loading="lazy" width="230" style="top: 280px; left: 210px" src="assets/centennial-bulb/fame.png">
-      </div>
+				<img loading="lazy" width="230" style="top: 280px; left: 210px" src="assets/centennial-bulb/fame.png">
+			</div>
 
-      <div class="section" style="height: 700px">
-        <img loading="lazy" width="15" style="left: 70px" src="assets/centennial-bulb/c.png">
-        <img loading="lazy" width="500" style="left: 100px" src="assets/centennial-bulb/wiki-burnout.png">
+			<div class="section" style="height: 700px">
+				<img loading="lazy" width="15" style="left: 70px" src="assets/centennial-bulb/c.png">
+				<img loading="lazy" width="500" style="left: 100px" src="assets/centennial-bulb/wiki-burnout.png">
 
-        <img loading="lazy" width="220" style="top: 450px; right: 10px" src="assets/centennial-bulb/bulb3.png">
-        <img loading="lazy" width="600" style="top: 150px" src="assets/centennial-bulb/wildfire.jpg">
-        <img loading="lazy" width="200" style="top: 230px; right: 0" src="assets/centennial-bulb/fossil-fire.png">
-        <img loading="lazy" width="190" style="top: 250px; right: 0" src="assets/centennial-bulb/library.png">
-      </div>
-    </div> -->
-  </article>
+				<img loading="lazy" width="220" style="top: 450px; right: 10px" src="assets/centennial-bulb/bulb3.png">
+				<img loading="lazy" width="600" style="top: 150px" src="assets/centennial-bulb/wildfire.jpg">
+				<img loading="lazy" width="200" style="top: 230px; right: 0" src="assets/centennial-bulb/fossil-fire.png">
+				<img loading="lazy" width="190" style="top: 250px; right: 0" src="assets/centennial-bulb/library.png">
+			</div>
+		</div> -->
+	</article>
 
-  <article>
-    <h2 data-week="feb 19" class="sat">a piece inspired by two famous dali paintings, <img width="125px" src="https://i.postimg.cc/Rq5xwH5d/persistenceofmemory.jpg" loading="lazy" alt="the persistence of memory"> and <img width="125px" src="https://i.postimg.cc/cL3rqRLx/theelephants.jpg" loading="lazy" alt="the elephants">. consider exploring movement, slowness/speed, heat/cold, and warped sensations.</h2>
-    <pre>
+	<article>
+		<h2 data-week="feb 19" class="sat">a piece inspired by two famous dali paintings, <img width="125px" src="https://i.postimg.cc/Rq5xwH5d/persistenceofmemory.jpg" loading="lazy" alt="the persistence of memory"> and <img width="125px" src="https://i.postimg.cc/cL3rqRLx/theelephants.jpg" loading="lazy" alt="the elephants">. consider exploring movement, slowness/speed, heat/cold, and warped sensations.</h2>
+		<pre>
 vast tarmac ocean.
 <span class="gray">i usually pick imagery for the idea, not the other way around. this was interesting!
 one of my earliest nightmares i can remember is the floor melting and sucking me in. i'll try to capture that</span>
@@ -448,12 +452,12 @@ impossibly tall
 slip back into the tar
 trapped in a parked car
 left in drive
-    </pre>
-  </article>
+		</pre>
+	</article>
 
-  <article>
-    <h2 data-week="feb 12" class="sun">a worldly place that is a threshold for you. this can mean anything—maybe it's some place between end and beginning, forward and backward, past and present, here and there, friends and lovers, or something else entirely!</h2>
-    <pre>
+	<article>
+		<h2 data-week="feb 12" class="sun">a worldly place that is a threshold for you. this can mean anything—maybe it's some place between end and beginning, forward and backward, past and present, here and there, friends and lovers, or something else entirely!</h2>
+		<pre>
 where the steps collapse into the sea
 heavy under the weight of the air
 where the doves stand upon the waters
@@ -499,33 +503,33 @@ as the duct tape bursts
 as the waterfalls reach out of the sky
 fumbled disappearing trick
 will i be there
-    </pre>
-  </article>
+		</pre>
+	</article>
 
-  <h2 data-week="feb 5"><!--what ways does writing plays a role in your life—why do you like it? is it hard? what's your relationship with it? be as abstract or direct as you'd like.--></h2>
+	<h2 data-week="feb 5"><!--what ways does writing plays a role in your life—why do you like it? is it hard? what's your relationship with it? be as abstract or direct as you'd like.--></h2>
 
-  <a id="top" href="#">back to top</a>
-  <script src="lib/audio-player.js"></script>
-  <script>
+	<a id="top" href="#">back to top</a>
+	<script src="lib/audio-player.js"></script>
+	<script>
 AudioPlayer.create([
-  {title: "semifervant - coffeebug", src: "https://files.catbox.moe/5z8a1t.mp3", link: "https://coffeebug.bandcamp.com/album/haunted-sticky-notes"},
-  {title: "feelingemptyafterastorm - coffeebug", src: "https://files.catbox.moe/y0ost1.mp3", link: "https://coffeebug.bandcamp.com/album/haunted-sticky-notes"},
-  {title: "desolatehallway (bonus) - coffeebug", src: "https://files.catbox.moe/rnv52d.mp3", link: "https://coffeebug.bandcamp.com/album/haunted-sticky-notes"},
-  {title: "music box (bonus) - coffeebug", src: "https://files.catbox.moe/ntf6g3.mp3", link: "https://coffeebug.bandcamp.com/album/haunted-sticky-notes"},
-  {title: "a prelude - bridget", src: "https://files.catbox.moe/jzu0x0.mp3", link: "https://bridget.party/music"},
-  {title: "shortcut - bridget", src: "https://files.catbox.moe/tabgiy.mp3", link: "https://bridget.party/music"},
-  {title: "portobello railway - bridget", src: "https://files.catbox.moe/9ek47k.mp3", link: "https://bridget.party/music"},
-  {title: "(forever?????????) - glass beach", src:"https://files.catbox.moe/cfryqz.mp3", link: "https://glassbeach.bandcamp.com/album/the-first-glass-beach-album"}
+	{title: "semifervant - coffeebug", src: "https://files.catbox.moe/5z8a1t.mp3", link: "https://coffeebug.bandcamp.com/album/haunted-sticky-notes"},
+	{title: "feelingemptyafterastorm - coffeebug", src: "https://files.catbox.moe/y0ost1.mp3", link: "https://coffeebug.bandcamp.com/album/haunted-sticky-notes"},
+	{title: "desolatehallway (bonus) - coffeebug", src: "https://files.catbox.moe/rnv52d.mp3", link: "https://coffeebug.bandcamp.com/album/haunted-sticky-notes"},
+	{title: "music box (bonus) - coffeebug", src: "https://files.catbox.moe/ntf6g3.mp3", link: "https://coffeebug.bandcamp.com/album/haunted-sticky-notes"},
+	{title: "a prelude - bridget", src: "https://files.catbox.moe/jzu0x0.mp3", link: "https://bridget.party/music"},
+	{title: "shortcut - bridget", src: "https://files.catbox.moe/tabgiy.mp3", link: "https://bridget.party/music"},
+	{title: "portobello railway - bridget", src: "https://files.catbox.moe/9ek47k.mp3", link: "https://bridget.party/music"},
+	{title: "(forever?????????) - glass beach", src:"https://files.catbox.moe/cfryqz.mp3", link: "https://glassbeach.bandcamp.com/album/the-first-glass-beach-album"}
 ],{
-  playButton: document.getElementById("play"),
-  skipButton: document.getElementById("skip"),
-  insertIcons: true,
-  title: document.getElementById("song-title"),
-  slider: document.getElementById("slider"),
-  sliderThumb: document.getElementById("thumb"),
-  shuffle: true,
-  onended: () => document.getElementById("song-title").href = AudioPlayer.list[AudioPlayer.idx].link
+	playButton: document.getElementById("play"),
+	skipButton: document.getElementById("skip"),
+	insertIcons: true,
+	title: document.getElementById("song-title"),
+	slider: document.getElementById("slider"),
+	sliderThumb: document.getElementById("thumb"),
+	shuffle: true,
+	onended: () => document.getElementById("song-title").href = AudioPlayer.list[AudioPlayer.idx].link
 });
-  </script>
+	</script>
 </body>
 </html>

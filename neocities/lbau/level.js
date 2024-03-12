@@ -6,11 +6,14 @@ const game = {
 	size: () => {return [game.root.parentElement.offsetWidth, game.root.parentElement.offsetHeight]},
 	headerY: document.querySelector("header").offsetHeight,
 
-	atoms: [], bonds: [],
+	atoms: [], bonds: [], molecules: [],
 	add: (el, arr) => arr.push(el),
 	remove: (el, arr) => arr.splice(arr.indexOf(el), 1),
 
-	start: () => game.interval = setInterval(game.tick, 100/6),
+	start: () => {
+		game.pause();
+		game.interval = setInterval(game.tick, 100/6)
+	},
 	pause: () => clearInterval(game.interval),
 	tick: () => {
 		// atoms
@@ -38,6 +41,8 @@ const game = {
 	},
 }
 game.start();
+onblur = game.pause;
+onfocus = game.start;
 
 
 // color palette
@@ -55,41 +60,40 @@ const canvas = {
 	redraw: () => {
 		canvas.ctx.clearRect(0, 0, canvas.el.width, canvas.el.height);
 		for (const bond of game.bonds) bond.draw();
+		for (const molecule of game.molecules) molecule.draw();
 		if (canvas.trajectory) canvas.draw("line", canvas.trajectory);
 	},
 
 	draw: (type, opts) => {
-		canvas.ctx.beginPath();
+		if (opts.stroke) canvas.ctx.strokeStyle = opts.stroke;
+		if (opts.width) canvas.ctx.lineWidth = opts.width;
+		if (opts.dashed) canvas.ctx.setLineDash([8,4]);
+		if (opts.fill) canvas.ctx.fillStyle = opts.fill;
 
-		if (type == "line") {
+		if (type === "line") {
+			canvas.ctx.beginPath();
 			canvas.ctx.moveTo(opts.x1 + cameraX, opts.y1 + cameraY);
 			canvas.ctx.lineTo(opts.x2 + cameraX, opts.y2 + cameraY);
-			if (opts.color) canvas.ctx.strokeStyle = opts.color;
-			if (opts.width) canvas.ctx.lineWidth = opts.width;
-			if (opts.dashed) canvas.ctx.setLineDash([8,4]);
 			canvas.ctx.stroke();
-			if (opts.dashed) canvas.ctx.setLineDash([]);
 		}
-		else if (type == "circle") {
-			canvas.ctx.arc(opts.x + cameraX, opts.y + cameraY, opts.radius, 0, Math.PI * 2);
-			if (opts.color) {
-				canvas.ctx.fillStyle = opts.color;
-				canvas.ctx.fill();
-			}
-			if (opts.border) {
-				canvas.ctx.strokeStyle = opts.border;
-				if (opts.width) canvas.ctx.strokeWidth = opts.width;
-				canvas.ctx.stroke();
-			}
-		}
-		else if (type == "text") {
-			canvas.ctx.fillStyle = opts.color;
+		else if (type === "text") {
 			opts.x += cameraX;
-			opts.y += cameraY + 2;
+			opts.y += cameraY;
 			let metrics = canvas.ctx.measureText(opts.text);
-			canvas.ctx.clearRect(opts.x - metrics.width/2, opts.y - 12, metrics.width, 16);
-			canvas.ctx.fillText(opts.text, opts.x, opts.y);
+			canvas.ctx.clearRect(opts.x - metrics.width/2, opts.y - 10, metrics.width, 16);
+			canvas.ctx.fillText(opts.text, opts.x, opts.y + 2);
 		}
+		else if (type === "rect") {
+			if (opts.fill) canvas.ctx.fillRect(opts.x1 + cameraX, opts.y1 + cameraY, opts.x2 - opts.x1, opts.y2 - opts.y1);
+			if (opts.stroke) canvas.ctx.strokeRect(opts.x1 + cameraX, opts.y1 + cameraY, opts.x2 - opts.x1, opts.y2 - opts.y1);
+		}
+		else if (type === "circle") {
+			canvas.ctx.arc(opts.x + cameraX, opts.y + cameraY, opts.radius, 0, Math.PI * 2);
+			if (opts.fill) canvas.ctx.fill();
+			if (opts.stroke) canvas.ctx.stroke();
+		}
+
+		if (opts.dashed) canvas.ctx.setLineDash([]);
 	}
 };
 canvas.ctx = canvas.el.getContext("2d");
@@ -178,6 +182,10 @@ class Bond {
 		if (this.a.bonds.length > this.b.bonds.length) this.a.updateBonds();
 		else this.b.updateBonds();
 		game.add(this, game.bonds);
+
+		if (this.a.molecule) this.a.molecule.add(this.b);
+		else if (this.b.molecule) this.b.molecule.add(this.a);
+		else new Molecule(this.a, this.b);
 	}
 
 	vector = {x: 0, y: -64};
@@ -199,13 +207,13 @@ class Bond {
 	draw() {
 		if (game.inBounds(this.a.x, this.a.y) || game.inBounds(this.b.x, this.b.y)) {
 			canvas.draw("line", {
-				color: palette.black, width: 4,
+				stroke: palette.black, width: 4,
 				x1: this.a.x, y1: this.a.y,
 				x2: this.b.x, y2: this.b.y,
 			});
 			canvas.draw("text", {
 				text: String(this.electrons),
-				color: palette.black,
+				fill: palette.black,
 				x: this.a.x + (this.b.x - this.a.x) / 2,
 				y: this.a.y + (this.b.y - this.a.y) / 2,
 			});
@@ -268,7 +276,7 @@ class Particle extends HTMLElement {
 	}
 	drawTrajectory(e) {
 		canvas.trajectory = {
-			color: this.color, width: 2, dashed: true,
+			stroke: this.color, width: 2, dashed: true,
 			x1: this.x,
 			y1: this.y,
 			x2: this.x + 2 * (this.x - e.x + cameraX),
@@ -682,7 +690,7 @@ class Atom extends Particle {
 		}
 
 		if (this.cloud.charge) name += "<sup>" + this.charge + "</sup>"
-		
+
 		return name;
 	}
 	get charge() {return this.cloud.charge > 0 ? this.cloud.charge + "+" : -this.cloud.charge + "-"}
@@ -692,7 +700,7 @@ class Atom extends Particle {
 	checkReact(atom) {
 		if (
 			Math.abs(this.electronNeed) === Math.abs(atom.electronNeed) ||
-			(this.electronNeed >= 0 && atom.electronNeed >= 0)
+			(this.electronNeed > 0 && atom.electronNeed > 0)
 		) new Bond(this, atom);
 		else note(this," (",this.electronNeed,") and ",atom," (",atom.electronNeed,") did not react");
 	}
@@ -817,6 +825,45 @@ class Atom extends Particle {
 		for (const bond of this.bonds) bond.break();
 	}
 }
+
+
+// molecules
+class Molecule {
+	atoms = [];
+
+	constructor(...atoms) {
+		for (const atom of atoms) this.add(atom);
+		game.molecules.push(this);
+	}
+
+	add(atom) {
+		if (atom.molecule != this) {
+			atom.molecule = this;
+			this.atoms.push(atom);
+		}
+	}
+
+	draw() {
+		let minX = this.atoms[0].x, maxX = minX;
+		let minY = this.atoms[0].y, maxY = minY;
+		for (const atom of this.atoms) {
+			if (atom.x < minX) minX = atom.x;
+			else if (atom.x > maxX) maxX = atom.x;
+			if (atom.y < minY) minY = atom.y;
+			else if (atom.y > maxY) maxY = atom.y;
+		}
+		canvas.draw("rect", {
+			stroke: palette.gray, width: 2, dashed: true,
+			x1: minX - 40,
+			y1: minY - 40,
+			x2: maxX + 40,
+			y2: maxY + 40,
+		});
+	}
+
+
+}
+
 
 
 // defining custom classes
