@@ -17,9 +17,9 @@ if (Math.random() > 0.95) document.querySelector("h1").innerHTML = '<img src="as
 // entry links
 const main = document.querySelector("main"), navLinks = document.querySelector("nav").getElementsByTagName("a");
 for (const link of navLinks) link.onclick = onLinkClicked;
-function onLinkClicked(e) {main.scrollTo({top: main.children[Array.prototype.indexOf.call(navLinks, e.target)].offsetTop - 48, behavior: "smooth"})}
+function onLinkClicked(e) {main.scrollTo({top: main.children[Array.prototype.indexOf.call(navLinks, e.target)].offsetTop - 48})}
 // url hash scroll
-if (location.hash) main.scrollTo({top: main.children[main.childElementCount - Number(location.hash.substring(1))].offsetTop - 48, behavior: "smooth"});
+if (location.hash) main.scrollTo({top: main.children[main.childElementCount - Number(location.hash.substring(1))].offsetTop - 48});
 // "new" marker
 navLinks[0].classList.add("new");
 
