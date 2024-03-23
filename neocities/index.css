@@ -61,7 +61,7 @@ nav {
 	display: grid; grid-template-columns: 1fr 1fr; gap: 1em;
 	max-width: 650px; padding: 6em 0; margin: auto;
 
-	& a:hover, summary:hover {outline: 6px solid var(--white); outline-offset: 1px}
+	& a:hover, summary:hover {outline: 8px solid var(--white); outline-offset: 2px}
 }
 a {color: inherit}
 a:not([href]):hover {outline: none; filter: grayscale(1); cursor: not-allowed}
