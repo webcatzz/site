@@ -188,7 +188,7 @@ else {${settings.stylesheet ? `
   webring.widget = webring.widget.replace("RANDOM", webring.sites[Math.floor(Math.random() * webring.sites.length)]);` : ""}
   document.currentScript.outerHTML = webring.widget;` : `let widget = webring.widgets[document.currentScript.dataset.widget] ?? webring.widgets[Object.keys(webring.widgets)[0]];
   widget = widget.replace("PREV", webring.sites.at(webring.index - 1));
-  widget = widget.replace("NEXT", webring.sites[webring.index + 1 % webring.sites.length]);${settings.random ? `
+  widget = widget.replace("NEXT", webring.sites[(webring.index + 1) % webring.sites.length]);${settings.random ? `
   widget = widget.replace("RANDOM", webring.sites[Math.floor(Math.random() * webring.sites.length)]);` : ""}
   document.currentScript.outerHTML = widget;`}
 }
