@@ -184,7 +184,7 @@ else {${settings.stylesheet ? `
   sheet.rel = "stylesheet", sheet.href = webring.stylesheet;
   document.head.appendChild(sheet);` : ""}
   ${!settings.multiwidget ? `webring.widget = webring.widget.replace("PREV", webring.sites.at(webring.index - 1));
-  webring.widget = webring.widget.replace("NEXT", webring.sites[webring.index + 1 % webring.sites.length]);${settings.random ? `
+  webring.widget = webring.widget.replace("NEXT", webring.sites[(webring.index + 1) % webring.sites.length]);${settings.random ? `
   webring.widget = webring.widget.replace("RANDOM", webring.sites[Math.floor(Math.random() * webring.sites.length)]);` : ""}
   document.currentScript.outerHTML = webring.widget;` : `let widget = webring.widgets[document.currentScript.dataset.widget] ?? webring.widgets[Object.keys(webring.widgets)[0]];
   widget = widget.replace("PREV", webring.sites.at(webring.index - 1));
