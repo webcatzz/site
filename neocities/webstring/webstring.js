@@ -28,7 +28,7 @@ webring.index = webring.sites.findIndex(url => location.href.startsWith(url));
 if (webring.index == -1) document.currentScript.outerHTML = webring.error;
 else {
   webring.widget = webring.widget.replace("PREV", webring.sites.at(webring.index - 1));
-  webring.widget = webring.widget.replace("NEXT", webring.sites[webring.index + 1 % webring.sites.length]);
+  webring.widget = webring.widget.replace("NEXT", webring.sites[(webring.index + 1) % webring.sites.length]);
   document.currentScript.outerHTML = webring.widget;
 }
 delete webring;

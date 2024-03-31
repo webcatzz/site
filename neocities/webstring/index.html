@@ -62,7 +62,8 @@ button {background-image: url(../assets/dots.png); margin-left: 2em}
   <p>you can <a href="webstring.js" target="_blank">view the script here</a>. copy it into a new javascript file (ending with ".js") somewhere on your site.</p>
   <p>this is the settings object, the only part you need to worry about:</p>
   <pre>
-<span class="key">webring</span> <span class="operator">=</span> <span class="bracket1">{</span> <span class="comment">// webring settings</span>
+<span class="comment">// webring settings</span>
+<span class="key">webring</span> <span class="operator">=</span> <span class="bracket1">{</span>
 
   <span class="key">sites:</span> <span class="bracket2">[</span>
     <span class="string">"https://your_site_here.neocities.org"</span>,
@@ -78,7 +79,7 @@ button {background-image: url(../assets/dots.png); margin-left: 2em}
     &lt;/div>
   `</span>,
 
-  <span class="key">errorMessage:</span> <span class="string">"&lt;div>This site isn't part of the webring yet.&lt;/div>"</span>,
+  <span class="key">error:</span> <span class="string">"&lt;div>This site isn't part of the webring yet.&lt;/div>"</span>,
 
 <span class="bracket1">}</span>;</pre>
   <p>the settings object is where all the information about your webring is kept.</p>
