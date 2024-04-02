@@ -746,7 +746,7 @@ class Atom extends Particle {
 	addElectrons(num = 1) {
 		if (num > 0) while (num-- > 0) this.cloud[this.getValenceShell()]++;
 		else while (num++ < 0) this.cloud[this.getValenceShell()]--;
-		this.cloud.charge -= num;
+		this.cloud.charge += num;
 		// updating electron need // todo: transition metal psuedo-nobles
 		let valence = this.getValenceShell();
 		let valenceNum = this.cloud[valence];
