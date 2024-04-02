@@ -2,10 +2,6 @@ oncontextmenu = () => {return false};
 
 // game
 const game = {
-	root: document.getElementById("root"),
-	size: () => {return [game.root.parentElement.offsetWidth, game.root.parentElement.offsetHeight]},
-	headerY: document.querySelector("header").offsetHeight,
-
 	atoms: [], bonds: [], molecules: [],
 	add: (el, arr) => arr.push(el),
 	remove: (el, arr) => arr.splice(arr.indexOf(el), 1),
@@ -16,9 +12,11 @@ const game = {
 	},
 	pause: () => clearInterval(game.interval),
 	tick: () => {
+		let tick = new Event("tick");
+		game.root.dispatchEvent(tick);
 		// atoms
 		for (let i = 0; i < game.atoms.length; i++) {
-			game.atoms[i].tick();
+			game.atoms[i].dispatchEvent(tick);
 			if (game.atoms[i].electronNeed) for (let j = i + 1; j < game.atoms.length; j++) {
 				if (game.atoms[j].electronNeed && !game.atoms[i].isBonded(game.atoms[j]) && game.near(game.atoms[i], game.atoms[j], 128)) {
 					game.atoms[i].checkReact(game.atoms[j]);
@@ -31,15 +29,23 @@ const game = {
 		canvas.redraw();
 	},
 
+	root: document.getElementById("root"),
+	headerY: document.querySelector("header").offsetHeight,
+	x: 0, y: 0,
+	resize: () => {
+		game.width = game.root.parentElement.offsetWidth;
+		game.height = game.root.parentElement.offsetHeight;
+	},
+
 	inBounds: (x, y) => {
-		let size = game.size();
-		return x > -cameraX && x < -cameraX + size[0] && y > -cameraY && y < -cameraY + size[1];
+		return x > -game.x && x < -game.x + game.width && y > -game.y && y < -game.y + game.height;
 	},
 	near: (a, b, distance) => {
 		if (Math.abs(a.x - b.x) > distance || Math.abs(a.y - b.y) > distance) return false;
 		return (a.x - b.x) ** 2 + (a.y - b.y) ** 2 < distance ** 2;
 	},
 }
+game.resize();
 game.start();
 onblur = game.pause;
 onfocus = game.start;
@@ -72,23 +78,23 @@ const canvas = {
 
 		if (type === "line") {
 			canvas.ctx.beginPath();
-			canvas.ctx.moveTo(opts.x1 + cameraX, opts.y1 + cameraY);
-			canvas.ctx.lineTo(opts.x2 + cameraX, opts.y2 + cameraY);
+			canvas.ctx.moveTo(opts.x1 + game.x, opts.y1 + game.y);
+			canvas.ctx.lineTo(opts.x2 + game.x, opts.y2 + game.y);
 			canvas.ctx.stroke();
 		}
 		else if (type === "text") {
-			opts.x += cameraX;
-			opts.y += cameraY;
+			opts.x += game.x;
+			opts.y += game.y;
 			let metrics = canvas.ctx.measureText(opts.text);
 			canvas.ctx.clearRect(opts.x - metrics.width/2, opts.y - 10, metrics.width, 16);
 			canvas.ctx.fillText(opts.text, opts.x, opts.y + 2);
 		}
 		else if (type === "rect") {
-			if (opts.fill) canvas.ctx.fillRect(opts.x1 + cameraX, opts.y1 + cameraY, opts.x2 - opts.x1, opts.y2 - opts.y1);
-			if (opts.stroke) canvas.ctx.strokeRect(opts.x1 + cameraX, opts.y1 + cameraY, opts.x2 - opts.x1, opts.y2 - opts.y1);
+			if (opts.fill) canvas.ctx.fillRect(opts.x1 + game.x, opts.y1 + game.y, opts.x2 - opts.x1, opts.y2 - opts.y1);
+			if (opts.stroke) canvas.ctx.strokeRect(opts.x1 + game.x, opts.y1 + game.y, opts.x2 - opts.x1, opts.y2 - opts.y1);
 		}
 		else if (type === "circle") {
-			canvas.ctx.arc(opts.x + cameraX, opts.y + cameraY, opts.radius, 0, Math.PI * 2);
+			canvas.ctx.arc(opts.x + game.x, opts.y + game.y, opts.radius, 0, Math.PI * 2);
 			if (opts.fill) canvas.ctx.fill();
 			if (opts.stroke) canvas.ctx.stroke();
 		}
@@ -97,28 +103,14 @@ const canvas = {
 	}
 };
 canvas.ctx = canvas.el.getContext("2d");
-[canvas.el.width, canvas.el.height] = game.size();
-onresize = () => [canvas.el.width, canvas.el.height] = game.size();
+canvas.el.width = game.width;
+canvas.el.height = game.height;
+onresize = () => {
+	game.resize();
+	canvas.el.width = game.width;
+	canvas.el.height = game.height;
+}
 canvas.ctx.font = "bold 12px sans-serif", canvas.ctx.textAlign = "center";
-
-
-// camera
-var cameraX = 0, cameraY = 0;
-canvas.el.onmousedown = () => {
-	game.pause();
-	addEventListener("mousemove", moveCamera);
-	addEventListener("mouseup", () => {
-		removeEventListener("mousemove", moveCamera);
-		game.start();
-	}, {once: true});
-}
-function moveCamera(e) {
-	cameraX += e.movementX;
-	cameraY += e.movementY;
-	game.root.style.left = cameraX + "px";
-	game.root.style.top = cameraY + "px";
-	canvas.redraw();
-}
 
 
 // debug
@@ -152,6 +144,7 @@ function note(...args) {
 // bonds
 class Bond {
 	a; b; type; electrons;
+	angle = 0;
 
 	constructor(p1, p2) {
 		// ordering
@@ -241,6 +234,7 @@ class Particle extends HTMLElement {
 		this.classList.add("colored", "particle");
 		this.setColor(palette.random());
 		this.addEventListener("mousedown", this.drag);
+		this.addEventListener("tick", this.tick);
 	}
 	add() {root.appendChild(this)}
 
@@ -271,7 +265,7 @@ class Particle extends HTMLElement {
 		addEventListener("mouseup", e => {
 			removeEventListener("mousemove", listener);
 			delete canvas.trajectory;
-			this.applyVelocity((this.x - e.x + cameraX) / 3, (this.y - e.y + cameraY + game.headerY) / 3);
+			this.applyVelocity((this.x - e.x + game.x) / 3, (this.y - e.y + game.y + game.headerY) / 3);
 		}, {once: true});
 	}
 	drawTrajectory(e) {
@@ -279,8 +273,8 @@ class Particle extends HTMLElement {
 			stroke: this.color, width: 2, dashed: true,
 			x1: this.x,
 			y1: this.y,
-			x2: this.x + 2 * (this.x - e.x + cameraX),
-			y2: this.y + 2 * (this.y - e.y + cameraY + game.headerY)
+			x2: this.x + 2 * (this.x - e.x + game.x),
+			y2: this.y + 2 * (this.y - e.y + game.y + game.headerY)
 		};
 	}
 
@@ -566,6 +560,10 @@ class Atom extends Particle {
 			symbol: "Ba",
 			name: "barium"
 		},
+		57: {
+			symbol: "La",
+			name: "lanthanum",
+		},
 		72: {
 			symbol: "Hf",
 			name: "hafnium"
@@ -634,6 +632,26 @@ class Atom extends Particle {
 			symbol: "Ra",
 			name: "radium"
 		},
+		89: {
+			symbol: "Ac",
+			name: "actinium"
+		},
+		104: {
+			symbol: "Rf",
+			name: "Rutherfordium"
+		},
+		105: {
+			symbol: "Db",
+			name: "Dubnium"
+		},
+		106: {
+			symbol: "Sg",
+			name: "Seaborgium"
+		},
+		107: {
+			symbol: "Bh",
+			name: "Bohrium"
+		},
 	}
 
 	p; n;
@@ -665,7 +683,13 @@ class Atom extends Particle {
 		// physics
 		game.add(this, game.atoms);
 		// tooltip
-		this.onmouseover = () => hover(this, this.getName(), this.x + cameraX, this.y + cameraY + (this.clientWidth / 2) + 60);
+		this.onmouseover = () => hover(this, this.getName(), this.x + game.x, this.y + game.y + (this.clientWidth / 2) + 60);
+		// ptable
+		this.onauxclick = e => {
+			let info = document.getElementById("info");
+			info.classList.remove("hidden");
+			info.querySelector("lbau-table").dispatchEvent(new CustomEvent("select", {detail: {atom: this.symbol}}));
+		};
 		// debug
 		note("New atom ",this," with need ",this.electronNeed);
 	}
@@ -676,8 +700,8 @@ class Atom extends Particle {
 		let name = Atom.data[this.p].name;
 
 		if (
-			this.p != 1 &&
-			this.bonds.length === 1 &&
+			this.p != 1 && this.p != 34 &&
+			this.bonds.length < 2 &&
 			this.cloud.charge < 0 &&
 			this.getType() === "Reactive non-metal"
 		) {
@@ -709,7 +733,7 @@ class Atom extends Particle {
 		return false;
 	}
 	updateBonds() {
-		let start = 0//Math.random();
+		let start = 0;
 		for (let i = 0; i < this.bonds.length; i++) {
 			let rot = (start + i / this.bonds.length) * Math.PI * 2
 			if (this.bonds[i].b == this) this.bonds[i].rotate(rot);
@@ -844,104 +868,89 @@ class Molecule {
 	}
 
 	draw() {
-		let minX = this.atoms[0].x, maxX = minX;
-		let minY = this.atoms[0].y, maxY = minY;
-		for (const atom of this.atoms) {
-			if (atom.x < minX) minX = atom.x;
-			else if (atom.x > maxX) maxX = atom.x;
-			if (atom.y < minY) minY = atom.y;
-			else if (atom.y > maxY) maxY = atom.y;
-		}
-		canvas.draw("rect", {
-			stroke: palette.gray, width: 2, dashed: true,
-			x1: minX - 40,
-			y1: minY - 40,
-			x2: maxX + 40,
-			y2: maxY + 40,
-		});
+		// let minX = this.atoms[0].x, maxX = minX;
+		// let minY = this.atoms[0].y, maxY = minY;
+		// for (const atom of this.atoms) {
+		// 	if (atom.x < minX) minX = atom.x;
+		// 	else if (atom.x > maxX) maxX = atom.x;
+		// 	if (atom.y < minY) minY = atom.y;
+		// 	else if (atom.y > maxY) maxY = atom.y;
+		// }
+		// canvas.draw("rect", {
+		// 	stroke: palette.gray, width: 2, dashed: true,
+		// 	x1: minX - 40,
+		// 	y1: minY - 40,
+		// 	x2: maxX + 40,
+		// 	y2: maxY + 40,
+		// });
 	}
 
 
 }
 
+
+// periodic table
+
+class PeriodicTable extends HTMLElement {
+	connectedCallback() {
+		let atom = new Atom;
+		for (let i = 1; i < Atom.symbols.length; i++) {
+			if (i == 58) i = 72;
+			else if (i == 90) i = 104;
+		
+			atom.p = i;
+			let cell = this.appendChild(document.createElement("button"));
+			cell.classList.add("colored", atom.getColorName(), "cell");
+			cell.textContent = atom.symbol;
+			cell.onclick = this.onselected;
+		
+			if (i == 2) cell.style.gridColumn = 18;
+			else if (i == 5 || i == 13) cell.style.gridColumn = 13;
+		}
+		this.appendChild(document.createElement("div")).classList.add("colored", "gray", "halftone", "cell", "empty");
+	}
+
+	onselected() {
+		this.parentElement.dispatchEvent(new CustomEvent("select", {detail: {atom: this.textContent, x: this.parentElement.offsetLeft + this.offsetLeft + this.offsetWidth/2, y: this.parentElement.offsetTop + this.offsetTop + this.offsetHeight/2}}));
+	}
+}
 
 
 // defining custom classes
 window.customElements.define("lbau-atom", Atom);
+window.customElements.define("lbau-table", PeriodicTable);
 
 
-// periodic table
-for (let i = 1; i <= 18; i++) {
-	let head = document.getElementById("table").appendChild(document.createElement("div"));
-	head.className = "head", head.textContent = i;
-}
-for (let i = 1; i < Atom.symbols.length; i++) {
-	if (i == 58) i = 72;
-	else if (i == 90) i = 104;
 
-	let cell = document.getElementById("table").appendChild(document.createElement("div"));
-	let atom = new Atom; atom.p = i;
-	cell.classList.add("colored", atom.getColorName(), "cell");
-	cell.textContent = atom.symbol;
-
-	if (i == 2) cell.style.gridColumn = 18;
-	else if (i == 5 || i == 13) cell.style.gridColumn = 13;
-}
-document.getElementById("table").appendChild(document.createElement("div")).classList.add("colored", "gray", "halftone", "cell", "empty");
-document.querySelector("header button").onclick = () => document.getElementById("info").classList.toggle("hidden");
-
-
-// loading level
-load([
-	[
-		{type: "atom", symbol: "Na", x: 400, y: 400},
-		{type: "atom", symbol: "H", x: 500, y: 200},
-		{type: "atom", symbol: "Cl", x: 800, y: 300},
-		{type: "atom", symbol: "Ag", x: 600, y: 400},
-		{type: "atom", symbol: "Cl", x: 1000, y: 500},
-		// {type: "bond", a: 2, b: 4, kind: "ionic"}
-	],
-	[
-		{type: "atom", symbol: "Na", x: 400, y: 400},
-	]
-][location.hash ? location.hash.substring(1) : 0]);
-function load(data) {
-	for (const item of data) {
-		if (item.type == "atom") {
-			let atom = new Atom();
-			atom.symbol = item.symbol;
-			atom.x = item.x;
-			atom.y = item.y;
-			atom.add();
-		} else if (item.type == "bond") {
-			new Bond(game.atoms[item.a], game.atoms[item.b], item.kind);
-		}
+// pane
+let info = document.getElementById("info");
+document.getElementById("table-button").onclick = () => {
+	if (info.classList.contains("hidden")) {
+		info.classList.remove("hidden");
+	}
+	else {
+		info.classList.add("hidden");
 	}
 }
+document.querySelector("#info lbau-table").addEventListener("select", e => {
+	let atom = new Atom;
+	atom.symbol = e.detail.atom;
+	let name = atom.getName();
 
-function exportJSON() {
-	let arr = [];
-	for (const atom of game.atoms) arr.push({type: "atom", symbol: atom.symbol, x: atom.x, y: atom.y});
-	for (const bond of game.bonds) arr.push({type: "bond", a: game.atoms.indexOf(bond.a), b: game.atoms.indexOf(bond.b), kind: bond.type});
-	console.log(JSON.stringify(arr));
-}
+	let html = `
+<h2 class="${atom.getColorName()}">${name[0].toUpperCase() + name.substring(1)}</h2>
+<div><b>Symbol:</b> ${atom.symbol}</div>
+<div><b>Atomic #:</b> ${atom.p}</div>
+<div><b>Group:</b> ${atom.getGroup()}</div>
+<div><b>Period:</b> ${atom.getPeriod()}</div>
+<div><b>Type:</b> <span style="color: ${atom.getColor()}">${atom.getType()}</span></div>`;
+	if (Object.keys(Atom.data).includes(String(atom.p))) {
+		let data = Atom.data[atom.p];
+		if (data.electronegativity) html += "<div><b>Electronegativity:</b> " + data.electronegativity + "</div>";
+		atom.addElectrons(-1);
+		let ionName = atom.getName().slice(0, -13);
+		if (ionName != name) html += "<div><b>Ion:</b> " + ionName + "</div>";
+	}
 
-
-// debug
-oncontextmenu = e => {
-	let input = game.root.appendChild(document.createElement("input"));
-	input.style = `position: absolute; left: ${e.x - cameraX}px; top: ${e.y - cameraY - document.querySelector("header").offsetHeight}px`;
-	input.focus();
-	input.onblur = () => input.remove();
-	input.onkeydown = e => {if (e.key == "Enter") {
-		if (Atom.symbols.includes(input.value)) {
-			let atom = new Atom;
-			atom.symbol = input.value;
-			atom.x = input.offsetLeft;
-			atom.y = input.offsetTop;
-			atom.add();
-		}
-		input.blur();
-	}}
-	return false;
-}
+	document.getElementById("pane").innerHTML = html;
+})

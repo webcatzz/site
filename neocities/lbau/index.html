@@ -5,85 +5,31 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>let's build a universe</title>
 	<link rel="stylesheet" href="global.css">
-	<style>
-body {margin: 2em}
-h1 {margin-bottom: 0.5em}
-canvas {position: absolute; inset: 0; z-index: -1}
-
-.sect {display: flex; align-items: start; gap: 4em; padding: 1em}
-h2 {background-color: var(--color); margin-block: 0; margin-left: 0.75em; align-self: center; & span {margin-left: -0.75em; margin-right: 0.75em}}
-
-@keyframes float {from {transform: translateY(2px)} to {transform: translateY(-2px)}}
-button {
-	display: flex; justify-content: center; align-items: center;
-	width: 30px; aspect-ratio: 1; border-radius: 50%;
-	animation: 2s float infinite alternate;
-
-	transition: border-width 0.2s cubic-bezier(.09,.39,0,2.75);
-	&:hover:not(:active) {border-width: 6px}
-
-	&:nth-of-type(even) {animation-direction: alternate-reverse}
-	&:nth-of-type(1) {margin-top: 80px}
-	&:nth-of-type(2) {animation-delay: -0.25s}
-	&:nth-of-type(3) {margin-top: 60px; animation-delay: -0.5s}
-	&:nth-of-type(4) {margin-top: 35px; animation-delay: -0.75s}
-	&:nth-of-type(5) {width: 50px; align-self: center; animation-delay: -1s}
-	&:nth-of-type(6) {width: 20px; align-self: center; animation-delay: -1.25s; &[disabled] {display: none}}
-	&[disabled] {color: transparent; background-color: var(--white); border-color: var(--color); pointer-events: none}
-}
-	</style>
+	<link rel="stylesheet" href="level.css">
+	<script defer src="data.js"></script>
+	<script defer src="game.js"></script>
+	<script defer src="space.js"></script>
 </head>
 <body>
-	<h1>¬et's build a universe</h1>
-	<canvas></canvas>
-	<div class="sect green" style="margin-left: 80px">
-		<h2><span>part one</span></h2>
-		<button data-level="1-1" class="colored">1</button>
-		<button data-level="1-2" class="colored">2</button>
-		<button data-level="1-3" class="colored">3</button>
-		<button data-level="1-4" class="colored">4</button>
-		<button data-level="1-5" class="colored">q</button>
-		<button data-level="1-6" class="colored">+</button>
-	</div>
-	<div class="sect blue" style="margin-left: 160px">
-		<h2><span>part two</span></h2>
-		<button data-level="2-1" class="colored">1</button>
-		<button data-level="2-2" class="colored">2</button>
-		<button data-level="2-3" class="colored">3</button>
-		<button data-level="2-4" class="colored">4</button>
-		<button data-level="2-5" class="colored">q</button>
-		<button data-level="2-6" class="colored">+</button>
-	</div>
-	<div class="sect red" style="margin-left: 240px">
-		<h2><span>part three</span></h2>
-		<button data-level="3-1" class="colored">1</button>
-		<button data-level="3-2" class="colored">2</button>
-		<button data-level="3-3" class="colored">3</button>
-		<button data-level="3-4" class="colored">4</button>
-		<button data-level="3-5" class="colored">q</button>
-		<button data-level="3-6" class="colored">+</button>
-	</div>
-	<script src="data.js"></script>
-	<script>
-const ctx = document.querySelector("canvas").getContext("2d");
-ctx.canvas.width = innerWidth, ctx.canvas.height = innerHeight;
-onresize = () => ctx.canvas.width = innerWidth, ctx.canvas.height = innerHeight;
+	<header>
+		<h1 class="red">¬et's build a universe</h1>
+		<button id="table-button" class="colored blue">open table</button>
+	</header>
 
-ctx.strokeStyle = getComputedStyle(document.body).getPropertyValue("--black"), ctx.lineWidth = 4;
-for (const sect of document.getElementsByClassName("sect")) {
-	let buttons = sect.getElementsByTagName("button");
+	<div id="game">
 
-	ctx.beginPath();
-	ctx.moveTo(buttons[0].offsetLeft + buttons[0].offsetWidth / 2, buttons[0].offsetTop + buttons[0].offsetHeight / 2);
-	for (const button of buttons) if (data.isUnlocked(...button.dataset.level.split("-"))) {
-		button.onclick = () => data.loadLevel(...button.dataset.level.split("-"));
-		ctx.lineTo(button.offsetLeft + button.offsetWidth / 2, button.offsetTop + button.offsetHeight / 2);
-	} else {
-		button.disabled = true;
-		continue;
-	}
-	ctx.stroke();
-}
-	</script>
+		<canvas></canvas>
+		<div id="root"></div>
+
+		<div id="info" class="hidden">
+
+			<div id="pane">
+				<h2 class="blue">Click an element!</h2>
+			</div>
+			<lbau-table></lbau-table>
+
+		</div>
+	</div>
+
 </body>
 </html>

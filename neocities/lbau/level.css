@@ -14,12 +14,18 @@ canvas {position: absolute; inset: 0}
 #root {position: absolute}
 
 .hover {font-size: 0.75em; padding: 0.25em; border-width: 0.2em; transform: translateX(-50%); position: absolute; pointer-events: none}
+.input {
+	outline: none;
+	text-align: center;
+	position: absolute;
+}
 
 #info {
 	display: flex;
 	background-color: var(--white);
 	position: absolute; inset: 0;
 	cursor: auto;
+	lbau-table {margin: auto}
 }
 #pane {
 	width: 350px; padding: 2em 4em;
@@ -30,17 +36,16 @@ canvas {position: absolute; inset: 0}
 		margin-top: 0;
 	}
 }
-#table {
+
+lbau-table {
 	display: grid; grid-template-columns: repeat(18, max-content);
-	background-color: var(--white);
-	margin: auto;
 }
 .head {
 	color: var(--gray); font-size: 0.75em; text-align: center; padding-bottom: 1.5em;
 }
 .cell {
 	display: flex; justify-content: center; align-items: center;
-	width: 35px; aspect-ratio: 1; margin: -2px;
+	width: 1.75em; aspect-ratio: 1; padding: 0; margin: -2px;
 	cursor: pointer;
 
 	&.empty {width: unset; aspect-ratio: unset; grid-column: 8/19}
