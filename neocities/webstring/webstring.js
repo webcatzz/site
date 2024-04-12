@@ -24,7 +24,7 @@ webring = {
 
 
 // all of the actual code
-webring.index = webring.sites.findIndex(url => location.href.startsWith(url));
+webring.index = location.href.startsWith("file://") ? 0 : webring.sites.findIndex(url => location.href.startsWith(url));
 if (webring.index == -1) document.currentScript.outerHTML = webring.error;
 else {
   webring.widget = webring.widget.replace("PREV", webring.sites.at(webring.index - 1));

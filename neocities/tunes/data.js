@@ -416,7 +416,7 @@ var tracklist = [{
 function getURL(hash) {
   switch (hash.substring(0, 1)) {
     case "u": return "https://ultraabox.github.io/player/#song=" + hash;
-    case "j": return "https://jummbus.bitbucket.io/player/#song=" + hash;
+    case "j": return "https://jummb.us/player/#song=" + hash;
     default: return "https://www.beepbox.co/player/#song=" + hash;
   }
 }

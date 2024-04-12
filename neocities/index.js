@@ -1,22 +1,39 @@
+// mobile
+if (innerWidth < 600) location.replace("map.html")
+
+
+// title sound
+document.querySelector("h1").onclick = () => {
+	let tts = new SpeechSynthesisUtterance();
+	tts.text = "webcatz", tts.rate = 0.75;
+
+	let voices = [];
+	for (const voice of speechSynthesis.getVoices()) if (voice.lang == "en-US") voices.push(voice);
+	tts.voice = voices[Math.floor(Math.random() * voices.length)];
+
+	speechSynthesis.speak(tts);
+}
+
+
 
 // audio player
 
 const audioEls = document.getElementById("audio-player").children;
 let nightcore = false, lightsOff = false;
 AudioPlayer.create([
-  {title: "First Steps - Lena Raine (Celeste OST)", src: "https://files.catbox.moe/r676ot.mp3"},
-  {title: "Forgo's Treasures - Hirokazu Ando (Kirby and the Forgotten Land OST)", src: "https://files.catbox.moe/6ah5gv.mp3"},
-  {title: "Allison's Theme - beatrix quinn (Super Lesbian Animal RPG OST)", src: "https://files.catbox.moe/s72tlt.mp3"},
-  {title: "Dark Flute - Jim Guthrie (Sword & Sworcery LP - The Ballad of the Space Babies)", src: "https://files.catbox.moe/gjc4cw.mp3"},
-  {title: "Paramnesiac - still crisp (Pseudoregalia OST)", src: "https://files.catbox.moe/et8li0.mp3"},
-  {title: "Marine Tube - Go Ichinose (Pokémon Black & White 2 OST)", src: "https://files.catbox.moe/j1thr2.mp3"},
-  {title: "Relic - Aaron Cherof (Minecraft: Trails & Tales OST)", src: "https://files.catbox.moe/lvmfv7.mp3"},
-  {title: "Eliezer's Waltz - Disparition (Welcome to Night Vale)", src: "https://files.catbox.moe/ul7358.mp3"},
-  {title: "I Feel Like (Live) - coffeebug (MIDIfreak)", src: "https://files.catbox.moe/8rw8p8.mp3"},
-  {title: "See You At The Top - Mark Sparling (A Short Hike OST)", src: "https://files.catbox.moe/ovcne0.mp3"},
-  {title: "Adventure - Disasterpiece (Fez OST)", src: "https://files.catbox.moe/2eoup3.mp3"},
-  {title: "pawprints in the snow - coffeebug (haunted sticky notes)", src: "https://files.catbox.moe/hpigll.mp3"},
-  {title: "Strange Quest - Joel Corelitz (Eastward OST)", src: "https://files.catbox.moe/yx7opr.mp3"},
+  "First Steps - Lena Raine (Celeste OST)",
+  "Forgo's Treasures - Hirokazu Ando (Kirby and the Forgotten Land OST)",
+  "Allison's Theme - beatrix quinn (Super Lesbian Animal RPG OST)",
+  "Dark Flute - Jim Guthrie (Sword & Sworcery LP - The Ballad of the Space Babies)",
+  "Paramnesiac - still crisp (Pseudoregalia OST)",
+  "Marine Tube - Go Ichinose (Pokémon Black & White 2 OST)",
+  "Relic - Aaron Cherof (Minecraft: Trails & Tales OST)",
+  "Eliezer's Waltz - Disparition (Welcome to Night Vale)",
+  "I Feel Like (Live) - coffeebug (MIDIfreak)",
+  "See You At The Top - Mark Sparling (A Short Hike OST)",
+  // "Adventure - Disasterpiece (Fez OST)",
+  "pawprints in the snow - coffeebug (haunted sticky notes)",
+  "Strange Quest - Joel Corelitz (Eastward OST)",
 ],{
   playButton: audioEls[3],
   skipButton: audioEls[5],
@@ -25,55 +42,56 @@ AudioPlayer.create([
   sliderThumb: audioEls[4].children[2],
   sliderProgress: audioEls[4].children[1],
   shuffle: true,
-  onended: () => {
-    let newTitle = document.createElement("marquee");
-    newTitle.textContent = AudioPlayer.list[AudioPlayer.idx].title, newTitle.className = "lcd", newTitle.scrollAmount = 4;
-    audioEls[1].replaceWith(newTitle);
-    audioEls[0].textContent = AudioPlayer.idx + 1 + "/" + AudioPlayer.list.length;
-    if (lightsOff) AudioPlayer.audio.playbackRate = 0.6;
-    else if (nightcore) AudioPlayer.audio.playbackRate = 1.5;
-  }
+	fileGarden: "ZdmFgugxzVCR-8Bl",
+	onended: () => {
+		let newTitle = document.createElement("marquee");
+		newTitle.textContent = AudioPlayer.list[AudioPlayer.idx].title, newTitle.className = "lcd", newTitle.scrollAmount = 4;
+		audioEls[1].replaceWith(newTitle);
+		audioEls[0].textContent = AudioPlayer.idx + 1 + "/" + AudioPlayer.list.length;
+		if (lightsOff) AudioPlayer.playbackRate = 0.6;
+		else if (nightcore) AudioPlayer.playbackRate = 1.5;
+	}
 });
-AudioPlayer.on("durationchange", () => audioEls[2].innerText = Math.floor(AudioPlayer.audio.duration / 60) + ":" + ("0" + Math.round(AudioPlayer.audio.duration % 60)).slice(-2));
+AudioPlayer.addEventListener("durationchange", () => audioEls[2].innerText = Math.floor(AudioPlayer.duration / 60) + ":" + ("0" + Math.round(AudioPlayer.duration % 60)).slice(-2));
 
-AudioPlayer.audio.preservesPitch = false, AudioPlayer.audio.webkitPreservesPitch = false;
+AudioPlayer.preservesPitch = false, AudioPlayer.webkitPreservesPitch = false;
 document.getElementById("awful-fucking-thing").onclick = () => {
 	if (nightcore = !nightcore) {
 		document.getElementById("audio-player").classList.add("nightcore");
 		document.getElementById("awful-fucking-thing").firstChild.src = "assets/awful-fucking-thing-2.webp";
-		AudioPlayer.audio.playbackRate = 1.5;
+		AudioPlayer.playbackRate = 1.5;
 	} else {
 		document.getElementById("audio-player").classList.remove("nightcore");
 		document.getElementById("awful-fucking-thing").firstChild.src = "assets/awful-fucking-thing.webp";
-		AudioPlayer.audio.playbackRate = 1;
+		AudioPlayer.playbackRate = 1;
 	}
 }
-document.getElementById("lightswitch").onclick = () => {
-  new Audio("https://files.catbox.moe/as06cd.mp3").play();
-  if (lightsOff = !lightsOff) {
-    document.body.classList.add("lights-off");
-    AudioPlayer.audio.playbackRate = 0.6;
-  } else {
-    document.body.classList.remove("lights-off");
-    AudioPlayer.audio.playbackRate = nightcore ? 1.5 : 1;
-  }
-}
+// document.getElementById("lightswitch").onclick = () => {
+//   new Audio("https://files.catbox.moe/as06cd.mp3").play();
+//   if (lightsOff = !lightsOff) {
+//     document.body.classList.add("lights-off");
+//     AudioPlayer.playbackRate = 0.6;
+//   } else {
+//     document.body.classList.remove("lights-off");
+//     AudioPlayer.playbackRate = nightcore ? 1.5 : 1;
+//   }
+// }
 
 
 // tunes button
-
 document.getElementById("track-name").textContent = tracklist[0].name;
 document.getElementById("tunes").querySelector("iframe").src = getURL(tracklist[0].hash);
 tracklist = null;
 
 
 // laser pointer
-var laserPoints = 0;
-document.getElementById("laser-pointer").onclick = () => {
-  let laser = document.getElementById("laser-pointer");
-  laser.style.left = Math.random() * window.innerWidth + "px", laser.style.top = Math.random() * (window.innerHeight - 288) + 288 + "px";
-	if (++laserPoints == 4) window.open("https://www.youtube-nocookie.com/embed/fwB8nbI4TuM?si=ghaXscYy5DPXzkhv", "_blank");
-}
+// var laserPoints = 0;
+// document.getElementById("laser-pointer").onclick = () => {
+//   let laser = document.getElementById("laser-pointer");
+//   laser.style.left = Math.random() * window.innerWidth + "px", laser.style.top = Math.random() * (window.innerHeight - 288) + 288 + "px";
+// 	if (++laserPoints == 4) window.open("https://www.youtube-nocookie.com/embed/fwB8nbI4TuM?si=ghaXscYy5DPXzkhv", "_blank");
+// }
+
 
 
 // clicksplosion effect (adapted from http://www.mf2fm.com/rv)
@@ -129,83 +147,3 @@ async function explode(stars) {
 
   function wait(ms) {return new Promise(resolve => setTimeout(resolve, ms))}
 }
-
-
-// chatbox
-
-// let chatboxi = 0;
-// document.getElementById("chatbox").addEventListener("toggle", loadChatbox, {once: true});
-// function loadChatbox() {
-//   loadEntries(chatboxi, 25);
-//   let wrapper = document.getElementById("chatbox").children[1];
-//   wrapper.onscrollend = () => {if (wrapper.scrollTop == 0) {
-//     let oldHeight = wrapper.scrollHeight;
-//     loadEntries(chatboxi += 25, 25);
-//     wrapper.scrollTop = wrapper.scrollHeight - oldHeight - 32;
-//   }}, wrapper.scrollTop = wrapper.scrollHeight;
-
-//   let form = document.getElementById("chatbox-form");
-//   form.reset();
-//   form.onsubmit = e => {
-//     // duplicate junes
-//     if (form.querySelector("input[name=\"name\"]").value == "june") {
-//       alert("sorry doppeljune. that user's taken");
-//       e.preventDefault();
-//       return;
-//     }
-
-//     let textInput = form.querySelector("input[name=\"text\"]");
-//     // sanitizing html
-//     for (let i = 0; (i = textInput.value.indexOf("<", i)) != -1; i += 2) {
-//       textInput.value = textInput.value.slice(0, i) + "\\" + textInput.value.slice(i);
-//     }
-//     // adding links
-//     for (let i = 0; (i = textInput.value.indexOf("https://", i)) != -1; i = textInput.value.indexOf("</a>", i)) {
-//       let end = textInput.value.indexOf(" ", i), link = textInput.value.slice(i, end);
-//       textInput.value = textInput.value.slice(0, i) + "<a href=\"" + link + "\">" + link + "</a>" + textInput.value.slice(end);
-//     }
-
-//     // timestamping
-//     let time = new Date;
-//     form.querySelector("input[type=\"hidden\"]").value = `${time.getUTCFullYear()}-${formatNum(time.getUTCMonth() + 1)}-${formatNum(time.getUTCDate())}T${formatNum(time.getUTCHours())}:${formatNum(time.getUTCMinutes())}:${formatNum(time.getUTCSeconds())}.${formatNum(time.getUTCMilliseconds(), 3)}Z`;
-
-//     function formatNum(num, length = 2) {return String(num).padStart(length, "0")}
-//   }
-// }
-// function loadEntries(from, length) {
-//   let wrapper = document.getElementById("chatbox").children[1], currentDate = new Date;
-//   fetch("https://thought-out-guards.000webhostapp.com/entries.php").then(res => res.json()).then(entries => {
-//     let end = entries.length - from;
-//     entries = entries.slice(end - length, end);
-
-//     let els = [];
-//     for (const entry of entries) {
-//       let el = create("article", {class: "comment"});
-//       // icon
-//       if (entry.icon) el.appendChild(create("img", {src: entry.icon, loading: "lazy", class: "comment-icon"}));
-//       // header
-//       let header = el.appendChild(document.createElement("header")), name = header.appendChild(create("div", {text: entry.name, class: "comment-name"})), date = new Date(entry.time);
-//       if (entry.name == "june") {
-//         name.classList.add("webmaster");
-//         name.appendChild(create("i", {class: "fa-solid fa-paw"}));
-//       }
-//       if (entry.link) header.appendChild(create("a", {href: entry.link, class: "comment-link", children: [create("i", {class: "fa-solid fa-arrow-up-right-from-square"})]}));
-//       header.appendChild(create("div", {text: toRelative(date), title: date.toLocaleString('en-GB', {day: "numeric", month: "long", year: "numeric", hourCycle: "h12", hour: "numeric", minute: "numeric"}), class: "comment-time"}));
-//       // text
-//       el.appendChild(create("div", {innerHTML: entry.text}));
-//       els.push(el);
-//     }
-//     wrapper.prepend(...els);
-//   });
-
-//   function toRelative(date) {
-//     if (currentDate.getMonth() == date.getMonth()) {
-//       if (currentDate.getDate() == date.getDate()) {
-//         if (currentDate.getHours() == date.getHours()) {
-//           if (currentDate.getMinutes() == date.getMinutes()) return "now";
-//           else return currentDate.getMinutes() - date.getMinutes() + " minutes ago";
-//         } else return currentDate.getHours() - date.getHours() + " hours ago";
-//       } else return currentDate.getDate() - date.getDate() + " days ago";
-//     } else return currentDate.getMonth() - date.getMonth() + " months ago";
-//   }
-// }

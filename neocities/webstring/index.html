@@ -3,39 +3,31 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>webcatz //→ webstring!</title>
-	<link rel="icon" href="../assets/icon.svg">
+  <title>webcatz //→ webstring!</title>
+  <link rel="icon" href="../assets/icon.svg">
   <link rel="stylesheet" href="../global.css">
-  <link rel="stylesheet" href="/path/to/styles/default.css">
+  <link rel="stylesheet" href="highlight/atom-one-dark.min.css">
   <style>
 body {color: var(--off-black); text-shadow: 0.1em 0.1em var(--white); background: url(../assets/dots.png) var(--white); margin: 2em}
 a {text-decoration: underline}
 h2 {margin-top: 2em}
 hr {border-top: 1px solid; border-bottom: none; margin: 6em -2em}
-details {margin-block: 1em}
-summary {font-weight: bold; width: max-content; padding: 0.5em 1em; border: 1px solid}
+li {margin-block: 0.25em}
 
 /* code */
-pre {color: #cccccc; text-shadow: none; background-color: #1f1f1f; padding: 1em 2rem; margin-inline: -2rem}
-/* javascript */
-.key {color: #99dcfc}
-.readonly {color: #45c1fc}
-.function {color: #dcdcad}
-.class {color: #43c8b1}
-.bracket1 {color: #ffd636}
-.bracket2 {color: #dc71d3}
-.bracket3 {color: #009ffb}
-.string {color: #d0927a}
-.number {color: #b4ceaa}
-.operator {color: #d4d4d4}
-.operator2 {color: #519cd3}
-.if {color: #c786be}
-.comment {color: #67995a}
-/* html */
-.tag {color: #808080}
-.tag-name {color: #519cd3}
+pre {
+  color: rgb(171, 178, 191); text-shadow: none;
+  background-color: #282c34;
+  padding: 1em 2rem; margin-inline: -2rem;
+  overflow-x: auto;
+}
+.tag {color: rgb(171, 178, 191)}
+.tag-name {color: rgb(224, 108, 117)}
+.attr {color: rgb(209, 154, 102)}
+.string {color: rgb(152, 195, 121)}
 
 .box {background-color: var(--white); padding: 0.5em; border: 1px dotted var(--light-gray); }
+.box pre {margin-inline: -0.5em}
 
 #back {position: absolute; top: 1.5em; right: 1.5em}
 
@@ -43,7 +35,8 @@ pre {color: #cccccc; text-shadow: none; background-color: #1f1f1f; padding: 1em 
 #settings {display: grid; grid-template-columns: max-content max-content; align-items: center; column-gap: 0.5em}
 button {background-image: url(../assets/dots.png); margin-left: 2em}
 
-#notes {font-size: 0.875em}
+#notes {font-size: 0.875em; max-width: 400px; margin-top: 4em; outline: 0.5em solid var(--white); position: absolute; right: 4em}
+.hidden {display: none}
   </style>
 </head>
 <body>
@@ -61,27 +54,9 @@ button {background-image: url(../assets/dots.png); margin-left: 2em}
   <h2>how do i use webstring?</h2>
   <p>you can <a href="webstring.js" target="_blank">view the script here</a>. copy it into a new javascript file (ending with ".js") somewhere on your site.</p>
   <p>this is the settings object, the only part you need to worry about:</p>
-  <pre>
-<span class="comment">// webring settings</span>
-<span class="key">webring</span> <span class="operator">=</span> <span class="bracket1">{</span>
 
-  <span class="key">sites:</span> <span class="bracket2">[</span>
-    <span class="string">"https://your_site_here.neocities.org"</span>,
-    <span class="string">"https://another_site.neocities.org"</span>,
-  <span class="bracket2">]</span>,
+  <pre id="settings-object"></pre>
 
-  <span class="comment">// PREV and NEXT get replaced with neighboring site urls</span>
-  <span class="key">widget:</span> <span class="string">`
-    &lt;div id="my-webring" style="display: flex; gap: 8px">
-      &lt;a href="PREV">prev&lt;/a>
-      &lt;div>webring&lt;/div>
-      &lt;a href="NEXT">next&lt;/a>
-    &lt;/div>
-  `</span>,
-
-  <span class="key">error:</span> <span class="string">"&lt;div>This site isn't part of the webring yet.&lt;/div>"</span>,
-
-<span class="bracket1">}</span>;</pre>
   <p>the settings object is where all the information about your webring is kept.</p>
   <ul>
     <li><b>sites</b> is a list of all the sites in the webring. each url has to be enclosed in quotes and followed with a comma, like so: <code>"url",</code></li>
@@ -92,7 +67,7 @@ button {background-image: url(../assets/dots.png); margin-left: 2em}
 
   <h2>how do i add the widget?</h2>
   <p>wherever you'd like the widget to be, just link the script:</p>
-  <pre><span class="tag">&lt;</span><span class="tag-name">script</span> <span class="key">src</span>=<span class="string">"https://your_site_here.neocities.org/folder/webstring.js"</span><span class="tag">>&lt;/<span class="tag-name">script</span>></span></pre>
+  <pre><span class="tag">&lt;</span><span class="tag-name">script</span> <span class="attr">src</span>=<span class="string">"https://your_site_here.neocities.org/folder/webstring.js"</span><span class="tag">>&lt;/<span class="tag-name">script</span>></span></pre>
   <p>(don't forget to replace the "src" with whatever path you're keeping the script at.)</p>
 
   <a id="back" class="box" href="../index.html">← home</a>
@@ -114,30 +89,57 @@ button {background-image: url(../assets/dots.png); margin-left: 2em}
     <button id="copy" class="box">mr. wizard,<br>summon me a script!</button>
     <img id="wizard" src="wizard.png" alt="the wizard">
   </div>
-
-  <div id="notes"></div>
-
+  <div id="notes" class="box hidden"></div>
   <pre id="script"><span class="tag">// waiting for a summoning...</span></pre>
 
+  <script src="highlight/highlight.min.js"></script>
   <script>
+document.getElementById("settings-object").innerHTML = hljs.highlight(`// webring settings
+webring = {
+
+  sites: [
+    "https://your_site_here.neocities.org",
+    "https://another_site.neocities.org",
+  ],
+
+  // PREV and NEXT get replaced with neighboring site urls
+  widget: \`
+    <div id="my-webring" style="display: flex; gap: 8px">
+      <a href="PREV">prev</a>
+      <div>webring</div>
+      <a href="NEXT">next</a>
+    </div>
+  \`,
+
+  error: "<div>This site isn't part of the webring yet.</div>",
+
+};`, {language: "js"}).value;
+
 document.getElementById("copy").onclick = function () {
   let settings = {};
   for (const key of ["random", "stylesheet", "multiwidget"]) settings[key] = document.getElementById(key).checked;
   // displaying script
   let view = document.getElementById("script");
-  view.textContent = getScript(settings);
-  view.animate({transform: ["translateY(0.5em)", "none"], opacity: [0.75, 1]}, {duration: 300, easing: "ease-out"});
+  view.innerHTML = getScript(settings);
+  view.animate({transform: ["translateY(0.5em)", "none"]}, {duration: 300, easing: "ease-out"});
+  document.getElementById("wizard").animate({transform: ["translateY(-0.5em)", "none"]}, {duration: 300, easing: "ease-out"});
   // notes
   let notes = document.getElementById("notes");
-  if (settings.multiwidget) notes.innerHTML = `
-    <p><b>adding multiple widgets?</b> when you're adding the widget to a page, choose which widget to display by setting <code>data-widget</code> to the name of the preferred widget:</p>
-    <pre><span class="tag">&lt;</span><span class="tag-name">script</span> <span class="key">data-widget</span>=<span class="string">"widgetname"</span> <span class="key">src</span>=<span class="string">"https://your_site_here.neocities.org/folder/webstring.js"</span><span class="tag">>&lt;/<span class="tag-name">script</span>></span></pre>
+  if (settings.multiwidget) {
+    notes.innerHTML = `<p><b>adding multiple widgets?</b> when you're adding the widget to a page, choose which widget to display by setting <code>data-widget</code> to the name of the preferred widget:</p>
+    <pre><span class="tag">&lt;</span><span class="tag-name">script</span> <span class="attr">data-widget</span>=<span class="string">"widgetname"</span> <span class="attr">src</span>=<span class="string">"https://your_site_here.neocities.org/folder/webstring.js"</span><span class="tag">>&lt;/<span class="tag-name">script</span>></span></pre>
     <p>if no <code>data-widget</code> is found, the first widget is displayed.</p>`;
-  else notes.textContent = "";
+    notes.classList.remove("hidden");
+  }
+  else {
+    notes.classList.add("hidden");
+    notes.textContent = "";
+  }
 }
 
+
 function getScript(settings = {}) {
-  return `// webstring by june @ webcatz.neocities.org
+  return hljs.highlight(`// webstring by june @ webcatz.neocities.org
 
 // webring settings
 webring = {
@@ -147,29 +149,32 @@ webring = {
     "https://another_site.neocities.org",
   ],
 
-  // PREV and NEXT get replaced with neighboring site urls
-  ${!settings.multiwidget ? `widget: \`
-    <div id="my-webring" style="display: flex; gap: 8px">
-      <a href="PREV">prev</a>
-      <div>webring</div>${settings.random ? `
-      <a href="RANDOM">random</a>` : ""}
-      <a href="NEXT">next</a>
-    </div>
-  \`` : `widgets: {
+  // PREV and NEXT get replaced with neighboring site urls${insertIf(settings.stylesheet, `
+  stylesheet: "https://your_site_here.neocities.org/folder/widget.css",`)}
+  ${settings.multiwidget ? `widgets: {
     default: \`
       <div style="display: flex; gap: 8px">
         <a href="PREV">prev</a>
-        <div>webring</div>${settings.random ? `
-        <a href="RANDOM">random</a>` : ""}
+        <div>webring</div>${insertIf(settings.random, `
+        <a href="RANDOM">random</a>`)}
         <a href="NEXT">next</a>
       </div>
     \`,
     another: \`
       <div>another widget...</div>
     \`,
-  }`},
-  ${settings.stylesheet ? `
-  stylesheet: "https://your_site_here.neocities.org/folder/widget.css",` : ""}
+    yet_another: \`
+      <div>add as many (or as few) as you like!</div>
+    \`,
+  }` : `widget: \`
+    <div id="my-webring" style="display: flex; gap: 8px">
+      <a href="PREV">prev</a>
+      <div>webring</div>${insertIf(settings.random, `
+      <a href="RANDOM">random</a>`)}
+      <a href="NEXT">next</a>
+    </div>
+  \``},
+
   error: "<div>This site isn't part of the webring yet.</div>",
 
 };
@@ -177,22 +182,26 @@ webring = {
 
 
 // all of the actual code
-webring.index = webring.sites.findIndex(url => location.href.startsWith(url));
+webring.index = location.href.startsWith("file://") ? 0 : webring.sites.findIndex(url => location.href.startsWith(url));
 if (webring.index == -1) document.currentScript.outerHTML = webring.error;
-else {${settings.stylesheet ? `
+else {${insertIf(settings.stylesheet, `
   let sheet = document.createElement("link");
   sheet.rel = "stylesheet", sheet.href = webring.stylesheet;
-  document.head.appendChild(sheet);` : ""}
+  document.head.appendChild(sheet);`)}
   ${!settings.multiwidget ? `webring.widget = webring.widget.replace("PREV", webring.sites.at(webring.index - 1));
-  webring.widget = webring.widget.replace("NEXT", webring.sites[(webring.index + 1) % webring.sites.length]);${settings.random ? `
-  webring.widget = webring.widget.replace("RANDOM", webring.sites[Math.floor(Math.random() * webring.sites.length)]);` : ""}
+  webring.widget = webring.widget.replace("NEXT", webring.sites[(webring.index + 1) % webring.sites.length]);${insertIf(settings.random, `
+  webring.widget = webring.widget.replace("RANDOM", webring.sites[Math.floor(Math.random() * webring.sites.length)]);`)}
   document.currentScript.outerHTML = webring.widget;` : `let widget = webring.widgets[document.currentScript.dataset.widget] ?? webring.widgets[Object.keys(webring.widgets)[0]];
   widget = widget.replace("PREV", webring.sites.at(webring.index - 1));
-  widget = widget.replace("NEXT", webring.sites[(webring.index + 1) % webring.sites.length]);${settings.random ? `
-  widget = widget.replace("RANDOM", webring.sites[Math.floor(Math.random() * webring.sites.length)]);` : ""}
+  widget = widget.replace("NEXT", webring.sites[(webring.index + 1) % webring.sites.length]);${insertIf(settings.random, `
+  widget = widget.replace("RANDOM", webring.sites[Math.floor(Math.random() * webring.sites.length)]);`)}
   document.currentScript.outerHTML = widget;`}
 }
-delete webring;`;
+delete webring;`, {language: "js", ignoreIllegals: true}).value;
+
+  function insertIf(condition, text) {
+    return condition ? text : "";
+  }
 }
   </script>
 </body>

@@ -30,20 +30,29 @@ select:hover {color: white; box-shadow: 0 1px 4px #0000ff80}
 @keyframes appear {from {transform: translateY(10%); opacity: 0}}
 @keyframes disappear {to {transform: translateY(10%); opacity: 0}}
 .card-wrapper {perspective: 1000px}
-.card {border-radius: 5px; background-color: #101010; transition: background-color 0.5s, box-shadow 0.5s; animation: 0.25s drop}
-.card img {width: 100%; aspect-ratio: 2; border-top-left-radius: inherit; border-top-right-radius: inherit}
-.title-row {display: flex; align-items: center; padding: 4px 24px; background: linear-gradient(to left, #0000ff30, transparent) no-repeat 384px 0; transition: background-position-x 0.6s}
-.title-row:first-child {border-top-left-radius: inherit; border-top-right-radius: inherit}
+
+.card {
+	border-radius: 5px;
+	background-color: #101010;
+	transition: background-color 0.5s, box-shadow 0.5s;
+	animation: 0.25s drop;
+
+	img {width: 100%; aspect-ratio: 2; border-top-left-radius: inherit; border-top-right-radius: inherit}
+	&:hover {box-shadow: 0 0 8px inset #202020, 0 4px 16px #0000ff40; background-color: black; animation: 0.5s lift forwards}
+	&:active {animation: 0.25s drop}
+}
+.title-row {
+	display: flex; align-items: center; padding: 4px 24px; background: linear-gradient(to left, #0000ff30, transparent) no-repeat 384px 0; transition: background-position-x 0.6s;
+	&:first-child {border-top-left-radius: inherit; border-top-right-radius: inherit}
+}
 .title {font: 2em old-london; margin-right: 0.25em}
-.tag, .link {font: 0.75em merriweather; padding: 4px 8px; }
+.tag, .link {font: 0.75em merriweather; padding: 4px 8px}
 .tag, .link:hover {color: black; background-color: blue}
 .link {display: block; color: blue; animation: 0.2s disappear both}
 .link:first-of-type {animation-delay: 0.1s; margin-left: auto}
 .link:last-of-type {margin-right: -8px}
 .link:hover {color: black; background-color: blue}
 .text {color: gray; font: 0.75em/1.75 merriweather; padding: 16px; padding-top: 0px}
-.card:hover {box-shadow: 0 0 8px inset #202020, 0 4px 16px #0000ff40; background-color: black; animation: 0.5s lift forwards}
-.card:active {animation: 0.25s drop}
 .card:hover .title-row {background-position-x: 0}
 .card:hover .link {animation-name: appear}
 .hidden {display: none}

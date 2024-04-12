@@ -1,10 +1,6 @@
 # unnecessary
-/offsite/
-/neocities/assets/centennial-bulb/
 /neocities/assets/ogs/
-/neocities/cat/blog/0.html
-/guestbook-backup.txt
-/to-do.txt
+/offsite/
 .DS_STORE
 
 # unfinished
@@ -13,6 +9,7 @@
 /neocities/creata/timeline-old
 
 /neocities/ough/17776/
+/neocities/ough/baba/
 /neocities/ough/disco-elysium/
 /neocities/ough/homestuck/
 /neocities/ough/homestuck-old/
@@ -21,12 +18,6 @@
 /neocities/ough/starbound/
 /neocities/ough/sword-and-sworcery/
 /neocities/ough/unlabeled/
-
-/neocities/about-copy.html
-/neocities/about-newer.html
-/neocities/about-old.html
-
-/neocities/brainless.html
 
 # can't go on neocities
 *.mp*

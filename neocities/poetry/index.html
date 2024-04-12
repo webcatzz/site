@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>june's emo poetry</title>
+	<link rel="icon" href="grain.png">
+	<link rel="stylesheet" href="../global.css">
+	<style>
+body {
+	display: flex; justify-content: center; align-items: center;
+	background: radial-gradient(black 25%, #00000080), url(grain.png) center / cover black;
+	min-height: 100vh;
+}
+
+#notebook {
+	display: flex; justify-content: center;
+	background: url(notebook.png) center / cover;
+	width: 500px; aspect-ratio: 1662/1766;
+	padding: 50px 15px 150px 25px; box-sizing: border-box;
+	perspective: 1000px;
+}
+article {
+	font-size: 0.75em;
+	display: grid; grid-template: "name start" max-content "name end" max-content "text text" 1fr / 1fr max-content;
+	contain: strict; flex: 1;
+}
+#left {transform: rotateX(-4deg) rotateY(45deg); margin-right: -20px}
+#right {transform: rotateX(-4deg) rotateY(-50deg); margin-left: -20px; margin-bottom: 30px}
+
+h2 {margin-block: 0; grid-area: name; align-self: center}
+.date {font: 0.75em monospace; text-align: right}
+.start {margin-right: 1em; grid-area: start; align-self: end}
+.end {grid-area: end; align-self: start}
+pre {padding-bottom: 1.5em; grid-area: text; overflow: auto; overscroll-behavior: none; scrollbar-color: #7e8982 transparent}
+.prompt {font: 0.875em sans-serif; white-space: normal; padding-left: 1em; border-left: 1px solid; margin-top: 4em}
+
+button {
+	color: #d2d1ce; font-family: monospace; user-select: none;
+	&:hover {text-decoration: underline}
+	&[disabled] {visibility: hidden}
+}
+	</style>
+	<script defer src="poetry.js"></script>
+</head>
+<body>
+
+	<button id="prev">PAGE LEFT</button>
+
+	<div id="notebook">
+
+		<article id="left"></article>
+
+		<article id="right"></article>
+
+	</div>
+
+	<button id="next">PAGE RITE</button>
+
+</body>
+</html>

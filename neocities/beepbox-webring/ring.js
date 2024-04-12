@@ -15,7 +15,7 @@ bpSites = [
 ];
 
 
-bpIdx = bpSites.findIndex(url => location.href.startsWith(url));
+bpIdx = location.href.startsWith("file://") ? 0 : bpSites.findIndex(url => location.href.startsWith(url));
 if (bpIdx == -1) document.currentScript.outerHTML = "<div style=\"color: #999; font: 0.75em sans-serif; padding: 0.5em; border: 4px solid #222; border-radius: 5px; background-color: black\">this site isn't part of the the beepbox webring yet :(</div>";
 // song widget
 else if (document.currentScript.dataset.song) {

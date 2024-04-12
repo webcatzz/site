@@ -1,0 +1,146 @@
+:root {--white: #dfddce; --yellow: #fbd43b}
+@font-face {font-family: indie-flower; src: url(assets/indie-flower.ttf)}
+@font-face {font-family: ms-serif; src: url(../assets/fonts/ms-serif.ttf)}
+body {
+	display: flex;
+	max-width: 1150px; height: 645px;
+	background-color: var(--black);
+	margin: calc(50vh - 322.5px) auto;
+	user-select: none;
+	image-rendering: auto;
+}
+button, #player-slider, #explode {cursor: url(../assets/cursor-pointer.png) 2 0, pointer}
+
+
+/* left */
+
+#left {
+	color: var(--black);
+	display: flex; flex-direction: column;
+	contain: paint; width: 250px; padding: 8px;
+	background-color: var(--yellow);
+}
+
+#toggle-wrapper {height: 0; z-index: 1}
+#star {font-size: 2em; margin-bottom: 0.1875em}
+#toggle {
+	display: flex; align-items: center; gap: 0.25em;
+
+	& label {font: 0.65em ms-serif; letter-spacing: 0.05em}
+	& input {
+		all: unset; line-height: 1; cursor: pointer;
+		&::before {content: "☆"}
+		&:checked::before {content: "★"}
+	}
+}
+
+#left-body {writing-mode: vertical-rl; text-orientation: upright}
+h1 {
+	font-size: 6em; letter-spacing: -0.25em; line-height: 1; white-space: nowrap; margin: 0;
+	& span {display: inline-block; height: 0.25em; transform: translate(0.5em, -0.35em); pointer-events: none}
+}
+#subtitle {font-size: 0.875em; letter-spacing: 0.25em; line-height: 0.25}
+#left-footer {
+	display: flex; align-items: end; contain: strict; padding: 0 8px; margin: -8px -8px 0; flex: 1;
+	& div {font-size: 30em; margin-left: -0.25em; margin-bottom: -0.45em}
+	& a {color: inherit; text-align: right; border-bottom: 1px solid; margin: 8px}
+}
+
+#audio-player {margin: 16px 8px}
+#player-select-wrapper {
+  display: flex; align-items: center; margin: 0 0.5em; position: relative;
+  & svg {fill: currentcolor; height: 1em; position: absolute; right: 0; pointer-events: none}
+}
+#player-select {all: unset; font: bold 1.25em/1.4 indie-flower; text-overflow: ellipsis; width: 100%; padding-right: 1em; box-sizing: border-box; overflow: hidden; cursor: url(../assets/cursor-pointer.png), pointer; &:hover {text-decoration: underline}}
+#player-body {
+	display: flex; align-items: center; gap: 1em;
+	height: 2.5em; padding: 0 1em 0 1.15em;
+	border: 2px solid; border-radius: 1.25em;
+	grid-column: 1/3;
+	& svg {vertical-align: middle !important}
+	& div:last-of-type {font-size: 2.75em; height: 1.24em}
+}
+#player-slider {
+	position: relative; align-self: stretch; flex: 1;
+	& div {
+		background-color: var(--black); transform: translateY(-50%); position: absolute; left: 0; top: 50%; pointer-events: none;
+		&:first-of-type {height: 2px; right: 0}
+		&:last-of-type {width: 2px; height: 6px}
+	}
+}
+
+/* main */
+
+#main-wrapper {
+	color: var(--white); line-height: 1.6;
+	/*background: url(https://sadhost.neocities.org/images/tiles/backstar.gif);*/
+	border: 8px solid var(--yellow); border-left: none;
+	flex: 1; user-select: text;
+}
+#main {
+	width: 692px; margin: auto; perspective: 1000px;
+	a {text-decoration: underline}
+
+	position: relative;
+	> * {position: absolute}
+}
+
+@font-face {font-family: typewriter; src: url(../assets/fonts/Orange\ Typewriter.ttf)}
+#note {
+	color: var(--black); font: 1.2em typewriter;
+	width: 525px; aspect-ratio: 803/549; padding: 48px 128px 0 64px; box-sizing: border-box;
+	background: url(assets/paper.png) center / cover; rotate: -3deg;
+	transform: rotateY(25deg) translateZ(-10px);
+	top: -8px; left: -48px;
+
+	& p {rotate: -1deg; &:last-of-type {rotate: 1deg}}
+	&::after {
+		content: ""; display: block;
+		width: inherit; aspect-ratio: inherit; background: inherit;
+		rotate: 3deg; filter: drop-shadow(8px 6px 8px #00000040);
+		position: absolute; bottom: -64px; z-index: -1;
+	}
+}
+#pronouns {display: inline-block; transform: translate(0.3em, 0.1em)}
+
+.photo {
+	width: 250px;
+	rotate: 2deg; transform: rotateY(-15deg) rotateX(10deg);
+	top: 24px; right: 0;
+}
+#stamp {opacity: 0.25; top: 192px; right: 83px}
+
+@keyframes fly {
+	3.75%, 11.25% {rotate: 6deg}
+	7.5% {rotate: 10deg}
+	15% {rotate: 8deg; margin-top: 5px}
+	32.5% {margin-top: -110px}
+	35% {rotate: 0deg}
+	40% {margin-top: -90px}
+	100% {rotate: -600deg; margin-top: -750px}
+}
+#strawberry {
+	width: 128px; filter: drop-shadow(0 0 2px black);
+	transform: rotateY(-15deg) rotateX(10deg) rotateZ(15deg) translateZ(10px);
+	top: 292px; right: 165px; cursor: pointer; transition: 0.1s;
+}
+#strawberry:hover {filter: brightness(1.05); scale: 1.05}
+
+.picrew {
+	width: 150px; height: 150px;
+	transform: rotateY(3deg) translateZ(var(--z));
+	top: 410px; left: 140px;
+}
+
+.flex, .graphic-row {display: flex}
+.graphic-row {gap: 4px; margin-top: 4px}
+.pixelated {image-rendering: pixelated}
+
+
+@media (max-width: 1150px) {
+	body {flex-direction: column; width: max-content}
+	#toggle {display: none}
+	#left {height: 500px}
+	#main-wrapper {display: flex; flex-direction: column; align-items: center; contain: inline-size; border-left: 8px solid var(--yellow); border-top: none}
+	#main {scale: 0.5; perspective: none; position: absolute}
+}

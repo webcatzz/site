@@ -7,122 +7,31 @@
   <base target="_blank">
   <link rel="icon" href="assets/icon.svg">
   <link rel="stylesheet" href="global.css">
-  <link rel="stylesheet" href="https://sugarforbrains.neocities.org/mobring/onionring.css">
-  <style>
-@font-face {font-family: ms-serif; src: url(assets/fonts/ms-serif.ttf)}
-@font-face {font-family: print; src: url(assets/fonts/magazine.ttf)}
-body {
-  color: var(--white); font-family: sans-serif;
-  display: flex; flex-direction: row-reverse;
-  height: 100vh;
-  background: linear-gradient(91deg, transparent 50%, #0000001a 50%) center / 5% 100%, url(assets/wallpaper.png) repeat no-repeat bottom right / 20% auto, linear-gradient(to top, #241f1f 50%, #1f2423);
-  overflow: hidden;
-  user-select: none;
-}
-
-#side {
-  color: var(--black); line-height: 1.6;
-  display: flex; flex-direction: column;
-  width: 348px; background: url(assets/paper-bg.gif) white;
-}
-h1 {font: 3em print; letter-spacing: -0.1em; display: flex; gap: 0.5em; padding: 16px 24px; border-bottom: 1px solid var(--gray); margin-block: 0; &::after {content: ""; height: 8px; background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAMAAABFaP0WAAAAAXNSR0IArs4c6QAAAAZQTFRFAAAAAAAApWe5zwAAAAJ0Uk5TAP9bkSK1AAAADklEQVQImWNgZGBgYAQAAAwAA/QhnyoAAAAASUVORK5CYII=) top left / 4px; flex: 1; align-self: center}}
-p {color: var(--dark-gray); font-size: 0.875em; margin-inline: 24px; margin-bottom: 0}
-#webrings {display: flex; flex-direction: column; align-items: center; gap: 0.75em; padding: 12px; border: 1px solid var(--gray); margin: 1em 12px; flex: 1; overflow-y: auto}
-#back {
-  color: inherit;
-  display: flex; justify-content: center; align-items: center;
-  background: url(assets/sticky-note.png) center / cover;
-  width: 45%; aspect-ratio: 478/529; padding-top: 5%; box-sizing: border-box; margin-top: -128px; margin-right: 12px; margin-bottom: 16px; align-self: end;
-  &:hover {text-decoration: underline}
-}
-
-#corkboard {
-  background: url('assets/corkboard.jpg') top left;
-  border: 8px outset #4f3620; box-sizing: border-box;
-  box-shadow: 4px 2px 16px -1px black inset;
-  flex: 1; position: relative; margin: 8px 32px;
-  & > * {
-    width: max-content; height: max-content; position: absolute; cursor: grab;
-    &:active {cursor: grabbing}
-    &:not(.below-board) {z-index: 1}
-  }
-}
-.imglink {
-  & img {width: 100%}
-  & a {position: absolute; transition: background-color 0.2s; &:hover {background-color: #ffffff40}}
-}
-.shadow {box-shadow: 2px 4px 8px -4px var(--black)}
-.taped::before {content: ""; width: 150px; max-width: 60%; height: 30px; transform: translateX(-50%); background: url("assets/tape.png") no-repeat top / 100%; position: absolute; top: -10px; left: 50%; opacity: 0.9}
-
-.file {color: black; width: 358px; height: 150px; padding: 4px; border: 0 solid; border-width: 51px 27px 27px 9px; border-image: url(assets/text-file.png) 64 111 38 197 fill / 64px 111px 38px 197px; font-family: ms-serif; overflow-y: auto}
-.file-wrapper button {height: 19px; opacity: 0; position: absolute; top: -50px; cursor: pointer}
-#minimize:hover, #maximize:hover, #close:hover {opacity: 1}
-#minimize {width: 29px; background-color: #ffffff40; right: 54px}
-#maximize {width: 26px; background-color: #ffffff40; right: 28px}
-#close {width: 48px; background-color: #ff000040; right: -20px}
-#sites {
-  left: 128px; top: 4px;
-  .file {display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 2px}
-  & > a {padding: 1px; margin: -1px}
-  & img {width: 88px; height: 31px}
-}
-.friend {position: relative; &::after {content: "<3"; font-weight: bold; filter: drop-shadow(-0.1em 0 white) drop-shadow(0.1em 0 white) drop-shadow(0 -0.1em white) drop-shadow(0 0.1em white); position: absolute; top: -0.5em; right: -0.25em; z-index: 1; pointer-events: none}}
-.friend::after, .comment-friend {color: #ff2760; font-size: 0.75em}
-#mine, #utdr-webring {grid-column: 1/5}
-#mine {display: flex; justify-content: center; align-items: center; gap: 2px; padding: 4px 8px; background-color: lightgray; & span {margin-right: 8px}}
-#utdr-webring img {width: 358px; height: auto}
-#site-comment {left: 16px; top: 96px; & .file div:first-of-type {color: gray}}
-
-#trans {width: 128px; right: 2px; bottom: 2px; rotate: 7.5deg; border-radius: 50%; transition: rotate 0.2s; &:active {rotate: -4deg; transition-duration: 0.1s}}
-#astronaut {width: 128px; top: 80px; right: 404px; rotate: 2deg; & a {top: 60px; right: 55px; bottom: 53px; left: 46px}}
-#newspaper {left: -16px; bottom: -80px; & a {top: 95px; left: 10px; width: 225px; height: 155px}}
-#dolmistaska {width: 192px; rotate: -1deg; right: 192px; top: 160px; & a {inset: 16px}}
-#laikas-comet {width: 256px; rotate: 2deg; right: -8px; top: 40px; & a {inset: 16px}}
-
-/* tv */
-#tv-wrapper {bottom: -16px; left: -300px}
-#tv {
-  width: 400px; aspect-ratio: 49/50; padding: 10% 11.3% 29.76% 11.3%; box-sizing: border-box; display: flex;
-  & iframe {width: 100%; height: 100%; opacity: 0.9}
-  &::after {content: ""; background: url(assets/vhs-player.png) center / cover; position: absolute; inset: 0; pointer-events: none}
-}
-#tv-screen {
-  flex: 1; background: url(assets/static.gif) center / cover black; display: flex;
-  .loading & {background: black}
-}
-/* video tapes */
-.tape {
-  color: var(--black); top: 128px; left: 160px; scale: 0.75; transition: scale 0.1s;
-  &::before {content: url(assets/videotape.gif); transition: filter 0.2s}
-  &::after {content: "drop on tv..."; font: bold 1.2em sans-serif; width: max-content; opacity: 0; transform: translate(-50%, -50%); position: absolute; left: 50%; top: 50%; transition: opacity 0.1s; pointer-events: none}
-  &:active {
-    scale: 1;
-    &::before {filter: brightness(2) contrast(0.5)}
-    &::after {opacity: 1}
-  }
-}
-
-/* mobile */
-@media (max-width: 800px) {
-  body {flex-direction: column; justify-content: center; gap: 3em; height: 100vh; margin: 0 32px}
-  #corkboard, h1, p, #webrings {display: none !important}
-  body::before {content: "this page isn't designed for mobile. sorry!"; align-self: center}
-  #side {align-self: end}
-}
-  </style>
+  <link rel="stylesheet" href="links.css">
+	<script defer src="links.js"></script>
 </head>
 <body>
+
+	<!-- sidebar -->
   <div id="side">
-    <h1>links</h1>
-    <p>welcome to the links page! you can click + hold to drag stuff around.</p>
-    <div id="webrings">
-      <div id="transring"><script defer src="https://transring.neocities.org/onionring-variables.js"></script><script defer src="https://transring.neocities.org/onionring-widget.js"></script></div>
-      <script src="beepbox-webring/ring.js" data-song="https://jummb.us/player/#song=j6N05intron621s1k8l05e07t2ma7g0cj07r1O_U000000000000000000i0o333222T0v0pu00f0000qg510Oavd040w3h0E0c0T0v0pu00f0000qg410Oad040w2h0E0c0T0v0pu00f0000qh410Oa3bd040w5h0E0c0T7v0pu07f050p61770q72d42g300q1Z021a90k70060630Oa7bvd160HT-SRJJJJIAAAAAh0IaE1c0c11T5v0fu05f060lc2dd2j02e02fd17800q8540Oaad060HK_Sziiirrqih99h0E0c0T0v0pu00f0000qgk1630Oad040w3h0E0c0T4v0pu04f1a0q150Oa3b1z6666ji8k8k3jSBKSJJAArriiiiii07JCABrzrrrrrrr00YrkqHrsrrrrjr005zrAqzrjzrrqr1jRjrqGGrrzsrsA099ijrABJJJIAzrrtirqrqjqixzsrAjrqjiqaqqysttAJqjikikrizrHtBJJAzArzrIsRCITKSS099ijrAJS____Qg99habbCAYrDzh00E0c0T2v0pu02f180q140Oa3bd030w0E0c0Tav0pu00f0000q00d040E0c0b4yd5lClmo0004zgid180000000wo410g41014i4h4h4g00wh4h4h00014h4h400800000000000g02p26BCKwqYaQNtmzlAGlaBmEQp2LiFkFbj2RhqEJ8mIbj5FyRNqwJcmCbiEl1qoJcmEbHxqoJcmAbk5FyQNqwJgmCbj5FkawJcmCbk5R0JcmCbi5G2QNqoJgmKbj5FyRq5mwhI0LQUQNtlhFlataBmEQqJqBiFlWRuLnFkGluzhHRWlaBnRlmHlFkGlmzhGSalaB8lWZuLiFkGZ6znHQGlaKm6tfEmcjexRtea5xDjW9aOdkei8mhJfBFIH509PqgI8hkNtezjAGlaBkEQp2NiFkFbj7E85xyWkhW21f5S0qWz6CbE3hE6bg5E6zgcmwbE3hE6bg5E7gwkNt0bg5E2Q1q0J0mwbg5E2Q1q0J0mwbg5E2Q1g9V7g5E2Q1qp6b3CW1OGoEw00jFQ3FY58__7yWfFHNaE2f5Qyjnvk000"></script>
-      <div id="mobring"><script defer src="https://sugarforbrains.neocities.org/mobring/onionring-variables.js"></script><script defer src="https://sugarforbrains.neocities.org/mobring/basic-widget.js"></script></div>
-    </div>
+
+		<div id="paper">
+
+			<h1>links.</h1>
+			<p>welcome to the links page! you can click + hold to drag stuff around.</p>
+			<div id="webrings">
+				<div id="transring"><script defer src="https://transring.neocities.org/onionring-variables.js"></script><script defer src="https://transring.neocities.org/onionring-widget.js"></script></div>
+				<script src="beepbox-webring/ring.js" data-sog="https://jummb.us/player/#song=j6N05intron621s1k8l05e07t2ma7g0cj07r1O_U000000000000000000i0o333222T0v0pu00f0000qg510Oavd040w3h0E0c0T0v0pu00f0000qg410Oad040w2h0E0c0T0v0pu00f0000qh410Oa3bd040w5h0E0c0T7v0pu07f050p61770q72d42g300q1Z021a90k70060630Oa7bvd160HT-SRJJJJIAAAAAh0IaE1c0c11T5v0fu05f060lc2dd2j02e02fd17800q8540Oaad060HK_Sziiirrqih99h0E0c0T0v0pu00f0000qgk1630Oad040w3h0E0c0T4v0pu04f1a0q150Oa3b1z6666ji8k8k3jSBKSJJAArriiiiii07JCABrzrrrrrrr00YrkqHrsrrrrjr005zrAqzrjzrrqr1jRjrqGGrrzsrsA099ijrABJJJIAzrrtirqrqjqixzsrAjrqjiqaqqysttAJqjikikrizrHtBJJAzArzrIsRCITKSS099ijrAJS____Qg99habbCAYrDzh00E0c0T2v0pu02f180q140Oa3bd030w0E0c0Tav0pu00f0000q00d040E0c0b4yd5lClmo0004zgid180000000wo410g41014i4h4h4g00wh4h4h00014h4h400800000000000g02p26BCKwqYaQNtmzlAGlaBmEQp2LiFkFbj2RhqEJ8mIbj5FyRNqwJcmCbiEl1qoJcmEbHxqoJcmAbk5FyQNqwJgmCbj5FkawJcmCbk5R0JcmCbi5G2QNqoJgmKbj5FyRq5mwhI0LQUQNtlhFlataBmEQqJqBiFlWRuLnFkGluzhHRWlaBnRlmHlFkGlmzhGSalaB8lWZuLiFkGZ6znHQGlaKm6tfEmcjexRtea5xDjW9aOdkei8mhJfBFIH509PqgI8hkNtezjAGlaBkEQp2NiFkFbj7E85xyWkhW21f5S0qWz6CbE3hE6bg5E6zgcmwbE3hE6bg5E7gwkNt0bg5E2Q1q0J0mwbg5E2Q1q0J0mwbg5E2Q1g9V7g5E2Q1qp6b3CW1OGoEw00jFQ3FY58__7yWfFHNaE2f5Qyjnvk000"></script>
+				<script src="https://snewberry.neocities.org/catfolk/webstring.js"></script>
+			</div>
+
+		</div>
+
     <a id="back" href="index.html" target="_self">go back...?</a>
+
   </div>
 
+	<!-- corkboard -->
   <div id="corkboard">
 
     <img id="trans" class="shadow gravity" src="assets/trans-pin.png">
@@ -137,21 +46,6 @@ p {color: var(--dark-gray); font-size: 0.875em; margin-inline: 24px; margin-bott
       <a href="https://www.sbnation.com/a/17776-football"></a>
     </div>
 
-    <div id="dolmistaska" class="imglink shadow taped">
-      <img src="assets/dolmistaska.png">
-      <a href="https://dolmistaska.com/index.html?page=1"></a>
-    </div>
-
-    <div id="laikas-comet" class="imglink shadow taped">
-      <img src="assets/laikas-comet.png">
-      <a href="https://laikascomet.tumblr.com/post/715297986775826432"></a>
-    </div>
-
-    <div id="site-comment" class="file-wrapper"><div class="file">
-      <div>site comment:</div>
-      <div id="comment-area">[hover over a button!]</div>
-    </div></div>
-
     <div class="tape" title="mob psuycho episode 1" data-src="kMwkcp8yKjk"></div>
     <div class="tape" title="squish that cat" data-src="5jKZ9KGtee0"></div>
     <div class="tape" title="a letter of complaint to a parole officer, one word at time" data-src="I59O6tqMPOw?start=26"></div>
@@ -161,191 +55,67 @@ p {color: var(--dark-gray); font-size: 0.875em; margin-inline: 24px; margin-bott
     <div class="tape" title="mrrp mrrp meow mrrp meow" data-src="rdVcT09dEf8"></div>
 
     <div id="sites" class="file-wrapper"><div class="file">
-      <div id="mine">
-        <span>link me:</span>
-				<a href="assets/buttons/mine/black-hole.png" download="webcatz.png" data-comment="that's me!"><img src="assets/buttons/mine/black-hole.png"></a>
-        <a href="assets/buttons/mine/webcatz-webcat.gif" download="webcatz.gif" data-comment="that's me!"><img src="assets/buttons/mine/webcatz-webcat.gif"></a>
-        <a href="assets/buttons/mine/webcatz-izutsumi.png" download="webcatz.png" data-comment="that's me!"><img src="assets/buttons/mine/webcatz-izutsumi.png"></a>
-      </div>
-      <a href="https://beebfreeb.neocities.org" data-comment="i want to eat all of its designs">
-        <img src="assets/buttons/others/beebfreeb.gif">
-      </a>
-      <a href="https://bridget.party" data-comment="super fun site design and also really nice music">
-        <img src="assets/buttons/others/bridget.gif">
-      </a>
-      <a href="https://catcakes.neocities.org">
-        <img src="assets/buttons/others/catcakes.gif">
-      </a>
-      <a href="https://coffeebug.neocities.org" class="friend" data-comment="really fantastic musician. check out her stuff!">
-        <img src="assets/buttons/others/coffeebug.gif">
-      </a>
-      <a href="https://corru.observer" data-comment="paws-down the coolest thing i have ever seen anyone do with a html page.">
-        <img src="assets/buttons/others/corru.gif">
-      </a>
-      <a href="https://earthtopaule.neocities.org" data-comment="benthic zone swag">
-        <img src="assets/buttons/others/earthtopaule.png">
-      </a>
-      <a href="https://fizzsea.neocities.org">
-        <img src="assets/buttons/others/fizzsea.gif">
-      </a>
-      <a href="https://fuchi.neocities.org">
-        <img src="assets/buttons/others/fuchi.jpeg">
-      </a>
-      <a href="https://gildedware.neocities.org">
-        <img src="assets/buttons/others/gildedware.gif">
-      </a>
-      <a href="https://glassyhouse.neocities.org">
-        <img src="assets/buttons/others/glassyhouse.png">
-      </a>
-      <a href="https://geckobone.neocities.org">
-        <img src="assets/buttons/others/geckobone.png">
-      </a>
-      <a href="https://hog.neocities.org" data-comment="HOG">
-        <img src="assets/buttons/others/hog.gif">
-      </a>
-      <a href="https://icecreampizzer.neocities.org">
-        <img src="assets/buttons/others/icecreampizzer.gif">
-      </a>
-      <a href="https://item64.neocities.org">
-        <img src="assets/buttons/others/item64.gif">
-      </a>
-      <a href="https://kelprot.neocities.org">
-        <img src="assets/buttons/others/kelprot.gif">
-      </a>
-      <a href="https://localfool.neocities.org" data-comment="inspired me to make a site in the first place! thank you.">
-        <img src="assets/buttons/others/localfool.png">
-      </a>
-      <a href="https://myrrh.neocities.org">
-        <img src="assets/buttons/others/myrrh.png">
-      </a>
-      <a href="https://nerucom.neocities.org" data-comment="super cool layouts & super cool art!">
-        <img src="assets/buttons/others/nerucom.gif">
-      </a>
-      <a href="https://ninacti0n.neocities.org">
-        <img src="assets/buttons/others/ninacti0n.gif">
-      </a>
-      <a href="https://nine-moonbeams.neocities.org">
-        <img src="assets/buttons/others/nine-moonbeams.gif">
-      </a>
-      <a href="https://olliveen.neocities.org">
-        <img src="assets/buttons/others/olliveen.gif">
-      </a>
-      <a href="https://patentghost.neocities.org">
-        <img src="assets/buttons/others/patentghost.png">
-      </a>
-      <a href="https://phantasmagorial.neocities.org">
-        <img src="assets/buttons/others/phantasmagorial.png">
-      </a>
-      <a href="https://phrogee.neocities.org" data-comment="freaking awesome website. look at it NOW">
-        <img src="assets/buttons/others/phrogee.gif">
-      </a>
-      <a href="https://publictransit.neocities.org" class="friend" data-comment="a communal anarchy site i + a bunch of friends do!">
-        <img src="assets/buttons/others/publictransit.gif">
-      </a>
-      <a href="https://robophobia.neocities.org" data-comment="absolutely bumping tunes!">
-        <img src="assets/buttons/others/robophobia.gif">
-      </a>
-      <a href="https://skelenby.neocities.org">
-        <img src="assets/buttons/others/skelenby.png">
-      </a>
-      <a href="https://soouaho.neocities.org">
-        <img src="assets/buttons/others/soouaho.gif">
-      </a>
-      <a href="https://theabsoluterealm.neocities.org" data-comment="very pretty!">
-        <img src="assets/buttons/others/theabsoluterealm.gif">
-      </a>
-      <a href="https://https://teethinvitro.neocities.org" class="friend">
-        <img src="assets/buttons/others/teethinvitro.gif">
-      </a>
-      <a href="https://thekirbysphere.neocities.org">
-        <img src="assets/buttons/others/thekirbysphere.png">
-      </a>
-      <a href="https://troy-sucks.neocities.org" class="friend" data-comment="home of the one the only jack aric webcomic. eyestrain warning">
-        <img src="assets/buttons/others/troy-sucks.gif">
-      </a>
-      <a href="https://starrs.neocities.org">
-        <img src="assets/buttons/others/starrs.gif">
-      </a>
-      <a href="https://sugarforbrains.neocities.org" class="friend" data-comment="its benny wo-o-orm!!! scrumptious site design">
-        <img src="assets/buttons/others/sugarforbrains.gif">
-      </a>
-      <a id="utdr-webring" href="https://deltarune.com/code"><img src="assets/utdr-webring.gif"></a>
+			<div id="buttons-title">buttons!</div>
+			<div id="buttons">
+				<a title="click to download!" href="assets/buttons/mine/black-hole.png" download="webcatz.png"><img src="assets/buttons/mine/black-hole.png"></a>
+				<!-- red -->
+				<a href="https://burialcloth.neocities.org" target="_blank"><img src="assets/buttons/others/burialcloth.png" loading="lazy"></a>
+				<a href="https://beebfreeb.neocities.org" target="_blank" title="need this energy in my character designs"><img src="assets/buttons/others/beebfreeb.gif" loading="lazy"></a>
+				<!-- orange -->
+				<a href="https://lastsunrise.neocities.org" target="_blank"><img src="assets/buttons/others/lastsunrise.gif" loading="lazy"></a>
+				<a href="https://icecreampizzer.neocities.org" target="_blank"><img src="assets/buttons/others/icecreampizzer.gif" loading="lazy"></a>
+				<!-- yellow -->
+				<a href="https://gildedware.neocities.org" target="_blank"><img src="assets/buttons/others/gildedware.gif" loading="lazy"></a>
+				<a href="https://phrogee.neocities.org" target="_blank" title="site design that feels like squeezing a stress ball. look at it now"><img src="assets/buttons/others/phrogee.gif" loading="lazy"></a>
+				<a href="https://localfool.neocities.org" target="_blank" title="inspired me to make a site in the first place! thank you."><img src="assets/buttons/others/localfool.png" loading="lazy"></a>
+				<!-- green -->
+				<a href="https://olliveen.neocities.org" target="_blank"><img src="assets/buttons/others/olliveen.gif" loading="lazy"></a>
+				<a href="https://jeith.neocities.org" target="_blank"><img src="assets/buttons/others/jeith.gif" loading="lazy"></a>
+				<a href="https://hog.neocities.org" target="_blank"><img src="assets/buttons/others/hog.gif" loading="lazy"></a>
+				<a href="https://gorehound.neocities.org" target="_blank"><img src="assets/buttons/others/gorehound.gif" loading="lazy"></a>
+				<a href="https://teethinvitro.neocities.org" target="_blank"><img src="assets/buttons/others/teethinvitro.gif" loading="lazy"></a>
+				<a href="https://bruisedgh0st.neocities.org" target="_blank"><img src="assets/buttons/others/bruisedgh0st.gif" loading="lazy"></a>
+				<a href="https://thekirbysphere.neocities.org" target="_blank"><img src="assets/buttons/others/thekirbysphere.png" loading="lazy"></a>
+				<!-- blue -->
+				<a href="https://nerucom.neocities.org" target="_blank"><img src="assets/buttons/others/nerucom.gif" loading="lazy"></a>
+				<a href="https://troy-sucks.neocities.org" target="_blank"><img src="assets/buttons/others/troy-sucks.gif" loading="lazy"></a>
+				<a href="https://scarecat.neocities.org" target="_blank"><img src="assets/buttons/others/scarecat.gif" loading="lazy"></a>
+				<a href="https://robophobia.neocities.org" target="_blank" title="absolutely bumping tunes."><img src="assets/buttons/others/robophobia.gif" loading="lazy"></a>
+				<!-- purple -->
+				<a href="https://theabsoluterealm.neocities.org" target="_blank"><img src="assets/buttons/others/theabsoluterealm.gif" loading="lazy"></a>
+				<a href="https://earthtopaule.neocities.org" target="_blank" title="benthic zone swag"><img src="assets/buttons/others/earthtopaule.png" loading="lazy"></a>
+				<a href="https://nine-moonbeams.neocities.org" target="_blank"><img src="assets/buttons/others/nine-moonbeams.gif" loading="lazy"></a>
+				<a href="https://sodabytes.neocities.org" target="_blank"><img src="assets/buttons/others/sodabytes.gif" loading="lazy"></a>
+				<a href="https://starrs.neocities.org" target="_blank"><img src="assets/buttons/others/starrs.gif" loading="lazy"></a>
+				<a href="https://patentghost.neocities.org" target="_blank"><img src="assets/buttons/others/patentghost.png" loading="lazy"></a>
+				<a href="https://sugarforbrains.neocities.org" target="_blank"><img src="assets/buttons/others/sugarforbrains.gif" loading="lazy"></a>
+				<!-- pink -->
+				<a href="https://kelprot.neocities.org" target="_blank"><img src="assets/buttons/others/kelprot.gif" loading="lazy"></a>
+				<a href="https://fizzsea.neocities.org" target="_blank"><img src="assets/buttons/others/fizzsea.gif" loading="lazy"></a>
+				<a href="https://myrrh.neocities.org" target="_blank"><img src="assets/buttons/others/myrrh.png" loading="lazy"></a>
+				<a href="https://item64.neocities.org" target="_blank"><img src="assets/buttons/others/item64.gif" loading="lazy"></a>
+				<a href="https://bridget.party" target="_blank" title="fun site design + really nice music"><img src="assets/buttons/others/bridget.gif" loading="lazy"></a>
+				<a href="https://hillhouse.neocities.org" target="_blank"><img src="assets/buttons/others/hillhouse.png" loading="lazy"></a>
+				<!-- white -->
+				<a href="https://redstring.neocities.org" target="_blank"><img src="assets/buttons/others/redstring.gif" loading="lazy"></a>
+				<a href="https://soouaho.neocities.org" target="_blank"><img src="assets/buttons/others/soouaho.gif" loading="lazy"></a>
+				<a href="https://caby.neocities.org" target="_blank"><img src="assets/buttons/others/caby.gif" loading="lazy"></a>
+				<a href="https://glassyhouse.neocities.org" target="_blank"><img src="assets/buttons/others/glassyhouse.png" loading="lazy"></a>
+				<a href="https://catcakes.neocities.org" target="_blank"><img src="assets/buttons/others/catcakes.gif" loading="lazy"></a>
+				<!-- black -->
+				<a href="https://skelenby.neocities.org" target="_blank"><img src="assets/buttons/others/skelenby.png" loading="lazy"></a>
+				<a href="https://apprehension.neocities.org" target="_blank"><img src="assets/buttons/others/apprehension.gif" loading="lazy"></a>
+				<a href="https://publictransit.neocities.org" target="_blank" title="a communal anarchy site i + a bunch of friends do!"><img src="assets/buttons/others/publictransit.gif" loading="lazy"></a>
+				<a href="https://phantasmagorial.neocities.org" target="_blank"><img src="assets/buttons/others/phantasmagorial.png" loading="lazy"></a>
+				<a href="https://corru.observer" target="_blank" title="paws-down the coolest thing i have ever seen anyone do with a html page."><img src="assets/buttons/others/corru.gif" loading="lazy"></a>
+				<a href="https://ninacti0n.neocities.org" target="_blank"><img src="assets/buttons/others/ninacti0n.gif" loading="lazy"></a>
+				<a href="https://coffeebug.neocities.org" target="_blank" title="really fantastic musician. check out her stuff!"><img src="assets/buttons/others/coffeebug.gif" loading="lazy"></a>
+				<a id="utdr-webring" href="https://deltarune.com/code"><img src="assets/utdr-webring.gif"></a>
+			</div>
     </div></div>
 
     <div id="tv-wrapper" class="gravity"><div id="tv"><div id="tv-screen"><iframe></iframe></div></div></div>
 
   </div>
-  <script>
-// setup
-var target, offsetX, offsetY, z = 1, heldLink, dragged;
-for (const el of document.getElementById("corkboard").children) el.onmousedown = startDrag;
-for (const img of document.getElementsByTagName("img")) img.setAttribute("draggable", "false");
-for (const a of document.getElementsByTagName("a")) a.setAttribute("draggable", "false");
-
-// dragging
-function startDrag(e) {
-  if (e.target.tagName == "A") heldLink = e.target;
-  target = e.currentTarget, offsetX = e.x - target.offsetLeft, offsetY = e.y - target.offsetTop, target.style.zIndex = ++z;
-  e.stopPropagation();
-}
-onmousemove = e => {if (target) {
-  target.style.left = e.x - offsetX + "px", target.style.top = e.y - offsetY + "px";
-  if (heldLink && !dragged) {
-    heldLink.addEventListener("click", e => e.preventDefault(), {once: true});
-    heldLink = null, dragged = true;
-  }
-}}
-onmouseup = e => {if (target) {
-  if (target.classList.contains("gravity")) drop(target, e.movementX, e.movementY);
-  else target = null;
-  dragged = false;
-}}
-async function drop(el) {
-  target = null;
-  let targetY = window.innerHeight - el.offsetHeight - 16, dY = 4;
-  while (el.offsetTop < targetY) {
-    if (target == el) return;
-    el.style.top = el.offsetTop + dY + "px";
-    dY *= 1.25;
-    await wait(30);
-  }
-  el.style.top = targetY + "px";
-
-  function wait(ms) {return new Promise(OK => setTimeout(OK, ms))}
-}
-
-// site comments
-const siteComment = document.getElementById("comment-area");
-document.getElementById("sites").onmouseover = event => {
-  let link = event.target.parentElement;
-  if (link.tagName == "A") {
-    if (link.dataset.comment) siteComment.textContent = link.dataset.comment;
-    else siteComment.textContent = "[none...]";
-    if (link.classList.contains("friend")) siteComment.innerHTML += " <span class=\"comment-friend\">(friend <3)</span>";
-  }
-}
-document.getElementById("sites").onmouseleave = () => siteComment.textContent = "[hover over a button!]";
-
-// video tapes
-const wrapper = document.getElementById("corkboard"), tv = document.getElementById("tv-wrapper"), tvIframe = document.getElementById("tv").querySelector("iframe");
-tvIframe.src = "";
-new Audio("https://files.catbox.moe/4gff8o.mp3");
-for (const tape of document.getElementsByClassName("tape")) tape.addEventListener("mouseup", dropTape);
-function dropTape(e) {
-  if (inBounds(e.x - wrapper.offsetLeft, e.y - wrapper.offsetTop, tv.offsetLeft, tv.offsetLeft + tv.offsetWidth, tv.offsetTop, tv.offsetTop + tv.offsetHeight)) {
-    let src = target.dataset.src;
-    e.target.remove();
-    tvIframe.src = "";
-    tv.classList.add("loading");
-    let sfx = new Audio("https://files.catbox.moe/4gff8o.mp3");
-    sfx.onended = () => {
-      tv.classList.remove("loading");
-      tvIframe.src = "https://www.youtube-nocookie.com/embed/" + src + "?autoplay=1";
-    }
-    sfx.play();
-  }
-  function inBounds(x, y, minX, maxX, minY, maxY) {return x > minX && x < maxX && y > minY && y < maxY}
-}
-  </script>
 </body>
 </html>
