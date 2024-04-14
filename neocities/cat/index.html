@@ -4,71 +4,31 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>☾⋆⁺₊ cat comic...ᐟ</title>
+	<link rel="icon" href="assets/icon.png">
 	<link rel="stylesheet" href="../global.css">
-	<style>
-@font-face {font-family: ms-serif;  src:  url(../assets/fonts/ms-serif.ttf)}
-body {display: flex; justify-content: center; align-items: center; min-height: 100vh}
-#text {max-width: 340px}
-
-#jay {width: 86px; margin: 3em}
-
-h1 {
-	font-size: 2em;
-	text-shadow:
-		-0.1em -0.1em white, 0 -0.1em white, 0.1em -0.1em white, 0.1em 0 white,
-		-0.1em 0.1em white, 0 0.1em white, 0.1em 0.1em white, -0.1em 0 white;
-	background: url(title.png) 0 12.5% / 100%;
-	padding: 0.5em; margin-top: 0;
-}
-.act {
-	font: 0.875em ms-serif; letter-spacing: 0.5px;
-	& a {color: gray; text-decoration: underline}
-}
-
-#audio {
-	color: gray;
-	font: 0.75em ms-serif; letter-spacing: 0.5px;
-	padding: 0.5em; border: 1px solid;
-	position: fixed; top: 1em; right: 1em;
-
-	& button {display: flex; justify-content: center; align-items: center; width: 1.5em; height: 1.5em}
-}
-
-@media (max-width: 500px) {
-	body {flex-direction: column; padding-inline: 1em}
-}
-	</style>
+	<link rel="stylesheet" href="cat.css">
+	<script defer src="../lib/audio-player.js"></script>
+	<script defer src="format.js"></script>
 </head>
 <body>
-	<img id="jay" src="jay.gif">
-	<div id="text">
-		<h1>cat comic</h1>
-		<p><b>cat comic</b> is a worldbuilding and comic project. this page is currently under reconstruction—proper info about the world & cast inbound.</p>
-		<div class="act">> <a href="old/index.html">view old index</a></div>
-		<div class="act">> <a href="../index.html">return home</a><span style="font-size: 0.875em">, if any of us can.</span></div>
-	</div>
 
-	<div id="audio">
-		<button></button>
-		<button></button>
-	</div>
-	<script src="../lib/audio-player.js"></script>
-	<script>
-let audio = document.getElementById("audio");
-AudioPlayer.create([
-	{title: "interlude by feed me jack", src: "https://files.catbox.moe/z3v4tu.mp3"},
-	{title: "(forever?????????) by glass beach", src: "https://files.catbox.moe/cfryqz.mp3"},
-	{title: "ゆめうつつ (half asleep) by lamp", src: "https://files.catbox.moe/gvw3j5.mp3"},
-	{title: "bloodflow.wav by classic j", src: "https://files.catbox.moe/nxnt01.mp3"},
-	{title: "cloudy out by eel valley", src: "https://files.catbox.moe/1vh92t.mp3"},
-	{title: "angel surveillance by bubblebaath", src: "https://files.catbox.moe/wd3btp.mp3"},
-	{title: "astronaut by jack stauber's micropop", src: "https://files.catbox.moe/4by8pa.mp3"},
-],{
-	playButton: audio.children[0],
-	skipButton: audio.children[1],
-	insertIcons: true,
-	onended: () => audio.title = AudioPlayer.list[AudioPlayer.idx].title
-});
-	</script>
+<h2>welcome to cat comic ></h2>
+
+<a href="jay.html"><img class="float-left" style="margin-left: 1em" src="assets/jay-sprite.gif" width="86"></a>
+
+<p><b>cat comic</b> is a worldbuilding and comic project i began on april 13th, 2023. it <i>will</i>, hopefully, be a heavily annotated comic (and then some) about identity, history and the end of the world.</p>
+
+<p class="pxl">inspirations of varying degree:
+	<a target="_blank" href="https://beebfreeb.neocities.org/dreamland">daisy in dreamland</a>,
+	<a target="_blank" href="https://www.homestuck.com">homestuck</a>,
+	<a target="_blank" href="https://laikascomet.tumblr.com">laika's comet</a>,
+	<a target="_blank" href="https://suppe.neocities.org/">fear not!</a>,
+	<a target="_blank" href="https://www.sbnation.com/a/17776-football">17776</a>,
+	<a target="_blank" href="https://eastwardgame.com">eastward</a>,
+	and any other work ever made.
+</p>
+
+<p>this page is intended as a somewhat-comprehensive store of knowledge for all things cat comic. you can quickly navigate to a few important pages using the sidebar on the left, although there are plenty of unlisted pages. don't treat everything here as gospel—cat comic is a continually evolving work (read: it's still a work in progress).</p>
+	
 </body>
 </html>

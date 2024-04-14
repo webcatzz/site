@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>☾⋆⁺₊ cat comic...ᐟ</title>
+	<link rel="icon" href="assets/icon.png">
+	<link rel="stylesheet" href="../global.css">
+	<link rel="stylesheet" href="cat.css">
+	<script defer src="../lib/audio-player.js"></script>
+	<script defer src="format.js"></script>
+</head>
+<body>
+
+<h2>the moon</h2>
+
+<p><b>the moon</b> is aerie's only natural satellite. it orbits at an average distance of 384,400 km. over time, aerie's gravity has caused tidal locking, causing the same side of the moon to always face aerie. because of this, the lunar day and the lunar month are the same length, at 29.5 aerie days. the moon's gravitational pull – and to a lesser extent, the sun's – are the main drivers of aerie's tides.</p>
+
+<p>in geophysical terms the moon is a planetary-mass object or satellite planet. its mass is 1.2% that of aerie, and its diameter is 3,474 km (2,159 mi), roughly one-quarter of aerie's (about as wide as australia.) within the solar system, it is the largest and most massive satellite in relation to its parent planet, the fifth largest and most massive moon overall, and larger and more massive than all known dwarf planets. its surface gravity is about one sixth of aerie's, about half of that of mars, and the second highest among all solar system moons, after jupiter's moon io. the body of the moon is differentiated and terrestrial, with no significant hydrosphere, atmosphere, or magnetic field. it formed 4.51 billion years ago, not long after aerie's formation, out of the debris from a giant impact between aerie and a hypothesized mars-sized body called theia.</p>
+
+<p>the lunar surface is covered in lunar dust and marked by mountains, impact craters, their ejecta, ray-like streaks and, mostly on the near side of the moon, by dark maria ("seas"), which are plains of cooled magma. these maria were formed when molten lava flowed into ancient impact basins. the moon is, beside when passing through aerie's shadow during a lunar eclipse, always illuminated by the sun, but from aerie the visible illumination shifts during its orbit, producing the lunar phases. the moon is the brightest celestial object in aerie's night sky. this is mainly due to its large angular diameter, while the reflectance of the lunar surface is comparable to that of asphalt. the apparent size is nearly the same as that of the sun, allowing it to cover the sun almost completely during a total solar eclipse. from aerie about 59% of the lunar surface is visible over time due to cyclical shifts in perspective (libration), making parts of the far side of the moon visible.</p>
+
+<p>for humans the moon has been an important source of inspiration and knowledge, having been crucial to cosmography, mythology, religion, art, time keeping, natural science, and spaceflight. on september 13, 1959, the first human-made object to reach an extraterrestrial body arrived on the moon, the soviet union's luna 2 impactor. in 1966, the moon became the first extraterrestrial body where soft landings and orbital insertions were achieved. on july 20, 1969, humans for the first time landed on the moon and any extraterrestrial body, at mare tranquillitatis with the lander eagle of the united states' apollo 11 mission. five more crews were sent between then and 1972, each with two men landing on the surface. the longest stay was 75 hours by the apollo 17 crew. since then, exploration of the moon has continued robotically with crewed missions being planned to return beginning in the late 2020s.</p>
+
+	
+<script>
+let html = document.body.innerHTML.substring(document.body.innerHTML.indexOf("<p>"), document.body.innerHTML.indexOf("script") - 1);
+document.body.innerHTML = document.body.innerHTML.substring(0, html.indexOf("<p>")) + `
+	<div style="display: flex; text-align: right">
+		<div style="flex: 1">${html}</div>
+		<div style="flex: 1; transform: scaleX(-1)">${html.replaceAll("aerie", "earth")}</div>
+	</div>
+`;
+</script>
+</body>
+</html>

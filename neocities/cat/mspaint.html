@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>☾⋆⁺₊ cat comic...ᐟ</title>
+	<link rel="icon" href="assets/icon.png">
+	<link rel="stylesheet" href="../global.css">
+	<link rel="stylesheet" href="cat.css">
+	<style>
+#grid {
+	color: gray;
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+
+	.caption {text-align: center}
+}
+	</style>
+	<script defer src="../lib/audio-player.js"></script>
+	<script defer src="../lib/image-modal.js" data-select="#grid img"></script>
+	<script defer src="format.js"></script>
+</head>
+<body>
+
+<h2>assorted mspaints</h2>
+
+<p>from june 2023 to now. hover for dates</p>
+
+<div id="grid" class="blur">
+	
+	<div>
+		<img src="assets/mspaint/24-03-18.png" loading="lazy">
+		<div class="pxl caption">brush testing</div>
+	</div>
+	<div>
+		<img src="assets/mspaint/23-12-17.png" loading="lazy">
+		<div class="pxl caption">doodle from an aggie</div>
+	</div>
+	<img src="assets/mspaint/23-11-06.png" loading="lazy">
+	<div>
+		<img src="assets/mspaint/23-10-15.png" loading="lazy">
+		<div class="pxl caption">bunny girl appears</div>
+	</div>
+	<img src="assets/mspaint/23-10-08.png" loading="lazy">
+	<div>
+		<img src="assets/mspaint/23-10-07.png" loading="lazy">
+		<div class="pxl caption">was trying to fuck with clothing proportions but i ended up just drawing cc normally so</div>
+		<div class="pxl caption">also its funny how much my linework improved between this doodle and the previous one</div>
+	</div>
+	<img src="assets/mspaint/23-07-23.png" loading="lazy">
+	<img src="assets/mspaint/23-07-22.png" loading="lazy">
+	<div>
+		<img src="assets/mspaint/23-07-16.png" loading="lazy">
+		<div class="pxl caption">beans.</div>
+	</div>
+	<img src="assets/mspaint/23-07-10.png" loading="lazy">
+	<div>
+		<img src="assets/mspaint/23-07-09.png" loading="lazy">
+		<div class="pxl caption">original caption: "tip: mirror motifs can manifest in many ways. be wary of self-recognition in the other !"</div>
+		<div class="pxl caption">also cc doing what is presumably her best jesse pinkman impression</div>
+	</div>
+	<div>
+		<img src="assets/mspaint/23-06-23.png" loading="lazy">
+		<div class="pxl caption">i think was supposed to be part of a cover page</div>
+	</div>
+	<div>
+		<img src="assets/mspaint/23-06-10.png" loading="lazy">
+		<div class="pxl caption">fucking around with halftone textures</div>
+	</div>
+	<img src="assets/mspaint/23-06-06.png" loading="lazy">
+	<div>
+
+</div>
+	
+<script>
+for (const img of document.querySelectorAll("#grid img")) {
+	let date = new Date(...("20" + img.src.substring(img.src.lastIndexOf("/") + 1, img.src.lastIndexOf("."))).split("-"));
+	img.title = date.toLocaleDateString("en-US", {day: "numeric", month: "short", year: "numeric"}).toLowerCase();
+}
+</script>
+</body>
+</html>

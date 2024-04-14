@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>☾⋆⁺₊ cat comic...ᐟ</title>
+	<link rel="icon" href="assets/icon.png">
+	<link rel="stylesheet" href="../global.css">
+	<link rel="stylesheet" href="cat.css">
+	<style>
+#grid {
+	display: grid;
+	grid-template-columns: repeat(2, 220px);
+	grid-template-rows: 1fr max-content;
+	column-gap: 4px;
+}
+#tape-player {grid-row: 2; justify-self: start; z-index: 1}
+#old {grid-column: 2; grid-row: span 2}
+
+ul {
+	list-style: none;
+	display: flex;
+	flex-direction: column;
+	justify-content: end;
+	align-items: center;
+}
+ul, li {padding-left: 0; margin-block: 0}
+li a {
+	color: inherit;
+	text-decoration: none;
+	display: flex;
+	align-items: center;
+	background-color: black;
+	width: 130px;
+	height: 20px;
+	padding-inline: 1em;
+	border-style: solid;
+	border-width: 3px 33px;
+	border-image: url(assets/tape.png) 3 33 fill / 3px 33px;
+	border-image-repeat: repeat;
+
+	i {margin-right: 0.5em}
+}
+
+.rotated {
+	--scale: 0.75;
+	--side-length: calc(150px * (1 - var(--scale)));
+	width: calc(220px * var(--scale));
+	a {
+		transform: scaleX(var(--scale));
+		transform-origin: left;
+	}
+}
+.slightly {--scale: 0.875}
+.alot {--scale: 0.5}
+.left {border-right: var(--side-length) solid black}
+.right {border-left: var(--side-length) solid black}
+
+.gray {
+	position: relative;
+	&::after {
+		content: "";
+		background-image: url(assets/dither-mask.png);
+		position: absolute;
+		inset: 0;
+		pointer-events: none;
+	}
+	&.left::after {right: calc(var(--side-length) * -1)}
+	&.right::after {left: calc(var(--side-length) * -1)}
+}
+	</style>
+	<script defer src="../lib/audio-player.js"></script>
+	<script defer src="format.js"></script>
+</head>
+<body>
+
+<h2>the first official real cat comic blog</h2>
+
+<div id="grid">
+	<ul>
+		<li class="pxl"><a href="blog-2.html"><i>#2 -</i>happy birthday</a></li>
+		<li class="pxl"><a href="blog-1.html"><i>#1 -</i>on aerie</a></li>
+		<li class="pxl gray"><a></a></li>
+	</ul>
+	<img id="tape-player" src="assets/tape-player.png" aria-hidden="true">
+	<!-- <ul id="old">
+		
+	</ul> -->
+</div>
+
+<script>
+let tapes = document.querySelectorAll("#grid li");
+for (let i = 1; i < tapes.length; i++) if (Math.random() > 0.333) {
+	tapes[i].classList.add("rotated", Math.random() > 0.5 ? "left" : "right");
+	let rand = Math.random();
+	if (rand < 0.333) tapes[i].classList.add("slightly");
+	else if (rand > 0.667) tapes[i].classList.add("alot");
+}
+</script>
+</body>
+</html>

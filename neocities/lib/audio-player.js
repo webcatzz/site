@@ -77,7 +77,6 @@ AudioPlayer.create = function (list, opts) {
 	this.addEventListener("ended", () => {
 		this.idx = (this.idx + 1) % this.list.length;
 		this.src = this.list[this.idx].src;
-		this.play();
 	});
 
 	// play button
@@ -187,5 +186,5 @@ AudioPlayer.create = function (list, opts) {
 	if (opts.onended) this.addEventListener("ended", opts.onended);
 	
 	this.next();
-	this.pause();
+	this.addEventListener("ended", this.play);
 }
