@@ -30,6 +30,7 @@ document.body.innerHTML = `
 </nav>
 `;
 document.body.appendChild(document.createElement("main")).append(...content);
+document.body.classList.add("loaded");
 
 
 
