@@ -14,7 +14,7 @@
 }
 	</style>
 	<script defer src="../lib/audio-player.js"></script>
-	<script defer src="../lib/image-modal.js" data-select="#grid img"></script>
+	<script defer src="../lib/image-modal.js" data-select=".grid img"></script>
 	<script defer src="format.js"></script>
 </head>
 <body>
@@ -70,7 +70,7 @@
 </div>
 	
 <script>
-for (const img of document.querySelectorAll("#grid img")) {
+for (const img of document.querySelectorAll(".grid img")) {
 	let date = new Date(...("20" + img.src.substring(img.src.lastIndexOf("/") + 1, img.src.lastIndexOf("."))).split("-"));
 	img.title = date.toLocaleDateString("en-US", {day: "numeric", month: "short", year: "numeric"}).toLowerCase();
 }

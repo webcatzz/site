@@ -88,7 +88,7 @@ li a {
 </div>
 
 <script>
-let tapes = document.querySelectorAll("#grid li");
+let tapes = document.querySelectorAll(".grid li");
 for (let i = 1; i < tapes.length; i++) if (Math.random() > 0.333) {
 	tapes[i].classList.add("rotated", Math.random() > 0.5 ? "left" : "right");
 	let rand = Math.random();
