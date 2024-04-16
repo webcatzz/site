@@ -156,7 +156,7 @@ a {color: inherit}
 	img {position: absolute; top: -89.25px; left: -145.5px; z-index: -1; animation: 15s spin steps(180) infinite}
 }
 
-#news-wrapper {display: flex; align-items: center; gap: inherit}
+#news-wrapper {align-items: center}
 #increment {width: 88px; height: 31px; rotate: 1deg}
 
 /* headlines */
@@ -247,6 +247,7 @@ a {color: inherit}
 	padding-top: 3em;
 	background: var(--red);
 	margin-top: -3em;
+	flex: 1;
 
 	div {
 		transform: skewX(-30deg);
@@ -289,9 +290,8 @@ a {color: inherit}
 #cat {
 	display: flex; align-items: end;
 	background: url(assets/blue-cloud.png) 5% 65% var(--blue);
-	aspect-ratio: 2.25; margin-bottom: -2.5em; position: relative;
-	& img {width: 100%; height: 87.5%; object-fit: cover; object-position: top}
-	&::after {content: ""; height: 14px; background: linear-gradient(to top, transparent 1px, var(--black) 1px, var(--black) 5px, transparent 5px, transparent 7px, var(--black) 7px, var(--black) 9px, transparent 9px, transparent 13px, var(--black) 13px, var(--black) 14px, transparent 14px); position: absolute; left: 0; right: 0; bottom: 0}
+	aspect-ratio: 2.25;
+	& img {width: 100%; height: 82.5%; object-fit: cover; object-position: top}
 }
 
 /* discord */

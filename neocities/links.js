@@ -78,7 +78,7 @@ function dropTape(e) {
     let sfx = new Audio("https://files.catbox.moe/4gff8o.mp3");
     sfx.onended = () => {
       tv.classList.remove("loading");
-      tvIframe.src = "https://www.youtube-nocookie.com/embed/" + src + "?autoplay=1";
+      tvIframe.src = "https://www.youtube-nocookie.com/embed/" + src + (src.includes("?") ? "&" : "?") + "autoplay=1";
     }
     sfx.play();
   }
