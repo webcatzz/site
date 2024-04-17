@@ -373,7 +373,7 @@ a {color: inherit}
 @keyframes appear {from {opacity: 0}}
 #lightswitch {cursor: pointer; &:hover {outline: 4px solid #f4f3f040; outline-offset: 2px}}
 .lights-off {
-	&::before {content: ""; background-color: black; position: absolute; inset: 0; z-index: 10}
+	&::before {content: ""; background-color: black; position: fixed; inset: 0; z-index: 10}
 	&::after {content: url(assets/chill.gif); transform: translate(-50%, -50%); opacity: 0.33; position: fixed; top: 50%; left: 50%; z-index: 10; animation: 30s appear; pointer-events: none}
 	#lightswitch {opacity: 0.2; scale: -1; position: relative; z-index: 10}
 }
