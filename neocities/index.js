@@ -31,7 +31,6 @@ AudioPlayer.create([
   "Eliezer's Waltz - Disparition (Welcome to Night Vale)",
   "I Feel Like (Live) - coffeebug (MIDIfreak)",
   "See You At The Top - Mark Sparling (A Short Hike OST)",
-  // "Adventure - Disasterpiece (Fez OST)",
   "pawprints in the snow - coffeebug (haunted sticky notes)",
   "Strange Quest - Joel Corelitz (Eastward OST)",
 ],{
@@ -66,16 +65,16 @@ document.getElementById("awful-fucking-thing").onclick = () => {
 		AudioPlayer.playbackRate = 1;
 	}
 }
-// document.getElementById("lightswitch").onclick = () => {
-//   new Audio("https://files.catbox.moe/as06cd.mp3").play();
-//   if (lightsOff = !lightsOff) {
-//     document.body.classList.add("lights-off");
-//     AudioPlayer.playbackRate = 0.6;
-//   } else {
-//     document.body.classList.remove("lights-off");
-//     AudioPlayer.playbackRate = nightcore ? 1.5 : 1;
-//   }
-// }
+document.getElementById("lightswitch").onclick = () => {
+  new Audio("https://files.catbox.moe/as06cd.mp3").play();
+  if (lightsOff = !lightsOff) {
+    document.body.classList.add("lights-off");
+    AudioPlayer.playbackRate = 0.6;
+  } else {
+    document.body.classList.remove("lights-off");
+    AudioPlayer.playbackRate = nightcore ? 1.5 : 1;
+  }
+}
 
 
 // tunes button
@@ -85,19 +84,19 @@ tracklist = null;
 
 
 // laser pointer
-// var laserPoints = 0;
-// document.getElementById("laser-pointer").onclick = () => {
-//   let laser = document.getElementById("laser-pointer");
-//   laser.style.left = Math.random() * window.innerWidth + "px", laser.style.top = Math.random() * (window.innerHeight - 288) + 288 + "px";
-// 	if (++laserPoints == 4) window.open("https://www.youtube-nocookie.com/embed/fwB8nbI4TuM?si=ghaXscYy5DPXzkhv", "_blank");
-// }
+var laserPoints = 0;
+document.getElementById("laser-pointer").onclick = () => {
+  let laser = document.getElementById("laser-pointer");
+  laser.style.left = Math.random() * window.innerWidth + "px", laser.style.top = Math.random() * (window.innerHeight - 288) + 288 + "px";
+	if (++laserPoints == 4) window.open("https://www.youtube-nocookie.com/embed/fwB8nbI4TuM?si=ghaXscYy5DPXzkhv", "_blank");
+}
 
 
 
 // clicksplosion effect (adapted from http://www.mf2fm.com/rv)
 
 const starWrapper = document.body.appendChild(document.createElement("div"));
-starWrapper.id = "star-wrapper";
+starWrapper.id = "star-wrapper", starWrapper.ariaHidden = true;
 const colors = ["var(--blue)", "var(--red)", "var(--yellow)"];
 const starMaxX = innerWidth - 7, starMaxY = innerHeight - 7;
 let expCount = 0;
