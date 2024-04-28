@@ -12,6 +12,7 @@ bpSites = [
   "https://mechagic.neocities.org/",
   "https://sawtooth.neocities.org/",
 	"https://neogeist.lol/",
+	"https://hellokittyminigun.neocities.org/",
 ];
 
 
