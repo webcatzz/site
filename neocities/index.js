@@ -15,11 +15,13 @@ document.querySelector("h1").onclick = () => {
 }
 
 
+// toybox
+const toyboxPlayer = new Audio;
+
 
 // audio player
-
 const audioEls = document.getElementById("audio-player").children;
-let nightcore = false, lightsOff = false;
+var nightcore = false;
 AudioPlayer.create([
   "First Steps - Lena Raine (Celeste OST)",
   "Forgo's Treasures - Hirokazu Ando (Kirby and the Forgotten Land OST)",
@@ -53,6 +55,8 @@ AudioPlayer.create([
 });
 AudioPlayer.addEventListener("durationchange", () => audioEls[2].innerText = Math.floor(AudioPlayer.duration / 60) + ":" + ("0" + Math.round(AudioPlayer.duration % 60)).slice(-2));
 
+
+// nightcore
 AudioPlayer.preservesPitch = false, AudioPlayer.webkitPreservesPitch = false;
 document.getElementById("awful-fucking-thing").onclick = () => {
 	if (nightcore = !nightcore) {
@@ -64,16 +68,6 @@ document.getElementById("awful-fucking-thing").onclick = () => {
 		document.getElementById("awful-fucking-thing").firstChild.src = "assets/awful-fucking-thing.webp";
 		AudioPlayer.playbackRate = 1;
 	}
-}
-document.getElementById("lightswitch").onclick = () => {
-  new Audio("https://files.catbox.moe/as06cd.mp3").play();
-  if (lightsOff = !lightsOff) {
-    document.body.classList.add("lights-off");
-    AudioPlayer.playbackRate = 0.6;
-  } else {
-    document.body.classList.remove("lights-off");
-    AudioPlayer.playbackRate = nightcore ? 1.5 : 1;
-  }
 }
 
 
@@ -89,6 +83,21 @@ document.getElementById("laser-pointer").onclick = () => {
   let laser = document.getElementById("laser-pointer");
   laser.style.left = Math.random() * window.innerWidth + "px", laser.style.top = Math.random() * (window.innerHeight - 288) + 288 + "px";
 	if (++laserPoints == 4) window.open("https://www.youtube-nocookie.com/embed/fwB8nbI4TuM?si=ghaXscYy5DPXzkhv", "_blank");
+}
+
+
+// lightswitch
+var lightsOff = false;
+document.getElementById("lightswitch").onclick = function () {
+  new Audio("https://files.catbox.moe/as06cd.mp3").play();
+	lightsOff = !lightsOff;
+  if (lightsOff) {
+    document.body.classList.add("lights-off");
+    AudioPlayer.playbackRate = 0.6;
+  } else {
+    document.body.classList.remove("lights-off");
+    AudioPlayer.playbackRate = nightcore ? 1.5 : 1;
+  }
 }
 
 

@@ -1,4 +1,5 @@
 :root {--white: #dfddce; --yellow: #fbd43b}
+@font-face {font-family: typewriter; src: url(../assets/fonts/Orange\ Typewriter.ttf)}
 @font-face {font-family: indie-flower; src: url(assets/indie-flower.ttf)}
 @font-face {font-family: ms-serif; src: url(../assets/fonts/ms-serif.ttf)}
 body {
@@ -85,7 +86,6 @@ h1 {
 	> * {position: absolute}
 }
 
-@font-face {font-family: typewriter; src: url(../assets/fonts/Orange\ Typewriter.ttf)}
 #note {
 	color: var(--black); font: 1.2em typewriter;
 	width: 525px; aspect-ratio: 803/549; padding: 48px 128px 0 64px; box-sizing: border-box;

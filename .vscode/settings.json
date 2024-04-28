@@ -3,4 +3,5 @@
     "editor.wordWrap": "on",
 	},
 	"liveServer.settings.root": "/neocities/",
+	"liveServer.settings.file": "/not_found.html",
 }

@@ -4,16 +4,48 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>THERE'S NOTHING THERE.</title>
-	<link rel="icon" href="assets/icon.svg">
+	<link rel="icon" href="/assets/icon.svg">
 	<link rel="stylesheet" href="/global.css">
 	<style>
-body {display: flex; justify-content: center; align-items: center; height: 100vh; padding-inline: 1em; background-color: var(--black, black)}
-a, img {width: 100%}
-a {max-width: 1024px; transition: 0.2s}
-a:hover {filter: invert()}
+@font-face {font-family: ms-serif; src: url(/assets/fonts/ms-serif.ttf)}
+body {
+	color: var(--white);
+	font-family: ms-serif;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	max-width: 1024px; 
+	height: 100vh;
+	padding-inline: 1em;
+	margin-inline: auto;
+	background-color: var(--black, black);
+}
+ul {
+	list-style: none;
+	display: flex;
+	padding-left: 0;
+	margin-block: 0;
+}
+li {
+	&:not(:first-of-type)::before {content: "×"; margin-inline: 0.5em}
+}
+a {
+	color: inherit;
+	&:hover {text-decoration: underline}
+}
 	</style>
 </head>
 <body>
-	<a target="_top" href="javascript:history.back()"><img src="/assets/not-found.png" title="go back...?" alt="WHAT ARE YOU LOOKING AT"></a>
+
+<img src="/assets/not-found.png" alt="WHAT ARE YOU LOOKING AT">
+<nav>
+	<ul>
+		<li><a href="javascript:history.back()">back</a></li>
+		<li><a href="/">index</a></li>
+		<li><a href="/map.html">map</a></li>
+	</ul>
+</nav>
+
 </body>
 </html>

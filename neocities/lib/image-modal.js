@@ -17,7 +17,11 @@ how to use:
 
 */
 
-for (const el of document.querySelectorAll(document.currentScript.dataset.select)) el.onclick = openImg, el.style.cursor = "zoom-in";
+for (const el of document.querySelectorAll(document.currentScript.dataset.select ?? "img")) addImg(el);
+function addImg(img) {
+	img.onclick = openImg;
+	img.style.cursor = "zoom-in";
+}
 function openImg() {
   let modal = document.createElement("img");
   modal.style = "all: unset; width: 100vw; height: 100vh; object-fit: contain; background-color: #00000080; position: fixed; inset: 0; z-index: 10; cursor: zoom-out";

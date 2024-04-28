@@ -44,7 +44,7 @@ footer {
   #container {max-width: none; padding-left: 4.5%; padding-right: 4.5%; border: none}
   #container > img {width: 100%; margin-left: 0; margin-right: 0; margin-bottom: 10px}
   p {font-size: 20px}
-  #page-footer {gap: 30px; padding: 15px 30px; margin: -15px -30px; margin-top: 16px; overflow-y: auto}
+  #page-footer {gap: 30px; padding: 15px 30px; margin: 16px 0 -15px; overflow-y: auto}
   #page-footer div, #page-footer a {white-space: nowrap}
   footer {padding-left: 119.5px; background: url(assets/logo-mspa.png) no-repeat 17.5px}
 }
