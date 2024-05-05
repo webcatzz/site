@@ -5,6 +5,8 @@ document.body.innerHTML = `
 
 	<h1>cat comic</h1>
 
+	<div id="construction" style="font-size: 0.625em; align-self: center">under construction!</div>
+
 	<div id="player" class="pxl">
 		<marquee></marquee>
 		<button id="play" title="play"></button>
