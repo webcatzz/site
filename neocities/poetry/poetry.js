@@ -1,5 +1,5 @@
 const poems = [
-	"one of those poems where the author blocks out all the text and you can only guess what the poem says based on the punctuation and word breaks. so who knows what this really says",
+	"fuck",
 	"orpheus",
 	"haiku he was cursed by an evil wizard to write",
 	"walled garden",
@@ -14,10 +14,10 @@ const poems = [
 function leafTo(idx) {
 	idx = (idx - 1) * 2;
 	write(poems[idx], "left");
-	if (idx + 1 != poems.length) write(poems[idx + 1], "right");
+	if (idx + 1 !== poems.length) write(poems[idx + 1], "right");
 	else document.getElementById("right").textContent = "";
 
-	buttonLeft.disabled = idx == 0;
+	buttonLeft.disabled = idx === 0;
 	buttonRight.disabled = idx + 2 >= poems.length;
 }
 
@@ -35,7 +35,7 @@ async function write(poem, page) {
 	let text = file.substring(bodyIdx + 2);
 
 	page.innerHTML = `
-		<h2>${poem}</h2>
+		<h2>${poem === "fuck" ? "one of those poems where the author blocks out all the text and you can only guess what the poem says based on the punctuation and word breaks. so who knows what this really says" : poem}</h2>
 		<div class="date bgn">bgn. ${bgn}</div>
 		<div class="date pub">pub. ${pub}</div>
 		<pre>${text}</pre>
