@@ -4,6 +4,7 @@ Object.assign(content, {
 	load: async pageName => {
 		if (pageName === "") return content.replaceChildren("");
 
+		content.textContent = "";
 		let file = await fetch(pageName + ".html");
 		let html = await file.text();
 		content.innerHTML = html;
