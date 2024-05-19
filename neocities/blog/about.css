@@ -1,8 +1,8 @@
-@font-face {font-family: ms-serif; src: url(../assets/fonts/ms-serif.ttf)}
-@font-face {font-family: print; src: url(../assets/fonts/magazine.ttf)}
-@font-face {font-family: dyslexic; src: url(assets/OpenDyslexic.otf)}
+@font-face {font-family: ms-serif; src: url(../_assets/fonts/ms-serif.ttf)}
+@font-face {font-family: print; src: url(../_assets/fonts/magazine.ttf)}
+@font-face {font-family: dyslexic; src: url(_assets/OpenDyslexic.otf)}
 body {display: flex; justify-content: center; align-items: center; color: #201c10; font: 1em sans-serif; height: 100vh; margin: 0; background: linear-gradient(to right, #ffffff10 1px, transparent 1px) center / 64px 64px, linear-gradient(to top, #ffffff10 1px, transparent 1px) center / 64px 64px, var(--background) no-repeat center / cover fixed; image-rendering: auto; overflow: hidden; user-select: none}
-body::before {content: ""; mask: linear-gradient(to top, white, transparent 50%); -webkit-mask: linear-gradient(to top, white, transparent 50%); background: url(assets/checkerboard.png) bottom / 240px; position: fixed; top: 0; right: 0; bottom: 0; left: 0}
+body::before {content: ""; mask: linear-gradient(to top, white, transparent 50%); -webkit-mask: linear-gradient(to top, white, transparent 50%); background: url(_assets/checkerboard.png) bottom / 240px; position: fixed; top: 0; right: 0; bottom: 0; left: 0}
 @keyframes open {from {filter: brightness(0.5); transform: scaleX(0)}}
 #wrapper {display: flex; justify-content: center; align-items: center; width: max-content; rotate: -1deg; position: relative; animation: open 1s; image-rendering: pixelated; scrollbar-color: var(--button) transparent}
 #index, #main-wrapper {width: 464px; height: 100%; aspect-ratio: 250 / 364; box-sizing: border-box; background-size: 100%}
@@ -12,7 +12,7 @@ body::before {content: ""; mask: linear-gradient(to top, white, transparent 50%)
 i {text-align: center; width: 1em}
 
 /* index */
-#index {display: flex; flex-direction: column; padding: 72px 48px 48px 56px; background-image: url("assets/notebook-left.png"); position: relative}
+#index {display: flex; flex-direction: column; padding: 72px 48px 48px 56px; background-image: url("_assets/notebook-left.png"); position: relative}
 h1 {display: flex; gap: 0.5em; font: bold 3em sans-serif; margin: 0; rotate: 1deg}
 h1::after {content: ""; flex: 1; align-self: center; height: 2px; background-color: #201c1080}
 h1 img {width: 100%; margin-right: -0.5em}
@@ -53,7 +53,7 @@ nav a, #back {
 #back {width: max-content}
 
 /* ENTRY */
-#main-wrapper {display: flex; padding: 48px 32px 48px 20px; border: none; background-image: url("assets/notebook-right.png")}
+#main-wrapper {display: flex; padding: 48px 32px 48px 20px; border: none; background-image: url("_assets/notebook-right.png")}
 main {padding: 8px 0; overflow: hidden auto; flex: 1}
 #hamper {filter: drop-shadow(0 0 8px #00000080); position: absolute; bottom: 16px; right: -32px}
 :root {
@@ -66,7 +66,7 @@ main {padding: 8px 0; overflow: hidden auto; flex: 1}
 article {
   line-height: 1.6; padding: 32px 8px; contain: content; user-select: text;
   &.poem {
-    &::before {content: ""; display: block; height: 15px; margin-bottom: 2px; rotate: 1deg; background: url(assets/poem.png)}
+    &::before {content: ""; display: block; height: 15px; margin-bottom: 2px; rotate: 1deg; background: url(_assets/poem.png)}
     & header {
       display: grid; grid-template-columns: 1fr max-content;
       & h2 {grid-row: 1/3}
@@ -101,7 +101,7 @@ figure img {max-width: 100%; user-select: none}
 figcaption {color: #201c10bf; font: 0.875em ms-serif; text-align: center; letter-spacing: 0.05em; margin: 0.5em}
 .photo {
   &::before {
-    content: url(assets/tape.png); display: block;
+    content: url(_assets/tape.png); display: block;
     width: max-content; margin: -10px auto -20px;
     opacity: 0.9; position: relative; z-index: 1;
   }
@@ -161,7 +161,7 @@ footer a {text-align: right}
   body {height: unset; overflow-y: scroll}
   #wrapper {flex-direction: column; rotate: 0deg; animation: none}
   #index, #main-wrapper {width: 100%}
-  #main-wrapper {aspect-ratio: unset; background: url(assets/notebook-right-slice-top.png) no-repeat top / 100%, url(assets/notebook-right-slice-bottom.png) no-repeat bottom / 100%, url(assets/notebook-right-slice-tile.png) top / 100%}
+  #main-wrapper {aspect-ratio: unset; background: url(_assets/notebook-right-slice-top.png) no-repeat top / 100%, url(_assets/notebook-right-slice-bottom.png) no-repeat bottom / 100%, url(_assets/notebook-right-slice-tile.png) top / 100%}
   main {overflow: unset}
   article > *, .poem::before {rotate: unset}
   #audio-player, #rosebed {display: none}

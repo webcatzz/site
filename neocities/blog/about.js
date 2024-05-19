@@ -10,8 +10,8 @@ let bg = [
   {file: "bg_split.png", artist: "soupcats", link: "https://linktr.ee/soupandcats"},
   {file: "bg_towerbridge.jpg", artist: "Kevin Scarborough", link: "https://kevinscarborough.com"},
 ][Math.floor(Math.random() * 9)];
-document.body.style.setProperty("--background", "url(assets/" + bg.file + ")"), document.getElementById("creditlink").textContent = "@" + bg.artist, document.getElementById("creditlink").href = bg.link;
-if (Math.random() > 0.95) document.querySelector("h1").innerHTML = '<img src="assets/alt-title.png">';
+document.body.style.setProperty("--background", "url(_assets/" + bg.file + ")"), document.getElementById("creditlink").textContent = "@" + bg.artist, document.getElementById("creditlink").href = bg.link;
+if (Math.random() > 0.95) document.querySelector("h1").innerHTML = '<img src="_assets/alt-title.png">';
 
 
 // entry links

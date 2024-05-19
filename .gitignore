@@ -1,23 +1,6 @@
-# unnecessary
-/neocities/assets/ogs/
-/offsite/
 .DS_STORE
-
-# unfinished
-/neocities/cat/old/
-
-/neocities/creata/timeline-old
-
-/neocities/ough/17776/
-/neocities/ough/baba/
-/neocities/ough/disco-elysium/
-/neocities/ough/homestuck/
-/neocities/ough/homestuck-old/
-/neocities/ough/nitw/
-/neocities/ough/plastic-death/
-/neocities/ough/starbound/
-/neocities/ough/sword-and-sworcery/
-/neocities/ough/unlabeled/
+*_
+*_.*
 
 # can't go on neocities
 *.mp*

@@ -4,45 +4,11 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>webcatz!</title>
-	<link rel="icon" href="assets/icon.svg">
+	<link rel="icon" href="_assets/icon.svg">
 	<link rel="stylesheet" href="global.css">
 	<link rel="stylesheet" href="index.css">
-	<style>
-@keyframes toybox {to {background-position-y: 100%;}}
-#toybox {
-	display: flex;
-	align-items: center;
-	padding-inline: 4em;
-	height: 130px;
-	background: url(https://f4.bcbits.com/img/a4122678994_10.jpg) top / cover;
-	position: relative;
-	rotate: -2deg;
-	animation: toybox 240s linear alternate infinite;
-	image-rendering: auto;
-
-	#preorder {
-		height: 110%;
-		filter: drop-shadow(0 1em var(--black));
-	}
-	span {
-		color: var(--black);
-		font-size: 2em;
-		font-weight: bold;
-		line-height: 0.5;
-		align-self: end;
-	}
-	.tape {
-		position: absolute;
-		rotate: -10deg;
-		opacity: 0.9;
-
-		&:first-of-type {top: 0; left: 0; transform: translate(-25%, -25%)}
-		&:last-of-type {bottom: 0; right: 0; transform: translate(25%, 25%)}
-	}
-}
-	</style>
-	<script defer src="lib/audio-player.js"></script>
-	<script defer src="tunes/data.js"></script>
+	<script defer src="_js/audio-player.js"></script>
+	<script defer src="tunes/list.js"></script>
 	<script defer src="index.js"></script>
 </head>
 <body>
@@ -58,14 +24,6 @@
 
 	<!-- nav -->
 	<nav>
-		
-		<!-- toybox -->
-		<a id="toybox" class="grid-wide" href="https://coffeebug.bandcamp.com/album/toybox" target="_blank" title="go check out my friend's album! its really good stuff xoxo">
-			<img class="tape" src="assets/tape.png">
-			<img id="preorder" src="assets/toyboxpreorder.gif">
-			<span>toybox<i>!</i></span>
-			<img class="tape" src="assets/tape.png">
-		</a>
 
 		<div class="flex-col">
 
@@ -73,7 +31,7 @@
 			<a id="about" href="about/index.html" title="all about the animal in charge!">
 				<div>about the webmaster</div>
 				<div aria-hidden="true">about the webmaster</div>
-				<div aria-hidden="true">about the webmaster</div>
+				<div aria-hidden="true">about the webmaster ⁖</div>
 				<div aria-hidden="true">about the webmaster</div>
 			</a>
 
@@ -86,18 +44,18 @@
 				<div id="seek-bar">
 					<div aria-hidden="true"></div>
 					<div aria-hidden="true"></div>
-					<img src="assets/cat-knob.png" draggable="false" aria-hidden="true">
+					<img src="_assets/cat-knob.png" draggable="false" aria-hidden="true">
 				</div>
 				<button aria-label="skip"></button>
-				<div id="awful-fucking-thing" aria-hidden="true" title="pet the AWFUL FUCKING THING ?"><img src="assets/awful-fucking-thing.webp"></div>
+				<div id="awful-fucking-thing" aria-hidden="true" title="pet the AWFUL FUCKING THING ?"><img src="_assets/awful-fucking-thing.webp"></div>
 			</div>
 
 		</div>
 
 		<!-- creata -->
 		<div id="creata-wrapper" class="flex-col">
-			<a id="cats" href="shh/fell-beasts.html"><img class="hfill" src="assets/cats.gif" title="(cats by 1041uuu)"></a>
-			<img class="hfill" src="assets/railing.png">
+			<a id="cats" href="shh/fell-beasts.html"><img class="hfill" src="_assets/cats.gif" title="(cats by 1041uuu)"></a>
+			<img class="hfill" src="_assets/railing.png">
 
 			<a id="creata" href="creata/index.html" title="this section is kind of weird & mostly just links... i'm planning on reorganizing it later"><span>cre<span>a</span>ta</span></a>
 		</div>
@@ -114,7 +72,7 @@
 
 		<!-- wires -->
 		<div class="insert grid-wide" aria-hidden="true">
-			<img class="hfill" src="assets/wires.gif">
+			<img class="hfill" src="_assets/wires.gif">
 		</div>
 
 		<div id="news-wrapper" class="flex grid-wide after-insert">
@@ -128,7 +86,7 @@
 				<span>AND WHAT WAS HER SISTER?? A PRINCESS!!! THE WICKED WITCH OF THE EASTT, BRO!!!!</span>
 				<span>Set a timer for 15 minutes. Start drawing!</span>
 				<span>Blood-stained girl holding knife pleads not guilty: "I didn't do it. You have no proof I did it."</span>
-				<img src="assets/spr_realisticexplosion.gif">
+				<img src="_assets/spr_realisticexplosion.gif">
 				<span>Statue of Liberty "vanished without a trace", experts say</span>
 				<span>Mysterious "mustachioed statue" sighted on the New York coast</span>
 				<span>MUTILATION AUTONOMY</span>
@@ -150,7 +108,7 @@
 			<div class="body">
 				<a href="ough/baba/index.html"><img class="hfill" src="ough/baba/assets/large-baba.gif">baba is you</a>
 				<a href="ough/izutsumi/index.html"><img class="hfill" src="ough/izutsumi/thumbnail.png">izutsumi.....</a>
-				<a href="ough/mob-psycho.html"><img class="hfill" src="ough/assets/reigeature.png">mob psycho</a>
+				<a href="ough/mob-psycho.html"><img class="hfill" src="ough/_assets/reigeature.png">mob psycho</a>
 			</div>
 		</div>
 
@@ -178,11 +136,11 @@
 
 		<!-- ac unit -->
 		<div id="ac" class="insert center" aria-hidden="true">
-			<img class="hfill" src="assets/ac.gif">
+			<img class="hfill" src="_assets/ac.gif">
 		</div>
 
 		<!-- cat comic -->
-		<a id="cat" class="after-insert" href="cat/index.html" title="my worldbuilding + comic project!"><img src="assets/cat-comic-button.png" alt="cat comic"></a>
+		<a id="cat" class="after-insert" href="cat/index.html" title="my worldbuilding + comic project!"><img src="_assets/cat-comic-button.png" alt="cat comic"></a>
 
 		<div class="flex grid-wide" style="display: none">
 
@@ -201,7 +159,7 @@
 		<div id="links-wrapper" class="grid-wide">
 
 			<!-- links -->
-			<a id="links" class="grid-tall" href="links.html">links</a>
+			<a id="links" class="grid-tall" href="links/index.html">links</a>
 
 			<!-- beepbox webring -->
 			<a id="beepbox" class="grid-wide" href="beepbox-webring/index.html">
@@ -212,7 +170,7 @@
 			<a id="resources" href="resources/index.html">resources</a>
 
 			<!-- lightswitch -->
-			<img id="lightswitch" src="assets/lightswitch.png" aria-hidden="true">
+			<img id="lightswitch" src="_assets/lightswitch.png" aria-hidden="true">
 
 		</div>
 

@@ -61,11 +61,11 @@ AudioPlayer.preservesPitch = false, AudioPlayer.webkitPreservesPitch = false;
 document.getElementById("awful-fucking-thing").onclick = () => {
 	if (nightcore = !nightcore) {
 		document.getElementById("audio-player").classList.add("nightcore");
-		document.getElementById("awful-fucking-thing").firstChild.src = "assets/awful-fucking-thing-2.webp";
+		document.getElementById("awful-fucking-thing").firstChild.src = "_assets/awful-fucking-thing-2.webp";
 		AudioPlayer.playbackRate = 1.5;
 	} else {
 		document.getElementById("audio-player").classList.remove("nightcore");
-		document.getElementById("awful-fucking-thing").firstChild.src = "assets/awful-fucking-thing.webp";
+		document.getElementById("awful-fucking-thing").firstChild.src = "_assets/awful-fucking-thing.webp";
 		AudioPlayer.playbackRate = 1;
 	}
 }

@@ -1,0 +1,89 @@
+body {
+	color: var(--white); font-family: sans-serif;
+	display: flex; 
+	height: 100vh; margin: 0 10vh;
+	background: url(../_assets/checkerboard-tilted.png) center / 480px, url(_assets/asphalt.jpg) right / contain black;
+	overflow: hidden; image-rendering: auto; user-select: none;
+}
+.hidden {display: none !important}
+
+/* tracklist */
+.skew {transform: skew(15deg); z-index: 1}
+.unskew {transform: skew(-15deg)}
+#tracklist-wrapper {
+	font-size: 1.1em;
+	display: flex; flex-direction: row-reverse; justify-content: start;
+	width: 550px; position: relative; image-rendering: pixelated;
+}
+#tracklist-title {
+	writing-mode: vertical-rl; text-orientation: upright; text-shadow: -0.1em 0.1em black, -0.15em 0.15em black;
+	margin-top: 12px; margin-left: 4px;
+}
+#tracklist {
+	padding: 1em; background-color: black;
+	flex: 1; overflow-y: auto;
+}
+
+@keyframes spin {to {rotate: 360deg}}
+#cd {contain: layout; height: 90vh; position: absolute; top: 6vh; left: 40%; z-index: -1; animation: 5s spin steps(90) infinite}
+select {all: unset; color: var(--gray); width: 100%; padding: 0.5em 1em; margin-bottom: 8px; box-sizing: border-box; background-color: black; cursor: pointer; transition: color 0.2s}
+select:hover {color: var(--white)}
+
+/* entries */
+.entry-wrapper {padding: 0 4px}
+.entry-wrapper:first-of-type .entry-title::after {content: " (new! ✨)"; color: transparent; font-family: sans-serif; font-weight: bold; line-height: 0; background: linear-gradient(to right, #ff8426, #ffd100); background-clip: text; -webkit-background-clip: text}
+.entry {
+	font-family: monospace; letter-spacing: 0.05em;
+	display: flex; align-items: center; gap: 1em;
+	padding: 0.5em 1em; background-color: black;
+	transition: color 0.02s, background-color 0.02s, transform 0.2s, box-shadow 0.2s;
+	cursor: pointer; user-select: none;
+
+	&:hover {
+		color: black; transform: translate(12px, -4px); background-color: var(--color); box-shadow: -12px 4px 0 black;
+		& img {filter: invert()}
+	}
+	&:active {color: var(--white); transform: scale(1.025, 0.95); box-shadow: none; background-color: var(--white); transition: 0.01s}
+}
+.entry-title {
+	font-family: sans-serif; font-weight: bold; text-overflow: ellipsis; white-space: nowrap;
+	overflow: hidden; pointer-events: none;
+	& span {font-family: serif; letter-spacing: 0.1em}
+}
+.entry-date {font-size: 0.75em; min-width: max-content; margin-left: auto; opacity: 0.5; pointer-events: none}
+.concept {color: var(--light-gray); .entry-title {font-size: 0.875em; font-weight: normal}}
+
+#info {display: flex; flex-direction: column; justify-content: center; align-items: start; gap: 8px/*; transform: skewY(5deg)*/}
+#title {font-size: 4em; font-weight: bold; text-shadow: 0 -0.1em black, 0.1em -0.1em black, 0.15em 0 black, 0.15em 0.15em black, 0 0.15em black, -0.1em 0.1em blue, -0.1em 0 black, -0.1em -0.1em black; text-overflow: ellipsis; white-space: nowrap; width: calc(80vw - 416px); padding: 0.1em; margin: -0.1em; overflow: hidden}
+#player-wrapper {height: calc(27.5vh + 48px); margin: 8px 0}
+#player {padding: 8px; padding-left: calc(15vh + 564px); padding-right: 64px; border: 12px black; border-style: solid none; background-color: black; position: absolute; left: 0; right: 0}
+iframe {width: 100%; height: 27.5vh; padding: 4px; background-color: black}
+.tape {color: var(--gray); padding: 0.1em 0.5em; margin: 0 0.25em; background-color: black}
+#comment {line-height: 1.5; margin-left: 96px}
+#comment a {color: inherit; text-decoration: underline}
+
+#back {position: absolute; left: 16px; bottom: 16px; transition: 0.1s}
+#back:hover {background-color: white}
+#back:hover:not(:active) {color: black; box-shadow: 0 4px black; bottom: 20px}
+#back:active {color: white}
+
+@media (max-width: 1100px) {
+	body {margin: 0; flex-direction: column-reverse}
+
+	.skew, .unskew {transform: none}
+	#tracklist-wrapper {contain: size; width: unset; flex: 1; padding: 8px; box-sizing: border-box; flex-direction: column; gap: 8px}
+	#tracklist-title {writing-mode: unset; letter-spacing: 0.1em; margin: unset}
+	#cd {display: none}
+	#tracklist {padding: unset; flex: 1}
+	select {box-shadow: 0 0 0 1px #404040}
+	.entry:hover {transform: none; box-shadow: none}
+
+	#info {height: max-content; display: block !important}
+	#title {font-size: 2.5em; width: unset; padding: 12px; margin: unset}
+	#player-wrapper {width: 100%; height: 100%}
+	#player {padding: 24px 8px; position: static}
+	iframe {height: 192px; box-sizing: border-box}
+	#comment {display: none; margin-left: unset}
+
+	#back {display: none}
+}

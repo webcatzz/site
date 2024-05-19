@@ -9,7 +9,7 @@
 	--red: #e23254;
 	--yellow: #e2a732;
 }
-body {font-family: Helvetica, sans-serif; margin: 0; cursor: url(assets/cursor.png), auto; image-rendering: pixelated}
+body {font-family: Helvetica, sans-serif; margin: 0; cursor: url(_assets/cursor.png), auto; image-rendering: pixelated}
 
 /* inline styling */
 a {text-decoration: none}
@@ -23,6 +23,7 @@ summary {user-select: none}
 summary::marker {line-height: 0}
 iframe {border: none}
 audio {width: 100%}
+hr {height: 1px; background-color: currentcolor; border: none}
 
 /* classes */
 .center {display: flex; justify-content: center; align-items: center; flex-direction: column}
@@ -35,10 +36,14 @@ body.center {min-height: 100vh}
 
 /* construction */
 #construction {
+	width: 45px; height: 37px;
+	background: url(_assets/construction.gif) no-repeat;
+}
+/* #construction {
 	color: #121212; font: normal 0.875rem/1 sans-serif;
 	display: flex; align-items: center; gap: 0.5em;
 	background-color: #f4f3f0;
 	width: min-content; height: 2em; padding: 0.25em; padding-right: 0.5em;
 	border: 1px solid #b6b2a8; margin-inline: auto;
-	&::before {content: url(assets/construction.gif)}
-}
+	&::before {content: url(_assets/construction.gif)}
+} */

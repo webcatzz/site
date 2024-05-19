@@ -1,4 +1,4 @@
-@font-face {font-family: ms-serif; src: url(assets/fonts/ms-serif.ttf)}
+@font-face {font-family: ms-serif; src: url(_assets/fonts/ms-serif.ttf)}
 :root {--wobble: cubic-bezier(.09,.39,0,2.75); scrollbar-color: var(--off-black) var(--black)}
 body {
 	color: var(--white); line-height: 1.4;
@@ -13,7 +13,7 @@ header {
 	display: flex; justify-content: center; align-items: center;
 	height: 144px; background:
 		radial-gradient(circle at center, var(--black) 20em, var(--white) 20em, var(--white) 21em, var(--red) 21em, var(--red) 21.25em, var(--white) 21.25em, var(--white) 21.5em, transparent 21.5em, transparent 21.625em, var(--white) 21.625em, var(--white) 21.75em, transparent 21.75em),
-		url(assets/banner.png) repeat-x center var(--red);
+		url(_assets/banner.png) repeat-x center var(--red);
 	box-shadow: 0 0 16px var(--black);
 	animation: 60s flow linear infinite;
 	position: relative; z-index: 4;
@@ -48,7 +48,7 @@ h1 {
 	position: fixed; top: 0; left: 0; right: 0; z-index: 3;
 }
 /* #scroll-title {color: transparent; font-weight: bold; letter-spacing: 0.05em; background-image: linear-gradient(45deg, var(--blue) 10%, var(--red), var(--yellow) 90%); background-clip: text; -webkit-background-clip: text} */
-#scroll-title {color: transparent; font-weight: bold; letter-spacing: 0.05em; background: url(assets/scroll-header-bg.png) center / cover; background-clip: text; -webkit-background-clip: text}
+#scroll-title {color: transparent; font-weight: bold; letter-spacing: 0.05em; background: url(_assets/scroll-header-bg.png) center / cover; background-clip: text; -webkit-background-clip: text}
 #scroll-subtitle, #scroll-copyright {color: var(--dark-gray); font-family: ms-serif; font-size: 0.75em; letter-spacing: 0.025em}
 #scroll-subtitle {color: var(--off-black)}
 #scroll-copyright {margin-left: auto}
@@ -84,7 +84,7 @@ a {color: inherit}
 }
 
 /* creata */
-@font-face {font-family: creata; src: url(assets/fonts/magazine.ttf)}
+@font-face {font-family: creata; src: url(_assets/fonts/magazine.ttf)}
 #creata-wrapper {gap: 0; margin-bottom: -1em}
 #cats {width: 92px; margin-top: -44px; margin-bottom: -20px; margin-right: 8px; align-self: end; z-index: 1}
 #creata {
@@ -116,7 +116,7 @@ a {color: inherit}
 		& div {
 			height: 8px; margin-top: -4px;
 			&:first-of-type {background-color: var(--off-black); right: 0}
-			&:last-of-type {width: 0; background: url(assets/space.png)}
+			&:last-of-type {width: 0; background: url(_assets/space.png)}
 		}
 		& img {
 			width: 24px; height: 24px; margin-top: -12px; image-rendering: auto; transition: rotate 0.2s;
@@ -133,7 +133,7 @@ a {color: inherit}
 	& img {cursor: pointer}
 }
 .nightcore {
-	background-image: url(assets/sparkles.gif); background-size: 100%;
+	background-image: url(_assets/sparkles.gif); background-size: 100%;
 	#awful-fucking-thing {animation-duration: 1s; cursor: pointer}
 }
 
@@ -141,7 +141,7 @@ a {color: inherit}
 @keyframes spin {to {rotate: 360deg}}
 #tunes {
 	contain: paint;
-	padding: 0.75em 1em 0.75em 2em; background: url(assets/blue-cloud.png) center var(--blue);
+	padding: 0.75em 1em 0.75em 2em; background: url(_assets/blue-cloud.png) center var(--blue);
 	transform: skewY(-2deg); margin: -0.25em -0.5em;
 	display: grid; grid-template-columns: max-content 1fr;
 	z-index: 2; /* bc of wires */
@@ -196,7 +196,7 @@ a {color: inherit}
 	}
 	.body {
 		padding-bottom: 3em; contain: size; flex: 1;
-		background: url(assets/leaves.png) center / 224px 224px, url(assets/green-tile.png) center #668237; top: 0; bottom: 0; overflow-y: scroll;
+		background: url(_assets/leaves.png) center / 224px 224px, url(_assets/green-tile.png) center #668237; top: 0; bottom: 0; overflow-y: scroll;
 		scrollbar-color: #87915a #5b772e;
 		a {
 			display: block; width: 55%; padding: 0.75em; margin-bottom: -1em; box-shadow: 0 2px 8px #00000040; background-color: var(--white);
@@ -233,8 +233,8 @@ a {color: inherit}
 	color: #fdf7e6; font-size: 3.5em; font-weight: bold; line-height: 0.65;
 	display: flex; justify-content: start; align-items: end;
 	aspect-ratio: 2;
-	background: url(assets/blog-stamp.png) center / 100%; background-clip: padding-box; 
-	border: 8px solid; border-image: url(assets/stamp-border.png) 5 / 10px round;
+	background: url(_assets/blog-stamp.png) center / 100%; background-clip: padding-box; 
+	border: 8px solid; border-image: url(_assets/stamp-border.png) 5 / 10px round;
 	rotate: 1deg;
 	transition: background-size 0.1s;
 
@@ -263,14 +263,14 @@ a {color: inherit}
 	background:
 		linear-gradient(to right, #24221d 0, #24221d 1px) no-repeat 1.75em / 0.75em,
 		linear-gradient(to right, #211e19 0, #211e19 1px) no-repeat calc(100% - 1.75em) / 0.75em,
-		url(assets/poetry-spine.png) bottom right;
+		url(_assets/poetry-spine.png) bottom right;
 	padding: 0.5em 3.5em;
 }
 
 /* cat comic */
 #cat {
 	display: flex; align-items: end;
-	background: url(assets/blue-cloud.png) 5% 65% var(--blue);
+	background: url(_assets/blue-cloud.png) 5% 65% var(--blue);
 	aspect-ratio: 2.25;
 	& img {width: 100%; height: 82.5%; object-fit: cover; object-position: top}
 }
@@ -357,7 +357,7 @@ a {color: inherit}
 #lightswitch {cursor: pointer; &:hover {outline: 4px solid #f4f3f040; outline-offset: 2px}}
 .lights-off {
 	&::before {content: ""; background-color: black; position: fixed; inset: 0; z-index: 10}
-	&::after {content: url(assets/chill.gif); transform: translate(-50%, -50%); opacity: 0.33; position: fixed; top: 50%; left: 50%; z-index: 10; animation: 30s appear; pointer-events: none}
+	&::after {content: url(_assets/chill.gif); transform: translate(-50%, -50%); opacity: 0.33; position: fixed; top: 50%; left: 50%; z-index: 10; animation: 30s appear; pointer-events: none}
 	#lightswitch {opacity: 0.2; scale: -1; position: relative; z-index: 10}
 }
 

@@ -6,7 +6,7 @@ body {margin: 0; background-color: #535353; image-rendering: pixelated}
 a:not([href]) {color: #0004e8; text-decoration: underline; cursor: not-allowed}
 a:not([href]):hover {opacity: 0.5}
 
-@font-face {font-family: "courier-std"; src: url(assets/courier-standard-bold.otf)}
+@font-face {font-family: "courier-std"; src: url(_assets/courier-standard-bold.otf)}
 h1, p {font-family: courier-std, courier, monospace}
 #next, #page-footer, footer {font-family: Verdana, Arial, Helvetica, sans-serif}
 
@@ -34,7 +34,7 @@ footer {
   line-height: 1.4; text-align: center;
   max-width: 942px; height: 102px; padding-top: 15px;
   margin: 10px auto; margin-bottom: 3.5px; box-sizing: border-box;
-  background: url(assets/logo-mspa.png) no-repeat 17.5px, url(assets/logo-mspa.png) no-repeat calc(100% - 17.5px);
+  background: url(_assets/logo-mspa.png) no-repeat 17.5px, url(_assets/logo-mspa.png) no-repeat calc(100% - 17.5px);
 }
 
 @media (max-width: 970px) {
@@ -46,5 +46,5 @@ footer {
   p {font-size: 20px}
   #page-footer {gap: 30px; padding: 15px 30px; margin: 16px 0 -15px; overflow-y: auto}
   #page-footer div, #page-footer a {white-space: nowrap}
-  footer {padding-left: 119.5px; background: url(assets/logo-mspa.png) no-repeat 17.5px}
+  footer {padding-left: 119.5px; background: url(_assets/logo-mspa.png) no-repeat 17.5px}
 }

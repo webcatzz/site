@@ -1,13 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>☾⋆⁺₊ cat comic...ᐟ</title>
-	<link rel="icon" href="assets/icon.png">
-	<link rel="stylesheet" href="../global.css">
-	<link rel="stylesheet" href="cat.css">
-	<style>
+<style>
 :root {overscroll-behavior-y: none}
 body::after {content: none}
 
@@ -19,8 +10,9 @@ body::after {content: none}
 #waters {
 	font-size: 1.5em;
 	height: 1600px;
-	background: url(assets/belowcloud-water.png) repeat-x, url(assets/belowcloud-buildings.png) repeat-x bottom / 50%;
+	background: url(_assets/belowcloud-water.png) repeat-x, url(_assets/belowcloud-buildings.png) repeat-x bottom / 50%;
 	border-bottom: 32px solid black;
+	transform-origin: top;
 }
 
 @keyframes wave {
@@ -38,13 +30,9 @@ body::after {content: none}
 }
 
 .light {text-align: center}
-	</style>
-	<script defer src="../lib/audio-player.js"></script>
-	<script defer src="format.js"></script>
-</head>
-<body>
+</style>
 
-<a class="pxl button back" href="world.html">back to world</a>
+<a class="pxl button back" href="#world">back to world</a>
 
 <div id="sun"></div>
 
@@ -88,10 +76,8 @@ body::after {content: none}
 </div>
 
 <script>
-document.getElementById("waters").style.transformOrigin = "top";
 addEventListener("scroll", e => {
-	document.getElementById("waters").style.transform = "scaleY(" + (1 + Math.pow(scrollY/2500, 2)) + ")"
+	document.getElementById("waters").style.transform = "scaleY(" + (1 + Math.pow(scrollY/2500, 2)) + ")";
 });
+queueRefresh();
 </script>
-</body>
-</html>

@@ -1,4 +1,5 @@
 const poems = [
+	"one of those poems where the author blocks out all the text and you can only guess what the poem says based on the punctuation and word breaks. so who knows what this really says",
 	"orpheus",
 	"haiku he was cursed by an evil wizard to write",
 	"walled garden",
@@ -6,10 +7,11 @@ const poems = [
 	"an empty easel",
 	"recursive space",
 	"like all her little cranes, she's all folded down",
+	"astronaut",
 ]
 
 
-async function leafTo(idx) {
+function leafTo(idx) {
 	idx = (idx - 1) * 2;
 	write(poems[idx], "left");
 	if (idx + 1 != poems.length) write(poems[idx + 1], "right");
@@ -17,28 +19,27 @@ async function leafTo(idx) {
 
 	buttonLeft.disabled = idx == 0;
 	buttonRight.disabled = idx + 2 >= poems.length;
-	
-	async function write(poem, page) {
-		page = document.getElementById(page);
-		page.textContent = "";
+}
 
-		let file = await fetch("txt/" + poem + ".txt");
-		file = await file.text();
+async function write(poem, page) {
+	page = document.getElementById(page);
+	page.textContent = "";
 
-		let dateIdx = file.indexOf("-");
-		let bodyIdx = file.indexOf("\n", dateIdx);
-		let bgn = file.substring(0, dateIdx - 1);
-		let pub = file.substring(dateIdx + 2, bodyIdx);
-		let text = file.substring(bodyIdx + 2);
+	let file = await fetch("_txt/" + poem + ".txt");
+	file = await file.text();
 
-		page.innerHTML = `
-			<h2>${poem}</h2>
-			<div class="date bgn">bgn. ${bgn}</div>
-			<div class="date pub">pub. ${pub}</div>
-			<pre>${text}</pre>
-		`;
-	}
+	let dateIdx = file.indexOf("-");
+	let bodyIdx = file.indexOf("\n", dateIdx);
+	let bgn = file.substring(0, dateIdx - 1);
+	let pub = file.substring(dateIdx + 2, bodyIdx);
+	let text = file.substring(bodyIdx + 2);
 
+	page.innerHTML = `
+		<h2>${poem}</h2>
+		<div class="date bgn">bgn. ${bgn}</div>
+		<div class="date pub">pub. ${pub}</div>
+		<pre>${text}</pre>
+	`;
 }
 
 const buttonLeft = document.getElementById("prev");
