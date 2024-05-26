@@ -29,7 +29,7 @@ const Modal = {
 		let modal = document.createElement("img");
 		modal.style = "all: unset; width: 100vw; height: 100vh; object-fit: contain; background-color: #00000080; position: fixed; inset: 0; z-index: 10; cursor: zoom-out";
 		modal.src = this.src, modal.onclick = modal.remove;
-		document.body.appendChild(modal);
+		top.document.body.appendChild(modal);
 	}
 };
 if (document.currentScript.dataset.select) Modal.select(document.currentScript.dataset.select);

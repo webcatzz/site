@@ -39,6 +39,6 @@
 	"font-face": {
 		"scope": "css",
 		"prefix": "@f",
-		"body": "@font-face {font-family: ${1:NAME}; src: url(x_assets/${1:NAME}.ttf)}",
+		"body": "@font-face {font-family: ${1:NAME}; src: url(_assets/${1:NAME}.ttf)}",
 	}
 }

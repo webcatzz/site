@@ -1,3 +1,4 @@
+@font-face {font-family: ms-serif; src: url(_assets/fonts/ms-serif.ttf)}
 :root {
 	--white: #f4f3f0;
 	--light-gray: #b6b2a8;
@@ -23,7 +24,7 @@ summary {user-select: none}
 summary::marker {line-height: 0}
 iframe {border: none}
 audio {width: 100%}
-hr {height: 1px; background-color: currentcolor; border: none}
+hr {color: inherit; height: 1px; background-color: currentcolor; border: none}
 
 /* classes */
 .center {display: flex; justify-content: center; align-items: center; flex-direction: column}

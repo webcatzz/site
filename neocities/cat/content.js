@@ -22,7 +22,7 @@ Object.assign(content, {
 
 
 // url hash
-onhashchange = () => content.load(location.hash ? location.hash.substring(1) : "");
+onhashchange = () => content.load(location.hash ? location.hash.substring(1) : "about");
 onhashchange();
 
 
