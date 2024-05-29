@@ -8,5 +8,5 @@ function meow() {
 
 // iframe redirect
 if (self === top) {
-	location.replace("../?entry=" + location.pathname.slice(location.pathname.lastIndexOf("/") + 1, -5));
+	location.replace("../?entry=" + location.pathname.slice(location.pathname.lastIndexOf("/") + 1));
 }
