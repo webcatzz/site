@@ -11,6 +11,7 @@
 	<link rel="stylesheet" href="index.css">
   <script defer src="../_js/audio-player.js"></script>
   <script defer src="blog.js"></script>
+	<base target="frame">
 </head>
 <body>
 
@@ -25,37 +26,39 @@
 	<img id="stamp-2" src="_assets/stamp-4.png" aria-hidden="true">
 
 	<nav class="no-rot">
-
-		<!-- <div class="flex wide">
-			<h3>may...</h3>
-			<a href="entries/6.html" target="frame" class="new">may flowers</a>
-		</div> -->
 		
-		<div>
-			<h3 class="wide">february...</h3>
-			<a class="new" href="entries/5.html" target="frame">title</a>
-		</div>
+		<a href="entries/5.html" class="new">
+			<time datetime="2024-02-09">2024 • 02</time>
+			title
+		</a>
 
-		<div>
-			<h3 class="wide">january...</h3>
-			<a href="entries/4.html" target="frame">the year starts like it all did—with explosives!</a>
-		</div>
+		<a href="entries/4.html">
+			<time datetime="2024-01-01">2024 • 01</time>
+			the year starts like it all did—with explosives!
+		</a>
 
 		<hr data-year="2023">
 
-		<h3 class="wide">december...</h3>
-		<a href="entries/3.html" target="frame" class="wide">voice training is really hard</a>
+		<a href="entries/3.html" class="wide">
+			<time datetime="2023-12-08">2023 • 12</time>
+			voice training is really hard
+		</a>
 
-		<h3 class="wide">november...</h3>
-		<a href="entries/2.html" target="frame" class="wide">blog post... 2!!!</a>
-		<a href="entries/1.html" target="frame">we're so back</a>
+		<a href="entries/2.html" class="wide">
+			<time datetime="2023-11-10">2023 • 11</time>
+			blog post... 2!!!
+		</a>
+		<a href="entries/1.html">
+			<time datetime="2023-10-27">2023 • 10</time>
+			we're so back
+		</a>
 
 	</nav>
 	
 	<img id="stamp-3" src="_assets/stamp-2.png" aria-hidden="true">
 	<img id="stamp-4" src="_assets/stamp-3.png" aria-hidden="true">
 
-	<a id="back" href="../index.html">&larr; back</a>
+	<a id="back" href="../index.html" target="_self">&larr; back</a>
 
 </div>
 
@@ -71,7 +74,7 @@
 	<marquee></marquee>
 </div>
 
-<a id="background-credit"></a>
+<a id="background-credit" target="_blank"></a>
 
 </body>
 </html>

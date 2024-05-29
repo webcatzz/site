@@ -11,4 +11,8 @@ var sites = [
   "https://foggybear42.neocities.org/",
   "https://mechagic.neocities.org/",
   "https://sawtooth.neocities.org/",
+	
+	"https://neogeist.lol/",
 ];
+
+console.log("your beepbox widget is oudated BTW. grab the new one @ https://webcatz.neocities.org/beepbox-webring/");

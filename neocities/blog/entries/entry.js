@@ -4,3 +4,9 @@ mood.innerHTML = `feeling... <span id="mood-bubble" onclick="meow()">${mood.text
 function meow() {
 	new Audio("https://file.garden/ZdmFgugxzVCR-8Bl/meow.mp3").play();
 }
+
+
+// iframe redirect
+if (self === top) {
+	location.replace("../?entry=" + location.pathname.slice(location.pathname.lastIndexOf("/") + 1, -5));
+}

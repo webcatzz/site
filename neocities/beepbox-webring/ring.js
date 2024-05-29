@@ -22,12 +22,12 @@ if (bpIdx == -1) document.currentScript.outerHTML = "<div style=\"color: #999; f
 else if (document.currentScript.dataset.song) {
   document.currentScript.outerHTML = `
     <div id="beepbox-webring">
-      <a class="beepbox-arrow" href="${bpSites.at(bpIdx - 1)}"><img src="https://webcatz.neocities.org/beepbox-webring/left.png" alt="left arrow"></a>
+      <a class="beepbox-arrow" target="_blank" href="${bpSites.at(bpIdx - 1)}"><img src="https://webcatz.neocities.org/beepbox-webring/left.png" alt="left arrow"></a>
       <div id="beepbox-main">
         <div>this site is part of the <a href="https://webcatz.neocities.org/beepbox-webring/">beepbox webring</a>!</div>
         <iframe src="${document.currentScript.dataset.song}"></iframe>
       </div>
-      <a class="beepbox-arrow" href="${bpSites[(bpIdx + 1) % bpSites.length]}"><img src="https://webcatz.neocities.org/beepbox-webring/right.png" alt="right arrow"></a>
+      <a class="beepbox-arrow" target="_blank" href="${bpSites[(bpIdx + 1) % bpSites.length]}"><img src="https://webcatz.neocities.org/beepbox-webring/right.png" alt="right arrow"></a>
     </div>
   `;
   let sheet = document.createElement("link");
@@ -37,9 +37,9 @@ else if (document.currentScript.dataset.song) {
 // button widget
 else document.currentScript.outerHTML = `
   <div id="beepbox-webring" style="display: flex; align-items: center; gap: 8px">
-    <a href="${bpSites.at(bpIdx - 1)}"><img src="https://webcatz.neocities.org/beepbox-webring/button-left.png" alt="prev"></a>
+    <a target="_blank" href="${bpSites.at(bpIdx - 1)}"><img src="https://webcatz.neocities.org/beepbox-webring/button-left.png" alt="prev"></a>
     <a href="https://webcatz.neocities.org/beepbox-webring/"><img src="https://webcatz.neocities.org/beepbox-webring/button.png" alt="beepbox webring"></a>
-    <a href="${bpSites[(bpIdx + 1) % bpSites.length]}"><img src="https://webcatz.neocities.org/beepbox-webring/button-right.png" alt="next"></a>
+    <a target="_blank" href="${bpSites[(bpIdx + 1) % bpSites.length]}"><img src="https://webcatz.neocities.org/beepbox-webring/button-right.png" alt="next"></a>
   </div>
 `;
 

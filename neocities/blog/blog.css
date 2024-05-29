@@ -1,3 +1,4 @@
+@font-face {font-family: gotham; src: url(../_assets/fonts/gotham-ssm.otf)}
 :root {
 	--black: #201c10;
 	--black-trans: #201c1080;

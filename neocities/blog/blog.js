@@ -1,7 +1,15 @@
-// entry
+// entry by url
 
 let entry = new URLSearchParams(location.search).get("entry") ?? document.querySelectorAll("nav a").length;
 document.getElementById("frame").src = "entries/" + entry + ".html";
+
+
+
+// links
+
+for (const link of document.querySelectorAll("nav a")) {
+	link.title = link.lastChild.data.trim();
+}
 
 
 
