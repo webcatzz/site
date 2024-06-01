@@ -4,130 +4,202 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>webcatz //→ about!</title>
-	<link rel="icon" href="../assets/icon.svg">
+	<link rel="icon" href="../_assets/icon.svg">
 	<link rel="stylesheet" href="../global.css">
 	<link rel="stylesheet" href="about.css">
-	<script defer src="../lib/audio-player.js"></script>
+	<script src="../_js/audio-player.js"></script>
+	<script defer src="../_js/tabs.js"></script>
+	<script defer src="../_js/image-modal.js" data-select=".modal"></script>
 	<script defer src="about.js"></script>
-	<base target="_blank">
 </head>
 <body>
-	<div id="left">
-		<!-- perspective toggle -->
-		<div id="toggle-wrapper" aria-hidden="true">
-			<div id="star">˗ˏˋ ★ ˎˊ˗</div>
-			<div id="toggle">
-				<input id="perspective-toggle" name="perspective" type="checkbox" checked>
-				<label for="perspective">← toggle perspective</label>
-			</div>
+
+<h1>JUNE </h1>
+
+<img id="art" src="_assets/art-heat.jpg" title="art by onoco. they're one of my favorite artists pleaase check them out">
+
+<div id="player">
+	<button title="listen to my music oooo you know you want to"></button>
+	<button></button>
+	<div id="player-title"></div>
+</div>
+
+<tab-div id="tabs" class="flex-col">
+
+	<!-- webmaster -->
+	<div data-tab="the webmaster." id="webmaster" class="tab scroll flex-row">
+
+		<!-- main -->
+		<div>
+
+			<marquee id="intro-scroll">home to the girl ever ^_^</marquee>
+
+			<p><b>hello<i>!</i></b> my name is june ✌ (she/they) and i am the webmaster of every website in the world. i like to pretend i make things. scientists are still undecided whether this is true.</p>
+
+			<img src="_assets/calico-music.jpg" class="float-right" title="i saw this photo for the first time and audibly gasped. literally me coded">
+
+			<p>i really enjoy loud/emo/artsy music & ocean imagery & funny little animals (especially cats) & stories with unusual mediums & downing large amounts of black tea, two sugars.</p>
+
+			<p>as a person... i'm about as lazy as a real cat (although i get sucked into my personal projects easily & for hours on end) & if we're close i'm about as abrasive as a cat too. i'm very excitable about the things i like & my love language is recommending things to you and talking about them together. i laugh a lot and at my own jokes. you're jealous of my whimsy</p>
+
+			<p>my hobbies tend to straddle the big stem/humanities wall. i like designing webpages, making little chiptune songs, writing poems, coding games, drawing, and working on whatever story i happen to be daydreaming about at the time. i'd also like to learn blender someday... and get better at art... and learn french... and asl... and an instrument... and, um,</p>
+
+			<hr>
+
+			<tab-div id="subtabs">
+
+				<div data-tab="hobbies" class="subtab scroll">
+
+					<p><b>coding.</b> i really enjoy puzzles, and coding is like an endless series of them that i can work away at and come away from with a sense of accomplishment and it also makes me forget that time exists but its okay. #forgiveness</p>
+
+					<p>but my interest in code only exists insofar as it serves my primary interests, which lie first and foremost in (1) making pretty stuff and (2) telling stories! web design speaks to me especially cause i get to do those things. i'm building this site like a big patchwork quilt—every page is something different, trying something new.</p>
+
+					<p>i put my coding projects up on <a href="https://github.com/webcatzz?tab=repositories">my github</a> sometimes. it's mostly unfinished godot games i'd like to finish one day. which i will! one of them. eventually...</p>
+
+					<p><b>stories.</b> for basically as long as i can remember, i've been daydreaming about custom dnd settings and stories impossible to put to paper. my hobby as a tiny little baby was thwacking out the beginning chapters to best-selling book trilogies.</p>
+					
+					<p>for more than a year now, i've been working on a long-form worldbuilding/comic project called <a href="../cat/index.html">cat comic</a>.</p>
+
+					<img src="../_assets/construction.gif" title="under construction!" style="margin-inline: auto">
+
+				</div>
+
+				<div data-tab="interests" class="subtab scroll">
+
+					<img src="_assets/explosion.jpg" class="float-left" style="margin-top: 1em">
+
+					<p><b>music.</b> i really like talking about my music taste! frankly i have very good music taste. the best possibly.</p>
+
+					<p>you can listen to some page-appropriately flavored selections down there <span style="line-height: 0">👇</span>.</p>
+
+					<p>my signature band is glass beach! tfgba i will forever be very sentimental about & plastic death is one of my actually favorite albums. it's the only vinyl i own, actually, & she is GORGEOUS. (<a target="_blank" href="https://f4.bcbits.com/img/0034523745_10.jpg">this one!</a>)</p>
+
+					<p>more generally... i'd say my favorite genres are math rock & emo. lyrics are really important to me—i enjoy the obtuse & dense bc my favorite thing to do with albums is slowly pick them apart. i got to crack that baby open like a shellfish !!</p>
+
+					<p><b>games.</b> i'm a sick freak for roguelikes and puzzlegames, especially if they're hard. here's a list of games i've played and really enjoyed... stars mean i've 100%'d them!</p>
+
+					<ul>
+						<li>disco elysium (number one game. ever)</li>
+						<li>celeste <span style="line-height: 0">⭐️</span></li>
+						<li>baba is you <span style="line-height: 0">⭐️</span></li>
+						<li>night in the woods</li>
+						<li>hades</li>
+						<li>loop hero (94% <span style="line-height: 0">⋯</span> )</li>
+						<li>oneshot</li>
+					</ul>
+
+				</div>
+
+				<div data-tab="her" class="subtab scroll">
+
+					<img src="_assets/izutsumi.jpg" title="by agfgoth3 on tumblr">
+
+				</div>
+
+			</tab-div>
+
 		</div>
-		<!-- title -->
-		<div id="left-body">
-			<h1>JUNE<span aria-hidden="true">ᝰ</span></h1>
-			<div id="subtitle">the webm✮str‼</div>
-		</div>
-		<!-- back -->
-		<div id="left-footer">
-			<div aria-hidden="true">𖦹</div>
-			<a href="../index.html" target="_self">← get me out!</a>
-		</div>
-		<!-- audio player -->
-		<div id="audio-player">
-			<div id="player-select-wrapper">
-				<select id="player-select"></select>
-				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M201.4 342.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 274.7 86.6 137.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"/></svg>
+
+		<!-- sidebar -->
+		<div class="section right flex-col" style="width: 200px">
+
+			<div class="box" style="contain: paint" title="nosy freak!">
+				<div id="wyd-title">wyd?????</div>
+				<ul>
+					<li><b>playing</b> loop hero, stardew valley</li>
+					<li><b>listening to</b> teens of denial by car seat headrest</li>
+					<li><b>reading</b> insomniac city by bill hayes</li>
+					<li><b>working on</b> cat comic <img style="display: inline; height: 1.25em; vertical-align: -0.25em; image-rendering: pixelated" src="../cat/_assets/icons/aerie.png">, bad dream</li>
+					<li><b>excited for</b> graduatingggg</li>
+				</ul>
 			</div>
-			<div id="player-body">
-				<button id="player-button"></button>
-				<div id="player-slider"><div aria-hidden="true"></div><div aria-hidden="true"></div></div>
-				<div aria-hidden="true">༝༚༝༚</div>
+
+			<div class="box">
+				<img src="_assets/catgirl-headbang.png">
+				<marquee><div style="display: flex">
+					<img src="https://f4.bcbits.com/img/a0393751413_6.jpg" title="plastic death by glass beach">
+					<img src="https://f4.bcbits.com/img/a1551517735_6.jpg" title="chariot by see through person">
+					<img src="https://f4.bcbits.com/img/a1405389596_6.jpg" title="sun by see through person">
+					<img src="https://f4.bcbits.com/img/a2743601976_6.jpg" title="schlagenheim by black midi">
+					<img src="https://f4.bcbits.com/img/a2501641316_6.jpg" title="ok computer by poo poo shit fart. psyche">
+					<img src="https://f4.bcbits.com/img/a1003084598_6.jpg" title="melee by dogleg">
+					<img src="https://f4.bcbits.com/img/a2421512200_6.jpg" title="lost friends / found family by me too, thanks + red sun + the others like us">
+					<img src="https://f4.bcbits.com/img/a0300599684_6.jpg" title="casually crashing by arcadia grey">
+					<img src="https://f4.bcbits.com/img/a1041686626_6.jpg" title="hellfire by black midi">
+					<img src="https://f4.bcbits.com/img/a2787249143_6.jpg" title="sophomore slump callithump by stomach book">
+					<img src="https://f4.bcbits.com/img/a1867923618_6.jpg" title="i became birds by home is where">
+				</div></marquee>
 			</div>
+
+			<img src="_assets/mayfly.gif">
+
+			<div class="box">
+				quizzes!
+				<div id="quizzes">
+					<img class="modal" src="_assets/quiz/izutsumi.png" title="izutsumi (YESSSSSSSSS)">
+					<img class="modal" src="_assets/quiz/laika.png" title="laika (some stuff is accurate some stuff isn't. i love her though)">
+					<img class="modal" src="_assets/quiz/high-priestess.png" title="the high priestess">
+					<img class="modal" src="_assets/quiz/weird-girl.png" title="certified weird girl moment">
+				</div>
+			</div>
+
 		</div>
 
 	</div>
-	<div id="main-wrapper"><div id="main">
 
-		<img src="assets/nyamiturnsemo.png" style="width: 100px; top: 530px; left: -70px" aria-hidden="true">
-		<img src="../cat/assets/icons/earth.png" style="width: 32px; top: 580px; left: 220px" class="pixelated" aria-hidden="true">
-		<a style="top: 320px; right: 160px" href="https://www.sbnation.com/a/17776-football" aria-hidden="true">
-			<img src="assets/rake.png" style="width: 300px">
-		</a>
-		<img src="assets/catgirl-headbang.png" style="width: 200px; top: 530px; right: 65px" aria-hidden="true">
-		<img src="assets/theres-a-cat.png" style="width: 100px; top: 500px; right: -25px" aria-hidden="true">
-		<img src="assets/pawprints.jpg" style="width: 200px; top: 400px; left: 30px; transform: scaleY(0.4) skewX(-15deg)" aria-hidden="true">
-		<div style="background-image: url(assets/waves.webp); clip-path: polygon(0 20%, 100% 0, 100% 60%, 25% 100%); height: 200px; top: 390px; left: 75px; right: 0" class="pixelated" aria-hidden="true"></div>
-		<img src="assets/buy-cds-and-cassettes-at-very-cheap-rates.gif" style="top: 380px; left: 162.5px" aria-hidden="true">
-		<img src="assets/dont-die-wondering.png" style="width: 256px; top: 325px; left: -80px" aria-hidden="true">
-		<img src="assets/catnmouse.gif" style="width: 100px; height: 320px; top: 150px; right: -70px" aria-hidden="true">
+	<!-- sona -->
+	<div data-tab="her sona." id="sona" class="tab scroll flex-col">
 
-		<!-- note -->
-		<div id="note" class="pixelated">
-			<p>hi, i'm june<i>!</i> <span id="pronouns">(she/they)</span></p>
-			<p>i enjoy loud music & funny little animals & ocean imagery & downing large amounts of black tea. two sugars.</p>
-			<p>in my free time (which always spills into the rest of it) i work on my web site, build out my comic, write poems, draw, make games, and proabbly other things to.</p>
+		<div class="flex-row" style="gap: inherit">
+
+			<img src="_assets/sona/bust.png" height="200" style="image-rendering: pixelated">
+
+			<div class="scroll" style="flex: 1">
+
+				<img src="../_assets/construction.gif" title="under construction!" style="margin-inline: auto">
+
+				<p><b>June</b> is a real human girl-cat with flesh, blood, organs, and no stuffing. She has no seams. She is not animated by any unnatural force.</p>
+
+				<p>She is a self-dyed calico cat. In Aerie, the setting in which she is loosely placed, common fur-dyes are bioluminescent—which is fun at parties but less fun walking home. If you asked her about her natural coloration she'd respond with some colorful language, so let's just say she has a strong dislike of the superstitious.</p>
+				
+				<p>Her glasses are fashioned out of seaglass. They have a magical ability to improve her vision, through a mystical technique called <i>refractive error correction</i>. They also make everything green... which she wouldn't know, cause cats are red-green colorblind.</p>
+
+			</div>
+
 		</div>
 
-		<img style="width: 200px; top: 60px; right: 140px; rotate: -1deg; image-rendering: pixelated" src="assets/calico-music.jpg" aria-hidden="true">
+		<div class="section bottom">
 
-		<!-- asano misato -->
-		<div class="photo" style="background-color: var(--white); aspect-ratio: 486/655; padding: 4px 4px 32px; box-shadow: -40px 25px #00000030" aria-hidden="true"></div>
-		<img class="photo" src="assets/hello-melancholic.png" style="margin-top: 4px; margin-right: 4px; transform: translateZ(5px)" aria-hidden="true">
-		<a class="photo" style="width: 100px; margin-top: 80px; margin-right: 72px; transform: translateZ(5px)" href="https://glassbeach.band/abyss/mayfly">
-			<img src="assets/mayfly.gif" width="100%">
-		</a>
-		<img id="strawberry" src="assets/strawberry.png" aria-hidden="true">
-		<img src="assets/stamp.png" style="top: 192px; right: 90px; width: 300px; transform: rotateY(2deg) translateZ(-20px); opacity: 0.25; pointer-events: none" aria-hidden="true">
+			<img src="_assets/sona/scibble.png" class="modal">
 
-		<!-- picrew -->
-		<div class="picrew" style="--z: 5px; background: url(assets/sketch.png) -50px -180px / 300px"></div>
-		<img class="picrew pixelated" style="--z: 10px; margin-left: -8px" src="assets/22mar24.png">
-		<img class="picrew pixelated" style="--z: 15px" src="assets/picrew-front.png">
+			<img src="_assets/sona/pd.png" class="modal">
 
-		<!-- infobox -->
-		<div style="width: 350px; top: 440px; right: 25px; transform: rotateX(5deg) rotateY(-4deg) translateZ(5px)">
-			<div class="pixelated" style="display: grid; grid-template-columns: repeat(4, max-content)" aria-hidden="true">
-				<img src="assets/tags/transfem.png">
-				<img src="assets/tags/glass-beach.png">
-				<img src="assets/tags/seethruperson.png">
-				<img src="assets/tags/izutsumi.png">
-				<img src="assets/tags/libra.png">
-				<img src="assets/tags/space.png">
-				<img src="assets/tags/beholding.png">
-				<img src="assets/tags/gamer.png">
-			</div>
-			<div style="color: var(--black); font-size: 0.75em; line-height: 1; background-color: #f8f9fa; padding: 0.25em; border: 1px solid #c8ccd1; margin-top: 2px">
-				June █████ is dreaming of the moon. You can find her elsewhere on <a href="https://webcatz.itch.io/">itch</a>, <a href="https://github.com/webcatzz">github</a> and <a href="https://publictransit.neocities.org/">publictransit</a>.
-			</div>
 		</div>
 
-		<!-- graphics -->
-		<div class="pixelated" style="display: grid; grid-template-columns: repeat(4, 1fr); top: 565px; right: 0">
-			<img src="../assets/stamps/distortion.gif">
-			<img src="../assets/stamps/spinning-dizzy.gif">
-			<img src="../assets/stamps/ill-kill-you.png">
-			<img src="../assets/stamps/cat_omnom.gif">
-			<img src="../assets/stamps/it-is-a-mystery.gif" style="grid-column: 2">
-			<img src="../assets/stamps/fighton.gif">
-			<img src="../assets/stamps/cassette.gif">
+	</div>
+
+	<!-- website -->
+	<div data-tab="her website." class="tab scroll">
+
+		<div class="box flex-row" style="gap: 4px; image-rendering: pixelated">
+			<img src="../_assets/buttons/queer-coded.png">
+			<img src="../_assets/buttons/own-two-paws.png">
+			<img src="../_assets/buttons/need-a-nap.png">
+			<img src="../_assets/buttons/neocities.png">
+			<img src="../_assets/buttons/computer.gif">
 		</div>
-		<div class="pixelated" style="top: 600px">
-			<div class="graphic-row">
-				<img src="../assets/buttons/queer-coded.png">
-				<img src="../assets/buttons/go-straight-to-hell.gif">
-				<img src="../assets/buttons/gregdock.gif">
-				<img src="../assets/buttons/time-travel.png">
-				<img src="../assets/buttons/own-two-paws.png">
-			</div>
-			<div class="graphic-row">
-				<img src="../assets/blinkies/connection.gif">
-				<img src="../assets/blinkies/glitcu.png">
-				<img id="explode" src="../assets/blinkies/explode.gif">
-			</div>
-			<div class="graphic-row">
-				<img src="../assets/blinkies/transgenderattackbeam.gif">
-				<img src="../assets/blinkies/fangs.gif">
-				<img src="../assets/blinkies/uhh.gif">
-			</div>
-		</div>
+
+		<p>i started this site on june 17th, 2022. i still remember how i came upon neocities—i was looking through <a href="https://search.marginalia.nu/">marginalia</a> because of a tumblr post i chanced upon, then happened to find <a href="https://localfool.neocities.org">localfool's neocities</a>, decided to check out the neocities browser, got inspired, and ended up signing up and starting my own site.</p>
+
+		<p>which is all so much chance! it's wild. the friends i've made on neocities are really dear to me, and to think that all of it could just have well not have happened... hhrahhh.</p>
+
+		<p>the site was originally under the name tealcrows, then juneery, then junery, and finally webcatz. also i think it was under its-tz at some point? don't remember. point is, the site's gone through a lot of changes since its early days in a hotel room dizzy from covid. if you're curious, you can view older versions of the site in the <a href="../archive/index.html">archive</a>.</p>
+		
+		<p class="box"><b>webcatz.neocities.org</b> is coded in vscode, tested in firefox, and deployed from github.</p>
+
+	</div>
+
+</tab-div>
+
 </body>
 </html>
