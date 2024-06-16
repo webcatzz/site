@@ -9,7 +9,7 @@ bpSites = [
   "https://fizzsea.neocities.org/",
   "https://tim-of-the-valley.neocities.org/",
   "https://foggybear42.neocities.org/",
-  "https://mechagic.neocities.org/",
+  "https://mechagic.lexiqqq.com/",
   "https://sawtooth.neocities.org/",
 	"https://neogeist.lol/",
 	"https://hellokittyminigun.neocities.org/",

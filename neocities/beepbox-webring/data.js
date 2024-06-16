@@ -9,10 +9,11 @@ var sites = [
   "https://fizzsea.neocities.org/",
   "https://tim-of-the-valley.neocities.org/",
   "https://foggybear42.neocities.org/",
-  "https://mechagic.neocities.org/",
+  "https://mechagic.lexiqqq.com/",
   "https://sawtooth.neocities.org/",
-	
 	"https://neogeist.lol/",
+	"https://hellokittyminigun.neocities.org/",
+	"https://item64.neocities.org/",
 ];
 
 console.log("your beepbox widget is oudated BTW. grab the new one @ https://webcatz.neocities.org/beepbox-webring/");
