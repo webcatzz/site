@@ -156,7 +156,7 @@ a {color: inherit}
 @keyframes spin {to {rotate: 360deg}}
 #tunes {
 	contain: paint;
-	padding: 0.75em 1em 0.75em 2em; background: url(_assets/blue-cloud.png) center var(--blue);
+	padding: 0.75em 1.5em; background: url(_assets/blue-cloud.png) center var(--blue);
 	transform: skewY(-2deg); margin: -0.25em -0.5em;
 	display: grid; grid-template-columns: max-content 1fr;
 	z-index: 2; /* bc of wires */
@@ -169,7 +169,7 @@ a {color: inherit}
 		justify-self: start;
 	}
 	iframe {width: calc(100% - 4em); height: 80px; margin-top: 4px; margin-left: 4em; background-color: black}
-	img {position: absolute; top: -89.25px; left: -145.5px; z-index: -1; animation: 15s spin steps(180) infinite}
+	img {position: absolute; top: -89.25px; left: -145.5px; z-index: -1; animation: 120s spin steps(1080) infinite}
 }
 
 #news-wrapper {align-items: center}

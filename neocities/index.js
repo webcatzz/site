@@ -15,10 +15,6 @@ document.querySelector("h1").onclick = () => {
 }
 
 
-// toybox
-const toyboxPlayer = new Audio;
-
-
 // audio player
 const audioEls = document.getElementById("audio-player").children;
 var nightcore = false;
@@ -73,7 +69,7 @@ document.getElementById("awful-fucking-thing").onclick = () => {
 
 // tunes button
 document.getElementById("track-name").textContent = tracklist[0].name;
-document.getElementById("tunes").querySelector("iframe").src = getURL(tracklist[0].hash);
+document.getElementById("tunes").querySelector("iframe").src = hashToURL(tracklist[0].hash);
 tracklist = null;
 
 
