@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>webcatz //→ tunes!</title>
+	<link rel="icon" href="../../_assets/icon.svg">
+	<link rel="stylesheet" href="../../global.css">
+	<link rel="stylesheet" href="index.css">
+	<script defer src="list.js"></script>
+	<script defer src="index.js"></script>
+</head>
+<body>
+
+<header>
+	<h1>junetunes</h1>
+</header>
+	
+<div id="tracklist" role="radiogroup">
+
+	<div id="filters" role="radiogroup" aria-labelledby="filter-title">
+		<div id="filter-title">filter by project...</div>
+		<radio-button aria-label="cat comic" data-value="cat-comic">🌙</radio-button>
+		<radio-button aria-label="bad dream" data-value="bad-dream">💭</radio-button>
+		<radio-button aria-label="breaktime">💼</radio-button>
+		<radio-button aria-label="game jams" data-value="jam">👾</radio-button>
+		<radio-button aria-label="let's build a universe" data-value="lbau">⚛️</radio-button>
+		<radio-button aria-label="labyrinth">🧶</radio-button>
+		<radio-button aria-label="outward">🌀</radio-button>
+		<radio-button aria-label="textbox adventure demo" data-value="tad">👻</radio-button>
+	</div>
+
+</div>
+
+<img id="disc" src="_assets/cd.png">
+
+<div id="view">
+
+	<h2></h2>
+
+	<div id="ribbon">
+		<iframe src=""></iframe>
+	</div>
+
+	<div id="words">
+
+		<div id="description"></div>
+
+		<div id="tags"></div>
+
+	</div>
+
+</div>
+
+</body>
+</html>

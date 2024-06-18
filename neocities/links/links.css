@@ -80,7 +80,7 @@ p {
 /* corkboard */
 
 #corkboard {
-  background: url(_assets/corkboard.jpg) top left;
+  background: url(_assets/corkboard.png) top left;
   border: 12px ridge #4f3620; box-sizing: border-box;
   flex: 1; position: relative; margin: 8px 32px;
 	image-rendering: auto;

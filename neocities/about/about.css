@@ -1,6 +1,5 @@
-@font-face {font-family: typewriter; src: url(../_assets/fonts/Orange\ Typewriter.ttf)}
+@font-face {font-family: fullcomp; src: url(../_assets/fonts/fully-completely.ttf)}
 @font-face {font-family: gotham; src: url(_assets/gotham-ssm.otf)}
-@font-face {font-family: ms-serif; src: url(../_assets/fonts/ms-serif.ttf)}
 :root {
 	--white: #fafdff;
 	--light-gray: #fff5ed;
@@ -41,16 +40,16 @@ body {
 /* title */
 
 h1 {
-	font-size: 6em;
-	font-family: gotham;
-	letter-spacing: -0.4em;
-	line-height: 1;
+	font-size: 6.5em;
+	font-family: fullcomp;
+	letter-spacing: -0.215em;
+	line-height: 0.9;
 	writing-mode: vertical-lr;
 	text-orientation: upright;
 
 	contain: paint;
 	padding: 8px;
-	padding-top: 0;
+	padding-top: 0.125em;
 	border: 1px solid;
 	border-top-left-radius: 0.5em;
 	margin: 0;
@@ -65,7 +64,7 @@ h1 {
 		content: "ᝰ";
 		font-size: 1.5em;
 		display: inline-block;
-		transform: translate(0.275em, -0.255em);
+		transform: translate(0.275em, -0.38em);
 		pointer-events: none;
 		position: absolute;
 	}
@@ -92,7 +91,6 @@ h1 {
 
 #player {
 	color: var(--yellow);
-	font-family: gotham;
 	font-size: 0.75em;
 	display: flex;
 	align-items: center;
@@ -119,6 +117,8 @@ h1 {
 	}
 }
 #player-title {
+	font-family: fullcomp;
+	font-size: 1.15em;
 	padding-inline: 0.75em;
 }
 
@@ -144,8 +144,7 @@ h1 {
 
 	&.active {
 		color: var(--light-gray);
-		font-size: 1.25em;
-		font-weight: bold;
+		font: bold 1.5em/1 fullcomp;
 		text-shadow: var(--text-outline);
 		background-color: var(--red);
 		border: 1px solid var(--black);
@@ -270,9 +269,13 @@ hr {
 	}
 }
 
+#subtabs {
+	background-image: url(_assets/halftone.png);
+	padding: 0.5em;
+}
 .subtab {
 	height: 200px;
-	border: 1px solid;
+	background-color: var(--white);
 	padding-right: 1.5em;
 	margin-top: 0.5em;
 }
@@ -299,8 +302,7 @@ hr {
 }
 
 #wyd-title {
-	font-size: 5em;
-	font-weight: bold;
+	font: 5em/1 fullcomp;
 	letter-spacing: -0.1em;
 	margin-top: -0.1em;
 	background-image: url(_assets/halftone.png);
@@ -330,14 +332,19 @@ hr {
 @media (max-width: 600px) {
 	body {
 		grid-template:
-			"title art" 100vh
-			"player player"
-			"tabs tabs";
+			"title art" calc(100vh - 2.125em)
+			"player player" 2.125em
+			"tabs tabs" 100vh;
 		height: unset;
 		margin-block: 0;
 	}
 	#tabs {
 		contain: content;
+	}
+
+	h1 {
+		font-size: 20vw;
+		padding-top: 0.125em;
 	}
 
 	#webmaster {
@@ -349,4 +356,6 @@ hr {
 			margin-top: 0;
 		}
 	}
+
+	#sona > div:first-child  > img {height: 100px; image-rendering: auto}
 }

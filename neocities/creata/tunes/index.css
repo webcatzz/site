@@ -1,0 +1,257 @@
+@font-face {font-family: workbench; src: url(_assets/workbench.ttf)}
+
+body {
+	color: var(--white);
+
+	display: flex;
+
+	height: 100vh;
+	background-color: var(--black);	
+	overflow: hidden;
+}
+
+header {
+	background-color: inherit;
+	padding-block: 0.5em;
+	padding-left: 500px;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+
+	h1 {
+		font-size: 0.875em;
+		font-weight: normal;
+		margin-block: 0;
+	}
+}
+
+@keyframes spin {to {rotate: 360deg}}
+#disc {
+	width: 95vh;
+	height: 95vh;
+	margin-inline: -47.5vh;
+	align-self: center;
+	z-index: -1;
+	animation: 120s spin steps(1080) infinite;
+}
+
+
+
+/* buttons */
+
+@keyframes move-bg {to {background-position: 1252px 626px}}
+.button {
+	cursor: pointer;
+	user-select: none;
+	animation: 60s move-bg steps(600) infinite;
+
+	&:hover, &[aria-checked="true"] {
+		background-image: url(_assets/rainbow.png);
+		background-attachment: fixed;
+	}
+}
+
+
+
+/* tracklist */
+
+#tracklist {
+	display: grid;
+	grid-template-columns: repeat(2, 50%);
+	grid-auto-rows: max-content;
+
+	width: 400px;
+	padding: 1em;
+	padding-right: 2em;
+	background-color: var(--black);
+
+	margin-left: 60px;
+	transform: skewX(10deg);
+	z-index: 1;
+	overflow: hidden auto;
+}
+
+.track {
+	display: grid;
+	grid-template:
+		"name icons" max-content
+		"date date" max-content
+		/ 1fr max-content;
+	align-content: center;
+	
+	contain: inline-size style layout paint;
+	padding: 1em;
+	border-radius: 2px;
+
+	.track-name {
+		font-weight: bold;
+		text-overflow: ellipsis;
+		overflow-x: hidden;
+		grid-area: name;
+	}
+
+	time {
+		font-family: ms-serif;
+		font-size: 0.75em;
+		grid-area: date;
+	}
+
+	.track-icons {
+		height: 0;
+		grid-area: icons;
+	}
+
+	&:hover, &[aria-checked="true"] {
+		color: var(--black);
+		box-shadow:
+			-1em 1em inset #ffffff30,
+			1px -1px inset #ffffff60;
+		
+		.track-icons {filter: invert()}
+	}
+
+	&[aria-checked="true"] {
+		--outset: 0.5em;
+
+		border-left: var(--outset) solid #ffffff40;
+		border-bottom: var(--outset) solid #ffffff40;
+
+		box-shadow:
+			-1.5em 1.5em inset #ffffff30,
+			1px -1px inset #ffffff60;
+
+		margin-top: calc(var(--outset) * -1);
+		margin-right: calc(var(--outset) * -1);
+
+		clip-path: polygon(
+			0 var(--outset), var(--outset) 0, 100% 0,
+			100% calc(100% - var(--outset)), calc(100% - var(--outset)) 100%, 0 100%
+		);
+		z-index: 1;
+		transition:
+			border-width 0.125s,
+			box-shadow 0.125s,
+			margin 0.125s;
+	}
+}
+
+
+
+/* filters */
+
+#filters {
+	color: var(--dark-gray);
+	font-size: 0.875em;
+	padding: 1em;
+
+	transform: skewX(-10deg);
+	z-index: 1;
+
+	#filter-title {
+		font-family: ms-serif;
+		font-size: 0.875em;
+		letter-spacing: 0.1em;
+	}
+
+	.button {
+		color: var(--white);
+		text-shadow:
+			-1px -1px var(--black), 0 -1px var(--black), 1px -1px var(--black), 1px 0 var(--black),
+			-1px 1px var(--black), 0 1px var(--black), 1px 1px var(--black), -1px 0 var(--black);
+
+		display: inline-flex;
+		justify-content: center;
+		align-items: center;
+
+		width: 1.75em;
+		height: 1.75em;
+		border-radius: 4px;
+		grid-row: 2;
+
+		&:hover {
+			position: relative;
+
+			&::after {
+				content: attr(aria-label);
+				font-family: ms-serif;
+				white-space: nowrap;
+
+				background-color: var(--black);
+				padding: 0.25em 0.5em;
+
+				transform: translateY(-50%);
+				position: absolute;
+				top: 50%;
+				left: calc(100% + 0.5em);
+				pointer-events: none;
+			}
+		}
+	}
+}
+
+
+
+/* view */
+
+#view {
+	padding-left: 64px;
+	margin-left: -32px;
+	align-self: center;
+	flex: 1;
+}
+
+h2 {
+	font-size: 5em;
+	text-shadow:
+		0.1em 0.1em var(--black),
+		0.2em 0.1em var(--color);
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	contain: inline-size;
+	overflow: hidden;
+	margin-block: -0.15em;
+}
+
+#ribbon {
+	height: 16em;
+	background-color: var(--color);
+	background-image: url(_assets/rainbow-mask.png);
+	padding: 2em;
+	padding-left: calc(2em + 96px);
+	box-sizing: border-box;
+	margin-left: -96px;
+	animation: 60s move-bg steps(600) infinite reverse;
+
+	iframe {
+		width: 100%;
+		height: 100%;
+		border-radius: 3px;
+	}
+}
+
+#words {
+	font: 0.875em ms-serif;
+	contain: size layout;
+	> div {margin: 1em 5em}
+}
+
+#description {
+	width: max-content;
+	max-width: 500px;
+	background-color: var(--black);
+	padding: 0.25em 0.5em;
+}
+
+.tag {
+	background-color: var(--black);
+	padding: 0.25em 0.5em;
+	margin-right: 0.25em;
+
+	&::before {
+		content: "#";
+		font-family: sans-serif;
+		line-height: 0;
+		margin-right: 0.075em;
+	}
+}

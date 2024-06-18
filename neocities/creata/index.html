@@ -1,128 +1,173 @@
 <!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>webcatz //→ creata!</title>
-		<link rel="icon" href="../_assets/icon.svg">
-		<link rel="stylesheet" href="../global.css">
-		<style>
-@font-face {font-family: ms-serif; src: url(../_assets/fonts/ms-serif.ttf)}
-body {color: var(--white); display: flex; min-height: 100vh; background-color: var(--black)}
-#landing {flex: 9}
-nav {flex: 10}
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>webcatz //→ creata!</title>
+	<link rel="icon" href="../_assets/icon.svg">
+	<link rel="stylesheet" href="../global.css">
+	<link rel="stylesheet" href="index.css">
+	<script defer src="_js/drag.js"></script>
+	<script defer src="_js/items.js"></script>
+	<script defer src="_js/fish.js"></script>
+</head>
+<body>
 
-#landing {display: flex; flex-direction: column; align-items: center; background: linear-gradient(to bottom, var(--black) 30%, transparent), url(../_assets/dots-black.png); padding-block: 1em 4em}
-header {font: bold 6.5em sans-serif}
-h1, .color-ladder {letter-spacing: 0.05em; text-align: center; margin-top: -0.8em}
-h1 {color: var(--black); font-size: inherit; text-shadow: 0 -1.5px var(--white); margin-bottom: 0}
-.color-ladder {user-select: none}
-#r {color: #d62411; font-size: 95%; letter-spacing: 0.04em}
-#o {color: #ff8426; font-size: 90%; letter-spacing: 0.03em}
-#y {color: #ffd100; font-size: 85%; letter-spacing: 0.02em}
-#g {color: #10d275; font-size: 80%; letter-spacing: 0.01em}
-#b {color: #68aed4; font-size: 75%; letter-spacing: 0}
-#p {color: #ff2674; font-size: 70%; letter-spacing: -0.01em; margin-top: 0}
+<div id="menubar" aria-hidden="true">
+	<div>File</div>
+	<div>Edit</div>
+	<div>View</div>
+</div>
 
-p	{color: var(--gray); font-size: 0.875em; letter-spacing: 0.025em; line-height: 1.6; text-align: center; max-width: 400px}
+<img src="../_assets/construction.gif">
 
-#keyboard {display: flex; gap: 32px; width: max-content; padding-block: 2em; margin-top: auto}
-.key {width: 8px; height: 8px; border-radius: 50%; transition: 0.1s; cursor: pointer; z-index: 1}
-.key:hover {width: 16px; height: 16px; margin: -4px}
-.key:active {border: 8px solid #ffffff80; box-sizing: border-box}
-.key:first-of-type {background-color: #d62411}
-.key:nth-of-type(2) {background-color: #ff8426}
-.key:nth-of-type(3) {background-color: #ffd100}
-.key:nth-of-type(4) {background-color: #10d275}
-.key:nth-of-type(5) {background-color: #68aed4}
-.key:last-of-type {background-color: #ff2674}
 
-#back {color: var(--black); font-weight: bold; background-color: var(--white); padding: 0.5em}
 
-nav {font-family: ms-serif; letter-spacing: 0.1em; display: flex; flex-direction: column; justify-content: center; align-items: center; background: linear-gradient(225deg, #ffa430, transparent), linear-gradient(to bottom, #fa7a23 1px, transparent 1px) no-repeat repeat top / 100% 4px fixed #ff8426; padding-left: 8px; clip-path: polygon(16px 0, 100% 0, 100% 100%, 0 100%)}
-nav a {color: inherit; display: block}
+<!-- desktop -->
 
-.big {display: flex; align-items: center; gap: 2em; width: 600px; padding-inline: 1em; position: relative}
-.big:hover {background-color: #ffffff20; z-index: 10}
-.big img {width: 224px; filter: drop-shadow(-32px 48px #00000020); margin-block: -1em; transition: filter 0.2s, margin-left 0.2s}
-.big:hover img {margin-left: 16px; filter: drop-shadow(-40px 48px #00000020)}
-.big:hover .label::after {content: " <"}
-.big:first-of-type {margin-top: 0; z-index: 6}
-.big:nth-of-type(2) {z-index: 5}
-.big:nth-of-type(3) {z-index: 4}
-.big:nth-of-type(4) {z-index: 3}
-.big:nth-of-type(5) {z-index: 2}
-.big:nth-of-type(6) {z-index: 1}
+<img id="fish" src="_assets/fish.gif" aria-hidden="true">
 
-.line {display: flex; align-items: center; flex: 1}
-.line::before {content: ""; width: 8px; height: 8px; border: 1px solid currentcolor; border-radius: 50%}
-.line::after {content: ""; height: 1px; background-color: currentcolor; flex: 1}
+<mac-file
+	name="Creata"
+	position="-50 50"
+	type="floppy"
+></mac-file>
 
-#timeline {margin-top: 1em; transition: letter-spacing 0.2s}
-#timeline:hover {letter-spacing: 0.25em; transition-duration: 0.5s}
+<mac-file
+	name="Fish flakes"
+	position="-50 190"
+	type="flakes-can"
+></mac-file>
 
-@media (max-width: 800px) {
-	body {display: block}
-	nav {align-items: stretch; padding: 2em 1em; clip-path: polygon(0 8px, 100% 0, 100% 100%, 0 100%)}
-	.big {gap: 0.5em; width: unset}
-	.big img {width: 112px; filter: drop-shadow(-16px 24px #00000020); margin-block: -0.5em}
-	.line::before {content: none}
-}
-		</style>
-	</head>
-	<body>
-		<div id="landing">
-			<header>
-				<div id="p" class="color-ladder" aria-hidden="true">creata</div>
-				<div id="b" class="color-ladder" aria-hidden="true">creata</div>
-				<div id="g" class="color-ladder" aria-hidden="true">creata</div>
-				<div id="y" class="color-ladder" aria-hidden="true">creata</div>
-				<div id="o" class="color-ladder" aria-hidden="true">creata</div>
-				<div id="r" class="color-ladder" aria-hidden="true">creata</div>
-				<h1>creata</h1>
-			</header>
-			<p>welcome to my creata page! this is where i put some of the things i've worked on. check them out... hehheh...</p>
-			<div id="keyboard" aria-hidden="true">
-				<div class="key" data-note="https://files.catbox.moe/mvzhzv.mp3"></div>
-				<div class="key" data-note="https://files.catbox.moe/u0o9ju.mp3"></div>
-				<div class="key" data-note="https://files.catbox.moe/abv9al.mp3"></div>
-				<div class="key" data-note="https://files.catbox.moe/6eq5se.mp3"></div>
-				<div class="key" data-note="https://files.catbox.moe/pg3b68.mp3"></div>
-				<div class="key" data-note="https://files.catbox.moe/jg18w3.mp3"></div>
-			</div>
-			<a id="back" href="../index.html">← back home...</a>
-		</div>
+<mac-file
+	name="Timeline"
+	position="-120 80"
+	type="folder"
+></mac-file>
 
-		<nav>
-			<a class="big" href="https://webcatz.itch.io">
-				<img src="_assets/jams.png">
-				<div class="line" aria-hidden="true"></div>
-				<div class="label">jam games</div>
-			</a>
-			<a class="big" href="../cat/index.html">
-				<img src="_assets/cat-comic.png">
-				<div class="line" aria-hidden="true"></div>
-				<div class="label">cat comic</div>
-			</a>
-			<a class="big" href="../lbau/index.html">
-				<img src="_assets/lbau.png">
-				<div class="line" aria-hidden="true"></div>
-				<div class="label">let's build a universe</div>
-			</a>
-			<a class="big" href="https://publictransit.neocities.org/wiki/">
-				<img src="_assets/transitpedia.png">
-				<div class="line" aria-hidden="true"></div>
-				<div class="label">transitpedia</div>
-			</a>
-			<a id="timeline" href="timeline.html">timeline</a>
-		</nav>
-		
-		<script>
-for (const key of document.getElementsByClassName("key")) key.onclick = play;
-function play() {new Audio(this.dataset.note).play()}
-onkeydown = e => {
-	if (["1", "2", "3", "4", "5", "6"].includes(e.key)) document.getElementById("keyboard").children[Number(e.key) - 1].click();
-}
-		</script>
-	</body>
+<mac-file
+	name="About"
+	position="-130 180"
+	type="file"
+></mac-file>
+
+<mac-file
+	name="Trash"
+	position="-50 -50"
+	type="trash"
+></mac-file>
+
+
+
+
+<!-- windows -->
+
+<!-- Creata -->
+<mac-window
+	name="Creata"
+	rect="150 75 523 500"
+>
+	<h1><img src="_assets/title.png" alt="creata"></h1>
+	<div style="font: 1.25em apple-garamond; text-align: center">Take a look through the Stack...</div>
+
+	<div style="display: flex; flex-direction: column-reverse; contain: paint; background-image: url(_assets/dither3.png); padding: 2.5em 1em; margin: 1em">
+
+		<a class="stack-item" href="https://webcatz.itch.io">
+			<img src="_assets/stack/default.png">
+			<div class="stack-line"></div>
+			<div class="stack-label">jam games</div>
+		</a>
+
+		<a class="stack-item" href="https://publictransit.neocities.org/wiki/">
+			<img src="_assets/stack/transitpedia.png">
+			<div class="stack-line"></div>
+			<div class="stack-label">transitpedia</div>
+		</a>
+
+		<a class="stack-item" href="https://github.com/webcatzz/bad-dream">
+			<img src="_assets/stack/default.png">
+			<div class="stack-line"></div>
+			<div class="stack-label">bad dream</div>
+		</a>
+
+		<a class="stack-item" href="cat/index.html">
+			<img src="_assets/stack/cat-comic.png">
+			<div class="stack-line"></div>
+			<div class="stack-label">cat comic</div>
+		</a>
+
+	</div>
+
+</mac-window>
+
+<!-- About -->
+<mac-window class="hidden"
+	name="About"
+	rect="800 120 200 200"
+>
+	<p>welcome to the creata page! this is a collection of (1) links to my projects and (2) funny little secrets i can put on a page like this.</p>
+
+	<p>it works just like a regular desktop, so drag things around and peek in some folders.</p>
+</mac-window>
+
+<!-- Timeline -->
+<mac-folder class="hidden"
+	name="Timeline"
+	rect="800 60 400 300"
+>
+
+</mac-folder>
+
+<!-- Trash -->
+<mac-folder class="hidden"
+	name="Trash"
+	rect="700 30 400 300"
+>
+	<mac-file
+		name="Theme of Fish"
+		position="50 20"
+		type="audio"
+	></mac-file>
+	<mac-file
+		name="Glimmer"
+		position="250 160"
+		type="audio"
+	></mac-file>
+	<mac-file
+		name="Rain"
+		position="300 150"
+		type="audio"
+	></mac-file>
+</mac-folder>
+
+
+
+
+<!-- audio -->
+
+<!-- Theme of Fish -->
+<mac-window class="hidden noscroll"
+	name="Theme of Fish"
+	rect="750 50 200 45"
+>
+	<audio-player src="https://file.garden/ZdmFgugxzVCR-8Bl/fish.mp3"></audio-player>
+</mac-window>
+
+<!-- Rain -->
+<mac-window class="hidden noscroll"
+name="Rain"
+rect="750 50 200 45"
+>
+	<audio-player src="https://file.garden/ZdmFgugxzVCR-8Bl/rain-part.mp3"></audio-player>
+</mac-window>
+
+<!-- Glimmer -->
+<mac-window class="hidden noscroll"
+name="Glimmer"
+rect="750 50 200 45"
+>
+	<audio-player src="https://file.garden/ZdmFgugxzVCR-8Bl/glimmer.mp3"></audio-player>
+</mac-window>
+
+</body>
 </html>

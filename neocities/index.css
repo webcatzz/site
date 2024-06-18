@@ -11,8 +11,23 @@ body {
 
 header {
 	display: flex; justify-content: center; align-items: center;
-	height: 144px; background:
-		radial-gradient(circle at center, var(--black) 20em, var(--white) 20em, var(--white) 21em, var(--red) 21em, var(--red) 21.25em, var(--white) 21.25em, var(--white) 21.5em, transparent 21.5em, transparent 21.625em, var(--white) 21.625em, var(--white) 21.75em, transparent 21.75em),
+	height: 144px;
+	background:
+		radial-gradient(
+			circle at center,
+			var(--black) 20em,
+			var(--white) 20em,
+			var(--white) 21em,
+			var(--red) 21em,
+			var(--red) 21.25em,
+			var(--white) 21.25em,
+			var(--white) 21.5em,
+			transparent 21.5em,
+			transparent 21.625em,
+			var(--white) 21.625em,
+			var(--white) 21.75em,
+			transparent 21.75em
+		),
 		url(_assets/banner.png) repeat-x center var(--red);
 	box-shadow: 0 0 16px var(--black);
 	animation: 60s flow linear infinite;

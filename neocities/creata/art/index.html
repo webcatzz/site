@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>webcatz //→ art!</title>
+	<link rel="icon" href="../../_assets/icon.svg">
+	<script defer src="https://kit.fontawesome.com/c558359c24.js" crossorigin="anonymous"></script>
+	<script defer src="../../_js/image-modal.js" data-select="img"></script>
+	<link rel="stylesheet" href="../../global.css">
+	<style>
+@keyframes flow {to {background-position-x: 0, 320px, 128px}}
+body {font-family: sans-serif; margin: 0; background: linear-gradient(to top, white, transparent), url(../_assets/checkerboard-tilted-white.png) 0 / 320px, url(bg.png) white; animation: 15s flow linear infinite; user-select: none}
+#main {max-width: 600px; min-height: calc(100vh - 32px); padding: 16px 32px; background-color: white; position: relative}
+h1, h2 {text-shadow: 0.1em 0.1em pink, 0.2em 0.2em pink; transform: skewX(-30deg)}
+h2 {font-size: 1.25em; margin-top: -19.2px; margin-left: 12px; margin-bottom: 2rem}
+#back {color: white; font-weight: bold; padding: 8px 12px; background-color: pink; position: absolute; top: 48px; right: 48px}
+#back svg {vertical-align: -0.125em; height: 1em}
+
+#grid {display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; image-rendering: auto}
+figure {margin: 0; position: relative}
+figcaption {text-align: right; font-size: 0.875em; line-height: 1.25; padding: 4px 8px 0; background-color: #ffc0cbbf; display: none; position: absolute; bottom: 0; left: 0; right: 0; pointer-events: none}
+figure:hover {outline: 4px solid #ffc0cbbf; z-index: 1}
+figure:hover figcaption {display: block}
+.date {color: white; font-size: 0.875em; margin-left: 0.75em}
+#grid img {width: 100%; height: 100%; aspect-ratio: 1; object-fit: cover}
+#grid > *:first-child {grid-column: span 2; grid-row: span 2}
+#grid > *:nth-child(2) {grid-column: span 2; aspect-ratio: 2}
+
+#mspaint {color: #ffc0cbbf; position: fixed; bottom: 1em; right: 1em}
+
+@media (max-width: 664px) {
+	#back {position: fixed; top: unset; bottom: 16px; right: 16px}
+}
+	</style>
+</head>
+<body>
+	<div id="main">
+		<h1>june wants to draw...</h1>
+		<h2>my art gallery; or, oops, all doodles!</h2>
+		<a id="back" href="../../index.html"><svg fill="white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg> back home...</a>
+		<div id="grid">
+			<figure>
+				<img src="jan 3, 2024.png" loading="lazy">
+				<figcaption><span class="date">(jan 3, 2024)</span></figcaption>
+			</figure>
+			<figure>
+				<img src="dec 31, 2023.png" loading="lazy">
+				<figcaption>secret santa art for @worldsaddress!! first properly rendered piece <span class="date">(dec 31, 2023)</span></figcaption>
+			</figure>
+			<figure>
+				<img src="nov 11, 2023.png" loading="lazy">
+				<figcaption><span class="date">(nov 11, 2023)</span></figcaption>
+			</figure>
+			<figure>
+				<img src="nov 6, 2023.png" loading="lazy">
+				<figcaption><span class="date">(nov 6, 2023)</span></figcaption>
+			</figure>
+			<figure>
+				<img src="oct 17, 2023.png" loading="lazy">
+				<figcaption><span class="date">(oct 17, 2023)</span></figcaption>
+			</figure>
+		</div>
+	</div>
+	<a id="mspaint" href="dailymspaint/index.html">shh... daily ms paint →</a>
+</body>
+</html>
