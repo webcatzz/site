@@ -14,7 +14,6 @@ AudioPlayer.create([
 	"change your name - see through person",
 	"periwinkle - see through person",
 	"calico - ok glass",
-	// "foe paw - the j arthur keenes band",
 	"subterranean homesick alien - radiohead",
 	"心に雲を持つ少年 - sunny day service",
 	"five finger exploding heart technique - ok cool",
@@ -23,6 +22,7 @@ AudioPlayer.create([
 	"paper planes - twikipedia",
 	"eat me alive - saturdays at your place",
 	"mother mary - late bloomer",
+	"chainsaw girl - chainsaw girl",
 ],{
 	playButton: audioEls[0],
 	skipButton: audioEls[1],

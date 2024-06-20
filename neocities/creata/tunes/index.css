@@ -146,7 +146,7 @@ header {
 	padding: 1em;
 
 	transform: skewX(-10deg);
-	z-index: 1;
+	z-index: 2;
 
 	#filter-title {
 		font-family: ms-serif;
