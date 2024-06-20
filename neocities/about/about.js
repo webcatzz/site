@@ -25,7 +25,7 @@ AudioPlayer.create([
 	skipButton: player.children[1],
 	title: player.children[2],
 	insertIcons: true,
-	// shuffle: true,
+	shuffle: true,
 	fileGarden: "ZdmFgugxzVCR-8Bl"
 });
 
