@@ -130,10 +130,12 @@ function view(track) {
 
 	viewdiv.randomizeColor();
 	viewdiv.title.textContent = track.name;
-	viewdiv.iframe.src = "";
-	if (track.hash) setTimeout(() => viewdiv.iframe.src = hashToURL(track.hash), 120);
-	
-	else setTimeout(() => viewdiv.iframe.src = "https://file.garden/ZdmFgugxzVCR-8Bl/tunes/" + encodeURIComponent(track.name) + ".mp3", 50);
+
+	let newFrame = document.createElement("iframe");
+	newFrame.src = track.hash ? hashToURL(track.hash) : "https://file.garden/ZdmFgugxzVCR-8Bl/tunes/" + encodeURIComponent(track.name) + ".mp3";
+	viewdiv.iframe.replaceWith(newFrame);
+	viewdiv.iframe = newFrame;
+
 	if (track.note) {
 		viewdiv.description.textContent = track.note;
 		viewdiv.description.classList.remove("hidden");
