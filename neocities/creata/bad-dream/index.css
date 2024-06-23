@@ -1,0 +1,63 @@
+@font-face {font-family: dico; src: url(_assets/dico.ttf)}
+@font-face {font-family: pixel-times; src: url(_assets/pixel-times.ttf)}
+:root {
+	--white: #b8c2b9;
+	--dark-gray: #3d4248;
+	--black: #382b26;
+
+	scrollbar-color: var(--dark-gray) transparent;
+}
+::selection {background-color: currentcolor}
+
+body {
+	color: var(--white);
+	font-family: dico;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-content: center;
+
+	max-width: max-content;
+	height: 100vh;
+	background-image: radial-gradient(transparent 50%, #17131b);
+	background-color: black;
+	margin-inline: auto;
+}
+
+main {
+	max-height: 250px;
+}
+
+h1 {
+	color: var(--black);
+	font-size: 1em;
+	font-weight: normal;
+
+	max-width: max-content;
+	padding: 0.375em 0.75em;
+	border-image: url(_assets/bubble.png) 0 1 30 31 fill / 0 1px 30px 31px / 0 0 30px 0;
+	margin-block: 0;
+	position: relative;
+	z-index: 1;
+
+	+ p {
+		text-indent: 3em;
+	}
+}
+
+p {
+	font: 0.6em pixel-times;
+}
+
+#github {
+	color: var(--dark-gray);
+	font: 0.6em pixel-times;
+	text-align: right;
+
+	&:hover {
+		background-color: #3d424840;
+		padding: 4px;
+		margin: -4px;
+	}
+}
