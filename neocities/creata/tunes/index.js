@@ -172,6 +172,6 @@ if (params.has("track")) {
 
 for (const button of document.getElementsByClassName("track")) {
 	button.addEventListener("click", function () {
-		history.pushState(null, "", "?track=" + this.firstChild.textContent);
+		history.replaceState(null, "", "?track=" + this.firstChild.textContent);
 	});
 }
