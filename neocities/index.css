@@ -732,3 +732,16 @@ footer {
 	font: 13px monospace;
 	position: absolute;
 }
+
+
+
+/* mobile */
+
+@media (max-width: 600px) {
+
+	body {contain: inline-size; overflow-x: hidden}
+
+	nav, footer {font-size: 0.6em}
+
+	#scroll-header, #laser-pointer {display: none}
+}

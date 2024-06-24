@@ -255,3 +255,19 @@ h2 {
 		margin-right: 0.075em;
 	}
 }
+
+
+
+/* mobile */
+
+@media (max-width: 600px) {
+
+	body {
+		flex-direction: column;
+	}
+
+	#tracklist, #filters {
+		transform: skew(0deg);
+	}
+
+}

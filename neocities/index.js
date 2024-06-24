@@ -1,7 +1,3 @@
-// mobile
-if (innerWidth < 600) location.replace("map.html")
-
-
 // title sound
 document.querySelector("h1").onclick = () => {
 	let tts = new SpeechSynthesisUtterance();

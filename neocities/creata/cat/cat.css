@@ -224,3 +224,51 @@ main img {max-width: 100%}
 	bottom: -4px;
 	pointer-events: none;
 }
+
+
+
+/* mobile */
+
+@media (max-width: 600px) {
+
+	body {
+		display: flex;
+		flex-direction: column;
+	}
+
+	nav {
+		display: flex;
+		flex-direction: row;
+		contain: inline-size;
+		width: 100%;
+		padding-bottom: 0;
+		position: static;
+		overflow-x: auto;
+
+		h2 {display: none}
+
+		#home {
+			padding-block: 0;
+			background: none;
+			margin-top: 0;
+		}
+
+		a {
+			margin-right: -1px;
+			margin-bottom: 0;
+		}
+	}
+
+	main {
+
+		h2 {
+			display: block;
+			white-space: nowrap;
+			text-overflow: ellipsis;
+			overflow: hidden;
+			top: 3rem;
+		}
+
+	}
+
+}
