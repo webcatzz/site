@@ -155,3 +155,23 @@ function view(track) {
 }
 
 view(null);
+
+
+
+// url params
+
+let params = new URLSearchParams(location.search);
+if (params.has("track")) {
+	let idx = tracklist.findIndex(track => track.name === params.get("track"));
+	if (idx !== -1) {
+		let button = document.getElementsByClassName("track")[idx];
+		button.scrollIntoView({behavior: "smooth", block: "center"});
+		button.click();
+	}
+}
+
+for (const button of document.getElementsByClassName("track")) {
+	button.addEventListener("click", function () {
+		history.pushState(null, "", "?track=" + this.firstChild.textContent);
+	});
+}
