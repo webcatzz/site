@@ -181,7 +181,7 @@ a {
 }
 
 img {max-width: 100%}
-.float-left, .float-right {max-width: 40%; margin-bottom: 0.5em; border: 1px solid}
+.float-left, .float-right {max-width: 40%; margin-bottom: 0.5em}
 .float-left {float: left; clear: left; margin-inline: 0 1.5em}
 .float-right {float: right; clear: right; margin-inline: 1.5em 0}
 .float-center {max-width: 75%; margin: 1em auto}
