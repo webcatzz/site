@@ -59,6 +59,7 @@ p {
 	overflow-y: auto;
 	aspect-ratio: 3/4;
 }
+#transring {width: 244px}
 
 #back {
   color: var(--black); font-family: typewriter;
