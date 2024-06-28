@@ -1,4 +1,5 @@
 const poems = [
+	"sonny boy",
 	"fuck",
 	"orpheus",
 	"haiku he was cursed by an evil wizard to write",
