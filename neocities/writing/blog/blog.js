@@ -1,15 +1,17 @@
-// entry by url
-
-let entry = new URLSearchParams(location.search).get("entry") ?? document.querySelector("nav a").getAttribute("href").slice(8, -5);
-document.getElementById("frame").src = "entries/" + entry + ".html";
-
-
-
 // links
 
 for (const link of document.querySelectorAll("nav a")) {
 	link.title = link.lastChild.data.trim();
+	link.dataset.entry = link.getAttribute("href").slice(8, -5);
+	link.addEventListener("click", function () {history.replaceState(null, "", "?entry=" + this.dataset.entry)});
 }
+
+
+
+// entry by url
+
+let entry = new URLSearchParams(location.search).get("entry") ?? document.querySelector("nav a").dataset.entry;
+document.getElementById("frame").src = "entries/" + entry + ".html";
 
 
 
