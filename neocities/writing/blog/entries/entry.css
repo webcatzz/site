@@ -1,5 +1,5 @@
 @import url(../blog.css);
-@font-face {font-family: print; src: url(../../../_assets/fonts/magazine.ttf)}
+@font-face {font-family: print; src: url(../../../_assets/fonts/magazine.ttf); unicode-range: U+0079, U+0077}
 :root {
   --button: #b3863740;
   --button-hover: #b3863770;
@@ -19,32 +19,32 @@ body {
 
 header {
 	line-height: initial;
-	display: flex;
-	border: 1px solid var(--black-trans);
+	min-height: 3.55em;
+	border: 1px solid #201c1060;
 	margin-bottom: 2.5em;
+	position: relative;
 }
 h2 {
 	font-size: 2.15em;
-	rotate: -2deg;
+	font-family: print, sans-serif;
+	rotate: -1deg;
 	padding: 6px 8px;
-	margin: -0.5em 0;
-	align-self: center;
-	flex: 1;
-
-	span {font-family: print}
+	margin-block: 0;
 }
 header time {
-	display: block;
-
-	color: var(--black-trans);
-	font-family: ms-serif;
-	font-size: 0.875em;
-	writing-mode: vertical-rl;
-	
 	display: flex;
 	align-items: center;
-	padding: 0.75em 0.5em;
+
+	color: var(--black-trans);
+	font: 0.75em ms-serif;
+	writing-mode: vertical-rl;
+
+	padding: 1em 0.75em;
 	border-left: inherit;
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
 }
 
 
@@ -136,6 +136,19 @@ summary {
 
 	&::marker {color: #b38637}
 	&:hover {background-color: var(--button-hover)}
+}
+
+
+
+/* misc */
+
+.note {
+	font-size: 0.75em;
+	background-color: #c4452620;
+	padding: 0.5em 1em;
+	border: 2px dotted #c44526;
+	border-radius: 2px;
+	margin-block: 2.5rem;
 }
 
 
