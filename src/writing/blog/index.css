@@ -140,21 +140,6 @@ nav {
 
 		:hover > & {visibility: hidden}
 	}
-	a:first-of-type {
-		&::after {
-			content: "(new! ✨)";
-			display: inline-block;
-			color: transparent;
-			font-family: gotham;
-			line-height: 1;
-			background-image: linear-gradient(to right, #ff8426, #ffd100);
-			background-clip: text;
-			-webkit-background-clip: text;
-			margin-left: 0.375em;
-		}
-		&:hover::after {color: var(--black)}
-		&:active::after {color: var(--white)}
-	}
 
 	h3, hr {
 		color: var(--black-trans);
@@ -246,4 +231,39 @@ nav {
 	position: fixed;
 	right: 0.5em;
 	bottom: 0.5em;
+}
+
+
+
+/* mobile */
+
+@media (max-width: 600px) {
+	
+	body {
+		display: block;
+
+		contain: inline-size;
+		width: 100vw;
+		height: unset;
+		overflow-y: unset;
+	}
+
+	#rosebed {
+		position: fixed;
+		left: -50%;
+	}
+
+	.page {
+		width: unset;
+		rotate: unset;
+		> * {rotate: unset}
+	}
+	#frame {rotate: -1deg !important}
+
+	h1::after {content: none}
+
+	#player {
+		display: none;
+	}
+
 }

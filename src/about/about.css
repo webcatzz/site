@@ -1,5 +1,5 @@
 @font-face {font-family: fullcomp; src: url(../_assets/fonts/fully-completely.ttf)}
-@font-face {font-family: gotham; src: url(_assets/gotham-ssm.otf)}
+@font-face {font-family: gotham; src: url(../_assets/fonts/gotham-ssm.otf)}
 :root {
 	--white: #fafdff;
 	--light-gray: #fff5ed;

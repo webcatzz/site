@@ -68,9 +68,11 @@ blockquote {
 
 /* images */
 
+img {
+	max-width: 100%;
+}
 figure {
 	margin: 0; image-rendering: auto;
-	img {max-width: 100%; user-select: none}
 }
 figcaption {
 	color: #201c10bf;
@@ -80,6 +82,14 @@ figcaption {
 	margin: 0.5em
 }
 .photo {
+  img, video, iframe {
+    width: calc(100% - 16px);
+    padding: 8px;
+		padding-bottom: 16px;
+    box-shadow: 1px 2px 4px #00000040;
+    background-color: #f6f1e7;
+  }
+
   &::before {
     content: url(../_assets/tape.png);
 		display: block;
@@ -90,14 +100,6 @@ figcaption {
 		z-index: 1;
   }
   &:nth-of-type(even)::before {transform: scaleX(-1); rotate: 0deg}
-  img, video {
-    width: 100%;
-    padding: 8px;
-		padding-bottom: 16px;
-		box-sizing: border-box;
-    box-shadow: 1px 2px 4px #00000040;
-    background-color: #f6f1e7;
-  }
 }
 
 
@@ -147,8 +149,8 @@ summary {
 	background-color: #c4452620;
 	padding: 0.5em 1em;
 	border: 2px dotted #c44526;
-	border-radius: 2px;
-	margin-block: 2.5rem;
+	border-radius: 3px;
+	margin-block: 1.5rem;
 }
 
 ul, ol,
@@ -177,8 +179,9 @@ blockquote,
 /* footer */
 
 footer {
+	font-family: ms-serif;
 	border-top: 1px dashed var(--black-trans);
-	padding-top: 0.5em;
+	padding-top: 0.75em;
 	margin-top: 2em;
 	position: relative;
 
@@ -193,7 +196,6 @@ footer {
 }
 
 #mood-bubble {
-	font-family: ms-serif;
 	background-color: var(--button);
 	padding-inline: 0.5em;
 	border-radius: 0.75em;
@@ -201,7 +203,12 @@ footer {
 	cursor: pointer;
 	user-select: none;
 
+	img {
+		display: inline-block;
+		height: 24px;
+		margin-bottom: -5px;
+	}
+
 	&:hover {background-color: var(--button-hover)}
-	img {display: inline-block; height: 24px; margin-bottom: -5px}
 	&:active img {scale: 1.1}
 }

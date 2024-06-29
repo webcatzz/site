@@ -9,7 +9,7 @@ Object.assign(content, {
 		let html = await file.text();
 		content.innerHTML = html;
 
-		document.title = "☾⋆⁺₊ cat comic...ᐟ - " + content.querySelector("h2")?.textContent;
+		document.title = "☾⋆⁺₊ cat comic...ᐟ - " + location.hash?.substring(1);
 
 		// scripts
 		if (html.includes("<script>")) {

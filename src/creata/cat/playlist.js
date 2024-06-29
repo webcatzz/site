@@ -1,43 +1,29 @@
 AudioPlayer.create([
 	"(forever?????????) - glass beach",
 	"angel surveillance - bubblebaath",
-	"aria math - c418",
 	"astronaut - jack stauber's micropop",
 	"axolotl - c418",
 	"balduin - thomas hoehl",
-	"ballad of awakening - malcolm brown",
-	"bloodflow.wav - classic j",
 	"checking in - lena raine",
 	"city night - joel corelitz",
 	"cloudy out - eel valley",
-	"crystalguitarthemums - erik scheele",
-	"first snow - max ll",
 	"floating away - jun ishikawa",
-	"forsaken grotto - curtis schweitzer",
 	"glimmer - joel corelitz",
 	"hippocampus sea - levc",
 	"interlude - feed me jack",
 	"job done - thomas hoehl",
-	"little furnace - jim guthrie",
-	"loop blues - blinch",
-	"moonsetter - toby fox",
 	"ocean stars falling - michael guy bowman",
-	"planet healer - meruz",
 	"prayer - kow otani",
 	"reactivating the first purifier - thomas hoehl",
 	"respit - erik scheele",
 	"shoreline scuffle - beatrix quinn",
-	"skaia (incipisphere mix) - solatrus",
-	"stellar acclimation - curtis schweitzer",
 	"strato - jonathan geer",
 	"sworn guardian - beatrix quinn",
-	"temporary - robert j! lake",
-	"thanks for playing - max wright",
-	"the maelstrom - jim guthrie",
 	"the rain - coffeebug",
+	"unused demo 2 - mark sparling",
 	"woody path - joel corelitz",
-	"yamanoue no machi - joel corelitz",
 	"ゆめうつつ (half asleep) - lamp"
+	// some ghibli?
 ],{
 	playButton: document.getElementById("play"),
 	skipButton: document.getElementById("skip"),
@@ -59,6 +45,3 @@ AudioPlayer.addEventListener("ended", setMarquee);
 
 // yank disc
 document.getElementById("reset").onclick = () => location.reload();
-
-// autoplay warning
-document.getElementById("player").classList.add("no-autoplay");

@@ -7,15 +7,56 @@
   <link rel="icon" href="_assets/icon.png">
   <link rel="stylesheet" href="global.css">
   <style>
-body {color: var(--white); font-size: 16px; background: linear-gradient(to bottom, var(--black) 50%, transparent), url(_assets/dots-black.png) var(--black); padding-block: 64px}
+:root {
+	--white: #c6c1b6;
+	--gray: #2b2827;
+	--black: #161616;
+}
+body {
+	color: var(--white);
+	font-size: 16px;
+	background-color: var(--black);
+	padding-block: 64px;
+}
 #main {max-width: 600px; margin-inline: auto; position: relative}
 
 ul {list-style-type: none; padding-left: 0}
-ul ul {margin-left: 1.5em}
+ul ul {
+	max-width: max-content;
+	padding-right: 2em;
+	border: 1.5px dotted var(--gray);
+	border-radius: 12px;
+	margin-left: 1.5em;
+}
 li {color: var(--light-gray); margin-block: 1em}
 li::before {content: ""; vertical-align: middle; display: inline-block; width: 1em; height: 1em; background-color: var(--white); border: 4px solid var(--off-black); border-radius: 50%; margin-top: -2px; margin-inline: 1em}
-a {color: var(--white)}
 a:hover {font-weight: bold}
+
+a {
+	color: inherit;
+	text-align: center;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+
+	padding: 0.5em;
+	background-image: url(_assets/map-halftone.png);
+	border: 1.5px dotted var(--gray);
+	border-radius: 6px;
+
+	overflow: hidden;
+	position: relative;
+	transition: border-width 0.2s;
+
+	img {
+		display: inline-block;
+		margin-right: 0.25em;
+		margin-bottom: -0.2em;
+	}
+
+	&:hover {
+		border-width: 3px;
+	}
+}
 
 #canvas {position: absolute; inset: 0; z-index: -1}
 
@@ -28,7 +69,7 @@ a:hover {font-weight: bold}
   <div id="main">
     <h1>map <span style="line-height: 0">🚇</span></h1>
     <ul>
-      <li><a href="index.html">index</a></li>
+      <li><a href="index.html"><img src="_assets/icon.png">index</a></li>
       <li><a href="about/index.html">about</a></li>
       <!-- creata -->
       <li><a href="creata/index.html">creata</a>
@@ -42,9 +83,9 @@ a:hover {font-weight: bold}
       <!-- writing -->
       <li>writing
         <ul>
-					<li><a href="writing/blog/index.html">blog</a></li>
-					<li><a href="writing/poetry/index.html">poetry</a></li>
-          <li><a href="writing/muse.html">muse ariadne</a></li>
+					<li><a href="writing/blog/index.html"><img src="_assets/icons/door.gif">blog</a></li>
+					<li><a href="writing/poetry/index.html"><img src="_assets/icons/notebook.gif">poetry</a></li>
+          <li><a href="writing/muse.html"><img src="_assets/icons/muse.gif">muse ariadne (archive)</a></li>
         </ul>
       </li>
       <!-- shrines -->

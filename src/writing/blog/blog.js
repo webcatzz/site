@@ -34,7 +34,7 @@ document.getElementById("background-credit").href = "https://" + background.link
 const audioEls = document.getElementById("player").children;
 AudioPlayer.create([
   "10 pm (sunny) - kazumi totaka",
-	"wedding (garden) - kazumi totaka",
+	"wedding (i want a garden theme!) - kazumi totaka",
   "blogger sits alone at night - coffeebug",
   "fall (raven's descent) - concernedape",
   "the tempest - louie zong",

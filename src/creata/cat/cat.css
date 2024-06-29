@@ -84,13 +84,6 @@ h1 {
 	#play {left: 30px}
 	#skip {left: 56px}
 	#reset {height: 56px; top: 7px; left: 0}
-
-	&.no-autoplay:hover::before {
-		content: "enable autoplay to continue audio between pages!";
-		width: 64px; padding: 0.5em; border: 1px solid; border-left-width: calc(1em + 1px);
-		position: absolute; top: 1em; left: calc(100% + 1em);
-		clip-path: polygon(1em 100%, 1em calc(50% + 1em), 0 50%, 1em calc(50% - 1em), 1em 0, 100% 0, 100% 100%);
-	}
 }
 
 /* nav */
