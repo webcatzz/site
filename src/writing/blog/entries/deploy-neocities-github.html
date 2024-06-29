@@ -16,15 +16,37 @@
 	<time datetime="2024-02-04">feb 4, 2024</time>
 </header>
 
-<div class="note">
-	this entry was copied over from /how-to/, which no longer exists. i'm planning to rewrite it at some point.
-</div>
+<div class="note">this entry was copied over from /how-to/, which no longer exists.</div>
 
 <p>do you edit your site files locally but hate manually uploading everything to neocities? try deploying your neocities with github!</p>
 
 <p>this how-to assumes you have no prior experience with git, so i'll keep things as simple as possible and guide you through all the commands you'll need. keep in mind that this how-to is written by a mac user, so if you run into any issues on a different OS let me know and i'll update the page accordingly.</p>
 
-<h3>why git?</h3>
+<div class="note">
+	table of contents
+	<ul>
+		<li><a href="#why-git" target="_self">why git?</a>
+			<ul>
+				<li><a href="#installing-git" target="_self">installing git</a></li>
+			</ul>
+		</li>
+		<li><a href="#making-the-remote-repository" target="_self">making the remote repository</a>
+			<ul>
+				<li><a href="#making-a-personal-access-token" target="_self">making a personal access token</a></li>
+				<li><a href="getting-your-repositorys-https-url" target="_self">getting your repository's https url</a></li>
+			</ul>
+		</li>
+		<li><a href="#making-the-local-repository" target="_self">making the local repository</a>
+			<ul>
+				<li><a href="#the-gitignore-file" target="_self">the .gitignore file</a></li>
+				<li><a href="#command-to-remember" target="_self">commands to remember</a></li>
+			</ul>
+		</li>
+		<li><a href="#deploying-your-site" target="_self">deploying your site</a></li>
+	</ul>
+</div>
+
+<h3 id="why-git">why git?</h3>
 
 <p>git is a tool that helps you track and archive any changes you make inside a folder. if you edit your site files locally (like i do) you can turn your site folder into a <b>repository</b> (fancy name for folders that use git) and:</p>
 
@@ -36,16 +58,16 @@
 	<li>feel cool because youre typing in a command line. and executing commands</li>
 </ul>
 
-<details class="pass-rot">
+<details>
 	<summary>why's it called that?</summary>
-	<div class="pass-rot"><blockquote class="pass-rot">
+	<div><blockquote>
 		<p>Torvalds sarcastically quipped about the name git (which means "unpleasant person" in British English slang): "I'm an egotistical bastard, and I name all my projects after myself. First 'Linux', now 'git'." The man page describes Git as "the stupid content tracker".</p>
 
 		<p>The read-me file of the source code elaborates further:</p>
 
 		<p>"git" can mean anything, depending on your mood.</p>
 			
-		<ul class="pass-rot">
+		<ul>
 			<li>Random three-letter combination that is pronounceable, and not actually used by any common UNIX command. The fact that it is a mispronunciation of "get" may or may not be relevant.</li>
 			<li>Stupid. Contemptible and despicable. Simple. Take your pick from the dictionary of slang.</li>
 			<li>"Global information tracker": you're in a good mood, and it actually works for you. Angels sing, and a light suddenly fills the room.</li>
@@ -60,13 +82,13 @@
 
 <p>convinced yet? these next three sections will walk you through how to set up a repository for your site files and use it to deploy to neocities. if you're intimidated, don't worry—it's not that hard, and once you've reached the end of this how-to you won't have to worry about 99% of this ever again.</p>
 
-<h4>installing git</h4>
+<h4 id="installing-git">installing git</h4>
 
 <p>you can check if you already have git installed by opening up the command line <span class="mac-only hidden">(the terminal app)</span> and running <code>git</code>. if it shows you a list of commands, you already have git installed.</p>
 
 <p>if you don't have git installed, head over to <a href="https://www.git-scm.com/downloads">the git downloads</a> and follow the instructions there.</p>
 
-<h3>making the remote repository</h3>
+<h3 id="making-the-remote-repository">making the remote repository</h3>
 
 <p>the <b>remote repository</b> is the repository (remember: fancy name for a git folder) hosted on github. before you set up your <b>local repository</b>, or the one on your computer, you'll first need to create your remote repository.</p>
 
@@ -74,11 +96,11 @@
 
 <img src="_assets/github-new-repository.png" alt='the github "new repository" screen'>
 
-<h4>making a personal access token</h4>
+<h4 id="making-a-personal-access-token">making a personal access token</h4>
 
 <p>to connect to the remote repository from your computer, you need to confirm that you are who you say you are—no one but you should be able to mess with your files! to confirm your identity, you'll need a <b>personal access token</b>, which acts like a password. (there are also other ways of doing this—if you have ssh set up, skip this step and use ssh urls in the next step instead.) here's how to make a token! it might look complicated, but it's just a lot of clicking buttons:</p>
 
-<ol class="pass-rot">
+<ol>
 	<li>open the github site</li>
 	<li>click on your profile icon in the top right</li>
 	<li>select "settings" from the dropdown menu</li>
@@ -98,7 +120,7 @@
 
 <p>you've now generated a personal access token! remember that you can always come back to this page to copy your token. also remember that this <b>lets anyone mess with your remote repository</b>, so (gets really close to you like gandalf) keep it secret... hhhhgh... keep it safe....</p>
 
-<h4>getting your repository's https url</h4>
+<h4 id="getting-your-repositorys-https-url">getting your repository's https url</h4>
 
 <p>this is another bit of text you'll need to connect to your remote repository. it's pretty easy to grab—just go to github.com and open your repository's page. if you created your repository right (empty), you'll see your repository's https url right in the middle of the page.</p>
 
@@ -106,22 +128,22 @@
 
 <p>it should look like this: <code>https://github.com/username/repository-name.git</code>. if it doesn't, click "https" on the button directly to the left. leave the tab open and come back for the url later (we'll need it!).</p>
 
-<h3>making the local repository</h3>
+<h3 id="making-the-local-repository">making the local repository</h3>
 
-<p>if you don't have one already, create the folder you'll be storing your site files in. we WILL NOT be directly running stuff in this folder, for reasons i'll explain later. put the folder you're storing your site files in inside a new empty folder. this is what i'm gonna be calling your "site folder".</p>
+<p>if you don't have one already, create the folder you'll be storing your site files in. we WILL NOT be directly running stuff in this folder, for reasons i'll explain later. put the folder you're storing your site files in inside a new empty folder. the new folder is what i'm gonna be calling your "site folder".</p>
 
 <p>open the command line. <span class="mac-only hidden">it's an app called "terminal".</span> type <code>cd</code> (this stands for "change directory"), a space, and then the path of your site folder.</p>
 
-<details class="pass-rot">
+<details>
 	<summary>how do i get a folder's path?</summary>
-	<div class="pass-rot">
+	<div>
 		<p>you can either (1) right click a folder, hold the "option" key on mac or the shift key on windows, and click the copy as pathname option, or (2) just drag the folder onto the terminal window.</p>
 	</div>
 </details>
 
 <p>the command line will now execute commands from inside your site folder. follow these steps to turn it into your local repository:</p>
 
-<ol class="pass-rot">
+<ol>
 	<li>run <code>git init</code> (short for "initialize") to turn the folder into your local repository.</li>
 	<li>run <code>git config --global user.email "EMAIL"</code> and <code>git config --global user.name "NAME"</code> to denote who you are. replace EMAIL and NAME with your github email and username respectively.</li>
 	<li>run <code>git branch -M "main"</code> to set the "main" branch. don't worry about this right now.</li>
@@ -138,7 +160,7 @@
 
 <p>if you look in your repository on github, you'll see that it's now updated with all your local site files. <span class="mac-only hidden">also, if you open your site folder and press "shift+command+." to view hidden files (anything starting with a "."), you'll see the newly created .git folder! that's where all the information about your repository is stored.</span></p>
 
-<h4>the .gitignore file</h4>
+<h4 id="the-gitignore-file">the .gitignore file</h4>
 
 <p>the <b>.gitignore</b> file tells your repository to ignore certain files—they won't be added to commits or pushed to the remote repository. you can make one by making a text file in your site folder and renaming it to ".gitignore".</p>
 
@@ -171,7 +193,7 @@ ignore-me/
 
 <p>some things to remember about .gitignores:</p>
 
-<ul class="pass-rot">
+<ul>
 	<li>the .gitignore <i>ignores</i>, it doesn't delete. if a file is already in the remote repository, it won't be removed if you add it to your .gitignore. you have to delete it and push that change first</li>
 	<li>if you mess up your .gitignore and accidentally push personal files, removing them from the repository AND the repository's history is a huge hassle. be careful!</li>
 	<li>you can't ignore a .gitignore. it doesn't work</li>
@@ -187,7 +209,7 @@ ignore-me/
 
 <p>remember, <code>*</code> matches anything. thats why these selectors will filter out all mp3, mp4 and wav files. it's also why <code>*.mp*</code> will filter out both mp3 and mp4 files.</p>
 
-<h4>commands to remember</h4>
+<h4 id="command-to-remember">commands to remember</h4>
 
 <p>your repository should now be working and connected to the remote repository! congrats! :-)</p>
 
@@ -195,7 +217,7 @@ ignore-me/
 
 <p>if your text editor doesn't have any git functionality, then you'll need to use the command line to use git. here are some commands you'll be using a lot:</p>
 
-<ul class="pass-rot">
+<ul>
 	<li><code>cd PATH</code>—replace PATH with the path of the folder you want to execute commands in. in this case, that's your site folder.</li>
 	<li><code>git add .</code>—this adds every new or modified file to the next commit.</li>
 	<li><code>git add -p</code>—same as the previous command, but asks whether or not to add each file.</li>
@@ -205,13 +227,13 @@ ignore-me/
 	<li><code>git pull URL</code>—if your remote repository is ahead of your local one, this brings the local repository up-to-date. remember to replace URL with your repository's https url.</li>
 </ul>
 
-<h3>deploying your site</h3>
+<h3 id="deploying-your-site">deploying your site</h3>
 
 <p>now that both the remote and local repositories are set up, we can move onto finally <b>deploying</b> your files to neocities. we'll be using github workflows, which will automatically run code whenever we do something with our repository. in this case, whenever we update the remote repository (so whenever we run <code>git push</code>) we want to also update the files on our neocities.</p>
 
 <p>however, just like github, neocities also requires a token before it'll let us mess around with our files there.</p>
 
-<ol class="pass-rot">
+<ol>
 	<li>open neocities</li>
 	<li>click your name in the top right</li>
 	<li>in the dropdown menu, click "settings"</li>
@@ -222,7 +244,7 @@ ignore-me/
 
 <p>now you've got your neocities token! all the same rules apply here—keep this secret. actually, we're going to create a "secret" for this token on github—we don't want this to appear publically in our repository later, so we're encrypting it.</p>
 
-<ol class="pass-rot">
+<ol>
 	<li>open your repository on github.</li>
 	<li>open the "settings" tab at the top</li>
 	<li>in the left sidebar, click "actions" under "secrets and variables"</li>
@@ -234,7 +256,7 @@ ignore-me/
 
 <p>now that we've got our token prepared and encrypted, we want to create our workflow. this is what's actually going to be deploying stuff to neocities.</p>
 
-<ol class="pass-rot">
+<ol>
 	<li>inside your site folder, create a new folder called ".github"</li>
 	<li>inside the .github folder, create a new folder called "workflows"</li>
 	<li>inside that folder, create a new file called "main.yml"</li>

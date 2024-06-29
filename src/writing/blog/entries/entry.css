@@ -49,7 +49,7 @@ header time {
 
 
 
-
+/* text */
 
 a {color: #1a4176; text-decoration: underline}
 
@@ -149,6 +149,14 @@ summary {
 	border: 2px dotted #c44526;
 	border-radius: 2px;
 	margin-block: 2.5rem;
+}
+
+ul, ol,
+details, details > div,
+blockquote,
+.pass-rot {
+	rotate: 0deg !important;
+	> * {rotate: 1deg}
 }
 
 
