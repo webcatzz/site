@@ -38,6 +38,7 @@ AudioPlayer.create([
   "blogger sits alone at night - coffeebug",
   "fall (raven's descent) - concernedape",
   "the tempest - louie zong",
+	"café midi - coffeebug",
 ],{
   playButton: audioEls[0],
   skipButton: audioEls[1],

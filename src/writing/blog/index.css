@@ -110,8 +110,8 @@ h1 {
 
 	&::after {
 		content: "";
-		height: 2px;
-		background-color: var(--black-trans);
+		height: 4px;
+		background: url(_assets/dither.png) left / 4px;
 		align-self: center;
 		flex: 1;
 	}
