@@ -24,7 +24,7 @@ let background = [
 ][Math.floor(Math.random() * 3)];
 
 document.body.style.setProperty("--background", `url(_assets/backgrounds/${background.path})`);
-document.getElementById("background-credit").textContent = "art by " + background.artist;
+document.getElementById("background-credit").textContent = "background by " + background.artist;
 document.getElementById("background-credit").href = "https://" + background.link;
 
 
