@@ -106,7 +106,7 @@ h1 {
 	gap: 0.5em;
 
 	font-size: 3em;
-	margin-bottom: 0;
+	margin-top: 0.67em;
 
 	&::after {
 		content: "";
@@ -232,6 +232,13 @@ nav {
 	position: fixed;
 	right: 1em;
 	bottom: 1em;
+}
+
+#hammer {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	filter: drop-shadow(2px 3px 4px var(--black-trans));
 }
 
 

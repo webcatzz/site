@@ -2,172 +2,139 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>webcatz!</title>
-	<link rel="icon" href="_assets/icon.png">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>june's web page...ᐟ 💫</title>
+	<link rel="icon" href="_assets/16x16/sleepy.png">
 	<link rel="stylesheet" href="global.css">
 	<link rel="stylesheet" href="index.css">
+	<link rel="stylesheet" href="quilt.css">
 	<script defer src="_js/audio-player.js"></script>
 	<script defer src="creata/tunes/list.js"></script>
 	<script defer src="index.js"></script>
 </head>
 <body>
-<!-- haiiiiii ^_^ -->
-<!-- you've won my secret prize. go to /shh/ohfuckyes now -->
-<header><h1 title="eerie whispers sing from the black hole..."><span>w</span><span>e</span><span>b</span><span>c</span><span>a</span><span>t</span><span>z</span></h1></header>
-<div id="scroll-header" aria-hidden="true">
-	<span id="scroll-title">webcatz</span>
-	<span id="scroll-subtitle">:: patchwork quilt swimming pool</span>
-	<span id="scroll-copyright">© 2022</span>
-</div>
 
+<!-- ♡ -->
 
-<!-- nav -->
+<header>
+
+	<h1><span>w</span><span>e</span><span>b</span><span>c</span><span>a</span><span>t</span><span>z</span></h1>
+	<div class="subtitle" aria-hidden="true" style="color: var(--blue)">webcatz</div>
+	<div class="subtitle" aria-hidden="true" style="color: var(--red)">webcatz</div>
+	<div class="subtitle" aria-hidden="true" style="color: var(--yellow)">webcatz</div>
+	<div class="subtitle" aria-hidden="true">webcatz</div>
+
+	<select id="theme-select">
+		<option value="" selected disabled>select a theme...</option>
+		<option value="">retro (default)</option>
+		<option>calico</option>
+		<option>bubblegum</option>
+	</select>
+
+</header>
+
 <nav>
 
-	<div class="flex-col">
+	<div id="intro" class="textbox" title="hi!">
 
-		<!-- about -->
-		<a id="about" href="about/index.html" title="all about the animal in charge!">
-			<div>about the webmaster</div>
-			<div aria-hidden="true">about the webmaster</div>
-			<div aria-hidden="true">about the webmaster ⁖</div>
-			<div aria-hidden="true">about the webmaster</div>
-		</a>
+		<p>hello! welcome to my website!</p>
 
-		<!-- audio player -->
-		<div id="audio-player">
-			<div class="lcd">0/0</div>
-			<marquee class="lcd" scrollamount="4">...</marquee>
-			<div class="lcd">0:00</div>
-			<button aria-label="play"></button>
-			<div id="seek-bar">
-				<div aria-hidden="true"></div>
-				<div aria-hidden="true"></div>
-				<img src="_assets/cat-knob.png" draggable="false" aria-hidden="true">
-			</div>
-			<button aria-label="skip"></button>
-
-			<div id="awful-fucking-thing" aria-hidden="true" title="pet the &quot;AWFUL FUCKING THING ?"><img src="_assets/awful-fucking-thing.webp"></div>
-		</div>
+		<p>most stuff has tooltips for extra context.</p>
 
 	</div>
 
-	<!-- creata -->
-	<div id="creata-wrapper" class="flex-col">
-		<a id="cats" href="shh/fell-beasts.html"><img class="hfill" src="_assets/cats.gif" title="(cats by 1041uuu)"></a>
-		<img class="hfill" src="_assets/railing.png">
 
-		<a id="creata" href="creata/index.html" title="my projects!">
-			<span>cre<span>a</span>ta</span>
-		</a>
-	</div>
-
-	<!-- tunes -->
-	<a id="tunes" class="grid-wide" href="creata/tunes/index.html" title="music i've made. (almost entirely beepbox tracks.)">
-		<div class="title">junetunes <span id="track-name"></span> ♪</div>
-		<iframe class="grid-wide"></iframe>
-		<img id="cd" src="creata/tunes/_assets/cd.png" aria-hidden="true">
+	<!-- about -->
+	<a id="about" href="about/index.html" title="all about the animal in charge!" class="grid-tall">
+		<div>about the webmaster</div>
+		<div aria-hidden="true">about the webmaster</div>
+		<div aria-hidden="true">about the webmaster</div>
+		<div aria-hidden="true">all about me ⁖ <img class="icon" src="_assets/16x16/minispin.gif"></div>
+		<div aria-hidden="true">about the webmaster</div>
 	</a>
 
-	<!-- laser pointer -->
-	<div id="laser-pointer" aria-hidden="true"></div>
 
-	<!-- wires -->
-	<div class="insert grid-wide" aria-hidden="true">
-		<img class="hfill" src="_assets/wires.gif">
+	<!-- creata -->
+	<div id="creata-wrapper" class="grid-trpl-tall">
+
+		<a id="cats" href="shh/fell-beasts.html"><img class="hfill" src="_assets/cats.gif" title="(cats by 1041uuu)"></a>
+		<img src="_assets/railing.png" width="100%">
+
+		<div id="creata">
+
+			<h2>cre<span>a</span>ta</h2>
+	
+			<!-- cat comic -->
+			<a id="cat-comic" href="creata/cat/index.html" title="a long-term worldbuilding/comic project set&#13;in the sky above a flooded earth">cat comic</a>
+	
+			<!-- bad dream -->
+			<a id="bad-dream" href="creata/bad-dream/index.html" title="a surreal trpg on growth">bad dream</a>
+
+		</div>
+
+	</div>
+	
+
+	<!-- audio player -->
+	<div id="audio-player">
+
+		<div class="small">0/0</div>
+		<marquee>...</marquee>
+		<div class="small">0:00</div>
+
+		<button></button>
+		<div id="player-bar">
+			<div id="player-bar-track" aria-hidden="true"></div>
+			<div id="player-bar-progress" aria-hidden="true"></div>
+			<img id="player-bar-thumb" src="_assets/cat-thumb.png" draggable="false" aria-hidden="true">
+		</div>
+		<button></button>
+
+		<img id="awful-fucking-thing" src="_assets/nuko-stroll.webp" title="pet the &quot;AWFUL FUCKING THING ?">
+
 	</div>
 
-	<div id="news-wrapper" class="flex grid-wide after-insert">
+	
+	<!-- tunes -->
+	<a id="tunes" href="creata/tunes/index.html" title="a collection of beepbox tracks i've made!">
+		<h2>junetunes <span id="track-name">loading...</span> ♪</h2>
+		<iframe></iframe>
 
-		<!-- headlines -->
-		<marquee id="news" class="lcd grid-wide" aria-hidden="true">
-			<span>Free fucking Palestine</span>
-			<span>"I should learn to code", and other horrible life decisions</span>
-			<span>Stabbing people a-OK "as long as you're weird about it", confirms angelic messenger</span>
-			<span>World's tallest burger swallowed easily by rather smug-looking snake</span>
-			<span>AND WHAT WAS HER SISTER?? A PRINCESS!!! THE WICKED WITCH OF THE EASTT, BRO!!!!</span>
-			<span>Set a timer for 15 minutes. Start drawing!</span>
-			<span>Blood-stained girl holding knife pleads not guilty: "I didn't do it. You have no proof I did it."</span>
-			<img src="_assets/spr_realisticexplosion.gif" style="display: inline-block; width: 96px; height: 1em; margin-right: 64px">
-			<span>Statue of Liberty "vanished without a trace", experts say</span>
-			<span>Mysterious "mustachioed statue" sighted on the New York coast</span>
-			<span>MUTILATION AUTONOMY</span>
-			<span>Exclusive interview with premier economist: "Sure, stocks are up, I guess. This whole thing is made up, anyway"</span>
-			<span>There is basically no downside to gluing your eyes shut in exchange for badass spells</span>
-			<span>🦂</span>
-			<span>Real darkness has love for a face. The first death is in the heart.</span>
-			<span>"Meow", says local cat, "mrrp."</span>
-		</marquee>
+		<img id="cd" src="creata/tunes/_assets/cd.png">
+	</a>
 
-		<!-- increment -->
-		<iframe id="increment" loading="lazy" src="https://incr.easrng.net/badge?key=webcatz" style="background: url(//incr.easrng.net/bg.gif)"></iframe>
-		
-	</div>
 
-	<!-- shrines -->
-	<div id="shrines" class="grid-tall flex-col">
-		<div class="title">shrines :3</div>
-		<div class="body">
-			<a href="ough/baba/index.html"><img class="hfill" src="ough/baba/assets/large-baba.gif">baba is you</a>
-			<a href="ough/izutsumi/index.html"><img class="hfill" src="ough/izutsumi/thumbnail.png">izutsumi.....</a>
-			<a href="ough/mob-psycho.html"><img class="hfill" src="ough/_assets/reigeature.png">mob psycho</a>
+	<!-- blog -->
+	<a id="blog" href="writing/blog/index.html" class="grid-trpl-tall" title="listen to me ramble. mostly project updates nowadays.">
+		<img class="icon" src="_assets/16x16/door.gif"> blog
+	</a>
+
+
+	<!-- statuscafe -->
+	<div id="statuscafe-wrapper">
+		<div id="statuscafe">
+			<div id="statuscafe-username">loading statuscafe...</div>
+			<div id="statuscafe-content"></div>
+			<script defer src="https://status.cafe/current-status.js?name=webcatz"></script>
 		</div>
 	</div>
 
-	<!-- status -->
-	<div id="statuscafe">
-		<div id="statuscafe-username">statuscafe</div>
-		<div id="statuscafe-content"></div>
-		<script defer src="https://status.cafe/current-status.js?name=webcatz"></script>
-	</div>
 
-	<div class="grid-tall-2 flex-col">
+	<!-- footer -->
+	<footer>
+		
+		<div class="textbox">
+			<p>mail me: <a href="mailto:june.webcatz@gmail.com">june.webcatz@gmail.com</a></p>
+			<p>live c. 2022, now in v6</p>
+		</div>
 
-		<!-- blog -->
-		<a id="blog" href="writing/blog/index.html" title="listen to me talk">da blog</a>
-
-		<!-- art -->
-		<a id="art" class="grid-tall" href="creata/art/index.html" title="ill update this for 500 dollars">
-			<div>june wants to<br>draw . . .</div>
-		</a>
-
-		<!-- poetry -->
-		<a id="poetry" href="writing/poetry/index.html">june's emo poetry</a>
-
-	</div>
-
-	<!-- ac unit -->
-	<div id="ac" class="insert center" aria-hidden="true">
-		<img class="hfill" src="_assets/ac.gif">
-	</div>
-
-	<!-- cat comic -->
-	<a id="cat" class="after-insert" href="creata/cat/index.html" title="my worldbuilding + comic project!"><img src="_assets/cat-comic-button.png" alt="cat comic"></a>
-
-	<div id="links-wrapper" class="grid-wide">
-
-		<!-- links -->
-		<a id="links" class="grid-tall" href="links/index.html">links</a>
-
-		<!-- beepbox webring -->
-		<a id="beepbox" class="grid-wide" href="beepbox-webring/index.html">
-			<div>the <span>beepbox webring</span>!</div>
-		</a>
-
-		<!-- resources -->
-		<a id="resources" href="resources/index.html">resources</a>
-
-		<!-- lightswitch -->
 		<img id="lightswitch" src="_assets/lightswitch.png" aria-hidden="true">
 
-	</div>
+		<a id="map" href="map.html" title="ft. some stuff not linked on the index" class="grid-wide">// sitemap //</a>
 
-	<!-- sitemap -->
-	<a id="map" class="grid-wide" href="map.html" title="ft. some stuff that's not linked anywhere else">// sitemap //</a>
+	</footer>
 
 </nav>
 
-<footer>you've reached the bottom of the page! for miscellaneous inquiries, <a href="mailto:june.webcatz@gmail.com" target="_blank">mail me at june.webcatz@gmail.com</a> ^_^</footer>
 </body>
 </html>

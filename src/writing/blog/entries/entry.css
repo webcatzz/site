@@ -29,7 +29,6 @@ h2 {
 	font-family: print, sans-serif;
 	rotate: -1deg;
 	padding: 6px 8px;
-	margin-block: 0;
 }
 header time {
 	display: flex;

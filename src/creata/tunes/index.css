@@ -6,24 +6,25 @@ body {
 	display: flex;
 
 	height: 100vh;
-	background-color: var(--black);	
+	background:
+		url(_assets/neil.gif) no-repeat 75% center,
+		linear-gradient(to right, var(--black) 160px, transparent 160px),
+		url(../../_assets/cloud.png) center / cover var(--blue);	
 	overflow: hidden;
 }
 
 header {
-	background-color: inherit;
-	padding-block: 0.5em;
-	padding-left: 500px;
+	padding-block: 1em;
+	padding-left: 640px;
 	position: fixed;
 	top: 0;
 	left: 0;
 	right: 0;
-
-	h1 {
-		font-size: 0.875em;
-		font-weight: normal;
-		margin-block: 0;
-	}
+}
+h1 {
+	font-size: 1em;
+	letter-spacing: 0.25em;
+	margin-block: 0;
 }
 
 @keyframes spin {to {rotate: 360deg}}
@@ -144,6 +145,8 @@ header {
 	color: var(--dark-gray);
 	font-size: 0.875em;
 	padding: 1em;
+	border: 1px dotted;
+	border-radius: 1em;
 
 	transform: skewX(-10deg);
 	z-index: 2;

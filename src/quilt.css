@@ -1,0 +1,369 @@
+.grid-wide {grid-column: 1/3}
+.grid-tall {grid-row: span 2}
+.grid-dbl-tall {grid-row: span 3}
+.grid-trpl-tall {grid-row: span 4}
+
+.textbox {
+	padding: 1em;
+	border: 0.125em dotted var(--dark-gray);
+	border-radius: 1em;
+
+	p:first-of-type {margin-top: 0}
+	p:last-of-type {margin-bottom: 0}
+
+	a {
+		text-decoration: dotted underline;
+		&:hover {text-decoration: underline}
+	}
+}
+
+
+/* intro */
+#intro {
+	height: 2em;
+	padding-bottom: 2em;
+	overflow-y: auto;
+}
+
+
+/* about */
+#about {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: end;
+	gap: 0.25em;
+
+	color: var(--black);
+	font-size: 1.5em;
+	letter-spacing: 0.05em;
+
+	contain: strict;
+	height: 5.25em;
+	background-color: var(--red);
+	padding-right: 0.2em;
+	border-radius: 4px;
+	flex: 1;
+
+	div:nth-of-type(odd) {font-style: italic}
+}
+
+
+/* creata */
+#creata {
+	contain: inline-size paint;
+	background-color: var(--yellow);
+	padding-bottom: 0.5em;
+
+	h2 {
+		font-size: 9em;
+		font-weight: bold;
+		letter-spacing: -0.1em;
+		line-height: 0.5;
+		margin-left: -0.25em;
+		pointer-events: none;
+		
+		span {font-family: print, sans-serif}
+	}
+
+	a {
+		display: block;
+		font-weight: bold;
+		margin: 0.5em 1em;
+		padding: 1em;
+		border-radius: 1em;
+
+		&:hover {
+			outline: 8px dotted var(--white);
+			outline-offset: 2px;
+		}
+	}
+}
+#cats {
+	display: block;
+	width: 92px;
+	margin: -46px 8px -20px auto;
+	position: relative;
+}
+
+
+/* audio player */
+#audio-player {
+	display: grid;
+	grid-template-columns: max-content 1fr max-content;
+
+	font-family: ms-serif;
+
+	position: relative;
+
+	.small {
+		color: var(--gray);
+		font-size: 0.75em;
+		justify-self: center;
+		align-self: center;
+	}
+
+	button {
+		padding: 0.25em 0.5em;
+		transition: transform 0.1s, box-shadow 0.1s;
+
+		&:hover {
+			transform: translateY(-2px);
+			box-shadow: 0 2px var(--gray);
+		}
+
+		&:active {
+			transform: translateY(2px);
+			box-shadow: none;
+		}
+	}
+}
+#player-bar {
+	contain: size;
+	height: 24px;
+	margin-inline: 0.5em;
+	position: relative;
+	cursor: pointer;
+	align-self: center;
+	user-select: none;
+
+	> * {
+		position: absolute;
+		top: 50%;
+		left: 0;
+		pointer-events: none;
+	}
+}
+#player-bar-track, #player-bar-progress {
+	height: 6px;
+	margin-top: -3px;
+}
+#player-bar-track {
+	right: 0;
+	background-image: url(_assets/plaid.png);
+}
+#player-bar-progress {
+	width: 0;
+	background-image: repeating-linear-gradient(60deg,
+		var(--red) 0,
+		var(--red) 15px,
+		var(--yellow) 15px,
+		var(--yellow) 30px,
+		var(--blue) 30px,
+		var(--blue) 45px
+	);
+}
+#player-bar-thumb {
+	width: 24px;
+	height: 24px;
+	margin-top: -12px;
+	image-rendering: auto;
+	transition: rotate 0.2s;
+
+	&:hover {rotate: -5deg}
+	&:active {rotate: 15deg}
+}
+
+
+/* nightcore */
+@keyframes awful {
+	from {object-position: left}
+	to {object-position: right}
+}
+#awful-fucking-thing {
+	object-fit: contain;
+	height: 20px;
+
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 100%;
+	cursor: pointer;
+	animation: 60s awful linear infinite alternate;
+
+	&:active {content: url(_assets/nuko-electrocute.gif)}
+}
+.nightcore {
+	background: url(_assets/sparkles.gif) center / cover;
+
+	#awful-fucking-thing {
+		content: url(_assets/nuko-dance.webp);
+		animation-duration: 1s;
+	}
+}
+
+
+/* cat comic */
+#cat-comic {
+	text-shadow: -0.1em 0.1em var(--blue);
+	background-color: var(--blue);
+	background: url(_assets/cloud.png) 5% var(--blue);
+}
+
+
+/* bad dream */
+#bad-dream {
+	background-image: url(_assets/halftone.png);
+	background-color: var(--black);
+}
+
+
+/* tunes */
+#tunes {
+	text-shadow:
+		0.15em 0.15em var(--black),
+		0.3em 0.15em var(--blue);
+
+	contain: paint;
+	height: max-content;
+	background: url(_assets/cloud.png) center var(--blue);
+	padding: 0.75em 1em;
+	padding-left: 1.5em;
+	border-left: 0.5em solid var(--dark-gray);
+	margin-left: -1em;
+	transform: skewY(-1deg);
+
+	iframe {
+		width: calc(100% - 2em);
+		height: 64px;
+		background-color: var(--black);
+		border-radius: 4px;
+		margin-left: 2em;
+		opacity: 0.75;
+	}
+}
+#track-name {
+	font-family: ms-serif;
+	font-size: 0.75em;
+	letter-spacing: 0.1em;
+	text-shadow:
+		0 -0.1em var(--black), 0.1em -0.1em var(--black),
+		0.15em 0 var(--black), 0.15em 0.15em var(--black),
+		0 0.15em var(--black), -0.1em 0.1em var(--blue),
+		-0.1em 0 var(--black), -0.1em -0.1em var(--black);
+	
+	padding-left: 0.25em;
+	padding-right: 0.4em;
+	background-color: var(--black);
+	margin: 0 4px;
+	justify-self: start;
+}
+@keyframes spin {to {rotate: 360deg}}
+#cd {
+	width: 320px;
+	position: absolute;
+	top: 4px;
+	left: -112px;
+	z-index: -1;
+	animation: 120s spin steps(1080) infinite;
+}
+
+
+/* blog */
+#blog {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	color: var(--yellow);
+	font-family: poppins;
+	font-size: 4em;
+	text-shadow: 0.1em 0.1em var(--black);
+
+	aspect-ratio: 578/354;
+	background:
+		url(_assets/stamp.png) center / cover,
+		url(_assets/leaves.gif) repeat-x center / auto 64px,
+		url(_assets/plaid.png);
+	border-radius: 0.5rem;
+}
+
+
+/* album */
+#album {
+	display: grid;
+	grid-template-columns: max-content 1fr;
+	gap: 0.5em;
+
+	background-color: var(--dark-gray);
+	padding: 0.5em;
+	border-radius: 0.5em;
+
+	img {
+		grid-row: 1/4;
+	}
+}
+
+
+/* statuscafe */
+#statuscafe {
+	color: var(--black);
+	background-color: var(--white);
+	padding: 1em;
+	border-radius: 1em;
+	position: relative;
+
+	&::after {
+		content: "";
+		display: block;
+		width: 1.5em;
+		height: 1.5em;
+		background-color: inherit;
+		border-radius: 2px;
+		border-bottom-left-radius: 50%;
+		rotate: 45deg;
+		position: absolute;
+		top: calc(50% - 0.75em);
+		right: -0.5em;
+	}
+}
+#statuscafe-username {
+	color: var(--gray);
+	font-size: 0.75em;
+
+	a {
+		text-decoration: dotted underline;
+		&:hover {text-decoration: underline}
+	}
+}
+#statuscafe-content {
+	margin-top: 0.25em;
+}
+#statuscafe-wrapper {
+	background-image: url(_assets/plaid.png);
+	padding: 1em;
+	padding-right: 1.5em;
+	border-top-left-radius: 0.5em;
+	border-bottom-left-radius: 0.5em;
+	margin-right: -1em;
+}
+
+
+/* lightswitch */
+#lightswitch {
+	width: unset;
+	cursor: pointer;
+}
+
+
+/* footer */
+footer {
+	display: grid;
+	grid-template-columns: 1fr max-content;
+	gap: inherit;
+	color: var(--gray);
+	font-size: 0.875em;
+}
+
+
+/* sitemap */
+#map {
+	color: var(--gray);
+	font-family: ms-serif;
+	font-size: 0.875em;
+	letter-spacing: 0.025em;
+	text-decoration: dotted underline;
+	margin-inline: auto;
+
+	&:hover {text-decoration: underline}
+}

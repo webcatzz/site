@@ -1,19 +1,7 @@
-// title sound
-document.querySelector("h1").onclick = () => {
-	let tts = new SpeechSynthesisUtterance();
-	tts.text = "webcatz", tts.rate = 0.75;
-
-	let voices = [];
-	for (const voice of speechSynthesis.getVoices()) if (voice.lang == "en-US") voices.push(voice);
-	tts.voice = voices[Math.floor(Math.random() * voices.length)];
-
-	speechSynthesis.speak(tts);
-}
-
-
 // audio player
-const audioEls = document.getElementById("audio-player").children;
-var nightcore = false;
+
+const audioPlayer = document.getElementById("audio-player");
+const audioEls = audioPlayer.children;
 AudioPlayer.create([
   "First Steps - Lena Raine (Celeste OST)",
   "Forgo's Treasures - Hirokazu Ando (Kirby and the Forgotten Land OST)",
@@ -45,105 +33,58 @@ AudioPlayer.create([
 		else if (nightcore) AudioPlayer.playbackRate = 1.5;
 	}
 });
-AudioPlayer.addEventListener("durationchange", () => audioEls[2].innerText = Math.floor(AudioPlayer.duration / 60) + ":" + ("0" + Math.round(AudioPlayer.duration % 60)).slice(-2));
 
 
-// nightcore
-AudioPlayer.preservesPitch = false, AudioPlayer.webkitPreservesPitch = false;
-document.getElementById("awful-fucking-thing").onclick = () => {
-	if (nightcore = !nightcore) {
-		document.getElementById("audio-player").classList.add("nightcore");
-		document.getElementById("awful-fucking-thing").firstChild.src = "_assets/awful-fucking-thing-2.webp";
-		AudioPlayer.playbackRate = 1.5;
-	} else {
-		document.getElementById("audio-player").classList.remove("nightcore");
-		document.getElementById("awful-fucking-thing").firstChild.src = "_assets/awful-fucking-thing.webp";
-		AudioPlayer.playbackRate = 1;
-	}
-}
 
+// latest tune
 
-// tunes button
 document.getElementById("track-name").textContent = tracklist[0].name;
 document.getElementById("tunes").querySelector("iframe").src = hashToURL(tracklist[0].hash);
 tracklist = null;
 
 
-// laser pointer
-var laserPoints = 0;
-document.getElementById("laser-pointer").onclick = () => {
-  let laser = document.getElementById("laser-pointer");
-  laser.style.left = Math.random() * window.innerWidth + "px", laser.style.top = Math.random() * (window.innerHeight - 288) + 288 + "px";
-	if (++laserPoints == 4) window.open("https://www.youtube-nocookie.com/embed/fwB8nbI4TuM?si=ghaXscYy5DPXzkhv", "_blank");
+
+// audio pitch easter eggs
+
+AudioPlayer.preservesPitch = false;
+
+const nuko = document.getElementById("awful-fucking-thing");
+var nightcore = false;
+
+nuko.onclick = function () {
+	if (nightcore) {
+		AudioPlayer.playbackRate = 1;
+		audioPlayer.classList.remove("nightcore");
+		nightcore = false;
+	} else {
+		AudioPlayer.playbackRate = 1.5;
+		audioPlayer.classList.add("nightcore");
+		nightcore = true;
+	}
 }
 
-
-// lightswitch
+const lightswitch = document.getElementById("lightswitch");
 var lightsOff = false;
-document.getElementById("lightswitch").onclick = function () {
-  new Audio("https://files.catbox.moe/as06cd.mp3").play();
-	lightsOff = !lightsOff;
-  if (lightsOff) {
-    document.body.classList.add("lights-off");
-    AudioPlayer.playbackRate = 0.6;
-  } else {
-    document.body.classList.remove("lights-off");
-    AudioPlayer.playbackRate = nightcore ? 1.5 : 1;
-  }
+
+lightswitch.onclick = function () {
+	new Audio("https://files.catbox.moe/as06cd.mp3").play();
+	if (lightsOff) {
+		AudioPlayer.playbackRate = nightcore ? 1.5 : 1;
+		document.body.classList.remove("lights-off");
+		lightsOff = false;
+	} else {
+		AudioPlayer.playbackRate = 0.6;
+		document.body.classList.add("lights-off");
+		lightsOff = true;
+		addEventListener("mousedown", lightswitch.onclick, {once: true})
+	}
 }
 
 
 
-// clicksplosion effect (adapted from http://www.mf2fm.com/rv)
+// themes
 
-const starWrapper = document.body.appendChild(document.createElement("div"));
-starWrapper.id = "star-wrapper", starWrapper.ariaHidden = true;
-const colors = ["var(--blue)", "var(--red)", "var(--yellow)"];
-const starMaxX = innerWidth - 7, starMaxY = innerHeight - 7;
-let expCount = 0;
-
-onclick = e => {
-  if (expCount <= 5) {
-    let colori = Math.floor(Math.random() * 3 * colors.length), intensity = 5 + Math.random() * 4;
-    let stars = [];
-    expCount++;
-    for (let i = 0; i < 75; i++) {
-      stars[i] = {
-        el: document.createElement('div'),
-        x: e.pageX, y: e.pageY - 5,
-        dX: (Math.random() - 0.5) * 1.25,
-        dY: (Math.random() - 0.5) * intensity,
-        decay: Math.floor(Math.random() * 16) + 16,
-        intensity: intensity,
-      };
-      stars[i].dX *= intensity - Math.abs(stars[i].dY);
-      stars[i].el.className = "star";
-      if (colori < colors.length) stars[i].el.style.color = colors[i % 2 ? expCount % colors.length : colori];
-      else if (colori < 2 * colors.length) stars[i].el.style.color = colors[expCount % colors.length];
-      else stars[i].el.style.color = colors[i % colors.length];
-      stars[i].el.ariaHidden = true;
-      stars[i].el.append("*");
-      starWrapper.appendChild(stars[i].el);
-    }
-    explode(stars);
-  }
+document.getElementById("theme-select").onchange = function () {
+	document.body.className = this.value;
 }
-
-async function explode(stars) {
-  let starCount = 75;
-  do {
-    for (const star of stars) if (star.decay) {
-      star.dY += 1.25 / star.intensity, star.x += star.dX, star.y += star.dY;
-      star.el.style.left = star.x + 'px', star.el.style.top = star.y + 'px';
-      switch (--star.decay) {
-        case 14: star.el.style.fontSize = '7px'; break;
-        case 6: star.el.style.fontSize = '2px'; break;
-        case 0: star.el.remove(); starCount--;
-      }
-    }
-    await wait(33);
-  } while (starCount);
-  expCount--;
-
-  function wait(ms) {return new Promise(resolve => setTimeout(resolve, ms))}
-}
+document.getElementById("theme-select").onchange();
