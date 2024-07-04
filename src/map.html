@@ -151,6 +151,8 @@ a {
 <canvas id="canvas"></canvas>
 
 <script>
+onload = () => {
+
 const ctx = document.getElementById("canvas").getContext("2d");
 ctx.canvas.width = document.body.offsetWidth;
 ctx.canvas.height = document.body.offsetHeight;
@@ -191,6 +193,8 @@ for (const link of document.querySelectorAll("body > ul > li")) {
   }
 
   ctx.stroke();
+}
+
 }
 </script>
 
