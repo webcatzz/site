@@ -3,143 +3,196 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>webcatz //→ map!</title>
+  <title>somewhere, distant tracks thunder...</title>
   <link rel="icon" href="_assets/icon.png">
   <link rel="stylesheet" href="global.css">
   <style>
-/* :root {
-	--white: #c6c1b6;
-	--gray: #2b2827;
-	--black: #161616;
-} */
 body {
 	color: var(--white);
 	font-size: 16px;
+	columns: 2;
+	column-gap: 4em;
+	
+	max-width: 600px;
 	background-color: var(--black);
-	padding-block: 64px;
-}
-#main {max-width: 600px; margin-inline: auto; position: relative}
+	margin: 64px auto;
+	position: relative;
 
-ul {list-style-type: none; padding-left: 0}
-ul ul {
-	max-width: max-content;
-	padding-right: 2em;
-	border: 1.5px dotted var(--dark-gray);
-	border-radius: 12px;
-	margin-left: 1.5em;
+	&::after {
+		content: "";
+		display: block;
+		height: 1em;
+		background-image: url(_assets/halftone.png);
+	}
 }
-li {color: var(--light-gray); margin-block: 1em}
-li::before {content: ""; vertical-align: middle; display: inline-block; width: 1em; height: 1em; background-color: var(--white); border: 4px solid var(--dark-gray); border-radius: 50%; margin-top: -2px; margin-inline: 1em}
-a:hover {font-weight: bold}
+
+h1 {
+	background-image: url(_assets/halftone.png);
+}
+
+ul {
+	font-family: ms-serif;
+	list-style-type: none;
+	padding-left: 0;
+
+	ul {
+		max-width: max-content;
+		margin-left: 1.5em;
+	}
+}
+li {
+	color: var(--gray);
+	margin-block: 0.5em;
+
+	&::before {
+		content: "";
+		display: inline-block;
+		vertical-align: middle;
+		width: 0.875em;
+		height: 0.875em;
+		background-color: var(--white);
+		border: 4px solid var(--dark-gray);
+		border-radius: 50%;
+		margin-top: -2px;
+		margin-inline: 1em;
+	}
+}
 
 a {
-	color: inherit;
+	color: var(--white);
 	text-align: center;
 	white-space: nowrap;
 	text-overflow: ellipsis;
 
-	padding: 0.5em;
 	background-image: url(_assets/halftone.png);
-	border: 1.5px dotted var(--dark-gray);
-	border-radius: 6px;
-
 	overflow: hidden;
 	position: relative;
 	transition: border-width 0.2s;
 
 	img {
 		display: inline-block;
-		margin-right: 0.25em;
-		margin-bottom: -0.2em;
+		margin-right: 0.5em;
+		margin-bottom: -0.125em;
 	}
 
 	&:hover {
+		font-weight: bold;
 		border-width: 3px;
 	}
 }
 
-#canvas {position: absolute; inset: 0; z-index: -1}
+#canvas {
+	position: absolute;
+	inset: 0;
+	z-index: -1;
+}
 
 @media (max-width: 600px) {
-	body {padding-block: 0}
+	body {
+		columns: unset;
+		margin-block: 2em;
+	}
 }
   </style>
 </head>
 <body>
-  <div id="main">
-    <h1>map <span style="line-height: 0">🚇</span></h1>
-    <ul>
-      <li><a href="index.html"><img src="_assets/icon.png">index</a></li>
-      <li><a href="about/index.html"><img src="_assets/16x16/minispin.gif">about</a></li>
-      <!-- creata -->
-      <li>creata
-        <ul>
-          <li><a href="creata/cat/index.html">cat comic</a></li>
-					<li><a href="creata/bad-dream/index.html">bad dream</a></li>
-          <li><a href="creata/tunes/index.html">tunes</a></li>
-          <li><a href="creata/art/index.html">art</a></li>
-        </ul>
-      </li>
-      <!-- writing -->
-      <li>writing
-        <ul>
-					<li><a href="writing/blog/index.html"><img src="_assets/16x16/door.gif">blog</a></li>
-					<li><a href="writing/poetry/index.html"><img src="_assets/16x16/notebook.gif">poetry</a></li>
-          <li><a href="writing/muse.html"><img src="_assets/16x16/muse.gif">muse ariadne (archive)</a></li>
-        </ul>
-      </li>
-      <!-- shrines -->
-      <li>ough
-        <ul>
-          <li><a href="ough/baba/index.html">baba is you</a></li>
-          <li><a href="ough/izutsumi/index.html">izutsumi</a></li>
-          <li><a href="ough/mob-psycho.html">mob psycho 100</a></li>
-        </ul>
-      </li>
-      <!-- fun stuff -->
-      <li>fun stuff
-        <ul>
-					<li><a href="fun/tarot/index.html">the middling arcana</a></li>
-          <li><a href="fun/conway.html">a slightly altered conway's game of life</a></li>
-        </ul>
-      </li>
-      <!-- resources -->
-      <li><a href="resources/index.html">resources</a>
-        <ul>
-					<li><a href="resources/webstring/index.html">webstring</a></li>
-          <li><a href="resources/discord.html">discord icon tester</a></li>
-          <li><a href="resources/span-ify.html">span-ify</a></li>
-        </ul>
-      </li>
-      <!-- links -->
-      <li><a href="beepbox-webring/index.html">beepbox webring</a></li>
-      <li><a href="links/index.html">links</a></li>
-    </ul>
-    <canvas id="canvas"></canvas>
-  </div>
-  <script>
+
+<h1>map <span style="line-height: 0">🚇</span></h1>
+
+<ul>
+	<li><a href="index.html"><img src="_assets/icon.png">index</a></li>
+	<li><a href="about/index.html"><img src="_assets/16x16/minispin.gif">about</a></li>
+	<!-- creata -->
+	<li>creata
+		<ul>
+			<li><a href="creata/cat/index.html">cat comic</a></li>
+			<li><a href="creata/bad-dream/index.html">bad dream</a></li>
+			<li><a href="creata/tunes/index.html">tunes</a></li>
+			<li>art</li>
+		</ul>
+	</li>
+	<!-- writing -->
+	<li>writing
+		<ul>
+			<li><a href="writing/blog/index.html"><img src="_assets/16x16/door.gif">blog</a></li>
+			<li><a href="writing/poetry/index.html"><img src="_assets/16x16/notebook.gif">poetry</a></li>
+			<li><a href="writing/muse.html"><img src="_assets/16x16/muse.gif">muse ariadne (archive)</a></li>
+		</ul>
+	</li>
+	<!-- ough -->
+	<li>shrines
+		<ul>
+			<li><a href="ough/baba/index.html">baba is you</a></li>
+			<li><a href="ough/izutsumi/index.html">izutsumi</a></li>
+			<li><a href="ough/mob-psycho.html">mob psycho 100</a></li>
+		</ul>
+	</li>
+	<!-- fun -->
+	<li>little games
+		<ul>
+			<li><a href="fun/tarot/index.html">the middling arcana</a></li>
+			<li><a href="fun/conway.html">conway's game of life</a></li>
+		</ul>
+	</li>
+	<!-- resources -->
+	<li><a href="resources/index.html">resources</a>
+		<ul>
+			<li><a href="resources/webstring/index.html">webstring</a></li>
+			<li><a href="resources/discord.html">discord icon tester</a></li>
+			<li><a href="resources/span-ify.html">span-ify</a></li>
+		</ul>
+	</li>
+	<!-- links -->
+	<li><a href="beepbox-webring/index.html">beepbox webring</a></li>
+	<li><a href="links/index.html">links</a></li>
+	<li><a href="archive/">archive</a></li>
+</ul>
+
+<canvas id="canvas"></canvas>
+
+<script>
 const ctx = document.getElementById("canvas").getContext("2d");
-ctx.canvas.width = document.getElementById("main").offsetWidth;
-ctx.canvas.height = document.getElementById("main").offsetHeight;
+ctx.canvas.width = document.body.offsetWidth;
+ctx.canvas.height = document.body.offsetHeight;
 ctx.lineWidth = 16;
+ctx.lineCap = "round";
 
 const colors = [
-  getComputedStyle(canvas).getPropertyValue("--blue"),
-  getComputedStyle(canvas).getPropertyValue("--red"),
-  getComputedStyle(canvas).getPropertyValue("--yellow"),
+  getComputedStyle(ctx.canvas).getPropertyValue("--blue"),
+  getComputedStyle(ctx.canvas).getPropertyValue("--red"),
+  getComputedStyle(ctx.canvas).getPropertyValue("--yellow"),
 ];
 
 let i = -1;
-for (const link of document.querySelectorAll("#main > ul > li")) {
+let onLeftColumn = true;
+
+for (const link of document.querySelectorAll("body > ul > li")) {
   ctx.strokeStyle = ++i ? colors[i % colors.length] : "#575452";
+
   ctx.beginPath();
-  ctx.moveTo(-8, link.offsetTop - 48);
-  ctx.lineTo(28, link.offsetTop + 10);
-  for (const sublink of link.querySelectorAll("ul li")) {
+  ctx.moveTo(link.offsetLeft, link.offsetTop - 23.2);
+  ctx.lineTo(link.offsetLeft + 28, link.offsetTop + 10);
+
+	let lastX = link.offsetLeft;
+
+  for (const sublink of link.getElementsByTagName("li")) {
+
+		// column wrapping
+		if (onLeftColumn) {
+			if (lastX < sublink.offsetLeft - 32) {
+				ctx.lineTo(lastX + 28, ctx.canvas.height);
+				ctx.moveTo(sublink.offsetLeft + 28, sublink.offsetTop);
+				onLeftColumn = false;
+			}
+			else lastX = sublink.offsetLeft;
+		}
+
     ctx.lineTo(sublink.offsetLeft + 28, sublink.offsetTop + 10);
   }
+
   ctx.stroke();
 }
-  </script>
+</script>
+
 </body>
 </html>
