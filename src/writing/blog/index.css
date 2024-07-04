@@ -133,7 +133,7 @@ nav {
 	rotate: 0deg !important;
 
 	a time {
-		color: var(--light-gray);
+		color: var(--gray);
 		font: 0.75em/0 gotham;
 		letter-spacing: -0.1em;
 		margin-right: 0.25em;

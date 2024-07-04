@@ -17,8 +17,7 @@ header {
 	display: flex;
 	align-items: center;
 	gap: 4em;
-	position: sticky;
-	top: -5em;
+	position: relative;
 	z-index: 1;
 }
 h1 {
@@ -32,7 +31,6 @@ h1 {
 	margin: 0 0.1em;
 }
 #title-line {
-	color: var(--off-black);
 	flex: 1; height: 1px; margin-right: -2em; background-color: currentcolor;
 
 	&::before {
@@ -50,7 +48,6 @@ h1 {
 
 section {
 	max-width: 500px;
-	border: 1px solid var(--off-black);
 	margin: 4em auto;
 
 	&:first-of-type {margin-top: 2em}
@@ -72,7 +69,6 @@ ul {
 @keyframes hover {to {top: 0}}
 li {
 	padding: 0.5em 0.75em;
-	border-block: 1px solid var(--off-black);
 	background-color: #00000080;
 	margin-bottom: -1px;
 
