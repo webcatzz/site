@@ -360,7 +360,6 @@ footer {
 /* links */
 #links {
 	color: var(--gray);
-	font-family: ms-serif;
 	text-align: center;
 	font-size: 0.875em;
 	letter-spacing: 0.025em;
