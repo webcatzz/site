@@ -250,7 +250,7 @@
 }
 @keyframes spin {to {rotate: 360deg}}
 #cd {
-	width: 320px;
+	contain: layout;
 	position: absolute;
 	top: 4px;
 	left: -112px;
