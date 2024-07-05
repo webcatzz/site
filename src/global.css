@@ -44,3 +44,20 @@ hr {
 
 /* misc */
 .hidden {display: none !important}
+
+
+
+/* themes */
+
+.calico {
+	--blue: #8b93af;
+	--yellow: #f9a31b;
+	--white: #d4c09f;
+}
+
+.bubblegum {
+	--blue: #e8759f;
+	--red: #c55656;
+	--yellow: #f0a3c8;
+	--white: #c7d6c2;
+}

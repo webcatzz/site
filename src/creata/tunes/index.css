@@ -1,9 +1,9 @@
 @font-face {font-family: workbench; src: url(_assets/workbench.ttf)}
 
 body {
-	color: var(--white);
-
 	display: flex;
+
+	color: var(--white);
 
 	height: 100vh;
 	background:
@@ -13,24 +13,19 @@ body {
 	overflow: hidden;
 }
 
-header {
-	padding-block: 1em;
-	padding-left: 640px;
-	position: fixed;
-	top: 0;
-	left: 0;
-	right: 0;
-}
 h1 {
-	font-size: 1em;
+	font: 1em ms-serif;
 	letter-spacing: 0.25em;
-	margin-block: 0;
+	position: fixed;
+	left: 640px;
+	top: 1em;
 }
 
 @keyframes spin {to {rotate: 360deg}}
 #disc {
 	width: 95vh;
 	height: 95vh;
+	contain: layout;
 	margin-inline: -47.5vh;
 	align-self: center;
 	z-index: -1;
@@ -256,6 +251,29 @@ h2 {
 		font-family: sans-serif;
 		line-height: 0;
 		margin-right: 0.075em;
+	}
+}
+
+
+
+/* back */
+
+#back {
+	color: var(--gray);
+	font-size: 1.5em;
+
+	width: 1em;
+	height: 1em;
+	padding: 0.5em;
+	border: 1px dotted var(--dark-gray);
+	border-radius: 0.5em;
+
+	position: fixed;
+	left: 1em;
+	bottom: 1em;
+
+	&:hover {
+		color: var(--white);
 	}
 }
 

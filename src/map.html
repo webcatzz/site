@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>somewhere, distant tracks thunder...</title>
+  <title>somewhere, tracks thunder...</title>
   <link rel="icon" href="_assets/icon.png">
   <link rel="stylesheet" href="global.css">
   <style>
@@ -150,6 +150,7 @@ a {
 
 <canvas id="canvas"></canvas>
 
+<script src="theme.js"></script>
 <script>
 onload = () => {
 
@@ -160,9 +161,9 @@ ctx.lineWidth = 16;
 ctx.lineCap = "round";
 
 const colors = [
-  getComputedStyle(ctx.canvas).getPropertyValue("--blue"),
-  getComputedStyle(ctx.canvas).getPropertyValue("--red"),
-  getComputedStyle(ctx.canvas).getPropertyValue("--yellow"),
+  getComputedStyle(document.body).getPropertyValue("--blue"),
+  getComputedStyle(document.body).getPropertyValue("--red"),
+  getComputedStyle(document.body).getPropertyValue("--yellow"),
 ];
 
 let i = -1;

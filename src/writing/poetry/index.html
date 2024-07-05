@@ -21,17 +21,25 @@ body {
 	perspective: 1000px;
 }
 article {
+	display: grid;
+	grid-template:
+		"name date" max-content
+		"text text" 1fr
+		/ 1fr max-content;
 	font-size: 0.75em;
-	display: grid; grid-template: "name start" max-content "name end" max-content "text text" 1fr / 1fr max-content;
-	contain: strict; flex: 1;
+	contain: strict;
+	flex: 1;
 }
 #left {transform: rotateX(-4deg) rotateY(45deg); margin-right: -20px}
 #right {transform: rotateX(-4deg) rotateY(-50deg); margin-left: -20px; margin-bottom: 30px}
 
 h2 {margin-block: 0; grid-area: name; align-self: center}
-.date {font: 0.75em monospace; text-align: right}
-.bgn {margin-right: 1em; grid-area: start; align-self: end}
-.pub {grid-area: end; align-self: start}
+.date {
+	font: 0.75em monospace;
+	text-align: right;
+	align-self: center;
+	grid-area: date;
+}
 pre {padding-bottom: 1.5em; grid-area: text; overflow: auto; overscroll-behavior: none; scrollbar-color: #7e8982 transparent}
 .prompt {font: 0.875em sans-serif; white-space: normal; padding-left: 1em; border-left: 1px solid; margin-top: 4em}
 

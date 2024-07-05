@@ -1,6 +1,6 @@
 const poems = [
 	"sonny boy",
-	"fuck",
+	"one of those",
 	"orpheus",
 	"haiku he was cursed by an evil wizard to write",
 	"walled garden",
@@ -29,16 +29,13 @@ async function write(poem, page) {
 	let file = await fetch("_txt/" + poem + ".txt");
 	file = await file.text();
 
-	let dateIdx = file.indexOf("-");
-	let bodyIdx = file.indexOf("\n", dateIdx);
-	let bgn = file.substring(0, dateIdx - 1);
-	let pub = file.substring(dateIdx + 2, bodyIdx);
-	let text = file.substring(bodyIdx + 2);
+	let splitIdx = file.indexOf("\n");
+	let date = file.substring(0, splitIdx);
+	let text = file.substring(splitIdx).trimStart();
 
 	page.innerHTML = `
-		<h2>${poem === "fuck" ? "one of those poems where the author blocks out all the text and you can only guess what the poem says based on the punctuation and word breaks. so who knows what this really says" : poem}</h2>
-		<div class="date bgn">bgn. ${bgn}</div>
-		<div class="date pub">pub. ${pub}</div>
+		<h2>${poem}</h2>
+		<div class="date">pub. ${date}</div>
 		<pre>${text}</pre>
 	`;
 }

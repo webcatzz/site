@@ -62,7 +62,7 @@ var tracklist = [{
 },{
 	name: "city.mp3",
 	hash: "j5N04cityn321s1k0l00e0ft2ma7g0fj07r1O_U000000000000i0o543T0v0pu00f0000qg510Oa3d040w2h0E0T0v0pu00f0000qh510Oa1b4d040w3h0E0T0v0pu11f0000qg410Oad040w1h0E0T2v0pu02f180q040Oad030w0E0T2v0pu02f1a0q2I010le00a500Oad950w1E1b9T9v0pu00f0000q00d040E0b000i4w00d3gid18QlDxmu14h4h4y8y8y4h4h4h4h4h80000000000h00800M0400p255FAuAefwq9NZ79zzU6ysvhM0U-0ED7QswefHkjzW8kOfi71FyW0IwbjakO_9g4zSMU_k1q8J4nkp1jatnigFAuCe3j5SxrgJEFjbZG0GtEefS0J4mybGcxN93M0e3Uwbl5G5f7WYxR4svG0J4mybLHT4L-9zw-d2SxrhjNG_kXgsvI1q8J4nunGlcLMVcnjasiO9jBcykUFw8Jgnw30iDbV4FOuhashP0Jgk2nF4oIps2pt4OW97bW9vhbW96Chy8GgE1Ol9xAoy0MNhaHj54FTG1feQOc0w8b_W7xuuaxVxg-HPX0fca89uwE1Vxh3HQf0fc0",
-	note: "to quote myself: \"i am in a merry go round and it keeps going faster and faster and faster until i throw up\". for a \"kick the bucket\" game jam.",
+	note: "for a \"kick the bucket\" game jam. to quote myself: \"i am in a merry go round and it keeps going faster and faster and faster until i throw up\".",
 	date: [12, 7, 2023],
 	tags: ["jam"],
 },{
@@ -232,7 +232,7 @@ var tracklist = [{
 },{
 	name: "doorway of the edifice",
 	hash: "j5N0csea breezen310s2k6l00e0jt1Ua7g0jj07r1O_U00000000i0o321T0v0pu00f0000qpl12630Oa3b7d040w2h0E0T0v0ku00f0000qg410Oad040w1h0E0T0v0ku00f0000qo4400Oad040w7h0E0T2v0nu02f180q1d500Oa3b4d030w0E0b4xci4N8jhko000084zgid18Q53k000084x8i4x8Q00000008cPg000p26WGpvBUAFkpf1at6BEGlahIjbYL5bGBWsWF1HA2LuDeHnjCGRGRI3KplGdmCbE1o4m05whkOfkj5R1qwJgn9VcmCbj5Ouj5FyQNsy5F2QxqEKlOwJgmEbAYCbj5FyVf9yQNqoKj2QxqgJknaVgmEbk5OCj5FyQNszAxqgJ8nl2QhqgJgnaVgmEbk5Ouj5FyQNsDANqoGomJhGluk2QNqoJcnqVgmEbk5Ouj5FyQNlcLOYj9VSC5GQWtmCtfF939aCCws0kPhPt4xeDjdshFkNhowkEdcz4Q3nkkOc99yyq1iFrfy97j54D4u9shOvc-9rd0zksBgEsgFWbymPUzR8l0blg85b8Qa53CDs-VXjKfsxuItOOd2xgop6aiFyyp0FktFh0zkANhcl0blg85b8Qa51cz5kNhfMDUl0e34XZ0zAAyckoh6aiEWEOEQ",
-	note: "another track for that publictransit project. it was intended to 'layer' as you progressed through a specific page. still LOVE the weird bug-like drums in the last part.",
+	note: "track for a publictransit project. intended to loop specific measures as you progressed through a page. the weird bug-like drums are fun.",
 	date: [16, 3, 2023],
 	tags: ["labyrinth"]
 },{ // needs a hash
@@ -266,7 +266,7 @@ var tracklist = [{
 },{
 	name: "greenhouse (greg rpg)",
 	hash: "j5N07Unnamedn410s1k0l00e0jt1Ua7g0jj07r3O_U0000000000i0o4433T0v0ku00f010o100qh113bfd040w3h0E0T5v0pu05f154q93453b0d930HYr901i8ah00000h0E0T0v0pu11f0000qg410Oad040w1h0E0T0v0pu00f0000qgg163d040w0h0E0T2v0fu02f010w4010q050Oafd030w1E0b214h4i8y8y8Qlw004xci4N8j4xg000004zgidmtD4zgid18Q4zk0018i4x8i4x8i4x8p26TFyWwYFi5A1p0nAhNeg5EyV4UD82Qhq0Gy5h5AhkxtknB8Tu9yYj5VCbjdTIgKEyYO5VyrL4xu8yYO5HCXSEnqyYR5VEbJ2CwkYk5OwLd1qwKhaq9jS8nayYO5VybIyCAkYh5OgLcxqEK85dwFjO_bBd0WvgksyEWaiQi1QYjV4wqWAwqYAah782dcniakxp0PAMINsi8-24FUwkO9dMMu9yfyNjN0PKaYi8-aBf42C19K5_4N7NwFUwpT5u94v52Dy1jo9Kcu9yfwxaqxDrnpAuUaqpjN0CUNUC8-aBdcQu8m5cO8bhkzkgJaAte93FYCeDQNQZczQ1MqomwhQ862OpMuh8WsxoUye3N8zEgdb9D1VowA0H8nc3wYwhQadfcD1VEzEi4zOwUfaAt2LiONMuh8aglcbChMur8W5KBCPCNgfhR7hfhN20",
-	note: "a track i made for murumart's greg rpg. mart tweaked it a little before putting it in the game, but this is the original version.",
+	note: "track for murumart's greg rpg. mart tweaked it a little before putting it in the game, but this is the original version.",
 	date: [12, 2, 2023],
 	tags: ["complete"]
 },{
@@ -277,7 +277,7 @@ var tracklist = [{
 },{
 	name: "space cafe",
 	hash: "j5N0aspace-cafen521s1k0l09e03t1Ua7g0gj0nr1O_U0000000000000000i0o55421T1v0fu01f0000qxL1621500Oa75bvd080A0F0B0Q38e0Pa610R0000E3b8618626T5v0pu05f154qp6340Oa73bd230HYr901i8ah00000h0E0T5v0pu05f173qNl41630Oa3bfd230HVxh90000000000h0E0T0v0pu00f00010q8e2500Oa7d040w3h0E0T1v0kufbf0000q040Oad020A0F0B0Q9000Pf000R0000E250617T4v0fuf0f1a0q050Oa0z6666ji8k8k3jSBKSJJAArriiiiii07JCABrzrrrrrrr00YrkqHrsrrrrjr005zrAqzrjzrrqr1jRjrqGGrrzsrsA099ijrABJJJIAzrrtirqrqjqixzsrAjrqjiqaqqysttAJqjikikrizrHtBJJAzArzrIsRCITKSS099ijrAJS____Qg99habbCAYrDzh00E0T2v0ku02f180q1l630Oa3bbd030w1E0T9v0pu00f0000q040Oad040E0b04gO14cwh384gO00060y6gFzEiFr4x4cwh384gO5coU000000828p0000000048gx24800000000020x2400020000000000001028p0000000aoW0p29_E2Ehb8yMwOqgKHyyoK7f7umlKbprySnUMrH15Cc7gQ1kyJEyOK9F2Una9yUkYtV5lUHBuaVvyVKYSKt2000kOf4tcn89DCIzie_kapv44OukAGJcU-8aapHOv9aigIKAWexqChW5cnnjdShjbV9xCLbRppHOdJm6sv64sMO-qRNiI7zK8GKs7JGrlqRVI8miYAWezaCabzhE6zgakxhUFO97w58FV8qd0QqpER3hQhEQ3hE5ejasyhV63aui6zjd6Sqd8Qg0jNtgd754bjf5UG58cCnOyp78QuQFiziiJqpNYpJ10GsVSjbVqJNBHmWDetAOumAqkYnhbNN4z4qcYnOtyubEAUzkGa1W3E1g01jeDNajbZdcRYAChVeHjefQn4-9MdcNZgCp-FGapvAsFUEUFNhxzWAkNZ2ACnWfshf5Q2tqh7y0WhfJw01bQOfgi8U2qZ4VI0005cz5xBIcUYiAChyh6MOYhAAnx02unQ000GpNctPFiewuzW4000026g26L-w6uzwiw-zE17EU3G0q8-zE0TEU2y0q8-zE0DEU1y0k0jQs0h7Qt02Z704g2w0uzwa8-zE07EU1y0k0jQs1N7Qt02Z70kg2w3uzwi8-zX40E17EU6yfE-N0000",
-	note: "a theme for a hypothetical out-of-bounds cafe area in murumart's 'greg rpg'. the fuzz at the start is meant to sound like radio static being tuned out.",
+	note: "theme of hypothetical out-of-bounds cafe area in murumart's \"greg rpg\". the fuzz at the start is meant to sound like radio static being tuned out.",
 	date: [4, 2, 2023],
 	tags: ["complete", "starred"]
 },{
@@ -288,13 +288,13 @@ var tracklist = [{
 },{
 	name: "cassiopeia",
 	hash: "j5N0acassiopeian510s1k0l00e0nt2ma7g0nj0fr1O_U000000000000i0o54543T0v0uu00f0000q9540Oa3bvd1a0w3h0E0T1v0pue1f0000q0C010n7000Oa7d4a0A0F0B7Q0000Pe600R0000E2bb619T8v0pu1af010s500q040Oad030w2h0M00001111222233334444555566667777MMMMLLLLKKKKJJJJIIIIHHHHGGGGFFFFE0T8v0pu1df010o500q040Oad030w2h0M000111222333444555666777888999aaabbbMMMLLLKKKJJJIIIHHHGGGFFFEEDDE0T7v0pu07f050p61770q72d42g300q1Z021a90k70060630Oa3bld1a0HT-SRJJJJIAAAAAh0IaE1c11T2v0ku15f180q040Oad030w0E0b28p0y6g000248gy6g8xA28owy6800000000008xy00000000086gFw0008wy248gx240000000x248gx28p2CexaAGiFawy6gFzE248gx2400848gwx24gx2p27lFAu39B-2M9cYn0tczOVcLQYDEn5SPOuwslrf9X002wuzUAq38w05cm88cNqapNY2j5wFj95dgFR54Nqe1VkFFBd8FFyVw2R2ewhOEJ4mkooKz8zj5QNqh7g8VgmyhQ92LBMJcm_h8Vom58W17byMN7gA1pom2AsGxy68iOS52T2ewhUClyVai5O9ebxdBF2VczE4sCbAiczpoKyiSA90U8htQ5HAt0mHcUJ8zE2N7cwJaHjFmxtoGTN7pROsBGUod52CijnLBd0mxgEi5qPiAalGBiFi5mDtA02ChVoCbyIm15EyVb8yO0J4n9p8mAbh5Axq8J8mEa00apQY9kxAln8978adxDjOQRqCJlmhRGGyeHdj3FyOGOoJ5cU-pj5wxj95dgFR54NqelOFjjaqhi1j8NdncKxgEkiewhQjbIcz4oAOcgO8mgOcsBAFp34EU3AGp38NOmiBA0jO-Bh00",
-	note: "you'll notice in the middle i stuck some windows startup noises, because this track was originally intended as a theme for my transring d&d character, cassie, who is a robot that runs on windows vista. the track kind of veered way off of her character, though.",
+	note: "theme for my transring dnd character, cassie, a robot in the distant future who runs on windows vista. i stuck some windows startup noises in the middle.",
 	date: [26, 1, 2023],
 	tags: ["complete", "starred"],
 },{
 	name: "transit",
 	hash: "j5N07transitn300s2k0l00e03t1Uabg03j07r1O_U000000i0o333T8v0pu1af010s500q040Oad030w2h0M00001111222233334444555566667777MMMMLLLLKKKKJJJJIIIIHHHHGGGGFFFFE0T0v0pu00f0000qhk1630Oa3bd040w0h0E0T0v0pu00f0000qh510Oa3bid040w1h0E0b4h4id18Qp27JFAuCj5O0J4mybh5EyV70hq8J8mybh5Oeh5EyQhq8J4n8V8mybi5EyQhgehp4mybh5EyQhszAxq8J8mybh5Oeh5EyQhq8J4n8V8mybi5EyQhqp7wOoKAb1yR1q8J8n9V4mAbj5EyQxsDAhqgJcmybi5Ouh5F2QNq8J4nyH9yQNqoJ4mAbAYybi5FyQhqgKjO8J8mCbh5F2Vf8yQxqoJ4mybOH9yQNqoJ4mAbAYybi5FyQhqgKjO8J8mCbh5F2Vf8yQxqoJ4mybOH9yQNqoJ4mAbAYybi5FyQhqgKjO8J8mCbh5F2Vf8yQxqoJ4mAa5BAum8hh6MOfgIhQoAqp7F4uiAhQoAui8YB8zEN8YAhVam3Vam2YoC0hR9At697AOf9i8Wcif94uiAhQoAui8YBbaVaKjXzfh7JqAt697J2f9i8Wcif94uiAhQoAui8YTv0YHn9toKZ4uRGhQoAuO8YB8zEN8YAhVah7hyhV8zwYNzaT0",
-	note: "this one is based off [lost], the track i made for publictransit's phone line.",
+	note: "this one is based off \"lost\", the track i made for publictransit's phone line.",
 	date: [19, 1, 2023],
 	tags: ["labyrinth"]
 },{ // needs a hash
@@ -310,7 +310,7 @@ var tracklist = [{
 },{
 	name: "raindrops",
 	hash: "j5N09raindropsn311s1k0l00e07t1Uafg07j0fr1O_U0000000000i0o423T8v0pu08f010s500q150Oa3hfd030w2h0M00001111222233334444555566667777MMMMLLLLKKKKJJJJIIIIHHHHGGGGFFFFE0T0v0pu00f0000qgk1630Oad040w1h0E0T8v0ku1ff010o500q040Oad030w2h0MMMDDxxkkoobb550000eeoohhhhoouukkrrkkrrrrxxDDDDuukkkkkkkkkkrrAAMME0T2v01u02f180q050Oa8d030w6E0T9v0pu00f0000q040Oad040E0b28p2Cew8wy288w000000248gx248wy288wp24dDEWp7F7xqoKhap4FF4sEfeZhf2YlcLBxVTmf2ZIkRyDJxVGAb8sherH5WgIBhOFBPQuGu5YA1j8BfD8YLVx8YherID7YREYyfeW1UnPkFwNo4nPsuqYRUGu5YNarpi0kOf23bycVKwpt4OW9Pt0OZ4pqpvED7Q2_6wOY9zzW1u00001mwLnNubYLDNtbNaktnbZYnO_hzEN00001g11v-wkvgUuCfQfk7W7Gw50Y-xMF8vEuAfQfi0awuuzxBWe7F3Z3Qx-xWg000",
-	note: 'very erik satie gnossiene no. 1. a slightly different version was used in a "permanence" game jam.',
+	note: "very erik satie gnossiene no. 1. a slightly different version was used in a \"permanence\" game jam.",
 	date: [9, 12, 2022],
 	tags: ["outward", "jam"]
 },{
@@ -331,7 +331,7 @@ var tracklist = [{
 },{
 	name: "darkness falls (cover)",
 	hash: "9n51s6k0l00e0ft2Mabg0fj0br1i0o55543T5v2u05f10i8q83432d23HYr901i8ah00000h0E0T0v1u00f0qh013hd04w2h0E0T5v4ua6f10i8q8141d23HYr901i8ah00000h0E0T7v3u07f21842uaq0h631d07H_-CSQBKRKRJJJJh0IbE0T0v1u11f0qg01d04w1h0E0T4v1uf0f0q011z6666ji8k8k3jSBKSJJAArriiiiii07JCABrzrrrrrrr00YrkqHrsrrrrjr005zrAqzrjzrrqr1jRjrqGGrrzsrsA099ijrABJJJIAzrrtirqrqjqixzsrAjrqjiqaqqysttAJqjikikrizrHtBJJAzArzrIsRCITKSS099ijrAJS____Qg99habbCAYrDzh00E0b000000084zgid19mu9FUCM0000wid18R000000054zgid18QlDyqL00000000000p29dISLEA9CU_i8mq_KSrnQhVkv9ALVCI2KhobtAC30lVlvdSgnUyKpbUtwAm2go95wN5ugnHKZL5_x5R3SWsGWURNf5TxULy2rEkR-2bU0Lxi-ELHbVgLMgLGbWyZ9va5YynIR-zpvjn-y-0bUgLAy-kbU8LSzzQBZVvx8t_G5ZVvunTBYenO9vA1VvBFb_ZS1S2-ERWqy-jbZwLVgLLLGJJbXi-GXubXXXXXy-ULFbXdHWDzFW9eDKrnUBy7jQQEteFJv8arzZ9dvPGcFA5_ao38lmVJKl8sh8HTXXQl_-ZtjpL5ZjR4TdULNb4sTjAQEqVfwZ1v-4LjnUkb9gthvaMsxplbUi6AXbO--W-OHoBbXXr2--W-KHuwqWomGMX-uLEHX2Z9vM0LrUDW2M9wkwYo5bQRXubW_F1GW2SCL_nMQD2RiY12i9HVd1nik9laMc78SRph1nOlJkH0TOdBmoQ5tj3leq_BjkR_ZszrjCQPnY4YdB953tjC9p5kzkykXjv65A5AcmQBkahkzUBAligkyQXjuoukAI6o42mg1h0AA2HIi5C4d8RvkVBO14dmPlcddsITjCOqU00",
-	note: "a cover of 'darkness falls' from deltarune. this was where i figured out how to customize instruments—you can tell by the echo fx.",
+	note: "a cover of \"darkness falls\" from deltarune. this was where i figured out how to customize instruments—you can tell by the echo fx.",
 	date: [16, 10, 2022],
 	tags: ["complete", "cover"]
 },{
@@ -364,7 +364,7 @@ var tracklist = [{
 },{
 	name: "bwhee",
 	hash: "9n41s7k0l0ce07t2ma7g0jj07r1i0o4253T0v1u10f0qg01d04w2h0E0T1v3ub2f10k8q011d23A0F1B8Q0000Pe600E179T0v1u10f0qg01d04w2h0E0T3v3ud6f10tcq0x11p61d13SU0010508whhaa9hE2c0612T2v1u15f10w4qw02d03w0E0b4xci4Ql6hkp5hw004zgid18Q4zg0000000wi4N8k000000018y8y8w00000h4i8y8y8p23zFH-45jjjjj0V5jjjjjpjwlddc98SmrypvNkQv6PjjjjtLr8KNIQQQFRYRdjNJrDf2YNIQMQz8mi-WWCCG1GmrQvGlCWvgolCSrNv8mgPq_j9R5xno5d7QAV6KKKKK7HJHHHHBty2HLHHHHHHLIIFGFMqhAHaWWWWWWWmrnZ_DbaXqieCCEzH8XOeg8NfbX2eubFJvGCWvxg1jhD3CW3CZ0OWPbFcKAzH8M0",
-	note: 'this ended up turning into "encounter".',
+	note: "this ended up turning into \"encounter\".",
 	date: [4, 8, 2022]
 },{
 	name: "run",

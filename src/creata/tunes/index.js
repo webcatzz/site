@@ -20,14 +20,16 @@ class RadioButton extends HTMLElement {
 	}
 
 	toggle() {
-		if (!this.checked) for (const button of this.parentElement.querySelectorAll("& > radio-button")) {
-			if (button.checked) {
-				button.checked = false;
-				break;
+		if (!this.checked) {
+			for (const button of this.parentElement.querySelectorAll("& > radio-button")) {
+				if (button.checked) {
+					button.checked = false;
+					break;
+				}
 			}
 		}
-
 		this.checked = !this.checked;
+		this.dispatchEvent(new Event("toggle"));
 	}
 
 }
@@ -73,9 +75,11 @@ for (const track of tracklist) {
 		}
 	}
 
-	button.addEventListener("click", function () {
-		view(this.checked ? null : track);
+	// updating view
+	button.addEventListener("toggle", function () {
+		viewTrack(this.checked ? track : null);
 	});
+
 	document.getElementById("tracklist").appendChild(button);
 }
 
@@ -83,11 +87,13 @@ for (const track of tracklist) {
 
 // filtering
 
-for (const button of document.querySelectorAll("#filters radio-button")) button.addEventListener("click", filterbuttonclick);
-function filterbuttonclick() {
-	if (this.checked) filterBy(this.dataset.value ?? this.getAttribute("aria-label"));
-	else filterBy("track");
-};
+for (const button of document.querySelectorAll("#filters radio-button")) {
+	button.addEventListener("toggle", onFilterToggle);
+}
+
+function onFilterToggle() {
+	filterBy(this.checked ? this.dataset.value ?? this.getAttribute("aria-label") : "track");
+}
 
 function filterBy(query) {
 	for (const track of document.getElementsByClassName("track")) {
@@ -99,7 +105,7 @@ function filterBy(query) {
 
 // viewing track
 
-const viewdiv = {
+const view = {
 	el: document.getElementById("view"),
 	title: document.querySelector("h2"),
 	ribbon: document.getElementById("ribbon"),
@@ -115,63 +121,66 @@ const viewdiv = {
 		"#02d1f5", // blue
 		"#4e0ba1", // purple
 	],
+
 	prevColor: -1,
 	randomizeColor: () => {
-		let rand = Math.floor(Math.random() * (viewdiv.colors.length - 1));
-		if (rand === viewdiv.prevColor) rand++;
-		viewdiv.el.style.setProperty("--color", viewdiv.colors[rand]);
-		viewdiv.prevColor = rand;
+		let rand = Math.floor(Math.random() * (view.colors.length - 1));
+		if (rand === view.prevColor) rand++;
+		view.el.style.setProperty("--color", view.colors[rand]);
+		view.prevColor = rand;
 	}
 }
 
-function view(track) {
-	if (track) viewdiv.el.classList.remove("hidden");
-	else return viewdiv.el.classList.add("hidden");
+function viewTrack(track) {
+	if (track) view.el.classList.remove("hidden");
+	else return view.el.classList.add("hidden");
 
-	viewdiv.randomizeColor();
-	viewdiv.title.textContent = track.name;
+	view.randomizeColor();
 
+	// title
+	history.replaceState(null, "", "?track=" + track.name);
+	view.title.textContent = track.name;
+
+	// iframe
 	let newFrame = document.createElement("iframe");
 	newFrame.src = track.hash ? hashToURL(track.hash) : "https://file.garden/ZdmFgugxzVCR-8Bl/tunes/" + encodeURIComponent(track.name) + ".mp3";
-	viewdiv.iframe.replaceWith(newFrame);
-	viewdiv.iframe = newFrame;
+	view.iframe.replaceWith(newFrame);
+	view.iframe = newFrame;
 
+	// note
 	if (track.note) {
-		viewdiv.description.textContent = track.note;
-		viewdiv.description.classList.remove("hidden");
+		view.description.textContent = track.note;
+		view.description.classList.remove("hidden");
 	}
-	else viewdiv.description.classList.add("hidden");
+	else view.description.classList.add("hidden");
 
+	// tags
 	if (track.tags) {
-		viewdiv.tags.textContent = "";
+		view.tags.textContent = "";
 		for (const tag of track.tags) {
-			let el = viewdiv.tags.appendChild(document.createElement("span"));
+			let el = view.tags.appendChild(document.createElement("span"));
 			el.className = "tag";
 			el.textContent = tag;
 		}
-		viewdiv.tags.classList.remove("hidden");
+		view.tags.classList.remove("hidden");
 	}
-	else viewdiv.tags.classList.add("hidden");
+	else view.tags.classList.add("hidden");
 }
 
-view(null);
+viewTrack(null);
 
 
 
 // url params
 
 let params = new URLSearchParams(location.search);
+
 if (params.has("track")) {
 	let idx = tracklist.findIndex(track => track.name === params.get("track"));
+
 	if (idx !== -1) {
 		let button = document.getElementsByClassName("track")[idx];
 		button.scrollIntoView({behavior: "smooth", block: "center"});
 		button.click();
 	}
-}
-
-for (const button of document.getElementsByClassName("track")) {
-	button.addEventListener("click", function () {
-		history.replaceState(null, "", "?track=" + this.firstChild.textContent);
-	});
 }
