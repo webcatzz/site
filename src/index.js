@@ -86,7 +86,7 @@ lightswitch.onclick = function () {
 
 document.getElementById("theme-select").onchange = function () {
 	document.body.className = this.value;
-	if (this.value) localStorage.setItem("theme", this.value);
-	else localStorage.removeItem("theme");
+	if (this.value) sessionStorage.setItem("theme", this.value);
+	else sessionStorage.removeItem("theme");
 }
-document.getElementById("theme-select").value = localStorage.getItem("theme", this.value) ?? "";
+document.getElementById("theme-select").value = sessionStorage.getItem("theme", this.value) ?? "";

@@ -1,1 +1,1 @@
-if (localStorage.getItem("theme")) document.body.classList.add(localStorage.getItem("theme"));
+if (sessionStorage.getItem("theme")) document.body.classList.add(sessionStorage.getItem("theme"));
