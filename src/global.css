@@ -1,3 +1,4 @@
+@font-face {font-family: mspgothic; src: local("MS PGothic"), url(_assets/fonts/mspgothic.ttf)}
 @font-face {font-family: ms-serif; src: url(_assets/fonts/ms-serif.ttf)}
 
 :root {
@@ -12,7 +13,7 @@
 }
 
 body {
-	font-family: Helvetica, sans-serif;
+	font-family: mspgothic, sans-serif;
 	margin: 0;
 	cursor: url(_assets/cursor.png), auto;
 	image-rendering: pixelated;
@@ -23,6 +24,17 @@ a {text-decoration: none}
 .titled, .hover {cursor: help}
 
 /* block */
+h1, h2, h3, h4 {
+	font-family: sans-serif;
+	margin-block: 0;
+}
+hr {
+	color: inherit;
+	height: 1px;
+	background-color: currentcolor;
+	border: none;
+}
+
 button, select {all: unset}
 button, select, summary {
 	user-select: none;
@@ -33,14 +45,6 @@ summary::marker {line-height: 0}
 img, audio, video, marquee, button, select, input, iframe {display: block}
 iframe {border: none}
 audio {width: 100%}
-
-h1, h2, h3, h4 {margin-block: 0}
-hr {
-	color: inherit;
-	height: 1px;
-	background-color: currentcolor;
-	border: none;
-}
 
 /* misc */
 .hidden {display: none !important}

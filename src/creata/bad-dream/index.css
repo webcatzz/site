@@ -11,7 +11,7 @@
 
 body {
 	color: var(--white);
-	font-family: dico;
+	font: 0.6em pixel-times;
 
 	display: flex;
 	flex-direction: column;
@@ -31,8 +31,7 @@ main {
 
 h1 {
 	color: var(--black);
-	font-size: 1em;
-	font-weight: normal;
+	font: 1rem dico;
 
 	max-width: max-content;
 	padding: 0.375em 0.75em;
@@ -46,13 +45,8 @@ h1 {
 	}
 }
 
-p {
-	font: 0.6em pixel-times;
-}
-
 #github {
 	color: var(--dark-gray);
-	font: 0.6em pixel-times;
 	text-align: right;
 
 	&:hover {
