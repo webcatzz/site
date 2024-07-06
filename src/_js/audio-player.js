@@ -125,6 +125,7 @@ AudioPlayer.create = function (list, opts) {
 	if (opts.slider) {
 		this.slider = opts.slider;
 		this.slider.role = "slider";
+		this.slider.ariaLabel = "seekbar";
 		this.slider.ariaValueMin = 0;
 		this.slider.tabIndex = 0;
 

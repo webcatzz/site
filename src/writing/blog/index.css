@@ -197,10 +197,11 @@ nav {
 /* extras */
 
 #player {
-	color: var(--gray);
 	display: flex;
 	flex-direction: column;
 	gap: 12px;
+	color: var(--gray);
+	font-family: sans-serif;
 	background-color: black;
 	padding: 16px 12px;
 	margin-left: 1em;

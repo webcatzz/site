@@ -1,35 +1,44 @@
 AudioPlayer.create([
-	"(forever?????????) - glass beach",
-	"angel surveillance - bubblebaath",
-	"astronaut - jack stauber's micropop",
-	"axolotl - c418",
-	"balduin - thomas hoehl",
-	"checking in - lena raine",
-	"city night - joel corelitz",
-	"cloudy out - eel valley",
-	"floating away - jun ishikawa",
-	"glimmer - joel corelitz",
-	"hippocampus sea - levc",
 	"interlude - feed me jack",
-	"job done - thomas hoehl",
-	"ocean stars falling - michael guy bowman",
-	"prayer - kow otani",
-	"reactivating the first purifier - thomas hoehl",
-	"respit - erik scheele",
-	"shoreline scuffle - beatrix quinn",
-	"strato - jonathan geer",
-	"sworn guardian - beatrix quinn",
-	"the rain - coffeebug",
 	"unused demo 2 - mark sparling",
 	"woody path - joel corelitz",
-	"ゆめうつつ (half asleep) - lamp"
-	// some ghibli?
+	"shoreline scuffle - beatrix quinn",
+	"sworn guardian - beatrix quinn",
+	"stickerbush symphony - david wise",
+	"(forever?????????) - glass beach",
+	"floating away - jun ishikawa",
+	"angel surveillance - bubblebaath",
+	"prayer - kow otani",
 ],{
 	playButton: document.getElementById("play"),
 	skipButton: document.getElementById("skip"),
-	shuffle: true,
 	fileGarden: "ZdmFgugxzVCR-8Bl"
 });
+
+/*
+"(forever?????????) - glass beach",
+"angel surveillance - bubblebaath",
+"astronaut - jack stauber's micropop",
+"axolotl - c418",
+"balduin - thomas hoehl",
+"city night - joel corelitz",
+"cloudy out - eel valley",
+"floating away - jun ishikawa",
+"glimmer - joel corelitz",
+"hippocampus sea - levc",
+"interlude - feed me jack",
+"job done - thomas hoehl",
+"ocean stars falling - michael guy bowman",
+"prayer - kow otani",
+"reactivating the first purifier - thomas hoehl",
+"shoreline scuffle - beatrix quinn",
+"strato - jonathan geer",
+"sworn guardian - beatrix quinn",
+"unused demo 2 - mark sparling",
+"woody path - joel corelitz",
+"ゆめうつつ (half asleep) - lamp",
+"stickerbush symphony - david wise",
+*/
 
 // marquee
 AudioPlayer.marquee = document.querySelector("marquee");
