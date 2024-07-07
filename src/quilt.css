@@ -50,44 +50,6 @@
 }
 
 
-/* creata */
-#creata {
-	contain: inline-size paint;
-	background-color: var(--yellow);
-	padding-bottom: 0.5em;
-
-	h2 {
-		font-size: 9em;
-		font-weight: bold;
-		letter-spacing: -0.1em;
-		line-height: 0.5;
-		margin-left: -0.25em;
-		pointer-events: none;
-		
-		span {font-family: print, sans-serif}
-	}
-
-	a {
-		display: block;
-		font-weight: bold;
-		margin: 0.5em 1em;
-		padding: 1em;
-		border-radius: 1em;
-
-		&:hover {
-			outline: 8px dotted var(--white);
-			outline-offset: 2px;
-		}
-	}
-}
-#cats {
-	display: block;
-	width: 92px;
-	margin: -46px 8px -20px auto;
-	position: relative;
-}
-
-
 /* audio player */
 #audio-player {
 	display: grid;
@@ -194,6 +156,44 @@
 }
 
 
+/* creata */
+#creata {
+	contain: inline-size paint;
+	background-color: var(--yellow);
+	padding-bottom: 0.5em;
+
+	h2 {
+		font-size: 9em;
+		font-weight: bold;
+		letter-spacing: -0.1em;
+		line-height: 0.5;
+		margin-left: -0.25em;
+		pointer-events: none;
+		
+		span {font-family: print, sans-serif}
+	}
+
+	a {
+		display: block;
+		font-weight: bold;
+		margin: 0.5em 1em;
+		padding: 1em;
+		border-radius: 1em;
+
+		&:hover {
+			outline: 8px dotted var(--white);
+			outline-offset: 2px;
+		}
+	}
+}
+#cats {
+	display: block;
+	width: 92px;
+	margin: -46px 8px -20px auto;
+	position: relative;
+}
+
+
 /* cat comic */
 #cat-comic {
 	text-shadow: -0.1em 0.1em var(--blue);
@@ -204,8 +204,13 @@
 
 /* bad dream */
 #bad-dream {
-	background-image: url(_assets/halftone.png);
-	background-color: var(--black);
+	color: #b8aab0;
+	text-shadow: -0.1em 0.1em var(--black);
+	padding-left: 2em !important;
+	background:
+		url(_assets/bad-dream-box.png),
+		url(_assets/halftone.png) var(--black);
+	box-shadow: 0 0 16px -8px inset var(--black);
 }
 
 
@@ -363,6 +368,8 @@ footer {
 	text-align: center;
 	font-size: 0.875em;
 	letter-spacing: 0.025em;
+	background-image: url(_assets/halftone.png);
+	border-radius: 1em;
 
 	a {
 		text-decoration: dotted underline;
