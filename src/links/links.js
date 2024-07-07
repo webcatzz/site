@@ -34,14 +34,14 @@ function dropTape(e) {
 		let src = this.dataset.src;
 		this.remove();
 
-    tvIframe.src = "";
-    tv.classList.add("loading");
-    let sfx = new Audio("https://files.catbox.moe/4gff8o.mp3");
-    sfx.onended = () => {
-      tv.classList.remove("loading");
-      tvIframe.src = "https://www.youtube-nocookie.com/embed/" + src + (src.includes("?") ? "&" : "?") + "autoplay=1";
-    }
-    sfx.play();
+		tvIframe.src = "";
+		tv.classList.add("loading");
+		let sfx = new Audio("https://files.catbox.moe/4gff8o.mp3");
+		sfx.onended = () => {
+			tv.classList.remove("loading");
+			tvIframe.src = "https://www.youtube-nocookie.com/embed/" + src + (src.includes("?") ? "&" : "?") + "autoplay=1";
+		}
+		sfx.play();
 	}
 
 	function inBounds(x, y, minX, maxX, minY, maxY) {return x > minX && x < maxX && y > minY && y < maxY}

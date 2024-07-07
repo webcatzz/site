@@ -8,7 +8,7 @@ how to use:
 <script src="wherever/youre/storing/tabs.js"></script>
 
 2. all you need to do is wrap your tabs in a <tab-div></tab-div>.
-   to give the tabs names (displayed in the tab buttons), add a data-tab attribute.
+	 to give the tabs names (displayed in the tab buttons), add a data-tab attribute.
 	 otherwise, names will be auto-generated. (Tab 1, Tab 2, Tab 3, etc.)
 <tab-div>
 	<div data-tab="First">This is the first tab!</div>
@@ -17,7 +17,7 @@ how to use:
 </tab-div>
 
 3. the tab bar and buttons will be automatically inserted.
-   to style them, use the following classes:
+	 to style them, use the following classes:
 .tab-bar (div that contains all tab buttons. default styling: {display: flex})
 .tab-button
 .active (applied to tab buttons whose tab is open)
