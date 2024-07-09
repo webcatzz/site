@@ -128,21 +128,26 @@ button, select {
 	border-radius: 1em;
 }
 
+@keyframes appear {from {opacity: 0}}
+
 .lights-off {
 
 	&::before {
 		content: "";
-		background-color: var(--black);
+		background-color: black;
 		position: fixed;
 		inset: 0;
 		z-index: 999;
 	}
 
 	&::after {
-		content: url(_assets/chill.gif);
+		content: url(_assets/napstablook.gif);
+		opacity: 0.33;
 		position: fixed;
-		inset: 0;
+		left: calc(50% - 427px);
+		top: calc(50% - 240px);
 		z-index: 999;
+		animation: 30s appear;
 	}
 
 }
