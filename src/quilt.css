@@ -138,8 +138,6 @@
 	height: 20px;
 
 	position: absolute;
-	left: 0;
-	right: 0;
 	bottom: 100%;
 	cursor: pointer;
 	animation: 60s awful linear infinite alternate;
@@ -221,13 +219,11 @@
 		0.3em 0.15em var(--blue);
 
 	contain: paint;
-	height: max-content;
 	background: url(_assets/cloud.png) center var(--blue);
-	padding: 0.75em 1em;
+	padding: 1em;
 	padding-left: 1.5em;
-	border-left: 0.5em solid var(--dark-gray);
-	margin-left: -1em;
-	transform: skewY(-1deg);
+	border-radius: 4px;
+	margin-left: -0.5em;
 
 	iframe {
 		width: calc(100% - 2em);

@@ -10,7 +10,6 @@ AudioPlayer.create([
 	"Paramnesiac - still crisp (Pseudoregalia OST)",
 	"Marine Tube - Go Ichinose (Pokémon Black & White 2 OST)",
 	"Relic - Aaron Cherof (Minecraft: Trails & Tales OST)",
-	"Eliezer's Waltz - Disparition (Welcome to Night Vale)",
 	"I Feel Like (Live) - coffeebug (MIDIfreak)",
 	"See You At The Top - Mark Sparling (A Short Hike OST)",
 	"pawprints in the snow - coffeebug (haunted sticky notes)",
