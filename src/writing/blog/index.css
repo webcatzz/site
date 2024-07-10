@@ -3,15 +3,20 @@
 }
 
 body {
-	color: var(--black);
 	display: flex;
 	justify-content: center;
 	align-items: center;
+
+	color: var(--black);
+
+	max-width: max-content;
 	height: 100vh;
 	background:
 		linear-gradient(to right, #ffffff10 1px, transparent 1px) center / 64px 64px,
 		linear-gradient(to top, #ffffff10 1px, transparent 1px) center / 64px 64px,
 		var(--background) center / cover black;
+	margin-inline: auto;
+	position: relative;
 	overflow-y: hidden;
 	
 	&::before {
@@ -224,6 +229,16 @@ nav {
 	margin-top: 4.5em;
 	position: absolute;
 }
+#maps {
+	width: 400px;
+	position: absolute;
+	right: -120px;
+}
+#letters {
+	width: 400px;
+	position: absolute;
+	left: -120px;
+}
 
 #background-credit {
 	color: var(--white);
@@ -253,8 +268,10 @@ nav {
 
 		contain: inline-size;
 		width: 100vw;
+		max-width: unset;
 		height: unset;
 		overflow-y: unset;
+		padding-bottom: 50px;
 	}
 
 	#rosebed {
@@ -271,7 +288,7 @@ nav {
 
 	h1::after {content: none}
 
-	#player {
+	#player, #maps {
 		display: none;
 	}
 

@@ -19,7 +19,8 @@ AudioPlayer.create([
 	"paper planes - twikipedia",
 	"eat me alive - saturdays at your place",
 	"mother mary - late bloomer",
-	"chainsaw girl - chainsaw girl",
+	"weird fishes╱ arpeggi - radiohead",
+	"yerach ben yomo - forest spirit, sun on your back",
 ],{
 	playButton: player.children[0],
 	skipButton: player.children[1],
