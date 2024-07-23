@@ -228,11 +228,19 @@ hr {
 		border-radius: 3px;
 		border-top-right-radius: 4em;
 
+		.tab-button:last-of-type {
+			margin-left: 2em;
+		}
+
 		.tab-button:not(.active) {
 			background-color: #ffffff50;
 			border: 1px solid var(--light-gray);
 
 			&:first-of-type {margin-left: 4px}
+			&:last-of-type {
+				border: none;
+				opacity: 0.5;
+			}
 		}
 	}
 }
@@ -306,22 +314,6 @@ hr {
 	letter-spacing: -0.1em;
 	margin-top: -0.1em;
 	background-image: url(_assets/halftone.png);
-}
-
-#sona {
-	gap: 1em;
-
-	> div:last-of-type {
-		display: grid;
-		grid-template-columns: repeat(3, 1fr);
-		grid-template-rows: masonry;
-		gap: 4px;
-
-		overflow-y: auto;
-		flex: 1;
-
-		img {border-radius: 3px}
-	}
 }
 
 

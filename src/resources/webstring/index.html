@@ -6,7 +6,7 @@
   <title>webstring ꔛ a webring script</title>
   <link rel="icon" href="../../_assets/icon.png">
   <link rel="stylesheet" href="../../global.css">
-  <link rel="stylesheet" href="highlight/atom-one-dark.min.css">
+  <link rel="stylesheet" href="syntax.css">
   <style>
 body {color: #282c34; text-shadow: 0.1em 0.1em var(--white); background: url(../../_assets/dots.png) var(--white); margin: 2em}
 a {text-decoration: underline}
@@ -58,12 +58,8 @@ button {background-image: url(../../_assets/dots.png); margin-left: 2em}
   <pre id="settings-object"></pre>
 
   <p>the settings object is where all the information about your webring is kept.</p>
-  <ul>
-    <li><b>sites</b> is a list of all the sites in the webring. each url has to be enclosed in quotes and followed with a comma, like so: <code>"url",</code></li>
-    <li><b>widget</b> is the html that'll be inserted as your widget. the PREV and NEXT get replaced with the urls of the previous and next sites in the webring respectively.</li>
-    <li><b>error</b> is the html that'll be inserted instead when a site isn't in your webring.</li>
-  </ul>
-  <p>i <i>highly</i> recommend giving your widget an <code>id=""</code> with the name of your webring, otherwise it is nearly impossible for webring members to add custom css to their widgets.</p>
+
+  <p>i <i>highly</i> recommend giving your widget an <code>id=""</code> with the name of your webring, otherwise it's really difficult for webring members to add custom styling to their widgets.</p>
 
   <h2>how do i add the widget?</h2>
   <p>wherever you'd like the widget to be, just link the script:</p>
@@ -92,16 +88,18 @@ button {background-image: url(../../_assets/dots.png); margin-left: 2em}
   <div id="notes" class="box hidden"></div>
   <pre id="script"><span class="tag">// waiting for a summoning...</span></pre>
 
-  <script src="highlight/highlight.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/highlight.min.js"></script>
   <script>
 document.getElementById("settings-object").innerHTML = hljs.highlight(`// webring settings
 webring = {
 
+  // list of sites in the ring
   sites: [
     "https://your_site_here.neocities.org",
     "https://another_site.neocities.org",
   ],
 
+  // html inserted as your widget
   // PREV and NEXT get replaced with neighboring site urls
   widget: \`
     <div id="my-webring" style="display: flex; gap: 8px">
@@ -111,6 +109,7 @@ webring = {
     </div>
   \`,
 
+  // html inserted instead of your widget on sites that aren't in the ring
   error: "<div>This site isn't part of the webring yet.</div>",
 
 };`, {language: "js"}).value;
@@ -144,13 +143,14 @@ function getScript(settings = {}) {
 // webring settings
 webring = {
 
+  // list of sites in the ring
   sites: [
     "https://your_site_here.neocities.org",
     "https://another_site.neocities.org",
   ],
 
-  // PREV and NEXT get replaced with neighboring site urls${insertIf(settings.stylesheet, `
-  stylesheet: "https://your_site_here.neocities.org/folder/widget.css",`)}
+  // html inserted as your widget
+  // PREV and NEXT get replaced with neighboring site urls
   ${settings.multiwidget ? `widgets: {
     default: \`
       <div style="display: flex; gap: 8px">
@@ -173,17 +173,21 @@ webring = {
       <a href="RANDOM">random</a>`)}
       <a href="NEXT">next</a>
     </div>
-  \``},
+  \``},${insertIf(settings.stylesheet, `
 
+  // widget css
+  stylesheet: "https://your_site_here.neocities.org/folder/widget.css",`)}
+
+  // html inserted instead of your widget on sites that aren't in the ring
   error: "<div>This site isn't part of the webring yet.</div>",
 
 };
 
 
 
-// all of the actual code
+// code
 webring.index = location.href.startsWith("file://") ? 0 : webring.sites.findIndex(url => location.href.startsWith(url));
-if (webring.index == -1) document.currentScript.outerHTML = webring.error;
+if (webring.index === -1) document.currentScript.outerHTML = webring.error;
 else {${insertIf(settings.stylesheet, `
   let sheet = document.createElement("link");
   sheet.rel = "stylesheet", sheet.href = webring.stylesheet;
