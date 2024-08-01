@@ -99,6 +99,7 @@ marquee {
 #content {
 	display: flex;
 	gap: 2em;
+	margin-top: -3em;
 }
 
 ul {
@@ -121,12 +122,13 @@ main {
 	padding: 1em 1.75em 0;
 	box-shadow: -4px -8px;
 	border-radius: 6px;
-	margin-top: -3em;
 }
 
 #right {
 	display: flex;
 	flex-direction: column;
+	justify-content: end;
+	gap: 4px;
 	max-width: 220px;
 }
 
@@ -155,7 +157,7 @@ main {
 
 #izutsumi {
 	width: calc(100% + 3em);
-	margin: auto -3em -2em 0;
+	margin: 0 -3em -2em 0;
 	align-self: end;
 	image-rendering: auto;
 }
