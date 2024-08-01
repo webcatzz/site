@@ -17,13 +17,6 @@ body {
 	background-color: var(--black);
 	margin: 64px auto;
 	position: relative;
-
-	&::after {
-		content: "";
-		display: block;
-		height: 1em;
-		background-image: url(_assets/halftone.png);
-	}
 }
 
 h1 {
@@ -79,6 +72,13 @@ a {
 		font-weight: bold;
 		border-width: 3px;
 	}
+}
+
+footer {
+	content: "";
+	display: block;
+	height: 1em;
+	background-image: url(_assets/halftone.png);
 }
 
 #canvas {
@@ -147,6 +147,8 @@ a {
 	<li><a href="links/index.html">links</a></li>
 	<li><a href="archive/">archive</a></li>
 </ul>
+
+<footer></footer>
 
 <canvas id="canvas" aria-hidden="true"></canvas>
 

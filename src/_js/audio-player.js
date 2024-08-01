@@ -52,9 +52,10 @@ want more? here's a list of all possible settings. each one is optional!
 	shuffle
 		true or false. if true, shuffles the playlist randomly. false by default
 	fileGarden
-		a string. instead of passing individual srcs, automatically grabs filegarden srcs. only use if you have a filegarden account.
-		set this to the string that appears between "file.garden/" and the next "/" in your files' links.
-		instead of an array of objects, use an array of strings as your playlist. these strings should match the names of files in your filegarden's root folder (minus the extension).
+		a string. alternate shorthand for writing playlists. use only if you're using filegarden to store tracks.
+		set this to the string that, in your files' links, appears between "file.garden/" and the next "/".
+		instead of using objects ({}) in the playlist, use strings containing songs' filenames (no extension) on filegarden.
+		the strings'll be used as song titles + auto-converted into src links.
 	onended
 		a function that will run every time a track ends. for adding your own functionality
 
