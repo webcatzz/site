@@ -1,11 +1,14 @@
 @font-face {font-family: mspgothic; src: local("MS PGothic"), url(_assets/fonts/mspgothic.ttf)}
 @font-face {font-family: ms-serif; src: url(_assets/fonts/ms-serif.ttf)}
+@font-face {font-family: gotham; src: url(_assets/fonts/gotham-ssm.otf)}
 
 :root {
-	--white: #dddad5;
-	--gray: #827a77;
-	--dark-gray: #4d4847;
-	--darker-gray: #322e2e;
+	--white: #e2d8ca;
+	--lighter-gray: #e7d9b7;
+	--light-gray: #b2a69c;
+	--gray: #82736e;
+	--dark-gray: #4f4644;
+	--darker-gray: #322c2c;
 	--black: #292626;
 
 	--blue: #4cb7ed;
@@ -68,6 +71,7 @@ audio {width: 100%}
 	--blue: #8b93af;
 	--yellow: #f9a31b;
 	--white: #d4c09f;
+	--lighter-gray: #d4c09f;
 }
 
 .bubblegum {

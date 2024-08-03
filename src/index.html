@@ -21,8 +21,6 @@
 
 	<h1><span>w</span><span>e</span><span>b</span><span>c</span><span>a</span><span>t</span><span>z</span></h1>
 
-	<img src="_assets/starchart.png">
-
 	<select id="theme-select" aria-label="theme selector">
 		<option value="" selected disabled>select a theme...</option>
 		<option value="">retro (default)</option>
@@ -34,83 +32,50 @@
 
 <nav>
 
-	<div id="intro" class="textbox" title="hi!">
-
-		<p>hello! come on in & welcome to my site.</p>
-
-		<p>most stuff has tooltips for extra context.</p>
-
+	<div class="box">
+		<p>hello! come on in & welcome to my site!</p>
+		<p>i really like tooltips. keep this in mind</p>
 	</div>
 
-
 	<!-- about -->
-	<a id="about" href="about/index.html" title="all about the animal in charge!" class="grid-tall">
-		<div>about the webmaster</div>
-		<div aria-hidden="true">about the webmaster</div>
-		<div aria-hidden="true">about the webmaster</div>
-		<div aria-hidden="true">all about me ⁖ <img class="icon" src="_assets/16x16/minispin.gif"></div>
-		<div aria-hidden="true">about the webmaster</div>
+	<a id="about" class="tall" title="all about the animal in charge!" href="about/index.html">
+		<div>who the hell are you</div>
 	</a>
 
-
 	<!-- creata -->
-	<div id="creata-wrapper" class="grid-trpl-tall">
+	<div id="creata-wrapper" class="tall-2">
 
-		<a id="cats" href="shh/fell-beasts.html"><img class="hfill" src="_assets/cats.gif" title="(cats by 1041uuu)"></a>
-		<img src="_assets/railing.png" aria-hidden="true">
+		<img id="cats" src="_assets/cats.gif" aria-hidden="true">
 
 		<div id="creata">
-
 			<h2>cre<span>a</span>ta</h2>
-	
-			<!-- cat comic -->
-			<a id="cat-comic" href="creata/cat/index.html" title="a long-term worldbuilding/comic project set&#13;in the sky above a flooded earth">cat comic</a>
-	
-			<!-- bad dream -->
-			<a id="bad-dream" href="creata/bad-dream/index.html" title="a surreal trpg on growth">bad dream</a>
-
+			<a id="cat-comic" title="a long-term worldbuilding/comic project set in the sky above a flooded earth" href="creata/cat/index.html">cat comic</a>
+			<a id="bad-dream" title="a surreal trpg on growth" href="creata/bad-dream/index.html">bad dream</a>
 		</div>
 
 	</div>
-	
 
 	<!-- audio player -->
 	<div id="audio-player">
-
-		<div class="small">0/0</div>
+		<button>play</button>
+		<button>skip</button>
 		<marquee>...</marquee>
-		<div class="small">0:00</div>
-
-		<button></button>
-		<div id="player-bar">
-			<div id="player-bar-track" aria-hidden="true"></div>
-			<div id="player-bar-progress" aria-hidden="true"></div>
-			<img id="player-bar-thumb" src="_assets/cat-thumb.png" draggable="false" aria-hidden="true">
-		</div>
-		<button></button>
-
 		<img id="awful-fucking-thing" src="_assets/nuko-stroll.webp" title="pet the &quot;AWFUL FUCKING THING ?" tabindex="0">
-
 	</div>
 
-	
 	<!-- tunes -->
-	<a id="tunes" href="creata/tunes/index.html" title="a collection of beepbox tracks i've made">
+	<a id="tunes" title="beepbox tracks i've made!&#13;(SORRY theres newer stuff but its all for wip projects 😢)" href="creata/tunes/index.html">
 		<h2>junetunes <span id="track-name">loading...</span> ♪</h2>
 		<iframe title="beepbox track player"></iframe>
-
 		<img id="cd" src="creata/tunes/_assets/cd-small.png" aria-hidden="true">
 	</a>
 
+	<!-- map -->
+	<div id="map" class="wide">
+		<a href="map.html" title="ft. stuff not on the index">map >></a>
+	</div>
 
-	<!-- blog -->
-	<a id="blog" href="writing/blog/index.html" class="grid-trpl-tall" title="listen to me ramble. mostly project updates nowadays.">
-		<img class="icon" src="_assets/16x16/door.gif" aria-hidden="true">
-		blog
-	</a>
-
-
-	<!-- statuscafe -->
+	<!-- status cafe -->
 	<div id="statuscafe-wrapper">
 		<div id="statuscafe">
 			<div id="statuscafe-username">loading statuscafe...</div>
@@ -119,24 +84,20 @@
 		</div>
 	</div>
 
-
-	<!-- footer -->
+	<!-- blog -->
+	<a id="blog" class="tall" title="listen to me ramble. mostly project updates nowadays." href="writing/blog/index.html">
+		<img src="_assets/16x16/door.gif" aria-hidden="true">
+		blog
+	</a>
+	
 	<footer>
 		
-		<div class="textbox">
-			<p>mail me: <a href="mailto:june.webcatz@gmail.com">june.webcatz@gmail.com</a></p>
+		<div class="box">
+			<p>sign the <a href="https://webcatz.atabook.org">guestbook</a>? or mail me: <a href="mailto:june.webcatz@gmail.com">june.webcatz@gmail.com</a></p>
 			<p>live c. 2022, now in v6</p>
 		</div>
 
 		<img id="lightswitch" src="_assets/lightswitch.png" aria-hidden="true">
-
-		<div id="links" class="grid-wide">
-			more links: //
-			<a id="map" href="https://webcatz.atabook.org" title="leave a message?">guestbook</a>
-			//
-			<a id="map" href="map.html" title="ft. some stuff not linked on the index">full map</a>
-			//
-		</div>
 
 	</footer>
 

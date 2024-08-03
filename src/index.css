@@ -1,5 +1,4 @@
 @font-face {font-family: fullcomp; src: url(_assets/fonts/fully-completely.ttf)}
-@font-face {font-family: poppins; src: url(_assets/fonts/poppins-bold.ttf)}
 @font-face {font-family: print; src: url(_assets/fonts/magazine.ttf)}
 :root {
 	scrollbar-color: var(--dark-gray) transparent;
@@ -7,18 +6,12 @@
 
 body {
 	display: flex;
+	align-items: start;
 	gap: 4em;
 
 	color: var(--white);
 	background-color: var(--black);
-	/* background:
-		linear-gradient(30deg,
-			transparent 25%,
-			#f9a31b10 25%,
-			#f9a31b10 40%,
-			transparent 40%
-		) var(--black) fixed; */
-	margin: 4em;
+	margin: 4em calc(50vw - 585px);
 }
 
 
@@ -26,14 +19,13 @@ body {
 /* header */
 
 header {
-	align-self: start;
-	position: sticky;
-	top: 4em;
+	width: max-content;
+	position: relative;
 
 	&::before {
 		content: "";
 
-		width: 60vw;
+		width: 890px;
 		aspect-ratio: 1;
 		border-radius: 50%;
 		border: 1em solid var(--darker-gray);
@@ -45,11 +37,6 @@ header {
 		left: 50%;
 		top: 50%;
 		z-index: -1;
-	}
-
-	img {
-		contain: inline-size;
-		width: 100%;
 	}
 }
 
@@ -66,6 +53,10 @@ h1 {
 
 	color: var(--black);
 	font: bold 4em fullcomp;
+
+	background: url(_assets/starchart.png) repeat-x bottom;
+	padding-inline: 0.5em;
+	margin-inline: -0.5em;
 
 	span {
 		animation: 4s fairylight step-end infinite;
@@ -99,7 +90,6 @@ nav {
 	box-sizing: border-box;
 	border-radius: 1em;
 	flex: 1;
-	z-index: 1;
 
 	> a:hover {
 		outline: 8px solid var(--white);
@@ -116,13 +106,8 @@ nav {
 /* misc */
 
 a {color: inherit}
-.icon {
-	display: inline;
-	width: unset;
-	height: 0.75em;
-}
 
-button, select {
+select {
 	padding: 0.5em 1em;
 	border: 0.1em dotted var(--gray);
 	border-radius: 1em;
@@ -158,20 +143,6 @@ button, select {
 
 @media (max-width: 600px) {
 
-	body {
-		flex-direction: column;
-		max-width: max-content;
-		margin-inline: auto;
-	}
 
-	header {
-		position: relative;
-		top: 0;
-		margin-inline: auto;
-	}
-
-	nav {
-		font-size: 0.5em;
-	}
 
 }

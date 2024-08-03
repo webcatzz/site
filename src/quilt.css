@@ -1,12 +1,12 @@
-.grid-wide {grid-column: 1/3}
-.grid-tall {grid-row: span 2}
-.grid-dbl-tall {grid-row: span 3}
-.grid-trpl-tall {grid-row: span 4}
+.wide {grid-column: 1/3}
+.tall {grid-row: span 2}
+.tall-2 {grid-row: span 3}
+.tall-3 {grid-row: span 4}
 
-.textbox {
+.box {
 	padding: 1em;
-	border: 0.125em dotted var(--dark-gray);
-	border-radius: 1em;
+	border: 2px dotted var(--dark-gray);
+	border-radius: 8px;
 
 	p:first-of-type {margin-top: 0}
 	p:last-of-type {margin-bottom: 0}
@@ -28,107 +28,58 @@
 
 /* about */
 #about {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: end;
-	gap: 0.25em;
-
-	color: var(--black);
-	font-family: sans-serif;
-	font-size: 1.5em;
-	letter-spacing: 0.05em;
-
-	contain: strict;
-	height: 5.25em;
-	background-color: var(--red);
-	padding-right: 0.2em;
+	background-color: var(--lighter-gray);
+	padding: 8px;
+	padding-bottom: 24px;
 	border-radius: 4px;
-	flex: 1;
 
-	div:nth-of-type(odd) {font-style: italic}
+	div {
+		--pink: #d97575;
+	
+		display: flex;
+		justify-content: end;
+		align-items: center;
+	
+		color: #33383c;
+		font: 1.5em sans-serif;
+		letter-spacing: 0.05em;
+		text-shadow: 0 0 12px var(--pink);
+	
+		height: 126px;
+		background: url(_assets/abouzutsumi.png) no-repeat -90% 50% / auto 300% var(--pink);
+		padding-inline: 0.2em;
+		border-radius: inherit;
+
+		image-rendering: auto;
+	}
 }
 
 
 /* audio player */
 #audio-player {
-	display: grid;
-	grid-template-columns: max-content 1fr max-content;
-
-	font-family: ms-serif;
-
+	display: flex;
+	align-items: center;
+	gap: 1em;
+	color: transparent;
+	font: 0.875em/1 ms-serif, sans-serif;
+	background-image: url(_assets/dither.png);
+	background-clip: text;
 	position: relative;
 
-	.small {
-		color: var(--gray);
-		font-size: 0.75em;
-		justify-self: center;
-		align-self: center;
+	marquee {
+		background-image: url(_assets/plaid.png);
+		border-radius: 4px;
 	}
 
 	button {
-		padding: 0.25em 0.5em;
-		transition: transform 0.1s, box-shadow 0.1s;
+		text-decoration: underline var(--gray);
 
 		&:hover {
-			transform: translateY(-2px);
-			box-shadow: 0 2px var(--gray);
-		}
-
-		&:active {
-			transform: translateY(2px);
-			box-shadow: none;
+			color: var(--white);
 		}
 	}
 }
-#player-bar {
-	contain: size;
-	height: 24px;
-	margin-inline: 0.5em;
-	position: relative;
-	cursor: pointer;
-	align-self: center;
-	user-select: none;
 
-	> * {
-		position: absolute;
-		top: 50%;
-		left: 0;
-		pointer-events: none;
-	}
-}
-#player-bar-track, #player-bar-progress {
-	height: 6px;
-	margin-top: -3px;
-}
-#player-bar-track {
-	right: 0;
-	background-image: url(_assets/plaid.png);
-}
-#player-bar-progress {
-	width: 0;
-	background-image: repeating-linear-gradient(60deg,
-		var(--red) 0,
-		var(--red) 15px,
-		var(--yellow) 15px,
-		var(--yellow) 30px,
-		var(--blue) 30px,
-		var(--blue) 45px
-	);
-}
-#player-bar-thumb {
-	width: 24px;
-	height: 24px;
-	margin-top: -12px;
-	image-rendering: auto;
-	transition: rotate 0.2s;
-
-	&:hover {rotate: -5deg}
-	&:active {rotate: 15deg}
-}
-
-
-/* nightcore */
 @keyframes awful {
 	from {object-position: left}
 	to {object-position: right}
@@ -145,10 +96,13 @@
 	&:active {content: url(_assets/nuko-electrocute.gif)}
 }
 .nightcore {
-	background: url(_assets/sparkles.gif) center / cover;
+	background-image: url(_assets/sparkles.gif);
+	background-size: cover;
 
 	#awful-fucking-thing {
 		content: url(_assets/nuko-dance.webp);
+		background-image: url(_assets/sparkles.gif);
+		background-size: cover;
 		animation-duration: 1s;
 	}
 }
@@ -159,8 +113,11 @@
 	contain: inline-size paint;
 	background-color: var(--yellow);
 	padding-bottom: 0.5em;
+	border-radius: 4px;
+	flex: 1;
 
 	h2 {
+		color: var(--lighter-gray);
 		font-size: 9em;
 		font-weight: bold;
 		letter-spacing: -0.1em;
@@ -176,19 +133,23 @@
 		font-weight: bold;
 		margin: 0.5em 1em;
 		padding: 1em;
-		border-radius: 1em;
+		border-radius: 4px;
 
 		&:hover {
-			outline: 8px dotted var(--white);
+			outline: 8px solid var(--white);
 			outline-offset: 2px;
 		}
 	}
 }
+#creata-wrapper {
+	display: flex;
+	flex-direction: column;
+}
 #cats {
 	display: block;
 	width: 92px;
-	margin: -46px 8px -20px auto;
-	position: relative;
+	margin: -46px 8px -18px auto;
+	z-index: 1;
 }
 
 
@@ -206,24 +167,21 @@
 	text-shadow: -0.1em 0.1em var(--black);
 	padding-left: 2em !important;
 	background:
-		url(_assets/bad-dream-box.png),
-		url(_assets/halftone.png) var(--black);
-	box-shadow: 0 0 16px -8px inset var(--black);
+		url(_assets/bad-dream-box.png) var(--black);
 }
 
 
 /* tunes */
 #tunes {
+	color: var(--lighter-gray);
 	text-shadow:
-		0.15em 0.15em var(--black),
+		0.15em 0.15em var(--darker-gray),
 		0.3em 0.15em var(--blue);
 
 	contain: paint;
 	background: url(_assets/cloud.png) center var(--blue);
-	padding: 1em;
-	padding-left: 1.5em;
+	padding: 0.75em 1em;
 	border-radius: 4px;
-	margin-left: -0.5em;
 
 	iframe {
 		width: calc(100% - 2em);
@@ -246,7 +204,7 @@
 	
 	padding-left: 0.25em;
 	padding-right: 0.4em;
-	background-color: var(--black);
+	background-color: var(--darker-gray);
 	margin: 0 4px;
 	justify-self: start;
 }
@@ -261,38 +219,15 @@
 }
 
 
-/* blog */
-#blog {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-
-	color: var(--yellow);
-	font-family: poppins;
-	font-size: 4em;
-	text-shadow: 0.1em 0.1em var(--black);
-
-	aspect-ratio: 578/354;
-	background:
-		url(_assets/stamp.png) center / cover,
-		url(_assets/leaves.gif) repeat-x center / auto 64px,
-		url(_assets/plaid.png);
-	border-radius: 0.5rem;
-}
-
-
-/* album */
-#album {
-	display: grid;
-	grid-template-columns: max-content 1fr;
-	gap: 0.5em;
-
-	background-color: var(--dark-gray);
-	padding: 0.5em;
+/* map */
+#map {
+	color: var(--light-gray);
+	text-align: center;
+	background: url(_assets/map.png) center / 100%;
 	border-radius: 0.5em;
 
-	img {
-		grid-row: 1/4;
+	a:hover {
+		text-decoration: underline var(--gray);
 	}
 }
 
@@ -335,9 +270,37 @@
 	background-image: url(_assets/plaid.png);
 	padding: 1em;
 	padding-right: 1.5em;
-	border-top-left-radius: 0.5em;
-	border-bottom-left-radius: 0.5em;
+	border-radius: 8px;
+	border-top-right-radius: 0;
+	border-bottom-right-radius: 0;
 	margin-right: -1em;
+}
+
+
+/* blog */
+#blog {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	color: var(--yellow);
+	font-family: gotham;
+	font-size: 4em;
+	text-shadow: 0.1em 0.1em var(--black);
+
+	aspect-ratio: 578/354;
+	background:
+		url(_assets/stamp.png) center / cover,
+		url(_assets/leaves.gif) repeat-x center / auto 64px,
+		url(_assets/plaid.png);
+	border-radius: 8px;
+	border-top-left-radius: 0;
+
+	img {
+		display: inline;
+		width: unset;
+		height: 0.75em;
+	}
 }
 
 
@@ -350,12 +313,14 @@
 
 /* footer */
 footer {
-	display: grid;
-	grid-template-columns: 1fr max-content;
+	display: flex;
 	gap: inherit;
 	color: var(--gray);
 	font-size: 0.875em;
+
+	.box {flex: 1}
 }
+#lightswitch {align-self: start}
 
 
 /* links */

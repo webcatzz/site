@@ -1,7 +1,6 @@
 // audio player
 
 const audioPlayer = document.getElementById("audio-player");
-const audioEls = audioPlayer.children;
 AudioPlayer.create([
 	"First Steps - Lena Raine (Celeste OST)",
 	"Forgo's Treasures - Hirokazu Ando (Kirby and the Forgotten Land OST)",
@@ -15,19 +14,16 @@ AudioPlayer.create([
 	"pawprints in the snow - coffeebug (haunted sticky notes)",
 	"Strange Quest - Joel Corelitz (Eastward OST)",
 ],{
-	playButton: audioEls[3],
-	skipButton: audioEls[5],
-	insertIcons: true,
-	slider: audioEls[4],
-	sliderThumb: audioEls[4].children[2],
-	sliderProgress: audioEls[4].children[1],
+	playButton: audioPlayer.children[0],
+	skipButton: audioPlayer.children[1],
 	shuffle: true,
 	fileGarden: "ZdmFgugxzVCR-8Bl",
 	onended: () => {
 		let newTitle = document.createElement("marquee");
-		newTitle.textContent = AudioPlayer.list[AudioPlayer.idx].title, newTitle.className = "lcd", newTitle.scrollAmount = 4;
-		audioEls[1].replaceWith(newTitle);
-		audioEls[0].textContent = AudioPlayer.idx + 1 + "/" + AudioPlayer.list.length;
+		newTitle.textContent = AudioPlayer.list[AudioPlayer.idx].title;
+		newTitle.className = "lcd";
+		newTitle.scrollAmount = 4;
+		audioPlayer.children[2].replaceWith(newTitle);
 		if (lightsOff) AudioPlayer.playbackRate = 0.6;
 		else if (nightcore) AudioPlayer.playbackRate = 1.5;
 	}
@@ -47,45 +43,38 @@ tracklist = null;
 
 AudioPlayer.preservesPitch = false;
 
-const nuko = document.getElementById("awful-fucking-thing");
 var nightcore = false;
 
-nuko.onclick = function () {
-	if (nightcore) {
-		AudioPlayer.playbackRate = 1;
-		audioPlayer.classList.remove("nightcore");
-		nightcore = false;
-	} else {
-		AudioPlayer.playbackRate = 1.5;
-		audioPlayer.classList.add("nightcore");
-		nightcore = true;
-	}
+document.getElementById("awful-fucking-thing").onclick = function () {
+	nightcore = !nightcore;
+	document.querySelector("nav").classList.toggle("nightcore");
+	updatePitch();
 }
 
-const lightswitch = document.getElementById("lightswitch");
 var lightsOff = false;
 
-lightswitch.onclick = function () {
+document.getElementById("lightswitch").onclick = function () {
+	lightsOff = !lightsOff;
+	document.body.classList.toggle("lights-off");
+	updatePitch();
+
 	new Audio("https://files.catbox.moe/as06cd.mp3").play();
-	if (lightsOff) {
-		AudioPlayer.playbackRate = nightcore ? 1.5 : 1;
-		document.body.classList.remove("lights-off");
-		lightsOff = false;
-	} else {
-		AudioPlayer.playbackRate = 0.6;
-		document.body.classList.add("lights-off");
-		lightsOff = true;
-		addEventListener("mousedown", lightswitch.onclick, {once: true})
-	}
+	if (lightsOff) addEventListener("mousedown", this.onclick, {once: true});
+}
+
+function updatePitch() {
+	if (lightsOff) AudioPlayer.playbackRate = 0.6;
+	else if (nightcore) AudioPlayer.playbackRate = 1.5;
+	else AudioPlayer.playbackRate = 1;
 }
 
 
 
-// themes
+// theme selector
 
+document.getElementById("theme-select").value = sessionStorage.getItem("theme", this.value) ?? "";
 document.getElementById("theme-select").onchange = function () {
 	document.body.className = this.value;
 	if (this.value) sessionStorage.setItem("theme", this.value);
 	else sessionStorage.removeItem("theme");
 }
-document.getElementById("theme-select").value = sessionStorage.getItem("theme", this.value) ?? "";
