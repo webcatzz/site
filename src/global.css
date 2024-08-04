@@ -60,8 +60,20 @@ img, audio, video, marquee, button, select, input, iframe {display: block}
 iframe {border: none}
 audio {width: 100%}
 
+
+
 /* misc */
+
 .hidden {display: none !important}
+
+.trinket {
+	width: 2em;
+	height: 2em;
+
+	&:hover {
+		background-color: black;
+	}
+}
 
 
 

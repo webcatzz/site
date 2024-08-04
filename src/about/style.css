@@ -24,6 +24,8 @@ body {
 	padding: 1em 2em 1em;
 	margin-inline: auto;
 	box-sizing: border-box;
+
+	position: relative;
 }
 
 #block {
@@ -168,6 +170,15 @@ main {
 	white-space: nowrap;
 	contain: inline-size paint;
 	margin-block: -0.75rem;
+}
+
+#cjbody {
+	color: rgb(from var(--black) r g b / 0.025);
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: -1;
 }
 
 
