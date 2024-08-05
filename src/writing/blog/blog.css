@@ -1,6 +1,6 @@
 @font-face {font-family: gotham; src: url(../../_assets/fonts/gotham-ssm.otf)}
 :root {
 	--black: #201c10;
-	--black-trans: #201c1080;
+	--black-trans: rgb(from var(--black) r g b / 0.5);
 	--page-width: 464px;
 }

@@ -11,6 +11,8 @@ body {
 	overflow: hidden auto;
 
 	> * {rotate: 1deg}
+
+	&::after {content: none}
 }
 
 
@@ -46,21 +48,60 @@ header time {
 	bottom: 0;
 }
 
+h3, h4 {
+	margin-block: 2em 1em;
+
+	&::before {
+		color: var(--black-trans);
+		font: 0.75em ms-serif;
+		letter-spacing: 0.1em;
+		margin-right: 1em;
+	}
+}
+h3 {
+	counter-increment: section;
+	&::before {content: counter(section)}
+}
+h4 {
+	counter-increment: subsection;
+	&::before {content: counter(section) "." counter(subsection)}
+}
+
 
 
 /* text */
 
 a {color: #1a4176; text-decoration: underline}
+b {font: bold 0.9em/0 sans-serif}
 
 p:not(:first-of-type) {text-indent: 1.5em}
-ul {list-style-type: "ꕀ"; padding-left: 1.75em}
-li {padding-left: 0.75em}
+
+ul {
+	list-style-type: "ꕀ";
+	padding-left: 1.75em;
+}
+:is(ul, ol) :is(ul, ol) {rotate: -1deg !important}
+li {
+	padding-left: 0.75em;
+
+	&::marker {
+		color: var(--black-trans);
+		font: 0.875em ms-serif;
+		letter-spacing: 0.1em;
+	}
+}
 
 blockquote {
 	padding-left: 1.5em;
 	padding-block: 1px;
 	border-left: 0.25em solid var(--button);
 	margin: 1em 0;
+}
+
+pre {
+	color: white;
+	background-color: var(--black);
+	padding: 1em;
 }
 
 

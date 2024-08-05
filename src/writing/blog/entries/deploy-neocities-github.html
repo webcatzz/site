@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="../../../global.css">
-	<link rel="stylesheet" href="entry.css">
-	<script defer src="entry.js"></script>
-	<base target="_blank">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../../../global.css">
+  <link rel="stylesheet" href="entry.css">
+  <script defer src="entry.js"></script>
+  <base target="_blank">
 </head>
 <body>
 
 <header>
-	<h2>deploy to neocities with github</h2>
-	<time datetime="2024-02-04">feb 4, 2024</time>
+  <h2>deploy to neocities with github</h2>
+  <time datetime="2024-02-04">feb 4, 2024</time>
 </header>
 
 <div class="note">this entry was copied over from /how-to/, which no longer exists.</div>
@@ -22,27 +22,27 @@
 <p>this how-to assumes you have no prior experience with git, so i'll keep things as simple as possible and guide you through all the commands you'll need. keep in mind that this how-to is written by a mac user, so if you run into any issues on a different OS let me know and i'll update the page accordingly.</p>
 
 <div class="note">
-	table of contents
-	<ul>
-		<li><a href="#why-git" target="_self">why git?</a>
-			<ul>
-				<li><a href="#installing-git" target="_self">installing git</a></li>
-			</ul>
-		</li>
-		<li><a href="#making-the-remote-repository" target="_self">making the remote repository</a>
-			<ul>
-				<li><a href="#making-a-personal-access-token" target="_self">making a personal access token</a></li>
-				<li><a href="getting-your-repositorys-https-url" target="_self">getting your repository's https url</a></li>
-			</ul>
-		</li>
-		<li><a href="#making-the-local-repository" target="_self">making the local repository</a>
-			<ul>
-				<li><a href="#the-gitignore-file" target="_self">the .gitignore file</a></li>
-				<li><a href="#command-to-remember" target="_self">commands to remember</a></li>
-			</ul>
-		</li>
-		<li><a href="#deploying-your-site" target="_self">deploying your site</a></li>
-	</ul>
+  table of contents
+  <ul>
+    <li><a href="#why-git" target="_self">why git?</a>
+      <ul>
+        <li><a href="#installing-git" target="_self">installing git</a></li>
+      </ul>
+    </li>
+    <li><a href="#making-the-remote-repository" target="_self">making the remote repository</a>
+      <ul>
+        <li><a href="#making-a-personal-access-token" target="_self">making a personal access token</a></li>
+        <li><a href="getting-your-repositorys-https-url" target="_self">getting your repository's https url</a></li>
+      </ul>
+    </li>
+    <li><a href="#making-the-local-repository" target="_self">making the local repository</a>
+      <ul>
+        <li><a href="#the-gitignore-file" target="_self">the .gitignore file</a></li>
+        <li><a href="#command-to-remember" target="_self">commands to remember</a></li>
+      </ul>
+    </li>
+    <li><a href="#deploying-your-site" target="_self">deploying your site</a></li>
+  </ul>
 </div>
 
 <h3 id="why-git">why git?</h3>
@@ -50,33 +50,33 @@
 <p>git is a tool that helps you track and archive any changes you make inside a folder. if you edit your site files locally (like i do) you can turn your site folder into a <b>repository</b> (fancy name for folders that use git) and:</p>
 
 <ul>
-	<li>archive the current state of your site at any time</li>
-	<li>quickly fetch any archived version of your site and/or roll back changes</li>
-	<li>host your files on github for easy & secure access from any device</li>
-	<li>automatically update your neocities without having to manually upload and delete individual files in the dashboard (this is called <b>deploying</b>)</li>
-	<li>feel cool because youre typing in a command line. and executing commands</li>
+  <li>archive the current state of your site at any time</li>
+  <li>quickly fetch any archived version of your site and/or roll back changes</li>
+  <li>host your files on github for easy & secure access from any device</li>
+  <li>automatically update your neocities without having to manually upload and delete individual files in the dashboard (this is called <b>deploying</b>)</li>
+  <li>feel cool because youre typing in a command line. and executing commands</li>
 </ul>
 
 <details>
-	<summary>why's it called that?</summary>
-	<div><blockquote>
-		<p>Torvalds sarcastically quipped about the name git (which means "unpleasant person" in British English slang): "I'm an egotistical bastard, and I name all my projects after myself. First 'Linux', now 'git'." The man page describes Git as "the stupid content tracker".</p>
+  <summary>why's it called that?</summary>
+  <div><blockquote>
+    <p>Torvalds sarcastically quipped about the name git (which means "unpleasant person" in British English slang): "I'm an egotistical bastard, and I name all my projects after myself. First 'Linux', now 'git'." The man page describes Git as "the stupid content tracker".</p>
 
-		<p>The read-me file of the source code elaborates further:</p>
+    <p>The read-me file of the source code elaborates further:</p>
 
-		<p>"git" can mean anything, depending on your mood.</p>
-			
-		<ul>
-			<li>Random three-letter combination that is pronounceable, and not actually used by any common UNIX command. The fact that it is a mispronunciation of "get" may or may not be relevant.</li>
-			<li>Stupid. Contemptible and despicable. Simple. Take your pick from the dictionary of slang.</li>
-			<li>"Global information tracker": you're in a good mood, and it actually works for you. Angels sing, and a light suddenly fills the room.</li>
-			<li>"Goddamn idiotic truckload of sh*t": when it breaks.</li>
-		</ul>
+    <p>"git" can mean anything, depending on your mood.</p>
+      
+    <ul>
+      <li>Random three-letter combination that is pronounceable, and not actually used by any common UNIX command. The fact that it is a mispronunciation of "get" may or may not be relevant.</li>
+      <li>Stupid. Contemptible and despicable. Simple. Take your pick from the dictionary of slang.</li>
+      <li>"Global information tracker": you're in a good mood, and it actually works for you. Angels sing, and a light suddenly fills the room.</li>
+      <li>"Goddamn idiotic truckload of sh*t": when it breaks.</li>
+    </ul>
 
-		<p>The source code for Git refers to the program as "the information manager from hell". </p>
+    <p>The source code for Git refers to the program as "the information manager from hell". </p>
 
-		<footer><a href="https://en.wikipedia.org/wiki/Git#Naming">Git, Wikipedia</a></footer>
-	</blockquote></div>
+    <footer><a href="https://en.wikipedia.org/wiki/Git#Naming">Git, Wikipedia</a></footer>
+  </blockquote></div>
 </details>
 
 <p>convinced yet? these next three sections will walk you through how to set up a repository for your site files and use it to deploy to neocities. if you're intimidated, don't worry—it's not that hard, and once you've reached the end of this how-to you won't have to worry about 99% of this ever again.</p>
@@ -89,32 +89,38 @@
 
 <h3 id="making-the-remote-repository">making the remote repository</h3>
 
-<p>the <b>remote repository</b> is the repository (remember: fancy name for a git folder) hosted on github. before you set up your <b>local repository</b>, or the one on your computer, you'll first need to create your remote repository.</p>
+<p>before we set up your <b>local</b> repository (remember: fancy name for a git folder), the one on your computer, let's create your <b>remote</b> repository.</p>
 
-<p>if you haven't already, you'll need to <a href="https://github.com/signup">make a github account</a>. once you've set your account up, <a href="https://github.com/new">make your remote repository</a>. you can name it whatever you'd like. make sure you leave it empty—no readmes, gitignores, licenses, anything.</p>
+<p>"remote" means it's not located on your computer—it's hosted elsewhere. in our case, we're going to host our repository on github.</p>
 
-<img src="_assets/github-new-repository.png" alt='the github "new repository" screen'>
+<p>if you haven't already, you'll need to <a href="https://github.com/signup">make a github account</a>. once you've set your account up, <a href="https://github.com/new">create your remote repository</a>. you can name it whatever you'd like. make sure you leave it empty—no readmes, gitignores, licenses, anything.</p>
+
+<figure class="photo">
+  <img src="_assets/github-new-repository.png" alt='the github "new repository" screen'>
+</figure>
+
+<p>once you've done that, let's quickly fetch two things we'll need in the next section.</p>
 
 <h4 id="making-a-personal-access-token">making a personal access token</h4>
 
-<p>to connect to the remote repository from your computer, you need to confirm that you are who you say you are—no one but you should be able to mess with your files! to confirm your identity, you'll need a <b>personal access token</b>, which acts like a password. (there are also other ways of doing this—if you have ssh set up, skip this step and use ssh urls in the next step instead.) here's how to make a token! it might look complicated, but it's just a lot of clicking buttons:</p>
+<p>once we set up our local repository, we're going to need to connect it to our remote repository. to do that, you need to confirm that you are who you say you are—no one but you should be able to mess with your files! to confirm your identity, you'll need a <b>personal access token</b>, which acts like a password. (there are also other ways of doing this—if you have ssh set up, skip this step and use ssh urls in the next step instead.) here's how to make a token! it might look complicated, but it's just a lot of clicking buttons:</p>
 
 <ol>
-	<li>open the github site</li>
-	<li>click on your profile icon in the top right</li>
-	<li>select "settings" from the dropdown menu</li>
-	<li>using the left sidebar, navigate to "developer settings" all the way at the bottom</li>
-	<li>using the left sidebar, navigate to "tokens (classic)" under "personal access tokens"</li>
-	<li>in the top right, click "generate new token" and then "generate new token (classic)"</li>
-	<li>call it whatever you want</li>
-	<li>give it whatever expiration date you want
-		<ul>
-			<li>if the token expires, you can come back to this page to "regenerate" it and keep using it</li>
-			<li>don't worry too much about the "no expiration is not secure" message. no one wants to hack your neocities (i hope, at least)</li>
-		</ul>
-	</li>
-	<li>in "select scopes", enable "repo" (this allows the token to be used to connect to your <i>repo</i>sitory)</li>
-	<li>scroll to the bottom and click "generate token"</li>
+  <li>open the github site</li>
+  <li>click on your profile icon in the top right</li>
+  <li>select "settings" from the dropdown menu</li>
+  <li>using the left sidebar, navigate to "developer settings" all the way at the bottom</li>
+  <li>using the left sidebar, navigate to "tokens (classic)" under "personal access tokens"</li>
+  <li>in the top right, click "generate new token" and then "generate new token (classic)"</li>
+  <li>call it whatever you want</li>
+  <li>give it whatever expiration date you want
+    <ul>
+      <li>if the token expires, you can come back to this page to "regenerate" it and keep using it</li>
+      <li>don't worry too much about the "no expiration is not secure" message. no one wants to hack your neocities (i hope, at least)</li>
+    </ul>
+  </li>
+  <li>in "select scopes", enable "repo" (this allows the token to be used to connect to your <i>repo</i>sitory)</li>
+  <li>scroll to the bottom and click "generate token"</li>
 </ol>
 
 <p>you've now generated a personal access token! remember that you can always come back to this page to copy your token. also remember that this <b>lets anyone mess with your remote repository</b>, so (gets really close to you like gandalf) keep it secret... hhhhgh... keep it safe....</p>
@@ -123,61 +129,64 @@
 
 <p>this is another bit of text you'll need to connect to your remote repository. it's pretty easy to grab—just go to github.com and open your repository's page. if you created your repository right (empty), you'll see your repository's https url right in the middle of the page.</p>
 
-<img src="_assets/github-https-url.png" alt="screenshot of a github repository's https url">
+<figure class="photo">
+  <img src="_assets/github-https-url.png" alt="screenshot of a github repository's https url">
+</figure>
 
 <p>it should look like this: <code>https://github.com/username/repository-name.git</code>. if it doesn't, click "https" on the button directly to the left. leave the tab open and come back for the url later (we'll need it!).</p>
 
 <h3 id="making-the-local-repository">making the local repository</h3>
 
-<p>if you don't have one already, create the folder you'll be storing your site files in. we WILL NOT be directly running stuff in this folder, for reasons i'll explain later. put the folder you're storing your site files in inside a new empty folder. the new folder is what i'm gonna be calling your "site folder".</p>
+<p>time to set up your local repository! if you don't have one already, create the folder you'll be storing your site's files in. i'm gonna be calling this folder your "site folder".</p>
 
-<p>open the command line. <span class="mac-only hidden">it's an app called "terminal".</span> type <code>cd</code> (this stands for "change directory"), a space, and then the path of your site folder.</p>
+<p>for reasons i'll explain later, we won't be directly using your site folder as a git repository. instead, create a new folder and put your site folder inside of it. this folder will become your repository!</p>
+
+<p>open the command line. (on mac, it's an app called "terminal".) type <code>cd</code> (this stands for "change directory"), a space, and then the path of your repository.</p>
 
 <details>
-	<summary>how do i get a folder's path?</summary>
-	<div>
-		<p>you can either (1) right click a folder, hold the "option" key on mac or the shift key on windows, and click the copy as pathname option, or (2) just drag the folder onto the terminal window.</p>
-	</div>
+  <summary>how do i get a folder's path?</summary>
+  <div>
+    <p>you can either (1) right click a folder, hold the "option" key on mac or the shift key on windows, and click the copy as pathname option; or (2) just drag the folder onto the terminal window.</p>
+  </div>
 </details>
 
-<p>the command line will now execute commands from inside your site folder. follow these steps to turn it into your local repository:</p>
+<p>the command line will now execute commands from inside your repository. although we've been calling it a repository, it's not actually one yet! follow these steps to turn it into one:</p>
 
 <ol>
-	<li>run <code>git init</code> (short for "initialize") to turn the folder into your local repository.</li>
-	<li>run <code>git config --global user.email "EMAIL"</code> and <code>git config --global user.name "NAME"</code> to denote who you are. replace EMAIL and NAME with your github email and username respectively.</li>
-	<li>run <code>git branch -M "main"</code> to set the "main" branch. don't worry about this right now.</li>
-	<li>type <code>git remote add origin</code>, a space, and then your remote repository's https url (we got this in a previous step, remember). hit enter. this tells your local repository what remote repository it needs to sync with.</li>
-	<li>if you've already got files inside your site folder:
-		<ol>
-			<li>run <code>git add .</code>—this "stages" every new or modified file. that means they'll be added to the next commit.</li>
-			<li>run <code>git commit -m "first commit!"</code>—this commits the current state of the folder to the repository's history. you can change the message inside the quotation marks to be whatever you want.</li>
-		</ol>
-	</li>
-	<li>run <code>git push -u origin main</code> to update the remote repository. (it also sets "main" as the upstream branch. again, don't worry about branches right now)</li>
-	<li>it will ask for your github username and password. enter your github username, and then instead of your password paste in your personal access token.</li>
+  <li>run <code>git init</code> (short for "initialize") to turn the folder into your local repository.</li>
+  <li>run <code>git config --global user.email "EMAIL"</code> and <code>git config --global user.name "NAME"</code> to denote who you are. replace EMAIL and NAME with your github email and username respectively.</li>
+  <li>run <code>git branch -M "main"</code> to set the "main" branch. don't worry about this.</li>
+  <li>type <code>git remote add origin</code>, a space, and then your remote repository's https url (we got this in a previous step, remember). hit enter. this tells your local repository what remote repository it needs to sync with.</li>
+  <li>if you've already got files inside your site folder:
+    <ol>
+      <li>run <code>git add .</code>—this "stages" every new or modified file. that means they'll be added to the next commit.</li>
+      <li>run <code>git commit -m "first commit"</code>—this commits the current state of the folder to the repository's history. you can change the message inside the quotation marks to be whatever you want.</li>
+    </ol>
+  </li>
+  <li>run <code>git push -u origin main</code> to update the remote repository. (it also sets "main" as the upstream branch. again, don't worry about branches)</li>
+  <li>it will ask for your github username and password. enter your github username, and then instead of your password paste in your personal access token.</li>
 </ol>
 
-<p>if you look in your repository on github, you'll see that it's now updated with all your local site files. <span class="mac-only hidden">also, if you open your site folder and press "shift+command+." to view hidden files (anything starting with a "."), you'll see the newly created .git folder! that's where all the information about your repository is stored.</span></p>
+<p>if you look in your repository on github, you'll see that it's now updated with all your local site files.</p>
 
 <h4 id="the-gitignore-file">the .gitignore file</h4>
 
-<p>the <b>.gitignore</b> file tells your repository to ignore certain files—they won't be added to commits or pushed to the remote repository. you can make one by making a text file in your site folder and renaming it to ".gitignore".</p>
+<p>the <b>.gitignore</b> file tells your repository to ignore certain files—they won't be added to commits or pushed to the remote repository. you can make one by creating a new text file in your repository named ".gitignore".</p>
 
 <p>to start ignoring files, put their paths on separate lines in the .gitignore. heres a cheat sheet for using .gitignores (lines beginning with "#" are comments and are ignored when the .gitignore is read):</p>
 
-<pre style="overflow-x: auto"><code>
-<span class="comment"># ignores all "passwords.txt" files</span>
+<pre style="overflow-x: auto"><code><span class="comment"># ignores all "passwords.txt" files</span>
 <span class="comment"># even the ones inside subfolders</span>
 passwords.txt
 
-<span class="comment"># ignores only the "passwords.txt" inside the site folder</span>
+<span class="comment"># ignores only the "passwords.txt" directly inside the repository</span>
 <span class="comment"># does not check any subfolders</span>
 /passwords.txt
 
 <span class="comment"># ignores all folders called "ignore-me" and all files they contain</span>
 ignore-me/
 
-<span class="comment"># / prefix also works for folders. this only checks the site folder</span>
+<span class="comment"># / prefix also works for folders. this does not look through subfolders</span>
 /ignore-me/
 
 <span class="comment"># the syntax is just like regular file paths</span>
@@ -187,24 +196,21 @@ ignore-me/
 
 <span class="comment"># ignores all html files (everything ending with .html)</span>
 <span class="comment"># "*" is basically a "fill-in-the-blank" character</span>
-*.html
-</code></pre>
+*.html</code></pre>
 
 <p>some things to remember about .gitignores:</p>
 
 <ul>
-	<li>the .gitignore <i>ignores</i>, it doesn't delete. if a file is already in the remote repository, it won't be removed if you add it to your .gitignore. you have to delete it and push that change first</li>
-	<li>if you mess up your .gitignore and accidentally push personal files, removing them from the repository AND the repository's history is a huge hassle. be careful!</li>
-	<li>you can't ignore a .gitignore. it doesn't work</li>
+  <li>the .gitignore <i>ignores</i>, it doesn't delete. if a file is already in the remote repository, it won't be removed if you add it to your .gitignore. you have to delete it and commit that change first</li>
+  <li>if you mess up your .gitignore and accidentally push personal files, removing them from the repository AND the repository's history is a huge hassle. be careful!</li>
+  <li>you can't ignore a .gitignore.</li>
 </ul>
 
 <p>if you're planning on deploying your repository to neocities, here's a .gitignore that filters out common filetypes incompatible with a free neocities account:</p>
 
-<pre><code>
-*.mp*
+<pre><code>*.mp*
 *.ogg
-*.wav
-</code></pre>
+*.wav</code></pre>
 
 <p>remember, <code>*</code> matches anything. thats why these selectors will filter out all mp3, mp4 and wav files. it's also why <code>*.mp*</code> will filter out both mp3 and mp4 files.</p>
 
@@ -212,18 +218,23 @@ ignore-me/
 
 <p>your repository should now be working and connected to the remote repository! congrats! :-)</p>
 
-<p>if you use vscode/vscodium (and probably some others too, but vscode is what i'm familiar with), you can use it to easily commit and push files to your repository.</p>
+<p>if you use vscode/vscodium (and probably some others too, but vscode is what i'm familiar with), you can use its interface to easily commit and push files to your repository.</p>
 
 <p>if your text editor doesn't have any git functionality, then you'll need to use the command line to use git. here are some commands you'll be using a lot:</p>
 
 <ul>
-	<li><code>cd PATH</code>—replace PATH with the path of the folder you want to execute commands in. in this case, that's your site folder.</li>
-	<li><code>git add .</code>—this adds every new or modified file to the next commit.</li>
-	<li><code>git add -p</code>—same as the previous command, but asks whether or not to add each file.</li>
-	<li><code>git commit -m "MESSAGE"</code>—this commits the current state of the folder to the repository's history. you should replace MESSAGE with a short one-line blurb about the commit, which is displayed on github later.</li>
-	<li><code>git push</code>—this updates the remote repository (the one on github) to the state of your latest commit. remember: the remote repository will never automatically update, you have to tell it to.</li>
-	<li><code>git clone URL</code>—this copies the remote repository into a new folder. useful if you need to edit your files on another device. remember to replace URL with your repository's https url.</li>
-	<li><code>git pull URL</code>—if your remote repository is ahead of your local one, this brings the local repository up-to-date. remember to replace URL with your repository's https url.</li>
+  <li><code>cd PATH</code>—replace PATH with the path of the folder you want to execute commands in. in this case, that's your repository.</li>
+  <li><code>git status</code>—lists every change you've made since the last commit.</li>
+  <li><code>git add PATH</code>—"stages" a file (meaning it'll be added to the next commit).
+    <ul>
+      <li><code>git add .</code>—stages all new or modified files.</li>
+      <li><code>git add -p</code>—same as the previous command, but asks whether or not to stage each file.</li>
+    </ul>
+  </li>
+  <li><code>git commit -m "MESSAGE"</code>—this commits currently staged files to the repository's history. you should replace MESSAGE with a short one-line blurb about the commit, which is displayed on github later.</li>
+  <li><code>git push</code>—this updates the remote repository (the one on github) to the state of your latest commit. remember: the remote repository will never automatically update, you have to tell it to.</li>
+  <li><code>git clone URL</code>—this copies the remote repository into a new folder. useful if you need to edit your files on another device. remember to replace URL with your repository's https url.</li>
+  <li><code>git pull URL</code>—if your remote repository is ahead of your local one, this brings the local repository up-to-date. remember to replace URL with your repository's https url.</li>
 </ul>
 
 <h3 id="deploying-your-site">deploying your site</h3>
@@ -233,76 +244,66 @@ ignore-me/
 <p>however, just like github, neocities also requires a token before it'll let us mess around with our files there.</p>
 
 <ol>
-	<li>open neocities</li>
-	<li>click your name in the top right</li>
-	<li>in the dropdown menu, click "settings"</li>
-	<li>click "manage site settings" next to your site's name</li>
-	<li>open the "api" tab</li>
-	<li>click "generate api key"</li>
+  <li>open neocities</li>
+  <li>click your name in the top right</li>
+  <li>in the dropdown menu, click "settings"</li>
+  <li>click "manage site settings" next to your site's name</li>
+  <li>open the "api" tab</li>
+  <li>click "generate api key"</li>
 </ol>
 
 <p>now you've got your neocities token! all the same rules apply here—keep this secret. actually, we're going to create a "secret" for this token on github—we don't want this to appear publically in our repository later, so we're encrypting it.</p>
 
 <ol>
-	<li>open your repository on github.</li>
-	<li>open the "settings" tab at the top</li>
-	<li>in the left sidebar, click "actions" under "secrets and variables"</li>
-	<li>click the green "new repository secret" button</li>
-	<li>name it "NEOCITIES_API_TOKEN". no quotes</li>
-	<li>in the box below, paste in your neocities token</li>
-	<li>click "add token"</li>
+  <li>open your repository on github.</li>
+  <li>open the "settings" tab at the top</li>
+  <li>in the left sidebar, click "actions" under "secrets and variables"</li>
+  <li>click the green "new repository secret" button</li>
+  <li>name it "NEOCITIES_API_TOKEN". no quotes</li>
+  <li>in the box below, paste in your neocities token</li>
+  <li>click "add token"</li>
 </ol>
 
 <p>now that we've got our token prepared and encrypted, we want to create our workflow. this is what's actually going to be deploying stuff to neocities.</p>
 
 <ol>
-	<li>inside your site folder, create a new folder called ".github"</li>
-	<li>inside the .github folder, create a new folder called "workflows"</li>
-	<li>inside that folder, create a new file called "main.yml"</li>
-	<li>copy the following text into it:</li>
+  <li>inside your repository, create a new folder called ".github"</li>
+  <li>inside the .github folder, create a new folder called "workflows"</li>
+  <li>inside that folder, create a new file called "main.yml"</li>
+  <li>copy the following text into it:</li>
 </ol>
 
-<pre style="overflow-x: auto"><code>
-<span class="decl">name</span>: <span class="string">Deploy to Neocities</span>
+<pre style="overflow-x: auto"><code><span class="decl">name</span>: <span class="string">Deploy to Neocities</span>
 
 <span class="decl">on</span>: <span class="string">push</span> <span class="comment"># triggers every time you run "git push"</span>
 
 <span class="decl">concurrency</span>: <span class="comment"># concurrency stuff. dont worry about it</span>
-<span class="decl">group</span>: <span class="string">deploy-to-neocities</span>
-<span class="decl">cancel-in-progress</span>: <span class="string">true</span>
+  <span class="decl">group</span>: <span class="string">deploy-to-neocities</span>
+  <span class="decl">cancel-in-progress</span>: <span class="string">true</span>
 
 <span class="decl">jobs</span>:
-<span class="decl">deploy</span>:
-<span class="decl">runs-on</span>: <span class="string">ubuntu-latest</span>
-<span class="decl">steps</span>:
-- <span class="decl">uses</span>: <span class="string">actions/checkout@v4</span> <span class="comment"># grabs your repository's files</span>
-- <span class="decl">name</span>: <span class="string">Deploying to Neocities</span> <span class="comment"># deploys them to neocities</span>
-	<span class="decl">uses</span>: <span class="string">bcomnes/deploy-to-neocities@v1.1.21</span>
-	<span class="decl">with</span>:
-		<span class="decl">api_token</span>: <span class="string">${{ secrets.NEOCITIES_API_TOKEN }}</span> <span class="comment"># uses your neocities token</span>
-		<span class="decl">cleanup</span>: <span class="string">true</span> <span class="comment"># deletes all files that aren't in your repository. if you don't want this, replace "true" with "false"</span>
-		<span class="decl">dist_dir</span>:
-</code></pre>
+  <span class="decl">deploy</span>:
+    <span class="decl">runs-on</span>: <span class="string">ubuntu-latest</span>
+    <span class="decl">steps</span>:
+    - <span class="decl">uses</span>: <span class="string">actions/checkout@v4</span> <span class="comment"># grabs your repository's files</span>
+    - <span class="decl">name</span>: <span class="string">Deploying to Neocities</span> <span class="comment"># deploys them to neocities</span>
+      <span class="decl">uses</span>: <span class="string">bcomnes/deploy-to-neocities@v1.1.21</span>
+      <span class="decl">with</span>:
+        <span class="decl">api_token</span>: <span class="string">${{ secrets.NEOCITIES_API_TOKEN }}</span> <span class="comment"># uses your neocities token</span>
+        <span class="decl">cleanup</span>: <span class="string">true</span> <span class="comment"># deletes all files that aren't in your repository. if you don't want this, replace "true" with "false"</span>
+        <span class="decl">dist_dir</span>:</code></pre>
 
-<p>we're not done just yet! we need to set our <code class="decl">dist_dir</code>—that's the folder whose files will be uploaded to neocities. when this workflow is run, it'll upload all files inside the <code class="decl">dist_dir</code> folder to neocities. if even one of those files is incompatible—like mp3 files on an free account—the upload will fail.</p>
+<p>we're not done just yet! we need to set our <code class="decl">dist_dir</code>. when this workflow is run, it'll upload all files inside the <code class="decl">dist_dir</code> folder to neocities. if even one of those files is incompatible—like mp3 files on an free account—the upload will fail.</p>
 
-<p>that's exactly why you can't just directly deploy a folder with your site files, and why we're storing your site files inside a subfolder—the site folder contains the .git folder and your .gitignore, both of which neocities will reject. you'll need to set <code class="decl">dist_dir</code> to the name of the subfolder your site files are in. for example, mine is set up like so:</p>
+<p>that's why you can't just directly deploy your site folder—the repository contains the .git folder and your .gitignore, both of which neocities will reject. you'll need to set <code class="decl">dist_dir</code> to the name of your site folder. for example, my site folder is called "src", so my workflow is set up like so:</p>
 
-<pre style="overflow-x: auto"><code>
-<span class="decl">dist_dir</span>: <span class="string">neocities</span>
-</code></pre>
+<pre style="overflow-x: auto"><code><span class="decl">dist_dir</span>: <span class="string">src</span></code></pre>
 
 <p>and that's it! if you want to, now is the time to download a backup of your neocities files in case you're about to accidentally delete something that's not in your repository. run <code>git push</code> again. your neocities should now update (this might take up to 10 seconds or so).</p>
 
 <p>open your repository on github and click the "actions" tab at the top. if anything goes wrong during the deployment, you can investigate it here and then rerun the workflow (click the failed entry and then "re-run job" in the top right) once you've fixed the issue. usually, the problem is that one of your files is incompatible with neocities—make sure your .gitignore is accurate.</p>
 
 <p><b>congratulations!</b> you've completed this how-to. you can reference the <a target="_self" href="#commands_to_remember">commands to remember</a> section for common git commands. have fun with your new site repository!</p>
-
-<div class="note pass-rot">
-	<p>hi! down here!</p>
-	<p>right now, the code i'm using to deploy to neocities does not offer any functionality for customizing the little feed update. i asked the owner about it and they set up <a href="https://github.com/bcomnes/async-neocities/issues/80">an issue for it here</a>. they also set up an issue for allowing <a href="https://github.com/bcomnes/deploy-to-neocities/issues/133">directly deploying the site folder</a> by automatically excluding all the incompatible git-related files. if either the owner or a contributor drafts some working code for them, they'll get added.</p>
-	<p>also, once i figure it out, i'm eventually gonna add a how-to on building an html blog page out of markdown files using a github workflow. keep an eye out for that.</p>
-</div>
 
 </body>
 </html>
