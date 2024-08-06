@@ -156,6 +156,16 @@ main {
 		margin-bottom: 0;
 	}
 }
+#catcat {
+	position: absolute;
+	right: 1em;
+	bottom: 1em;
+	background-color: var(--pink);
+	padding: 4px;
+	border-radius: 4px;
+	margin: -4px;
+	z-index: -1;
+}
 
 #izutsumi {
 	width: calc(100% + 3em);
