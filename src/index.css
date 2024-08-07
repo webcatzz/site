@@ -122,16 +122,13 @@ select {
 		background-color: black;
 		position: fixed;
 		inset: 0;
-		z-index: 999;
+		z-index: 99;
 	}
 
 	&::after {
-		content: url(_assets/napstablook.gif);
+		content: "";
+		background: url(_assets/napstablook.gif) no-repeat center;
 		opacity: 0.33;
-		position: fixed;
-		left: calc(50% - 427px);
-		top: calc(50% - 240px);
-		z-index: 999;
 		animation: 30s appear;
 	}
 

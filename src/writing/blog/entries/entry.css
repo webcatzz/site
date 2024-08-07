@@ -99,7 +99,7 @@ blockquote {
 }
 
 pre {
-	color: white;
+	color: var(--white);
 	background-color: var(--black);
 	padding: 1em;
 }
