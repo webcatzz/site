@@ -1,13 +1,12 @@
 const poems = [
 	"sonny boy",
 	"one of those",
-	"orpheus",
 	"haiku he was cursed by an evil wizard to write",
 	"walled garden",
 	"dog",
 	"an empty easel",
 	"recursive space",
-	"like all her little cranes, she's all folded down",
+	"little cranes",
 	"astronaut",
 ]
 
