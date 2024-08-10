@@ -9,7 +9,7 @@ body {
 	background:
 		url(_assets/neil.gif) no-repeat 75% center,
 		linear-gradient(to right, var(--black) 160px, transparent 160px),
-		url(../../_assets/cloud.png) center / cover var(--blue);	
+		url(../../_assets/cloud.png) center / cover var(--blue);
 	overflow: hidden;
 }
 
@@ -289,14 +289,44 @@ h2 {
 
 /* mobile */
 
-@media (max-width: 600px) {
+@media (max-width: 950px) {
 
 	body {
 		flex-direction: column;
+		background: none;
 	}
 
+	h1, #disc, #back, .trinket {
+		display: none;
+	}
+
+	#tracklist {
+		grid-template-columns: repeat(2, 160px);
+		justify-content: center;
+		width: unset;
+		margin-left: 0;
+		z-index: unset;
+		padding-block: 2em 6em;
+	}
 	#tracklist, #filters {
-		transform: skew(0deg);
+		transform: unset;
+	}
+
+	#view {
+		padding-left: 0;
+		margin-left: 0;
+		align-self: stretch;
+		z-index: 1;
+	}
+	h2 {
+		margin-top: -0.86em;
+	}
+	#ribbon {
+		padding-left: 2em;
+		margin-left: 0;
+	}
+	#words {
+		display: none;
 	}
 
 }

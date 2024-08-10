@@ -21,7 +21,6 @@ AudioPlayer.create([
 	onended: () => {
 		let newTitle = document.createElement("marquee");
 		newTitle.textContent = AudioPlayer.list[AudioPlayer.idx].title;
-		newTitle.className = "lcd";
 		newTitle.scrollAmount = 4;
 		audioPlayer.children[2].replaceWith(newTitle);
 		if (lightsOff) AudioPlayer.playbackRate = 0.6;

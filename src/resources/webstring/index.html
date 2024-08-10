@@ -33,7 +33,7 @@ pre {
 
 #copy-machine {display: flex; align-items: center; gap: 1em; width: max-content}
 #settings {display: grid; grid-template-columns: max-content max-content; align-items: center; column-gap: 0.5em}
-button {background-image: url(../../_assets/dots.png); margin-left: 2em}
+#copy-machine button {background-image: url(../../_assets/dots.png); margin-left: 2em}
 
 #notes {font-size: 0.875em; max-width: 400px; margin-top: 4em; outline: 0.5em solid var(--white); position: absolute; right: 4em}
 .hidden {display: none}
@@ -54,19 +54,42 @@ button {background-image: url(../../_assets/dots.png); margin-left: 2em}
   <h2>how do i use webstring?</h2>
   <p>you can <a href="webstring.js" target="_blank">view the script here</a>. copy it into a new javascript file (ending with ".js") somewhere on your site.</p>
   <p>this is the settings object, the only part you need to worry about:</p>
+  <pre id="settings-object">// webring settings
+webring = {
 
-  <pre id="settings-object"></pre>
+  // list of sites in the ring
+  sites: [
+    "https://your_site_here.neocities.org",
+    "https://another_site.neocities.org",
+  ],
 
+  // html inserted as your widget
+  // PREV and NEXT get replaced with neighboring site urls
+  widget: `
+    &lt;div id="my-webring" style="display: flex; gap: 8px">
+      &lt;a href="PREV">prev&lt;/a>
+      &lt;div>webring&lt;/div>
+      &lt;a href="NEXT">next&lt;/a>
+    &lt;/div>
+  `,
+
+  // html inserted instead of your widget on sites that aren't in the ring
+  error: "&lt;div>This site isn't part of the webring yet.&lt;/div>",
+
+};</pre>
   <p>the settings object is where all the information about your webring is kept.</p>
+  <p>i <i>highly</i> recommend giving your widget html an <code>id=""</code> with the name of your webring, otherwise it's really difficult for webring members to add custom styling to their widgets.</p>
 
-  <p>i <i>highly</i> recommend giving your widget an <code>id=""</code> with the name of your webring, otherwise it's really difficult for webring members to add custom styling to their widgets.</p>
-
-  <h2>how do i add the widget?</h2>
+  <h2>how do i embed the widget?</h2>
   <p>wherever you'd like the widget to be, just link the script:</p>
   <pre><span class="tag">&lt;</span><span class="tag-name">script</span> <span class="attr">src</span>=<span class="string">"https://your_site_here.neocities.org/folder/webstring.js"</span><span class="tag">>&lt;/<span class="tag-name">script</span>></span></pre>
   <p>(don't forget to replace the "src" with whatever path you're keeping the script at.)</p>
 
   <a id="back" class="box" href="../../index.html">← home</a>
+
+  <br>
+
+  <p>that's all! happy webringing. ing ^_^</p>
 
   <hr>
 
@@ -90,29 +113,7 @@ button {background-image: url(../../_assets/dots.png); margin-left: 2em}
 
   <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/highlight.min.js"></script>
   <script>
-document.getElementById("settings-object").innerHTML = hljs.highlight(`// webring settings
-webring = {
-
-  // list of sites in the ring
-  sites: [
-    "https://your_site_here.neocities.org",
-    "https://another_site.neocities.org",
-  ],
-
-  // html inserted as your widget
-  // PREV and NEXT get replaced with neighboring site urls
-  widget: \`
-    <div id="my-webring" style="display: flex; gap: 8px">
-      <a href="PREV">prev</a>
-      <div>webring</div>
-      <a href="NEXT">next</a>
-    </div>
-  \`,
-
-  // html inserted instead of your widget on sites that aren't in the ring
-  error: "<div>This site isn't part of the webring yet.</div>",
-
-};`, {language: "js"}).value;
+document.getElementById("settings-object").innerHTML = hljs.highlight(document.getElementById("settings-object").textContent, {language: "js"}).value;
 
 document.getElementById("copy").onclick = function () {
   let settings = {};

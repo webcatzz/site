@@ -52,9 +52,14 @@ body {
 		text-decoration: underline;
 	}
 }
+#track-title {
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	flex: 1;
+}
 #kao {
 	font: 1rem mspgothic;
-	margin-left: auto;
 }
 
 
@@ -195,9 +200,9 @@ main {
 
 /* mobile */
 
-@media (max-width: 600px) {
+@media (max-width: 750px) {
 	body {width: unset}
 	h1 {font-size: 4em}
 	#content {flex-direction: column}
-	/* #right {width: unset} */
+	.seen {font-size: 8vw}
 }
