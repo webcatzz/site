@@ -27,10 +27,11 @@
 			"\t<title>${1:${TM_FILENAME_BASE}}</title>",
 			"\t<link rel=\"icon\" href=\"${2:../}_assets/icon.png\">", // ${RELATIVE_FILEPATH/\\w+\\b(?!([.]|$))/../g}
 			"\t<link rel=\"stylesheet\" href=\"${2:../}global.css\">",
+			"\t<link rel=\"stylesheet\" href=\"style.css\">",
 			"</head>",
 			"<body>",
 			"",
-			"\t$0",
+			"$0",
 			"",
 			"</body>",
 			"</html>"

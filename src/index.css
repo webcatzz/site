@@ -1,6 +1,7 @@
 @font-face {font-family: fullcomp; src: url(_assets/fonts/fully-completely.ttf)}
 @font-face {font-family: print; src: url(_assets/fonts/magazine.ttf)}
 :root {
+	--lighter-gray: #e7d9b7;
 	scrollbar-color: var(--dark-gray) transparent;
 }
 
