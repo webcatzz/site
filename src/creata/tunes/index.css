@@ -279,10 +279,16 @@ h2 {
 
 
 .trinket {
+	width: 2em;
+	height: 2em;
 	background-color: rgb(from var(--white) r g b / 0.3);
 	position: fixed;
 	bottom: 1.5em;
 	right: 2em;
+
+	&:hover {
+		background-color: black;
+	}
 }
 
 

@@ -32,11 +32,12 @@ body {
 	}
 }
 
+
+
 /* inline */
 a {text-decoration: none}
-.titled, .hover {cursor: help}
 
-/* block */
+/* heading */
 h1, h2, h3, h4 {
 	font-family: sans-serif;
 	margin-block: 0;
@@ -48,6 +49,7 @@ hr {
 	border: none;
 }
 
+/* input */
 button, select {all: unset}
 button, select, summary {
 	user-select: none;
@@ -55,24 +57,13 @@ button, select, summary {
 }
 summary::marker {line-height: 0}
 
+/* replaced */
 img, audio, video, marquee, button, select, input, iframe {display: block}
 iframe {border: none}
 audio {width: 100%}
 
-
-
 /* misc */
-
 .hidden {display: none !important}
-
-.trinket {
-	width: 2em;
-	height: 2em;
-
-	&:hover {
-		background-color: black;
-	}
-}
 
 
 

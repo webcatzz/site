@@ -38,7 +38,7 @@ else if (document.currentScript.dataset.song) {
 }
 // button widget
 else document.currentScript.outerHTML = `
-	<div id="beepbox-webring" style="display: flex; align-items: center; gap: 8px">
+	<div id="beepbox-webring" style="display: flex; justify-content: center; align-items: center; gap: 8px; image-rendering: pixelated">
 		<a target="_blank" href="${bpSites.at(bpIdx - 1)}"><img src="https://webcatz.neocities.org/beepbox-webring/button-left.png" alt="prev"></a>
 		<a href="https://webcatz.neocities.org/beepbox-webring/"><img src="https://webcatz.neocities.org/beepbox-webring/button.png" alt="beepbox webring"></a>
 		<a target="_blank" href="${bpSites[(bpIdx + 1) % bpSites.length]}"><img src="https://webcatz.neocities.org/beepbox-webring/button-right.png" alt="next"></a>
