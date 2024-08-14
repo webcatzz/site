@@ -56,27 +56,19 @@
 
 
 /* audio player */
-#audio-player {
-	display: flex;
-	align-items: center;
-	gap: 1em;
-	color: transparent;
-	font: 0.875em/1 ms-serif, sans-serif;
-	background-image: url(_assets/dither.png);
-	background-clip: text;
+tape-deck {
+	color: var(--gray);
 	position: relative;
 
-	marquee {
+	.track-title {
 		background-image: url(_assets/plaid.png);
 		border-radius: 4px;
+		flex: 1;
 	}
 
 	button {
-		text-decoration: underline var(--gray);
-
-		&:hover {
-			color: var(--white);
-		}
+		text-decoration-color: var(--gray);
+		&:hover {color: var(--white)}
 	}
 }
 

@@ -42,24 +42,9 @@ body {
 	padding: 0 2em 1em;
 }
 
-#audio-player {
-	display: flex;
-	align-items: center;
-	gap: 1em;
-	font: 0.875em/1 ms-serif, sans-serif;
-
-	button {
-		text-decoration: underline;
-	}
-}
-#track-title {
-	white-space: nowrap;
-	text-overflow: ellipsis;
-	overflow: hidden;
-	flex: 1;
-}
 #kao {
 	font: 1rem mspgothic;
+	order: 1;
 }
 
 

@@ -1,35 +1,3 @@
-// audio player
-
-const audioPlayer = document.getElementById("audio-player");
-AudioPlayer.create([
-	"First Steps - Lena Raine (Celeste OST)",
-	"Forgo's Treasures - Hirokazu Ando (Kirby and the Forgotten Land OST)",
-	"Allison's Theme - beatrix quinn (Super Lesbian Animal RPG OST)",
-	"Dark Flute - Jim Guthrie (Sword & Sworcery LP - The Ballad of the Space Babies)",
-	"Paramnesiac - still crisp (Pseudoregalia OST)",
-	"Marine Tube - Go Ichinose (Pokémon Black & White 2 OST)",
-	"Relic - Aaron Cherof (Minecraft: Trails & Tales OST)",
-	"I Feel Like (Live) - coffeebug (MIDIfreak)",
-	"See You At The Top - Mark Sparling (A Short Hike OST)",
-	"pawprints in the snow - coffeebug (haunted sticky notes)",
-	"Strange Quest - Joel Corelitz (Eastward OST)",
-],{
-	playButton: audioPlayer.children[0],
-	skipButton: audioPlayer.children[1],
-	shuffle: true,
-	fileGarden: "ZdmFgugxzVCR-8Bl",
-	onended: () => {
-		let newTitle = document.createElement("marquee");
-		newTitle.textContent = AudioPlayer.list[AudioPlayer.idx].title;
-		newTitle.scrollAmount = 4;
-		audioPlayer.children[2].replaceWith(newTitle);
-		if (lightsOff) AudioPlayer.playbackRate = 0.6;
-		else if (nightcore) AudioPlayer.playbackRate = 1.5;
-	}
-});
-
-
-
 // latest tune
 
 document.getElementById("track-name").textContent = tracklist[0].name;
@@ -40,7 +8,8 @@ tracklist = null;
 
 // audio pitch easter eggs
 
-AudioPlayer.preservesPitch = false;
+const tapeDeck = document.querySelector("tape-deck");
+tapeDeck.audio.preservesPitch = false;
 
 var nightcore = false;
 
@@ -62,9 +31,9 @@ document.getElementById("lightswitch").onclick = function () {
 }
 
 function updatePitch() {
-	if (lightsOff) AudioPlayer.playbackRate = 0.6;
-	else if (nightcore) AudioPlayer.playbackRate = 1.5;
-	else AudioPlayer.playbackRate = 1;
+	if (lightsOff) tapeDeck.audio.playbackRate = 0.6;
+	else if (nightcore) tapeDeck.audio.playbackRate = 1.5;
+	else tapeDeck.audio.playbackRate = 1;
 }
 
 

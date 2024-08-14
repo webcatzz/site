@@ -65,6 +65,23 @@ audio {width: 100%}
 /* misc */
 .hidden {display: none !important}
 
+tape-deck {
+	display: flex;
+	align-items: center;
+	gap: 1em;
+	font: 0.875em/1 ms-serif, sans-serif;
+
+	button {text-decoration: underline}
+
+	.track-title {
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		contain: inline-size;
+		overflow: hidden;
+		flex: 1;
+	}
+}
+
 
 
 /* themes */
