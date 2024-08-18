@@ -10,6 +10,7 @@
 @font-face {font-family: outlaw; src: url(_assets/outlaw.ttf)}
 html {overscroll-behavior: none}
 body {font: 14px/1 outlaw; background-color: #a0a3a1; min-height: 100vh; cursor: url(_assets/cursor.png), auto}
+body::after {content: none}
 a, button {cursor: url(_assets/cursor-point.png) 12 0, pointer; &:active {cursor: url(_assets/cursor-click.png) 12 0, pointer}}
 
 #view {width: 100%; min-height: 100vh; object-fit: contain; object-position: top; image-rendering: auto}
@@ -75,6 +76,7 @@ const captures = {
     pages: [
 			"index",
 			"about (11.5.24)",
+      "muse",
     ]
 	},
   five: {

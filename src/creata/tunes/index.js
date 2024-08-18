@@ -143,7 +143,7 @@ function viewTrack(track) {
 
 	// iframe
 	let newFrame = document.createElement("iframe");
-	newFrame.src = track.hash ? hashToURL(track.hash) : "https://file.garden/ZdmFgugxzVCR-8Bl/tunes/" + encodeURIComponent(track.name) + ".mp3";
+	newFrame.src = track.hash ? hashToURL(track.hash) : "https://file.garden/ZdmFgugxzVCR-8Bl/site/tunes/" + encodeURIComponent(track.name) + ".mp3";
 	view.iframe.replaceWith(newFrame);
 	view.iframe = newFrame;
 
