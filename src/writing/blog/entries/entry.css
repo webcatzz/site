@@ -163,13 +163,12 @@ figcaption {
 
 /* details */
 
-details {
-	> div {padding: 0.5em; border-radius: 12px; background-color: var(--button)}
-	&[open] {
-		summary {border-bottom-left-radius: 0; border-bottom-right-radius: 0}
-		> div {border-top-left-radius: 0}
-	}
+details[open] {
+	background-color: var(--button);
+	border-radius: 12px;
+	padding: 0.5em;
 }
+
 summary {
 	width: max-content;
 	padding: 0 0.5em;
@@ -185,7 +184,7 @@ summary {
 
 /* misc */
 
-.note {
+aside {
 	font-size: 0.75em;
 	background-color: #c4452620;
 	padding: 0.5em 1em;
@@ -194,8 +193,15 @@ summary {
 	margin-block: 1.5rem;
 }
 
+aside,
+blockquote,
+details {
+	> *:first-child {margin-top: 0}
+	> *:last-child {margin-bottom: 0}
+}
+
 ul, ol,
-details, details > div,
+details,
 blockquote,
 .pass-rot {
 	rotate: 0deg !important;

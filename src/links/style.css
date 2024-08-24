@@ -9,6 +9,7 @@ body {
 		url(_assets/wallpaper.png) no-repeat calc(100% - 8em) bottom,
 		linear-gradient(91deg, transparent 50%, #0000001a 50%) center / 6% 100% fixed,
 		linear-gradient(to top, #241f1f 50%, #1f2423) fixed;
+	padding-inline: 0.5em;
 	margin: 2em auto;
 	image-rendering: auto;
 }
@@ -73,20 +74,33 @@ h2 {
 	max-height: 250px;
 	padding: 1rem;
 	overflow-y: auto;
+	image-rendering: pixelated;
 }
 
 .grid {
 	display: grid;
-	gap: 1px;
+	grid-template-columns: repeat(var(--columns), 1fr);
 }
 #webrings {
-	grid-template-columns: repeat(3, 1fr);
+	--columns: 3;
 	justify-items: center;
+	gap: 0.5em;
 }
 #buttons {
-	grid-template-columns: repeat(4, 1fr);
-	image-rendering: pixelated;
+	--columns: 4;
+	gap: 1px;
+
 	img {width: 100%}
+}
+#webstring-ad {
+	display: block;
+	color: var(--blue);
+	font-size: 0.75em;
+	background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAGCAYAAADgzO9IAAAAAXNSR0IArs4c6QAAABNJREFUCJlj8Nn+9j8D9QFlxgIAYJUF3zkT5MoAAAAASUVORK5CYII=);
+	padding: 0.25em 1em;
+	border-radius: 1em;
+
+	&:hover {text-decoration: underline}
 }
 
 #my-button {
@@ -140,12 +154,9 @@ h2 {
 /* mobile */
 
 @media (max-width: 700px) {
-	body {
-		padding-inline: 0.5em;
-	}
-	body, section {
-		width: unset;
-	}
-
+	body, section {width: unset}
 	section, #doodle {margin: 1em !important}
+
+	#webrings {--columns: 1}
+	#buttons {--columns: 2}
 }

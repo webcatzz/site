@@ -127,7 +127,6 @@ h1 {
 	font-size: 0.875em;
 	letter-spacing: 0.05em;
 	text-align: right;
-	margin-top: -0.5em;
 }
 
 nav {
@@ -166,7 +165,7 @@ nav {
 		margin-block: 1.5em;
 		overflow: visible;
 
-		&::after {content: "✄ " attr(data-year)}
+		&::after {content: "✄ " attr(title)}
 	}
 
 	.wide, hr {grid-column: 1/3}

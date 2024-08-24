@@ -15,14 +15,16 @@
   <time datetime="2024-02-04">feb 4, 2024</time>
 </header>
 
-<div class="note">this entry was copied over from /how-to/, which no longer exists.</div>
+<aside>
+  <p>this entry was copied over from /how-to/, which no longer exists.</p>
+</aside>
 
 <p>do you edit your site files locally but hate manually uploading everything to neocities? try deploying your neocities with github!</p>
 
 <p>this how-to assumes you have no prior experience with git, so i'll keep things as simple as possible and guide you through all the commands you'll need. keep in mind that this how-to is written by a mac user, so if you run into any issues on a different OS let me know and i'll update the page accordingly.</p>
 
-<div class="note">
-  table of contents
+<aside>
+  <p>table of contents</p>
   <ul>
     <li><a href="#why-git" target="_self">why git?</a>
       <ul>
@@ -43,7 +45,7 @@
     </li>
     <li><a href="#deploying-your-site" target="_self">deploying your site</a></li>
   </ul>
-</div>
+</aside>
 
 <h3 id="why-git">why git?</h3>
 
@@ -59,24 +61,19 @@
 
 <details>
   <summary>why's it called that?</summary>
-  <div><blockquote>
+  <blockquote>
     <p>Torvalds sarcastically quipped about the name git (which means "unpleasant person" in British English slang): "I'm an egotistical bastard, and I name all my projects after myself. First 'Linux', now 'git'." The man page describes Git as "the stupid content tracker".</p>
-
     <p>The read-me file of the source code elaborates further:</p>
-
     <p>"git" can mean anything, depending on your mood.</p>
-      
     <ul>
       <li>Random three-letter combination that is pronounceable, and not actually used by any common UNIX command. The fact that it is a mispronunciation of "get" may or may not be relevant.</li>
       <li>Stupid. Contemptible and despicable. Simple. Take your pick from the dictionary of slang.</li>
       <li>"Global information tracker": you're in a good mood, and it actually works for you. Angels sing, and a light suddenly fills the room.</li>
       <li>"Goddamn idiotic truckload of sh*t": when it breaks.</li>
     </ul>
-
     <p>The source code for Git refers to the program as "the information manager from hell". </p>
-
     <footer><a href="https://en.wikipedia.org/wiki/Git#Naming">Git, Wikipedia</a></footer>
-  </blockquote></div>
+  </blockquote>
 </details>
 
 <p>convinced yet? these next three sections will walk you through how to set up a repository for your site files and use it to deploy to neocities. if you're intimidated, don't worry—it's not that hard, and once you've reached the end of this how-to you won't have to worry about 99% of this ever again.</p>
@@ -145,9 +142,7 @@
 
 <details>
   <summary>how do i get a folder's path?</summary>
-  <div>
-    <p>you can either (1) right click a folder, hold the "option" key on mac or the shift key on windows, and click the copy as pathname option; or (2) just drag the folder onto the terminal window.</p>
-  </div>
+  <p>you can either (1) right click a folder, hold the "option" key on mac or the shift key on windows, and click the copy as pathname option; or (2) just drag the folder onto the terminal window.</p>
 </details>
 
 <p>the command line will now execute commands from inside your repository. although we've been calling it a repository, it's not actually one yet! follow these steps to turn it into one:</p>
