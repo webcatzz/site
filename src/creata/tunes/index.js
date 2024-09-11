@@ -4,7 +4,6 @@ class RadioButton extends HTMLElement {
 
 	connectedCallback() {
 		this.role = "radio";
-		this.checked = false;
 		this.tabIndex = 0;
 
 		this.classList.add("button");
@@ -108,7 +107,6 @@ function filterBy(query) {
 const view = {
 	el: document.getElementById("view"),
 	title: document.querySelector("h2"),
-	ribbon: document.getElementById("ribbon"),
 	iframe: document.querySelector("iframe"),
 	description: document.getElementById("description"),
 	tags: document.getElementById("tags"),

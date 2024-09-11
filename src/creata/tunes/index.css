@@ -221,6 +221,7 @@ h2 {
 	background-image: url(_assets/rainbow-mask.png);
 	padding: 2em;
 	padding-left: calc(2em + 96px);
+	border-block: 1px solid #ffffff30;
 	box-sizing: border-box;
 	margin-left: -96px;
 	animation: 60s move-bg steps(600) infinite reverse;
@@ -228,7 +229,9 @@ h2 {
 	iframe {
 		width: 100%;
 		height: 100%;
-		border-radius: 3px;
+		border-radius: 4px;
+		outline: 1px solid #ffffff30;
+		outline-offset: 1px;
 	}
 }
 
