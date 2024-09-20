@@ -14,11 +14,14 @@ body {
 }
 
 h1 {
-	font: 1em ms-serif;
-	letter-spacing: 0.25em;
-	position: fixed;
-	left: 640px;
-	top: 1em;
+	font: 3em gotham;
+	letter-spacing: 0.05em;
+	line-height: 1;
+
+	border-radius: 0.5em;
+	grid-column: 1/3;
+
+	transform: skewX(-10deg);
 }
 
 @keyframes spin {to {rotate: 360deg}}
@@ -143,12 +146,10 @@ h1 {
 #filters {
 	color: var(--dark-gray);
 	font-size: 0.875em;
-	padding: 1em;
-	border: 1px dotted;
-	border-radius: 1em;
+	margin-bottom: 1em;
+	grid-column: 1/3;
 
 	transform: skewX(-10deg);
-	z-index: 2;
 
 	#filter-title {
 		font-family: ms-serif;
@@ -204,7 +205,8 @@ h1 {
 }
 
 h2 {
-	font-size: 5em;
+	font: 5em gotham;
+	letter-spacing: -0.05em;
 	text-shadow:
 		0.1em 0.1em var(--black),
 		0.2em 0.1em var(--color);
@@ -221,7 +223,7 @@ h2 {
 	background-image: url(_assets/rainbow-mask.png);
 	padding: 2em;
 	padding-left: calc(2em + 96px);
-	border-block: 1px solid #ffffff30;
+	border-block: 2px solid #ffffff30;
 	box-sizing: border-box;
 	margin-left: -96px;
 	animation: 60s move-bg steps(600) infinite reverse;
