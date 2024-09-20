@@ -1,12 +1,4 @@
-// latest tune
-
-document.getElementById("track-name").textContent = tracklist[0].name;
-document.getElementById("tunes").querySelector("iframe").src = hashToURL(tracklist[0].hash);
-tracklist = null;
-
-
-
-// audio pitch easter eggs
+// tape deck
 
 const tapeDeck = document.querySelector("tape-deck");
 tapeDeck.audio.preservesPitch = false;
@@ -15,7 +7,7 @@ var nightcore = false;
 
 document.getElementById("awful-fucking-thing").onclick = function () {
 	nightcore = !nightcore;
-	document.querySelector("nav").classList.toggle("nightcore");
+	tapeDeck.classList.toggle("nightcore");
 	updatePitch();
 }
 
@@ -38,11 +30,7 @@ function updatePitch() {
 
 
 
-// theme selector
+// latest tune
 
-document.getElementById("theme-select").value = sessionStorage.getItem("theme", this.value) ?? "";
-document.getElementById("theme-select").onchange = function () {
-	document.body.className = this.value;
-	if (this.value) sessionStorage.setItem("theme", this.value);
-	else sessionStorage.removeItem("theme");
-}
+document.getElementById("track").src = hashToURL(tracklist[0].hash);
+tracklist = null;

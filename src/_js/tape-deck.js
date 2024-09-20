@@ -45,6 +45,7 @@ class TapeDeck extends HTMLElement {
 			this.title = marquee;
 		}
 		else this.title.textContent = this.list[this.idx];
+		this.title.title = this.list[this.idx];
 	}
 
 	playNext() {

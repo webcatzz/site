@@ -17,48 +17,17 @@
 
 <!-- ♡ -->
 
-<header>
+<div id="left">
 
-	<h1><span>w</span><span>e</span><span>b</span><span>c</span><span>a</span><span>t</span><span>z</span></h1>
-
-	<select id="theme-select" aria-label="theme selector">
-		<option value="" selected disabled>select a theme...</option>
-		<option value="">retro (default)</option>
-		<option>calico</option>
-		<option>bubblegum</option>
-	</select>
-
-</header>
-
-<nav>
-
-	<div class="box">
+	<header class="block">
+		<h1>june<br><span>💫</span>world.</h1>
 		<p>hello! come on in & welcome to my site!</p>
-		<p>i really like tooltips. keep this in mind</p>
-	</div>
+		<p>i like tooltips. keep this in mind</p>
+	</header>
 
-	<!-- about -->
-	<a id="about" class="tall" title="all about the animal in charge!" href="about/index.html">
-		<div>who the hell are you</div>
-	</a>
+	<img id="goldfish" src="_assets/goldfish.png" aria-hidden="true">
 
-	<!-- creata -->
-	<div id="creata-wrapper" class="tall-2">
-
-		<a href="shh/fell-beasts.html">
-			<img id="cats" src="_assets/cats.gif" title="(cats by 1041uuu)" aria-hidden="true">
-		</a>
-
-		<div id="creata">
-			<h2>cre<span>a</span>ta</h2>
-			<a id="cat-comic" title="a long-term worldbuilding/comic project, set in the sky above a flooded earth" href="creata/cat/index.html">cat comic</a>
-			<a id="bad-dream" title="a surreal trpg on growth" href="creata/bad-dream/index.html">bad dream</a>
-		</div>
-
-	</div>
-
-	<!-- audio player -->
-	<tape-deck marquee shuffle list="
+	<tape-deck shuffle list="
 		First Steps - Lena Raine (Celeste OST)
 		Forgo's Treasures - Hirokazu Ando (Kirby and the Forgotten Land OST)
 		Allison's Theme - beatrix quinn (Super Lesbian Animal RPG OST)
@@ -74,43 +43,55 @@
 		<img id="awful-fucking-thing" src="_assets/nuko-stroll.webp" title="pet the &quot;AWFUL FUCKING THING ?" tabindex="0">
 	</tape-deck>
 
-	<!-- tunes -->
-	<a id="tunes" title="beepbox tracks i've made!&#13;(SORRY theres newer stuff but its all for wip projects 😢)" href="creata/tunes/index.html">
-		<h2>junetunes <span id="track-name">loading...</span> ♪</h2>
-		<iframe title="beepbox track player"></iframe>
-		<img id="cd" src="creata/tunes/_assets/cd-small.png" aria-hidden="true">
-	</a>
+	<footer>
+		<a href="https://webcatz.atabook.org/">sign the guestbook</a> •
+		<a href="mailto:june.webcatz@gmail.com">mail me</a> •
+		c. 2022
+	</footer>
 
-	<!-- map -->
-	<div id="map" class="wide">
-		<a href="map.html" title="ft. stuff not on the index">map >></a>
+	<img id="goldfish-4" src="_assets/goldfish-3.png" aria-hidden="true">
+
+</div>
+
+<nav>
+
+	<div id="header-block" class="block wide">
+		<img id="goldfish-2" src="_assets/goldfish-2.png" aria-hidden="true">
+		<img id="goldfish-3" src="_assets/goldfish-4.png" aria-hidden="true">
 	</div>
 
-	<!-- status cafe -->
-	<div id="statuscafe-wrapper">
-		<div id="statuscafe">
+	<a id="about" class="block" href="about/index.html">
+		<div class="title">who the hell are you</div>
+	</a>
+
+	<div id="creata" class="block tall-2">
+		<div class="big title">cre<span>a</span>ta</div>
+		<a id="cat-comic" class="block" href="creata/cat/index.html"><img src="_assets/index-icon-cat-comic.png"> cat comic</a>
+		<a id="bad-dream" class="block" href="creata/bad-dream/index.html"><img src="_assets/index-icon-bad-dream.png"> bad dream</a>
+	</div>
+
+	<a id="tunes" class="block" href="creata/tunes/index.html">
+		<div class="big title">june tune's</div>
+		<iframe id="track" loading="lazy"></iframe>
+	</a>
+
+	<a id="map" class="wide" href="map.html">map >></a>
+
+	<div class="flex-row">
+
+		<div id="statuscafe" class="block">
 			<div id="statuscafe-username">loading statuscafe...</div>
 			<div id="statuscafe-content"></div>
 			<script defer src="https://status.cafe/current-status.js?name=webcatz"></script>
 		</div>
+		
+		<img id="lightswitch" src="_assets/lightswitch.png">
+
 	</div>
 
-	<!-- blog -->
-	<a id="blog" class="tall" title="listen to me ramble. mostly project updates nowadays." href="writing/blog/index.html">
-		<img src="_assets/16x16/door.gif" aria-hidden="true">
-		blog
+	<a id="blog" class="block tall" href="writing/blog/index.html">
+		<div class="title">bl<br>og</div>
 	</a>
-	
-	<footer>
-		
-		<div class="box">
-			<p>sign the <a href="https://webcatz.atabook.org">guestbook</a>? or mail me at <a href="mailto:june.webcatz@gmail.com">june.webcatz@gmail.com</a></p>
-			<p>live c. 2022, now in v6</p>
-		</div>
-
-		<img id="lightswitch" src="_assets/lightswitch.png" aria-hidden="true">
-
-	</footer>
 
 </nav>
 

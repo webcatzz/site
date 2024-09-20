@@ -163,17 +163,18 @@ ctx.canvas.height = document.body.offsetHeight;
 ctx.lineWidth = 16;
 ctx.lineCap = "round";
 
+let style = getComputedStyle(document.body);
 const colors = [
-  getComputedStyle(document.body).getPropertyValue("--blue"),
-  getComputedStyle(document.body).getPropertyValue("--red"),
-  getComputedStyle(document.body).getPropertyValue("--yellow"),
+  style.getPropertyValue("--blue"),
+  style.getPropertyValue("--red"),
+  style.getPropertyValue("--yellow"),
 ];
 
 let i = -1;
 let onLeftColumn = true;
 
 for (const link of document.querySelectorAll("body > ul > li")) {
-  ctx.strokeStyle = ++i ? colors[i % colors.length] : "#575452";
+  ctx.strokeStyle = ++i ? colors[i % colors.length] : style.getPropertyValue("--dark-gray");
 
   ctx.beginPath();
   ctx.moveTo(link.offsetLeft, link.offsetTop - 23.2);

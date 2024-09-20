@@ -1,332 +1,233 @@
+nav {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 1em;
+
+	max-width: 550px;
+	flex: 1;
+}
+
 .wide {grid-column: 1/3}
 .tall {grid-row: span 2}
 .tall-2 {grid-row: span 3}
 .tall-3 {grid-row: span 4}
 
-.box {
-	padding: 1em;
-	border: 2px dotted var(--dark-gray);
-	border-radius: 8px;
-
-	p:first-of-type {margin-top: 0}
-	p:last-of-type {margin-bottom: 0}
-
-	a {
-		text-decoration: dotted underline;
-		&:hover {text-decoration: underline}
-	}
-}
 
 
-/* intro */
-#intro {
-	height: 2em;
-	padding-bottom: 2em;
-	overflow-y: auto;
-}
+/* links */
 
-
-/* about */
-#about {
-	background-color: var(--lighter-gray);
-	padding: 8px;
-	padding-bottom: 24px;
-	border-radius: 4px;
-
-	div {
-		--pink: #d97575;
-	
-		display: flex;
-		justify-content: end;
-		align-items: center;
-	
-		color: #33383c;
-		font: 1.5em sans-serif;
-		letter-spacing: 0.05em;
-		text-shadow: 0 0 12px var(--pink);
-	
-		height: 126px;
-		background: url(_assets/abouzutsumi.png) no-repeat -90% 50% / auto 300% var(--pink);
-		padding-inline: 0.2em;
-		border-radius: inherit;
-
-		image-rendering: auto;
-	}
-}
-
-
-/* audio player */
-tape-deck {
-	color: var(--gray);
-	position: relative;
-
-	.track-title {
-		background-image: url(_assets/plaid.png);
-		border-radius: 4px;
-		flex: 1;
-	}
-
-	button {
-		text-decoration-color: var(--gray);
-		&:hover {color: var(--white)}
-	}
-}
-
-@keyframes awful {
-	from {object-position: left}
-	to {object-position: right}
-}
-#awful-fucking-thing {
-	object-fit: contain;
-	height: 20px;
-
-	position: absolute;
-	bottom: 100%;
-	cursor: pointer;
-	animation: 60s awful linear infinite alternate;
-
-	&:active {content: url(_assets/nuko-electrocute.gif)}
-}
-.nightcore {
-	background-image: url(_assets/sparkles.gif);
-	background-size: cover;
-
-	#awful-fucking-thing {
-		content: url(_assets/nuko-dance.webp);
-		background-image: url(_assets/sparkles.gif);
-		background-size: cover;
-		animation-duration: 1s;
-	}
-}
-
-
-/* creata */
-#creata {
-	contain: inline-size paint;
-	background-color: var(--yellow);
-	padding-bottom: 0.5em;
-	border-radius: 4px;
-	flex: 1;
-
-	h2 {
-		color: var(--lighter-gray);
-		font-size: 9em;
-		font-weight: bold;
-		letter-spacing: -0.1em;
-		line-height: 0.5;
-		margin-left: -0.25em;
-		pointer-events: none;
-		
-		span {font-family: print, sans-serif}
-	}
-
-	a {
-		display: block;
-		font-weight: bold;
-		margin: 0.5em 1em;
-		padding: 1em;
-		border-radius: 4px;
-
-		&:hover {
-			outline: 8px solid var(--white);
-			outline-offset: 2px;
-		}
-	}
-}
-#creata-wrapper {
-	display: flex;
-	flex-direction: column;
-}
-#cats {
-	display: block;
-	width: 92px;
-	margin: -46px 8px -18px auto;
-	position: relative;
-	z-index: 1;
-}
-
-
-/* cat comic */
-#cat-comic {
-	text-shadow: -0.1em 0.1em var(--blue);
-	background-color: var(--blue);
-	background: url(_assets/cloud.png) 5% var(--blue);
-}
-
-
-/* bad dream */
-#bad-dream {
-	color: #b8aab0;
-	text-shadow: -0.1em 0.1em var(--black);
-	padding-left: 2em !important;
-	background:
-		url(_assets/bad-dream-box.png) var(--black);
-}
-
-
-/* tunes */
-#tunes {
-	color: var(--lighter-gray);
-	text-shadow:
-		0.15em 0.15em var(--darker-gray),
-		0.3em 0.15em var(--blue);
-
+a.block {
 	contain: paint;
-	background: url(_assets/cloud.png) center var(--blue);
-	padding: 0.75em 1em;
-	border-radius: 4px;
 
-	iframe {
-		width: calc(100% - 2em);
-		height: 64px;
-		background-color: var(--black);
-		border-radius: 4px;
-		margin-left: 2em;
-		opacity: 0.8;
+	&:hover {
+		outline: 8px solid #ffffff20;
+		outline-offset: 1px;
 	}
 }
-#track-name {
-	font-family: ms-serif;
-	font-size: 0.75em;
-	letter-spacing: 0.1em;
-	text-shadow:
-		0 -0.1em var(--black), 0.1em -0.1em var(--black),
-		0.15em 0 var(--black), 0.15em 0.15em var(--black),
-		0 0.15em var(--black), -0.1em 0.1em var(--blue),
-		-0.1em 0 var(--black), -0.1em -0.1em var(--black);
+
+.title {
+	color: var(--white);
+	font-family: sans-serif;
+	font-weight: bold;
+
+	&.big {
+		line-height: 0.075;
+		white-space: nowrap;
 	
-	padding-left: 0.25em;
-	padding-right: 0.4em;
-	background-color: var(--darker-gray);
-	margin: 0 4px;
-	justify-self: start;
-}
-@keyframes spin {to {rotate: 360deg}}
-#cd {
-	contain: layout;
-	position: absolute;
-	top: 4px;
-	left: -112px;
-	z-index: -1;
-	animation: 120s spin steps(1080) infinite;
-}
-
-
-/* map */
-#map {
-	color: var(--light-gray);
-	text-align: center;
-	background: url(_assets/map.png) center / 100%;
-	border-radius: 0.5em;
-
-	a:hover {
-		text-decoration: underline var(--gray);
+		contain: inline-size;
+		margin-inline: -3.75rem;
+		margin-bottom: 2rem;
+		pointer-events: none;
 	}
 }
 
 
-/* statuscafe */
-#statuscafe {
-	color: var(--black);
-	background-color: var(--white);
-	padding: 1em;
-	border-radius: 1em;
+
+/* header */
+
+#header-block {
+	height: 4em;
+	background-image: radial-gradient(farthest-side circle at top right, var(--yellow), transparent);
+	background-color: var(--blue);
+	margin-left: -5em;
+	margin-bottom: 2em;
 	position: relative;
 
 	&::after {
 		content: "";
 		display: block;
-		width: 1.5em;
-		height: 1.5em;
-		background-color: inherit;
-		border-radius: 2px;
-		border-bottom-left-radius: 50%;
-		rotate: 45deg;
+		width: 6px;
+		height: 6px;
+		background-color: var(--blue);
 		position: absolute;
-		top: calc(50% - 0.75em);
-		right: -0.5em;
+		top: 100%;
+		left: 1em;
+		clip-path: path("M 0 6 A 6 6 0 0 1 6 0 L 0 0 z");
 	}
 }
+
+
+
+/* about */
+
+#about {
+	background-color: var(--red);
+
+	.title {
+		/* font-size: 1.25em; */
+		font-size: 3em;
+		line-height: 0.6;
+		text-align: right;
+		margin-bottom: -2rem;
+	}
+}
+
+
+
+/* creata */
+
+#creata {
+	color: var(--white);
+	contain: paint;
+	background: url(_assets/mask-drip.png) repeat-x bottom var(--yellow);
+
+	.title {
+		font-size: 8em;
+		letter-spacing: -0.1em;
+
+		span {
+			font-family: magazine;
+			line-height: 0;
+			margin-inline: -0.12em;
+		}
+	}
+
+	a {
+		display: block;
+		font-family: sans-serif;
+		font-weight: bold;
+		padding: 0.75em 1em;
+		margin-block: 0.375em;
+
+		img {
+			display: inline;
+			vertical-align: -0.18em;
+			margin-right: 0.25em;
+		}
+	}
+
+}
+
+#cat-comic {
+	background-color: var(--blue);
+}
+
+#bad-dream {
+	background-color: var(--black);
+}
+
+
+
+/* tunes */
+
+#tunes {
+	padding-block: 1em;
+	background:
+		url(creata/tunes/_assets/cd-small.png) no-repeat -160px 50%,
+		url(_assets/cloud.png) center var(--blue);
+	
+	.title {
+		font-size: 4em;
+		letter-spacing: -0.1em;
+
+		margin-inline: -2rem;
+		margin-bottom: 1rem;
+	}
+}
+
+#track {
+	width: 100%;
+	height: 80px;
+	background-color: var(--white);
+	border: 6px solid var(--white);
+	border-radius: 12px;
+	box-sizing: border-box;
+}
+
+
+
+/* map */
+
+#map {
+	color: var(--gray);
+	text-align: center;
+	/* margin-inline: auto; */
+
+	background:
+		url(_assets/map.png),
+		radial-gradient(circle at center, rgb(from var(--yellow) r g b / 0.4) 25%, transparent);
+
+	&:hover {
+		text-decoration: underline;
+	}
+}
+
+
+
+/* status */
+
+#statuscafe {
+	padding: 1em;
+	border: 1px dotted var(--light-gray);
+	flex: 1;
+}
+
 #statuscafe-username {
 	color: var(--gray);
 	font-size: 0.75em;
-
-	a {
-		text-decoration: dotted underline;
-		&:hover {text-decoration: underline}
-	}
-}
-#statuscafe-content {
-	margin-top: 0.25em;
-}
-#statuscafe-wrapper {
-	background-image: url(_assets/plaid.png);
-	padding: 1em;
-	padding-right: 1.5em;
-	border-radius: 8px;
-	border-top-right-radius: 0;
-	border-bottom-right-radius: 0;
-	margin-right: -1em;
 }
 
-
-/* blog */
-#blog {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-
-	color: var(--yellow);
-	font-family: gotham;
-	font-size: 4em;
-	text-shadow: 0.1em 0.1em var(--black);
-
-	aspect-ratio: 578/354;
-	background:
-		url(_assets/stamp.png) center / cover,
-		url(_assets/leaves.gif) repeat-x center / auto 64px,
-		url(_assets/plaid.png);
-	border-radius: 8px;
-	border-top-left-radius: 0;
-
-	img {
-		display: inline;
-		width: unset;
-		height: 0.75em;
-	}
-}
 
 
 /* lightswitch */
+
 #lightswitch {
-	width: unset;
+	align-self: start;
 	cursor: pointer;
 }
 
+@keyframes appear {from {opacity: 0}}
 
-/* footer */
-footer {
-	display: flex;
-	gap: inherit;
-	color: var(--gray);
-	font-size: 0.875em;
+.lights-off {
 
-	.box {flex: 1}
+	&::before {
+		content: "";
+		background-color: black;
+		position: fixed;
+		inset: 0;
+		z-index: 99;
+	}
+
+	&::after {
+		content: "";
+		background: url(_assets/napstablook.gif) no-repeat center;
+		opacity: 0.33;
+		animation: 30s appear;
+	}
+
 }
-#lightswitch {align-self: start}
 
 
-/* links */
-#links {
-	color: var(--gray);
-	text-align: center;
-	font-size: 0.875em;
-	letter-spacing: 0.025em;
-	background-image: url(_assets/halftone.png);
-	border-radius: 1em;
 
-	a {
-		text-decoration: dotted underline;
-		&:hover {text-decoration: underline}
+/* blog */
+
+#blog {
+	background-color: var(--red);
+	padding: 1.5em;
+	border-image: url(_assets/mask-stamp.png) 5 9 9 5 / 5px 9px 9px 5px round;
+
+	.title {
+		font-size: 3.5em;
+		line-height: 0.75;
 	}
 }

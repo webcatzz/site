@@ -1,161 +1,150 @@
 @font-face {font-family: fullcomp; src: url(_assets/fonts/fully-completely.ttf)}
-@font-face {font-family: print; src: url(_assets/fonts/magazine.ttf)}
-:root {
-	--lighter-gray: #e7d9b7;
-	scrollbar-color: var(--dark-gray) transparent;
-}
+@font-face {font-family: magazine; src: url(_assets/fonts/magazine.ttf)}
+@font-face {font-family: nunito-black; src: url(_assets/fonts/nunito-black.ttf)}
 
 body {
 	display: flex;
-	align-items: start;
+	justify-content: center;
 	gap: 4em;
 
-	color: var(--white);
-	background-color: var(--black);
-	margin: 4em calc(50vw - 585px);
-}
-
-
-
-/* header */
-
-header {
-	width: max-content;
-	position: relative;
-
-	&::before {
-		content: "";
-
-		width: 890px;
-		aspect-ratio: 1;
-		border-radius: 50%;
-		border: 1em solid var(--darker-gray);
-		outline: 0.5em solid var(--darker-gray);
-		outline-offset: 0.25em;
-
-		transform: translate(-50%, -50%);
-		position: absolute;
-		left: 50%;
-		top: 50%;
-		z-index: -1;
-	}
-}
-
-@keyframes fairylight {
-	0% {text-shadow: 0 -0.1em var(--blue), 0.1em -0.1em var(--blue), 0.1em 0 var(--blue), 0.1em 0.1em var(--blue), 0 0.1em var(--blue), -0.1em 0.1em var(--blue), -0.1em 0 var(--blue), -0.1em -0.1em var(--blue)}
-	33% {text-shadow: 0 -0.1em var(--red), 0.1em -0.1em var(--red), 0.1em 0 var(--red), 0.1em 0.1em var(--red), 0 0.1em var(--red), -0.1em 0.1em var(--red), -0.1em 0 var(--red), -0.1em -0.1em var(--red)}
-	66% {text-shadow: 0 -0.1em var(--yellow), 0.1em -0.1em var(--yellow), 0.1em 0 var(--yellow), 0.1em 0.1em var(--yellow), 0 0.1em var(--yellow), -0.1em 0.1em var(--yellow), -0.1em 0 var(--yellow), -0.1em -0.1em var(--yellow)}
-}
-
-h1 {
-	display: flex;
-	align-items: end;
-	gap: 0.15em;
-
 	color: var(--black);
-	font: bold 4em fullcomp;
-
-	background: url(_assets/starchart.png) repeat-x bottom;
-	padding-inline: 0.5em;
-	margin-inline: -0.5em;
-
-	span {
-		animation: 4s fairylight step-end infinite;
-		&:nth-of-type(1) {animation-delay: -6s; rotate: -2deg}
-		&:nth-of-type(2) {animation-delay: -5s; rotate: -4deg; margin-bottom: 0.05em; text-decoration: overline dotted 0.01em}
-		&:nth-of-type(3) {animation-delay: -4s; margin-left: -0.05em}
-		&:nth-of-type(4) {animation-delay: -3s; rotate: 3deg; text-decoration: underline wavy 0.01em}
-		&:nth-of-type(5) {animation-delay: -2s; rotate: -2deg; margin-bottom: -0.05em}
-		&:nth-of-type(6) {animation-delay: -1s}
-		&:nth-of-type(7) {rotate: 4deg}
-	}
-}
-
-#theme-select {
-	margin-top: 0.5em;
+	background-color: var(--white);
+	margin: 4em;
+	position: relative;
 }
 
 
-
-/* main */
-
-nav {
-	display: grid;
-	grid-template-columns: repeat(2, 1fr);
-	grid-auto-rows: max-content;
+.flex-row, .flex-col {
+	display: flex;
 	gap: 1em;
-
-	max-width: 700px;
-	background-color: var(--black);
-	padding: 1em;
-	box-sizing: border-box;
-	border-radius: 1em;
-	flex: 1;
-
-	> a:hover {
-		outline: 8px solid var(--white);
-		outline-offset: 2px;
-	}
-
-	img {
-		width: 100%;
-	}
+}
+.flex-col {
+	flex-direction: column;
 }
 
 
+.block {
+	padding: 2em;
+	border-radius: 6px;
 
-/* misc */
+	> *:first-child {margin-top: 0}
+	> *:last-child {margin-bottom: 0}
+}
+
+
+#goldfish {
+	margin: -100px auto 1em;
+}
+#goldfish-2 {
+	position: absolute;
+	top: -64px;
+	right: 32px;
+}
+#goldfish-3 {
+	margin-left: 8em;
+	margin-top: 2em;
+}
+#goldfish-4 {
+	position: absolute;
+	right: -2em;
+	bottom: 0;
+}
+
 
 a {color: inherit}
 
-select {
-	padding: 0.5em 1em;
-	border: 0.1em dotted var(--gray);
-	border-radius: 1em;
+
+
+/* left */
+
+@keyframes gradient {
+	from {background-color: var(--blue)}
+	33.33% {background-color: var(--yellow)}
+	66.67% {background-color: var(--red)}
 }
 
-@keyframes appear {from {opacity: 0}}
+#left {
+	position: relative;
+}
 
-.lights-off {
+header.block {
+	background: url(_assets/mask-scales.png) repeat-x bottom var(--blue);
+	padding: 4em;
+	padding-bottom: 6em;
 
-	&::before {
-		content: "";
-		background-color: black;
-		position: fixed;
-		inset: 0;
-		z-index: 99;
+	p {margin-block: 0.5em}
+}
+
+h1 {
+	font: 3.25em nunito-black;
+	line-height: 0.8;
+
+	margin-bottom: 3rem;
+	filter:
+		drop-shadow(0.1em 0 var(--white))
+		drop-shadow(-0.1em 0 var(--white))
+		drop-shadow(0 0.1em var(--white))
+		drop-shadow(0 -0.1em var(--white))
+
+		drop-shadow(0.05em 0)
+		drop-shadow(-0.05em 0)
+		drop-shadow(0 0.1em)
+		drop-shadow(0 -0.05em)
+	;
+
+	span {
+		color: transparent;
+		background-color: var(--black);
+		background-clip: text;
 	}
+}
 
-	&::after {
-		content: "";
-		background: url(_assets/napstablook.gif) no-repeat center;
-		opacity: 0.33;
-		animation: 30s appear;
+tape-deck {
+	color: var(--light-gray);
+	margin: 0.5em 4em;
+
+	&.nightcore {
+		background: url(_assets/sparkles.gif) center / cover;
+		padding: 1em;
+		margin: -1em 3em -0.5em;
 	}
+}
 
+#awful-fucking-thing {
+	width: 20px;
+	height: 20px;
+	cursor: pointer;
+
+	&:active {content: url(_assets/nuko-electrocute.gif)}
+	.nightcore & {content: url(_assets/nuko-dance.webp)}
+}
+
+footer {
+	color: var(--light-gray);
+	font: 0.75em ms-serif;
+	text-align: center;
+
+	a {text-decoration: underline}
 }
 
 
 
 /* mobile */
 
-@media (max-width: 1200px) {
-	body {
-		flex-direction: column;
-		align-items: center;
-		margin-inline: 1em;
-	}
-}
-
 @media (max-width: 800px) {
+	
 	body {
-		overflow-x: hidden;
+		flex-direction: column;
+		align-items: unset;
 	}
-	header::before {
-		width: 100vw;
-	}
+
 	nav {
-		display: flex;
+		display: flex !important;
 		flex-direction: column;
 	}
+
+	#header-block {
+		display: none;
+	}
+
 }
