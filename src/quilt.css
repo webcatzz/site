@@ -45,7 +45,7 @@ a.block {
 
 /* header */
 
-#header-block {
+#header-right {
 	height: 4em;
 	background-image: radial-gradient(farthest-side circle at top right, var(--yellow), transparent);
 	background-color: var(--blue);
