@@ -2,6 +2,7 @@
 
 const tapeDeck = document.querySelector("tape-deck");
 tapeDeck.audio.preservesPitch = false;
+tapeDeck.audio.addEventListener("play", updatePitch);
 
 var nightcore = false;
 
