@@ -71,6 +71,7 @@ header.block {
 	background: url(_assets/mask-scales.png) repeat-x bottom var(--blue);
 	padding: 4em;
 	padding-bottom: 6em;
+	box-shadow: 0 -8px 16px -8px var(--blue);
 
 	p {margin-block: 0.5em}
 }

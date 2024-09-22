@@ -72,6 +72,7 @@ a.block {
 
 #about {
 	background-color: var(--red);
+	box-shadow: 8px 0 16px -8px var(--red);
 
 	.title {
 		/* font-size: 1.25em; */
@@ -90,6 +91,7 @@ a.block {
 	color: var(--white);
 	contain: paint;
 	background: url(_assets/mask-drip.png) repeat-x bottom var(--yellow);
+	box-shadow: -8px 0 16px -8px var(--yellow);
 
 	.title {
 		font-size: 8em;
@@ -123,7 +125,7 @@ a.block {
 }
 
 #bad-dream {
-	background-color: var(--black);
+	background-color: var(--light-gray);
 }
 
 
@@ -135,6 +137,7 @@ a.block {
 	background:
 		url(creata/tunes/_assets/cd-small.png) no-repeat -160px 50%,
 		url(_assets/cloud.png) center var(--blue);
+	box-shadow: 0 10px 8px -8px var(--blue);
 	
 	.title {
 		font-size: 4em;
