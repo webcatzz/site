@@ -11,10 +11,11 @@ bpSites = [
 	"https://foggybear42.neocities.org",
 	"https://mechagic.lexiqqq.com",
 	"https://sawtooth.neocities.org",
-	"https://neogeist.lol",
+	"https://neovium.xyz/",
 	"https://hellokittyminigun.neocities.org",
 	"https://item64.neocities.org",
 	"https://transferns.neocities.org",
+	"https://teethinvitro.neocities.org/music",
 ];
 
 
