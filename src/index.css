@@ -104,6 +104,10 @@ tape-deck {
 	color: var(--light-gray);
 	margin: 0.5em 4em;
 
+	.track-title {
+		text-align: right;
+	}
+
 	&.nightcore {
 		background: url(_assets/sparkles.gif) center / cover;
 		padding: 1em;
