@@ -67,13 +67,17 @@ h2,
 .title {
 	font: 3em typewriter;
 	letter-spacing: -0.1em;
-	padding-inline: 1rem;
 	background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAGCAYAAADgzO9IAAAAAXNSR0IArs4c6QAAABJJREFUCJljYGBg+M9AE0CBsQDMyQH//btxFgAAAABJRU5ErkJggg==);
+	padding-inline: 1rem;
+	border-radius: 2px;
 }
 
 .content {
 	max-height: 250px;
 	padding: 1rem;
+	border: 1px dotted var(--gray);
+	border-radius: 2px;
+	margin-block: 0.5em;
 	overflow-y: auto;
 	image-rendering: pixelated;
 }
@@ -86,22 +90,22 @@ h2,
 	--columns: 3;
 	justify-items: center;
 	gap: 0.5em;
+
+	a:hover {background-color: transparent}
 }
 #buttons {
 	--columns: 4;
 	gap: 1px;
 
 	img {width: 100%}
+	a:hover {background-color: transparent}
 }
 #webstring-ad {
-	display: block;
-	color: var(--blue);
+	color: var(--gray);
 	font-size: 0.75em;
 	background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAGCAYAAADgzO9IAAAAAXNSR0IArs4c6QAAABNJREFUCJlj8Nn+9j8D9QFlxgIAYJUF3zkT5MoAAAAASUVORK5CYII=);
 	padding: 0.25em 1em;
 	border-radius: 1em;
-
-	&:hover {text-decoration: underline}
 }
 
 #my-button {
@@ -128,6 +132,14 @@ h2,
 		display: inline;
 		&:not(:first-of-type)::before {content: " • "}
 	}
+
+	h3:not(:first-child) {margin-top: 1em}
+}
+
+a {
+	color: inherit;
+	text-decoration: underline 0.1em var(--blue);
+	&:hover {background-color: var(--blue)}
 }
 
 #doodle {
@@ -154,8 +166,9 @@ h2,
 	justify-content: center;
 	align-items: center;
 
-	color: var(--red);
+	color: #ed5977;
 	font: 1.5em gotham;
+	text-decoration: none;
 	text-shadow:
 		0 1px var(--black),
 		0 0.25em 1em rgb(from var(--black) r g b / 0.5);
