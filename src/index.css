@@ -2,13 +2,19 @@
 @font-face {font-family: magazine; src: url(_assets/fonts/magazine.ttf)}
 @font-face {font-family: nunito-black; src: url(_assets/fonts/nunito-black.ttf)}
 
+:root {
+	--red-offset: #f1c499; /* f1b699 */
+	--blue-offset: var(--blue);
+	--yellow-offset: #eed48d;
+}
+
 body {
 	display: flex;
 	justify-content: center;
 	gap: 4em;
 
 	color: var(--black);
-	background-color: var(--white);
+	background: radial-gradient(transparent 75%, #ffffff80) fixed var(--white);
 	margin: 4em;
 	position: relative;
 }
@@ -47,7 +53,7 @@ body {
 #goldfish-4 {
 	position: absolute;
 	right: -2em;
-	bottom: 0;
+	bottom: -1em;
 }
 
 
@@ -65,6 +71,9 @@ a {color: inherit}
 
 #left {
 	position: relative;
+	background-image: linear-gradient(to top, rgb(from var(--blue) r g b / 0.25), transparent 4em);
+	border-radius: 4px;
+	margin-bottom: 1em;
 }
 
 header.block {
@@ -148,8 +157,16 @@ footer {
 		flex-direction: column;
 	}
 
-	#header-right {
+	#header-right, #goldfish-2, #goldfish-3, #goldfish-4 {
 		display: none;
+	}
+
+	#left {
+		background-image: none;
+	}
+
+	#goldfish {
+		width: 100%;
 	}
 
 }

@@ -20,7 +20,7 @@ a.block {
 	contain: paint;
 
 	&:hover {
-		outline: 8px solid #ffffff20;
+		outline: 12px solid #ffffff20;
 		outline-offset: 1px;
 	}
 }
@@ -71,7 +71,7 @@ a.block {
 /* about */
 
 #about {
-	background-color: var(--red);
+	background: radial-gradient(circle at 15% 10%, var(--red-offset), transparent 50%) var(--red);
 	box-shadow: 8px 0 16px -8px var(--red);
 
 	.title {
@@ -90,7 +90,7 @@ a.block {
 #creata {
 	color: var(--white);
 	contain: paint;
-	background: url(_assets/mask-drip.png) repeat-x bottom var(--yellow);
+	background: url(_assets/mask-drip.png) repeat-x bottom, radial-gradient(circle at 25% 100%, var(--yellow-offset), transparent 50%) var(--yellow);
 	box-shadow: -8px 0 16px -8px var(--yellow);
 
 	.title {
@@ -187,7 +187,7 @@ a.block {
 
 #statuscafe-username {
 	color: var(--gray);
-	font-size: 0.75em;
+	font: 0.75em ms-serif;
 }
 
 
@@ -225,12 +225,12 @@ a.block {
 /* blog */
 
 #blog {
-	background-color: var(--red);
+	background: radial-gradient(circle at 70% 80%, var(--red-offset), transparent 50%) var(--red);
 	padding: 1.5em;
 	border-image: url(_assets/mask-stamp.png) 5 9 9 5 / 5px 9px 9px 5px round;
 
 	.title {
 		font-size: 3.5em;
-		line-height: 0.75;
+		line-height: 0.625;
 	}
 }
