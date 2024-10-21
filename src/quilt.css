@@ -162,7 +162,7 @@ a.block {
 /* map */
 
 #map {
-	color: var(--gray);
+	color: var(--light-gray);
 	text-align: center;
 	/* margin-inline: auto; */
 

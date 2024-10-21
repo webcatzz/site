@@ -22,7 +22,7 @@ body {
 header {
 	line-height: initial;
 	min-height: 3.55em;
-	border: 1px solid #201c1060;
+	border: 1px solid rgb(from var(--black) r g b / 0.25);
 	margin-bottom: 2.5em;
 	position: relative;
 }

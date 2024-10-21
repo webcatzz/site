@@ -81,11 +81,11 @@ time {
 article a {
 	text-decoration: underline #464757;
 }
-img {
+img, video {
 	width: 100%;
 	border: 1px solid #22161e;
 	padding: 1px;
 	box-sizing: border-box;
-
-	&.big {image-rendering: auto}
+	margin-block: 1em;
+	image-rendering: auto;
 }
