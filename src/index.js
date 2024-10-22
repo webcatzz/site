@@ -33,5 +33,5 @@ function updatePitch() {
 
 // latest tune
 
-document.getElementById("track").src = hashToURL(tracklist[0].hash);
+document.querySelector("#track iframe").src = hashToURL(tracklist[0].hash);
 tracklist = null;

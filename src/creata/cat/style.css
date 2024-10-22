@@ -1,0 +1,51 @@
+@font-face {font-family: transport; src: url(_assets/transport.ttf)}
+
+/* :root {
+	--black: #46515b;
+	--white: #e9e1d7;
+} */
+
+body {
+	display: flex;
+	justify-content: center;
+	color: var(--black);
+	background-color: var(--white);
+	margin: 6em 1em;
+}
+
+h1 {
+	font: 2em transport, sans-serif;
+}
+
+#cover {
+	background: url(../../_assets/cloud.png) center / cover, radial-gradient(circle at top, var(--white), transparent) var(--blue);
+	border-radius: 4px;
+	flex-basis: 150px;
+}
+
+main {
+	padding-inline: 2em;
+	flex-basis: 350px;
+}
+
+hr {
+	height: 3px;
+	background-image: linear-gradient(to left, var(--white), transparent), url(_assets/squiggle.png);
+	background-color: transparent;
+	margin-block: 2em;
+}
+
+dt {
+	font: 0.875em transport;
+	margin-top: 1em;
+}
+
+dd {
+	margin-left: 1em;
+}
+
+footer {
+	color: var(--light-gray);
+	font-size: 0.5em;
+	margin-top: 4rem;
+}
