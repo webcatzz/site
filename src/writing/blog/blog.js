@@ -26,29 +26,3 @@ let background = [
 document.body.style.setProperty("--background", `url(_assets/backgrounds/${background.path})`);
 document.getElementById("background-credit").textContent = "background by " + background.artist;
 document.getElementById("background-credit").href = "https://" + background.link;
-
-
-
-// audio
-
-const audioEls = document.getElementById("player").children;
-AudioPlayer.create([
-	"10 pm (sunny) - kazumi totaka",
-	"wedding (i want a garden theme!) - kazumi totaka",
-	"blogger sits alone at night - coffeebug",
-	"fall (raven's descent) - concernedape",
-	"the tempest - louie zong",
-	"café midi - coffeebug",
-],{
-	playButton: audioEls[0],
-	skipButton: audioEls[1],
-	insertIcons: true,
-	fileGarden: "ZdmFgugxzVCR-8Bl",
-	shuffle: true,
-	onended: () => {
-		let title = document.createElement("marquee");
-		title.direction = "up";
-		title.appendChild(document.createElement("span")).textContent = AudioPlayer.list[AudioPlayer.idx].title;
-		audioEls[2].replaceWith(title);
-	}
-});

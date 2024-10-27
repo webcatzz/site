@@ -10,6 +10,7 @@ class TapeDeck extends HTMLElement {
 		for (const string of this.getAttribute("list").split("\n")) {
 			if (string.trim()) this.list.push(string.trim());
 		}
+
 		if (this.hasAttribute("shuffle")) {
 			let thisi = this.list.length, randi;
 			while (thisi > 0) randi = Math.floor(Math.random() * thisi--), [this.list[thisi], this.list[randi]] = [this.list[randi], this.list[thisi]];

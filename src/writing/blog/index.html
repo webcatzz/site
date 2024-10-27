@@ -9,7 +9,7 @@
 	<link rel="stylesheet" href="../../_js/image-modal.css">
 	<link rel="stylesheet" href="blog.css">
 	<link rel="stylesheet" href="index.css">
-	<script defer src="../../_js/audio-player.js"></script>
+	<script defer src="../../_js/tape-deck.js"></script>
 	<script defer src="blog.js"></script>
 	<script defer src="../../theme.js"></script>
 	<base target="frame">
@@ -21,7 +21,7 @@
 
 <div id="left" class="page">
 
-	<h1>june's blog</h1>
+	<h1 class="patterned">june's blog</h1>
 	<div id="subtitle">(winning awards in infrequency since 2023)</div>
 
 	<img id="stamp-1" src="_assets/stamp-1.png" aria-hidden="true">
@@ -71,7 +71,7 @@
 	<img id="stamp-3" src="_assets/stamp-2.png" aria-hidden="true">
 	<img id="stamp-4" src="_assets/stamp-3.png" aria-hidden="true">
 
-	<a id="back" href="../../index.html" target="_self">&larr; back</a>
+	<a id="back" class="patterned" href="../../index.html" target="_self">&lt;&lt; back</a>
 
 </div>
 
@@ -83,11 +83,14 @@
 
 </div>
 
-<div id="player">
-	<button></button>
-	<button></button>
-	<marquee></marquee>
-</div>
+<tape-deck shuffle list="
+	10 pm (sunny) - kazumi totaka
+	wedding (i want a garden theme!) - kazumi totaka
+	blogger sits alone at night - coffeebug
+	fall (raven's descent) - concernedape
+	the tempest - louie zong
+	café midi - coffeebug
+"></tape-deck>
 
 <a id="background-credit" target="_blank"></a>
 

@@ -1,5 +1,5 @@
 :root {
-	--blue: #59cdff;
+	--blue: #76c9d0; /* #59cdff */
 }
 
 body {
@@ -14,6 +14,7 @@ body {
 	background:
 		linear-gradient(to right, #ffffff10 1px, transparent 1px) center / 64px 64px,
 		linear-gradient(to top, #ffffff10 1px, transparent 1px) center / 64px 64px,
+		radial-gradient(at center, var(--black), transparent 75%),
 		var(--background) center / cover black;
 	margin-inline: auto;
 	position: relative;
@@ -46,10 +47,12 @@ body {
 
 	> * {rotate: 1deg}
 }
+
 #left {
 	background-image: url(_assets/page-left.png);
 	transform-origin: right;
 }
+
 #right {
 	background-image: url(_assets/page-right.png);
 	transform-origin: left;
@@ -57,7 +60,7 @@ body {
 
 
 
-/* left */
+/* left (index) */
 
 #left {
 	display: flex;
@@ -75,98 +78,85 @@ body {
 		bottom: 0;
 		pointer-events: none;
 	}
-
-	a {
-		display: block;
-		color: var(--white);
-		font-weight: bold;
-		background-color: var(--black);
-		padding: 1em;
-		align-self: start;
-		rotate: 1deg;
-		transition: 0.1s;
-		cursor: pointer;
-
-		.active, &:hover {
-			color: var(--white);
-			background-color: var(--blue);
-		}
-		&:hover {
-			box-shadow: -4px 4px 0 var(--black);
-			transform: translate(4px, -4px);
-			position: relative;
-			z-index: 10;
-
-			&:nth-of-type(even) {
-				box-shadow: 4px 4px 0 #201c10;
-				transform: translate(-4px, -4px);
-			}
-		}
-		&:active {background-color: var(--white)}
-	}
 }
-h1 {
-	display: flex;
-	align-items: center;
-	gap: 0.5em;
 
-	font-size: 3em;
-	margin-top: 0.67em;
+.patterned {
+	display: flex;
+	gap: 1rem;
 
 	&::after {
 		content: "";
-		height: 4px;
+		height: 12px;
 		background: url(_assets/dither.png) left / 4px;
 		align-self: center;
 		flex: 1;
 	}
 }
+
+h1 {
+	font: bold 3em wildpines;
+	letter-spacing: -0.05em;
+	margin-top: 0.5em;
+}
+
 #subtitle {
 	color: var(--black-trans);
-	font-family: ms-serif;
-	font-size: 0.875em;
+	font: 0.875em ms-serif;
 	letter-spacing: 0.05em;
 	text-align: right;
-	margin-block: -0.5em 0.5em;
+	margin-top: -0.75em;
 }
 
 nav {
 	display: grid;
 	grid-template-columns: repeat(2, 1fr);
-	gap: 1px 1em;
-	margin-top: 1.5em;
+	align-items: start;
+	gap: 0.25em;
+	margin-top: 2em;
 	rotate: 0deg !important;
 
-	a time {
-		color: var(--gray);
-		font: 0.75em/0 gotham;
-		letter-spacing: -0.1em;
-		margin-right: 0.25em;
+	a {
+		color: var(--white);
+		font-weight: bold;
+		background-color: var(--black);
+		padding: 1em;
+		border-radius: 0.5em;
+		rotate: 1deg;
+		transition: 0.1s;
 
-		:hover > & {visibility: hidden}
+		time {
+			color: var(--gray);
+			font: 0.75em/0 wildpines;
+			letter-spacing: -0.1em;
+			margin-right: 0.25em;
+		}
+
+		&:hover {
+			background-color: var(--blue);
+			box-shadow: -4px 4px 0 var(--black);
+			transform: translate(4px, -4px);
+			position: relative;
+			z-index: 10;
+
+			time {visibility: hidden}
+
+			&:nth-of-type(even) {
+				box-shadow: 4px 4px 0 var(--black);
+				transform: translate(-4px, -4px);
+			}
+		}
+
+		&:active {background-color: var(--white)}
 	}
 
-	h3, hr {
+	hr {
 		color: var(--black-trans);
 		font-family: ms-serif;
-	}
-	h3 {
-		font-size: 1em;
-		font-weight: normal;
-		margin: 0;
-	}
-	hr {
-		line-height: 0;
-		text-align: center;
-
-		width: 100%;
-		height: 0;
+		height: unset;
 		background-color: transparent;
-		border-top: 1px dashed;
-		margin-block: 1.5em;
-		overflow: visible;
+		margin-block: 1em;
 
-		&::after {content: "✄ " attr(title)}
+		&::after {content: attr(title) " ✄"}
 	}
 
 	.wide, hr {grid-column: 1/3}
@@ -174,7 +164,14 @@ nav {
 	.flex {display: flex; gap: inherit; a {flex: 1}}
 }
 
-#back {width: max-content; margin-block: auto 0.5em}
+#back {
+	color: inherit;
+	font: 1.5em wildpines;
+	letter-spacing: -0.05em;
+	margin-block: auto 0.5rem;
+
+	&:hover {color: var(--blue)}
+}
 
 #stamp-1, #stamp-2, #stamp-3, #stamp-4 {position: absolute; user-select: none; pointer-events: none}
 #stamp-1 {bottom: 24px; right: 96px; rotate: -2deg}
@@ -184,13 +181,14 @@ nav {
 
 
 
-/* right */
+/* right (entry) */
 
 #right {
 	display: flex;
 	padding-block: 3em;
 	padding-inline: 1.25em 2em;
 }
+
 #frame {
 	width: 100%;
 	height: 100%;
@@ -201,26 +199,25 @@ nav {
 
 /* extras */
 
-#player {
-	display: flex;
-	flex-direction: column;
-	gap: 12px;
+tape-deck {
 	color: var(--gray);
-	font-family: sans-serif;
+	font-size: 0.75em;
+	writing-mode: vertical-lr;
+	letter-spacing: 0.05em;
+	width: 1em;
+	height: 450px;
 	background-color: black;
 	padding: 16px 12px;
-	margin-left: 1em;
-	align-self: center;
-	z-index: 1;
+	border-radius: 0.5em;
+	margin-left: 1.25rem;
 	rotate: -1deg;
 
 	button {
-		padding: 6px 12px; margin: -6px -12px; transition: color 0.2s;
+		padding: 6px 12px;
+		margin: -6px -12px;
+		transition: color 0.1s;
+
 		&:hover {color: var(--white)}
-	}
-	marquee {
-		height: 400px;
-		span {writing-mode: vertical-lr; line-height: 1; letter-spacing: 0.05em; text-align: center; white-space: nowrap}
 	}
 }
 
@@ -229,11 +226,13 @@ nav {
 	margin-top: 4.5em;
 	position: absolute;
 }
+
 #maps {
 	width: 400px;
 	position: absolute;
 	right: -120px;
 }
+
 #letters {
 	width: 400px;
 	position: absolute;
@@ -241,13 +240,13 @@ nav {
 }
 
 #background-credit {
-	color: var(--white);
+	color: rgb(from var(--white) r g b / 0.25);
 	font-size: 0.7em;
-	text-decoration: underline;
-	opacity: 0.25;
 	position: fixed;
 	right: 1em;
 	bottom: 1em;
+
+	&:hover {text-decoration: underline}
 }
 
 #hammer {
@@ -265,7 +264,6 @@ nav {
 	
 	body {
 		display: block;
-
 		contain: inline-size;
 		width: 100vw;
 		max-width: unset;
@@ -288,8 +286,6 @@ nav {
 
 	h1::after {content: none}
 
-	#player, #maps {
-		display: none;
-	}
+	tape-deck, #maps {display: none}
 
 }
