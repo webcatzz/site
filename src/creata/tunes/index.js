@@ -50,6 +50,7 @@ for (const track of tracklist) {
 
 	// date
 	if (track.date) {
+		track.date[1] -= 1;
 		let date = new Date(...track.date.toReversed());
 		let el = button.appendChild(document.createElement("time"));
 		el.dateTime = [date.getFullYear(), date.getMonth(), date.getDate()].join("-");
