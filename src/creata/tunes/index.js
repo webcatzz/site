@@ -17,7 +17,7 @@ class RadioButton extends HTMLElement {
 
 	toggle() {
 		if (!this.checked) {
-			for (const button of this.parentElement.querySelectorAll(this.tagName)) {
+			for (const button of document.querySelectorAll(this.tagName)) {
 				if (button.checked) {
 					button.checked = false;
 					break;

@@ -77,12 +77,15 @@ h1 {
 /* filters */
 
 #filters {
+	display: flex;
+	gap: 2em;
 	color: var(--white);
 	font-size: 0.875em;
 	margin-top: -0.4em;
-	margin-inline: 1em;
+	margin-left: 1em;
 	grid-column: 1/3;
 	transform: skewX(-10deg);
+	/* overflow: auto hidden; */
 
 	h2 {
 		color: var(--dark-gray);
@@ -115,6 +118,7 @@ filter-btn {
 
 			background-color: var(--black);
 			padding: 0.25em 0.5em;
+			border-radius: inherit;
 
 			transform: translateY(-50%);
 			position: absolute;
