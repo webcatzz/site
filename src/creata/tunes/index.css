@@ -1,10 +1,10 @@
 @font-face {font-family: workbench; src: url(_assets/workbench.ttf)}
+@keyframes move-bg {to {background-position: 1252px 626px}}
+@keyframes spin {to {rotate: 360deg}}
 
 body {
 	display: flex;
-
 	color: var(--white);
-
 	height: 100vh;
 	background:
 		url(_assets/neil.gif) no-repeat 75% center,
@@ -13,18 +13,6 @@ body {
 	overflow: hidden;
 }
 
-h1 {
-	font: 1.5em gotham;
-	letter-spacing: 0.05em;
-	line-height: 1;
-
-	border-radius: 0.5em;
-	grid-column: 1/3;
-
-	transform: skewX(-10deg);
-}
-
-@keyframes spin {to {rotate: 360deg}}
 #disc {
 	width: 95vh;
 	height: 95vh;
@@ -39,8 +27,7 @@ h1 {
 
 /* buttons */
 
-@keyframes move-bg {to {background-position: 1252px 626px}}
-.button {
+filter-btn, track-btn {
 	cursor: pointer;
 	user-select: none;
 	animation: 60s move-bg steps(600) infinite;
@@ -53,32 +40,114 @@ h1 {
 
 
 
+/* left */
+
+#left {
+	display: flex;
+	flex-direction: column;
+	width: 400px;
+	padding: 1em;
+	padding-right: 2em;
+	background-color: var(--black);
+	margin-left: 60px;
+	transform: skewX(10deg);
+	z-index: 1;
+}
+
+h1 {
+	color: var(--dark-gray);
+	font: 4em/1 gotham;
+	border-radius: 0.5em;
+	grid-column: 1/3;
+	transform: skewX(-10deg);
+}
+
+#back {
+	color: var(--gray);
+	font-size: 1.5em;
+	padding: 0.25em;
+	transform: skewX(-10deg);
+	margin-right: auto;
+
+	&:hover {color: var(--white)}
+}
+
+
+
+/* filters */
+
+#filters {
+	color: var(--white);
+	font-size: 0.875em;
+	margin-top: -0.4em;
+	margin-inline: 1em;
+	grid-column: 1/3;
+	transform: skewX(-10deg);
+
+	h2 {
+		color: var(--dark-gray);
+		font: 0.875em ms-serif;
+		letter-spacing: 0.1em;
+	}
+}
+
+filter-btn {
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+
+	text-shadow:
+		-1px -1px var(--black), 0 -1px var(--black), 1px -1px var(--black), 1px 0 var(--black),
+		-1px 1px var(--black), 0 1px var(--black), 1px 1px var(--black), -1px 0 var(--black);
+
+	width: 1.75em;
+	height: 1.75em;
+	border-radius: 4px;
+	grid-row: 2;
+
+	&:hover {
+		position: relative;
+
+		&::after {
+			content: attr(value);
+			font-family: ms-serif;
+			white-space: nowrap;
+
+			background-color: var(--black);
+			padding: 0.25em 0.5em;
+
+			transform: translateY(-50%);
+			position: absolute;
+			top: 50%;
+			left: calc(100% + 0.25em);
+			pointer-events: none;
+		}
+	}
+}
+
+
+
 /* tracklist */
 
 #tracklist {
 	display: grid;
 	grid-template-columns: repeat(2, 50%);
 	grid-auto-rows: max-content;
-
-	width: 400px;
-	padding: 1em;
-	padding-right: 2em;
-	background-color: var(--black);
-
-	margin-left: 60px;
-	transform: skewX(10deg);
-	z-index: 1;
+	padding: 1em 2em;
+	border-block: 1px solid var(--dark-gray);
+	border-image: linear-gradient(to right, transparent calc(50% - 200px), var(--dark-gray) calc(50% - 200px), var(--dark-gray) calc(50% + 200px), transparent calc(50% + 200px)) 1;
+	margin: 1em -2em;
 	overflow: hidden auto;
+	flex: 1;
 }
 
-.track {
+track-btn {
 	display: grid;
 	grid-template:
 		"name icons" max-content
 		"date date" max-content
 		/ 1fr max-content;
 	align-content: center;
-	
 	contain: inline-size style layout paint;
 	padding: 1em;
 	border-radius: 2px;
@@ -91,8 +160,7 @@ h1 {
 	}
 
 	time {
-		font-family: ms-serif;
-		font-size: 0.75em;
+		font: 0.75em ms-serif;
 		grid-area: date;
 	}
 
@@ -136,68 +204,16 @@ h1 {
 }
 
 .demo {
-	font-size: 0.875em;
-}
-
-
-
-/* filters */
-
-#filters {
-	color: var(--dark-gray);
-	font-size: 0.875em;
-	margin-bottom: 1em;
-	grid-column: 1/3;
-
-	transform: skewX(-10deg);
-
-	#filter-title {
-		font-family: ms-serif;
-		font-size: 0.875em;
-		letter-spacing: 0.1em;
-	}
-
-	.button {
-		color: var(--white);
-		text-shadow:
-			-1px -1px var(--black), 0 -1px var(--black), 1px -1px var(--black), 1px 0 var(--black),
-			-1px 1px var(--black), 0 1px var(--black), 1px 1px var(--black), -1px 0 var(--black);
-
-		display: inline-flex;
-		justify-content: center;
-		align-items: center;
-
-		width: 1.75em;
-		height: 1.75em;
-		border-radius: 4px;
-		grid-row: 2;
-
-		&:hover {
-			position: relative;
-
-			&::after {
-				content: attr(aria-label);
-				font-family: ms-serif;
-				white-space: nowrap;
-
-				background-color: var(--black);
-				padding: 0.25em 0.5em;
-
-				transform: translateY(-50%);
-				position: absolute;
-				top: 50%;
-				left: calc(100% + 0.5em);
-				pointer-events: none;
-			}
-		}
+	.track-name {
+		font: 0.75em ms-serif;
 	}
 }
 
 
 
-/* view */
+/* panel */
 
-#view {
+#panel {
 	padding-left: 64px;
 	margin-left: -32px;
 	align-self: center;
@@ -240,63 +256,33 @@ h2 {
 #words {
 	font: 0.875em ms-serif;
 	contain: size layout;
-	> div {margin: 1em 5em}
+	margin-top: 1em;
+}
+
+#description, #tags {
+	margin: 0.5em 5em;
+}
+
+#description, .track-tag {
+	background-color: var(--black);
+	padding: 0.25em 0.5em;
 }
 
 #description {
 	width: max-content;
 	max-width: 500px;
-	background-color: var(--black);
-	padding: 0.25em 0.5em;
 }
 
-.tag {
-	background-color: var(--black);
-	padding: 0.25em 0.5em;
+.track-tag {
+	border-radius: 1em;
 	margin-right: 0.25em;
 
 	&::before {
 		content: "#";
-		font-family: sans-serif;
-		line-height: 0;
-		margin-right: 0.075em;
-	}
-}
-
-
-
-/* back */
-
-#back {
-	color: var(--gray);
-	font-size: 1.5em;
-
-	width: 1em;
-	height: 1em;
-	padding: 0.5em;
-	border: 1px dotted var(--dark-gray);
-	border-radius: 0.5em;
-
-	position: fixed;
-	left: 1em;
-	bottom: 1em;
-
-	&:hover {
-		color: var(--white);
-	}
-}
-
-
-.trinket {
-	width: 2em;
-	height: 2em;
-	background-color: rgb(from var(--white) r g b / 0.3);
-	position: fixed;
-	bottom: 1.5em;
-	right: 2em;
-
-	&:hover {
-		background-color: black;
+		color: var(--gray);
+		font-size: 0.75em;
+		vertical-align: middle;
+		margin-right: 0.25em;
 	}
 }
 
@@ -311,37 +297,49 @@ h2 {
 		background: none;
 	}
 
-	h1, #disc, #back, .trinket {
+	#disc, #words, #back {
 		display: none;
 	}
 
-	#tracklist {
-		grid-template-columns: repeat(2, 160px);
-		justify-content: center;
+	#left {
 		width: unset;
 		margin-left: 0;
 		z-index: unset;
-		padding-block: 2em 6em;
+		contain: size;
+		flex: 1;
 	}
-	#tracklist, #filters {
+	#left, h1, #filters, #back {
 		transform: unset;
 	}
+	h1 {
+		font-size: 2em;
+	}
+	#filters {
+		margin-top: 0;
+	}
+	#tracklist {
+		border-image: none;
+	}
 
-	#view {
+	#panel {
 		padding-left: 0;
 		margin-left: 0;
 		align-self: stretch;
+		position: relative;
 		z-index: 1;
-	}
-	h2 {
-		margin-top: -0.86em;
+		flex: unset;
+
+		h2 {
+			font-size: 2em;
+			position: absolute;
+			left: 0;
+			right: 0;
+			bottom: 100%;
+		}
 	}
 	#ribbon {
 		padding-left: 2em;
 		margin-left: 0;
-	}
-	#words {
-		display: none;
 	}
 
 }

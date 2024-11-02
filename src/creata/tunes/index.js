@@ -2,15 +2,6 @@
 
 class RadioButton extends HTMLElement {
 
-	connectedCallback() {
-		this.role = "radio";
-		this.tabIndex = 0;
-
-		this.classList.add("button");
-
-		this.addEventListener("click", this.toggle);
-	}
-
 	#checked = false;
 	get checked() {return this.#checked}
 	set checked(value) {
@@ -18,9 +9,15 @@ class RadioButton extends HTMLElement {
 		this.ariaChecked = value;
 	}
 
+	connectedCallback() {
+		this.role = "radio";
+		this.tabIndex = 0;
+		this.addEventListener("click", this.toggle);
+	}
+
 	toggle() {
 		if (!this.checked) {
-			for (const button of this.parentElement.querySelectorAll("& > radio-button")) {
+			for (const button of this.parentElement.querySelectorAll(this.tagName)) {
 				if (button.checked) {
 					button.checked = false;
 					break;
@@ -28,86 +25,95 @@ class RadioButton extends HTMLElement {
 			}
 		}
 		this.checked = !this.checked;
-		this.dispatchEvent(new Event("toggle"));
 	}
 
-}
-
-customElements.define("radio-button", RadioButton);
-
-
-
-// creating tracklist
-
-for (const track of tracklist) {
-	let button = document.createElement("radio-button");
-	button.classList.add("track");
-
-	// name
-	let name = button.appendChild(document.createElement("div"));
-	name.className = "track-name";
-	name.textContent = track.name;
-
-	// date
-	if (track.date) {
-		track.date[1] -= 1;
-		let date = new Date(...track.date.toReversed());
-		let el = button.appendChild(document.createElement("time"));
-		el.dateTime = [date.getFullYear(), date.getMonth(), date.getDate()].join("-");
-		el.textContent = date.toLocaleDateString("en-US", {month: "short", day: "numeric", year: "numeric"}).toLowerCase();
-	}
-
-	// tags
-	if (track.tags) {
-		button.classList.add(...track.tags);
-
-		let icons = [];
-		if (track.tags.includes("complete")) icons.push("complete");
-		if (track.tags.includes("starred")) icons.push("starred");
-		if (icons) {
-			let el = button.appendChild(document.createElement("div"));
-			el.className = "track-icons";
-			for (const icon of icons) {
-				let iconEl = el.appendChild(document.createElement("img"));
-				iconEl.src = "_assets/" + icon + ".png";
-				iconEl.title = icon;
-			}
-		}
-	}
-
-	// updating view
-	button.addEventListener("toggle", function () {
-		viewTrack(this.checked ? track : null);
-	});
-
-	document.getElementById("tracklist").appendChild(button);
 }
 
 
 
 // filtering
 
-for (const button of document.querySelectorAll("#filters radio-button")) {
-	button.addEventListener("toggle", onFilterToggle);
-}
+class FilterButton extends RadioButton {
 
-function onFilterToggle() {
-	filterBy(this.checked ? this.dataset.value ?? this.getAttribute("aria-label") : "track");
-}
+	toggle() {
+		super.toggle();
 
-function filterBy(query) {
-	for (const track of document.getElementsByClassName("track")) {
-		track.classList.contains(query) ? track.classList.remove("hidden") : track.classList.add("hidden");
+		if (this.checked) {
+			params.setAndUpdate("filter", this.getAttribute("value"));
+			let filter = this.getAttribute("value").replaceAll(" ", "-");
+			for (const track of document.getElementsByTagName("track-btn")) {
+				track.classList.toggle("hidden", !track.classList.contains(filter));
+			}
+		}
+		else {
+			params.deleteAndUpdate("filter");
+			for (const track of document.getElementsByTagName("track-btn")) {
+				track.classList.remove("hidden");
+			}
+		}
+
 	}
+
 }
 
 
 
-// viewing track
+// tracks
 
-const view = {
-	el: document.getElementById("view"),
-	title: document.querySelector("h2"),
+class TrackButton extends RadioButton {
+
+	connectedCallback() {
+		super.connectedCallback();
+	
+		let name = this.appendChild(document.createElement("div"));
+		name.textContent = this.getAttribute("name");
+		name.className = "track-name";
+
+		if (this.hasAttribute("date")) {
+			let date = this.appendChild(document.createElement("time"));
+			date.dateTime = this.getAttribute("date");
+			date.textContent = new Date(date.dateTime).toLocaleDateString("en-US", {month: "short", day: "numeric", year: "numeric"}).toLowerCase();
+		}
+
+		if (this.hasAttribute("hash")) {
+			let host;
+			switch (this.getAttribute("hash")[0]) {
+				case "u": host = "ultraabox.github.io"; break;
+				case "j": host = "jummb.us"; break;
+				default: host = "www.beepbox.co";
+			}
+			this.setAttribute("link", `https://${host}/player/#song=${this.getAttribute("hash")}`);
+			this.removeAttribute("hash");
+		}
+	
+		let icons = this.appendChild(document.createElement("div"));
+		icons.className = "track-icons";
+		if (this.classList.contains("complete")) {
+			let icon = icons.appendChild(document.createElement("img"));
+			icon.title = "complete";
+			icon.src = "_assets/complete.png";
+		}
+		if (this.classList.contains("starred")) {
+			let icon = icons.appendChild(document.createElement("img"));
+			icon.title = "starred";
+			icon.src = "_assets/starred.png";
+		}
+	}
+
+	toggle() {
+		super.toggle();
+		panel.view(this.checked ? this : null);
+	}
+
+}
+
+
+
+// panel
+
+const panel = Object.assign(document.getElementById("panel"), {
+
+	header: document.querySelector("#panel h2"),
 	iframe: document.querySelector("iframe"),
 	description: document.getElementById("description"),
 	tags: document.getElementById("tags"),
@@ -120,66 +126,105 @@ const view = {
 		"#02d1f5", // blue
 		"#4e0ba1", // purple
 	],
-
 	prevColor: -1,
-	randomizeColor: () => {
-		let rand = Math.floor(Math.random() * (view.colors.length - 1));
-		if (rand === view.prevColor) rand++;
-		view.el.style.setProperty("--color", view.colors[rand]);
-		view.prevColor = rand;
-	}
-}
 
-function viewTrack(track) {
-	if (track) view.el.classList.remove("hidden");
-	else return view.el.classList.add("hidden");
+	recolor: () => {
+		let rand = Math.floor(Math.random() * (panel.colors.length - 1));
+		if (rand === panel.prevColor) rand++;
+		panel.style.setProperty("--color", panel.colors[rand]);
+		panel.prevColor = rand;
+	},
 
-	view.randomizeColor();
-
-	// title
-	history.replaceState(null, "", "?track=" + track.name);
-	view.title.textContent = track.name;
-
-	// iframe
-	let newFrame = document.createElement("iframe");
-	newFrame.src = track.hash ? hashToURL(track.hash) : "https://file.garden/ZdmFgugxzVCR-8Bl/site/tunes/" + encodeURIComponent(track.name) + ".mp3";
-	view.iframe.replaceWith(newFrame);
-	view.iframe = newFrame;
-
-	// note
-	if (track.note) {
-		view.description.textContent = track.note;
-		view.description.classList.remove("hidden");
-	}
-	else view.description.classList.add("hidden");
-
-	// tags
-	if (track.tags) {
-		view.tags.textContent = "";
-		for (const tag of track.tags) {
-			let el = view.tags.appendChild(document.createElement("span"));
-			el.className = "tag";
-			el.textContent = tag;
+	view: track => {
+		if (track) {
+			params.setAndUpdate("track", track.getAttribute("name"));
+			panel.hidden = false;
 		}
-		view.tags.classList.remove("hidden");
-	}
-	else view.tags.classList.add("hidden");
-}
+		else {
+			params.deleteAndUpdate("track");
+			panel.iframe.src = "";
+			panel.hidden = true;
+			return;
+		}
+		
+		// title
+		panel.header.textContent = track.getAttribute("name");
+		
+		// iframe
+		let iframe = document.createElement("iframe");
+		iframe.src = track.getAttribute("link");
+		panel.iframe.replaceWith(iframe);
+		panel.iframe = iframe;
+		panel.recolor();
+	
+		// note
+		if (track.hasAttribute("note")) {
+			panel.description.textContent = track.getAttribute("note");
+			panel.description.hidden = false;
+		}
+		else panel.description.hidden = true;
+	
+		// tags
+		if (track.classList) {
+			panel.tags.textContent = "";
+			for (const tag of track.classList) {
+				let el = panel.tags.appendChild(document.createElement("span"));
+				el.textContent = tag;
+				el.className = "track-tag";
+			}
+			panel.tags.classList.hidden = false;
+		}
+		else panel.tags.classList.hidden = true;
+	},
 
-viewTrack(null);
+});
+
+
+
+// definitions
+
+customElements.define("filter-btn", FilterButton);
+customElements.define("track-btn", TrackButton);
 
 
 
 // url params
 
-let params = new URLSearchParams(location.search);
+const params = new URLSearchParams(location.search);
+params.url = new URL(location);
+
+params.setAndUpdate = function (key, value) {
+	this.set(key, value);
+	this.update();
+}
+
+params.deleteAndUpdate = function (key) {
+	this.delete(key);
+	this.update();
+}
+
+params.update = function () {
+	this.url.search = this;
+	history.replaceState(null, "", this.url);
+}
+
+
+
+// page load
 
 if (params.has("track")) {
-	let idx = tracklist.findIndex(track => track.name === params.get("track"));
-
-	if (idx !== -1) {
-		let button = document.getElementsByClassName("track")[idx];
+	let button = document.getElementsByTagName("track-btn").namedItem(params.get("track"));
+	if (button) {
 		button.scrollIntoView({behavior: "smooth", block: "center"});
 		button.click();
+	}
+}
+
+if (params.has("filter")) {
+	for (const button of document.getElementsByTagName("filter-btn")) {
+		if (button.getAttribute("value") === params.get("filter")) {
+			button.click();
+			break;
+		}
 	}
 }
