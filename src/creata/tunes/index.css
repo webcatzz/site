@@ -77,8 +77,8 @@ h1 {
 /* filters */
 
 #filters {
-	display: flex;
-	gap: 2em;
+	/* display: flex;
+	gap: 2em; */
 	color: var(--white);
 	font-size: 0.875em;
 	margin-top: -0.4em;
