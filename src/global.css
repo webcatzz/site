@@ -1,7 +1,6 @@
 @font-face {font-family: mspgothic; src: local("MS PGothic"), url(_assets/fonts/mspgothic.ttf)}
 @font-face {font-family: ms-serif; src: url(_assets/fonts/ms-serif.ttf)}
 @font-face {font-family: gotham; src: url(_assets/fonts/gotham-ssm.otf)}
-
 :root {
 	--white: #e2d8ca;
 	--light-gray: #b2a69c;
@@ -35,7 +34,10 @@ body {
 
 
 /* inline */
-a {text-decoration: none}
+a {
+	color: inherit;
+	text-decoration: none;
+}
 
 /* heading */
 h1, h2, h3, h4 {

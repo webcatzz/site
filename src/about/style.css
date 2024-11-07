@@ -1,10 +1,7 @@
 @font-face {font-family: fullcomp; src: url(../_assets/fonts/fully-completely.ttf)}
-@font-face {font-family: gotham; src: url(../_assets/fonts/gotham-ssm.otf)}
+@font-face {font-family: nunito; src: url(../_assets/fonts/nunito-black.ttf)}
+@keyframes float {from {transform: translateY(-0.1em)} to {transform: translateY(0.1em)}}
 :root {
-	--white: #f8f6b9;
-	--black: #33383c;
-	--pink: #d97575;
-
 	--text-outline:
 		-1px -1px var(--pink), 0 -1px var(--pink), 1px -1px var(--pink), 1px 0 var(--pink),
 		-1px 1px var(--pink), 0 1px var(--pink), 1px 1px var(--pink), -1px 0 var(--pink);
@@ -14,37 +11,29 @@
 
 body {
 	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: var(--red);
+	background-color: var(--black);
+	padding: 8em;
+	margin-inline: auto;
+	overflow-x: hidden;
+}
+
+#post-from {
+	width: 400px;
+	margin-right: -100px;
+}
+
+
+
+/* main */
+
+main {
+	display: flex;
 	flex-direction: column;
 	gap: 1em;
-
-	color: var(--pink);
-
-	width: max-content;
-	background-color: var(--white);
-	padding: 1em 2em 1em;
-	margin-inline: auto;
-	box-sizing: border-box;
-
-	position: relative;
-}
-
-#block {
-	color: var(--black);
-	background-color: var(--pink);
-	background-image: linear-gradient(315deg,
-		var(--white) 2em,
-		var(--pink) 2em,
-		var(--pink) 4em,
-		var(--blue) 4em,
-		var(--blue) 6em,
-		transparent 6em
-	);
-	padding: 0 2em 1em;
-}
-
-#kao {
-	font: 1rem mspgothic;
-	order: 1;
+	flex-basis: 506px;
 }
 
 
@@ -52,148 +41,89 @@ body {
 /* header */
 
 header {
-	display: flex;
-	align-items: center;
-	gap: 2em;
-	color: var(--white);
-	margin-bottom: 2.5em;
-	position: relative;
+	contain: inline-size;
 }
 
 h1 {
-	font: 6em/0.6 fullcomp, sans-serif;
-	text-shadow:
-		0.1em 0.1em var(--black);
+	font: 6em/0.75 fullcomp, sans-serif;
+	text-shadow: -0.1em 0.1em #322c2c;
 }
 
-@keyframes float {
-	from {transform: translateY(-0.1em)}
-	to {transform: translateY(0.1em)}
-}
-marquee {
-	font-family: gotham, sans-serif;
-	font-weight: bold;
-
-	span {
-		display: inline-block;
-		animation: 1s float infinite alternate steps(4);
-
-		&:nth-of-type(4n - 3) {animation-delay: 0.25s}
-		&:nth-of-type(4n - 2) {animation-delay: 0.5s}
-		&:nth-of-type(4n - 1) {animation-delay: 0.75s}
-	}
+#suptitle {
+	font: 0.875em ms-serif;
+	margin-left: 2.5em;
+	margin-bottom: -1em;
 }
 
-
-
-/* content */
-
-#content {
-	display: flex;
-	gap: 2em;
-	margin-top: -3em;
-}
-
-ul {
-	list-style-type: "✿ ";
-	list-style-position: inside;
-	padding-left: 0;
-}
-li::marker {line-height: 0}
-li:nth-of-type(even) {list-style-type: "ꕀ "}
-
-
-
-/* unique */
-
-main {
-	text-shadow: var(--text-outline);
-
-	max-width: 300px;
-	background-image: url(_assets/lined.png);
-	padding: 1em 1.75em 0;
-	box-shadow: -4px -8px;
-	border-radius: 6px;
-}
-
-#right {
-	display: flex;
-	flex-direction: column;
-	justify-content: end;
-	gap: 4px;
-	max-width: 220px;
-}
-
-#wyd {
-	font-size: 0.625em;
-	text-shadow: var(--text-outline);
-	contain: paint;
-	height: max-content;
-	background-image: url(_assets/halftone.png);
-	padding: 1em;
-	border-radius: 3px;
-
-	h2 {
-		font: 5em/1 fullcomp, sans-serif;
-		letter-spacing: -0.1em;
-		background-color: var(--pink);
-		padding-inline: 0.05em;
-		border-radius: inherit;
-		margin: -0.1em -0.05em 0;
-	}
-
-	ul {
-		margin-bottom: 0;
-	}
-}
-#catcat {
-	position: absolute;
-	right: 1em;
-	bottom: 1em;
-	background-color: var(--pink);
-	padding: 4px;
-	border-radius: 4px;
-	margin: -4px;
-	z-index: -1;
-}
-
-#izutsumi {
-	width: calc(100% + 3em);
-	margin: 0 -3em -2em 0;
-	align-self: end;
-	image-rendering: auto;
-}
-
-.seen {
-	font: 4em/1 gotham;
-	letter-spacing: -0.065em;
-	white-space: nowrap;
-	contain: inline-size paint;
-	margin-block: -0.75rem;
+#subtitle {
+	font-size: 0.875em;
+	margin-left: 2.5em;
+	margin-top: 0.25em;
 }
 
 #cjbody {
-	color: rgb(from var(--black) r g b / 0.025);
-	position: absolute;
-	left: 0;
-	right: 0;
-	bottom: 2em;
-	z-index: -1;
+	font: .5em sans-serif;
+	text-align: justify;
+	text-align-last: justify;
+}
+
+
+
+/* body */
+
+#splash {
+	font: 1.35em/1.25 sans-serif;
+}
+
+tape-deck {
+	font-size: 0.75em;
+}
+
+#kao {
+	font-family: mspgothic;
+	order: 1;
+}
+
+#boxes {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 0.5em;
+}
+
+.box {
+	border: 1px solid;
+
+	h2 {
+		color: var(--black);
+		font-size: 1.4em;
+		background-color: var(--red);
+	}
+
+	ul {
+		padding-left: 1em;
+		margin: 0.5em;
+	}
+}
+
+marquee {
+	font: 4em gotham;
+	text-transform: uppercase;
 }
 
 #back {
 	color: inherit;
-	font-size: 0.75em;
-	&:hover {text-decoration: underline}
+	font: 0.75em ms-serif;
+
+	&:hover {
+		text-decoration: underline;
+	}
 }
 
 
 
 /* mobile */
 
-@media (max-width: 750px) {
-	body {width: unset}
-	h1 {font-size: 4em}
-	#content {flex-direction: column}
-	.seen {font-size: 8vw}
+@media (max-width: 1000px) {
+	body {padding: 2em}
+	#post-from {display: none}
 }
