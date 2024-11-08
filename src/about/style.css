@@ -20,9 +20,29 @@ body {
 	overflow-x: hidden;
 }
 
+
+
+/* post from */
+
 #post-from {
-	width: 400px;
-	margin-right: -100px;
+	position: relative;
+	z-index: -1;
+
+	img {
+		width: 400px;
+		margin-right: -100px;
+	}
+
+	&::after {
+		content: "";
+		width: 11em;
+		height: 11em;
+		border: 1px solid;
+		border-radius: 50%;
+		position: absolute;
+		top: 2em;
+		left: 5em;
+	}
 }
 
 
