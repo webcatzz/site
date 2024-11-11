@@ -133,6 +133,7 @@ a.block {
 /* tunes */
 
 #tunes {
+	height: 4em;
 	padding-block: 1em;
 	background:
 		url(creata/tunes/_assets/cd-small.png) no-repeat -160px 50%,
