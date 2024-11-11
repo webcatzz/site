@@ -78,6 +78,14 @@ time {
 	margin-top: 1em;
 }
 
+ul, ol {
+	padding-left: 1em;
+}
+li::marker {
+	color: #464757;
+	font-size: 0.875em;
+}
+
 article a {
 	text-decoration: underline #464757;
 }
