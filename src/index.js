@@ -1,4 +1,4 @@
-// tape deck
+// pitch
 
 const tapeDeck = document.querySelector("tape-deck");
 tapeDeck.audio.preservesPitch = false;
@@ -31,7 +31,10 @@ function updatePitch() {
 
 
 
-// latest tune
+// high contrast
 
-document.querySelector("#track iframe").src = hashToURL(tracklist[0].hash);
-tracklist = null;
+const contrastToggle = document.querySelector("#contrast-toggle input");
+contrastToggle.onclick = () => {
+	document.body.classList.toggle("high-contrast", contrastToggle.checked);
+}
+contrastToggle.onclick();

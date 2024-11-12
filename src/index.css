@@ -39,7 +39,8 @@ body {
 
 
 #goldfish {
-	margin: -100px auto 1em;
+	margin-top: -100px;
+	margin-inline: auto;
 }
 #goldfish-2 {
 	position: absolute;
@@ -106,9 +107,31 @@ h1 {
 	}
 }
 
+#contrast-toggle {
+	font-size: 0.75em;
+
+	input {
+		all: unset;
+		display: inline-block;
+		vertical-align: -0.125em;
+		width: 0.75em;
+		height: 0.75em;
+		background-color: transparent;
+		border: 1px solid;
+		border-radius: 50%;
+		margin-right: 0.125em;
+		user-select: none;
+		cursor: pointer;
+
+		&:checked {
+			background-color: currentColor;
+		}
+	}
+}
+
 tape-deck {
 	color: var(--light-gray);
-	margin: 0.5em 4em;
+	margin: 1rem 4em 0.5em;
 
 	.track-title {
 		text-align: right;
@@ -166,4 +189,14 @@ footer {
 		width: 100%;
 	}
 
+}
+
+
+
+/* high contrast */
+
+.high-contrast {
+	.block {background: var(--black) !important}
+	header, #statuscafe, #statuscafe-username {color: var(--white)}
+	h1, tape-deck, footer, #map {color: var(--black)}
 }
