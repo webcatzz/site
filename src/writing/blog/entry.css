@@ -1,0 +1,298 @@
+:root {
+	--accent: #b38637;
+	--button: rgb(from var(--accent) r g b / 0.25);
+	--button-hover: rgb(from var(--accent) r g b / 0.44);
+}
+
+#entry {
+	color: var(--black);
+	line-height: 1.6;
+	padding: 1.5em 1em;
+	overflow: hidden auto;
+	flex: 1;
+}
+
+#entry, main {
+	rotate: 0deg !important;
+	> * {rotate: 1deg}
+}
+
+main {
+	/* font: 0.875em/1 ms-serif, sans-serif; */
+	line-height: 1.2;
+	text-align: justify;
+	p:not(:first-child) {text-indent: 1.5em}
+}
+
+
+
+/* heading */
+
+header {
+	display: flex;
+	gap: 0.5em;
+	padding: 0.75em 0.5em;
+	border: 1px solid rgb(from var(--black) r g b / 0.25);
+	border-inline-width: 2px;
+	border-radius: 0.5em;
+	margin-bottom: 2em;
+	position: relative;
+	background-color: #e6dede80;
+}
+
+#name {
+	font: 2em/1 wildpines;
+	margin-top: -0.125em;
+	flex: 1;
+}
+
+#date {
+	color: var(--black-trans);
+	font-size: 0.75em;
+	writing-mode: vertical-rl;
+}
+
+h3, h4, h5, h6 {
+	font-weight: normal;
+	margin-block: 2em 1em;
+}
+
+
+
+/* inline */
+
+#entry a {
+	color: #1a4176;
+	text-decoration: underline;
+}
+
+b {
+	font: bold 0.9em/0 sans-serif;
+}
+
+
+
+/* block */
+
+ul, ol {
+	padding-left: 1.75em;
+	ul, ol {rotate: -1deg !important}
+}
+ul {list-style-type: "ꕀ"}
+li {
+	padding-left: 0.75em;
+
+	&::marker {
+		color: var(--black-trans);
+		font-size: 0.75em;
+	}
+}
+
+aside {
+	background-color: #c4452620;
+	padding: 1em;
+	border-radius: 4px;
+	margin-block: 1.5rem;
+}
+
+blockquote {
+	padding: 0.5em 1em;
+	border-left: 4px solid var(--button);
+	margin: 1em 0;
+	border-radius: 4px;
+}
+
+details {
+	margin-block: 2em;
+}
+
+details[open] {
+	background-color: var(--button);
+	padding: 1em;
+	border-radius: 12px;
+
+	summary {
+		margin-top: -0.5em !important;
+		margin-left: -0.5em;
+	}
+}
+
+summary {
+	width: max-content;
+	background-color: var(--button);
+	padding: 0.5em 1em;
+	border-radius: 1em;
+	rotate: 0deg !important;
+
+	&::marker {color: #b38637}
+	&:hover {background-color: var(--button-hover)}
+}
+
+pre {
+	color: var(--white);
+	background-color: var(--black);
+	border: 1em solid var(--black);
+	border-radius: 4px;
+	overflow-x: auto;
+}
+
+aside,
+blockquote,
+details {
+	> *:first-child {margin-top: 0}
+	> *:last-child {margin-bottom: 0}
+}
+
+
+
+/* embed */
+
+main img {
+	max-width: 100%;
+	image-rendering: auto;
+}
+
+figure {
+	margin: 2em 0;
+
+	img, video, iframe {
+		width: calc(100% - 16px);
+		padding: 8px;
+		padding-bottom: 16px;
+		box-shadow: 1px 2px 4px #00000040;
+		background-color: #f6f1e7;
+	}
+
+	&::before {
+		content: url(_asset/tape.png);
+		display: block;
+		width: max-content;
+		margin: -10px auto -20px;
+		opacity: 0.9;
+		position: relative;
+		z-index: 1;
+	}
+
+	&:nth-of-type(even)::before {
+		transform: scaleX(-1);
+		rotate: 0deg;
+	}
+}
+
+figcaption {
+	color: #201c10bf;
+	font: 0.875em ms-serif;
+	text-align: center;
+	letter-spacing: 0.05em;
+	margin: 0.5em
+}
+
+
+
+/* layout */
+
+.float-left, .float-right {
+	max-width: calc(50% - 1em);
+	margin-block: 0 1em;
+	position: relative;
+	z-index: 1;
+
+	&:is(figure)::before {scale: 0.75}
+}
+.float-left {float: left; clear: left; margin-right: 2em}
+.float-right {float: right; clear: right; margin-left: 2em}
+
+.grid {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+}
+
+.flex {
+	display: flex;
+	align-items: center;
+	gap: 1em;
+
+	figure::before {scale: 0.75}
+}
+
+.scroll-x {
+	padding-inline: 8px;
+	margin-inline: -8px;
+	overflow: auto hidden;
+}
+
+.columned {
+	columns: 2;
+	column-gap: 1em;
+}
+
+
+
+/* misc */
+
+ul, ol,
+details, blockquote,
+.flex, .grid,
+.pass-rot {
+	rotate: 0deg !important;
+	> * {rotate: 1deg}
+}
+
+.render-pixel {image-rendering: pixelated}
+
+
+
+/* lines */
+
+main hr, footer {
+	border-top: 1px dashed var(--black-trans);
+	margin-block: 2em;
+	position: relative;
+
+	&::before {
+		content: "✄";
+		color: var(--black-trans);
+		line-height: 0;
+		position: absolute;
+		top: 0;
+		left: 1.5em;
+	}
+}
+
+main hr {
+	height: 0;
+	background-color: transparent;
+	overflow: visible;
+}
+
+
+
+/* footer */
+
+footer {
+	font: 0.75em/1.6 ms-serif;
+	letter-spacing: 0.05em;
+	padding-top: 0.5em;
+	margin-block: 4em 0;
+
+	p {margin-block: 0}
+}
+
+#mood {
+	background-color: var(--button);
+	padding-inline: 0.5em;
+	border-radius: 0.75em;
+	transition: background-color 0.1s;
+	cursor: pointer;
+	user-select: none;
+
+	img {
+		display: inline-block;
+		height: 24px;
+		margin-bottom: -5px;
+		image-rendering: pixelated;
+	}
+
+	&:hover {background-color: var(--button-hover)}
+	&:active img {scale: 1.1}
+}

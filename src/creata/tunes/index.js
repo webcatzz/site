@@ -213,7 +213,7 @@ params.update = function () {
 // page load
 
 if (params.has("track")) {
-	let button = document.getElementsByTagName("track-btn").namedItem(params.get("track"));
+	let button = document.getElementsByTagName("track-btn")[params.get("track")];
 	if (button) {
 		button.scrollIntoView({behavior: "smooth", block: "center"});
 		button.click();

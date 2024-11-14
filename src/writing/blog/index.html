@@ -4,86 +4,80 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>june's blog</title>
-	<link rel="icon" href="../../_assets/16x16/door.gif">
+	<link rel="icon" href="_asset/icon.gif">
 	<link rel="stylesheet" href="../../global.css">
-	<link rel="stylesheet" href="../../_js/image-modal.css">
-	<link rel="stylesheet" href="blog.css">
-	<link rel="stylesheet" href="index.css">
+	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="entry.css">
 	<script defer src="../../_js/tape-deck.js"></script>
-	<script defer src="blog.js"></script>
 	<script defer src="../../theme.js"></script>
-	<base target="frame">
+	<script defer src="script.js"></script>
 </head>
 <body>
 
-<img id="rosebed" src="_assets/rosebed.png" aria-hidden="true">
-<img id="maps" src="_assets/maps.png" aria-hidden="true">
+<img id="rosebed" src="_asset/rosebed.png" aria-hidden="true">
+<img id="maps" src="_asset/maps.png" aria-hidden="true">
 
 <div id="left" class="page">
-
 	<h1 class="patterned">june's blog</h1>
 	<div id="subtitle">(winning awards in infrequency since 2023)</div>
+	<img id="stamp1" src="_asset/stamp1.png" aria-hidden="true">
+	<img id="stamp2" src="_asset/stamp2.png" aria-hidden="true">
+	<div id="index">
 
-	<img id="stamp-1" src="_assets/stamp-1.png" aria-hidden="true">
-	<img id="stamp-2" src="_assets/stamp-4.png" aria-hidden="true">
+		<button data-entry="7" class="wide">
+			<time datetime="2024-11-14">11 • 14</time>
+			harrowing tales of front-end blogging
+		</button>
 
-	<nav>
-		
-		<a href="entries/6.html" class="wide">
-			<time datetime="2024-06-30">2024 • 06</time>
+		<button data-entry="6" class="wide">
+			<time datetime="2024-06-30">6 • 30</time>
 			summer status update
-		</a>
+		</button>
 		
-		<a href="entries/5.html">
-			<time datetime="2024-02-09">2024 • 02</time>
+		<button data-entry="5">
+			<time datetime="2024-02-04">02 • 04</time>
 			title
-		</a>
+		</button>
 
-		<a href="entries/deploy-neocities-github.html">
-			<time datetime="2024-02-09">2024 • 02</time>
+		<button data-entry="deploy-neocities">
+			<time datetime="2024-02-09">02 • 09</time>
 			deploy to neocities with github
-		</a>
+		</button>
 
-		<a href="entries/4.html" class="wide">
-			<time datetime="2024-01-01">2024 • 01</time>
+		<button data-entry="4" class="wide">
+			<time datetime="2024-01-01">01 • 01</time>
 			the year starts like it all did—with explosives!
-		</a>
+		</button>
 
 		<hr title="2023">
 
-		<a href="entries/3.html" class="tall">
-			<time datetime="2023-12-08">2023 • 12</time>
+		<button data-entry="3" class="tall">
+			<time datetime="2023-12-08">12 • 08</time>
 			voice training is really hard
-		</a>
+		</button>
 
-		<a href="entries/2.html">
-			<time datetime="2023-11-10">2023 • 11</time>
+		<button data-entry="2">
+			<time datetime="2023-11-10">11 • 10</time>
 			assorted brainrots
-		</a>
+		</button>
 		
-		<a href="entries/1.html">
-			<time datetime="2023-10-27">2023 • 10</time>
+		<button data-entry="1">
+			<time datetime="2023-10-27">10 • 27</time>
 			we're so back
-		</a>
+		</button>
 
-	</nav>
-	
-	<img id="stamp-3" src="_assets/stamp-2.png" aria-hidden="true">
-	<img id="stamp-4" src="_assets/stamp-3.png" aria-hidden="true">
-
+	</div>
+	<img id="stamp3" src="_asset/stamp3.png" aria-hidden="true">
+	<img id="stamp4" src="_asset/stamp4.png" aria-hidden="true">
 	<a id="back" class="patterned" href="../../index.html" target="_self">&lt;&lt; back</a>
-
 </div>
 
 <div id="right" class="page">
-
-	<iframe id="frame" name="frame"></iframe>
-
-	<img id="hammer" src="_assets/hamper.gif" aria-hidden="true">
-
+	<article id="entry"></article>
+	<img id="hammer" src="_asset/hamper.gif" aria-hidden="true">
 </div>
 
-<tape-deck shuffle list="
+<tape-deck id="music" shuffle list="
 	10 pm (sunny) - kazumi totaka
 	wedding (i want a garden theme!) - kazumi totaka
 	blogger sits alone at night - coffeebug
@@ -93,6 +87,18 @@
 "></tape-deck>
 
 <a id="background-credit" target="_blank"></a>
+
+<template id="entry-template">
+	<header>
+		<time id="date"></time>
+		<h2 id="name"></h2>
+	</header>
+	<main id="content"></main>
+	<footer>
+		<p>feeling... <span id="mood" onclick="meow()"><img aria-hidden="true"></span></p>
+		<p><a id="src">raw xml</a>.</p>
+	</footer>
+</template>
 
 </body>
 </html>

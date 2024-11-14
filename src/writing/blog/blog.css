@@ -1,7 +1,0 @@
-@font-face {font-family: wildpines; src: url(../../_assets/fonts/wildpines.woff2)}
-
-:root {
-	--black: #201c10;
-	--black-trans: rgb(from var(--black) r g b / 0.5);
-	--page-width: 464px;
-}

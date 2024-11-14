@@ -58,6 +58,7 @@ a {
 button, select {
 	color: inherit;
 	font: inherit;
+	text-align: left;
 	background-color: transparent;
 	padding: 0;
 	border: none;
