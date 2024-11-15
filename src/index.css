@@ -133,7 +133,7 @@ h1 {
 
 tape-deck {
 	color: var(--light-gray);
-	margin: 1rem 4em 0.5em;
+	margin: 1em 4em 0.5em;
 
 	.track-title {
 		text-align: right;
@@ -142,7 +142,7 @@ tape-deck {
 	&.nightcore {
 		background: url(_assets/sparkles.gif) center / cover;
 		padding: 1em;
-		margin: -1em 3em -0.5em;
+		margin: 0 3em -0.5em;
 	}
 }
 
@@ -201,4 +201,6 @@ footer {
 	.block {background: var(--black) !important}
 	header, #statuscafe, #statuscafe-username {color: var(--white)}
 	h1, tape-deck, footer, #map {color: var(--black)}
+
+	#creata .title span {all: unset}
 }

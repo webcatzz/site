@@ -133,7 +133,7 @@ pre {
 	background-color: var(--black);
 	border: 1em solid var(--black);
 	border-radius: 4px;
-	overflow-x: auto;
+	overflow: auto hidden;
 }
 
 aside,
