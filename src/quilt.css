@@ -110,6 +110,7 @@ a.block {
 		font-weight: bold;
 		padding: 0.75em 1em;
 		margin-block: 0.375em;
+		background-color: rgb(from var(--white) r g b / 0.5);
 
 		img {
 			display: inline;
@@ -121,11 +122,11 @@ a.block {
 }
 
 #cat-comic {
-	background-color: var(--blue);
+	color: var(--blue);
 }
 
 #bad-dream {
-	background-color: var(--red);
+	color: var(--red);
 }
 
 

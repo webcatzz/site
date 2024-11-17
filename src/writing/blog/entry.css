@@ -6,19 +6,12 @@
 
 #entry {
 	color: var(--black);
-	line-height: 1.6;
 	padding: 1.5em 1em;
 	overflow: hidden auto;
 	flex: 1;
 }
 
-#entry, main {
-	rotate: 0deg !important;
-	> * {rotate: 1deg}
-}
-
 main {
-	/* font: 0.875em/1 ms-serif, sans-serif; */
 	line-height: 1.2;
 	text-align: justify;
 	p:not(:first-child) {text-indent: 1.5em}
@@ -30,8 +23,8 @@ main {
 
 header {
 	display: flex;
-	gap: 0.5em;
-	padding: 0.75em 0.5em;
+	gap: 0.75em;
+	padding: 0.75em;
 	border: 1px solid rgb(from var(--black) r g b / 0.25);
 	border-inline-width: 2px;
 	border-radius: 0.5em;
@@ -89,10 +82,11 @@ li {
 }
 
 aside {
+	font-size: 0.75em;
 	background-color: #c4452620;
 	padding: 1em;
 	border-radius: 4px;
-	margin-block: 1.5rem;
+	margin-block: 2rem;
 }
 
 blockquote {
@@ -120,7 +114,7 @@ details[open] {
 summary {
 	width: max-content;
 	background-color: var(--button);
-	padding: 0.5em 1em;
+	padding: 0.25em 1em;
 	border-radius: 1em;
 	rotate: 0deg !important;
 
@@ -133,6 +127,7 @@ pre {
 	background-color: var(--black);
 	border: 1em solid var(--black);
 	border-radius: 4px;
+	margin-block: 2em;
 	overflow: auto hidden;
 }
 
@@ -141,6 +136,17 @@ blockquote,
 details {
 	> *:first-child {margin-top: 0}
 	> *:last-child {margin-bottom: 0}
+}
+
+dl {
+	margin-block: 2em;
+}
+dt {
+	font: bold 0.9em sans-serif;
+	margin-top: 1em;
+}
+dd {
+	margin-left: 1em;
 }
 
 
@@ -153,7 +159,7 @@ main img {
 }
 
 figure {
-	margin: 2em 0;
+	margin: 2em;
 
 	img, video, iframe {
 		width: calc(100% - 16px);
@@ -175,8 +181,10 @@ figure {
 
 	&:nth-of-type(even)::before {
 		transform: scaleX(-1);
-		rotate: 0deg;
 	}
+
+	&:is(.float-left, .float-right)::before {scale: 0.75}
+	.flex & {margin-inline: 0}
 }
 
 figcaption {
@@ -193,11 +201,9 @@ figcaption {
 
 .float-left, .float-right {
 	max-width: calc(50% - 1em);
-	margin-block: 0 1em;
+	margin: 0 0 1em 0;
 	position: relative;
 	z-index: 1;
-
-	&:is(figure)::before {scale: 0.75}
 }
 .float-left {float: left; clear: left; margin-right: 2em}
 .float-right {float: right; clear: right; margin-left: 2em}
@@ -230,6 +236,7 @@ figcaption {
 
 /* misc */
 
+#entry, main,
 ul, ol,
 details, blockquote,
 .flex, .grid,

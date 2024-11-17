@@ -199,7 +199,7 @@ footer {
 
 .high-contrast {
 	.block {background: var(--black) !important}
-	header, #statuscafe, #statuscafe-username {color: var(--white)}
+	.block, #statuscafe-username {color: var(--white)}
 	h1, tape-deck, footer, #map {color: var(--black)}
 
 	#creata .title span {all: unset}
