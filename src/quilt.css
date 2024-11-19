@@ -134,7 +134,7 @@ a.block {
 /* tunes */
 
 #tunes {
-	height: 4em;
+	min-height: 4em;
 	padding-block: 1em;
 	background:
 		url(creata/tunes/_assets/cd-small.png) no-repeat -160px 50%,
@@ -174,7 +174,8 @@ a.block {
 
 	background:
 		url(_assets/map.png),
-		radial-gradient(circle at center, rgb(from var(--yellow) r g b / 0.4) 25%, transparent);
+		linear-gradient(to bottom, var(--white), transparent, var(--white)),
+		radial-gradient(circle at center, transparent, rgb(from var(--blue) r g b / 0.4) 50%, transparent);
 
 	&:hover {
 		text-decoration: underline;
