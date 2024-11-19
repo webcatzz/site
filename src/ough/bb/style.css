@@ -1,0 +1,27 @@
+body {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	min-height: 100vh;
+	background-color: pink;
+	overflow: hidden;
+}
+
+#bb {
+	cursor: pointer;
+
+	&:active {
+		scale: 0.9875;
+	}
+}
+
+.tinybb {
+	width: 64px;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	opacity: 0.5;
+	pointer-events: none;
+	user-select: none;
+}
