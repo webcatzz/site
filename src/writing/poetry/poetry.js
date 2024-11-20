@@ -1,6 +1,5 @@
 const poems = [
 	"sonny boy",
-	"one of those",
 	"haiku he was cursed by an evil wizard to write",
 	"walled garden",
 	"dog",
@@ -21,6 +20,7 @@ function leafTo(idx) {
 	buttonRight.disabled = idx + 2 >= poems.length;
 }
 
+
 async function write(poem, page) {
 	page = document.getElementById(page);
 	page.textContent = "";
@@ -34,7 +34,7 @@ async function write(poem, page) {
 
 	page.innerHTML = `
 		<h2>${poem}</h2>
-		<div class="date">pub. ${date}</div>
+		<div class="date">${date}</div>
 		<pre>${text}</pre>
 	`;
 }
