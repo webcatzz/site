@@ -15,27 +15,24 @@ body {
 	
 	max-width: 600px;
 	background-color: var(--black);
-	margin: 64px auto;
+	margin: 4em auto;
 	position: relative;
 }
 
 h1 {
-	background-image: url(_assets/halftone.png);
+	font-size: 4em;
+	background: url(_assets/halftone.png) repeat-x bottom;
 }
 
 ul {
-	font-family: ms-serif;
 	list-style-type: none;
 	padding-left: 0;
 
-	ul {
-		max-width: max-content;
-		margin-left: 1.5em;
-	}
+	ul {margin-left: 1.5em}
 }
 li {
 	color: var(--gray);
-	margin-block: 0.5em;
+	margin-block: 0.6em;
 
 	img {width: 16px}
 
@@ -48,21 +45,21 @@ li {
 		background-color: var(--white);
 		border: 4px solid var(--dark-gray);
 		border-radius: 50%;
-		margin-top: -2px;
-		margin-inline: 1em;
+		margin-top: -4px;
+		margin-inline: 1em 1.5em;
 	}
 }
 
 a {
 	color: var(--white);
-	text-align: center;
 	white-space: nowrap;
 	text-overflow: ellipsis;
 
-	background-image: url(_assets/halftone.png);
+	border: 1px dotted #4f4644;
+	border-radius: 1em;
+	padding: 0.25em 0.5em;
 	overflow: hidden;
 	position: relative;
-	transition: border-width 0.2s;
 
 	img {
 		display: inline-block;
@@ -71,15 +68,15 @@ a {
 	}
 
 	&:hover {
-		font-weight: bold;
-		border-width: 3px;
+		color: var(--black);
+		background-color: var(--color);
+		border-style: solid;
+		border-color: var(--black);
 	}
 }
 
 footer {
-	content: "";
-	display: block;
-	height: 1em;
+	height: 18px;
 	background-image: url(_assets/halftone.png);
 }
 
@@ -92,7 +89,7 @@ footer {
 @media (max-width: 600px) {
 	body {
 		columns: unset;
-		margin-block: 2em;
+		margin: 2em;
 	}
 }
   </style>
@@ -151,56 +148,50 @@ footer {
 	<li><a href="archive/">archive</a></li>
 </ul>
 
-<footer></footer>
+<footer aria-hidden="true"></footer>
 
 <canvas id="canvas" aria-hidden="true"></canvas>
-
 <script src="theme.js"></script>
 <script>
-onload = () => {
-
-const ctx = document.getElementById("canvas").getContext("2d");
-ctx.canvas.width = document.body.offsetWidth;
-ctx.canvas.height = document.body.offsetHeight;
-ctx.lineWidth = 16;
-ctx.lineCap = "round";
+const stopOffset = {x: 28, y: 10};
 
 let style = getComputedStyle(document.body);
 const colors = [
-  style.getPropertyValue("--blue"),
-  style.getPropertyValue("--red"),
-  style.getPropertyValue("--yellow"),
+	style.getPropertyValue("--blue"),
+	style.getPropertyValue("--red"),
+	style.getPropertyValue("--yellow"),
 ];
 
-let i = -1;
-let onLeftColumn = true;
+onload = () => {
+	const ctx = document.getElementById("canvas").getContext("2d");
+	ctx.canvas.width = document.body.offsetWidth;
+	ctx.canvas.height = document.body.offsetHeight;
+	ctx.lineWidth = 40;
+	ctx.lineJoin = "round";
+	ctx.lineCap = "round";
 
-for (const link of document.querySelectorAll("body > ul > li")) {
-  ctx.strokeStyle = ++i ? colors[i % colors.length] : style.getPropertyValue("--dark-gray");
+	let i = -1;
+	let beforeWrap = true;
 
-  ctx.beginPath();
-  ctx.moveTo(link.offsetLeft, link.offsetTop - 23.2);
-  ctx.lineTo(link.offsetLeft + 28, link.offsetTop + 10);
+	for (const item of document.querySelectorAll("body > ul > li")) {
+		ctx.strokeStyle = ++i ? colors[i % colors.length] : style.getPropertyValue("--dark-gray");
+		item.style.setProperty("--color", ctx.strokeStyle);
 
-	let lastX = link.offsetLeft;
+		ctx.beginPath();
+		ctx.moveTo(item.offsetLeft, item.offsetTop - 23.2);
+		ctx.lineTo(item.offsetLeft + stopOffset.x, item.offsetTop + stopOffset.y);
 
-  for (const sublink of link.getElementsByTagName("li")) {
-
-		// column wrapping
-		if (onLeftColumn) {
-			if (lastX < sublink.offsetLeft - 32) {
-				ctx.lineTo(lastX + 28, ctx.canvas.height);
-				ctx.moveTo(sublink.offsetLeft + 28, sublink.offsetTop);
-				onLeftColumn = false;
+		for (const subitem of item.getElementsByTagName("li")) {
+			if (beforeWrap && subitem.offsetLeft > document.body.offsetWidth / 2) {
+				ctx.lineTo(subitem.previousElementSibling.offsetLeft + stopOffset.x, ctx.canvas.height);
+				ctx.moveTo(subitem.offsetLeft + stopOffset.x, subitem.offsetTop);
+				beforeWrap = false;
 			}
-			else lastX = sublink.offsetLeft;
+			ctx.lineTo(subitem.offsetLeft + stopOffset.x, subitem.offsetTop + stopOffset.y);
 		}
 
-    ctx.lineTo(sublink.offsetLeft + 28, sublink.offsetTop + 10);
-  }
-
-  ctx.stroke();
-}
+		ctx.stroke();
+	}
 
 }
 </script>

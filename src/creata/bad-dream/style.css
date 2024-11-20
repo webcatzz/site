@@ -12,6 +12,15 @@ body {
 	padding-inline: 1em;
 	margin: 8em auto;
 
+	&::before {
+		content: "";
+		background-image: linear-gradient(to top, #0000ff80, #ff00ff40, transparent 50%, transparent 60%, #ff000040);
+		opacity: 0.1;
+		position: fixed;
+		inset: 0;
+		z-index: -1;
+	}
+
 	&::after {content: none}
 }
 

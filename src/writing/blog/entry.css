@@ -5,10 +5,11 @@
 }
 
 #entry {
-	color: var(--black);
-	padding: 1.5em 1em;
+	padding: 1em 2.5em;
+	margin-inline: -1em;
 	overflow: hidden auto;
 	flex: 1;
+	rotate: 1deg;
 }
 
 main {
@@ -19,14 +20,12 @@ main {
 
 
 
-/* heading */
+/* header */
 
 header {
 	display: flex;
-	gap: 0.75em;
-	padding: 0.75em;
-	border: 1px solid rgb(from var(--black) r g b / 0.25);
-	border-inline-width: 2px;
+	gap: 0.5em;
+	font-family: wildpines;
 	border-radius: 0.5em;
 	margin-bottom: 2em;
 	position: relative;
@@ -34,20 +33,25 @@ header {
 }
 
 #name {
-	font: 2em/1 wildpines;
+	font-size: 2.5em;
+	font-family: inherit;
+	line-height: 1;
 	margin-top: -0.125em;
 	flex: 1;
 }
 
 #date {
-	color: var(--black-trans);
-	font-size: 0.75em;
 	writing-mode: vertical-rl;
 }
 
-h3, h4, h5, h6 {
-	font-weight: normal;
+h3, h4 {
+	font: 1.5em/1 wildpines;
+	text-align: left;
 	margin-block: 2em 1em;
+}
+
+h4 {
+	font-size: 1em;
 }
 
 
@@ -69,9 +73,10 @@ b {
 
 ul, ol {
 	padding-left: 1.75em;
-	ul, ol {rotate: -1deg !important}
 }
-ul {list-style-type: "ꕀ"}
+ul {
+	list-style-type: "ꕀ";
+}
 li {
 	padding-left: 0.75em;
 
@@ -89,37 +94,36 @@ aside {
 	margin-block: 2rem;
 }
 
-blockquote {
-	padding: 0.5em 1em;
-	border-left: 4px solid var(--button);
-	margin: 1em 0;
-	border-radius: 4px;
-}
-
 details {
 	margin-block: 2em;
-}
 
-details[open] {
-	background-color: var(--button);
-	padding: 1em;
-	border-radius: 12px;
-
-	summary {
-		margin-top: -0.5em !important;
-		margin-left: -0.5em;
+	&[open] {
+		padding: 1em;
+		border: 1px dotted;
+		border-radius: 1em;
+	
+		summary {
+			border-style: solid;
+			margin-top: -0.5em !important;
+			margin-left: -0.5em;
+		}
 	}
 }
 
 summary {
 	width: max-content;
-	background-color: var(--button);
 	padding: 0.25em 1em;
+	border: 1px dotted;
 	border-radius: 1em;
-	rotate: 0deg !important;
 
-	&::marker {color: #b38637}
-	&:hover {background-color: var(--button-hover)}
+	&:hover {background-color: var(--button)}
+}
+
+blockquote {
+	padding: 0.5em 1em;
+	border-left: 1px dotted;
+	margin: 1em 0;
+	border-radius: 4px;
 }
 
 pre {
@@ -201,7 +205,7 @@ figcaption {
 
 .float-left, .float-right {
 	max-width: calc(50% - 1em);
-	margin: 0 0 1em 0;
+	margin: 1em 0;
 	position: relative;
 	z-index: 1;
 }
@@ -234,27 +238,17 @@ figcaption {
 
 
 
-/* misc */
+/* footer */
 
-#entry, main,
-ul, ol,
-details, blockquote,
-.flex, .grid,
-.pass-rot {
-	rotate: 0deg !important;
-	> * {rotate: 1deg}
-}
-
-.render-pixel {image-rendering: pixelated}
-
-
-
-/* lines */
-
-main hr, footer {
-	border-top: 1px dashed var(--black-trans);
-	margin-block: 2em;
+footer {
+	font: 0.75em/1.6 ms-serif;
+	letter-spacing: 0.05em;
+	padding-top: 0.5em;
+	border-top: 1px dotted;
+	margin-block: 4em 0;
 	position: relative;
+
+	p {margin-block: 0}
 
 	&::before {
 		content: "✄";
@@ -266,29 +260,10 @@ main hr, footer {
 	}
 }
 
-main hr {
-	height: 0;
-	background-color: transparent;
-	overflow: visible;
-}
-
-
-
-/* footer */
-
-footer {
-	font: 0.75em/1.6 ms-serif;
-	letter-spacing: 0.05em;
-	padding-top: 0.5em;
-	margin-block: 4em 0;
-
-	p {margin-block: 0}
-}
-
 #mood {
-	background-color: var(--button);
 	padding-inline: 0.5em;
-	border-radius: 0.75em;
+	border: 1px dotted;
+	border-radius: 1em;
 	transition: background-color 0.1s;
 	cursor: pointer;
 	user-select: none;
@@ -300,6 +275,6 @@ footer {
 		image-rendering: pixelated;
 	}
 
-	&:hover {background-color: var(--button-hover)}
+	&:hover {background-color: var(--button)}
 	&:active img {scale: 1.1}
 }

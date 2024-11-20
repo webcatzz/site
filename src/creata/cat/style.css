@@ -44,8 +44,13 @@ dd {
 	margin-left: 1em;
 }
 
+#back {
+	font-size: 1.5em;
+	display: block;
+	margin-top: 4rem;
+}
+
 footer {
 	color: var(--light-gray);
 	font-size: 0.5em;
-	margin-top: 4rem;
 }
