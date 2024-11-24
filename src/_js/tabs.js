@@ -5,7 +5,7 @@
 how to use:
 
 1. save the script to your site and link it in your page's head:
-<script src="wherever/youre/storing/tabs.js"></script>
+<script defer src="wherever/youre/storing/tabs.js"></script>
 
 2. all you need to do is wrap your tabs in a <tab-div></tab-div>.
 	 to give the tabs names (displayed in the tab buttons), add a data-tab attribute.
