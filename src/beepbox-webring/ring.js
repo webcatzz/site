@@ -8,7 +8,7 @@ bpSites = [
 	"https://robophobia.org",
 	"https://fizzsea.neocities.org",
 	"https://foggybear42.neocities.org",
-	"https://mechagic.lexiqqq.com",
+	"https://mechagic.github.io",
 	"https://sawtooth.neocities.org",
 	"https://neovium.xyz/",
 	"https://hellokittyminigun.neocities.org",
