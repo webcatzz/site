@@ -26,29 +26,46 @@ class TapeDeck extends HTMLElement {
 		this.audio.addEventListener("pause", () => playButton.textContent = "play");
 		this.audio.addEventListener("play", () => playButton.textContent = "pause");
 
-		if (!this.hasAttribute("single")) {
+		if (this.list.length > 1) {
 			let skipButton = this.appendChild(document.createElement("button"));
 			skipButton.textContent = "skip";
 			skipButton.addEventListener("click", () => this.playNext());
 		}
 
-		this.title = this.appendChild(document.createElement("div"));
+		this.title = this.appendChild(document.createElement("select"));
 		this.title.className = "track-title";
+		for (let i = 0; i < this.list.length; i++) {
+			let opt = this.title.appendChild(document.createElement("option"));
+			opt.value = i;
+			opt.textContent = this.list[i];
+		}
+		this.title.addEventListener("change", () => {
+			this.set(Number(this.title.value));
+			this.play();
+		});
 
 		this.audio.addEventListener("ended", () => this.playNext());
 		this.next();
 	}
 
-	next() {
-		this.idx = (this.idx + 1) % this.list.length;
+	set(i) {
+		this.idx = i;
 		this.audio.src = this.path + encodeURIComponent(this.list[this.idx]) + ".mp3";
-		this.title.textContent = this.list[this.idx];
+		this.title.value = this.idx;
 		this.title.title = this.list[this.idx];
+	}
+
+	next() {
+		this.set((this.idx + 1) % this.list.length);
+	}
+
+	play() {
+		this.audio.play();
 	}
 
 	playNext() {
 		this.next();
-		this.audio.play();
+		this.play();
 	}
 
 	toggle() {

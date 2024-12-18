@@ -102,6 +102,7 @@ tape-deck {
 		contain: inline-size;
 		overflow: hidden;
 		flex: 1;
+		appearance: none;
 	}
 }
 
