@@ -1,0 +1,110 @@
+@font-face {font-family: dos; src: url(/_asset/font/dos.ttf)}
+:root {
+	--white: #cccccc;
+	--black: #0d0d0d;
+}
+::selection {
+	color: var(--black);
+	background-color: var(--white);
+}
+
+body {
+	display: flex;
+	justify-content: center;
+	color: var(--white);
+	font-family: pixel;
+	background: radial-gradient(transparent 90%, #0000ff10) var(--black);
+	height: 100vh;
+	padding: 6em;
+	box-sizing: border-box;
+
+	&::after {content: none}
+}
+
+#playlist {
+	height: 80px;
+	border-radius: 12px;
+}
+
+
+
+/* nav */
+
+nav {
+	display: flex;
+	flex-direction: column;
+	margin-block: 2em;
+}
+
+nav a {
+	text-align: right;
+	padding-inline: 0.5em;
+}
+
+.active, nav a:hover {
+	background-color: blue;
+}
+
+#back {
+	margin-top: 0.5em;
+}
+
+
+
+/* articles */
+
+#wrapper {
+	display: flex;
+	flex-direction: column;
+	gap: 4em;
+	max-width: 400px;
+	padding: 2em 4em;
+	overflow: hidden auto;
+	position: relative;
+}
+
+h2 {
+	font: 2em dos;
+}
+
+time {
+	border-left: 1.5px solid;
+	padding-left: 0.5em;
+	margin-left: 0.25em;
+}
+
+time, h2 {
+	display: inline;
+}
+
+img, video {
+	width: 100%;
+	border: 1px solid;
+	padding: 4px;
+}
+
+article a {
+	text-decoration: underline 1px;
+	&:hover {background-color: blue}
+}
+
+tape-deck {
+	align-self: end;
+	position: absolute;
+	top: 3rem;
+
+	.track-title {contain: unset}
+}
+
+
+
+/* mobile */
+
+@media (max-width: 600px) {
+	body {
+		padding: 2em;
+	}
+	#wrapper {
+		padding-inline: 2em;
+	}
+}

@@ -1,0 +1,10 @@
+{
+	"[plaintext]": {
+    "editor.wordWrap": "on",
+	},
+	"liveServer.settings.root": "/",
+	"liveServer.settings.file": "/not_found.html",
+	"files.exclude": {
+		"**/.vscode/": true
+	},
+}

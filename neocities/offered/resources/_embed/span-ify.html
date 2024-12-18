@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>span-ify</title>
+	<style>
+body {
+	display: flex;
+	font-family: sans-serif;
+	font-size: 0.875em;
+	height: 100vh;
+	margin: 0;
+}
+
+h1 {font: normal 4em serif; letter-spacing: 0.05em; text-align: center}
+h1 .tag {letter-spacing: 0; border-radius: 8px}
+
+.code {color: #d9d9d9; font-family: monospace; background-color: #1f1f1f}
+.tag {color: #519cd3; font-family: monospace; padding: 0 0.05em; margin: 0 0.1em}
+.tag::before {color: gray; content: "<"}
+.end::before {content: "</"}
+.tag::after {color: gray; content: ">"}
+.space {color: gray; width: max-content; font-size: 0.75em; padding: 0.1em 0.25em; margin: 0.25em 0; border: 0.5px solid gray; border-radius: 4px}
+
+#in {flex: 1; display: block; font: inherit; font-size: 0.875em; line-height: 1.25; padding: 1em; border: none; cursor: text; resize: none; appearance: none}
+#out {flex: 2; position: relative}
+#out-text-wrapper {padding: 1em; position: absolute; top: 0; left: 0; right: 0; bottom: 0; overflow-y: auto; user-select: none}
+#copy {display: block; color: white; font-family: sans-serif; padding: 0.25em 0.5em; border: none; border-radius: 4px; background-color: #4180ff; position: absolute; bottom: 1em; right: 1em; transition: background-color 0.17s; cursor: pointer; appearance: none}
+#copy:hover {background-color: #5c98ff}
+#copy:active {background-color: #3768ee; transition: background-color 0.05s}
+	</style>
+</head>
+<body>
+
+<textarea id="in" placeholder="add some text to be &lt;span&gt;ified..."></textarea>
+<div id="out" class="code">
+	<div id="out-text-wrapper"><div id="out-text"></div></div>
+	<button id="copy"><i class="fa-regular fa-copy"></i> copy</button>
+</div>
+
+<script>
+const input = document.querySelector("textarea"), output = document.getElementById("out"), outText = document.getElementById("out-text"), addRule = document.getElementById("add-rule");
+outText.innerHTML = toFancySpan(input.value);
+input.oninput = () => {
+	outText.innerHTML = toFancySpan(input.value);
+	if (outText.hasChildNodes()) outText.lastElementChild.scrollIntoView();
+}
+document.getElementById("copy").onclick = event => {
+	navigator.clipboard.writeText(toSpan(input.value));
+	event.target.innerHTML = 'copied! <i class="fa-solid fa-check"></i>';
+	setTimeout(() => event.target.innerHTML = '<i class="fa-regular fa-copy"></i> copy', 1000);
+}
+
+function toSpan(text) {
+	let spanned = "";
+	for (const letter of text) {
+		if (letter == " " || letter == "\n") spanned += " ";
+		else spanned += "<span>" + letter + "</span>";
+	};
+	return spanned;
+}
+
+function toFancySpan(text) {
+	let spanned = "";
+	for (const letter of text) {
+		if (letter == " " || letter == "\n") spanned += '<div class="space">whitespace</div>';
+		else spanned += '<div><span class="tag">span</span><span>' + letter + '</span><span class="tag end">span</span></div>';
+	};
+	return spanned;
+}
+</script>
+
+</body>
+</html>

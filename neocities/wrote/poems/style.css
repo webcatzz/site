@@ -1,0 +1,83 @@
+body {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background:
+		radial-gradient(black 25%, #00000080),
+		url(_asset/grain.png) center / cover black;
+	min-height: 100vh;
+}
+
+
+
+/* notebook */
+
+#notebook {
+	display: flex;
+	justify-content: center;
+	background: url(_asset/notebook.png) center / cover;
+	width: 500px;
+	aspect-ratio: 1662/1766;
+	padding: 50px 15px 150px 25px;
+	box-sizing: border-box;
+	perspective: 1000px;
+}
+
+article {
+	display: grid;
+	grid-template:
+		"name date" max-content
+		"text text" 1fr
+		/ 1fr max-content;
+	font-size: 0.75em;
+	contain: strict;
+	flex: 1;
+}
+#left {
+	transform: rotateX(-4deg) rotateY(45deg);
+	margin-right: -20px;
+}
+#right {
+	transform: rotateX(-4deg) rotateY(-50deg);
+	margin-left: -20px;
+	margin-bottom: 30px;
+}
+
+button {
+	color: #d2d1ce;
+	font-family: monospace;
+	&:hover {text-decoration: underline}
+	&[disabled] {visibility: hidden}
+}
+
+
+
+/* content */
+
+h2 {
+	margin-block: 0;
+	grid-area: name;
+	align-self: center;
+}
+
+.date {
+	font: 0.75em monospace;
+	text-align: right;
+	grid-area: date;
+	align-self: center;
+}
+
+pre {
+	padding-bottom: 1.5em;
+	grid-area: text;
+	overflow: auto;
+	overscroll-behavior: none;
+	scrollbar-color: #7e8982 transparent;
+}
+.prompt {
+	font: 0.875em sans-serif;
+	white-space: normal;
+	padding-left: 1em;
+	border-left: 1px solid;
+	margin-top: 4em;
+}

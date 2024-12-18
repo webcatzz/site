@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>june's game of DEATH!!! and WAR!!!</title>
+  <link rel="icon" href="/_asset/icon.png">
+  <link rel="stylesheet" href="/blanket.css">
+  <style>
+body {color: var(--off-white); display: flex; align-items: center; gap: 6em; background-color: var(--black); min-height: 100vh; margin-inline: 6em}
+.red {color: var(--red)}
+.yellow {color: var(--yellow)}
+.blue {color: var(--blue)}
+
+canvas {color: var(--dark-gray); display: block; border: 0.5em solid; cursor: pointer; transition: color 1s}
+
+#side {height: 600px; flex: 1}
+h1 {margin-top: 0}
+h1 span {color: var(--red)}
+
+#teams {display: grid; grid-template-columns: 1fr 1fr 1fr; margin-block: 2em}
+.team {
+  display: flex; flex-direction: column; justify-content: end;
+  padding: 0.5em; border: 0.1em solid;
+  cursor: pointer;
+
+  & span {font-size: 2em; transition: font-size 0.2s}
+  & div {border-top: 0.1em solid}
+}
+.first {border-width: 0.5em; transition: border-width 0.2s; & span {font-size: 3em}}
+.second {border-width: 0.25em; transition: border-width 0.2s; & span {font-size: 2.5em}}
+
+#you {
+  font-size: 0.875em; display: flex; justify-content: space-between; align-items: center;
+  background-color: var(--dark-gray);
+  padding: 0.25em 0.5em; border: 1px solid var(--dark-gray);
+  margin-top: 1em; position: relative;
+
+  &::before {
+    content: ""; display: block;
+    background-color: var(--dark-gray); width: 1em; height: 1em;
+    rotate: 45deg;
+    position: absolute; top: -0.5em; left: calc(50% - 0.5em);
+    z-index: -1;
+  }
+}
+#timer {font: 1.5em/0.5 monospace}
+
+#rules {
+  line-height: 1.4;
+  & h3 {margin-block: 0}
+  & li::marker {color: var(--gray); font-size: 0.875em; font-family: monospace}
+}
+
+#back {
+	display: block;
+	font: 0.875em pixel;
+	text-decoration: underline;
+	margin-top: 2rem;
+}
+  </style>
+</head>
+<body>
+  <canvas width="600" height="600"></canvas>
+  <div id="side">
+    <s>conway's game of</s>
+    <h1>june's game of <span>DEATH</span>!!! and <span style="text-decoration: double underline">WAR</span>!!!</h1>
+
+    <div id="teams">
+
+      <div class="red team">
+        <span id="stat-red"></span>
+        <div>red</div>
+      </div>
+
+      <div class="yellow team">
+        <span id="stat-yellow"></span>
+        <div>yellow</div>
+      </div>
+
+      <div class="blue team">
+        <span id="stat-blue"></span>
+        <div>blue</div>
+      </div>
+
+      <div id="you">
+        selected
+        <span id="timer">0:00</span>
+      </div>
+    </div>
+
+    <div id="rules">
+      <h3>rules</h3>
+      <p>tl;dr select a color and click to place clusters. kill everything that isn't you</p>
+      <p>the game follows standard conway rules, with some others tossed in:</p>
+      <ol>
+        <li>any cell with less than two neighbors dies.</li>
+        <li>any cell with more than three neighbors dies.</li>
+        <li>any empty space with exactly three neighbors spawns a cell.</li>
+        <li>you may spawn a cluster of cells once every five seconds.</li>
+        <li>newly spawned cells inherit their neighbors' most common color.</li>
+        <li>enemy clusters spawn randomly.</li>
+      </ol>
+    </div>
+
+		<a id="back" href="/">&larr; back</a>
+  </div>
+  <script>
+const ctx = document.querySelector("canvas").getContext("2d");
+const colors = {
+  white: getComputedStyle(document.body).getPropertyValue("--off-white"),
+  red: getComputedStyle(document.body).getPropertyValue("--red"),
+  yellow: getComputedStyle(document.body).getPropertyValue("--yellow"),
+  blue: getComputedStyle(document.body).getPropertyValue("--blue"),
+};
+
+const grid = [];
+for (let i = 0; i < 300; i++) grid[i] = Array(300);
+var born = [], dead = [];
+/* debug */ born = [[149, 148], [150, 148], [151, 148], [148, 149], [152, 149], [148, 150], [152, 150], [148, 151], [152, 151], [149, 152], [150, 152], [151, 152]];
+
+// tickGrid();
+// const lastSaved = 1708538859417;
+// for (let tick = new Date() - lastSaved; tick > 0; tick -= 1000) tickGrid();
+tickGrid();
+setInterval(tickGrid, 500);
+
+
+// standard conway rules
+
+function create(x, y, color = "red") {
+  grid[x][y] = color;
+  ctx.fillStyle = colors[color];
+  ctx.fillRect(x * 2, y * 2, 2, 2);
+}
+function kill(x, y) {
+  grid[x][y] = null;
+  ctx.clearRect(x * 2, y * 2, 2, 2);
+}
+function createCluster(x, y, color = "red") {
+  let radius = 5;
+  for (let posX = x - radius; posX < x + radius; posX++) {
+    for (let posY = y - radius; posY < y + radius; posY++) {
+      if (Math.random() < 0.3 && inBounds(posX) && inBounds(posY)) {
+        addToBorn(posX, posY, color);
+      }
+    }
+  }
+}
+
+function tickGrid() {
+  for (let x = 0; x < grid.length; x++) {
+    for (let y = 0; y < grid.length; y++) {
+      tick(x, y);
+    }
+  }
+  for (const [x, y, color] of born) create(x, y, color);
+  for (const [x, y] of dead) kill(x, y);
+  dead = [], born = [];
+
+  if (Math.random() < 0.125) {
+    let possible = ["red", "yellow", "blue"];
+    possible.splice(possible.indexOf(selected), 1);
+    let conf = [Math.floor(Math.random() * grid.length), Math.floor(Math.random() * grid.length), possible[Math.floor(Math.random() * 2)]];
+    console.log(conf);
+    createCluster(...conf);
+  }
+
+  count();
+}
+
+function tick(x, y) {
+  let neighbors = surveyNeighbors(x, y);
+  if (grid[x][y]) {
+    if (neighbors.length < 2 || neighbors.length > 3) addToDead(x, y)
+  } else if (neighbors.length == 3) {
+    addToBorn(x, y, mostCommon(neighbors));
+  }
+
+  function mostCommon(arr) {
+    return arr.sort((a,b) => arr.filter(v => v===a).length - arr.filter(v => v===b).length).pop();
+  }
+}
+
+function addToDead(x, y) {dead.push([x, y])}
+function addToBorn(x, y, color) {born.push([x, y, color])}
+
+function surveyNeighbors(x, y) {
+  let neighbors = [];
+
+  for (let curX = -1; curX <= 1; curX++) {
+    if (!inBounds(x + curX)) continue;
+    for (let curY = -1; curY <= 1; curY++) {
+      if (!inBounds(y + curY)) continue;
+      if (curX == 0 && curY == 0) continue;
+
+      if (grid[x + curX][y + curY]) neighbors.push(grid[x + curX][y + curY]);
+    }
+  }
+
+  return neighbors;
+}
+
+function inBounds(num) {
+  return num > 0 && num < grid.length;
+}
+
+
+// custom rules
+
+var selected = "red";
+for (const selector of document.getElementsByClassName("team")) selector.onclick = function () {
+  selected = this.classList[0];
+  document.getElementById("you").style.gridColumnStart = ["red", "yellow", "blue"].indexOf(selected) + 1;
+}
+
+var timer = {timeLeft: 0, interval: 0};
+ctx.canvas.onclick = e => {
+  if (!timer.timeLeft) {
+    timer.timeLeft = 5;
+    document.getElementById("timer").textContent = "0:05";
+    timer.interval = setInterval(() => {
+      timer.timeLeft--;
+      document.getElementById("timer").textContent = Math.floor(timer.timeLeft / 60) + ":" + ("0" + (timer.timeLeft % 60)).slice(-2);
+      if (!timer.timeLeft) {
+        clearInterval(timer.interval);
+        ctx.canvas.style.cursor = "pointer";
+      }
+    }, 1000);
+
+    ctx.canvas.style.cursor = "auto";
+    createCluster(Math.floor(e.offsetX / 2), Math.floor(e.offsetY / 2), selected);
+  }
+}
+
+function count() {
+  let stats = {red: 0, yellow: 0, blue: 0};
+  for (let x = 0; x < grid.length; x++) {
+    for (let y = 0; y < grid.length; y++) {
+      if (grid[x][y]) stats[grid[x][y]]++;
+    }
+  }
+
+  let teams = ["red", "yellow", "blue"];
+  teams.sort((a,b) => stats[b] - stats[a]);
+  for (const team in stats) {
+    document.getElementById("stat-" + team).textContent = stats[team];
+    document.querySelector("." + team).classList.remove("first", "second");
+  }
+  document.querySelector("." + teams[0]).classList.add("first");
+  document.querySelector("." + teams[1]).classList.add("second");
+  ctx.canvas.className = teams[0];
+}
+  </script>
+</body>
+</html>

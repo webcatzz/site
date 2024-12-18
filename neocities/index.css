@@ -1,0 +1,177 @@
+:root {
+	--light-blue: color-mix(in srgb, var(--blue), var(--white) 50%);
+	--light-red: color-mix(in srgb, var(--red), var(--white) 50%);
+	--light-yellow: color-mix(in srgb, var(--yellow), var(--white) 50%);
+}
+
+body {
+	display: flex;
+	/* justify-content: center; */
+	gap: 2em;
+	color: var(--black);
+	background-color: #f2f2f2;
+	margin: 4em;
+	image-rendering: auto;
+}
+
+
+
+/* keychain */
+
+#keychain {
+	display: flex;
+	justify-content: center;
+	background: url(_asset/keychain.png) no-repeat top / 100px;
+	width: 300px;
+	padding-top: 160px;
+	position: relative;
+
+	a:not(:last-child) {
+		display: block;
+		color: var(--light-blue);
+		font: 2em alte, sans-serif;
+		text-decoration: none;
+		text-shadow:
+			-1px -1px var(--black), 0 -1px var(--black), 1px -1px var(--black), 1px 0 var(--black),
+			-1px 1px var(--black), 0 1px var(--black), 1px 1px var(--black), -1px 0 var(--black);
+		writing-mode: vertical-rl;
+		white-space: nowrap;
+		width: max-content;
+		position: absolute;
+		transform-origin: center -50px;
+		margin-right: -0.25em;
+
+		&.red {color: var(--light-red)}
+		&.ylw {color: var(--light-yellow)}
+
+		&:hover {
+			color: var(--black);
+			text-shadow: none;
+		}
+
+		span {
+			display: block;
+			margin-left: -0.25em;
+			scale: -1;
+		}
+	}
+}
+
+#map {
+	font-family: pixel;
+	position: absolute;
+	bottom: 0;
+}
+
+
+
+/* main */
+
+main {
+	max-width: 300px;
+}
+
+.box {
+	border-left: 4px dotted;
+	padding: 0.5em;
+	margin-block: 0.5em;
+}
+
+a {
+	text-decoration: underline 0.15em var(--light-blue);
+}
+
+footer {
+	font: 0.875em pixel;
+}
+
+
+
+/* radio */
+
+#lastfm {
+	display: grid;
+	grid-template-columns: max-content 1fr;
+	text-transform: lowercase;
+
+	h2 {grid-column: 1/3}
+}
+
+#lastfm-cover {
+	height: 2.5em;
+	background-color: var(--light-blue);
+	border-radius: 2px;
+	margin-right: 0.5em;
+	grid-row: span 2;
+
+	&[src] {width: 2.5em}
+}
+
+#lastfm-track {
+	font: 0.875em alte;
+	align-self: end;
+}
+
+#lastfm-track, #lastfm-artist {
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	contain: inline-size;
+}
+
+
+
+/* for you */
+
+#for-you a {
+	display: block;
+	max-width: max-content;
+	margin-block: 0.25em;
+}
+
+
+
+/* changelog */
+
+#changelog {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5em;
+	height: 150px;
+	overflow: hidden auto;
+
+	h3 {
+		font-size: 0.875em;
+		&::after {
+			content: "";
+			display: block;
+			border-bottom: 1px solid;
+			max-width: 4em;
+		}
+	}
+
+	p {margin-block: 0}
+}
+
+
+
+/* media */
+
+@media (max-width: 600px) {
+	body {
+		margin: 2em;
+	}
+}
+
+@media (scripting: none) {
+	#keychain {
+		flex-direction: column;
+		justify-content: unset;
+		align-items: center;
+
+		a:not(:last-child) {
+			position: static;
+			writing-mode: horizontal-tb;
+		}
+	}
+}

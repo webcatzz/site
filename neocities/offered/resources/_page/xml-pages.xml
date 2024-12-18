@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<page>
+	<name>xml pages</name>
+	<content>
+		<p>after i published my blog entry on xml blogging neocities user skeliana asked me for a tutorial. here's the script i use around the site</p>
+		<h2>what it does</h2>
+		<p>fetches xml files, fills out an html template with the xml data, and then displays the resulting html. when you change your layout, all you have to do is change the html template—not multiple html files.</p>
+		<p>loads a page based on url parameters or when a button is pressed.</p>
+		<p>you're looking at a demo right now! here's the <a href="_page/xml-pages.xml">raw xml</a> for this page.</p>
+		<h2>how to use</h2>
+		<p>make a copy of <a href="/_script/xml.js">the script</a> on your site. here's some sample code:</p>
+		<code-block>
+&lt;script src="xml.js"&gt;&lt;/script&gt;
+&lt;script&gt;
+XML.setup(
+	document.querySelector("article"),
+	document.querySelectorAll("nav button"),
+	page =&gt; `
+		&lt;header&gt;
+			&lt;h1&gt;${page.name}&lt;/h1&gt;
+		&lt;/header&gt;
+		&lt;main&gt;${page.content}&lt;/main&gt;
+	`
+);
+&lt;/script&gt;
+		</code-block>
+		<p>all you need to do is link the script and then run a setup function. the function takes in three arguments:</p>
+		<ol>
+			<li>an element to insert finished html into</li>
+			<li>buttons that load pages when pressed
+				<ul>
+					<li>each button should have a <code>data-page</code> attribute with the filename of the xml page to load</li>
+				</ul>
+			</li>
+			<li>the html template</li>
+		</ol>
+	</content>
+</page>

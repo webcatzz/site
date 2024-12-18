@@ -1,0 +1,181 @@
+@font-face {font-family: ms-pgothic; src: local("MS PGothic"), url(_asset/font/ms-pgothic.ttf)}
+@font-face {font-family: ms-serif; src: url(_asset/font/ms-serif.ttf)}
+@font-face {font-family: alte; src: url(_asset/font/alte.ttf)}
+@font-face {font-family: pixel; src: url(_asset/font/junipy.ttf)}
+:root {
+	--white: #f2f2f2;
+	--off-white: #e2d8ca;
+	--light-gray: #b2a69c;
+	--gray: #82736e;
+	--dark-gray: #4f4644;
+	--off-black: #322c2c;
+	--black: #292626;
+
+	--blue: #80cede;
+	--yellow: #eccb6e;
+	--red: #efa990;
+}
+
+body {
+	font-family: ms-pgothic, sans-serif;
+	margin: 0;
+	image-rendering: pixelated;
+
+	&::after {
+		content: "";
+		background-image: url(_asset/noise.png);
+		opacity: 0.04;
+		position: fixed;
+		inset: 0;
+		image-rendering: auto;
+		pointer-events: none;
+		z-index: 99;
+	}
+}
+
+
+
+/* heading */
+
+h1, h2, h3, h4 {
+	font-family: alte, sans-serif;
+	font-weight: normal;
+	margin-block: -0.125em 0;
+}
+
+hr {
+	color: inherit;
+	background-color: currentcolor;
+	border: none;
+}
+
+
+
+/* interactive */
+
+a {
+	color: inherit;
+	text-decoration: none;
+}
+
+button, select {
+	color: inherit;
+	font: inherit;
+	text-align: left;
+	background-color: transparent;
+	padding: 0;
+	border: none;
+}
+
+button, select, summary {
+	cursor: pointer;
+	user-select: none;
+}
+
+summary::marker {line-height: 0}
+
+
+
+/* replaced */
+
+img, audio, video, iframe, marquee, input {display: block}
+iframe {width: 100%; border: none}
+audio {width: 100%}
+
+
+
+/* tape deck */
+
+tape-deck {
+	display: flex;
+	align-items: center;
+	gap: 1em;
+	font: 0.875em/1 pixel, sans-serif;
+
+	button {
+		text-decoration: underline;
+	}
+
+	.track-title {
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		contain: inline-size;
+		overflow: hidden;
+		flex: 1;
+	}
+}
+
+
+
+/* hidden */
+
+.hidden {display: none !important}
+
+
+
+/* themes
+
+.calico {
+	--blue: #8b93af;
+	--yellow: #f9a31b;
+	--white: #d4c09f;
+	--lighter-gray: #d4c09f;
+}
+
+.bubblegum {
+	--blue: #e8759f;
+	--red: #c55656;
+	--yellow: #f0a3c8;
+	--white: #c7d6c2;
+}
+
+*/
+
+
+
+/* order
+
+element {
+	DISPLAY
+	display
+	
+	TEXT
+	color
+	font-*
+	line-height
+	letter-spacing
+	text-*
+	white-space
+
+	BOX
+	background
+	size (width, height, aspect-ratio)
+	box-sizing
+	padding
+	border
+	outline
+	box-shadow
+	margin
+
+	TRANSFORMATION
+	scale
+	rotate
+	transform
+
+	FILTER
+	filter
+
+	POSITION
+	float
+	flex
+	position
+
+	CONTAINMENT
+	contain
+
+	ANIMATION
+	transition
+	animation
+}
+
+*/

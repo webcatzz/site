@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<page>
+	<name>pure css* tabs</name>
+	<content>
+		<p>i've had a few people talk to me about how to do tabs and i always say there's an easy css way to do it and then i don't say how you actually do it.</p>
+
+		<h2>this is how you actually do it</h2>
+		<p>it uses <a href="https://developer.mozilla.org/en-US/docs/Web/API/URL/hash">url hashes</a> &amp; the <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/:target">:target pseudo-class</a>. blah blah but basically if you use this bit of css</p>
+		<code-block>
+article:not(:target) {display: none}
+		</code-block>
+		<p>all articles will be hidden except for the article whose id is the same as the url hash. so if the url was <code>https://example.com#beepo</code> the article with <code>id="beepo"</code> would be visible and no others would be.</p>
+		<p>&amp; it doesn't have to be specifically articles it can be divs spans a class whatever.</p>
+
+		<h2>you fell for my preamble this is how you actually do it</h2>
+		<p>all you have to do is make a list of links like this</p>
+		<code-block>
+&lt;a href="#1"&gt;button 1&lt;/a&gt;
+&lt;a href="#2"&gt;button 2&lt;/a&gt;
+&lt;a href="#3"&gt;button 3&lt;/a&gt;
+		</code-block>
+		<p>and then a set of tabs with matching ids</p>
+		<code-block>
+&lt;article id="1"&gt;tab 1&lt;/article&gt;
+&lt;article id="2"&gt;tab 2&lt;/article&gt;
+&lt;article id="3"&gt;tab 3&lt;/article&gt;
+		</code-block>
+		<p>include the css and then you're done. look press my buttons</p>
+		<iframe src="_embed/pure-css-tabs.html">embed</iframe>
+
+		<h2>problems aka i lied there's some javascrip[t</h2>
+		<p>one problem is if there's no hash then none of the tabs are visible. if you care about that you can counter it by including a line of javascript that adds a default hash if none is present</p>
+		<code-block>
+&lt;script&gt;
+	if (!document.location.hash) location.replace("#1");
+&lt;/script&gt;
+		</code-block>
+		<p>another problem is that setting the hash auto-scrolls to the element with that id, which makes it unideal for scrolling pages (like this one). this issue isn't really fixable without a heavier dose of javascript but you <i>can</i> reset the scroll to the top of the page every time you set the hash. as if you'd navigated to a new page</p>
+		<code-block>
+&lt;script&gt;
+	if (!document.location.hash) location.replace("#1");
+	onhashchange = () =&gt; scrollTo(0, 0);
+&lt;/script&gt;
+		</code-block>
+
+		<p>hope this helps!</p>
+	</content>
+</page>

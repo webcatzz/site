@@ -1,0 +1,42 @@
+{
+	"html boilerplate": {
+		"scope": "html",
+		"prefix": "!!",
+		"body": [
+			"<!DOCTYPE html>",
+			"<html lang=\"en\">",
+			"<head>",
+			"\t<meta charset=\"UTF-8\">",
+			"\t<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">",
+			"\t<title>${1:${TM_FILENAME_BASE}}</title>",
+			"\t<link rel=\"icon\" href=\"/_asset/icon.png\">",
+			"\t<link rel=\"stylesheet\" href=\"/blanket.css\">",
+			"\t<link rel=\"stylesheet\" href=\"style.css\">",
+			"</head>",
+			"<body>",
+			"",
+			"$0",
+			"",
+			"</body>",
+			"</html>"
+		]
+	},
+	"xml boilerplate": {
+		"scope": "xml",
+		"prefix": "!!",
+		"body": [
+			"<?xml version=\"1.0\" encoding=\"UTF-8\"?>",
+			"<page>",
+			"\t<name>NAME</name>",
+			"\t<content>",
+			"\t\t",
+			"\t</content>",
+			"</page>"
+		]
+	},
+	"font-face": {
+		"scope": "css",
+		"prefix": "@f",
+		"body": "@font-face {font-family: ${1:NAME}; src: url(_assets/${1:NAME}.ttf)}",
+	}
+}

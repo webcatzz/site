@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<page>
+	<name>june's super cool super easy webring template ꔛ</name>
+	<content>
+		<p>do you want to make a webring? not know anything about javascript? well boy howdy are you in luck.</p>
+		<p>introducing: <b>webstring.js</b>! a super-simple alternative to garlic.garden's excellent <a href="https://garlic.garden/onionring/">onionring</a>.</p>
+
+		<h2>how's this different from onionring?</h2>
+		<ul>
+			<li>it's a <b>single file</b>, for ease of editing &amp; use.</li>
+			<li>it's <b>compact</b>—not counting the settings object, the raw code's only 8 lines long.</li>
+			<li>there's customization options! want to use a stylesheet? add multiple widgets? scroll down and ask the wizard.</li>
+		</ul>
+
+		<h2>how do i start a webring?</h2>
+		<p>create a copy of <a href="/_script/webstring.js">the script</a> on your site. the only part you need to worry about is this, the settings object:</p>
+		<code-block>
+// settings
+webring = {
+
+	// list of sites in the ring
+	sites: [
+		"https://site_1.neocities.org",
+		"https://site_2.neocities.org",
+	],
+
+	// html inserted as your widget
+	// PREV and NEXT get replaced with neighboring site urls
+	widget: `
+		&lt;div id="my-webring" style="display: flex; gap: 8px"&gt;
+			&lt;a href="PREV"&gt;prev&lt;/a&gt;
+			&lt;div&gt;webring&lt;/div&gt;
+			&lt;a href="NEXT"&gt;next&lt;/a&gt;
+		&lt;/div&gt;
+	`,
+
+	// html inserted instead of your widget on sites that aren't in the ring
+	error: "&lt;div&gt;This site isn't part of the webring yet.&lt;/div&gt;",
+
+};
+		</code-block>
+		<p>this is where you change your webring's info.</p>
+		<p>i <b>highly</b> recommend giving your widget html an <code>id=""</code> with the name of your webring, otherwise it's really difficult for webring members to add custom styling to their widgets.</p>
+
+		<h2>how do i embed widgets?</h2>
+
+		<p>link the script wherever you'd like the widget to be, like so:</p>
+		<code-block>
+&lt;script defer src="REPLACEME"&gt;
+		</code-block>
+		<p>(don't forget to replace the <code>src</code> with the path your version of the script is stored at.)</p>
+
+		<p>OK that's all. happy webringing</p>
+
+		<br/>
+		<h2>PSYCHE u can customize</h2>
+		<iframe height="160" src="_embed/webstring.html">embed</iframe>
+
+	</content>
+</page>

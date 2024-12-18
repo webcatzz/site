@@ -1,0 +1,84 @@
+body {
+	color: var(--off-white);
+	font-size: 16px;
+	columns: 2;
+	column-gap: 4em;
+	
+	max-width: 600px;
+	background-color: var(--black);
+	margin: 4em auto;
+	position: relative;
+}
+
+h1 {
+	font-size: 3em;
+	background: url(_asset/halftone.png) repeat-x bottom;
+}
+
+ul {
+	list-style-type: none;
+	padding-left: 0;
+	
+	ul {margin-left: 1.5em}
+}
+
+li {
+	color: var(--gray);
+	margin-block: 0.5em;
+
+	img {width: 16px}
+
+	&::before {
+		content: "";
+		display: inline-block;
+		vertical-align: middle;
+		width: 0.875em;
+		height: 0.875em;
+		background-color: var(--off-white);
+		border: 4px solid var(--dark-gray);
+		border-radius: 50%;
+		margin-top: -4px;
+		margin-inline: 1em 2em;
+	}
+}
+
+a {
+	color: var(--off-white);
+	white-space: nowrap;
+	text-overflow: ellipsis;
+
+	border-radius: 1em;
+	padding: 0.25em 0.5em;
+	margin: -0.25em -0.5em;
+	overflow: hidden;
+	position: relative;
+
+	img {
+		display: inline-block;
+		margin-right: 0.5em;
+		margin-bottom: -0.125em;
+	}
+
+	&:hover {
+		color: var(--black);
+		background-color: var(--color);
+	}
+}
+
+footer {
+	height: 18px;
+	background-image: url(_asset/halftone.png);
+}
+
+#canvas {
+	position: absolute;
+	inset: 0;
+	z-index: -1;
+}
+
+@media (max-width: 600px) {
+	body {
+		columns: unset;
+		margin: 2em;
+	}
+}

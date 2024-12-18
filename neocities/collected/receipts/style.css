@@ -1,0 +1,24 @@
+body {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 1em;
+	color: var(--black);
+	background-color: var(--white);
+	max-width: 600px;
+	padding: 1em;
+	margin-inline: auto;
+	image-rendering: auto;
+}
+
+#from {
+	font-family: pixel;
+	grid-column: 1/3;
+}
+
+a {
+	text-decoration: underline;
+}
+
+img {
+	width: 100%;
+}

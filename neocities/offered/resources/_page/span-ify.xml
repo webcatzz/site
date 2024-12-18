@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<page>
+	<name>span-ify</name>
+	<content>
+		<p>quick <code>&lt;span&gt;</code>-ification.</p>
+		<iframe src="_embed/span-ify.html">embed</iframe>
+		<p>i probably would've deleted this if not for some interest so this one's for you layercake</p>
+	</content>
+</page>

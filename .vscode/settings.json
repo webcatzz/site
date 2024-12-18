@@ -1,7 +1,0 @@
-{
-	"[plaintext]": {
-    "editor.wordWrap": "on",
-	},
-	"liveServer.settings.root": "/src/",
-	"liveServer.settings.file": "/not_found.html",
-}

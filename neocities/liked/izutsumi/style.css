@@ -1,0 +1,13 @@
+body {background: linear-gradient(to right, #ffe6ea, #ffffffbf 10%, #ffffffbf 90%, #ffe6ea), url(think.png) top white}
+img, video {display: block; max-width: 90%; margin: auto}
+header {padding: 1em; margin: 1em 0; background: url(hearts.jpg) center}
+#sticker, #walking {opacity: 0.9; position: fixed; cursor: pointer}
+#sticker {width: 200px; top: 16px; left: 32px}
+#sticker:hover {rotate: 1deg}
+#walking {width: 250px; bottom: 0; right: 32px}
+#walking:hover {rotate: -1deg}
+#cover {width: 40%}
+
+@media (max-width: 600px) {
+  #sticker, #walking {display: none}
+}

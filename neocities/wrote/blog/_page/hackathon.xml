@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entry>
+	<name>hackathon</name>
+	<date>2024-11-19</date>
+	<mood>MOOD</mood>
+	<content>
+		<p>successfully completed a 24-hour hackathon last weekend! three friends and i realized 3/4 of us were godot devs &amp; registered to make a game together &amp; eventually made <a href="https://webcatz.itch.io/scarecrow-game">scare the crows</a>.</p>
+		<p>after sitting through the opening ceremony we spent the first hour working out what kind of game we wanted to make. we were thinking about a farming game straight off the bat cause of one of the prizes (that we didn't end up signing up for) but we also tossed around the idea of making a pokemonlike (where you grow the pokemon). after some more back-and-forth, we chanced on the idea of making a farming game where you were a scarecrow who couldn't move.</p>
+		<p>we grabbed coffees &amp; lunch &amp; decided to follow the scarecrow game idea. we originally conceived it as more of a vampire survivors-type game, spawning endless waves of enemies on a large field until you lost. we kept sketching on paper for another hour+ before we finally started splitting up what we were coding. in that time i made the scarecrow sprite we used in the final game.</p>
+		<p>the concept was that animals (critters) would pass over the farm, carrying seeds from elsewhere. you could scare them off to make them drop the seeds, which would slowly grow as crows arrived to eat them. we were thinking of implementing some sort of irrigation mechanic but quickly decided we were overscoping.</p>
+		<p>some things we knocked off quick were implementing plot/plant nodes and the player's scaring mechanic. implementing critters properly took a lot of time, debugging, and refactoring but through the valiant efforts of one of our team members late into the night all bugs were vanquished. hooray!</p>
+		<p>we added a title screen and an intro animation and i made <a href="/made/tunes/?track=scarefarm">some music</a> for it.</p>
+		<p>the game was mostly functional by the end of the first twelve hours. most of us retired and got some sleep before coming back in the morning.</p>
+		<p>we added </p>
+	</content>
+</entry>

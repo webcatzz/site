@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<style>
+body {
+	display: flex;
+	align-items: center;
+	gap: 1em;
+	image-rendering: pixelated;
+}
+
+#settings {
+	display: grid;
+	grid-template-columns: repeat(2, max-content);
+	align-items: center;
+	column-gap: 0.5em;
+}
+	</style>
+</head>
+<body>
+
+<div id="settings">
+	<label for="random">random site link</label>
+	<input id="random" name="random" type="checkbox">
+	<label for="stylesheet">widget stylesheet</label>
+	<input id="stylesheet" name="stylesheet" type="checkbox">
+	<label for="multiwidget">multiple widgets</label>
+	<input id="multiwidget" name="multiwidget" type="checkbox">
+</div>
+<button id="summon">mr. wizard, copy me a script!</button>
+<img id="wizard" src="data:image/png;base64,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" alt="the wizard">
+
+<script>
+document.getElementById("summon").onclick = function () {
+  let settings = {};
+  for (const key of ["random", "stylesheet", "multiwidget"]) settings[key] = document.getElementById(key).checked;
+  navigator.clipboard.writeText(getScript(settings));
+  document.getElementById("wizard").animate({transform: ["translateY(-0.5em)", "none"]}, {duration: 300, easing: "ease-out"});
+}
+
+
+function getScript(settings = {}) {
+  return `// webstring by june @ webcatz.neocities.org
+
+// settings
+webring = {
+
+  // list of sites in the ring
+  sites: [
+    "https://site_1.neocities.org",
+    "https://site_2.neocities.org",
+  ],
+
+  // html inserted as your widget
+  // PREV and NEXT get replaced with neighboring site urls${insertIf(settings.multiwidget, `
+  // choose which widget to display by adding a data-widget="widgetname" attribute on the script`)}
+  ${settings.multiwidget ? `widgets: {
+    default: \`
+      <div style="display: flex; gap: 8px">
+        <a href="PREV">prev</a>
+        <div>webring</div>${insertIf(settings.random, `
+        <a href="RANDOM">random</a>`)}
+        <a href="NEXT">next</a>
+      </div>
+    \`,
+    another: \`
+      <div>another widget...</div>
+    \`,
+    yet_another: \`
+      <div>add as many (or as few) as you like!</div>
+    \`,
+  }` : `widget: \`
+    <div id="my-webring" style="display: flex; gap: 8px">
+      <a href="PREV">prev</a>
+      <div>webring</div>${insertIf(settings.random, `
+      <a href="RANDOM">random</a>`)}
+      <a href="NEXT">next</a>
+    </div>
+  \``},${insertIf(settings.stylesheet, `
+
+  // widget css
+  stylesheet: "https://your_site_here.neocities.org/folder/widget.css",`)}
+
+  // html inserted instead of your widget on sites that aren't in the ring
+  error: "<div>This site isn't part of the webring yet.</div>",
+
+};
+
+
+
+// code
+webring.index = location.href.startsWith("file://") ? 0 : webring.sites.findIndex(url => location.href.startsWith(url));
+if (webring.index === -1) document.currentScript.outerHTML = webring.error;
+else {${insertIf(settings.stylesheet, `
+  let sheet = document.createElement("link");
+  sheet.rel = "stylesheet", sheet.href = webring.stylesheet;
+  document.head.appendChild(sheet);`)}
+  ${!settings.multiwidget ? `webring.widget = webring.widget.replace("PREV", webring.sites.at(webring.index - 1));
+  webring.widget = webring.widget.replace("NEXT", webring.sites[(webring.index + 1) % webring.sites.length]);${insertIf(settings.random, `
+  webring.widget = webring.widget.replace("RANDOM", webring.sites[Math.floor(Math.random() * webring.sites.length)]);`)}
+  document.currentScript.outerHTML = webring.widget;` : `let widget = webring.widgets[document.currentScript.dataset.widget] ?? webring.widgets[Object.keys(webring.widgets)[0]];
+  widget = widget.replace("PREV", webring.sites.at(webring.index - 1));
+  widget = widget.replace("NEXT", webring.sites[(webring.index + 1) % webring.sites.length]);${insertIf(settings.random, `
+  widget = widget.replace("RANDOM", webring.sites[Math.floor(Math.random() * webring.sites.length)]);`)}
+  document.currentScript.outerHTML = widget;`}
+}
+delete webring;`;
+
+  function insertIf(condition, text) {
+    return condition ? text : "";
+  }
+}
+</script>
+</body>
+</html>
