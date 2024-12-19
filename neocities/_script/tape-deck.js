@@ -1,4 +1,4 @@
-// webstring by june @ webcatz.neocities.org
+// tapedeck by june @ webcatz.neocities.org
 
 class TapeDeck extends HTMLElement {
 

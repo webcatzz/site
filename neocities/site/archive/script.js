@@ -84,6 +84,7 @@ function setCapture(i, updateParams = true) {
 }
 
 function setPage(i) {
+	view.src = "";
 	view.src = `_capture/${capture.name}/${capture.pages[i]}.png`;
 	params.set("page", capture.pages[i]);
 	window.history.replaceState(null, "", "?" + params);
