@@ -83,6 +83,11 @@ a {
 
 footer {
 	font: 0.875em pixel;
+	margin-top: 1rem;
+}
+
+tape-deck {
+	margin-block: 0.25em;
 }
 
 
@@ -137,7 +142,7 @@ footer {
 	display: flex;
 	flex-direction: column;
 	gap: 0.5em;
-	height: 150px;
+	height: 140px;
 	overflow: hidden auto;
 
 	h3 {

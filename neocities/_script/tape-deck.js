@@ -33,7 +33,6 @@ class TapeDeck extends HTMLElement {
 		}
 
 		this.title = this.appendChild(document.createElement("select"));
-		this.title.className = "track-title";
 		for (let i = 0; i < this.list.length; i++) {
 			let opt = this.title.appendChild(document.createElement("option"));
 			opt.value = i;

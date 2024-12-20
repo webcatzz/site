@@ -96,7 +96,7 @@ tape-deck {
 		text-decoration: underline;
 	}
 
-	.track-title {
+	select {
 		text-overflow: ellipsis;
 		white-space: nowrap;
 		contain: inline-size;
