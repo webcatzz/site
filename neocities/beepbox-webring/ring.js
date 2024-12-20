@@ -1,6 +1,6 @@
 webring = {
 	sites: [
-		"https://webcatz.neocities.org",
+		"https://juneish.neocities.org",
 		"https://kelprot.neocities.org",
 		"https://murumart.neocities.org/m/beeps/",
 		"https://troy-sucks.neocities.org/beepbox",
@@ -20,30 +20,30 @@ webring = {
 };
 
 
-webring.idx = 1//webring.sites.findIndex(url => location.href.startsWith(url));
-if (webring.idx == -1) document.currentScript.outerHTML = "<a id=\"beepbox-webring\" href=\"https://webcatz.neocities.org/beepbox-webring/\"><img src=\"https://webcatz.neocities.org/beepbox-webring/button.png\" alt=\"beepbox webring\"></a>";
+webring.idx = webring.sites.findIndex(url => location.href.startsWith(url));
+if (webring.idx == -1) document.currentScript.outerHTML = "<a id=\"beepbox-webring\" href=\"https://juneish.neocities.org/beepbox-webring/\"><img src=\"https://juneish.neocities.org/beepbox-webring/button.png\" alt=\"beepbox webring\"></a>";
 // song widget
 else if (document.currentScript.dataset.song) {
 	document.currentScript.outerHTML = `
 		<div id="beepbox-webring">
-			<a class="beepbox-arrow" target="_top" href="${webring.sites.at(webring.idx - 1)}"><img src="https://webcatz.neocities.org/beepbox-webring/_asset/song-left.png" alt="left arrow"></a>
+			<a class="beepbox-arrow" target="_top" href="${webring.sites.at(webring.idx - 1)}"><img src="https://juneish.neocities.org/beepbox-webring/_asset/song-left.png" alt="left arrow"></a>
 			<div id="beepbox-main">
-				<div>this site is part of the <a href="https://webcatz.neocities.org/beepbox-webring/">beepbox webring</a>!</div>
+				<div>this site is part of the <a href="https://juneish.neocities.org/beepbox-webring/">beepbox webring</a>!</div>
 				<iframe src="${document.currentScript.dataset.song}"></iframe>
 			</div>
-			<a class="beepbox-arrow" target="_top" href="${webring.sites[(webring.idx + 1) % webring.sites.length]}"><img src="https://webcatz.neocities.org/beepbox-webring/_asset/song-right.png" alt="right arrow"></a>
+			<a class="beepbox-arrow" target="_top" href="${webring.sites[(webring.idx + 1) % webring.sites.length]}"><img src="https://juneish.neocities.org/beepbox-webring/_asset/song-right.png" alt="right arrow"></a>
 		</div>
 	`;
 	let sheet = document.createElement("link");
 	sheet.rel = "stylesheet";
-	sheet.href = "https://webcatz.neocities.org/beepbox-webring/song.css";
+	sheet.href = "https://juneish.neocities.org/beepbox-webring/song.css";
 	document.head.appendChild(sheet);
 }
 // button widget
 else document.currentScript.outerHTML = `
 	<div id="beepbox-webring" style="display: flex; justify-content: center; align-items: center; gap: 8px; image-rendering: pixelated">
-		<a target="_top" href="${webring.sites.at(webring.idx - 1)}"><img src="https://webcatz.neocities.org/beepbox-webring/_asset/button-left.png" alt="prev"></a>
-		<a href="https://webcatz.neocities.org/beepbox-webring/"><img src="https://webcatz.neocities.org/beepbox-webring/_asset/button.png" alt="beepbox webring"></a>
-		<a target="_top" href="${webring.sites[(webring.idx + 1) % webring.sites.length]}"><img src="https://webcatz.neocities.org/beepbox-webring/_asset/button-right.png" alt="next"></a>
+		<a target="_top" href="${webring.sites.at(webring.idx - 1)}"><img src="https://juneish.neocities.org/beepbox-webring/_asset/button-left.png" alt="prev"></a>
+		<a href="https://juneish.neocities.org/beepbox-webring/"><img src="https://juneish.neocities.org/beepbox-webring/_asset/button.png" alt="beepbox webring"></a>
+		<a target="_top" href="${webring.sites[(webring.idx + 1) % webring.sites.length]}"><img src="https://juneish.neocities.org/beepbox-webring/_asset/button-right.png" alt="next"></a>
 	</div>
 `;
