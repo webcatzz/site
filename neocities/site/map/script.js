@@ -29,8 +29,8 @@ onload = () => {
 
 		for (const subitem of item.getElementsByTagName("li")) {
 			if (beforeWrap && subitem.offsetLeft > map.offsetWidth / 2) {
-				if (subitem.previousElementSibling) {
-					ctx.lineTo(subitem.previousElementSibling.offsetLeft + stopOffset.x, ctx.canvas.height);
+				if (item.offsetLeft < map.offsetWidth / 2) {
+					ctx.lineTo((subitem.previousElementSibling ?? item).offsetLeft + stopOffset.x, ctx.canvas.height);
 					ctx.moveTo(subitem.offsetLeft + stopOffset.x, 0);
 				}
 				beforeWrap = false;

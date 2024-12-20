@@ -31,8 +31,7 @@ const history = [{
 },{
 	name: "stars", type: 2,
 	date: new Date(2023, 4, 31),
-	pages: ["index", "about", "blog", "screenshots"],
-	blurb: ""
+	pages: ["index", "about", "blog", "screenshots"]
 },{
 	name: "five", type: 2,
 	date: new Date(2024, 0, 1),
@@ -43,6 +42,10 @@ const history = [{
 	date: new Date(2024, 6, 2),
 	pages: ["index", "about", "muse"],
 	blurb: "paring down v5 to something calmer. i still quite like this one."
+},{
+	name: "coffee", type: 2,
+	date: new Date(2024, 9, 9),
+	pages: ["index", "about"]
 },{
 	name: "fish", type: 2,
 	date: new Date(2024, 10, 21),
@@ -71,7 +74,7 @@ function setCapture(i, updateParams = true) {
 		<dt>pages</dt>
 		<dd>${capture.pages.map(page => `<button onclick="setPage(${capture.pages.findIndex(p => p == page)})">${page}</button>`).join(" ")}</dd>
 		<dt>blurb</dt>
-		<dd>${capture.blurb}</dd>
+		<dd>${capture.blurb ?? "-"}</dd>
 	`;
 	
 	prevBtn.disabled = idx == 0;
@@ -86,6 +89,7 @@ function setCapture(i, updateParams = true) {
 function setPage(i) {
 	view.src = "";
 	view.src = `_capture/${capture.name}/${capture.pages[i]}.png`;
+	scrollTo(0, 0);
 	params.set("page", capture.pages[i]);
 	window.history.replaceState(null, "", "?" + params);
 }
