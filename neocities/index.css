@@ -1,9 +1,3 @@
-:root {
-	--light-blue: color-mix(in srgb, var(--blue), var(--white) 50%);
-	--light-red: color-mix(in srgb, var(--red), var(--white) 50%);
-	--light-yellow: color-mix(in srgb, var(--yellow), var(--white) 50%);
-}
-
 body {
 	display: flex;
 	/* justify-content: center; */

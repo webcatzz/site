@@ -1,5 +1,11 @@
 const XML = {};
+
+
+
+// url params
+
 XML.updateURL = false;
+XML.params = new URLSearchParams(location.search);
 
 
 
@@ -46,7 +52,7 @@ XML.load = async (name, target) => {
 
 
 
-// nav
+// layouts
 
 XML.nav = async (target, buttons) => {
 	for (const button of buttons) button.addEventListener("click", function () {
@@ -56,9 +62,3 @@ XML.nav = async (target, buttons) => {
 	await XML.load(XML.params.get("page") ?? buttons[0].dataset.page, target);
 	XML.updateURL = true;
 }
-
-
-
-// url
-
-XML.params = new URLSearchParams(location.search);
