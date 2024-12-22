@@ -1,7 +1,7 @@
 @font-face {font-family: ms-pgothic; src: local("MS PGothic"), url(_asset/font/ms-pgothic.ttf)}
 @font-face {font-family: ms-serif; src: url(_asset/font/ms-serif.ttf)}
 @font-face {font-family: alte; src: url(_asset/font/alte.ttf)}
-@font-face {font-family: pixel; src: url(_asset/font/junipy.ttf)}
+@font-face {font-family: pixel; src: url(_asset/font/junipy.ttf); size-adjust: 95%}
 :root {
 	--white: #f2f2f2;
 	--off-white: #e2d8ca;

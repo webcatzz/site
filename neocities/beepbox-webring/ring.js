@@ -21,7 +21,7 @@ webring = {
 
 
 webring.idx = webring.sites.findIndex(url => location.href.startsWith(url));
-if (webring.idx == -1) document.currentScript.outerHTML = "<a id=\"beepbox-webring\" href=\"https://juneish.neocities.org/beepbox-webring/\"><img src=\"https://juneish.neocities.org/beepbox-webring/button.png\" alt=\"beepbox webring\"></a>";
+if (webring.idx == -1) document.currentScript.outerHTML = "<a id=\"beepbox-webring\" href=\"https://juneish.neocities.org/beepbox-webring/\"><img src=\"https://juneish.neocities.org/beepbox-webring/_asset/button.png\" alt=\"beepbox webring\"></a>";
 // song widget
 else if (document.currentScript.dataset.song) {
 	document.currentScript.outerHTML = `
