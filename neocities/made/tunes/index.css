@@ -45,31 +45,49 @@ filter-btn, track-btn {
 #left {
 	display: flex;
 	flex-direction: column;
+	color: var(--dark-gray);
 	width: 400px;
-	padding: 1em;
-	padding-right: 2em;
+	padding: 2em;
+	padding-right: 3em;
 	background-color: var(--black);
 	margin-left: 60px;
 	transform: skewX(10deg);
 	z-index: 1;
 }
 
+header {
+	display: flex;
+	align-items: end;
+	transform: skewX(-10deg);
+}
+
 h1 {
 	color: var(--dark-gray);
-	font: bold 4.5em/1 alte;
-	border-radius: 0.5em;
-	grid-column: 1/3;
-	transform: skewX(-10deg);
+	font: bold 3em/1 alte;
+}
+
+#subtitle, #filters h2, #back {
+	font: 0.75rem pixel;
+	letter-spacing: 0.1em;
+}
+
+#subtitle {
+	border-left: 1px solid;
+	padding-left: 0.75em;
+	margin-left: 0.75em;
+	margin-bottom: 0.5em;
 }
 
 #back {
 	color: var(--gray);
-	font: 1.5em alte;
-	padding: 0.25em;
+	font-size: 1em;
+	padding: 0.5em;
 	transform: skewX(-10deg);
 	margin-right: auto;
 
-	&:hover {color: var(--off-white)}
+	&:hover {
+		text-decoration: underline;
+	}
 }
 
 
@@ -77,31 +95,19 @@ h1 {
 /* filters */
 
 #filters {
-	/* display: flex;
-	gap: 2em; */
-	color: var(--off-white);
 	font-size: 0.875em;
 	margin-left: 1.3em;
-	grid-column: 1/3;
 	transform: skewX(-10deg);
-	/* overflow: auto hidden; */
-
-	h2 {
-		color: var(--dark-gray);
-		font: 0.875em pixel;
-		letter-spacing: 0.1em;
-	}
 }
 
 filter-btn {
 	display: inline-flex;
 	justify-content: center;
 	align-items: center;
-
+	color: var(--off-white);
 	text-shadow:
 		-1px -1px var(--black), 0 -1px var(--black), 1px -1px var(--black), 1px 0 var(--black),
 		-1px 1px var(--black), 0 1px var(--black), 1px 1px var(--black), -1px 0 var(--black);
-
 	width: 1.75em;
 	height: 1.75em;
 	border-radius: 4px;
@@ -136,6 +142,7 @@ filter-btn {
 	display: grid;
 	grid-template-columns: repeat(2, 1fr);
 	grid-auto-rows: max-content;
+	color: var(--off-white);
 	padding: 1em 2em;
 	border-block: 1px solid var(--dark-gray);
 	border-image: linear-gradient(to right, transparent calc(50% - 200px), var(--dark-gray) calc(50% - 200px), var(--dark-gray) calc(50% + 200px), transparent calc(50% + 200px)) 1;

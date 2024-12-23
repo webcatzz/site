@@ -1,46 +1,43 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>the middling arcana...</title>
+	<title>index</title>
+	<link rel="icon" href="/_asset/icon.png">
 	<link rel="stylesheet" href="/blanket.css">
 	<link rel="stylesheet" href="style.css">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Homemade Apple">
-	<link rel="preload" href="_asset/back.png" as="image">
-	<link rel="preload" href="_asset/border.png" as="image">
-	<link rel="preload" href="_asset/pattern.png" as="image">
 	<script defer src="script.js"></script>
 </head>
 <body>
-	<div id="pretitle" class="gray">old legends tell of, aside the major & minor, a third...</div>
+
+<header>
+	<p>old legends tell of, beside the major & minor, a third...</p>
 	<h1>The Middling Arcana</h1>
-	<div id="tarot-wrapper">
-		<div class="card-wrapper back-face">
-			<div class="card-front">
-				<img class="card-image" src="_asset/pattern.png">
-				<div class="card-name"></div>
-			</div>
-			<img class="card-back" src="_asset/back.png">
-		</div>
-		<div class="card-wrapper back-face">
-			<div class="card-front">
-				<img class="card-image" src="_asset/pattern.png">
-				<div class="card-name"></div>
-			</div>
-			<img class="card-back" src="_asset/back.png">
-		</div>
-		<div class="card-wrapper back-face">
-			<div class="card-front">
-				<img class="card-image" src="_asset/pattern.png">
-				<div class="card-name"></div>
-			</div>
-			<img class="card-back" src="_asset/back.png">
-		</div>
+</header>
+
+<div id="cards">
+
+	<div class="card face-down">
+		<div class="card-name"></div>
 	</div>
-	<div id="bottom" class="gray">
-		<div>pick a card, any card... and click again to redraw it.</div>
-		<a href="/">return home...</a>
+
+	<div class="card face-down">
+		<div class="card-name"></div>
 	</div>
+
+	<div class="card face-down">
+		<div class="card-name"></div>
+	</div>
+
+</div>
+
+<footer>
+	<p>a spooky little brainstorming tool.</p>
+	<p>click a card, any card... and click again to redraw it.</p>
+	<p><a id="back" href="/">&larr; back</a></p>
+</footer>
+
 </body>
 </html>
