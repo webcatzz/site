@@ -34,6 +34,10 @@ body {
 	}
 }
 
+a:hover {
+	background-color: rgb(from var(--yellow) r g b / 0.5);
+}
+
 
 
 /* pages */
@@ -77,24 +81,23 @@ h1 {
 	font: 2em wildpines;
 	letter-spacing: -0.05em;
 	margin-right: auto;
+	transition: 0.1s;
 }
 
 
 
-/* outward links */
+/* other-blogs */
 
-#outward {
-	border-bottom: 1px dotted;
+#other-blogs {
+	border: 1px dotted var(--gray);
+	padding: 0.25em 1em;
+	border-radius: 0.5em;
 	overflow: auto hidden;
-
-	a:hover {
-		background-color: rgb(from var(--yellow) r g b / 0.5);
-	}
 }
 
-#outward-title {
+#other-blogs-title {
 	color: var(--gray);
-	font: 0.75em pixel, sans-serif;
+	font: 0.875em pixel, sans-serif;
 	letter-spacing: 0.05em;
 }
 
@@ -102,7 +105,7 @@ h1 {
 
 /* index */
 
-#index {
+nav {
 	display: grid;
 	grid-template-columns: repeat(2, 1fr);
 	gap: 0.25em;
@@ -131,7 +134,6 @@ h1 {
 			box-shadow: 4px 4px 0 var(--black);
 			transform: translate(-4px, -4px);
 			position: relative;
-			/* z-index: ; */
 
 			time {color: inherit}
 		}

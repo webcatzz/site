@@ -1,14 +1,14 @@
 XML.template = page => `
 	<header>
-		<time id="date" datetime="${page.date}">${new Date(page.date).toLocaleDateString("en-GB", {day: "numeric", month: "short", year: "2-digit"}).toLowerCase()}</time>
+		<time id="date" datetime="${page.date}">${new Date(page.date).toLocaleDateString("en-GB", {month: "short", day: "numeric", year: "2-digit"}).toLowerCase()}</time>
 		<h2 id="name">${page.name}</h2>
 	</header>
-	<main id="content">${page.content}</main>
+	<main>${page.content}</main>
 	<footer>
 		${page.mood ? `<p>feeling... <span id="mood" onclick="meow()">${page.mood} <img src="_emote/${page.mood}.png" aria-hidden="true"></span></p>` : ""}
 	</footer>
 `;
-XML.nav(document.getElementById("entry"), document.querySelectorAll("#index button"));
+XML.nav(document.getElementById("entry"), document.querySelectorAll("nav button"));
 
 
 

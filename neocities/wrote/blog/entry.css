@@ -231,8 +231,8 @@ figcaption {
 }
 
 .scroll-x {
-	padding-inline: 8px;
-	margin-inline: -8px;
+	padding-inline: 2em;
+	margin-inline: -2em;
 	overflow: auto hidden;
 }
 

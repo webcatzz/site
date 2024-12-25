@@ -135,6 +135,7 @@ code-block {
 	margin-block: 1em;
 	position: relative;
 	overflow: hidden;
+	resize: horizontal;
 
 	.copy-button {
 		display: flex;
@@ -155,13 +156,20 @@ code-block {
 	}
 }
 
-iframe {
+iframe, details {
 	padding: 0.5em;
-	box-sizing: border-box;
 	border: 1px dashed var(--dark-gray);
 	border-radius: 4px;
 	box-shadow: 0 0 1em rgb(from var(--black) r g b / 0.25) inset;
 	margin-block: 1em;
+}
+
+iframe {
+	box-sizing: border-box;
+}
+
+details {
+	padding-inline: 1em;
 }
 
 
