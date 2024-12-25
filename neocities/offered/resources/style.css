@@ -42,7 +42,7 @@ nav {
 	}
 
 	a {
-		font: 0.875em pixel;
+		font-family: pixel;
 		text-decoration: underline;
 
 		&:first-of-type {margin-top: auto}

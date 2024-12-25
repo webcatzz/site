@@ -22,7 +22,7 @@
 				<li><a href="#making-the-local-repository">making the local repository</a>
 					<ul>
 						<li><a href="#the-gitignore-file">the .gitignore file</a></li>
-						<li><a href="#command-to-remember">commands to remember</a></li>
+						<li><a href="#using-git">using git</a></li>
 					</ul>
 				</li>
 				<li><a href="#deploying-your-site">deploying your site</a></li>
@@ -94,7 +94,7 @@
 		<h2 id="making-the-local-repository">making the local repository</h2>
 		<p>time to set up your local repository! if you don't have one already, create the folder you'll be storing your site's files in. i'm gonna be calling this folder your "site folder".</p>
 		<p>for reasons i'll explain later, we won't be directly using your site folder as a git repository. instead, create a new folder and put your site folder inside of it. this folder will become your repository!</p>
-		<p>open the command line. (on mac, it's an app called "terminal".) type <code>cd</code> (this stands for "change directory"), a space, and then the path of your repository.</p>
+		<p>open the command line &amp; type <code>cd</code> (this stands for "change directory"), a space, and then the path of your repository.</p>
 		<details>
 			<summary>how do i get a folder's path?</summary>
 			<p>you can either (1) right click a folder, hold the "option" key on mac or the shift key on windows, and click the copy as pathname option; or (2) just drag the folder onto the terminal window.</p>
@@ -103,7 +103,7 @@
 		<ol>
 			<li>run <code>git init</code> (short for "initialize") to turn the folder into your local repository.</li>
 			<li>run <code>git config --global user.email "EMAIL"</code> and <code>git config --global user.name "NAME"</code> to denote who you are. replace EMAIL and NAME with your github email and username respectively.</li>
-			<li>run <code>git branch -M "main"</code> to set the "main" branch. don't worry about this.</li>
+			<li>run <code>git branch -M "main"</code> to set the "main" branch. don't worry about branches.</li>
 			<li>type <code>git remote add origin</code>, a space, and then your remote repository's https url (we got this in a previous step, remember). hit enter. this tells your local repository what remote repository it needs to sync with.</li>
 			<li>if you've already got files inside your site folder:
 				<ol>
@@ -157,24 +157,27 @@ ignore-me/
 		</code-block>
 		<p>remember, <code>*</code> matches anything. thats why these selectors will filter out all mp3, mp4, ogg and wav files. it's also why <code>*.mp*</code> will filter out both mp3 and mp4 files.</p>
 		
-		<h3 id="command-to-remember">commands to remember</h3>
+		<h3 id="using-git">using git</h3>
 		<p>your repository should now be working and connected to the remote repository! congrats! :-)</p>
 		<p>if you use vscode/vscodium (and probably some others too, but vscode is what i'm familiar with), you can use its interface to easily commit and push files to your repository.</p>
-		<p>if your text editor doesn't have any git functionality, then you'll need to use the command line to use git. here are some commands you'll be using a lot:</p>
-		<ul>
-			<li><code>cd PATH</code>—replace PATH with the path of the folder you want to execute commands in. in this case, that's your repository.</li>
-			<li><code>git status</code>—lists every change you've made since the last commit.</li>
-			<li><code>git add PATH</code>—"stages" a file (meaning it'll be added to the next commit).
-				<ul>
-					<li><code>git add .</code>—stages all new or modified files.</li>
-					<li><code>git add -p</code>—same as the previous command, but asks whether or not to stage each file.</li>
-				</ul>
-			</li>
-			<li><code>git commit -m "MESSAGE"</code>—this commits currently staged files to the repository's history. you should replace MESSAGE with a short one-line blurb about the commit, which is displayed on github later.</li>
-			<li><code>git push</code>—this updates the remote repository (the one on github) to the state of your latest commit. remember: the remote repository will never automatically update, you have to tell it to.</li>
-			<li><code>git pull</code>—if your remote repository is ahead of your local one, this brings the local repository up-to-date.</li>
-			<li><code>git clone URL</code>—this copies the remote repository at URL into a new folder. useful if you need to edit your files on another device. remember to replace URL with your repository's https url.</li>
-		</ul>
+		<details>
+			<summary>otherwise...</summary>
+			<p>if your text editor doesn't have any git functionality, then you'll need to use the command line to use git. here are some commands you'll be using a lot:</p>
+			<ul>
+				<li><code>cd PATH</code>—replace PATH with the path of the folder you want to execute commands in. in this case, that's your repository.</li>
+				<li><code>git status</code>—lists every change you've made since the last commit.</li>
+				<li><code>git add PATH</code>—"stages" a file (meaning it'll be added to the next commit).
+					<ul>
+						<li><code>git add .</code>—stages all new or modified files.</li>
+						<li><code>git add -p</code>—same as the previous command, but asks whether or not to stage each file.</li>
+					</ul>
+				</li>
+				<li><code>git commit -m "MESSAGE"</code>—this commits currently staged files to the repository's history. you should replace MESSAGE with a short one-line blurb about the commit, which is displayed on github later.</li>
+				<li><code>git push</code>—this updates the remote repository (the one on github) to the state of your latest commit. remember: the remote repository will never automatically update, you have to tell it to.</li>
+				<li><code>git pull</code>—if your remote repository is ahead of your local one, this brings the local repository up-to-date.</li>
+				<li><code>git clone URL</code>—this copies the remote repository at URL into a new folder. useful if you need to edit your files on another device. remember to replace URL with your repository's https url.</li>
+			</ul>
+		</details>
 
 		<h2 id="deploying-your-site">deploying your site</h2>
 		<p>now that both the remote and local repositories are set up, we can move onto finally <b>deploying</b> your files to neocities. we'll be using github workflows, which will automatically run code whenever we do something with our repository. in this case, whenever we update the remote repository (so whenever we run <code>git push</code>) we want to also update the files on our neocities.</p>
@@ -230,8 +233,8 @@ jobs:
 		<code-block>
 dist_dir: src
 		</code-block>
-		<p>and that's it! if you want to, now is the time to download a backup of your neocities files in case you're about to accidentally delete something that's not in your repository. run <code>git push</code> again. your neocities should now update (this might take up to 10 seconds or so).</p>
+		<p>and that's it! if you want to, now is the time to download a backup of your neocities files in case you're about to accidentally delete something that's not in your repository. run <code>git push</code> again. your neocities should now update (this might take a few seconds).</p>
 		<p>open your repository on github and click the "actions" tab at the top. if anything goes wrong during the deployment, you can investigate it here and then rerun the workflow (click the failed entry and then "re-run job" in the top right) once you've fixed the issue. usually, the problem is that one of your files is incompatible with neocities—make sure your .gitignore is accurate.</p>
-		<p><b>congratulations!</b> you've completed this how-to. you can reference the <a href="#commands_to_remember">commands to remember</a> section for common git commands. have fun with your new site repository!</p>
+		<p><b>congratulations!</b> you've completed this how-to. have fun with your new site repository!</p>
 	</content>
 </entry>
