@@ -170,13 +170,13 @@ element {
 	FILTER
 	filter
 
+	CONTAINMENT
+	contain
+
 	POSITION
 	float
 	flex
 	position
-
-	CONTAINMENT
-	contain
 
 	ANIMATION
 	transition

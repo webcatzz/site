@@ -174,3 +174,27 @@ tape-deck {
 		}
 	}
 }
+
+
+
+/* snow */
+
+body {
+	max-width: max-content;
+	position: relative;
+}
+
+#snowflakes {
+	/* contain: strict; */
+	position: absolute;
+	inset: 0;
+}
+
+.snowflake {
+	content: url(_asset/snowflake.svg);
+	width: 1em;
+	height: 1em;
+	contain: strict;
+	position: absolute;
+	top: -1em;
+}
