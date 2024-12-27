@@ -239,28 +239,26 @@ tape-deck {
 @media (max-width: 600px) {
 	
 	body {
-		display: block;
+		flex-direction: column;
 		contain: inline-size;
-		width: 100vw;
-		max-width: unset;
+		max-width: 100vw;
 		height: unset;
-		overflow-y: unset;
 		padding-bottom: 50px;
+	}
+
+	.page {
+		width: unset;
+		rotate: unset;
+	}
+
+	#entry {
+		rotate: 0deg !important;
 	}
 
 	#rosebed {
 		position: fixed;
 		left: -50%;
 	}
-
-	.page {
-		width: unset;
-		rotate: unset;
-		> * {rotate: unset}
-	}
-
-	h1::after {content: none}
-
-	#music, #maps {display: none}
+	tape-deck, #maps {display: none}
 
 }

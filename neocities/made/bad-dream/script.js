@@ -5,9 +5,11 @@ const nav = document.querySelector("nav");
 wrapper.onscroll = () => {
 	let i = -1;
 	for (const article of articles) {
-		if (article.offsetTop > wrapper.scrollTop + wrapper.offsetHeight) break;
 		i++;
+		if (article.offsetTop + article.offsetHeight > wrapper.scrollTop) break;
 	}
 	nav.getElementsByClassName("active")[0]?.classList.remove("active");
 	nav.children[i].classList.add("active");
 }
+
+wrapper.onscroll();

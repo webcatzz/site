@@ -154,3 +154,37 @@ h2 {
 		}
 	}
 }
+
+
+
+/* mobile */
+
+@media (max-width: 600px) {
+
+	dl {
+		display: block;
+	}
+
+	dt, dd {
+		border-radius: 4px;
+	}
+
+	dt {
+		border-right: none;
+		border-bottom: 1px solid #666;
+		border-bottom-left-radius: 0;
+		border-bottom-right-radius: 0;
+	}
+
+	dd {
+		border-top-left-radius: 0;
+		border-top-right-radius: 0;
+		margin-bottom: 0.25em;
+	}
+
+	.widget {
+		display: flex !important;
+		flex-direction: column;
+	}
+
+}
