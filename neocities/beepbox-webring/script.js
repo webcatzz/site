@@ -13,7 +13,7 @@ for (const site of webring.sites) {
 // button
 
 document.querySelector("#button-widget button").onclick = () => {
-	navigator.clipboard.writeText("<script src=\"ring.js\"></script>");
+	navigator.clipboard.writeText("<script src=\"https://juneish.neocities.org/ring.js\"></script>");
 }
 
 
@@ -28,7 +28,7 @@ input.oninput = () => {
 }
 
 document.querySelector("#song-widget button").onclick = () => {
-	navigator.clipboard.writeText(`<script defer src="ring.js" data-song="${input.value}"></script>`);
+	navigator.clipboard.writeText(`<script defer src="https://juneish.neocities.org/ring.js" data-song="${input.value}"></script>`);
 }
 
 input.oninput();
