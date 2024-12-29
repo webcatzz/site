@@ -1,0 +1,1 @@
+if (!document.location.hash) location.replace("#me");

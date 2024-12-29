@@ -1,0 +1,99 @@
+::selection {
+	color: var(--black);
+	text-shadow: none;
+	background-color: var(--white);
+}
+
+body {
+	display: flex;
+	gap: 1em;
+	color: #a7a7a7;
+	background-color: var(--white);
+	margin: 4em;
+	image-rendering: auto;
+}
+
+main {
+	max-width: 400px;
+}
+
+section {
+	color: var(--white);
+	text-shadow: 0 0 0.5rem rgb(from var(--black) r g b / 0.75);
+	background: url(_asset/pencil.png) no-repeat center / 100%;
+	aspect-ratio: 774/597;
+	box-sizing: border-box;
+	padding: 2em 4em 0;
+	margin-bottom: 1em;
+
+	&:not(:target) {
+		display: none;
+	}
+}
+
+h1 {
+	font-size: 3em;
+	text-shadow: 0 0 0.5rem rgb(from var(--black) r g b / 0.33);
+}
+
+p {
+	margin-block: 0.5em;
+}
+
+tape-deck {
+	font-family: inherit;
+	max-width: 250px;
+	margin: 0.5em auto;
+
+	button {
+		user-select: auto;
+	}
+
+	select {
+		text-align: right;
+	}
+}
+
+footer {
+	font-size: 0.75em;
+	text-align: center;
+}
+
+nav {
+	display: flex;
+	flex-direction: column;
+	gap: 0.25em;
+	padding-block: 2em;
+}
+
+a {
+	text-decoration: underline;
+}
+
+
+
+/* mobile */
+
+@media (max-width: 600px) {
+	body {
+		flex-direction: column-reverse;
+	}
+	section {
+		color: var(--black);
+		padding-block: 0;
+		margin-inline: -1em;
+		margin-bottom: 1.5em;
+	}
+	section, h1 {
+		text-shadow: 0 0 0.5rem var(--white);
+	}
+	footer {
+		display: none;
+	}
+	nav {
+		justify-content: center;
+		flex-direction: row;
+		gap: 1em;
+		padding-block: 0;
+	}
+}
