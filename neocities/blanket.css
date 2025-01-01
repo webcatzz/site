@@ -169,6 +169,7 @@ element {
 
 	FILTER
 	filter
+	mask
 
 	CONTAINMENT
 	contain
@@ -177,6 +178,7 @@ element {
 	float
 	flex
 	position
+	inset
 
 	ANIMATION
 	transition

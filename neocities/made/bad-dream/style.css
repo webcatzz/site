@@ -91,18 +91,31 @@ time {
 	margin-left: 0.25em;
 }
 
+h3 {
+	font: 1.25em dos;
+	margin-top: 1em;
+}
+
 article a {
 	text-decoration: underline 1px;
 }
 
 img, video {
 	width: 100%;
-	border: 1px solid;
-	padding: 4px;
+	box-sizing: border-box;
+	padding: 1em;
 }
 
 ul {
 	list-style-type: "•  ";
+}
+
+.cover {
+	padding: 0;
+	margin-bottom: -2em;
+	mask: linear-gradient(to top, transparent, white 4em);
+	position: relative;
+	z-index: -1;
 }
 
 .nuko {

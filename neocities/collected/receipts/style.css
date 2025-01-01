@@ -1,6 +1,7 @@
 body {
 	display: grid;
 	grid-template-columns: 1fr 1fr;
+	grid-template-rows: masonry;
 	gap: 1em;
 	color: var(--black);
 	background-color: var(--white);
