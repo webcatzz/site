@@ -30,31 +30,3 @@ fetch("https://lastfm-last-played.biancarosa.com.br/web-catz/latest-song").then(
 		document.getElementById("lastfm-artist").textContent = "nothing's on.";
 	}
 });
-
-
-
-// snow
-
-const snowflakes = document.getElementById("snowflakes");
-var time = 0;
-
-setInterval(() => {
-
-	if (time % 2000 == 0) {
-		let snowflake = snowflakes.appendChild(document.createElement("img"));
-		snowflake.className = "snowflake";
-		snowflake.style.left = (Math.random() * snowflakes.offsetWidth) + "px";
-	}
-
-	for (const snowflake of snowflakes.children) {
-		snowflake.style.top = snowflake.offsetTop + 1 + "px";
-		snowflake.style.marginLeft = Math.sin(snowflake.offsetTop / 32) * 32 + "px";
-
-		if (snowflake.offsetTop > document.body.offsetTop + document.body.offsetHeight) {
-			snowflake.remove();
-		}
-	}
-
-	time += 100;
-
-}, 25);

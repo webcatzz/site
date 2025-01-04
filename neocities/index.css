@@ -1,11 +1,12 @@
 body {
 	display: flex;
-	/* justify-content: center; */
-	gap: 2em;
+	justify-content: center;
+	gap: 4em;
 	color: var(--black);
-	background-color: #f2f2f2;
+	background: url(_asset/cloud-blue.png) center / cover var(--white);
 	margin: 4em;
 	image-rendering: auto;
+
 }
 
 
@@ -16,7 +17,7 @@ body {
 	display: flex;
 	justify-content: center;
 	background: url(_asset/keychain.png) no-repeat top / 100px;
-	width: 300px;
+	width: 200px;
 	padding-top: 160px;
 	position: relative;
 
@@ -173,29 +174,4 @@ tape-deck {
 			writing-mode: horizontal-tb;
 		}
 	}
-}
-
-
-
-/* snow */
-
-body {
-	max-width: max-content;
-	position: relative;
-}
-
-#snowflakes {
-	contain: strict;
-	position: absolute;
-	inset: 0;
-	pointer-events: none;
-}
-
-.snowflake {
-	content: url(_asset/snowflake.svg);
-	width: 1em;
-	height: 1em;
-	contain: strict;
-	position: absolute;
-	top: -1em;
 }
