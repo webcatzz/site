@@ -73,7 +73,7 @@ main {
 	background-color: var(--white);
 	padding: 4em;
 	flex: 1;
-	overflow-y: auto;
+	overflow: hidden auto;
 	z-index: 1;
 	contain: size;
 }
