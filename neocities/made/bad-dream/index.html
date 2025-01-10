@@ -9,11 +9,12 @@
 	<link rel="stylesheet" href="style.css">
 	<script defer src="/_script/tape-deck.js"></script>
 	<script defer src="script.js"></script>
-	<script defer src="https://tinylytics.app/embed/csKkf78_myRfH-rM6W6Q.js"></script> 
+	<script defer src="https://tinylytics.app/embed/csKkf78_myRfH-rM6W6Q.js?kudos=🫀"></script> 
 </head>
 <body>
 
 <nav>
+	<a href="#9">09</a>
 	<a href="#8">08</a>
 	<a href="#7">07</a>
 	<a href="#6">06</a>
@@ -32,8 +33,23 @@
 		<tape-deck list="riverside battle"></tape-deck>
 	</header>
 
+	<article id="9">
+		<h2>#9</h2>
+		<time datetime="2025-01-10">jan 10, 2025</time>
+		<p>i'd spent a chunk of time before the reset drawing assets and then not liking them and then drawing them again. i've since come to the conclusion that strict 32x16 isometric is the devil's perspective & i can't draw it for the life of me.</p>
+		<p>so here's what i've settled on for bad dream 2.0. tiles are 24x17, skewed, with a good view of both the floor and walls. the skew gives you a better view of actors behind other actors than strict isometric does (which means hovering over them is easier).</p>
+		<img src="_asset/9.png" loading="lazy">
+		<p>as it turns out, godot's built-in tilemap does NOT like this. it lets you render tiles in any other orientation known to man but this one, the problem being that my tiles are skewed, not symmetrical.</p>
+		<p>i am not one to give up a fight. after a lot of frustration over realizing godot wouldn't let me draw tiles this way, i took two days and made my own tilemap node. i've <a href="https://godotengine.org/asset-library/asset/3619">posted it onto the asset library</a> so you can use it if you want to! i can't promise it's as efficient as the built-in tilemap (what with it being written in gdscript and all) but it gets the job done.</p>
+		<p>the only downside (for me) is that it can't y-sort like the built-in tilemap can. that's fine, i'll just use regular-ass sprites for stuff that needs to be y-sorted. a possible downside is that it might become expensive to edit the tilemap at runtime but i don't think i'll need to do that.</p>
+		<p>the addon's currently missing some tools (selection & fill), they're on the to-do list. it doesn't account for larger tiles on an atlas, that's also on the to-do list. it's also missing some other features of the built-in tilemap (scene collections, cell transformations, terrains, patterns) but i don't think i'll be implementing those cause i don't need them.</p>
+		<p>anyhow the asset-making process is going more smoothly now. (the image up there is concept-work, not assets.) i'm having some fun overlaying different tilemaps with different axes.</p>
+		<p>also: trying out tinylytics kudos here. even though i know a lot of people come through here every day (front page...) this place feels private to me and i like that. hopefully kudos won't disrupt that vibe. also i might have to get rid of them cause i might exceed the hit limit LOL</p>
+		<button class="tinylytics_kudos" data-path="/9"></button>
+	</article>
+
 	<article id="8">
-		<img class="cover" src="_asset/pathing.png" loading="lazy">
+		<img class="cover" src="_asset/8.png" loading="lazy">
 		<h2>#8</h2>
 		<time datetime="2025-01-01">jan 1, 2025</time>
 		<p>it's the start of 2025 & i want to make a list of all the big changes i've made since <a href="#1">#1</a> (144 days ago, wow).</p>
@@ -81,7 +97,7 @@
 			<li>one for potential polish</li>
 			<li>one for scraps, ideas, & other strokes of inspiration</li>
 		</ul>
-		<p>ok it's a week or so later now and i've made good progress with the board! other than the visuals & systems i have removed, the new version is now officially caught up to the old one. but though i've checked things off there's a lot more on the board now... <img class="nuko" src="_asset/nuko-coldsweat.gif"> but i'm wasting less time on tasks that aren't important yet! i always go into rabbitholes when i'm coding for fun and this is helping me avoid that cause i can just add it to a list and forget about it for now.</p>
+		<p>ok it's a week or so later now and i've made good progress with the board! other than the visuals & systems i have removed, the new version is now officially caught up to the old one. but though i've checked things off there's a lot more on the board now... <img class="nuko" src="_asset/7.gif"> but i'm wasting less time on tasks that aren't important yet! i always go into rabbitholes when i'm coding for fun and this is helping me avoid that cause i can just add it to a list and forget about it for now.</p>
 		<p>over the past month or so i've been growing a pinterest board (private) and more recently a spotify playlist (public, but you'll have to find it). whenever i'm having trouble making design decisions i like to open the board or put on the playlist and it helps me. consulting the muses</p>
 		<p>anyway i'm trying to cultivate some productivity. i'm not in a development rush far from it i've got other more important things taking up my time but i like to know i'm making progress on this mammoth.</p>
 	</article>

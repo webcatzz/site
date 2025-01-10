@@ -96,6 +96,10 @@ h3 {
 	margin-top: 1em;
 }
 
+ul {
+	list-style-type: "•  ";
+}
+
 article a {
 	text-decoration: underline 1px;
 }
@@ -105,9 +109,18 @@ img, video {
 	box-sizing: border-box;
 	padding: 1em;
 }
-
-ul {
-	list-style-type: "•  ";
+.float-left, .float-right {
+	width: unset;
+	max-width: 50%;
+	padding-top: 0;
+}
+.float-left {
+	float: left;
+	padding-left: 0;
+}
+.float-right {
+	float: right;
+	padding-right: 0;
 }
 
 .cover {
