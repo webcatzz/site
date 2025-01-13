@@ -6,6 +6,7 @@
 
 body {
 	display: flex;
+	justify-content: center;
 	gap: 1em;
 	color: #a7a7a7;
 	background-color: var(--white);

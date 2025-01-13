@@ -1,45 +1,76 @@
 @font-face {font-family: transport; src: url(/_asset/font/transport.ttf)}
+@keyframes appear {from {opacity: 0}}
 
 body {
+	color: var(--black);
+	font-family: pixel;
+	background-color: var(--white);
+
+	&::before {
+		content: "";
+		background: url(_asset/cloud.png) repeat-x calc(50% + 750px + var(--cloud-scroll) * -2) 150px;
+		position: fixed;
+		inset: 0;
+		pointer-events: none;
+	}
+}
+
+
+
+/* phase */
+
+#phase {
 	display: flex;
 	justify-content: center;
-	color: var(--black);
-	background-color: var(--off-white);
-	margin: 6em 1em;
+	align-items: center;
+	gap: 0.875em;
+	color: var(--white);
+	font-size: 0.875em;
+	background:
+		url(_asset/cloud.png) calc(50% + 280px + var(--cloud-scroll)) center,
+		linear-gradient(to bottom, var(--blue), transparent);
+	padding: 6em;
+}
+
+#phase-icon {
+	width: 14px;
+	height: 14px;
+	border-radius: 1em;
+	object-fit: cover;
+	mask: url(_asset/phase-mask.png);
+	animation: 1s appear;
+}
+
+#phase-text {
+	animation: 1s 1s backwards appear;
+}
+
+
+
+/* main */
+
+main {
+	max-width: 300px;
+	padding: 4em 5em;
+	margin-inline: auto;
+	> * {animation: 2s 3s backwards appear}
 }
 
 h1 {
-	font: 2em transport, sans-serif;
+	font-family: transport;
+	margin-inline: -1em;
+	margin-bottom: 1em;
+	background: url(_asset/wave.png) no-repeat right;
 }
 
-#cover {
-	background: url(/_asset/cloud.png) center / cover, radial-gradient(circle at top, var(--off-white), transparent) var(--blue);
-	border-radius: 4px;
-	flex-basis: 150px;
-}
-
-main {
-	padding-inline: 2em;
-	flex-basis: 230px;
-}
-
-hr {
-	background: linear-gradient(to left, var(--off-white), transparent), url(_asset/squiggle.png);
-	height: 3px;
-	margin-block: 2em;
-}
-
-dt {
-	font: 0.875em transport;
-	margin-top: 1em;
-}
-
-dd {
-	margin-left: 1em;
+tape-deck {
+	margin: 2em;
+	margin-bottom: 0.5em;
 }
 
 #back {
 	display: block;
-	font-size: 1.5em;
-	margin-top: 4rem;
+	font-size: 0.875em;
+	max-width: max-content;
+	margin-inline: auto;
 }

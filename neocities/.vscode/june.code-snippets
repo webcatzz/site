@@ -12,6 +12,7 @@
 			"\t<link rel=\"icon\" href=\"/_asset/icon.png\">",
 			"\t<link rel=\"stylesheet\" href=\"/blanket.css\">",
 			"\t<link rel=\"stylesheet\" href=\"style.css\">",
+			"\t<script defer src=\"script.js\"></script>",
 			"</head>",
 			"<body>",
 			"",
