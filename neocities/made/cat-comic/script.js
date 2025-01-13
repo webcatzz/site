@@ -9,8 +9,9 @@ month++;
 
 let percent = (year * 365.25 + month * 30.6 + date.getDate() - 694039.09) / 29.5305882;
 percent -= Math.floor(percent);
+let phase = Math.round(percent * 8) % 8;
 
-document.getElementById("phase-icon").style.objectPosition = percent * 100 + "%";
+document.getElementById("phase-icon").style.objectPosition = phase * 100 / 8 + "%";
 document.getElementById("phase-text").textContent = `The moon is ${[
 	"new",
 	"waxing crescent",
@@ -20,7 +21,7 @@ document.getElementById("phase-text").textContent = `The moon is ${[
 	"waning gibbous",
 	"at its third quarter",
 	"waning crescent"
-][Math.round(percent * 8) % 8]}.`;
+][phase]}.`;
 
 
 
