@@ -11,11 +11,12 @@ webring = {
 		"https://foggybear42.neocities.org",
 		"https://mechagic.github.io",
 		"https://sawtooth.neocities.org",
-		"https://zekere.xyz/",
+		"https://zekere.xyz",
 		"https://hellokittyminigun.neocities.org",
 		"https://item64.neocities.org",
 		"https://transferns.neocities.org",
 		"https://teethinvitro.neocities.org/music",
+		"https://gleefulpebble.neocities.org",
 	]
 };
 
