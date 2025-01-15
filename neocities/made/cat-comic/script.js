@@ -8,7 +8,6 @@ if (month < 3) year--, month += 12;
 month++;
 
 let percent = (year * 365.25 + month * 30.6 + date.getDate() - 694039.09) / 29.5305882;
-percent -= Math.floor(percent);
 let phase = Math.round(percent * 8) % 8;
 
 document.getElementById("phase-icon").style.objectPosition = phase * 100 / 8 + "%";

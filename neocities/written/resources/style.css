@@ -111,6 +111,10 @@ main {
 	}
 }
 
+h2 {
+	margin-block: 1rem;
+}
+
 b {
 	font-weight: normal;
 	background-color: rgb(from var(--yellow) r g b / 0.25);
@@ -118,6 +122,10 @@ b {
 
 main a {
 	text-decoration: underline;
+}
+
+code {
+	font-weight: bold;
 }
 
 code-block {
@@ -170,6 +178,15 @@ iframe {
 
 details {
 	padding-inline: 1em;
+}
+
+table {
+	border-collapse: collapse;
+	margin: 1em;
+}
+td {
+	padding: 0.5em;
+	border: 1px solid;
 }
 
 

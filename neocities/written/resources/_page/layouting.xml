@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<page>
+	<name>layouting with flex</name>
+	<content>
+		<style>
+.example {
+	padding: 1em;
+}
+.flex-item {
+	padding: 1em;
+	border: 1px solid;
+}
+.style {
+	font: bold 0.875em monospace;
+	margin-top: 1em;
+}
+		</style>
+
+		<p>a lot of people treat flex like its some inscrutable monster and it really isn't. in fact it's very easy to use and it makes it way simpler to do basic layouts. take my hand OK</p>
+
+		<h2>intro to display</h2>
+		<p>the css property <code>display</code> controls an element's layout. here's how you use it:</p>
+		<code-block>
+div {
+	display: block;
+}
+		</code-block>
+		<p>most elements are by default <code>display: block</code> (paragraphs, headings, divs). some are by default <code>display: inline</code> (links, bolds, italics). these are the most common display types. you've used them.</p>
+		<p>both <code>block</code> &amp; <code>inline</code> affect how an element deals with external layout. inline elements follow text flow; block elements create new "blocks" of text.</p>
+		<p><code>flex</code> &amp; <code>grid</code> are two other display modes. they affect an element's internal layout.</p>
+
+		<h2>flex</h2>
+		<p>an element with <code>display: flex</code> displays its children in a single row or column. here's how it looks:</p>
+		<div class="example">
+			<div style="display: flex">
+				<div class="flex-item">item 1</div>
+				<div class="flex-item">item 2</div>
+				<div class="flex-item">item 3</div>
+			</div>
+			<div class="style">display: flex;</div>
+		</div>
+		<p>that's not quite good. let's add a <code>gap</code> to separate the items out a little:</p>
+		<div class="example">
+			<div style="display: flex; gap: 1em">
+				<div class="flex-item">item 1</div>
+				<div class="flex-item">item 2</div>
+				<div class="flex-item">item 3</div>
+			</div>
+			<div class="style">display: flex;<br/>gap: 1em;</div>
+		</div><p>to turn this row into a column, use <code>flex-direction</code>:</p>
+		<div class="example">
+			<div style="display: flex; flex-direction: column; gap: 1em">
+				<div class="flex-item">item 1</div>
+				<div class="flex-item">item 2</div>
+				<div class="flex-item">item 3</div>
+			</div>
+			<div class="style">display: flex;<br/>flex-direction: column;<br/>gap: 1em;</div>
+		</div>
+		<p>to change items' size, use <code>flex: value</code>, where <code>value</code> is the ratio of an item's size to its siblings' size.</p>
+		<div class="example">
+			<div style="display: flex; gap: 1em">
+				<div style="flex: 1">
+					<div class="flex-item">item 1</div>
+					<div class="style">flex: 1;</div>
+				</div>
+				<div style="flex: 1">
+					<div class="flex-item">item 2</div>
+					<div class="style">flex: 1;</div>
+				</div>
+				<div style="flex: 1">
+					<div class="flex-item">item 3</div>
+					<div class="style">flex: 1;</div>
+				</div>
+			</div>
+			<div class="style">display: flex;<br/>gap: 1em;</div>
+		</div>
+		<div class="example">
+			<div style="display: flex; gap: 1em">
+				<div style="flex: 2">
+					<div class="flex-item">item 1</div>
+					<div class="style">flex: 2;</div>
+				</div>
+				<div style="flex: 1">
+					<div class="flex-item">item 2</div>
+					<div class="style">flex: 1;</div>
+				</div>
+				<div style="flex: 1">
+					<div class="flex-item">item 3</div>
+					<div class="style">flex: 1;</div>
+				</div>
+			</div>
+			<div class="style">display: flex;<br/>gap: 1em;</div>
+		</div>
+		<p>you can do a lot more with the <code>flex</code> property but it can be a bit complicated. i'd recommend looking at <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/flex">docs</a> if you need more advanced behavior.</p>
+		
+		<h2>grid</h2>
+
+		<h3>grid template</h3>
+		<p>flex elements lay out children in a single row or column; grid elements lay out children in multiple rows and columns. here's how it looks:</p>
+		<div class="example">
+			<div style="display: grid; gap: 1em">
+				<div class="flex-item">item 1</div>
+				<div class="flex-item">item 2</div>
+				<div class="flex-item">item 3</div>
+			</div>
+			<div class="style">display: grid;<br/>gap: 1em;</div>
+		</div>
+		<p>that's just a column... by default, grid elements create extra rows when they run out of columns to place items in.</p>
+		<p>create and size columns with <code>grid-template-columns</code>:</p>
+		<div class="example">
+			<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1em">
+				<div class="flex-item">item 1</div>
+				<div class="flex-item">item 2</div>
+				<div class="flex-item">item 3</div>
+			</div>
+			<div class="style">display: grid;<br/>grid-template-columns: 1fr 1fr;<br/>gap: 1em;</div>
+		</div>
+		<div class="example">
+			<div style="display: grid; grid-template-columns: 1fr 2fr 1fr; gap: 1em">
+				<div class="flex-item">item 1</div>
+				<div class="flex-item">item 2</div>
+				<div class="flex-item">item 3</div>
+			</div>
+			<div class="style">display: grid;<br/>grid-template-columns: 1fr 2fr 1fr;<br/>gap: 1em;</div>
+		</div>
+		<p>each value of <code>grid-template-columns</code> specifies a column's width. <code>fr</code> is short for fraction; similarly to <code>flex</code> values it's the ratio of a column's width to other columns' widths. you can also use static values:</p>
+		<div class="example">
+			<div style="display: grid; grid-template-columns: 40px 1fr; gap: 1em">
+				<div class="flex-item">item 1</div>
+				<div class="flex-item">item 2</div>
+				<div class="flex-item">item 3</div>
+			</div>
+			<div class="style">display: grid;<br/>grid-template-columns: 40px 1fr;<br/>gap: 1em;</div>
+		</div>
+		<p>create and size rows with <code>grid-template-rows</code>:</p>
+		<div class="example">
+			<div style="display: grid; grid-template-rows: 40px 80px; gap: 1em">
+				<div class="flex-item">item 1</div>
+				<div class="flex-item">item 2</div>
+				<div class="flex-item">item 3</div>
+			</div>
+			<div class="style">display: grid;<br/>grid-template-rows: 40px 80px;<br/>gap: 1em;</div>
+		</div>
+		<p>extra rows are ignored by <code>grid-template-rows</code>, since they're not part of the template.</p>
+
+		<h3>grid item sizing</h3>
+
+		<h2>item placement</h2>
+		<p>four css properties control item placement in both flex &amp; grid. they're all versions of each other.</p>
+		<table>
+			<tr>
+				<th></th>
+				<th>content</th>
+				<th>items</th>
+				<th>per-item</th>
+			</tr>
+			<tr>
+				<th>along flex axis</th>
+				<td>justify-content</td>
+				<td>justify-item</td>
+				<td>justify-self</td>
+			</tr>
+			<tr>
+				<th>cross flex axis</th>
+				<td>align-content</td>
+				<td>align-items</td>
+				<td>align-self</td>
+			</tr>
+		</table>
+		<p><code>justify-items</code> controls items' size along the flex axis (defined by <code>flex-direction</code> for flex and <code>grid-auto-flow</code> for grid).</p>
+		<div class="example">
+			<div style="display: flex; justify-content: stretch; gap: 1em">
+				<div class="flex-item">item 1</div>
+				<div class="flex-item">item 2</div>
+				<div class="flex-item">item 3</div>
+			</div>
+			<div class="style">display: flex;<br/>gap: 1em;</div>
+		</div>
+	</content>
+</page>

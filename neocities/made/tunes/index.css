@@ -9,7 +9,7 @@ body {
 	background:
 		url(_asset/neil.gif) no-repeat 75% center,
 		linear-gradient(to right, var(--black) 160px, transparent 160px),
-		url(/_asset/cloud.png) center / cover var(--blue);
+		url(_asset/cloud.png) center / cover var(--blue);
 	overflow: hidden;
 }
 

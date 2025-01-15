@@ -1,4 +1,7 @@
 @keyframes spin {to {rotate: 360deg}}
+:root {
+	--white: hsl(0, 0%, 95%);
+}
 
 body {
 	display: flex;

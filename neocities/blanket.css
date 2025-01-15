@@ -1,18 +1,16 @@
-@font-face {font-family: ms-pgothic; src: local("MS PGothic"), url(_asset/font/ms-pgothic.ttf)}
-@font-face {font-family: ms-serif; src: url(_asset/font/ms-serif.ttf)}
-@font-face {font-family: alte; src: url(_asset/font/alte.ttf)}
-@font-face {font-family: pixel; src: url(_asset/font/junipy.ttf); size-adjust: 95%}
+@font-face {font-family: ms-pgothic; src: local("MS PGothic"), url(/_asset/font/ms-pgothic.ttf)}
+@font-face {font-family: alte; src: url(/_asset/font/alte.ttf)}
+@font-face {font-family: pixel; src: url(/_asset/font/junipy.ttf); size-adjust: 95%}
+@font-face {font-family: comicoro; src: url(/_asset/font/comicoro.ttf)}
 :root {
-	--white: #f2f2f2;
+	--white: hsl(0, 4%, 90%);
 	--off-white: #e2d8ca;
-	--light-gray: #b2a69c;
-	--gray: #82736e;
-	--dark-gray: #4f4644;
-	--off-black: #322c2c;
-	--black: #292626;
+	--gray: hsl(0, 4%, 50%);
+	--dark-gray: hsl(0, 4%, 30%);
+	--black: hsl(0, 4%, 15%);
 
-	--blue: #80cede;
-	--yellow: #eccb6e;
+	--blue: #88d4e3;
+	--yellow: #f1d27b;
 	--red: #efa990;
 
 	--light-blue: color-mix(in srgb, var(--blue), var(--white) 50%);
@@ -27,7 +25,7 @@ body {
 
 	&::after {
 		content: "";
-		background-image: url(_asset/noise.png);
+		background-image: url(/_asset/noise.png);
 		opacity: 0.04;
 		position: fixed;
 		inset: 0;
@@ -44,7 +42,7 @@ body {
 h1, h2, h3, h4 {
 	font-family: alte, sans-serif;
 	font-weight: normal;
-	margin-block: -0.125em 0;
+	margin-block: 0;
 }
 
 hr {
@@ -94,7 +92,7 @@ tape-deck {
 	display: flex;
 	align-items: center;
 	gap: 1em;
-	font: 0.875em/1 pixel, sans-serif;
+	font: 0.875em/1 comicoro, sans-serif;
 
 	button {
 		text-decoration: underline;

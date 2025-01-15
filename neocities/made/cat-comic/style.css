@@ -1,5 +1,8 @@
 @font-face {font-family: transport; src: url(/_asset/font/transport.ttf)}
 @keyframes appear {from {opacity: 0}}
+:root {
+	--white: hsl(0, 0%, 95%);
+}
 
 body {
 	color: var(--black);
