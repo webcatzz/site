@@ -11,7 +11,7 @@ webring = {
 		"https://foggybear42.neocities.org",
 		"https://mechagic.github.io",
 		"https://sawtooth.neocities.org",
-		"https://neovium.xyz/",
+		"https://zekere.xyz/",
 		"https://hellokittyminigun.neocities.org",
 		"https://item64.neocities.org",
 		"https://transferns.neocities.org",
