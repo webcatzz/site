@@ -17,6 +17,7 @@ webring = {
 		"https://transferns.neocities.org",
 		"https://teethinvitro.neocities.org/music",
 		"https://gleefulpebble.neocities.org",
+		"https://alan460.is-hella.gay",
 	]
 };
 
