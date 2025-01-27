@@ -9,7 +9,7 @@ webring = {
 		"https://robophobia.org",
 		"https://fizzsea.neocities.org",
 		"https://foggybear42.neocities.org",
-		"https://mechagic.github.io",
+		"https://mechagic.party",
 		"https://sawtooth.neocities.org",
 		"https://zekere.xyz",
 		"https://hellokittyminigun.neocities.org",
