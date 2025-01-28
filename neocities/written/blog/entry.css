@@ -15,6 +15,7 @@
 main {
 	line-height: 1.2;
 	text-align: justify;
+	hyphens: auto;
 	p:not(:first-child) {text-indent: 1.5em}
 }
 
