@@ -73,6 +73,8 @@ main {
 	display: flex;
 	flex-direction: column;
 	gap: 4em;
+	text-align: justify;
+	hyphens: auto;
 	background-color: var(--white);
 	padding: 4em;
 	flex: 1;
