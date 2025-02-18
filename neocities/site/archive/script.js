@@ -51,11 +51,6 @@ const history = [{
 	date: new Date(2024, 10, 21),
 	pages: ["index", "blog", "archive"],
 	blurb: "playing with lighter colors, targeting a dreamier sort of feel."
-},{
-	name: "planner", type: 1,
-	date: new Date(2024, 11, 14),
-	pages: ["index"],
-	blurb: "notebooky sketch."
 }];
 
 const params = new URLSearchParams(location.search);
