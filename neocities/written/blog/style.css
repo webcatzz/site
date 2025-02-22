@@ -35,7 +35,7 @@ body {
 }
 
 a:hover {
-	background-color: rgb(from var(--yellow) r g b / 0.5);
+	text-decoration: underline;
 }
 
 
@@ -116,7 +116,6 @@ nav {
 
 	button {
 		color: var(--off-white);
-		font-weight: bold;
 		background-color: var(--black);
 		padding: 1em;
 		border-radius: 0.5em;
@@ -164,23 +163,27 @@ nav {
 /* extras */
 
 tape-deck {
+	gap: 0;
 	color: var(--gray);
 	font-size: 0.75em;
 	writing-mode: vertical-lr;
 	letter-spacing: 0.05em;
-	width: 1em;
-	height: 450px;
 	background-color: black;
-	padding: 1.25em 1em;
+	width: max-content;
+	height: 450px;
+	padding-inline: 0.5em;
 	border-radius: 0.5em;
 	margin-left: 1.25rem;
 	rotate: -1deg;
 
 	button {
-		padding: 0.5em 1em;
-		margin: -0.5em -1em;
+		border-inline-end: 1px solid rgb(from currentcolor r g b / 0.25);
 		transition: color 0.1s;
 		&:hover {color: var(--off-white)}
+	}
+
+	button, select {
+		padding: 1em 0.9em;
 	}
 }
 

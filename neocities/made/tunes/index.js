@@ -1,80 +1,54 @@
 // buttons
 
-class RadioButton extends HTMLElement {
-
+class ToggleButton extends HTMLElement {
 	#checked = false;
 	get checked() {return this.#checked}
 	set checked(value) {
 		this.#checked = value;
+		this.classList.toggle("active", value);
 		this.ariaChecked = value;
 	}
 
-	connectedCallback() {
-		this.role = "radio";
+	constructor() {
+		super();
 		this.tabIndex = 0;
 		this.addEventListener("click", this.toggle);
 	}
 
 	toggle() {
-		if (!this.checked) {
-			for (const button of document.querySelectorAll(this.tagName)) {
-				if (button.checked) {
-					button.checked = false;
-					break;
-				}
-			}
-		}
 		this.checked = !this.checked;
 	}
-
 }
 
 
 
-// filtering
+// tracklist
 
-class FilterButton extends RadioButton {
+const tracks = document.getElementById("tracklist").children;
 
-	toggle() {
-		super.toggle();
+class Track extends ToggleButton {
+	tags = [];
 
-		if (this.checked) {
-			params.setAndUpdate("filter", this.getAttribute("value"));
-			let filter = this.getAttribute("value").replaceAll(" ", "-");
-			for (const track of document.getElementsByTagName("track-btn")) {
-				track.classList.toggle("hidden", !track.classList.contains(filter));
-			}
-		}
-		else {
-			params.deleteAndUpdate("filter");
-			for (const track of document.getElementsByTagName("track-btn")) {
-				track.classList.remove("hidden");
-			}
-		}
+	constructor() {
+		super();
+		this.role = "radio";
 
-	}
+		// tags
+		if (this.hasAttribute("tags")) this.tags = this.getAttribute("tags").split(",");
 
-}
+		// content
+		this.innerHTML = `
+			<img class="track-disc" style="--size: ${Math.random() * 75 + 75}px; rotate: ${Math.random() * 360}deg">
+			<div class="track-header">
+				<div class="track-name">${this.getAttribute("name")}</div>
+				${this.hasAttribute("date") ? `<time class="track-date" datetime="${this.getAttribute("date")}">${new Date(this.getAttribute("date")).toLocaleDateString("en-US", {month: "short", day: "numeric", year: "numeric"}).toLowerCase()}</time>` : ""}
+			</div>
+			<div class="track-tags">
+				${this.tags.map(tag => {return `<div class="tag">${tag}</div>`}).join("")}
+			</div>
+		`;
 
-
-
-// tracks
-
-class TrackButton extends RadioButton {
-
-	connectedCallback() {
-		super.connectedCallback();
-	
-		let name = this.appendChild(document.createElement("div"));
-		name.textContent = this.getAttribute("name");
-		name.className = "track-name";
-
-		if (this.hasAttribute("date")) {
-			let date = this.appendChild(document.createElement("time"));
-			date.dateTime = this.getAttribute("date");
-			date.textContent = new Date(date.dateTime).toLocaleDateString("en-US", {month: "short", day: "numeric", year: "numeric"}).toLowerCase();
-		}
-
+		// hash
 		if (this.hasAttribute("hash")) {
 			let host;
 			switch (this.getAttribute("hash")[0]) {
@@ -85,106 +59,124 @@ class TrackButton extends RadioButton {
 			this.setAttribute("link", `https://${host}/player/#song=${this.getAttribute("hash")}`);
 			this.removeAttribute("hash");
 		}
-	
-		let icons = this.appendChild(document.createElement("div"));
-		icons.className = "track-icons";
-		if (this.classList.contains("complete")) {
-			let icon = icons.appendChild(document.createElement("img"));
-			icon.title = "complete";
-			icon.src = "_asset/complete.png";
+	}
+
+	toggle() {
+		if (!this.checked) {
+			for (const track of tracks) {
+				if (track.checked) {
+					track.checked = false;
+					break;
+				}
+			}
 		}
-		if (this.classList.contains("starred")) {
-			let icon = icons.appendChild(document.createElement("img"));
-			icon.title = "starred";
-			icon.src = "_asset/starred.png";
+		super.toggle();
+		view.open(this.checked ? this : null);
+	}
+
+}
+customElements.define("c-track", Track);
+
+
+
+// filtering
+
+var filters = [];
+const tagCounts = {};
+
+function addFilter(tag) {
+	filters.push(tag);
+	filter();
+}
+
+function removeFilter(tag) {
+	filters.splice(filters.indexOf(tag), 1);
+	filter();
+}
+
+function filter() {
+	for (const track of tracks) {
+		let failed = false;
+		for (const tag of filters) if (!track.tags.includes(tag)) {
+			failed = true;
+			break;
 		}
+		track.classList.toggle("hidden", failed);
+	}
+
+	filters.length ? params.setAndUpdate("filter", filters) : params.deleteAndUpdate("filter");
+}
+
+class Filter extends ToggleButton {
+	constructor() {
+		super();
+		this.role = "checkbox";
 	}
 
 	toggle() {
 		super.toggle();
-		panel.view(this.checked ? this : null);
+		this.checked ? addFilter(this.textContent) : removeFilter(this.textContent);
 	}
+}
+customElements.define("c-filter", Filter);
 
+
+
+// ordering filters
+
+const filterEl = document.getElementById("filters");
+
+for (const track of tracks) {
+	for (const tag of track.tags) {
+		if (tagCounts[tag]) tagCounts[tag] += 1;
+		else tagCounts[tag] = 1;
+	}
+}
+
+for (const filter of document.getElementsByTagName("c-filter")) {
+	filter.style.setProperty("--count", "\"" + tagCounts[filter.textContent] + "\"");
 }
 
 
 
-// panel
+// view
 
-const panel = Object.assign(document.getElementById("panel"), {
+const view = Object.assign(document.getElementById("view"), {
 
-	header: document.querySelector("#panel h2"),
+	header: document.getElementById("view-name"),
 	iframe: document.querySelector("iframe"),
-	description: document.getElementById("description"),
-	tags: document.getElementById("tags"),
+	note: document.getElementById("view-note"),
+	tags: document.getElementById("view-tags"),
 
-	colors: [
-		"#ef0c8f", // red
-		"#f59b1b", // orange
-		"#f1e729", // yellow
-		"#53d972", // green
-		"#02d1f5", // blue
-		"#4e0ba1", // purple
-	],
-	prevColor: -1,
-
-	recolor: () => {
-		let rand = Math.floor(Math.random() * (panel.colors.length - 1));
-		if (rand === panel.prevColor) rand++;
-		panel.style.setProperty("--color", panel.colors[rand]);
-		panel.prevColor = rand;
-	},
-
-	view: track => {
+	open: track => {
 		if (track) {
 			params.setAndUpdate("track", track.getAttribute("name"));
-			panel.hidden = false;
+			view.hidden = false;
 		}
 		else {
 			params.deleteAndUpdate("track");
-			panel.iframe.src = "";
-			panel.hidden = true;
+			view.iframe.src = "";
+			view.hidden = true;
 			return;
 		}
 		
 		// title
-		panel.header.textContent = track.getAttribute("name");
+		view.header.textContent = track.getAttribute("name");
 		
 		// iframe
 		let iframe = document.createElement("iframe");
 		iframe.src = track.getAttribute("link");
-		panel.iframe.replaceWith(iframe);
-		panel.iframe = iframe;
-		panel.recolor();
+		view.iframe.replaceWith(iframe);
+		view.iframe = iframe;
 	
 		// note
-		if (track.hasAttribute("note")) {
-			panel.description.textContent = track.getAttribute("note");
-			panel.description.hidden = false;
-		}
-		else panel.description.hidden = true;
+		view.note.innerHTML = track.hasAttribute("note") ? `<div class="note">${track.getAttribute("note")}</div>` : "<div class=\"view-empty\">-</div>";
 	
 		// tags
-		if (track.classList) {
-			panel.tags.textContent = "";
-			for (const tag of track.classList) {
-				let el = panel.tags.appendChild(document.createElement("span"));
-				el.textContent = tag;
-				el.className = "track-tag";
-			}
-			panel.tags.classList.hidden = false;
-		}
-		else panel.tags.classList.hidden = true;
+		view.tags.innerHTML = track.tags.length ? track.tags.map(tag => {return `<div class="tag">${tag}</div>`}).join("") : "<div class=\"view-empty\">-</div>";
 	},
 
 });
-
-
-
-// definitions
-
-customElements.define("filter-btn", FilterButton);
-customElements.define("track-btn", TrackButton);
 
 
 
@@ -213,7 +205,7 @@ params.update = function () {
 // page load
 
 if (params.has("track")) {
-	let button = document.getElementsByTagName("track-btn")[params.get("track")];
+	let button = tracks[params.get("track")];
 	if (button) {
 		button.scrollIntoView({behavior: "smooth", block: "center"});
 		button.click();
@@ -221,10 +213,10 @@ if (params.has("track")) {
 }
 
 if (params.has("filter")) {
-	for (const button of document.getElementsByTagName("filter-btn")) {
-		if (button.getAttribute("value") === params.get("filter")) {
-			button.click();
-			break;
-		}
+	for (const tag of params.get("filter").split(",")) {
+		addFilter(tag);
+	}
+	for (const filter of document.getElementsByTagName("c-filter")) {
+		filter.checked = filters.includes(filter.textContent);
 	}
 }

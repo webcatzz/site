@@ -20,7 +20,7 @@ onload = () => {
 	let beforeWrap = true;
 
 	for (const item of map.querySelectorAll("& > ul > li")) {
-		ctx.strokeStyle = ++i ? colors[i % colors.length] : style.getPropertyValue("--dark-gray");
+		ctx.strokeStyle = ++i ? colors[i % colors.length] : style.getPropertyValue("--gray");
 		item.style.setProperty("--color", ctx.strokeStyle);
 
 		ctx.beginPath();

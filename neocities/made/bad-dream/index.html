@@ -14,6 +14,7 @@
 <body>
 
 <nav>
+	<a href="#10">10</a>
 	<a href="#9">09</a>
 	<a href="#8">08</a>
 	<a href="#7">07</a>
@@ -33,19 +34,24 @@
 		<tape-deck list="riverside battle"></tape-deck>
 	</header>
 
+	<article id="10">
+		<h2>#10</h2>
+		<time datetime="2025-02-22">feb 22, 2025</time>
+		<p>auuughhhhhhhhhh colleege</p>
+	</article>
+
 	<article id="9">
 		<h2>#9</h2>
 		<time datetime="2025-01-10">jan 10, 2025</time>
-		<p>i'd spent a chunk of time before the reset drawing assets and then not liking them and then drawing them again. i've since come to the conclusion that strict 32x16 isometric is the devil's perspective & i can't draw it for the life of me.</p>
-		<p>so here's what i've settled on for bad dream 2.0. tiles are 24x17, skewed, with a good view of both the floor and walls. the skew gives you a better view of actors behind other actors than strict isometric does (which means hovering over them is easier).</p>
+		<p>i'm pleased to announce bad dream now has a weird grid. tiles are 24x17, skewed, with a good view of both the floor and walls. the skew gives you a better view of actors behind other actors than strict isometric does (which means hovering over them is easier). mostly it looks cool.</p>
 		<img src="_asset/9.png" loading="lazy">
-		<p>as it turns out, godot's built-in tilemap does NOT like this. it lets you render tiles in any other orientation known to man but this one, the problem being that my tiles are skewed, not symmetrical.</p>
-		<p>i am not one to give up a fight. after a lot of frustration over realizing godot wouldn't let me draw tiles this way, i took two days and made my own tilemap node. i've <a href="https://godotengine.org/asset-library/asset/3619">posted it onto the asset library</a> so you can use it if you want to! i can't promise it's as efficient as the built-in tilemap (what with it being written in gdscript and all) but it gets the job done.</p>
+		<p>godot's built-in tilemap hates this. it lets you render tiles in any other orientation known to man but this one (the problem being that my tiles are skewed, not symmetrical).</p>
+		<p>after some frustration, i took two days and made my own tilemap node. i've <a href="https://godotengine.org/asset-library/asset/3619">posted it onto the asset library</a>. i can't promise it's as efficient as the built-in tilemap (what with it being written in gdscript and all) but it gets the job done.</p>
 		<p>the only downside (for me) is that it can't y-sort like the built-in tilemap can. that's fine, i'll just use regular-ass sprites for stuff that needs to be y-sorted. a possible downside is that it might become expensive to edit the tilemap at runtime but i don't think i'll need to do that.</p>
 		<p>the addon's currently missing some tools (selection & fill), they're on the to-do list. it doesn't account for larger tiles on an atlas, that's also on the to-do list. it's also missing some other features of the built-in tilemap (scene collections, cell transformations, terrains, patterns) but i don't think i'll be implementing those cause i don't need them.</p>
 		<p>anyhow the asset-making process is going more smoothly now. (the image up there is concept-work, not assets.) i'm having some fun overlaying different tilemaps with different axes.</p>
 		<p>also: trying out tinylytics kudos here. even though i know a lot of people come through here every day (front page...) this place feels private to me and i like that. hopefully kudos won't disrupt that vibe. also i might have to get rid of them cause i might exceed the hit limit LOL</p>
-		<button class="tinylytics_kudos" data-path="/9"></button>
+		<p>post-posting note: actually i can solve all these problems with RenderingServer. will be recoding this once i have time again</p>
 	</article>
 
 	<article id="8">
@@ -77,10 +83,12 @@
 			<li>implemented trait-based enemy typing</li>
 		</ul>
 		<h3>story</h3>
-		<p>behind the scenes, when thinking about what i would discuss in these entries, i decided against writing about the game's story. for me, plot is pretty volatile until very near the end of a project and i don't like to write about it when it might still change. i'll continue to hold my silence on the matter but know that things are moving in the right direction!</p>
+		<ul>
+			<li>going pretty good!</li>
+		</ul>
 		<h3>closing notes</h3>
-		<p>it's been a better <s>year</s> four months than i thought. i feel i have a much better idea of what the game can be than i did before. and i'm more organized about it, too.</p>
-		<p>i'm using a lot of bad dream-specific terminology in the bullets above, so i apologize if it's a little cryptic. i'm planning to write about those systems here in the future.</p>
+		<p>it's been a better <s>year</s> four months than i thought. i feel i have a much better idea of what the game can be than i did before. & i'm more organized.</p>
+		<p>i apologize if the bullets are a little cryptic. i'm planning to write about those systems here in the future.</p>
 		<p>my main goals with the project right now are (1) finish a start-to-end story draft and (2) finish the battle system and do some playtesting, either with friends or via an itch demo or both. i don't have a strict schedule for either because my next semester will be pretty packed. we'll see what i find time for!</p>
 	</article>
 	

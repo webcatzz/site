@@ -5,7 +5,7 @@
 :root {
 	--white: hsl(0, 4%, 90%);
 	--off-white: #e2d8ca;
-	--gray: hsl(0, 4%, 50%);
+	--gray: color-mix(in hsl, var(--white), var(--black) 50%);
 	--dark-gray: hsl(0, 4%, 30%);
 	--black: hsl(0, 4%, 15%);
 
@@ -92,7 +92,7 @@ tape-deck {
 	display: flex;
 	align-items: center;
 	gap: 1em;
-	font: 0.875em/1 comicoro, sans-serif;
+	font: 0.875em/1 pixel, sans-serif;
 
 	button {
 		text-decoration: underline;

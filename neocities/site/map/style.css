@@ -1,18 +1,17 @@
 body {
-	color: var(--white);
+	color: var(--black);
 	font-size: 16px;
 	columns: 2;
 	column-gap: 4em;
-	
 	max-width: 600px;
-	background-color: var(--black);
+	background-color: var(--white);
 	margin: 4em auto;
 	position: relative;
 }
 
 h1 {
 	font-size: 3em;
-	background: url(_asset/halftone.png) repeat-x bottom;
+	background-color: var(--white);
 }
 
 ul {
@@ -43,7 +42,7 @@ li {
 }
 
 a {
-	color: var(--white);
+	color: var(--black);
 	white-space: nowrap;
 	text-overflow: ellipsis;
 
@@ -63,11 +62,6 @@ a {
 		color: var(--black);
 		background-color: var(--color);
 	}
-}
-
-footer {
-	height: 18px;
-	background-image: url(_asset/halftone.png);
 }
 
 #canvas {
