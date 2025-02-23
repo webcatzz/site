@@ -170,7 +170,12 @@ const view = Object.assign(document.getElementById("view"), {
 		view.iframe = iframe;
 	
 		// note
-		view.note.innerHTML = track.hasAttribute("note") ? `<div class="note">${track.getAttribute("note")}</div>` : "<div class=\"view-empty\">-</div>";
+		if (track.hasAttribute("note")) {
+			let note = document.createElement("div");
+			note.textContent = track.getAttribute("note");
+			note.className = "note";
+			view.note.replaceChildren(note);
+		} else view.note.innerHTML = "<div class=\"view-empty\">-</div>";
 	
 		// tags
 		view.tags.innerHTML = track.tags.length ? track.tags.map(tag => {return `<div class="tag">${tag}</div>`}).join("") : "<div class=\"view-empty\">-</div>";
