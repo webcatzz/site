@@ -4,7 +4,7 @@ webring = {
 		"https://kelprot.neocities.org",
 		"https://murumart.neocities.org/m/beeps/",
 		"https://troy-sucks.neocities.org/beepbox",
-		"https://ninacti0n.neocities.org",
+		"https://ninacti0n.art",
 		"https://mikaorangeart.neocities.org",
 		"https://robophobia.org",
 		"https://fizzsea.neocities.org",
