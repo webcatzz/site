@@ -38,7 +38,7 @@ class Track extends ToggleButton {
 
 		// content
 		this.innerHTML = `
-			<img class="track-disc" style="--size: ${Math.random() * 75 + 75}px; rotate: ${Math.random() * 360}deg">
+			<img class="track-disc" style="--size: ${Math.random() * 75 + 75}px; rotate: ${Math.random() * 360}deg" aria-hidden="true">
 			<div class="track-header">
 				<div class="track-name">${this.getAttribute("name")}</div>
 				${this.hasAttribute("date") ? `<time class="track-date" datetime="${this.getAttribute("date")}">${new Date(this.getAttribute("date")).toLocaleDateString("en-US", {month: "short", day: "numeric", year: "numeric"}).toLowerCase()}</time>` : ""}
@@ -225,3 +225,17 @@ if (params.has("filter")) {
 		filter.checked = filters.includes(filter.textContent);
 	}
 }
+
+
+
+// bg scroll
+
+let bgX = 0;
+let bgY = 0;
+
+setInterval(() => {
+	bgX += 2;
+	bgY -= 0.25;
+	document.body.style.setProperty("--bg-x", bgX + "px");
+	document.body.style.setProperty("--bg-y", bgY + "px");
+}, 100);

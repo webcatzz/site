@@ -2,9 +2,11 @@ body {
 	display: flex;
 	height: 100vh;
 	background:
-		linear-gradient(to right, var(--white) 200px, transparent 200px),
+		linear-gradient(80deg, var(--white) 20vh, transparent 20vh),
 		linear-gradient(to bottom, var(--white), transparent 40%, transparent 60%, var(--white)),
-		url(_asset/cloud.png) right var(--blue);
+		url(_asset/cloud.png) right,
+		linear-gradient(to right, transparent, var(--blue)),
+		url(_asset/checkerboard.png) var(--bg-x, 0) calc(var(--bg-y, 0px) + 50%) var(--blue);
 	
 	&::before {
 		content: url(_asset/neil.gif);
@@ -36,7 +38,7 @@ body {
 .note {
 	padding-block: 1.5px;
 	padding-inline: 10px 6px;
-	border-image: url(_asset/note.png) 3 0 0 4 fill / 3px 0 0 4px repeat;
+	border-image: url(_asset/note.png) 3 1 0 4 fill / 3px 1px 0 4px repeat;
 }
 
 
@@ -52,34 +54,41 @@ body {
 	padding: 2em;
 	transform: skew(10deg);
 	margin-left: 60px;
-	box-shadow:
-		8px 0 rgb(from var(--red) r g b / 0.25),
-		16px 0 rgb(from var(--yellow) r g b / 0.25);
 	scrollbar-color: rgba(from var(--black) r g b / 0.25) var(--white);
 }
 
 header {
-	display: flex;
-	align-items: center;
-	gap: 8px;
-	transform: skew(-10deg);
-	margin-bottom: -0.75em;
+	display: grid;
+	grid-template-columns: max-content 1fr;
 }
 
 h1 {
 	font-size: 3em;
-	margin-right: 16px;
+	transform: skew(-10deg);
 }
 
-.dot {
-	width: 12px;
-	aspect-ratio: 1;
-	border-radius: 50%;
-	opacity: 0.5;
+#subtitle {
+	margin-block: -0.25em;
+	margin-left: 0.75em;
+}
 
-	&:nth-of-type(3n) {background-color: var(--red)}
-	&:nth-of-type(3n - 1) {background-color: var(--yellow)}
-	&:nth-of-type(3n - 2) {background-color: var(--blue)}
+#dots {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	margin-left: 24px;
+	transform: skew(-10deg);
+
+	div {
+		width: 12px;
+		aspect-ratio: 1;
+		border-radius: 50%;
+		opacity: 0.5;
+
+		&:nth-of-type(3n) {background-color: var(--red)}
+		&:nth-of-type(3n - 1) {background-color: var(--yellow)}
+		&:nth-of-type(3n - 2) {background-color: var(--blue)}
+	}
 }
 
 
@@ -197,9 +206,30 @@ c-track {
 
 
 
+/* light */
+
+#left {
+	box-shadow:
+		4px 0 rgb(from var(--red) r g b / 0.25),
+		32px 0 64px -32px rgb(from var(--yellow) r g b / 0.5);
+}
+
+#light {
+	background-image:
+		linear-gradient(77deg, var(--red) 36%, transparent 36%),
+		linear-gradient(83deg, var(--yellow) 34%, transparent 34%);
+	width: 250px;
+	margin-inline: -64px -186px;
+	opacity: 0.4;
+	z-index: -1;
+}
+
+
+
 /* view */
 
 #view {
+	--padding-left: 4rem;
 	margin-left: -2em;
 	align-self: center;
 	flex: 1;
@@ -207,13 +237,13 @@ c-track {
 
 #view-name {
 	font-size: 3em;
-	margin-left: 3rem;
+	margin-left: var(--padding-left);
 }
 
 #view-ribbon {
 	background-color: rgb(from var(--white) r g b / 0.75);
 	padding-block: 1em;
-	padding-inline: 5em 1em;
+	padding-inline: calc(var(--padding-left) + 2rem) 1em;
 
 	iframe {
 		background-image: url(_asset/dither.png);
@@ -231,7 +261,7 @@ c-track {
 	gap: 0.5em 1em;
 	height: 0;
 	margin-top: 1em;
-	margin-left: 8em;
+	margin-left: calc(var(--padding-left) + 5rem);
 }
 
 .view-key {
@@ -266,7 +296,7 @@ c-track {
 		margin-left: 0;
 		flex: 1;
 	}
-	#left, header, #back {
+	#left, #back {
 		transform: none;
 	}
 	#tracklist {
@@ -283,7 +313,6 @@ c-track {
 	}
 	#view-ribbon {
 		padding-left: 1em;
-
 		iframe {height: 160px}
 	}
 	#view-name, .view-key, #view-tags {
@@ -297,7 +326,13 @@ c-track {
 		display: flex;
 		justify-content: center;
 		width: unset;
+		background: rgb(from var(--white) r g b / 0.75);
 		max-width: unset;
 		padding: 1em;
+		padding-top: 0;
+
+		.note {
+			filter: drop-shadow(-4px 0 8px rgb(from var(--blue) r g b / 0.75));
+		}
 	}
 }
