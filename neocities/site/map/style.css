@@ -1,17 +1,17 @@
 body {
-	color: var(--black);
+	color: var(--white);
 	font-size: 16px;
 	columns: 2;
 	column-gap: 4em;
 	max-width: 600px;
-	background-color: var(--white);
+	background-color: var(--black);
 	margin: 4em auto;
 	position: relative;
 }
 
 h1 {
 	font-size: 3em;
-	background-color: var(--white);
+	background-color: inherit;
 }
 
 ul {
@@ -42,7 +42,7 @@ li {
 }
 
 a {
-	color: var(--black);
+	color: var(--white);
 	white-space: nowrap;
 	text-overflow: ellipsis;
 
