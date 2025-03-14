@@ -66,9 +66,20 @@ b {
 	font: bold 0.9em/0 sans-serif;
 }
 
+.emote {
+	display: inline;
+	vertical-align: 40%;
+	margin-block: -10px;
+	image-rendering: pixelated;
+}
+
 
 
 /* block */
+
+p, ul, ol, figcaption {
+	text-shadow: 0 0 4px #e6dede;
+}
 
 ul, ol {
 	padding-left: 1.5em;
@@ -190,15 +201,32 @@ figure {
 		transform: scaleX(-1);
 	}
 
-	&:is(.float-left, .float-right)::before {scale: 0.75}
 	.flex & {margin-inline: 0}
+
+	&:is(.float-left, .float-right)::before {scale: 0.75}
+
+	&.bandcamp iframe, &.spotify iframe {
+		width: calc(133.33% - 21.33px);
+		height: 42px;
+		padding: 10.67px;
+		padding-bottom: 21.33px;
+		scale: 0.75;
+		transform-origin: top left;
+	}
+	&.bandcamp iframe {
+		height: 42px;
+		margin-bottom: -10.5px;
+	}
+	&.spotify iframe {
+		height: 80px;
+		margin-bottom: -20px;
+	}
 }
 
 figcaption {
 	color: #201c10bf;
-	font: 0.875em pixel;
+	font-size: 0.875em;
 	text-align: center;
-	letter-spacing: 0.05em;
 	margin: 0.5em
 }
 
