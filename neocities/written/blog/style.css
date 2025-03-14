@@ -202,6 +202,11 @@ tape-deck {
 	}
 }
 
+#nuko {
+	position: absolute;
+	bottom: 100%;
+}
+
 #background-credit {
 	color: rgb(from var(--off-white) r g b / 0.25);
 	font-size: 0.7em;
