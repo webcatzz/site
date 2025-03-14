@@ -24,8 +24,6 @@ main {
 /* header */
 
 header {
-	display: flex;
-	gap: 0.5em;
 	font-family: wildpines;
 	border-radius: 0.5em;
 	margin-bottom: 2em;
@@ -36,14 +34,13 @@ header {
 #name {
 	font-size: 2.5em;
 	font-family: inherit;
-	font-weight: bold;
 	line-height: 1;
-	margin-top: -0.125em;
+	margin-block: -0.125em 0.125em;
 	flex: 1;
 }
 
 #date {
-	writing-mode: vertical-rl;
+	letter-spacing: 0.1em;
 }
 
 h3, h4 {
@@ -247,11 +244,10 @@ figcaption {
 /* footer */
 
 footer {
-	font: 0.75em pixel, sans-serif;
-	letter-spacing: 0.05em;
-	padding-top: 0.5em;
-	border-top: 1px dotted;
-	margin-block: 4em 0;
+	font-size: 0.75em;
+	padding-top: 1em;
+	border-top: 1px dotted var(--black-trans);
+	margin-block: 4rem 0;
 	position: relative;
 
 	p {margin-block: 0}
@@ -259,16 +255,16 @@ footer {
 	&::before {
 		content: "✄";
 		color: var(--black-trans);
-		line-height: 0;
+		background-color: #ded2c5;
+		padding-inline: 0.25em;
 		position: absolute;
-		top: 0;
+		top: -0.5em;
 		left: 1.5em;
 	}
 }
 
 #mood {
 	padding: 0.125em 0.5em;
-	border: 1px dotted;
 	border-radius: 1em;
 	transition: background-color 0.1s;
 	cursor: pointer;
@@ -278,9 +274,8 @@ footer {
 		display: inline-block;
 		height: 24px;
 		margin-bottom: -5px;
-		image-rendering: pixelated;
 	}
 
 	&:hover {background-color: var(--button)}
-	&:active img {scale: 1.1}
+	&:active img {scale: 0.9}
 }

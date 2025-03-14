@@ -1,4 +1,5 @@
 @font-face {font-family: wildpines; src: url(/_asset/font/wildpines.woff2)}
+@keyframes shoot {to {margin-left: -0.25em}}
 :root {
 	--black: #201c10;
 	--black-trans: rgb(from var(--black) r g b / 0.5);
@@ -34,10 +35,6 @@ body {
 	}
 }
 
-a:hover {
-	text-decoration: underline;
-}
-
 
 
 /* pages */
@@ -48,7 +45,7 @@ a:hover {
 
 	width: var(--page-width);
 	aspect-ratio: 125 / 182;
-	padding-block: 4em;
+	padding-block: 64px;
 	box-sizing: border-box;
 
 	background-size: cover;
@@ -58,13 +55,13 @@ a:hover {
 
 #left {
 	background-image: url(_asset/page-left.png);
-	padding-inline: 3.5em 3em;
+	padding-inline: 56px 48px;
 	transform-origin: right;
 }
 
 #right {
 	background-image: url(_asset/page-right.png);
-	padding-inline: 2.5em 3.5em;
+	padding-inline: 40px 56px;
 	transform-origin: left;
 }
 
@@ -73,32 +70,46 @@ a:hover {
 /* left */
 
 h1 {
-	font: bold 3.425em wildpines;
+	font: 60px wildpines;
 	letter-spacing: -0.05em;
+	margin: 5px -10px 0;
+	rotate: -1deg;
+}
+
+#outlinks {
+	display: flex;
+	justify-content: space-between;
 }
 
 #back {
 	font: 2em wildpines;
 	letter-spacing: -0.05em;
-	margin-right: auto;
-	transition: 0.1s;
+	transition: 0.2s margin-left cubic-bezier(0.175, 1.270, 0.445, 1.375);
+	margin-bottom: 2px;
+
+	&:hover {margin-left: -8px}
 }
 
-
-
-/* other-blogs */
-
 #other-blogs {
-	border: 1px dotted var(--gray);
-	padding: 0.25em 1em;
-	border-radius: 0.5em;
-	overflow: auto hidden;
+	color: #e2ebeb;
+	width: 97px;
+	box-sizing: border-box;
+	padding-inline: 4px;
+	margin-right: -7px;
+	rotate: 1deg;
+	align-self: end;
+
+	a {
+		font: 0.875em alte;
+	}
 }
 
 #other-blogs-title {
-	color: var(--gray);
-	font: 0.875em pixel, sans-serif;
+	color: rgb(from currentcolor r g b / 0.75);
+	font-size: 0.75em;
+	line-height: 0.75;
 	letter-spacing: 0.05em;
+	rotate: -2deg;
 }
 
 
@@ -109,8 +120,9 @@ nav {
 	display: grid;
 	grid-template-columns: repeat(2, 1fr);
 	gap: 0.25em;
-	padding-inline: 1em;
-	margin: 1em -1em;
+	padding: 1em;
+	border-radius: 32px;
+	margin: 10px -1em;
 	overflow: hidden auto;
 	flex: 1;
 
@@ -124,11 +136,13 @@ nav {
 		time {
 			color: var(--gray);
 			font: 0.75em/0 wildpines;
+			letter-spacing: 0.1em;
 			margin-right: 0.25em;
 			transition: color 0.1s;
 		}
 
 		&:hover {
+			font-weight: bold;
 			background-color: var(--blue);
 			box-shadow: 4px 4px 0 var(--black);
 			transform: translate(-4px, -4px);
@@ -146,10 +160,11 @@ nav {
 	hr {
 		color: var(--gray);
 		font-family: wildpines;
+		line-height: 1.6;
 		text-align: center;
-		height: 1.25em;
-		aspect-ratio: 5;
 		background: url(_asset/tape.png) no-repeat center / contain;
+		height: 1.5em;
+		aspect-ratio: 5;
 
 		&::after {content: attr(title) " ✄"}
 	}
@@ -177,13 +192,13 @@ tape-deck {
 	rotate: -1deg;
 
 	button {
-		border-inline-end: 1px solid rgb(from currentcolor r g b / 0.25);
-		transition: color 0.1s;
-		&:hover {color: var(--off-white)}
+		border-inline-end: 1px dotted rgb(from var(--gray) r g b / 0.5);
 	}
 
 	button, select {
 		padding: 1em 0.9em;
+		transition: color 0.1s;
+		&:hover {color: var(--off-white)}
 	}
 }
 
@@ -246,7 +261,17 @@ tape-deck {
 		contain: inline-size;
 		max-width: 100vw;
 		height: unset;
-		padding-bottom: 50px;
+	}
+
+	h1 {
+		font-size: 3em;
+		text-align: center;
+	}
+	#back {
+		margin-bottom: 0;
+	}
+	#other-blogs {
+		color: inherit;
 	}
 
 	.page {

@@ -1,7 +1,7 @@
 XML.template = page => `
 	<header>
-		<time id="date" datetime="${page.date}">${new Date(page.date).toLocaleDateString("en-GB", {month: "short", day: "numeric", year: "2-digit"}).toLowerCase()}</time>
 		<h2 id="name">${page.name}</h2>
+		<time id="date" datetime="${page.date}">${page.date.split("-").toReversed().join(".")}</time>
 	</header>
 	<main>${page.content}</main>
 	<footer>
@@ -9,6 +9,14 @@ XML.template = page => `
 	</footer>
 `;
 XML.nav(document.getElementById("entry"), document.querySelectorAll("nav button"));
+
+
+
+// buttons
+
+for (const button of document.querySelectorAll("nav button")) {
+	button.title = button.textContent.trim().slice(5).trimStart();
+}
 
 
 
