@@ -250,6 +250,9 @@ tape-deck {
 	margin-top: 4.5em;
 }
 
+#daisy1 {left: -90px; top: calc(50% + 60px)}
+#daisy2 {right: -65px; bottom: calc(50% + 65px); scale: 0.75}
+
 #maps {
 	width: 400px;
 	right: -120px;
@@ -288,10 +291,5 @@ tape-deck {
 		rotate: 0deg !important;
 	}
 
-	#rosebed {
-		position: fixed;
-		left: -50%;
-	}
-	tape-deck, #maps {display: none}
-
+	.decor, tape-deck {display: none}
 }
