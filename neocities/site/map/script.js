@@ -1,5 +1,5 @@
 const map = document.body;
-const stopOffset = {x: 28, y: 10};
+const stopOffset = {x: 27, y: 11};
 
 let style = getComputedStyle(document.body);
 const colors = [
@@ -11,7 +11,7 @@ const colors = [
 onload = () => {
 	const ctx = map.querySelector("canvas").getContext("2d");
 	ctx.canvas.width = map.offsetWidth;
-	ctx.canvas.height = map.offsetHeight;
+	ctx.canvas.height = map.offsetHeight + 20;
 	ctx.lineWidth = 40;
 	ctx.lineJoin = "round";
 	ctx.lineCap = "round";

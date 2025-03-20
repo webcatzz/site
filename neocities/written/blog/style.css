@@ -11,10 +11,8 @@ body {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-
 	color: var(--black);
 	font-family: ms-pgothic;
-
 	max-width: max-content;
 	height: 100vh;
 	background:
@@ -25,6 +23,7 @@ body {
 	margin-inline: auto;
 	position: relative;
 	overflow-y: hidden;
+	scrollbar-color: rgb(from var(--gray) r g b / 0.5) transparent;
 	
 	&::before {
 		content: "";
