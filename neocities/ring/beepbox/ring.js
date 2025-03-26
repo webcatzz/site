@@ -20,6 +20,7 @@ webring = {
 		"https://alan460.is-hella.gay",
 		"https://swiftred.neocities.org",
 		"https://atarax.neocities.org",
+		"https://ihatetehbsod.neocities.org",
 	]
 };
 
