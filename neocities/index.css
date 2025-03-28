@@ -4,6 +4,9 @@ body {
 	color: var(--black);
 	font-family: sans-serif;
 	background-color: var(--white);
+	max-width: 450px;
+	padding: 4em;
+	margin-inline: auto;
 }
 
 
@@ -18,9 +21,6 @@ body {
 		"footer footer"
 		/ 1fr 2fr;
 	gap: 1em;
-	max-width: 450px;
-	padding: 4em;
-	margin-inline: auto;
 }
 
 
@@ -71,7 +71,7 @@ nav {
 }
 
 #blog {
-	--color: #edcf7b;
+	--color: #f0d383;
 
 	&:hover::before {
 		--range: 32px;
@@ -112,6 +112,27 @@ footer {
 
 	a {
 		text-decoration: underline dotted;
+	}
+}
+
+
+
+/* updates */
+
+#updates {
+	max-height: 200px;
+	margin-top: 2em;
+	overflow-y: auto;
+
+	article {
+		margin-block: 0.5em;
+	}
+	h2 {
+		font-size: 0.875em;
+		font-family: unset;
+	}
+	p {
+		margin-block: 0;
 	}
 }
 

@@ -86,6 +86,14 @@ audio {width: 100%}
 
 
 
+/* style reset */
+
+dd {
+	margin-left: 0;
+}
+
+
+
 /* tape deck */
 
 tape-deck {
