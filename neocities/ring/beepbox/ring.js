@@ -21,6 +21,7 @@ webring = {
 		"https://swiftred.neocities.org",
 		"https://atarax.neocities.org",
 		"https://ihatetehbsod.neocities.org",
+		"https://bailey.lockheart.love",
 	]
 };
 
