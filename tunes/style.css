@@ -15,7 +15,7 @@ body {
 	background:
 		radial-gradient(closest-side circle at 64%, #d2daf7, transparent),
 		url(assets/clouds.png) center / cover,
-		radial-gradient(at center, #cfe7f5, #e5f4fc);
+		radial-gradient(at center, #faedd8, #d9dbfb, #cfe7f5 50%, #e5f4fc);
 	height: 100vh;
 	padding-right: 128px;
 	overflow: hidden;
@@ -136,7 +136,7 @@ h1, h2, h3, h4, h5, h6 {
 	display: grid;
 	grid-template-columns: 1fr auto;
 	grid-template-rows: auto 1fr;
-	column-gap: 1em;
+	gap: 0.25em 1em;
 	text-shadow: 0.05em 0.05em #f2eff2;
 	padding: 1em;
 	background: url(assets/scrap.png) no-repeat top / 100%;
@@ -160,7 +160,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #view-placeholder {
-	color: #c9c9f7;
+	color: #c2b8f7;
 	font-size: 1.5em;
 	font-family: serif;
 	font-style: italic;
