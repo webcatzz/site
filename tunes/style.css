@@ -1,0 +1,188 @@
+@font-face {font-family: alte; src: url(/assets/fonts/alte.ttf)}
+@keyframes appear {from {opacity: 0}}
+
+::selection {
+	background-color: #cfe7f5bf;
+}
+
+body {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 64px;
+	color: var(--black);
+	font-family: mspgothic;
+	background:
+		radial-gradient(closest-side circle at 64%, #d2daf7, transparent),
+		url(assets/clouds.png) center / cover,
+		radial-gradient(at center, #cfe7f5, #e5f4fc);
+	height: 100vh;
+	padding-right: 128px;
+	overflow: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: alte;
+	font-weight: normal;
+}
+
+/* back */
+
+#intro {
+	color: #d2daf7;
+	font-family: serif;
+	font-style: italic;
+	letter-spacing: 0.1em;
+	max-width: 17.5%;
+	position: absolute;
+	left: 32px;
+	top: calc(100vh - 550px);
+}
+
+#back {
+	font-family: alte;
+	font-size: 4em;
+	background: url(assets/case.png) center / cover;
+	width: 500px;
+	aspect-ratio: 579/511;
+	box-shadow: 8px -8px var(--black);
+	rotate: 8deg;
+	position: absolute;
+	left: -50px;
+	bottom: -50px;
+}
+
+/* tracks */
+
+#tracklist {
+	--padding: 25px;
+	--offset: calc(80px + var(--padding));
+	--width: calc(50% - var(--offset) - var(--padding));
+	background: url(assets/disc.png) center / cover var(--black);
+	width: 500px;
+	aspect-ratio: 1;
+	box-sizing: border-box;
+	box-shadow:
+		-8px 8px var(--black),
+		16px 16px 64px -32px #cfe7f5;
+	border-radius: 50%;
+	contain: strict;
+	flex-shrink: 0;
+}
+
+#search, .track {
+	text-shadow: 0.05em 0.05em #f2eff2;
+	width: var(--width);
+	transform-origin: calc(var(--offset) * -1);
+	translate: 0 -50%;
+	position: absolute;
+	left: calc(50% + var(--offset));
+	top: 50%;
+	animation: appear 0.125s;
+}
+
+#search {
+	font: italic 0.875em serif;
+	letter-spacing: 0.05em;
+}
+
+.track {
+	display: block;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+
+	&:hover {
+		font-weight: bold;
+	}
+}
+
+.scroll-hidden, .search-hidden {
+	display: none !important;
+}
+
+/* view */
+
+#view {
+	display: grid;
+	grid-template-rows: 2fr 3fr 2fr;
+	gap: 1em;
+	width: 400px;
+	aspect-ratio: 1;
+}
+
+#view-name {
+	font-size: 4em;
+	line-height: 1;
+	text-shadow: 0.025em 0.025em #f2eff2;
+	text-overflow: ellipsis;
+	background: url(assets/scrap.png) no-repeat bottom / 100%;
+	max-height: 2em;
+	padding-bottom: 0.1em;
+	border-radius: 12px;
+	overflow: hidden;
+	align-self: end;
+}
+
+#view-embed {
+	background-color: var(--black);
+	width: 100%;
+	height: 100%;
+	border-radius: 6px;
+	margin-left: 16px;
+}
+
+#view-footer {
+	display: grid;
+	grid-template-columns: 1fr auto;
+	grid-template-rows: auto 1fr;
+	column-gap: 1em;
+	text-shadow: 0.05em 0.05em #f2eff2;
+	padding: 1em;
+	background: url(assets/scrap.png) no-repeat top / 100%;
+	border-radius: 12px;
+	align-self: start;
+}
+
+#view-note {
+	grid-column: 1;
+	grid-row: 1;
+}
+
+#view-tags {
+	grid-column: 2;
+	grid-row: 1 / 3;
+}
+
+#view-date {
+	grid-column: 1;
+	grid-row: 2;
+}
+
+#view-placeholder {
+	color: #c9c9f7;
+	font-size: 1.5em;
+	font-family: serif;
+	font-style: italic;
+	letter-spacing: 0.25em;
+	justify-self: center;
+	align-self: center;
+	grid-row: span 3;
+}
+
+/* mobile */
+
+@media (max-width: 600px) {
+
+	body {
+		flex-direction: column;
+		gap: 0;
+		height: unset;
+		padding-right: unset;
+	}
+
+	#intro, #back {
+		display: none;
+	}
+
+}

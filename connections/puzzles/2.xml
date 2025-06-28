@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<connections>
+	<categories>
+		<category id="1" color="yellow">wesbian roommates</category>
+		<category id="2" color="green">professors</category>
+		<category id="3" color="blue">big thief songs</category>
+		<category id="4" color="purple">dream blunt rotation</category>
+	</categories>
+	<terms>
+		<term category="2">nicholas</term>
+		<term category="3">lorraine</term>
+		<term category="1">lune</term>
+		<term category="4">percy</term>
+		<term category="4">flora</term>
+		<term category="2">courtney</term>
+		<term category="3">jenni</term>
+		<term category="3">haley</term>
+		<term category="3">paul</term>
+		<term category="4">weebeli</term>
+		<term category="1">ollie</term>
+		<term category="2">alex</term>
+		<term category="1">willner</term>
+		<term category="2">steph</term>
+		<term category="4">zippy</term>
+		<term category="1">diane</term>
+	</terms>
+</connections>

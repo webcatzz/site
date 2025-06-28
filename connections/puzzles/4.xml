@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<connections>
+	<categories>
+		<category id="3" color="yellow">texter's shorthand</category>
+		<category id="1" color="green">negative prefixes</category>
+		<category id="2" color="blue">in latin</category>
+		<category id="4" color="purple">verbs</category>
+		<category id="5" color="red">put two and two together</category>
+	</categories>
+	<terms>
+		<term category="5">two</term>
+		<term category="4">is</term>
+		<term category="5">so</term>
+		<term category="5">up</term>
+		<term category="2">eg</term>
+		<term category="2">ad</term>
+		<term category="4">be</term>
+		<term category="5">by</term>
+		<term category="1">im</term>
+		<term category="1">in</term>
+		<term category="1">un</term>
+		<term category="1">de</term>
+		<term category="3">bc</term>
+		<term category="4">go</term>
+		<term category="3">rn</term>
+		<term category="2">ie</term>
+		<term category="3">ik</term>
+		<term category="4">do</term>
+		<term category="3">ic</term>
+		<term category="2">pm</term>
+	</terms>
+</connections>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<connections>
+	<categories>
+		<category id="1" color="yellow">featured in willy wonka</category>
+		<category id="2" color="green">gun down</category>
+		<category id="3" color="blue">psa</category>
+		<category id="4" color="purple">basketball teams</category>
+	</categories>
+	<terms>
+		<term category="4">wizards</term>
+		<term category="2">shoot</term>
+		<term category="2">fire</term>
+		<term category="1">buckets</term>
+		<term category="1">gloop</term>
+		<term category="2">plug</term>
+		<term category="4">nets</term>
+		<term category="3">town crier</term>
+		<term category="3">radio</term>
+		<term category="3">newspaper</term>
+		<term category="1">salt</term>
+		<term category="4">celtics</term>
+		<term category="1">teevee</term>
+		<term category="3">television</term>
+		<term category="2">pepper</term>
+		<term category="4">pacers</term>
+	</terms>
+</connections>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<connections>
+	<categories>
+		<category id="1" color="yellow">yellow</category>
+		<category id="2" color="green">green</category>
+		<category id="3" color="blue">blue</category>
+		<category id="4" color="purple">purple</category>
+	</categories>
+	<terms>
+		<term category="2">tree</term>
+		<term category="4">heart</term>
+		<term category="4">rain</term>
+		<term category="2">revolution</term>
+		<term category="3">water</term>
+		<term category="4">eggplant</term>
+		<term category="3">streak</term>
+		<term category="1">sun</term>
+		<term category="4">prose</term>
+		<term category="1">banana</term>
+		<term category="3">collar</term>
+		<term category="3">sky</term>
+		<term category="2">crocodile</term>
+		<term category="1">pencil</term>
+		<term category="1">schoolbus</term>
+		<term category="2">emerald</term>
+	</terms>
+</connections>

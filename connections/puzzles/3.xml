@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<connections>
+	<categories>
+		<category id="1" color="yellow">associated with bad luck</category>
+		<category id="2" color="green">they rhyme</category>
+		<category id="3" color="blue">the ___</category>
+		<category id="4" color="purple">plants with an extra letter</category>
+	</categories>
+	<terms>
+		<term category="3">one</term>
+		<term category="2">two</term>
+		<term category="4">three</term>
+		<term category="1">four</term>
+		<term category="1">black cat</term>
+		<term category="3">hulk</term>
+		<term category="4">blur</term>
+		<term category="1">mirror</term>
+		<term category="4">brasil</term>
+		<term category="2">peru</term>
+		<term category="3">congo</term>
+		<term category="2">nauru</term>
+		<term category="4">drill</term>
+		<term category="2">screw</term>
+		<term category="1">ladder</term>
+		<term category="3">clink</term>
+	</terms>
+</connections>

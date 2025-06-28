@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<p>redirecting...</p>
+
+<script>
+let sites = [
+	"juneish.neocities.org",
+	"kelprot.neocities.org",
+	"murumart.neocities.org/m/beeps/",
+	"troy-sucks.neocities.org/beepbox",
+	"ninacti0n.neocities.org",
+	"mikaorangeart.neocities.org",
+	"robophobia.org",
+	"fizzsea.neocities.org",
+	"foggybear42.neocities.org",
+	"mechagic.github.io",
+	"sawtooth.neocities.org",
+	"neovium.xyz",
+	"hellokittyminigun.neocities.org",
+	"item64.neocities.org",
+	"transferns.neocities.org",
+	"teethinvitro.neocities.org/music",
+]
+let idx = sites.findIndex(site => document.referrer.startsWith(site));
+
+if (idx != -1) {
+	if (location.search === "?prev") location.replace(sites.at(idx - 1));
+	else if (location.search === "?next") location.replace(sites[(idx + 1) % sites.length]);
+}
+</script>
+
+</body>
+</html>

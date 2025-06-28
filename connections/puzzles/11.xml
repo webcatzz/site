@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<connections>
+	<categories>
+		<category id="1" color="yellow">plagues of egypt</category>
+		<category id="3" color="green">fucked up brain anatomy</category>
+		<category id="2" color="blue">social psychology topics</category>
+		<category id="4" color="purple">brutal death metal bands</category>
+	</categories>
+	<terms>
+		<term category="1">pestilence</term>
+		<term category="4">regurgitated entrails</term>
+		<term category="2">cognitive dissonance</term>
+		<term category="4">dying fetus</term>
+		<term category="3">infarct</term>
+		<term category="4">cephalotripsy</term>
+		<term category="3">ruptured cerebral artery</term>
+		<term category="1">darkness</term>
+		<term category="2">terror management</term>
+		<term category="1">frogs</term>
+		<term category="2">homophily</term>
+		<term category="3">frontal lobe abnormality</term>
+		<term category="4">defeated sanity</term>
+		<term category="3">enlarged amygdala</term>
+		<term category="1">swarm</term>
+		<term category="2">operant conditioning</term>
+	</terms>
+</connections>

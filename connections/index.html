@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>paraphernalia → junnections</title>
+	<link rel="stylesheet" href="/blanket.css">
+	<link rel="stylesheet" href="style.css">
+	<script defer src="/assets/scripts/xml.js"></script>
+	<script defer src="script.js"></script>
+</head>
+<body>
+
+<div id="top">
+	<img id="logo" src="assets/logo.png" alt="The NYTGames logo backwards.">
+</div>
+
+<div id="title">
+	<h1>Junnections</h1>
+	<div id="selector-wrapper">
+		<select id="selector">
+			<option value="1">April 27, 2025</option>
+			<option value="3">This One Is Bullshit (In Our Defense It Was Really Hard To Write This Gimmick)</option>
+			<option value="4">Hi</option>
+			<option value="5">Something Nice For Once</option>
+			<option value="6">Did You Hear That?</option>
+			<option value="7">Feat.</option>
+			<option value="8">Hermann's Favorite</option>
+			<option value="9">Got A Smoke?</option>
+			<option value="10">Rainy Day</option>
+			<option value="11">Sounds Metal (Ember Edition)</option>
+		</select>
+		<svg id="selector-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down-icon lucide-chevron-down"><path d="m6 9 6 6 6-6"/></svg>
+	</div>
+</div>
+
+<div id="content">
+	<div id="tip">Create groups of four!</div>
+	<div id="grid"></div>
+	<div id="mistakes">Mistakes remaining: </div>
+	<div class="buttons">
+		<button id="shuffle">Shuffle</button>
+		<button id="deselect" disabled>Deselect All</button>
+		<button id="submit" disabled>Submit</button>
+	</div>
+	<div id="overlay" hidden>
+		<div id="overlay-title">Well Done!</div>
+		<div id="overlay-guesses"></div>
+		<div class="buttons">
+			<button id="share">Share Your Results</button>
+			<button id="close">Admire Puzzle</button>
+		</div>
+	</div>
+	<div id="status"></div>
+</div>
+	
+</body>
+</html>

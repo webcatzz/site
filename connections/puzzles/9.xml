@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<connections>
+	<categories>
+		<category id="2" color="yellow">found at high school graduation</category>
+		<category id="3" color="green">has a filter</category>
+		<category id="4" color="blue">frosty the snowman uniform</category>
+		<category id="1" color="purple">farm animals with the first letter changed</category>
+	</categories>
+	<terms>
+		<term category="1">cig</term>
+		<term category="3">coffee</term>
+		<term category="2">cap</term>
+		<term category="4">button</term>
+		<term category="3">pool</term>
+		<term category="2">cigar</term>
+		<term category="4">coal</term> 
+		<term category="1">low</term>
+		<term category="1">cheep</term>
+		<term category="2">gown</term>
+		<term category="3">cigarette</term>
+		<term category="2">diploma</term>
+		<term category="3">instagram</term>
+		<term category="4">top hat</term>
+		<term category="1">thicken</term>
+		<term category="4">pipe</term>
+	</terms>
+</connections>

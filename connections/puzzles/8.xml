@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<connections>
+	<categories>
+		<category color="yellow">my parents fighting</category>
+		<category color="green">me getting bit by a dog</category>
+		<category color="blue">my dead fish</category>
+		<category color="purple">the face of god</category>
+	</categories>
+	<terms>
+		<term><img src="assets/rorschachs/1.png"/></term>
+		<term><img src="assets/rorschachs/2.png"/></term>
+		<term><img src="assets/rorschachs/3.png"/></term>
+		<term><img src="assets/rorschachs/4.png"/></term>
+		<term><img src="assets/rorschachs/5.png"/></term>
+		<term><img src="assets/rorschachs/6.png"/></term>
+		<term><img src="assets/rorschachs/7.png"/></term>
+		<term><img src="assets/rorschachs/8.png"/></term>
+		<term><img src="assets/rorschachs/9.png"/></term>
+		<term><img src="assets/rorschachs/10.png"/></term>
+		<term><img src="assets/rorschachs/11.png"/></term>
+		<term><img src="assets/rorschachs/12.png"/></term>
+		<term><img src="assets/rorschachs/13.png"/></term>
+		<term><img src="assets/rorschachs/14.png"/></term>
+		<term><img src="assets/rorschachs/15.png"/></term>
+		<term><img src="assets/rorschachs/16.png"/></term>
+	</terms>
+	<style>
+.term img {
+	object-fit: contain;
+	width: 100%;
+	height: 100%;
+}
+.category img {
+	display: inline;
+	height: 1.5em;
+}
+	</style>
+	<script>
+game.getCategory = guess => {
+	let category = game.categories[game.getCompletedCategories()];
+	category.terms = [...guess];
+	return category;
+};
+	</script>
+</connections>
