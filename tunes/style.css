@@ -1,5 +1,4 @@
 @font-face {font-family: alte; src: url(/assets/fonts/alte.ttf)}
-@keyframes appear {from {opacity: 0}}
 
 ::selection {
 	background-color: #cfe7f5bf;
@@ -78,7 +77,6 @@ h1, h2, h3, h4, h5, h6 {
 	position: absolute;
 	left: calc(50% + var(--offset));
 	top: 50%;
-	animation: appear 0.125s;
 }
 
 #search {

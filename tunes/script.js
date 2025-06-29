@@ -52,8 +52,10 @@ const rscroll = {
 			child.classList.remove("scroll-hidden");
 			let rotation = (height + child.offsetHeight / 2 - this.value) / 2;
 			height += child.offsetHeight;
-			if (Math.abs(rotation) < 120)
+			if (Math.abs(rotation) < 135) {
 				child.style.rotate = rotation + "deg";
+				child.style.opacity = 1.0 - (Math.abs(rotation) - 90) / 45;
+			}
 			else child.classList.add("scroll-hidden");
 		}
 		this.max = height;
