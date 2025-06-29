@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<page>
+<name>pure css* tabs</name>
+<content>
+
+<p>i've had a few people ask me about making tabs. there's an easy way to do it with css, using...</p>
+
+<ul>
+	<li><a href="https://developer.mozilla.org/en-US/docs/Web/API/URL/hash">url hashes</a> — the text after a "#" in the url, usually used to auto-scroll to an element with a matching id</li>
+	<li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/:target">:target</a> — a css pseudo-class that selects the element referenced by the url hash</li>
+</ul>
+
+<p>here's an example. say i want to navigate between a set of tabs, with only one visible at a time.</p>
+
+<p>links can direct to url hashes like any other url; clicking a link with <code>href="#id"</code> will append the hash "id" to your url. i can give each of my tabs a unique id and set up a corresponding link for each, like so...</p>
+
+<pre><code>
+&lt;a href="#tab1"&gt;tab one&lt;/a&gt;
+&lt;a href="#tab2"&gt;tab two&lt;/a&gt;
+&lt;a href="#tab3"&gt;tab three&lt;/a&gt;
+
+&lt;div class="tab" id="tab1"&gt;tab one&lt;/div&gt;
+&lt;div class="tab" id="tab2"&gt;tab two&lt;/div&gt;
+&lt;div class="tab" id="tab3"&gt;tab three&lt;/div&gt;
+</code></pre>
+
+<p>by default, the document will automatically scroll to the first element with an id matching the url hash, so clicking on a link will scroll to its corresponding tab. that's nice but not exactly what i need.</p>
+
+<p>i only want to show the tab matching the url hash, which i can select easily with <code>:target</code>. to hide all tabs that aren't the current tab, i just invert the rule:</p>
+
+<pre><code>
+.tab:not(:target) {display: none}
+</code></pre>
+
+<p>and that's it!</p>
+
+<h3>flaws</h3>
+
+<p>this technique has some flaws, which need some javascript to be remedied.</p>
+
+<p>first, if there is no url hash present, then all tabs are hidden. this is sometimes desired, but most of the time you want to show a tab by default. you can append a url hash without refreshing the page like so</p>
+
+<pre><code>
+if (!location.hash) history.replace(null, "", "#placeholder");
+</code></pre>
+
+<p id="second">second, if you're on a scrolling page and the tab isn't right at the top, the document'll scroll down to that tab. you can kind of prevent this behavior by just scrolling back up to the top every time you change the hash</p>
+
+<pre><code>
+addEventListener("hashchange", () =&gt; scrollTo(0, 0));
+</code></pre>
+
+<p>ok have fun i love you</p>
+
+</content>
+</page>

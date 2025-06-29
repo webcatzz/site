@@ -1,0 +1,176 @@
+@font-face {font-family: alte; src: url(/assets/fonts/alte.ttf)}
+@keyframes rotate {from {scale: 1} 25% {scale: -1 1} 50% {scale: -1} 75% {scale: 1 -1}}
+
+:root {
+	--white: #e2d8ca;
+	--gray: color-mix(in srgb, var(--black), var(--white) 25%);
+}
+
+body {
+	display: flex;
+	align-items: start;
+	gap: 64px;
+	color: var(--black);
+	font-family: alte;
+	background-color: var(--white);
+	padding: 64px 128px;
+}
+
+h1, h2, h3 {
+	font-weight: unset;
+}
+
+/* nav */
+
+nav {
+	display: flex;
+	flex-direction: column;
+	align-items: end;
+	text-align: right;
+	margin-top: 1em;
+	position: sticky;
+	top: 64px;
+}
+
+#nav-title {
+	font-size: unset;
+	text-decoration: underline;
+	margin-bottom: 0.5em;
+}
+
+.nav-item {
+	position: relative;
+
+	&.active::after {
+		content: "";
+		display: block;
+		background: url(assets/circle.png) center / 100% 100%;
+		position: absolute;
+		inset: -0.5em -2em;
+		pointer-events: none;
+		animation: 0.25s rotate step-end infinite;
+	}
+}
+
+#back {
+	margin-top: 0.5em;
+}
+
+/* view */
+
+#view {
+	max-width: 464px;
+}
+
+#view-title {
+	font-size: 3em;
+}
+
+#view-line {
+	width: 200px;
+	margin-block: -0.5em 2em;
+}
+
+#view-content {
+	background: url(assets/cardboard.jpg) top / 100%;
+	padding: 1em 2em;
+	border-radius: 4px;
+	position: relative;
+
+	&::before, &::after {
+		content: "";
+		display: block;
+		background-position: center;
+		background-size: cover;
+		aspect-ratio: 3259/1145;
+		position: absolute;
+		inset-inline: -8px;
+		z-index: -1;
+	}
+
+	&::before {
+		background-image: url(assets/cardboard_top.png);
+		top: -32px;
+	}
+
+	&::after {
+		background-image: url(assets/cardboard_top.png);
+		bottom: -16px;
+	}
+}
+
+h3 {
+	font-size: 1.5em;
+	margin-block: 1.5rem 1rem;
+}
+
+b {
+	font-weight: normal;
+	background-color: rgb(from var(--yellow) r g b / 0.25);
+}
+
+main a {
+	text-decoration: underline;
+}
+
+code, pre {
+	color: var(--white);
+	background-color: var(--black);
+	border-radius: 4px;
+}
+
+code {
+	padding: 2px 4px;
+}
+
+pre {
+	text-overflow: ellipsis;
+	tab-size: 4;
+	padding: 0 1em 1.25em;
+	outline: 1px solid var(--gray);
+	outline-offset: -2px;
+	margin-block: 1em;
+	overflow: hidden;
+	resize: horizontal;
+
+	code {
+		padding: unset;
+		outline: unset;
+	}
+}
+
+/* mobile */
+
+@media (max-width: 900px) {
+
+	body {
+		flex-direction: column;
+		gap: 32px;
+		padding: 16px;
+	}
+
+	nav {
+		display: unset;
+		text-align: unset;
+		margin-top: unset;
+		position: unset;
+	}
+
+	.nav-item {
+		display: inline;
+		margin-right: 0.5em;
+
+		&.active::after {
+			inset-inline: -1em;
+		}
+	}
+
+	#back {
+		display: block;
+	}
+
+	#view {
+		max-width: unset;
+	}
+
+}
