@@ -11,7 +11,7 @@ fetch("tunes.txt").then(async res => {
 		// element
 		let el = tracklist.appendChild(document.createElement("button"));
 		el.classList.add("track");
-		el.textContent = track.name;
+		el.textContent = (track.tags?.includes("starred") ? "★" : track.tags?.includes("loop") ? "" : "○") + track.name;
 		el.title = track.name;
 		el.dataset.id = track.name;
 		el.addEventListener("click", tracklist.onItemClicked);

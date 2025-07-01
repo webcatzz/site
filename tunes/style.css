@@ -136,8 +136,8 @@ h1, h2, h3, h4, h5, h6 {
 	grid-template-rows: auto 1fr;
 	gap: 0.25em 1em;
 	text-shadow: 0.05em 0.05em #f2eff2;
-	padding: 1em;
 	background: url(assets/scrap.png) no-repeat top / 100%;
+	padding: 1em;
 	border-radius: 12px;
 	align-self: start;
 }
