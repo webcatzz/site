@@ -24,11 +24,4 @@
 		<term category="3">fast</term>
 		<term category="1">center</term>
 	</terms>
-	<script>
-game.moveTermsToRow = (terms, row) => {
-	this.move(terms[4], Math.min(3 + row * 4));
-	terms[4].classList.add("disabled");
-	game.moveTermsToRow(terms, row);
-};
-	</script>
 </connections>

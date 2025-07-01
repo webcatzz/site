@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<connections>
+	<categories>
+		<category id="1" color="yellow">directed by steven spielberg</category>
+		<category id="2" color="green">adam sandler</category>
+		<category id="3" color="blue">2024 legacy sequels</category>
+		<category id="4" color="purple">noir</category>
+	</categories>
+	<terms>
+		<term category="1">indiana jones</term>
+		<term category="3">twister</term>
+		<term category="3">beetlejuice</term>
+		<term category="4">the maltese falcon</term>
+		<term category="1">jaws</term>
+		<term category="2">uncut gems</term>
+		<term category="4">mulholland drive</term>
+		<term category="3">gladiator</term>
+		<term category="1">minority report</term>
+		<term category="2">click</term>
+		<term category="2">50 first dates</term>
+		<term category="4">double indemnity</term>
+		<term category="2">happy gilmore</term>
+		<term category="1">jurassic park</term>
+		<term category="3">ghostbusters</term>
+		<term category="4">se7en</term>
+	</terms>
+</connections>

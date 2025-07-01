@@ -17,131 +17,67 @@ body {
 	font-family: system-ui, sans-serif;
 }
 
-/* top */
+#header, #content {
+	padding-inline: max(16px, calc(50vw - 300px));
+}
 
-#top {
-	font-family: karnak;
-	padding: 1em;
+/* header */
+
+#header {
+	background-image: radial-gradient(50% 100% at bottom, rgb(from var(--yellow) r g b / 0.125), transparent);
+	padding-top: 32px;
 	border-bottom: 1px solid var(--gray);
 }
-
-#logo {
-	height: 2em;
-}
-
-/* title */
 
 #title {
-	display: flex;
-	align-items: end;
-	gap: 24px;
-	padding: 2em 6em;
-	border-bottom: 1px solid var(--gray);
-}
-
-h1 {
-	font: 3em karnak;
+	font: 5em karnak;
 }
 
 #selector-wrapper {
 	font: 1.75em franklin300;
-	padding-right: 1em;
-	border-bottom: 1px solid var(--gray);
-	margin-bottom: 0.3em;
+	background-color: white;
+	border: 1px solid var(--gray);
+	border-bottom: none;
+	border-top-left-radius: 8px;
+	border-top-right-radius: 8px;
+	margin-block: -0.25em -1px;
+	margin-left: 1.25em;
 	position: relative;
+	transition: background-color 0.1s;
+
+	&:hover {
+		background-color: var(--gray);
+	}
 }
 
 #selector {
-	font: inherit;
 	text-overflow: ellipsis;
-	width: 100%;
+	width: calc(100% - 1em);
+	padding: 0.25em 0.5em;
 }
 
 #selector-icon {
 	translate: 0 -50%;
 	position: absolute;
 	top: 50%;
-	right: 0;
+	right: 0.5em;
 	pointer-events: none;
 }
 
 /* content */
 
 #content {
-	max-width: 600px;
-	padding-inline: 16px;
-	margin-inline: auto;
+	display: flex;
+	flex-direction: column;
+	gap: 24px;
+	padding-block: 64px 96px;
 	position: relative;
-}
-
-#tip, #grid, #mistakes, .buttons {
-	margin-block: 24px;
 }
 
 #tip {
 	font: unset;
 	text-align: center;
 }
-
-/* grid */
-
-#grid {
-	--rows: 4;
-	font-weight: bold;
-	text-align: center;
-	text-transform: uppercase;
-	aspect-ratio: 2;
-	position: relative;
-}
-
-.term, .category {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	height: calc(100% / var(--rows) - 6px);
-	box-sizing: border-box;
-	padding: 6px;
-	border-radius: 8px;
-	position: absolute;
-	contain: size;
-}
-
-.term {
-	width: calc(25% - 6px);
-	background-color: var(--gray);
-	cursor: pointer;
-	transition: 0.25s background-color, 0.5s inset;
-	user-select: none;
-
-	&.selected {
-		color: #f8f8f8;
-		background-color: #5a594e;
-	}
-}
-
-.category {
-	flex-direction: column;
-	gap: 2px;
-	left: 0;
-	right: 0;
-	z-index: 1;
-	animation: 0.25s pop;
-}
-.yellow {background-color: var(--yellow)}
-.green {background-color: var(--green)}
-.blue {background-color: var(--blue)}
-.purple {background-color: var(--purple)}
-.red {background-color: var(--red)}
-
-.category-terms {
-	font-weight: normal;
-}
-
-.disabled {
-	pointer-events: none;
-}
-
-/* mistakes */
 
 #mistakes {
 	display: flex;
@@ -150,7 +86,7 @@ h1 {
 	gap: 8px;
 }
 
-.life {
+.mistake {
 	width: 16px;
 	aspect-ratio: 1;
 	border-radius: 50%;
@@ -159,8 +95,6 @@ h1 {
 
 	&.lost {scale: 0}
 }
-
-/* buttons */
 
 .buttons {
 	display: flex;
@@ -181,8 +115,6 @@ button {
 	}
 }
 
-/* status */
-
 #status {
 	color: #f8f8f8;
 	background-color: #5a594e;
@@ -192,20 +124,73 @@ button {
 	translate: -50%;
 	position: absolute;
 	left: 50%;
-	top: -0.25em;
+	top: calc(64px - 0.25em);
 }
+
+/* grid */
+
+#grid {
+	font-weight: bold;
+	text-transform: uppercase;
+	text-align: center;
+	aspect-ratio: 2;
+	position: relative;
+}
+
+.grid-item {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	box-sizing: border-box;
+	padding: 6px;
+	border-radius: 8px;
+	position: absolute;
+	contain: size;
+}
+
+.term {
+	background-color: var(--gray);
+	cursor: pointer;
+	transition: background-color 0.25s, inset 0.5s;
+	user-select: none;
+}
+
+.category {
+	flex-direction: column;
+	gap: 2px;
+	background-color: var(--color);
+	animation: 0.25s pop;
+}
+
+.selected {
+	color: #f8f8f8;
+	background-color: #5a594e;
+}
+
+.disabled {
+	pointer-events: none;
+}
+
+.category-terms {
+	font-weight: normal;
+}
+
+.yellow {--color: var(--yellow)}
+.green {--color: var(--green)}
+.blue {--color: var(--blue)}
+.purple {--color: var(--purple)}
+.red {--color: var(--red)}
 
 /* overlay */
 
 #overlay {
 	text-align: center;
 	background-color: white;
-	padding: 32px;
+	padding: 64px;
 	position: absolute;
 	inset: 0;
 	z-index: 1;
 	animation: 0.25s appear;
-	pointer-events: all;
 }
 
 #overlay-title {
@@ -217,28 +202,26 @@ button {
 }
 
 #overlay-guesses {
-	display: grid;
-	grid-template-columns: repeat(4, 1fr);
-	row-gap: 2px;
-	max-width: 80px;
+	max-width: max-content;
 	margin-inline: auto;
 }
 
+.overlay-guess {
+	display: flex;
+	margin-block: 2px;
+}
+
 .overlay-term {
+	background-color: var(--color);
+	width: 20px;
 	aspect-ratio: 1;
 	border-radius: 4px;
 }
 
 /* mobile */
 
-@media (max-width: 800px) {
-	#title {
-		flex-direction: column;
-		align-items: center;
-		gap: 8px;
-		padding: 16px;
-	}
-	#date {
-		text-align: center;
+@media (max-width: 600px) {
+	#grid {
+		aspect-ratio: 1.5;
 	}
 }

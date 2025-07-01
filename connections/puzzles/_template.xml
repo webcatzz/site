@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<connections>
+	<categories>
+		<category id="1" color="yellow">YELLOW</category>
+		<category id="2" color="green">GREEN</category>
+		<category id="3" color="blue">BLUE</category>
+		<category id="4" color="purple">PURPLE</category>
+	</categories>
+	<terms>
+		<term category="1">YELLOW</term>
+		<term category="1">YELLOW</term>
+		<term category="1">YELLOW</term>
+		<term category="1">YELLOW</term>
+		<term category="2">GREEN</term>
+		<term category="2">GREEN</term>
+		<term category="2">GREEN</term>
+		<term category="2">GREEN</term>
+		<term category="3">BLUE</term>
+		<term category="3">BLUE</term>
+		<term category="3">BLUE</term>
+		<term category="3">BLUE</term>
+		<term category="4">PURPLE</term>
+		<term category="4">PURPLE</term>
+		<term category="4">PURPLE</term>
+		<term category="4">PURPLE</term>
+	</terms>
+</connections>

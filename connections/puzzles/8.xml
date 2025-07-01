@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <connections>
 	<categories>
-		<category color="yellow">my parents fighting</category>
-		<category color="green">me getting bit by a dog</category>
-		<category color="blue">my dead fish</category>
-		<category color="purple">the face of god</category>
+		<category id="1" color="yellow">my parents fighting</category>
+		<category id="2" color="green">me getting bit by a dog</category>
+		<category id="3" color="blue">my dead fish</category>
+		<category id="4" color="purple">the face of god</category>
 	</categories>
 	<terms>
 		<term><img src="assets/rorschachs/1.png"/></term>
@@ -36,10 +36,10 @@
 }
 	</style>
 	<script>
-game.getCategory = guess => {
-	let category = game.categories[game.getCompletedCategories()];
-	category.terms = [...guess];
-	return category;
-};
+game.countIncorrect = function (terms) {
+	for (const term of terms)
+		term.category = this.categoriesGuessed + 1;
+	return 0;
+}
 	</script>
 </connections>

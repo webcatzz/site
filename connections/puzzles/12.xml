@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<connections mistakes="12">
+	<categories>
+		<category id="2" color="yellow">bring to mind</category>
+		<category id="1" color="green">drives</category>
+		<category id="4" color="blue">memory ___</category>
+		<category id="3" color="purple">types of memory</category>
+	</categories>
+	<terms>
+		<term category="1">flash</term>
+		<term category="1">hard</term>
+		<term category="1">disc</term>
+		<term category="1">thumb</term>
+		<term category="2">remember</term>
+		<term category="2">recall</term>
+		<term category="2">reminisce</term>
+		<term category="2">recollect</term>
+		<term category="3">working</term>
+		<term category="3">semantic</term>
+		<term category="3">flashbulb</term>
+		<term category="3">procedural</term>
+		<term category="4">card</term>
+		<term category="4">foam</term>
+		<term category="4">lane</term>
+		<term category="4">wipe</term>
+	</terms>
+	<style>
+.term.flipped {
+	color: transparent;
+}
+	</style>
+	<script>
+
+async function flip(item) {
+	await item.animate({scale: [1, "0 1"]}, 250).finished;
+	item.classList.toggle("flipped");
+	await item.animate({scale: ["0 1", 1]}, 250).finished;
+}
+
+document.getElementsByClassName("buttons")[0].remove();
+
+// intro
+
+content.classList.add("disabled");
+grid.shuffle();
+status.display("Take a good look!", 3000);
+
+setTimeout(() => {
+	for (let i = 0; i < grid.items.length; i++)
+		setTimeout(() => flip(grid.items[i]), i * 50);
+	setTimeout(() => content.classList.remove("disabled"), grid.items.length * 50);
+}, 3000);
+
+// selection
+
+selection.addSuper = selection.add;
+selection.add = function (item) {
+	this.addSuper(item);
+	flip(item);
+}
+
+selection.removeSuper = selection.remove;
+selection.remove = function (item) {
+	this.removeSuper(item);
+	flip(item);
+}
+
+selection.toggleSuper = selection.toggle;
+selection.toggle = async function(item) {
+	if (this.items.includes(item)) return;
+	this.toggleSuper(item);
+	if (this.items.length == grid.columns) {
+		await game.submit();
+		this.clear();
+	}
+}
+
+// game
+
+game.revealCategory = async function (id, items = grid.items.filter(item => item.category == id)) {
+	let category = this.categories[id - 1];
+	category.revealed = true;
+	this.categoriesGuessed++;
+	for (const item of items) {
+		flip(item);
+		setTimeout(() => {
+			let term = document.createElement("div");
+			term.classList.add("category-terms");
+			term.textContent = item.textContent;
+			item.classList.remove("term", "selected");
+			item.classList.add("category", "disabled", "revealed", category.color);
+			item.textContent = category.text;
+			item.appendChild(term);
+		}, 250);
+		await new Promise(r => setTimeout(r, 100));
+	}
+};
+
+	</script>
+</connections>

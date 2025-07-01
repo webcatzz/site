@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<connections>
+	<categories>
+		<category id="1" color="yellow">math notation</category>
+		<category id="2" color="green">tierlist tiers</category>
+		<category id="3" color="purple">homophones</category>
+	</categories>
+	<terms>
+		<term category="3">one</term>
+		<term category="2">s</term>
+		<term category="1">e</term>
+		<term category="1">x</term>
+		<term category="3">p</term>
+		<term category="2">a</term>
+		<term category="1">n</term>
+		<term category="3">t</term>
+		<term category="1"><span style="text-transform: none">π</span></term>
+		<term category="2">d</term>
+		<term category="2">f</term>
+		<term category="3">q</term>
+	</terms>
+</connections>
