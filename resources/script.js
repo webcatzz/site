@@ -25,6 +25,7 @@ view.open = async function (id) {
 	`;
 	for (const navItem of document.getElementsByClassName("nav-item"))
 		navItem.classList.toggle("active", navItem.dataset.id === id);
+	scrollTo(0, 0);
 	history.replaceState(null, "", "?page=" + id);
 }
 

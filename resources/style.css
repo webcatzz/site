@@ -130,8 +130,7 @@ pre {
 	outline: 1px solid var(--gray);
 	outline-offset: -2px;
 	margin-block: 1em;
-	overflow: hidden;
-	resize: horizontal;
+	overflow: auto hidden;
 
 	code {
 		padding: unset;
@@ -171,6 +170,11 @@ pre {
 
 	#view {
 		max-width: unset;
+	}
+	
+	pre {
+    contain: inline-size;
+    text-overflow: unset;
 	}
 
 }
