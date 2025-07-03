@@ -363,7 +363,7 @@ li {
 	padding-left: 1em;
 
 	&::marker {
-		color: var(--black-trans);
+		color: color-mix(in srgb, var(--black), var(--accent));
 		font-size: 0.75em;
 	}
 }
@@ -408,10 +408,14 @@ summary {
 }
 
 blockquote {
-	padding: 0.5em 1em;
-	border-left: 1px dotted;
-	margin: 1em 0;
-	border-radius: 4px;
+	color: color-mix(in srgb, var(--black), var(--accent) 25%);
+	font-family: serif;
+	font-style: italic;
+	background-image:
+		radial-gradient(50% 100% at top, rgb(from var(--gradient-color) r g b / 8%), transparent),
+		radial-gradient(50% 100% at bottom, rgb(from var(--gradient-color) r g b / 8%), transparent);
+	border-block: 1px dotted var(--border-color);
+	margin-block: 1.5em;
 }
 
 pre {
@@ -425,7 +429,6 @@ pre {
 }
 
 aside,
-blockquote,
 details {
 	> *:first-child {margin-top: 0}
 	> *:last-child {margin-bottom: 0}
@@ -510,7 +513,7 @@ dd {
 }
 
 .caption {
-	color: #201c10bf;
+	color: color-mix(in srgb, var(--black), var(--accent));
 	font-size: 0.875em;
 	text-align: center;
 	margin: 0.5em

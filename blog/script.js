@@ -10,10 +10,11 @@ nav.getChildById = function (id) {
 }
 
 nav.onChildClicked = function () {
-	entry.load(this.dataset.id);
+	entry.loadAndRecord(this.dataset.id);
 }
 
 for (const child of nav.children) {
+	child.title = child.textContent;
 	child.addEventListener("click", nav.onChildClicked);
 }
 
@@ -51,7 +52,6 @@ entry.load = async function (page) {
 	let xml = await XML.fetch(`pages/${page}.xml`);
 	this.textContent = "";
 	this.scroll(0, 0);
-	history.replaceState(null, "", "?page=" + page);
 
 	let header = this.appendChild(document.createElement("hgroup"));
 	header.id = "entry-header";
@@ -80,7 +80,7 @@ entry.load = async function (page) {
 		prevBtn.id = "entry-prev";
 		prevBtn.classList.add("entry-chain-link");
 		prevBtn.textContent = "← prev";
-		prevBtn.addEventListener("click", () => entry.load(navItem.previousElementSibling.dataset.id));
+		prevBtn.addEventListener("click", () => entry.loadAndRecord(navItem.previousElementSibling.dataset.id));
 	}
 
 	if (navItem.nextElementSibling) {
@@ -88,10 +88,15 @@ entry.load = async function (page) {
 		nextBtn.id = "entry-next";
 		nextBtn.classList.add("entry-chain-link");
 		nextBtn.textContent = "next →";
-		nextBtn.addEventListener("click", () => entry.load(navItem.nextElementSibling.dataset.id));
+		nextBtn.addEventListener("click", () => entry.loadAndRecord(navItem.nextElementSibling.dataset.id));
 	}
 	
 	this.animate({opacity: [0, 1]}, 50);
+}
+
+entry.loadAndRecord = function (page) {
+	entry.load(page);
+	history.replaceState(null, "", "?page=" + page);
 }
 
 // url params
