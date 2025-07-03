@@ -1,3 +1,5 @@
+// tapedeck by june @ juneish.neocities.org
+
 class TapeDeck extends HTMLElement {
 
 	dir = "https://file.garden/ZdmFgugxzVCR-8Bl/";

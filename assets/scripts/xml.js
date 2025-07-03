@@ -9,13 +9,13 @@ class XMLNode {
 
 	get(path) {
 		return path.split(" ").reduce((node, tag) => {
-			return node.nodes.find(child => child.tag == tag);
+			return node.nodes.find(child => child.tag === tag);
 		}, this);
 	}
 
 	getAll(path) {
 		let [tag, tail] = path.split(" ", 2);
-		let nodes = this.nodes.filter(node => node.tag == tag);
+		let nodes = this.nodes.filter(node => node.tag === tag);
 		return tail ? nodes.flatMap(node => node.getAll(tail)) : nodes;
 	}
 
@@ -35,38 +35,10 @@ class XMLNode {
 
 const XML = {
 
-	template: xml => xml.toString(),
-	path: file => file + ".xml",
-
-	// loading
-
 	async fetch(file) {
 		let response = await fetch(file);
 		return this.parse(response.ok ? await response.text() : "");
 	},
-
-	async load(file, target, template = this.template) {
-		let content = template(await this.fetch(this.path(file)));
-		typeof content == "string" ? target.innerHTML = content : target.append(...content);
-	},
-
-	loadFromURL(parameter, fallback, target, template = this.template) {
-		this.load(new URLSearchParams(location.search).get(parameter) ?? fallback, target, template);
-	},
-
-	// nav
-
-	addButton(button, page, target) {
-		button.addEventListener("click", function () {
-			XML.load(page, target);
-			target.scrollTo(0, 0);
-			let params = new URLSearchParams(location.search);
-			params.set("page", page);
-			history.replaceState(null, "", "?" + params);
-		});
-	},
-
-	// parsing
 
 	parse(str = "") {
 		let root = new XMLNode;
@@ -85,9 +57,10 @@ const XML = {
 		function handleTag() {
 			i++;
 			if (str.startsWith("!--", i)) i = str.indexOf("-->", i + 3) + 3;
-			else if (str[i] == "?") i = str.indexOf("?>", i + 1) + 2;
-			else if (str[i] == "/") ascend();
-			else descend();
+			else if (str[i] === "?") i = str.indexOf("?>", i + 1) + 2;
+			else if (str[i] === "/") ascend();
+			else if (str[i] !== " ") descend();
+			else node.text += "<";
 		}
 
 		function ascend() {
@@ -100,12 +73,12 @@ const XML = {
 			node = node.child();
 			node.tag = str.substring(i, i = find(i => " />".includes(str[i])));
 			while (!"/>".includes(str[i])) handleAttribute();
-			str[i] == "/" ? ascend() : i++;
+			str[i] === "/" ? ascend() : i++;
 		}
 		
 		function handleAttribute() {
 			let key = str.substring(i, i = str.indexOf("=", i)).trimStart();
-			let val = str.substring(i += 2, i = find(i => str[i] == "\"" && str[i - 1] != "\\"));
+			let val = str.substring(i += 2, i = find(i => str[i] === "\"" && str[i - 1] !== "\\"));
 			node.attributes[key] = val;
 			i++;
 		}
