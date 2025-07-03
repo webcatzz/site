@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<connections mistakes="12">
+<connections mistakes="16">
 	<categories>
 		<category id="2" color="yellow">bring to mind</category>
 		<category id="1" color="green">drives</category>
@@ -97,4 +97,7 @@ game.revealCategory = async function (id, items = grid.items.filter(item => item
 };
 
 	</script>
+	<commentary>
+		<comment from="june">this one was really fun to make. the idea popped fully-formed into my mind and i immediately texted braden</comment>
+	</commentary>
 </connections>

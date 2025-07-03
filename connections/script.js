@@ -92,14 +92,14 @@ const mistakes = Object.assign(document.getElementById("mistakes"), {
 
 	num: 0,
 	
-	add() {
+	gain() {
 		this.num++;
 		let el = this.appendChild(document.createElement("div"));
 		el.classList.add("mistake");
 	},
 
-	remove() {
-		this.children[--this.num].animate({scale: [1, 0]}, {duration: 100, fill: "forwards"});
+	lose() {
+		this.children[--this.num].classList.add("lost");
 	},
 	
 });
@@ -117,39 +117,58 @@ const status = Object.assign(document.getElementById("status"), {
 
 });
 
-// overlay
+// summary
 
-const overlay = Object.assign(document.getElementById("overlay"), {
+const summary = Object.assign(document.getElementById("summary"), {
+
+	comments: {},
 
 	display(text) {
-		document.getElementById("overlay-title").textContent = text;
-		document.getElementById("overlay-guesses").append(...game.guesses.map(guess => {
+		document.getElementById("summary-title").textContent = text;
+		document.getElementById("summary-guesses").append(...game.guesses.map(guess => {
 			let el = document.createElement("div");
-			el.classList.add("overlay-guess");
+			el.classList.add("summary-guess");
 			el.append(...guess.map(item => {
 				let el = document.createElement("div");
-				el.classList.add("overlay-term", game.categories[item.category - 1].color);
+				el.classList.add("summary-term", game.categories[item.category - 1].color);
 				return el;
 			}));
 			return el;
 		}));
-		document.getElementById("share").addEventListener("click", function () {
-			navigator.clipboard.writeText("Junnections #" + selector.value + game.guesses.reduce((str, guess) => str + "\n" + guess.reduce((str, item) =>
-				str + {yellow: "🟨", green: "🟩", blue: "🟦", purple: "🟪", red: "🟥"}[game.categories[item.category - 1].color]
-			, ""), ""));
-			this.textContent = "Results Copied!";
-		});
-		document.getElementById("close").addEventListener("click", async () => {
-			this.remove();
-			content.classList.add("disabled");
-			for (let i = 0; i < game.categories.length; i++) if (!game.categories[i].revealed) {
-				await new Promise(r => setTimeout(r, 250));
-				await game.revealCategory(i + 1);
+		if (mistakes.num) document.getElementById("retry").remove();
+
+		if (Object.keys(this.comments).length) {
+			let list = document.getElementById("summary-commentary").appendChild(document.createElement("dl"));
+			list.id = "summary-commentary-list";
+			for (const [author, comment] of Object.entries(this.comments)) {
+				let authorEl = document.createElement("dt");
+				authorEl.textContent = author;
+				let commentEl = document.createElement("dd");
+				commentEl.textContent = comment;
+				list.append(authorEl, commentEl);
 			}
-		});
+		}
+		else document.getElementById("summary-commentary-title").textContent = "no author commentary";
+
 		this.hidden = false;
 	},
+
+	getResultsText() {
+		return "Junnections #" + selector.value + game.guesses.reduce((str, guess) => str + "\n" + guess.reduce((str, item) =>
+			str + {yellow: "🟨", green: "🟩", blue: "🟦", purple: "🟪", red: "🟥"}[game.categories[item.category - 1].color]
+		, ""), "");
+	},
 	
+});
+
+document.getElementById("retry").addEventListener("click", () => location.reload());
+document.getElementById("share").addEventListener("click", function () {
+	navigator.clipboard.writeText(summary.getResultsText());
+	this.textContent = "Results Copied!";
+});
+document.getElementById("close").addEventListener("click", () => {
+	summary.hidden = true;
+	game.revealPuzzle();
 });
 
 // game
@@ -176,7 +195,7 @@ const game = {
 		if (numIncorrect) {
 			if (numIncorrect === 1) status.display("One away!");
 			this.shake(...items);
-			mistakes.remove();
+			mistakes.lose();
 			if (mistakes.num == 0)
 				await this.end("Next Time!");
 		}
@@ -217,12 +236,20 @@ const game = {
 		category.revealed = true;
 		this.categoriesGuessed++;
 	},
+	
+	async revealPuzzle() {
+		content.classList.add("disabled");
+		for (let i = 0; i < this.categories.length; i++) if (!this.categories[i].revealed) {
+			await new Promise(r => setTimeout(r, 250));
+			await game.revealCategory(i + 1);
+		}
+	},
 
 	// results
 
 	async end(message) {
 		await new Promise(r => setTimeout(r, 1000));
-		overlay.display(message);
+		summary.display(message);
 	},
 
 	// animations
@@ -289,8 +316,24 @@ XML.fetch(`puzzles/${selector.value}.xml`).then(xml => {
 		grid.place(term, ...grid.indexToCoords(i));
 	}
 	// mistakes
-	for (let i = xml.attributes.mistakes ?? 4; i > 0; i--) mistakes.add();
+	for (let i = xml.attributes.mistakes ?? 4; i > 0; i--) mistakes.gain();
+	// commentary
+	if (xml.get("commentary"))
+		for (const comment of xml.get("commentary").nodes)
+			summary.comments[comment.attributes.from] = comment.text;
 	// custom behavior
 	if (xml.get("style")) document.body.appendChild(document.createElement("style")).textContent = xml.get("style").text;
 	if (xml.get("script")) document.body.appendChild(document.createElement("script")).textContent = xml.get("script").text;
 });
+
+// test
+
+const debug = {
+
+	reveal() {
+		for (const item of grid.items) {
+			item.classList.add("category", game.categories[item.category - 1].color);
+		}
+	}
+
+};

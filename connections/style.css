@@ -17,7 +17,7 @@ body {
 	font-family: system-ui, sans-serif;
 }
 
-#header, #content {
+#header, #content, #summary {
 	padding-inline: max(16px, calc(50vw - 300px));
 }
 
@@ -87,13 +87,15 @@ body {
 }
 
 .mistake {
+	background-color: #5a594e;
 	width: 16px;
 	aspect-ratio: 1;
 	border-radius: 50%;
-	background-color: #5a594e;
-	transition: 0.2s scale;
+	transition: background-color 0.2s;
 
-	&.lost {scale: 0}
+	&.lost {
+		background-color: var(--gray);
+	}
 }
 
 .buttons {
@@ -181,47 +183,87 @@ button {
 .purple {--color: var(--purple)}
 .red {--color: var(--red)}
 
-/* overlay */
+/* summary */
 
-#overlay {
+#summary {
 	text-align: center;
 	background-color: white;
-	padding: 64px;
+	padding-block: 64px;
+	overflow: hidden auto;
 	position: absolute;
 	inset: 0;
 	z-index: 1;
 	animation: 0.25s appear;
 }
 
-#overlay-title {
+#summary-title {
 	font: 3em karnak;
 }
 
-#overlay-title, #overlay-guesses {
+#summary-title, #summary-guesses, #summary-commentary {
 	margin-block: 24px;
 }
 
-#overlay-guesses {
+#summary-guesses {
 	max-width: max-content;
 	margin-inline: auto;
 }
 
-.overlay-guess {
+.summary-guess {
 	display: flex;
 	margin-block: 2px;
 }
 
-.overlay-term {
+.summary-term {
 	background-color: var(--color);
 	width: 20px;
 	aspect-ratio: 1;
 	border-radius: 4px;
 }
 
+#summary-commentary {
+	max-width: 350px;
+	border-top: 1px solid var(--gray);
+	padding: 16px;
+	margin-inline: auto;
+	margin-top: 48px;
+}
+
+#summary-commentary-title {
+	color: color-mix(in srgb, var(--black), var(--gray) 87.5%);
+	font-size: 0.875em;
+	font-style: italic;
+	letter-spacing: 0.1em;
+	text-transform: uppercase;
+	margin-bottom: 16px;
+}
+
+#summary-commentary-list {
+	display: grid;
+	grid-template-columns: auto 1fr;
+	gap: 1em 0.75em;
+
+	dt {
+		font-size: 0.875em;
+		font-weight: bold;
+		text-transform: uppercase;
+		text-align: right;
+		margin-top: 0.075em;
+	}
+
+	dd {
+		text-align: left;
+	}
+}
+
 /* mobile */
 
 @media (max-width: 600px) {
+	#title {
+		font-size: 4em;
+	}
 	#grid {
-		aspect-ratio: 1.5;
+		font-size: 0.75em;
+		aspect-ratio: 1.25;
 	}
 }

@@ -28,7 +28,7 @@
 			<option value="11">Sounds Metal (Ember Edition)</option>
 			<option value="12">Nationwide Recall</option>
 			<option value="13">Private Screening</option>
-			<option value="14">One What??</option>
+			<option value="14">Bad Connection</option>
 		</select>
 		<svg id="selector-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down-icon lucide-chevron-down"><path d="m6 9 6 6 6-6"/></svg>
 	</div>
@@ -49,12 +49,16 @@
 		<button id="submit" disabled>Submit</button>
 	</div>
 
-	<div id="overlay" hidden>
-		<div id="overlay-title">Well Done!</div>
-		<div id="overlay-guesses"></div>
+	<div id="summary" hidden>
+		<div id="summary-title">Well Done!</div>
+		<div id="summary-guesses"></div>
 		<div class="buttons">
+			<button id="retry">Try Again</button>
 			<button id="share">Share Your Results</button>
 			<button id="close">Show Puzzle</button>
+		</div>
+		<div id="summary-commentary">
+			<div id="summary-commentary-title">author commentary</div>
 		</div>
 	</div>
 </div>

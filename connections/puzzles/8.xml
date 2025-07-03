@@ -42,4 +42,8 @@ game.countIncorrect = function (terms) {
 	return 0;
 }
 	</script>
+	<commentary>
+		<comment from="braden">i wanted to name this puzzle free association, which june vetoed bc she thought it gave up the game. maybe she's right but you gotta admit it's a great title</comment>
+		<comment from="june">this is one of my favorites. people keep thinking they can solve the rorschachs and watching them desperately hallucinate groups is fun. hermann would be proud?</comment>
+	</commentary>
 </connections>
