@@ -124,7 +124,6 @@ code {
 }
 
 pre {
-	text-overflow: ellipsis;
 	tab-size: 4;
 	padding: 0 1em 1.25em;
 	outline: 1px solid var(--gray);
@@ -174,7 +173,6 @@ pre {
 	
 	pre {
     contain: inline-size;
-    text-overflow: unset;
 	}
 
 }
