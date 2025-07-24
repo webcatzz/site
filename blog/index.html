@@ -13,24 +13,25 @@
 </head>
 <body>
 
-<div id="background-1"></div>
-<div id="background-2"></div>
+<div id="bg-shadow"></div>
 
-<div id="pages">
+<div id="notebook">
 
-	<div id="left" class="page">
+	<div id="bg-images"></div>
+
+	<div class="page" id="left">
 
 		<h1>blog</h1>
 
 		<div id="search-wrapper">
 			<input id="search" type="search" placeholder="search..."/>
-			<svg id="search-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search-icon lucide-search"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
+			<svg id="search-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><!-- from lucide.dev --><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
 		</div>
 
-		<img id="stamp1" class="stamp" src="assets/stamp1.png">
-		<img id="stamp2" class="stamp" src="assets/stamp2.png">
-		<img id="stamp3" class="stamp" src="assets/stamp3.png">
-		<img id="stamp4" class="stamp" src="assets/stamp4.png">
+		<img class="stamp" id="stamp1" src="assets/stamp1.png" aria-hidden="true">
+		<img class="stamp" id="stamp2" src="assets/stamp2.png" aria-hidden="true">
+		<img class="stamp" id="stamp3" src="assets/stamp3.png" aria-hidden="true">
+		<img class="stamp" id="stamp4" src="assets/stamp4.png" aria-hidden="true">
 
 		<nav>
 			<button class="nav-item" data-id="2025.07.03">you'll be robbed and poisoned and infected and robbed</button>
@@ -51,9 +52,25 @@
 
 	</div>
 
-	<div id="right" class="page">
+	<div class="page" id="right">
 		<article id="entry">
-			<noscript>this page requires javascript!</noscript>
+			<div id="splash">
+
+				<div id="statuscafe">
+					<div id="statuscafe-username">status.cafe</div>
+					<div id="statuscafe-content">(loading...)</div>
+				</div>
+
+				<ul id="currently">
+					<li><b>playing</b> disco elysium (slowly)</li>
+					<li><b>listening</b> the scholars • car seat headrest</li>
+					<li><b>reading</b> the invention of science • david wootton</li>
+					<li><b>feeling</b> <a href="https://www.imood.com/users/webcatz"><img id="imood" src="https://moods.imood.com/display/uname-webcatz/trans-1/imood.gif" alt="The current mood of webcatz at www.imood.com"></a></li>
+				</ul>
+
+				<p id="splash-tip">(select a page on the right...)</p>
+
+			</div>
 		</article>
 		<img id="hammer" src="assets/hamper.gif" aria-hidden="true">
 	</div>

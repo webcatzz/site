@@ -76,19 +76,19 @@ entry.load = async function (page) {
 	let navItem = nav.getChildById(page);
 
 	if (navItem.previousElementSibling) {
-		let prevBtn = footer.appendChild(document.createElement("button"));
-		prevBtn.id = "entry-prev";
-		prevBtn.classList.add("entry-chain-link");
-		prevBtn.textContent = "← prev";
-		prevBtn.addEventListener("click", () => entry.loadAndRecord(navItem.previousElementSibling.dataset.id));
-	}
-
-	if (navItem.nextElementSibling) {
 		let nextBtn = footer.appendChild(document.createElement("button"));
 		nextBtn.id = "entry-next";
 		nextBtn.classList.add("entry-chain-link");
-		nextBtn.textContent = "next →";
-		nextBtn.addEventListener("click", () => entry.loadAndRecord(navItem.nextElementSibling.dataset.id));
+		nextBtn.textContent = "← next";
+		nextBtn.addEventListener("click", () => entry.loadAndRecord(navItem.previousElementSibling.dataset.id));
+	}
+
+	if (navItem.nextElementSibling) {
+		let prevBtn = footer.appendChild(document.createElement("button"));
+		prevBtn.id = "entry-prev";
+		prevBtn.classList.add("entry-chain-link");
+		prevBtn.textContent = "prev →";
+		prevBtn.addEventListener("click", () => entry.loadAndRecord(navItem.nextElementSibling.dataset.id));
 	}
 	
 	this.animate({opacity: [0, 1]}, 50);
@@ -102,4 +102,14 @@ entry.loadAndRecord = function (page) {
 // url params
 
 let page = new URLSearchParams(location.search).get("page");
-entry.load(page ?? nav.firstElementChild.dataset.id);
+if (page) entry.load(page);
+
+// statuscafe
+
+fetch("https://status.cafe/users/webcatz/status.json").then(res => res.json()).then(json => {
+	let link = document.createElement("a");
+	link.textContent = json.author;
+	link.href = "https://status.cafe/users/" + json.author;
+	document.getElementById("statuscafe-username").replaceChildren(link, " " + json.face + " " + json.timeAgo);
+	document.getElementById("statuscafe-content").textContent = json.content;
+});

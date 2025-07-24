@@ -22,8 +22,9 @@ body {
 		linear-gradient(to right, #ffffff10 1px, transparent 1px) center / 64px 64px,
 		linear-gradient(to top, #ffffff10 1px, transparent 1px) center / 64px 64px,
 		radial-gradient(at center, var(--black), transparent 75%),
-		url(assets/background.jpg) center / cover var(--black);
+		url(assets/background.jpg) center / cover fixed var(--black);
 	height: 100vh;
+	overflow: hidden;
 
 	> * {image-rendering: pixelated}
 }
@@ -33,12 +34,13 @@ body {
 	background-color: rgb(from var(--accent) r g b / 33%);
 }
 
-/* pages */
+/* notebook */
 
-#pages {
+#notebook {
 	display: flex;
 	color: var(--black);
-	rotate: -1deg;
+	position: relative;
+	contain: layout;
 }
 
 .page {
@@ -50,6 +52,7 @@ body {
 	box-sizing: border-box;
 	padding-block: 64px;
 	position: relative;
+	rotate: -1deg;
 }
 
 #left {
@@ -72,7 +75,7 @@ body {
 	pointer-events: none;
 }
 
-/* left */
+/* left page */
 
 #left {
 	z-index: 1;
@@ -86,7 +89,6 @@ h1 {
 }
 
 #search-wrapper {
-	font-family: chicago;
 	rotate: -1deg;
 }
 
@@ -123,21 +125,38 @@ nav {
 	white-space: nowrap;
 	background-color: var(--black);
 	min-height: calc(1em + 32px);
-	padding: 16px 24px;
+	padding-block: 16px;
+	padding-inline: 32px 24px;
 	border-radius: 8px 12px;
 	overflow: hidden;
-	transition: box-shadow 0.1s, translate 0.05s;
-
+	transition: box-shadow 0.1s, translate 0.1s;
+	
 	&:hover {
-		background-color: var(--accent);
+		--wave: url(assets/wave1.png) center / auto 200%;
+		text-shadow: 0 0 8px var(--accent);
+		background:
+			linear-gradient(to left, var(--accent) 50%, rgb(from var(--accent) r g b / 50%)),
+			var(--wave) var(--accent);
 		box-shadow: 4px 4px var(--black);
 		translate: -4px -4px;
-		position: relative;
+
+		&:nth-of-type(odd) {
+			--wave: url(assets/wave2.png) center / auto 400%;
+		}
 	}
 
 	&:active {
-		background-color: var(--white);
+		text-shadow: unset;
+		background: var(--white);
 		transition: none;
+	}
+
+	&:first-of-type::before {
+		content: "NEW✨";
+		color: #f1d27b;
+		font-size: 0.75em;
+		font-weight: bold;
+		margin-inline: 0.5em;
 	}
 }
 
@@ -148,7 +167,7 @@ nav {
 	position: absolute;
 	left: 56px;
 	bottom: 64px;
-	transition: text-shadow 0.1s;
+	transition: text-shadow 0.1s, translate 0.1s;
 
 	&::first-line {
 		font-size: 0.875em;
@@ -172,7 +191,60 @@ nav {
 #stamp3 {bottom: 80px; left: 48px; opacity: 0.25; z-index: 0}
 #stamp4 {bottom: 48px; right: 24px; rotate: 1deg}
 
-/* right */
+/* right page */
+
+#splash {
+	background: url(assets/paper.png) no-repeat top / 100%;
+	aspect-ratio: 200 / 189;
+	box-sizing: border-box;
+	padding: 1em;
+	padding-top: 3.5em;
+}
+
+#statuscafe {
+	float: right;
+	border: 16px solid;
+	border-image: url(assets/bubble.gif) round fill 16 / 16px / 16px;
+	margin-top: -16px;
+}
+
+#statuscafe-username {
+	font-size: 0.875em;
+}
+
+#currently {
+	list-style: none;
+	padding-left: unset;
+	margin-block: 0.5em;
+
+	li {
+		text-indent: -0.5em;
+		padding-left: 0.5em;
+		margin-block: 0.25em;
+	}
+
+	b {
+		color: color-mix(in srgb, var(--black), var(--accent) 25%);
+		font: italic 0.875em serif;
+		vertical-align: middle;
+		background-color: rgb(from var(--accent) r g b / 33%);
+		padding: 0.125em 0.25em;
+		border-inline: 1px solid rgb(from var(--accent) r g b / 66%);
+		border-radius: 0.25em;
+	}
+}
+
+#imood {
+	display: inline;
+	vertical-align: text-bottom;
+}
+
+#splash-tip {
+	color: color-mix(in srgb, var(--black), var(--accent));
+	font: italic 0.875em serif;
+	text-align: center;
+	margin-top: 2em;
+}
 
 #hammer:not(:hover) {
 	filter: drop-shadow(2px 3px 4px rgb(from var(--black) r g b / 0.5));
@@ -181,7 +253,7 @@ nav {
 	bottom: 0;
 }
 
-/* tape deck */
+/* sidebar */
 
 tape-deck {
 	color: var(--white);
@@ -206,24 +278,26 @@ tape-deck {
 
 /* background */
 
-#background-1, #background-2 {
-	position: fixed;
-	inset: 0;
+#bg-shadow, #bg-images {
 	pointer-events: none;
 	z-index: -1;
 }
 
-#background-1 {
+#bg-shadow {
 	background: url(assets/checkerboard.png) bottom / 240px;
 	mask: linear-gradient(to top, white, transparent 50%);
+	position: fixed;
+	inset: 0;
 }
 
-#background-2 {
+#bg-images {
 	background:
 		url(assets/maps.png) no-repeat calc(50% + var(--page-width) - 50px) center,
 		url(assets/rosebed.png) no-repeat center calc(50% + 35px) / calc(var(--page-width) * 2.55),
 		url(assets/daisy.png) no-repeat calc(50% - var(--page-width) + 10px) calc(50% + 185px),
 		url(assets/daisy.png) no-repeat calc(50% + var(--page-width) - 35px) calc(50% - 195px) / 192px;
+	position: absolute;
+	inset: -64px -177px -64px -126px;
 }
 
 #bg-credit {
@@ -269,25 +343,13 @@ tape-deck {
 	letter-spacing: 0.1em;
 }
 
-h3, h4 {
-	font: 1.5em/1 wildpines;
-	text-align: left;
-	padding-bottom: 0.25em;
-	border-bottom: 1px dotted var(--border-color);
-	margin-block: 2em 1em;
-}
-
-h4 {
-	font-size: 1em;
-}
-
 #entry-content {
 	line-height: 1.2;
 	text-align: justify;
 	hyphens: auto;
 	margin-block: 2em 3em;
 
-	p {text-indent: 1.5em}
+	p {text-indent: 1em}
 }
 
 #entry-footer {
@@ -336,10 +398,6 @@ h4 {
 	text-decoration: underline;
 }
 
-b {
-	font: bold 0.9em/0 sans-serif;
-}
-
 .emote {
 	display: inline;
 	vertical-align: 40%;
@@ -349,16 +407,32 @@ b {
 
 /* entry block */
 
-p, ul, ol, figcaption {
+h3, h4 {
+	font: italic 1.25em / 1 serif;
+	text-align: left;
+	hyphens: none;
+	background-image: radial-gradient(50% 100% at bottom, var(--gradient-color), transparent);
+	padding-bottom: 0.25em;
+	border-bottom: 1px dotted var(--border-color);
+	margin-block: 1.5em 1em;
+}
+
+h4 {
+	font-size: 1em;
+}
+
+#entry :is(p, ul, ol, figcaption) {
 	text-shadow: 0 0 4px #e6dede;
 }
 
 ul, ol {
 	padding-left: 1.5em;
 }
+
 ul {
 	list-style-type: "ꕀ";
 }
+
 li {
 	padding-left: 1em;
 
@@ -428,8 +502,7 @@ pre {
 	overflow: auto hidden;
 }
 
-aside,
-details {
+aside, details {
 	> *:first-child {margin-top: 0}
 	> *:last-child {margin-bottom: 0}
 }
@@ -437,10 +510,12 @@ details {
 dl {
 	margin-block: 2em;
 }
+
 dt {
 	font: bold 0.9em sans-serif;
 	margin-top: 1em;
 }
+
 dd {
 	margin-left: 1em;
 }
@@ -449,6 +524,11 @@ dd {
 
 #entry img {
 	max-width: 100%;
+}
+
+audio {
+	width: 100%;
+	border-radius: 8px;
 }
 
 .emote {
@@ -460,14 +540,31 @@ dd {
 
 .photo {
 	margin: 2em;
+	position: relative;
+
+	&::before {
+		content: url(assets/tape.png);
+		opacity: 0.9;
+		translate: -50%;
+		position: absolute;
+		top: -14px;
+		left: 50%;
+		pointer-events: none;
+		z-index: 1;
+	}
+
+	&:nth-of-type(even)::before {
+		transform: scaleX(-1);
+	}
 
 	img, video, iframe {
-		width: calc(100% - 16px);
-		padding: 8px;
-		padding-bottom: 16px;
+		background-color: #f6f1e7;
+		box-sizing: border-box;
+		padding: 0.5em;
+		padding-bottom: 1em;
 		border-radius: 2px;
 		box-shadow: 1px 2px 8px -4px rgb(from var(--black) r g b / 50%), 0 8px 16px var(--gradient-color);
-		background-color: #f6f1e7;
+		width: 100%;
 		image-rendering: auto;
 	}
 
@@ -475,35 +572,19 @@ dd {
 		height: 64px;
 	}
 
-	&::before {
-		content: url(assets/tape.png);
-		display: block;
-		width: max-content;
-		margin: -10px auto -20px;
-		opacity: 0.9;
-		position: relative;
-		z-index: 1;
-		pointer-events: none;
+	&:is(.float-left, .float-right, .flex &)::before {
+		scale: 0.75;
 	}
-
-	&:nth-of-type(even)::before {
-		transform: scaleX(-1);
-	}
-
-	.flex & {margin-inline: 0}
-
-	&:is(.float-left, .float-right)::before {scale: 0.75}
 
 	&.bandcamp iframe, &.spotify iframe {
 		width: calc(133.33% - 21.33px);
-		height: 42px;
 		padding: 10.67px;
 		padding-bottom: 21.33px;
 		scale: 0.75;
 		transform-origin: top left;
 	}
 	&.bandcamp iframe {
-		height: 42px;
+		height: 74px;
 		margin-bottom: -10.5px;
 	}
 	&.spotify iframe {
@@ -516,7 +597,7 @@ dd {
 	color: color-mix(in srgb, var(--black), var(--accent));
 	font-size: 0.875em;
 	text-align: center;
-	margin: 0.5em
+	margin: 0.5em;
 }
 
 /* entry layout */
@@ -540,7 +621,10 @@ dd {
 	align-items: center;
 	gap: 1em;
 
-	.photo::before {scale: 0.75}
+	.photo {
+		min-width: 40%;
+		margin-inline: unset;
+	}
 }
 
 .scroll-x {
@@ -556,11 +640,11 @@ dd {
 
 /* mobile */
 
-@media (max-width: 600px) {
+@media (max-width: 900px) {
 	body {
 		height: unset;
 	}
-	#pages {
+	#notebook {
 		flex-direction: column;
 	}
 	#pages, #entry {
@@ -572,7 +656,7 @@ dd {
 	h1 {
 	    font-size: calc((100vw - 104px) * 0.39);
 	}
-	#background-1, #background-2, #bg-credit, tape-deck {
+	#background-shadow, #background-images, #bg-credit, tape-deck {
 		display: none;
 	}
 	#back {
