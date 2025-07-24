@@ -14,7 +14,7 @@ body {
 	background:
 		radial-gradient(closest-side circle at 64%, #d2daf7, transparent),
 		url(assets/clouds.png) center / cover,
-		radial-gradient(at center, #faedd8, #d9dbfb, #cfe7f5 50%, #e5f4fc);
+		radial-gradient(at center, #faedd8, #d9dbfb, #cfe7f5 50%, #e5f4fc) #cfe7f5;
 	height: 100vh;
 	padding-right: 128px;
 	overflow: hidden;
@@ -88,6 +88,7 @@ h1, h2, h3, h4, h5, h6 {
 	display: block;
 	text-overflow: ellipsis;
 	white-space: nowrap;
+	padding-block: 0.1em;
 	overflow: hidden;
 
 	&:hover {
@@ -177,9 +178,36 @@ h1, h2, h3, h4, h5, h6 {
 		gap: 0;
 		height: unset;
 		padding-right: unset;
+		overflow: hidden auto;
+	}
+	
+	#tracklist {
+	  align-self: end;
+	}
+	
+	#view {
+	  grid-template-rows: unset;
+	  width: unset;
+	  aspect-ratio: unset;
+	  margin: 1em;
+	  margin-top: -25px;
+	  align-self: stretch;
+	  z-index: 1;
+	}
+	
+	#view-embed {
+	  margin-left: unset;
 	}
 
-	#intro, #back {
+	#intro {
+		text-align: right;
+		max-width: 66%;
+		left: unset;
+		right: 1em;
+		top: 0;
+	}
+
+	#back {
 		display: none;
 	}
 

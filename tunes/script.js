@@ -11,7 +11,7 @@ fetch("tunes.txt").then(async res => {
 		// element
 		let el = tracklist.appendChild(document.createElement("button"));
 		el.classList.add("track");
-		el.textContent = (track.tags?.includes("starred") ? "★" : track.tags?.includes("loop") ? "" : "○") + track.name;
+		el.textContent = (track.tags?.includes("starred") ? "★ " : track.tags?.includes("loop") ? "" : "○ ") + track.name;
 		el.title = track.name;
 		el.dataset.id = track.name;
 		el.addEventListener("click", tracklist.onItemClicked);
@@ -85,7 +85,10 @@ searchBar.addEventListener("input", function () {
 	let filters = this.value.split(" ").reduce((filters, query) => {
 		if (query) filters.push(
 			query.startsWith("tag:")
-			? track => track.tags?.includes(query.substr(4))
+			? track => {
+				let text = query.substr(4);
+				return track.tags?.some(tag => tag.includes(text));
+			}
 			: query.startsWith("date:")
 			? track => track.date?.includes(query.substr(5))
 			: query.startsWith("note:")
