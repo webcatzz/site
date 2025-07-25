@@ -1,5 +1,4 @@
 @font-face {font-family: wildpines; src: url(assets/wildpines.woff2)}
-@font-face {font-family: chicago; src: url(/assets/fonts/chicago.woff2)}
 
 :root {
 	--page-width: 464px;
@@ -257,7 +256,7 @@ nav {
 
 tape-deck {
 	color: var(--white);
-	font-family: chicago;
+	/* line-height: 1; */
 	writing-mode: vertical-lr;
 	background-color: var(--black);
 	height: 425px;
