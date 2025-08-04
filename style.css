@@ -1,17 +1,29 @@
 @font-face {font-family: departuremono; src: url(assets/fonts/departure_mono.woff2); size-adjust: 80%}
 @keyframes spin {0% {content: "|"} 25% {content: "/"} 50% {content: "-"} 75% {content: "\\"}}
+@keyframes scroll {from {background-position-x: 600px} to {background-position-x: 0}}
 
 body {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	color: #493c3c;
+	color: #68293f;
 	font-family: sans-serif;
-	background: linear-gradient(to bottom, #a3b0dc, transparent calc(50% + 72px)) #dcdddc;
+	background: linear-gradient(to bottom, #63d8e580, transparent calc(50% + 72px)) #eeede7;
 	min-height: 100vh;
 	box-sizing: border-box;
 	padding: 2em;
 	overflow: hidden auto;
+	image-rendering: pixelated;
+
+	&::before {
+		content: "";
+		background: url(assets/vapor.png);
+		opacity: 0.25;
+		position: fixed;
+		inset: 0;
+		pointer-events: none;
+		animation: scroll 30s linear infinite;
+	}
 }
 
 #wrapper {
@@ -56,8 +68,7 @@ nav {
 }
 
 a {
-	/* color: #647a86; */
-	text-decoration: underline dotted #647a86;
+	text-decoration: underline;
 }
 
 #sign {
