@@ -1,0 +1,66 @@
+@font-face {font-family: departuremono; src: url(assets/fonts/departure_mono.woff2); size-adjust: 80%}
+@keyframes spin {0% {content: "|"} 25% {content: "/"} 50% {content: "-"} 75% {content: "\\"}}
+
+body {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: #493c3c;
+	font-family: sans-serif;
+	background: linear-gradient(to bottom, #a3b0dc, transparent calc(50% + 72px)) #dcdddc;
+	min-height: 100vh;
+	box-sizing: border-box;
+	padding: 2em;
+	overflow: hidden auto;
+}
+
+#wrapper {
+	display: flex;
+	align-items: end;
+	flex-basis: 400px;
+}
+
+#content {
+	padding-right: 64px;
+	align-self: end;
+	flex: 1;
+	z-index: 1;
+}
+
+hgroup {
+	display: flex;
+	font-family: departuremono;
+	white-space: nowrap;
+}
+
+h1 {
+	font-size: 1em;
+	font-weight: normal;
+}
+
+#sblurb {
+	text-overflow: ellipsis;
+	overflow: hidden;
+	flex: 1;
+	contain: inline-size;
+
+	&::before {
+		content: "|";
+		margin-inline: 0.5em;
+		animation: spin 1s infinite;
+	}
+}
+
+nav {
+	font-size: 0.875em;
+}
+
+a {
+	/* color: #647a86; */
+	text-decoration: underline dotted #647a86;
+}
+
+#sign {
+	background: url(assets/sign.png) center / cover;
+	margin-inline: -196px -150px;
+}
