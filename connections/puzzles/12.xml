@@ -99,5 +99,6 @@ game.revealCategory = async function (id, items = grid.items.filter(item => item
 	</script>
 	<commentary>
 		<comment from="june">this one was really fun to make. the idea popped fully-formed into my mind and i immediately texted braden</comment>
+		<comment from="braden">my all time favorite puzzle</comment>
 	</commentary>
 </connections>
