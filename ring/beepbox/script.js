@@ -1,34 +1,19 @@
-// members
+// button widget
 
-const list = document.getElementById("memberlist");
-
-for (const site of webring.sites) {
-	let link = list.appendChild(document.createElement("li")).appendChild(document.createElement("a"));
-	link.href = site;
-	link.textContent = new URL(site).hostname;
-}
-
-
-
-// button
-
-document.querySelector("#button-widget button").onclick = () => {
+document.querySelector("#button-widget button").addEventListener("click", () => {
 	navigator.clipboard.writeText("<script src=\"https://juneish.neocities.org/ring/beepbox/ring.js\"></script>");
-}
+});
 
-
-
-// song
+// song widget
 
 const input = document.querySelector("#song-widget input");
-const defaultSong = document.querySelector("#song-widget iframe").src;
+const embed = document.querySelector("#song-widget iframe");
+const defaultSong = embed.src;
 
-input.oninput = () => {
-	document.querySelector("#song-widget iframe").src = input.value ? input.value : defaultSong;
-}
+input.onInput = () => embed.src = input.value ? input.value : defaultSong;
+input.addEventListener("input", input.onInput);
+input.onInput();
 
-document.querySelector("#song-widget button").onclick = () => {
+document.querySelector("#song-widget button").addEventListener("click", () => {
 	navigator.clipboard.writeText(`<script defer src="https://juneish.neocities.org/ring/beepbox/ring.js" data-song="${input.value}"></script>`);
-}
-
-input.oninput();
+});
