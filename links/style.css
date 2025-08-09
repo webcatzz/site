@@ -1,0 +1,52 @@
+@font-face {font-family: departuremono; src: url(/assets/fonts/departure_mono.woff2); size-adjust: 80%}
+
+body {
+	max-width: 400px;
+	image-rendering: pixelated;
+}
+
+#pixlib {
+	display: flex;
+	align-items: end;
+	gap: 16px;
+	color: #964252;
+	font-family: departuremono;
+	text-shadow: 0.075em 0.075em #33171e;
+	padding-inline: 20px;
+	padding: 20px 20px 10px;
+	border: 20px solid;
+	border-image: url(assets/pixlib/shelf.png) 20 fill / 20px repeat;
+	margin-block: 1em;
+	overflow: auto hidden;
+	
+	img {
+		filter: drop-shadow(0 0 6px #16141a);
+	}
+}
+
+.pixlib-heading {
+	writing-mode: vertical-lr;
+	text-orientation: upright;
+	letter-spacing: -0.25em;
+	margin: 0.25em -0.5em;
+}
+
+#button-wall {
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+	margin-block: 1em;
+
+	img {
+		width: 88px;
+		height: 31px;
+	}
+}
+
+#webrings {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	justify-items: center;
+	gap: 8px;
+	margin-block: 1em;
+}
