@@ -1,8 +1,5 @@
 name: Deploy to neocities
-on:
-  push:
-    branches:
-      - main
+on: push
 concurrency:
   group: deploy-to-neocities
   cancel-in-progress: true
