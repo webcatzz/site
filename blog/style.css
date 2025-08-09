@@ -256,7 +256,6 @@ nav {
 
 tape-deck {
 	color: var(--white);
-	/* line-height: 1; */
 	writing-mode: vertical-lr;
 	background-color: var(--black);
 	height: 425px;
