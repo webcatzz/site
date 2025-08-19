@@ -1,3 +1,5 @@
+@font-face {font-family: pixel; src: url(/assets/fonts/junipy.ttf)}
+
 body {
 	color: white;
 	font-family: pixel, sans-serif;

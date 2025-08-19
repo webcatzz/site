@@ -55,8 +55,6 @@ h1, h2, h3, h4, h5, h6 {
 
 #tracklist {
 	--padding: 25px;
-	--offset: calc(80px + var(--padding));
-	--width: calc(50% - var(--offset) - var(--padding));
 	background: url(assets/disc.png) center / cover var(--black);
 	width: 500px;
 	aspect-ratio: 1;
@@ -71,11 +69,12 @@ h1, h2, h3, h4, h5, h6 {
 
 #search, .track {
 	text-shadow: 0.05em 0.05em #f2eff2;
-	width: var(--width);
-	transform-origin: calc(var(--offset) * -1);
+	width: calc(50% - 32px);
+	padding-inline: 77px 25px;
+	transform-origin: -32px;
 	translate: 0 -50%;
 	position: absolute;
-	left: calc(50% + var(--offset));
+	left: calc(50% + 32px);
 	top: 50%;
 }
 
@@ -88,11 +87,14 @@ h1, h2, h3, h4, h5, h6 {
 	display: block;
 	text-overflow: ellipsis;
 	white-space: nowrap;
-	padding-block: 0.1em;
+	padding-block: 0.125em;
 	overflow: hidden;
+	transition: background-color 0.5s;
 
 	&:hover {
-		font-weight: bold;
+		background-color: #f2eff280;
+		box-shadow: 0 0 4px #f2eff2;
+		transition: background-color 0.125s;
 	}
 }
 

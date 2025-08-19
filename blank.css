@@ -1,0 +1,25 @@
+body {
+	font-family: mspgothic;
+	max-width: 500px;
+	padding: 64px;
+	margin-inline: auto;
+}
+
+h1 {
+	font: italic 2em serif;
+}
+
+h2 {
+	font: italic 1em serif;
+	margin-block: 1em 0;
+}
+
+#subtitle {
+	font-family: serif;
+	font-style: italic;
+}
+
+a {
+	color: blue;
+	text-decoration: underline;
+}

@@ -22,7 +22,7 @@ h1, h2, h3 {
 
 /* nav */
 
-nav {
+#posts {
 	display: flex;
 	flex-direction: column;
 	align-items: end;
@@ -56,22 +56,26 @@ nav {
 	margin-top: 0.5em;
 }
 
-/* view */
+/* post */
 
-#view {
+#post {
 	max-width: 464px;
+
+	h2 {
+		font-size: 3em;
+	}
+
+	header::after {
+		content: "";
+		display: block;
+		background: url(assets/line.png) center / cover;
+		aspect-ratio: 600 / 79;
+		width: 200px;
+		margin-block: -0.5em 2em;
+	}
 }
 
-#view-title {
-	font-size: 3em;
-}
-
-#view-line {
-	width: 200px;
-	margin-block: -0.5em 2em;
-}
-
-#view-content {
+#post-body {
 	background: url(assets/cardboard.jpg) top / 100%;
 	padding: 1em 2em;
 	border-radius: 4px;
@@ -109,7 +113,7 @@ b {
 	background-color: rgb(from var(--yellow) r g b / 0.25);
 }
 
-main a {
+#post a {
 	text-decoration: underline;
 }
 
@@ -167,7 +171,7 @@ pre {
 		display: block;
 	}
 
-	#view {
+	#post {
 		max-width: unset;
 	}
 	

@@ -33,7 +33,7 @@ body {
 }
 
 #content {
-	padding-right: 64px;
+	padding-right: 96px;
 	align-self: end;
 	flex: 1;
 	z-index: 1;
@@ -63,10 +63,6 @@ h1 {
 	}
 }
 
-nav {
-	font-size: 0.875em;
-}
-
 a {
 	text-decoration: underline;
 }
@@ -74,4 +70,8 @@ a {
 #sign {
 	background: url(assets/sign.png) center / cover;
 	margin-inline: -196px -150px;
+}
+
+#trail {
+	margin-top: 0;
 }

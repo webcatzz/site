@@ -1,0 +1,10 @@
+#loop {
+	list-style: none;
+	padding-left: unset;
+	margin-block: unset;
+}
+
+.feed {
+	max-height: 3.75em;
+	overflow: hidden auto;
+}

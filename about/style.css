@@ -1,0 +1,13 @@
+dt {
+	font-family: monospace;
+	font-size: 0.875em;
+	text-transform: uppercase;
+}
+
+dd {
+	margin-left: 1em;
+}
+
+#seashell:not(:hover) {
+	color: transparent;
+}

@@ -1,7 +1,4 @@
-@font-face {font-family: imfelldwpica; src: url(assets/fonts/imfelldwpica.ttf)}
-@font-face {font-family: imfellenglish; src: url(assets/fonts/imfellenglish.ttf)}
 @font-face {font-family: mspgothic; src: local("MS PGothic"), url(assets/fonts/mspgothic.ttf)}
-@font-face {font-family: pixel; src: url(assets/fonts/junipy.ttf); size-adjust: 95%}
 
 :root {
 	--white: hsl(0, 0%, 95%);
@@ -113,6 +110,35 @@ tape-deck {
 		contain: inline-size;
 		overflow: hidden;
 		flex: 1;
+	}
+}
+
+/* trail */
+
+#trail {
+	display: grid;
+	grid-template-columns: repeat(3, auto);
+	justify-content: start;
+	column-gap: 0.25em;
+	font-family: serif;
+	font-style: italic;
+	margin-top: 2em;
+
+	&::before {
+		content: "your fingers catch upon a";
+		grid-column: 1;
+		grid-row: 1 / span 99;
+	}
+
+	&::after {
+		content: "...";
+		grid-column: 3;
+		grid-row: 1 / span 99;
+	}
+
+	a {
+		color: blue;
+		text-decoration: underline;
 	}
 }
 

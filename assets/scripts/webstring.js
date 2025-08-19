@@ -1,4 +1,4 @@
-// webstring by june @ juneish.neocities.org
+// webstring v2.1 by june @ juneish.neocities.org
 
 {
 	// sites in the ring
