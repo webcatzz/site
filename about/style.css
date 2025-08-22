@@ -1,11 +1,15 @@
+#sona {
+	width: 150px;
+	border-radius: 4px;
+	margin: 0 1em 0.5em 0;
+	float: left;
+	position: relative;
+}
+
 dt {
 	font-family: monospace;
 	font-size: 0.875em;
 	text-transform: uppercase;
-}
-
-dd {
-	margin-left: 1em;
 }
 
 #seashell:not(:hover) {
