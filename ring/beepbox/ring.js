@@ -31,9 +31,9 @@
 	let widgets = {
 		default: `
 			<div id="beepbox-webring" style="display: flex; justify-content: center; align-items: center; gap: 8px; image-rendering: pixelated">
-				<a target="_top" href="PREV"><img src="https://juneish.neocities.org/ring/beepbox/assets/button_left.png" alt="previous site"></a>
-				<a href="https://juneish.neocities.org/ring/beepbox/"><img src="https://juneish.neocities.org/ring/beepbox/assets/button.png" alt="beepbox webring"></a>
-				<a target="_top" href="NEXT"><img src="https://juneish.neocities.org/ring/beepbox/assets/button_right.png" alt="next site"></a>
+				<a href="PREV" rel="prev" target="_top"><img src="https://juneish.neocities.org/ring/beepbox/assets/button_left.png" alt="previous site"></a>
+				<a href="https://juneish.neocities.org/ring/beepbox/" target="_top"><img src="https://juneish.neocities.org/ring/beepbox/assets/button.png" alt="beepbox webring"></a>
+				<a href="NEXT" rel="next" target="_top"><img src="https://juneish.neocities.org/ring/beepbox/assets/button_right.png" alt="next site"></a>
 			</div>
 		`,
 		song: `
@@ -47,20 +47,18 @@
 				.beepbox-arrow img {display: block; width: 0.875em}
 			</style>
 			<div id="beepbox-webring">
-				<a class="beepbox-arrow" target="_top" href="PREV"><img src="https://juneish.neocities.org/ring/beepbox/assets/song_left.png" alt="previous site"></a>
+				<a class="beepbox-arrow" href="PREV" rel="prev" target="_top"><img src="https://juneish.neocities.org/ring/beepbox/assets/song_left.png" alt="previous site"></a>
 				<div id="beepbox-main">
-					<div>this site is part of the <a href="https://juneish.neocities.org/ring/beepbox/">beepbox webring</a>!</div>
+					<div>this site is part of the <a href="https://juneish.neocities.org/ring/beepbox/" target="_top">beepbox webring</a>!</div>
 					<iframe src="${document.currentScript.dataset.song}"></iframe>
 				</div>
-				<a class="beepbox-arrow" target="_top" href="NEXT"><img src="https://juneish.neocities.org/ring/beepbox/assets/song_right.png" alt="next site"></a>
+				<a class="beepbox-arrow" href="NEXT" rel="next" target="_top"><img src="https://juneish.neocities.org/ring/beepbox/assets/song_right.png" alt="next site"></a>
 			</div>
 		`,
-		error: `<a id="beepbox-webring" href="https://juneish.neocities.org/ring/beepbox/"><img src="https://juneish.neocities.org/ring/beepbox/assets/button.png" alt="beepbox webring"></a>`,
 	};
 	// code
 	let idx = sites.findIndex(site => location.href.startsWith(site));
-	document.currentScript.outerHTML = idx === -1 ? widgets.error :
-		(document.currentScript.dataset.song ? widgets.song : widgets.default)
-		.replace("PREV", sites.at(idx - 1))
+	document.currentScript.outerHTML = (document.currentScript.dataset.song ? widgets.song : widgets.default)
+		.replace("PREV", sites[(idx - 1 + sites.length) % sites.length])
 		.replace("NEXT", sites[(idx + 1) % sites.length]);
 }
