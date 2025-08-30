@@ -59,7 +59,7 @@ dd {
 
 /* embed */
 
-img {
+img, audio, video, iframe {
 	display: block;
 }
 
