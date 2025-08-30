@@ -20,6 +20,6 @@
 	let idx = sites.findIndex(site => location.href.startsWith(site));
 	document.currentScript.outerHTML = idx === -1 ? widgets.error :
 		(widgets[document.currentScript.dataset.widget] ?? widgets.default)
-		.replace("PREV", sites.at(idx - 1))
+		.replace("PREV", sites[(idx - 1 + sites.length) % sites.length])
 		.replace("NEXT", sites[(idx + 1) % sites.length]);
 }
