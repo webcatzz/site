@@ -1,0 +1,155 @@
+body {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: white;
+	font-family: mspgothic;
+	background-color: #444;
+	height: 100vh;
+	image-rendering: pixelated;
+}
+
+/* top */
+
+#top {
+	display: flex;
+	align-items: center;
+	gap: 0.5em;
+	color: black;
+	background-color: white;
+	padding: 1em;
+	box-sizing: border-box;
+	padding: 0.25em 1em;
+	border-bottom: 3px double;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+}
+
+#title {
+	font-size: unset;
+	margin-right: 1em;
+}
+
+/* canvas */
+
+#canvas {
+	outline: 1px solid black;
+	position: relative;
+	user-select: none;
+	cursor: crosshair;
+}
+
+#font-image {
+	pointer-events: none;
+}
+
+#canvas-tip {
+	color: black;
+	font-size: 0.875em;
+	letter-spacing: 0.05em;
+	text-shadow: 0 0.05em #666;
+	text-align: center;
+	position: absolute;
+	top: calc(100% + 0.5em);
+	left: 0;
+	right: 0;
+}
+
+#image-input {
+	text-align: center;
+	padding: 4em;
+}
+
+/* rects */
+
+.rect {
+	background-color: #ffffff40;
+	box-sizing: border-box;
+	border: 1px solid white;
+	outline: 3px double black;
+	outline-offset: -2px;
+	position: absolute;
+	pointer-events: none;
+}
+
+.char-rect {
+	border-color: skyblue;
+	pointer-events: unset;
+	cursor: pointer;
+	
+	&:not(:hover) {
+		background-color: transparent;
+	}
+}
+
+/* char config */
+
+#char-config {
+	display: grid;
+	grid-template-columns: auto 1fr;
+	align-items: center;
+	gap: 0.25em;
+	color: black;
+	background-color: white;
+	box-sizing: border-box;
+	padding: 0.25em;
+	border: 3px double;
+	margin-block: 0.5em;
+	position: absolute;
+	z-index: 1;
+}
+
+.char-config-row {
+	display: flex;
+	gap: 0.25em;
+	grid-column: 1/3;
+
+	input, button {
+		flex: 1;
+	}
+}
+
+label, input, button {
+	color: black;
+	padding: 0.25em;
+	background-color: white;
+}
+
+label {
+	text-decoration: underline dotted;
+	cursor: help;
+}
+
+input {
+	border: 3px double;
+	border-bottom: 1px solid;
+}
+
+button {
+	border: 3px double;
+	border-top: 1px solid;
+
+	&[disabled], &:active {
+		border: 1px dotted;
+		margin: 2px 2px 0 2px;
+	}
+}
+
+input[type="file"] {
+	cursor: pointer;
+}
+
+input::file-selector-button {
+	font: unset;
+	font-size: 0.875em;
+	background-color: unset;
+	border: unset;
+}
+
+/* misc */
+
+.hidden {
+	display: none !important;
+}

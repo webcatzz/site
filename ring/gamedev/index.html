@@ -3,19 +3,104 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>gamedev webring</title>
+	<title>gamedevring</title>
 	<link rel="icon" href="/_asset/icon.png">
 	<link rel="stylesheet" href="/blanket.css">
 	<link rel="stylesheet" href="style.css">
-	<script defer src="script.js"></script>
 </head>
 <body>
 
-<div style="display: flex; align-items: center; gap: 8px">
-	<a href="/ring/gamedev/href.html?prev"><img src="_asset/prev.png"></a>
-	<a href="/ring/gamedev/href.html"><img src="_asset/button.png"></a>
-	<a href="/ring/gamedev/href.html?next"><img src="_asset/next.png"></a>
-</div>
+<header id="widget">
+	<a href="/ring/gamedev/href.html?from=index&to=prev" rel="prev"><img src="assets/prev.png" alt="previous site"></a>
+	<h1><a href="/ring/gamedev/"><img src="assets/button.gif" alt="gamedevring"></a></h1>
+	<a href="/ring/gamedev/href.html?from=index&to=next" rel="next"><img src="assets/next.png" alt="next site"></a>
+</header>
+
+<section id="about">
+	<h2>about</h2>
+	<p>hi! welcome! this is a <a href="https://en.wikipedia.org/wiki/Webring">webring</a> for gamedevs on the indie web. hobbyists, professionals, beginners — all are welcome.</p>
+	<p>seasonally, we host <a href="https://en.wikipedia.org/wiki/Game_jam">game jams</a>! you don't have to participate to be in the ring and vice versa. more about <a href="#jams">our jams</a> below.</p>
+</section>
+
+<section id="members">
+	<h2>members</h2>
+	<ol>
+		<li><a href="https://juneish.neocities.org">juneish.neocities.org</a></li>
+	</ol>
+</section>
+
+<section id="join">
+	<h2>how to join</h2>
+	<p>thinking of joining? remember, this ring is for websites that...</p>
+	<ul>
+		<li>host gamedev-related stuff</li>
+		<li>keep the widget accessible</li>
+	</ul>
+	<p>if you'd like to join...</p>
+	<ul>
+		<li>pick a short unique identifier (mine is juneish, for example)</li>
+		<li>add the <a href="widget.txt">widget html</a> to your site
+			<ul>
+				<li>replace both REPLACEME's in the widget html with your identifier</li>
+			</ul>
+		</li>
+		<li>email me (<a href="mailto:june.webcatz@gmail.com">june.webcatz@gmail.com</a>)
+			<ul>
+				<li>use the subject line "gamedevring"</li>
+				<li>include your site's url</li>
+				<li>include the identifier you chose</li>
+			</ul>
+		</li>
+	</ul>
+
+	<p>i'll mail you back once you're in :-)</p>
+</section>
+
+<section id="jams">
+	<h2>jams [( )</h2>
+	<p>this ring is still fresh... the dew hasn't yet settled, and the berries are underripe.</p>
+	<p>i plan to run a game jam in early spring, so i'll update this page with more details around then. i hope to see you! if you'd like, tell me how long you prefer a jam to run:</p>
+	<form id="poll" method="post" action="https://poll.pollcode.com/66858749">
+		<div id="poll-options">
+			<input type="checkbox" name="answer" value="1" id="answer668587491"/>
+			<label for="answer668587491">24 hours</label>
+			<input type="checkbox" name="answer" value="2" id="answer668587492"/>
+			<label for="answer668587492">48 hours</label>
+			<input type="checkbox" name="answer" value="3" id="answer668587493"/>
+			<label for="answer668587493">a week</label>
+			<input type="checkbox" name="answer" value="4" id="answer668587494"/>
+			<label for="answer668587494">two weeks</label>
+			<input type="checkbox" name="answer" value="5" id="answer668587495"/>
+			<label for="answer668587495">longer</label>
+		</div>
+		<input type="submit" value="vote">
+		<input type="submit" name="view" value="view">
+		(thanks <a href="https://pollcode.com/">pollcode.com</a>)
+	</form>
+</section>
+
+<section id="resources">
+	<h2>resources</h2>
+	<p>new to gamedev? here are some resources you might find helpful:</p>
+	<dl>
+		<dt><a href="https://godotengine.org/">godot</a></dt>
+		<dd>a free, robust, and beginner-friendly game engine</dd>
+		<dt><a href="https://www.lexaloffle.com/pico-8.php">pico8</a></dt>
+		<dd>a small, limitation-led game engine ($15)</dd>
+		<dt><a href="https://love2d.org/">love2d</a></dt>
+		<dd>a free lua-based game engine</dd>
+		<dt><a href="https://www.aseprite.org/">aseprite</a></dt>
+		<dd>a pixel sprite editor ($20)</dd>
+		<dt><a href="https://libresprite.github.io/">libresprite</a></dt>
+		<dd>a free version of aseprite</dd>
+		<dt><a href="https://www.piskelapp.com/">piskel</a></dt>
+		<dd>a free web-based sprite editor</dd>
+		<dt><a href="https://jummb.us/">jummbox</a></dt>
+		<dd>a free web-based chiptune editor</dd>
+	</dl>
+</section>
+
+<footer id="footer">with love</footer>
 
 </body>
 </html>

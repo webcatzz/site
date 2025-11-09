@@ -1,0 +1,43 @@
+body {
+	text-align: center;
+	max-width: 512px;
+	padding-inline: 64px;
+	margin: 128px auto;
+}
+
+#staff {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	aspect-ratio: 8;
+	border-inline: 2px solid;
+	margin: 4em auto;
+	position: relative;
+}
+
+.line {
+	border-top: 1px solid;
+}
+
+.note {
+	height: 50%;
+	margin-left: -1.25%;
+	position: absolute;
+	top: 0;
+
+	&[data-direction="up"] {
+		margin-top: -5.25%;
+	}
+
+	&[data-direction="down"] {
+		margin-top: -0.75%;
+	}
+
+	&.playing {
+		filter: invert() brightness(0.75) sepia() saturate(32) hue-rotate(180deg);
+	}
+}
+
+#volume {
+	vertical-align: -0.5em;
+}

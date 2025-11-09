@@ -1,0 +1,172 @@
+@font-face {font-family: pico; src: url(assets/pico.otf)}
+
+:root {
+	--black: #000000;
+	--dark-blue: #1D2B53;
+	--dark-purple: #7E2553;
+	--dark-green: #008751;
+	--brown: #AB5236;
+	--dark-gray: #5F574F;
+	--light-gray: #C2C3C7;
+	--white: #FFF1E8;
+	--red: #FF004D;
+	--orange: #FFA300;
+	--yellow: #FFEC27;
+	--green: #00E436;
+	--blue: #29ADFF;
+	--lavender: #83769C;
+	--pink: #FF77A8;
+	--light-peach: #FFCCAA;
+	scroll-padding-top: 90px;
+}
+
+::selection {
+	background-color: var(--yellow);
+}
+
+body {
+	color: var(--light-gray);
+	font-family: pico;
+	line-height: 1;
+	background-color: var(--black);
+	max-width: 800px;
+	margin: 64px;
+	image-rendering: pixelated;
+}
+
+/* header */
+
+header {
+	display: flex;
+	align-items: end;
+	gap: 1em;
+	color: var(--dark-gray);
+	background-color: var(--black);
+	padding-block: 1em;
+	border-bottom: 3px solid var(--dark-blue);
+	margin-bottom: 4em;
+	position: sticky;
+	top: 0;
+}
+
+h1 {
+	color: var(--light-gray);
+	margin-right: auto;
+	img {height: calc(1em / 6 * 9)}
+}
+
+button {
+	color: var(--white);
+}
+
+#toc {
+	summary {
+		color: var(--white);
+		&::marker {content: none}
+	}
+}
+
+#toc-content {
+	text-align: right;
+	background-color: var(--black);
+	padding-block: 1em;
+	border-block: 3px solid var(--dark-blue);
+	position: absolute;
+	top: 100%;
+	left: 0;
+	right: 0;
+}
+
+/* headings */
+
+h1, h2, h3, h4, h5, h6 {
+	font: unset;
+}
+
+h2, h3, h4, h5, h6 {
+	color: var(--white);
+	max-width: max-content;
+	margin-block: 1.5em 1em;
+	cursor: pointer;
+	&::before, &::after {color: var(--dark-gray)}
+	&:not(.collapsed):hover::after {content: " (-)"}
+}
+
+.collapsed {
+	&::after {
+		content: " (+)";
+		color: var(--dark-gray);
+	}
+}
+
+h2 {
+	counter-increment: h2;
+	counter-reset: h3;
+	&::before {content: counter(h2)" "}
+	dl:has(+ &) {margin-bottom: 4em}
+}
+
+h3 {
+	counter-increment: h3;
+	counter-reset: h4;
+	&::before {content: counter(h2)"."counter(h3)" "}
+}
+
+h4 {
+	counter-increment: h4;
+	&::before {content: counter(h2)"."counter(h3)"."counter(h4)" "}
+}
+
+/* reference */
+
+p, ul {
+	color: var(--dark-gray);
+	margin-block: 0.5em;
+}
+
+ul {
+	list-style: "- " inside;
+	padding-left: 0;
+}
+
+dl {
+	margin-block: 1em;
+}
+
+a {
+	color: var(--white);
+}
+
+dt, dd {
+	margin-block: 0.75em;
+}
+
+dt {
+	grid-column-start: 1;
+	&::before {
+		content: "█ ";
+		color: var(--dark-gray);
+	}
+}
+
+.func {
+	color: var(--dark-gray);
+}
+
+.func-name {
+	color: var(--pink);
+}
+
+.func-param {
+	color: var(--light-gray);
+}
+
+dd {
+	margin-bottom: 1em;
+}
+
+/* misc */
+
+.hidden {
+	display: none;
+}

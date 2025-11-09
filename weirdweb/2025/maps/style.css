@@ -1,0 +1,18 @@
+@font-face {font-family: departure-mono; src: url(/assets/fonts/departure_mono.woff2)}
+
+body {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font: 12em departure-mono;
+	height: 100vh;
+	aspect-ratio: 1;
+	box-sizing: border-box;
+	padding: 64px;
+	margin: 0 auto;
+}
+
+a {
+	color: unset;
+	text-decoration: unset;
+}

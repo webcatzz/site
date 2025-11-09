@@ -1,0 +1,12 @@
+body {
+	max-width: 500px;
+	padding-inline: 64px;
+	margin: 64px auto;
+}
+
+blockquote {
+	footer {
+		font-style: italic;
+		text-align: right;
+	}
+}

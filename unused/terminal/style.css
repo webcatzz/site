@@ -1,0 +1,41 @@
+@keyframes rotate {to {rotate: 360deg}}
+
+body {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: white;
+	font-family: monospace;
+	background-color: black;
+	height: 100vh;
+	margin: 0;
+	image-rendering: pixelated;
+}
+
+#window {
+	word-break: break-all;
+	width: 400px;
+	height: 200px;
+	overflow: hidden auto;
+}
+
+#log, #input {
+	white-space: pre-wrap;
+	white-space-collapse: preserve;
+}
+
+#input {
+	display: flex;
+	position: relative;
+
+	&::after {
+		content: "";
+		display: inline-block;
+		background-color: #ffffff80;
+		width: 0.6em;
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		left: calc(0.6em * var(--caret, 4));
+	}
+}

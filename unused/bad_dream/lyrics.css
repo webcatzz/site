@@ -1,0 +1,31 @@
+.lyric {
+	display: flex;
+	background-color: var(--gray);
+	max-width: max-content;
+	height: 6em;
+	font-size: 1.5em;
+	border-radius: 16px;
+	margin-inline: auto;
+	margin-bottom: 16px;
+
+	&:nth-of-type(even) {
+		flex-direction: row-reverse;
+	}
+}
+
+.cover {
+	max-width: max-content;
+	border-radius: inherit;
+	flex: 0;
+
+	img {
+		height: 100%;
+		border-radius: inherit;
+	}
+}
+
+blockquote {
+	display: flex;
+	align-self: center;
+	flex: 1;
+}

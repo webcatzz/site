@@ -1,0 +1,58 @@
+@font-face {font-family: departure; src: url(/assets/fonts/departure_mono.woff2); size-adjust: 80%}
+
+:root {
+	--fore: black;
+	--back: #f8f3ea;
+	--accent-fore: #72b7a9;
+	--accent-back: color-mix(in srgb, var(--accent-fore), var(--back));
+}
+
+::selection {
+	background-color: var(--accent-back);
+}
+
+body {
+	display: flex;
+	color: var(--fore);
+	font-family: departure;
+	background-color: var(--accent-back);
+	height: 100vh;
+}
+
+/* nav */
+
+#nav {
+	display: flex;
+	flex-direction: column;
+	padding: 64px;
+	padding-right: 32px;
+
+	button:hover, .active {
+		color: var(--accent-fore);
+		background-color: var(--back);
+	}
+}
+
+#search {
+	margin-bottom: 0.5em;
+}
+
+/* content */
+
+#main {
+	display: flex;
+	background-color: var(--back);
+	flex: 1;
+}
+
+#editor {
+	white-space: pre-wrap;
+	max-width: 800px;
+	padding: 64px;
+	outline: unset;
+	flex: 1;
+}
+
+.highlight {
+	color: var(--accent-fore);
+}

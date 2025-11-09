@@ -1,0 +1,45 @@
+@font-face {font-family: averialibre; src: url(assets/averialibre.ttf)}
+@font-face {font-family: karla; src: url(assets/karla.ttf)}
+
+:root {
+	--white: #cccccc;
+	--black: #0d0d0d;
+	--gray: color-mix(in srgb, var(--white), var(--black) 75%);
+	--red: #ec5541;
+	--blue: #456ddc;
+	--purple: #380f54;
+}
+
+body {
+	color: var(--white);
+	font-family: averialibre;
+	background-color: var(--black);
+	margin: 64px;
+}
+
+h1 {
+	font-size: 4em;
+	text-shadow:
+		0.1em 0.05em var(--red),
+		0.2em 0.1em var(--blue),
+		0.3em 0.15em var(--purple);
+}
+
+/* main */
+
+main {
+	height: 400px;
+}
+
+b {
+	font-size: 0.9em;
+	font-family: karla;
+	text-transform: uppercase;
+}
+
+/* lyric */
+
+#lyric {
+	text-align: center;
+	font-size: 1.5em;
+}

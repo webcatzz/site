@@ -1,0 +1,28 @@
+body {
+	background-color: black;
+	image-rendering: pixelated;
+	user-select: none;
+}
+
+#arena {
+	background: url(arena.png) center / cover;
+	aspect-ratio: 1000 / 563;
+	margin: 64px;
+	position: relative;
+}
+
+#knight, #hornet {
+	position: absolute;
+	bottom: 10%;
+	cursor: grab;
+
+	&:active {cursor: grabbing}
+}
+
+#knight {
+	right: 20%;
+}
+
+#hornet {
+	left: 20%;
+}

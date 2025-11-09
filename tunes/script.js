@@ -1,7 +1,7 @@
-// scroll
+// radial scroll
 
-const list = document.getElementById("list");
-const scrollItems = list.querySelectorAll("#search, a");
+const index = document.getElementById("index");
+const scrollItems = index.querySelectorAll("#search, a, .index-year");
 
 const rscroll = {
 	value: 0,
@@ -36,17 +36,17 @@ rscroll.update();
 
 let touchY = 0, touchInitialScroll = 0;
 
-list.addEventListener("wheel", e => {
+index.addEventListener("wheel", e => {
 	rscroll.scrollBy(e.deltaY);
 	e.preventDefault();
 });
 
-list.addEventListener("touchstart", e => {
+index.addEventListener("touchstart", e => {
 	touchY = e.touches[0].pageY;
 	touchInitialScroll = rscroll.value;
 });
 
-list.addEventListener("touchmove", e => {
+index.addEventListener("touchmove", e => {
 	rscroll.scrollTo(touchInitialScroll + (touchY - e.touches[0].pageY));
 	e.preventDefault();
 });
@@ -54,22 +54,19 @@ list.addEventListener("touchmove", e => {
 // search
 
 const searchBar = document.getElementById("search");
-const links = document.querySelectorAll("#list a");
-const tracks = document.querySelectorAll("#tracks article");
-searchBar.value = "";
+const links = index.getElementsByTagName("a");
+searchBar.value = new URLSearchParams(location.search).get("search") ?? "";
 
-searchBar.addEventListener("input", function () {
-	let filters = this.value.split(" ").map(query => {
-		let [type, text] = query.split("=", 2);
-		let selector = "h2";
-		if (!text) text = type;
-		else if (type == "tag") selector = ".track-tags";
-		else if (type == "date") selector = ".track-date";
-		else if (type == "note") selector = ".track-note";
-		text = text.replaceAll("_", " ");
-		return track => track.querySelector(selector).textContent.includes(text);
+function search() {
+	let filters = searchBar.value.split(" ").map(query => {
+		let [type, text] = query.split(":", 2);
+		if (!text) return link => link.textContent.includes(type);
+		else return link => link.dataset[type]?.includes(text);
 	});
-	for (let i = 0; i < tracks.length; i++)
-		links[i].classList.toggle("search-hidden", !filters.every(filter => filter(tracks[i])));
+	for (const link of links)
+		link.classList.toggle("search-hidden", !filters.every(filter => filter(link)));
 	rscroll.scrollTo(0);
-});
+}
+
+searchBar.addEventListener("input", search);
+if (searchBar.value) search();

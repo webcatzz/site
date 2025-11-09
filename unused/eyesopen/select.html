@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>an index</title>
+	<link rel="stylesheet" href="style.css">
+	<script defer src="script.js"></script>
+	<style>
+body {
+	display: flex;
+	height: 100vh;
+	margin: 0;
+}
+nav {
+	padding-inline: 200px;
+	overflow: hidden auto;
+}
+a {
+	display: block;
+	font: bold 4em sans-serif;
+	text-align: center;
+	text-decoration: none;
+}
+	</style>
+</head>
+<body>
+
+<nav>
+	<a href="">chapter one</a>
+	<a href="">chapter two</a>
+	<a href="">chapter three</a>
+	<a href="">chapter four</a>
+	<a href="">chapter five</a>
+	<a href="">chapter six</a>
+	<a href="">chapter seven</a>
+	<a href="">chapter eight</a>
+	<a href="">chapter nine</a>
+	<a href="">chapter ten</a>
+	<a href="">chapter one</a>
+	<a href="">chapter two</a>
+	<a href="">chapter three</a>
+	<a href="">chapter four</a>
+	<a href="">chapter five</a>
+	<a href="">chapter six</a>
+	<a href="">chapter seven</a>
+	<a href="">chapter eight</a>
+	<a href="">chapter nine</a>
+	<a href="">chapter ten</a>
+</nav>
+
+<script>
+const nav = document.querySelector("nav");
+function updateScroll() {
+	for (const link of nav.children) {
+		let percent = (link.offsetTop - nav.offsetTop - nav.scrollTop) / link.offsetHeight;
+		let sin = Math.sin(percent * 0.5);
+		link.style.translate = sin * 200 + "px";
+		link.style.scale = 1 - Math.abs(sin) * 0.25;
+	}
+}
+nav.addEventListener("scroll", updateScroll);
+updateScroll();
+</script>
+
+</body>
+</html>

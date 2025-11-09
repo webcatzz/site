@@ -1,4 +1,181 @@
+@font-face {
+	font-family: jetbrains-mono;
+	src: local("JetBrains Mono"), url(/assets/fonts/jetbrains_mono.ttf);
+	size-adjust: 80%;
+}
+
+@keyframes blink {
+	to {visibility: hidden}
+}
+
+:root {
+	--fore: #00e436;
+	--mid: #008751;
+	--back: #1d2b53;
+}
+
 body {
-	background-color: var(--black);
+	font-family: jetbrains-mono, monospace;
+	color: var(--fore);
+	background-color: var(--back);
+	max-width: 450px;
+	padding-inline: 64px;
+	margin: 64px auto;
 	image-rendering: pixelated;
+
+	::before, ::after {
+		color: var(--mid);
+	}
+}
+
+h1 {
+	text-align: center;
+}
+
+section {
+	display: flow-root;
+	padding-inline: 1.5em;
+	margin-block: 1em;
+	position: relative;
+
+	&::before {
+		content: "/*";
+		position: absolute;
+		left: 0;
+		top: 0;
+	}
+
+	&::after {
+		content: "*/";
+		position: absolute;
+		right: 0;
+		bottom: 0;
+	}
+}
+
+h1, h2, h3 {
+	color: var(--mid);
+	font-size: 1em;
+	font-weight: normal;
+}
+
+ul, ol {
+	list-style-type: none;
+	padding-left: unset;
+}
+
+ul {
+	li {
+		padding-left: 1em;
+		position: relative;
+
+		&::before {
+			content: "-";
+			position: absolute;
+			left: 0;
+		}
+	}
+}
+
+a, input[type="submit"], label {
+	text-decoration: underline;
+
+	&:hover {
+		color: var(--back);
+		text-decoration: none;
+		background-color: var(--fore);
+	}
+}
+
+/* sections */
+
+#widget {
+	display: flex;
+	justify-content: center;
+	margin-block: 2em;
+
+	a {
+		background-color: unset;
+	}
+}
+
+#members {
+	ol {
+		counter-reset: ol -1;
+	
+		li {
+			counter-increment: ol;
+	
+			&::before {content: "members[" counter(ol) "] = \""}
+			&::after {content: "\";"}
+		}
+	}
+}
+
+#resources {
+	dl {
+		&::before {content: "{"; display: block}
+		&::after {content: "};"}
+	}
+
+	dt {
+		margin-inline: 1em 0.5em;
+		float: left;
+		clear: left;
+
+		&::after {content: ":"}
+	}
+
+	dd {
+		overflow: hidden;
+		text-indent: -0.5em;
+		padding-left: 0.5em;
+
+		&::before {content: "\""}
+		&::after {content: "\","}
+		&:last-of-type::after {content: "\""}
+	}
+}
+
+#footer {
+	color: var(--mid);
+
+	&::before {
+		content: url(assets/geeble.png) " ";
+		vertical-align: middle;
+	}
+
+	&::after {
+		content: "█";
+		animation: 2s blink steps(2, start) infinite;
+	}
+}
+
+/* poll */
+
+#poll {
+	margin: 1em;
+
+	h3 {
+		color: unset;
+	}
+
+	label, input {
+		cursor: pointer;
+	}
+
+	input[type="checkbox"] {
+		white-space: nowrap;
+		margin: unset;
+
+		&::before {content: "[ ]";}
+		&:checked::before {content: "[x]"}
+	}
+}
+
+#poll-options {
+	display: grid;
+	grid-template-columns: auto 1fr;
+	column-gap: 0.5em;
+	margin-block: 1em;
 }

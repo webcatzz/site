@@ -1,0 +1,99 @@
+@keyframes morph {25% {border-radius: 16px} 75% {border-radius: 50%}}
+
+:root {
+	--white: #deebcf;
+	--black: #332a33;
+}
+
+body {
+	color: var(--white);
+	font-family: mspgothic;
+	background-color: var(--black);
+	margin: 64px max(64px, 50vw - 250px);
+}
+
+a {
+	text-decoration: underline;
+}
+
+#calendar {
+	display: grid;
+	grid-template-columns: repeat(7, 1fr);
+	font-size: 0.875em;
+	text-align: center;
+	list-style: none;
+	padding-left: unset;
+	border: 12px double rgb(from currentcolor r g b / 10%);
+	border-radius: 50%;
+
+	li {
+		--color: #9569c8;
+		--background: color-mix(in srgb, var(--black), var(--color) 3%);
+		color: color-mix(in srgb, var(--black), var(--color));
+		text-shadow:
+			0.1em 0 var(--background),
+			0.1em 0.1em var(--background),
+			0 0.1em var(--background),
+			-0.1em 0.1em var(--background),
+			-0.1em 0 var(--background),
+			-0.1em -0.1em var(--background),
+			0 -0.1em var(--background),
+			0.1em -0.1em var(--background);
+		background-color: var(--background);
+		aspect-ratio: 1;
+		padding: 12px;
+		border: 4px solid var(--color);
+		border-radius: 16px;
+		margin: -6px;
+		z-index: 1;
+		position: relative;
+		counter-increment: date;
+		animation: 9s morph linear alternate infinite;
+		
+		&:first-child {grid-column-start: 3}
+		&:nth-of-type(odd) {border-radius: 50%}
+		&:nth-of-type(5n - 4) {--color: #e75952}
+		&:nth-of-type(5n - 3) {--color: #eaaf4d}
+		&:nth-of-type(5n - 2) {--color: #44c55b}
+		&:nth-of-type(5n - 1) {--color: #58aeee}
+		&:nth-of-type(4n - 3) {animation-delay: -6.75s}
+		&:nth-of-type(4n - 2) {animation-delay: -4.5s}
+		&:nth-of-type(4n - 1) {animation-delay: -2.25s}
+	
+		&::before {
+			content: counter(date);
+			color: rgb(from var(--color) r g b / 12.5%);
+			font-size: 64px;
+			text-shadow: none;
+			z-index: -1;
+			position: absolute;
+			left: 0;
+			right: 0;
+			bottom: 0;
+		}
+	}
+
+	a {
+		color: var(--white);
+		text-decoration-color: var(--color, currentcolor);
+	}
+}
+
+#text {
+	text-align: right;
+}
+
+#links {
+	color: #86837e;
+	font-style: italic;
+
+	p, ul, li {
+		display: inline;
+	}
+
+	ul {
+		padding-left: unset;
+	}
+
+	li:not(:first-of-type)::before {content: " • "}
+}

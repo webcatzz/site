@@ -1,10 +1,56 @@
-#loop {
-	list-style: none;
-	padding-left: unset;
-	margin-block: unset;
+body {
+	color: var(--black);
+	font-family: mspgothic;
+	background-color: var(--white);
+	max-width: 500px;
+	padding: 64px;
+	margin-inline: auto;
 }
 
-.feed {
-	max-height: 3.75em;
-	overflow: hidden auto;
+#title {
+	font-family: serif;
+	font-style: italic;
+	margin-bottom: 2em;
+}
+
+h1 {
+	font-weight: normal;
+	letter-spacing: 0.1em;
+}
+
+article {
+	padding-inline: 0.5em;
+	
+	+ article {
+		border-top: 1px dashed;
+		margin-top: 0.5em;
+	}
+
+	header, footer {
+		font-size: 0.875em;
+	}
+
+	blockquote p {
+		font-style: italic;
+	}
+
+	blockquote footer {
+		font-size: 0.875em;
+	}
+
+	blockquote, p {
+		margin-block: 0.5em;
+	}
+	
+	time {
+		font-size: 0.75em;
+		border: 1px dotted;
+		padding-inline: 0.25em;
+	}
+
+}
+
+a {
+	color: blue;
+	text-decoration: underline;
 }

@@ -1,4 +1,18 @@
-@font-face {font-family: mspgothic; src: local("MS PGothic"), url(assets/fonts/mspgothic.ttf)}
+@font-face {
+	font-family: mspgothic;
+	src: local("MS PGothic"), url(assets/fonts/mspgothic.ttf);
+}
+
+@font-face {
+	font-family: eb-garamond;
+	src: local("EB Garamond"), url(/assets/fonts/ebgaramond.ttf);
+}
+
+@font-face {
+	font-family: eb-garamond;
+	font-style: italic;
+	src: local("EB Garamond Italic"), url(/assets/fonts/ebgaramond_italic.ttf);
+}
 
 :root {
 	--white: hsl(0, 0%, 95%);
@@ -43,6 +57,10 @@ a {
 }
 
 /* block */
+
+figure {
+	margin-inline: unset;
+}
 
 blockquote {
 	margin-inline: unset
@@ -141,65 +159,3 @@ tape-deck {
 		text-decoration: underline;
 	}
 }
-
-/*
-
-rule order
-
-display
--------
-display
-[grid|flex]-*
-[justify|align]-[items|content]
-gap
-columns
-
-content
--------
-content (except in pseudoelements, where it comes first)
-color
-font
-letter-spacing
-text-*
-writing-mode
-object-*
-
-box
----
-background
-width
-height
-aspect-ratio
-box-sizing
-padding
-border
-box-shadow
-margin
-overflow
-
-transform
----------
-translate
-scale
-rotate
-transform
-filter
-
-position
---------
-[justify|align]-self
-grid-[column|row|area]
-position
-inset
-
-rendering
----------
-contain
-image-rendering
-
-input
------
-pointer-events
-user-select
-
-*/

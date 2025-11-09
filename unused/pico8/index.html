@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>PARAPHERNALIA ✹ pico8</title>
+	<link rel="stylesheet" href="/blanket.css">
+	<link rel="stylesheet" href="style.css">
+	<script defer src="script.js"></script>
+</head>
+<body>
+
+	<header>
+		<h1><a href="https://www.lexaloffle.com/pico-8.php"><img src="assets/logo.png" alt="pico-8"></a> unofficial reference</h1>
+		<button id="collapse-all">☉</button> |
+		<details id="toc">
+			<summary>▤</summary>
+			<nav id="toc-content">
+				<a href="#loop">loop</a> |
+				<a href="#loop">input</a>
+			</nav>
+		</details>
+	</header>
+
+	<h2>loop</h2>
+	<dl>
+		<dt class="func">_init()</dt>
+		<dd>called once when the game starts.</dd>
+		<dt class="func">_update()</dt>
+		<dd>called 30 times per second, regardless of framerate.</dd>
+		<dt class="func">_draw()</dt>
+		<dd>called every frame.</dd>
+		<dt class="func">_update60()</dt>
+		<dd>similar to <a href="#_update">_update</a> but called 60 times per second.</dd>
+	</dl>
+
+	<h2>graphics</h2>
+	<dl>
+		<dt class="func">color([col])</dt>
+		<dd>sets the default color used when drawing. col defaults to 6.</dd>
+		<dt class="func">cls([col])</dt>
+		<dd>fills the screen with a color and resets the clipping rectangle. col defaults to 0.</dd>
+	</dl>
+	<h3>text</h3>
+	<p>? is shorthand for print: ?"hello world",4,6</p>
+	<p>print acknowledges several special codes:</p>
+	<ul>
+		<li>\#0 (set background color 0-f)</li>
+		<li>\f0 (set foreground color 0-f)</li>
+		<li>\^i (invert colors)</li>
+		<li>\^w (start wide characters)</li>
+		<li>\^-w (stop wide characters)</li>
+		<li>\^t (start tall characters)</li>
+		<li>\^-t (stop tall characters)</li>
+		<li>\^p (start pinball characters)</li>
+		<li>\^-p (stop pinball characters)</li>
+		<li>\a (beep)</li>
+	</ul>
+	<dl>
+		<dt class="func">print(str,x,y,[col])</dt>
+		<dt class="func">print(str,[col])</dt>
+		<dd>prints a string at (x,y). (x,y) defaults to the current cursor position.</dd>
+		<!-- <dt class="func">printh(str,[filename],[overwrite],[to_desktop])</dt> -->
+	</dl>
+	<h3>shapes</h3>
+	<dl>
+		<dt class="func">rect(x1,y1,x2,y2,[col])</dt>
+		<dd>draws a rectangle with opposite corners (x1,y1) and (x2,y2).</dd>
+		<dt class="func">rectfill(x1,y1,x2,y2,[col])</dt>
+		<dd>similar to <a href="#rect">rect</a> but draws a solid rectangle.</dd>
+		<dt class="func">circ(x,y,r,[col])</dt>
+		<dd>draws a circle with center (x,y) and radius r.</dd>
+		<dt class="func">circfill(x,y,r,[col])</dt>
+		<dd>similar to <a href="#circ">circ</a> but draws a solid circle.</dd>
+		<dt class="func">oval(x1,y1,x2,y2,[col])</dt>
+		<dd>draws an ellipse bounded by the rectangle with opposite corners (x1,y1) and (x2,y2).</dd>
+		<dt class="func">ovalfill(x1,y1,x2,y2,[col])</dt>
+		<dd>similar to <a href="#oval">oval</a> but drwas a solid oval.</dd>
+	</dl>
+
+	<h2>input</h2>
+	<p>buttons are referenced by index, as follows: 0=⬅ 1=➡ 2=⬆ 3=⬇ 4=🅾 5=❎</p>
+	<p>these indices are also stored in a set of global variables: ⬅ (shift+l), ➡ (shift+r), ⬆ (shift+u), ⬇ (shift+d), 🅾 (shift+o), and ❎ (shift+x).</p>
+	<dl>
+		<dt class="func">btn([b],[pl])</dt>
+		<dd>returns a boolean indicating whether a button is currently pressed for some player. pl defaults to 0. if called without arguments, returns a bitfield of current input for both players.</dd>
+		<dt class="func">btnp([b],[pl])</dt>
+		<dd>similar to <a href="#btn">btn</a> but only returns true if the button was pressed in the time since the last frame.</dd>
+	</dl>
+
+	<h2>map</h2>
+	<dl>
+		<dt class="func">mset(x,y,val)</dt>
+		<dd>sets the map tile at (x,y).</dd>
+		<dt class="func">mget(x,y)</dt>
+		<dd>gets the map tile at (x,y). if (x,y) is outside the map, returns 0.</dd>
+		<dt class="func">map([tx,ty],[sx,sy],[tw,th],[layers])</dt>
+		<dd>draws a portion of the map from (tx,ty) with dimensions (tw,th) at screen coordinates (sx,sy).</dd>
+	</dl>
+
+	<h2>shortcuts</h2>
+	<h3>common</h3>
+	<dl>
+		<dt>esc</dt><dd>toggle editor</dd>
+		<dt>ctrl+r</dt><dd>run</dd>
+		<dt>ctrl+s</dt><dd>save</dd>
+		<dt>ctrl+6</dt><dd>screenshot</dd>
+		<dt>ctrl+7</dt><dd>save label image (??)</dd>
+		<dt>ctrl+8</dt><dd>start gif</dd>
+		<dt>ctrl+9</dt><dd>end + save gif</dd>
+		<dt>ctrl+m</dt><dd>toggle mute</dd>
+		<dt>ctrl+p</dt><dd>toggle puny font</dd>
+		<dt>alt+enter</dt><dd>fullscreen</dd>
+	</dl>
+	<h3>editor</h3>
+	<h4>navigation</h4>
+	<dl>
+		<dt>ctrl+⬆/⬇</dt><dd>jump to start/end of tab</dd>
+		<dt>ctrl+w/e</dt><dd>jump to start/end of line</dd>
+		<dt>ctrl+⬅/➡</dt><dd>jump to previous/next word</dd>
+		<dt>alt+⬆/⬇</dt><dd>jump to previous/next function</dd>
+		<dt>ctrl+tab</dt><dd>next tab</dd>
+		<dt>ctrl+shift+tab</dt><dd>previous tab</dd>
+		<dt>ctrl+l</dt><dd>go to line (by number)</dd>
+	</dl>
+	<h4>miscellaneous</h4>
+	<dl>
+		<dt>ctrl+c</dt><dd>copy</dd>
+		<dt>ctrl+x</dt><dd>cut</dd>
+		<dt>ctrl+v</dt><dd>paste</dd>
+		<dt>ctrl+f</dt><dd>search</dd>
+		<dt>ctrl+g</dt><dd>next search result</dd>
+		<dt>ctrl+h</dt><dd>next search result (all tabs)</dd>
+	</dl>
+	<h3>game</h3>
+	<dl>
+		<dt>esc / enter / p</dt><dd>toggle pause</dd>
+		<dt>ctrl+p</dt><dd>toggle cpu display</dd>
+	</dl>
+
+	<h3>ex</h3>
+	<dl>
+		<dt>ctrl+d</dt><dd>duplicate line</dd>
+		<dt>tab</dt><dd>indent selection</dd>
+		<dt>shift+tab</dt><dd>unindent selection</dd>
+		<dt>ctrl+b</dt><dd>toggle commented line</dd>
+		<dt>ctrl+u</dt><dd>runs help for selected keyword</dd>
+		<dt>ctrl+j</dt><dd>toggle hiragana</dd>
+		<dt>ctrl+k</dt><dd>toggle katakana</dd>
+		<dt>ctrl+tab</dt><dd>next tab</dd>
+		<dt>ctrl+tab+shift</dt><dd>previous tab</dd>
+	</dl>
+	
+</body>
+</html>

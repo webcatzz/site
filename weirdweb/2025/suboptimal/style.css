@@ -1,0 +1,13 @@
+body {
+	background-color: black;
+	margin: unset;
+}
+
+iframe {
+	width: 300px;
+	height: 150px;
+	border-block-width: calc(50vh - 75px);
+	border-inline-width: calc(50vw - 150px);
+	border-style: solid;
+	border-image: url(frame.png) 55 54 50;
+}

@@ -3,35 +3,57 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<style>
+body {
+	color: #00e436;
+	font-family: monospace;
+	background-color: #1d2b53;
+	max-width: 200px;
+	padding-inline: 64px;
+	margin: 64px auto;
+}
+
+ol {
+	list-style-type: decimal;
+	list-style-position: inside;
+	padding-left: unset;
+}
+
+a {
+	color: unset;
+}
+
+aside, li::marker {
+	color: #008751;
+}
+	</style>
 </head>
 <body>
 
 <p>redirecting...</p>
 
-<script>
-let sites = [
-	"juneish.neocities.org",
-	"kelprot.neocities.org",
-	"murumart.neocities.org/m/beeps/",
-	"troy-sucks.neocities.org/beepbox",
-	"ninacti0n.neocities.org",
-	"mikaorangeart.neocities.org",
-	"robophobia.org",
-	"fizzsea.neocities.org",
-	"foggybear42.neocities.org",
-	"mechagic.github.io",
-	"sawtooth.neocities.org",
-	"neovium.xyz",
-	"hellokittyminigun.neocities.org",
-	"item64.neocities.org",
-	"transferns.neocities.org",
-	"teethinvitro.neocities.org/music",
-]
-let idx = sites.findIndex(site => document.referrer.startsWith(site));
+<aside>
+	<p>(if you're stuck, <noscript>either you have javascript disabled or</noscript> the link you clicked on was missing a ?from or ?to. navigate with the list below?)</p>
+</aside>
 
-if (idx != -1) {
-	if (location.search === "?prev") location.replace(sites.at(idx - 1));
-	else if (location.search === "?next") location.replace(sites[(idx + 1) % sites.length]);
+<ol>
+	<li><a href="https://juneish.neocities.org">juneish.neocities.org</a></li>
+</ol>
+
+<script>
+let sites = {
+	"index": "https://juneish.neocities.org/ring/gamedev/",
+	"juneish": "https://juneish.neocities.org",
+};
+let params = new URLSearchParams(location.search);
+let keys = Object.keys(sites);
+let idx = keys.indexOf(params.get("from"));
+if (idx >= 0) {
+	switch (params.get("to")) {
+		case "prev": idx = (keys.length + idx - 1) % keys.length; break;
+		case "next": idx = (idx + 1) % keys.length; break;
+	}
+	location.replace(sites[keys[idx]]);
 }
 </script>
 

@@ -1,6 +1,10 @@
 body {
+	color: var(--black);
 	font-family: mspgothic;
-	margin: 64px max(64px, 50vw - 250px);
+	background-color: var(--white);
+	max-width: 500px;
+	padding: 64px;
+	margin-inline: auto;
 }
 
 h1 {

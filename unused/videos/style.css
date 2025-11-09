@@ -1,0 +1,21 @@
+body {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 1em;
+	height: 100vh;
+	background-image: radial-gradient(var(--gradient-1), var(--gradient-2));
+}
+
+h1 {
+	color: white;
+	font-size: 1em;
+	mix-blend-mode: difference;
+}
+
+video {
+	max-width: 75vw;;
+	max-height: 75vh;
+	mix-blend-mode: multiply;
+	mask: radial-gradient(closest-side ellipse at center, white, transparent);
+}

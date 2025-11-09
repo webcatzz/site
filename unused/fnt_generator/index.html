@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>PARAPHERNALIA ✹ fnt generator</title>
+	<link rel="stylesheet" href="/blanket.css">
+	<link rel="stylesheet" href="style.css">
+	<script defer src="script.js"></script>
+</head>
+<body>
+
+<div id="top">
+	<h1 id="title">fnt generator</h1>
+	<label for="name-input" title="the name of your font, also used as the name of the image file">font name</label>
+	<input id="name-input" type="text" placeholder="font">
+	<button id="download-button">download</button>
+	<label for="import-input" title="import characters from an fnt file">import</label>
+	<input id="import-input" type="file" accept=".fnt">
+</div>
+
+<div id="canvas">
+	<img id="font-image">
+	<div id="canvas-tip" hidden>drag to select an area, then press enter to define a character</div>
+	<div class="hidden" id="char-config">
+		<label for="string-input" title="the character that uses this slice">character</label>
+		<input id="string-input" type="text" minlength="1" maxlength="1">
+		<label for="x-input" title="x coordinate of this slice in pixels">x</label>
+		<input id="x-input" type="number" min="0" placeholder="0">
+		<label for="y-input" title="y coordinate of this slice in pixels">y</label>
+		<input id="y-input" type="number" min="0" placeholder="0">
+		<label for="width-input" title="width of this slice in pixels">width</label>
+		<input id="width-input" type="number" min="1" placeholder="0">
+		<label for="height-input" title="height of this slice in pixels">height</label>
+		<input id="height-input" type="number" min="1" placeholder="0">
+		<label for="x-advance-input" title="horizontal space taken up by this character">x advance</label>
+		<input id="x-advance-input" type="number" placeholder="0">
+		<label for="x-offset-input" title="horizontal offset applied to this character">x offset</label>
+		<input id="x-offset-input" type="number" placeholder="0">
+		<label for="y-offset-input" title="vertical offset applied to this character">y offset</label>
+		<input id="y-offset-input" type="number" placeholder="0">
+		<div class="char-config-row">
+			<button id="remove-button">remove</button>
+			<button id="close-button">close (enter)</button>
+		</div>
+	</div>
+	<input id="image-input" type="file" accept="image">
+</div>
+
+</body>
+</html>

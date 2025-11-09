@@ -3,46 +3,53 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>PARAPHERNALIA ✹ 404</title>
+	<title>404 • paraphernalia</title>
 	<link rel="stylesheet" href="/blanket.css">
 	<style>
-@font-face {font-family: departuremono; src: url(/assets/fonts/departure_mono.woff2); size-adjust: 80%}
-
 body {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	gap: 1em;
 	color: #eee;
-	font-family: mspgothic;
+	text-align: center;
 	background-color: black;
-	min-height: 100vh;
-	box-sizing: border-box;
-	padding: 32px;
+	max-width: 375px;
+	padding-inline: 64px;
+	margin: 128px auto;
 	image-rendering: pixelated;
 }
 
 img {
-	max-width: 100%;
+	width: 100%;
 }
 
 h1 {
-	font-weight: normal;
+	font-size: unset;
+	font-weight: unset;
+	margin-block: 1em;
+}
+
+ul {
+	padding-left: unset;
+}
+
+li {
+	display: inline;
+
+	&:not(:first-of-type)::before {content: " • "}
 }
 
 a {
-	text-decoration: underline dotted;
+	text-decoration: underline;
 }
 	</style>
 </head>
 <body>
 
-<img src="/assets/intothesea.png">
+<img src="/assets/intothesea.png" alt="greg from greg rpg face-down on the beach being washed into the ocean">
 <h1>nothing here...</h1>
 <nav>
-	<a href="/">return home</a> •
-	<a href="javascript:history.back()">step back</a>
+	<ul>
+		<li><a href="/">return home</a></li>
+		<li><a href="javascript:history.back()">step back</a></li>
+	</ul>
 </nav>
 
 </body>

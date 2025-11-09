@@ -1,0 +1,76 @@
+@font-face {font-family: mspgothic; src: url(/assets/fonts/mspgothic.ttf)}
+@keyframes float {from {translate: 0 0.125em} to {translate: 0 -0.125em}}
+
+:root {
+	--white: #fafdff;
+	--black: #16171a;
+}
+
+body {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: calc(var(--gradient-size) * 1.25);
+	color: var(--white);
+	font-family: mspgothic, sans-serif;
+	background:
+		radial-gradient(circle at calc(50% + var(--point-1-x, 0px)) calc(50% + var(--point-1-y, 0px)), #d62411, transparent var(--gradient-size)),
+		radial-gradient(circle at calc(50% + var(--point-2-x, 0px)) calc(50% + var(--point-2-y, 0px)), #ffd100, transparent var(--gradient-size)),
+		radial-gradient(circle at calc(50% + var(--point-3-x, 0px)) calc(50% + var(--point-3-y, 0px)), #10d275, transparent var(--gradient-size)),
+		radial-gradient(circle at calc(50% + var(--point-4-x, 0px)) calc(50% + var(--point-4-y, 0px)), #68aed4, transparent var(--gradient-size)),
+		radial-gradient(circle at calc(50% + var(--point-5-x, 0px)) calc(50% + var(--point-5-y, 0px)), #ff2674, transparent var(--gradient-size)) var(--black);
+	height: 100vh;
+	margin: unset;
+}
+
+.title {
+	color: rgb(from var(--black) r g b / 0.125);
+	font-size: 4em;
+	font-style: italic;
+	font-weight: bold;
+	text-shadow: 0 0 16px rgb(from var(--black) r g b / 0.25);
+	letter-spacing: 0.1em;
+	margin-block: unset;
+	pointer-events: none;
+
+	span {
+		display: inline-block;
+		animation: float 1s alternate infinite;
+
+		&:nth-of-type(4n - 3) {animation-delay: -0.75s}
+		&:nth-of-type(4n - 2) {animation-delay: -0.5s}
+		&:nth-of-type(4n - 1) {animation-delay: -0.25s}
+	}
+}
+
+#popup {
+	background-color: var(--black);
+	padding: 0 1.25em;
+	translate: 0 -50%;
+	position: fixed;
+	top: 50%;
+
+	button {
+		appearance: none;
+		display: block;
+		background-color: var(--white);
+		color: var(--black);
+		font: inherit;
+		padding: 0.25em 0.5em;
+		border: unset;
+		margin: 1em auto;
+		cursor: pointer;
+	}
+}
+
+#credits {
+	color: rgb(from var(--white) r g b / 0.25);
+	position: fixed;
+	left: 1em;
+	bottom: 1em;
+
+	summary {
+		cursor: pointer;
+	}
+}

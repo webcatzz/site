@@ -1,0 +1,54 @@
+@font-face {font-family: outlaw; src: url(/assets/fonts/twig.ttf); size-adjust: 87.5%}
+
+body {
+	color: var(--white);
+	font-family: outlaw;
+	background-color: var(--black);
+
+	&::after {content: none}
+}
+
+.header {
+	display: flex;
+	gap: 1em;
+	color: #ebe4de;
+	background-color: #a0a3a1;
+	padding: 1em;
+	border-bottom: 2px solid #ebe4de;
+	image-rendering: pixelated;
+}
+
+h1 {
+	font-family: sans-serif;
+}
+
+#capture-list {
+	display: flex;
+	gap: 2px;
+	color: black;
+  background: #b8b6b2;
+	padding: 2px;
+	box-shadow:
+		2px 0 #ebe4de,
+		0 2px #ebe4de,
+		2px 2px #ebe4de,
+		0 0 0 2px #5b5a65;
+	margin: 2px;
+	overflow: auto hidden;
+	flex: 1;
+	/* min-height: 64px;
+	border: 0 solid;
+	border-image: url(assets/box.png) stretch repeat fill 15 15 15 2 / 30px 30px 30px 4px;
+	flex: 1; */
+}
+
+.capture-name {
+	line-height: 0.875;
+}
+
+.capture-page {
+	
+	img {
+		width: 22px;
+	}
+}

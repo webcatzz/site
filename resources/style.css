@@ -12,7 +12,9 @@ body {
 	gap: 64px;
 	color: var(--black);
 	font-family: alte;
-	background-color: var(--white);
+	background:
+		linear-gradient(to right, var(--white) 600px, transparent) fixed,
+		url(assets/wires.png) right / calc(100vw - 600px) fixed;
 	padding: 64px 128px;
 }
 
@@ -34,8 +36,12 @@ h1, h2, h3 {
 
 #nav-title {
 	font-size: unset;
-	text-decoration: underline;
 	margin-bottom: 0.5em;
+
+	span {
+		font-style: italic;
+		text-decoration: underline wavy;
+	}
 }
 
 .nav-item {
@@ -48,7 +54,7 @@ h1, h2, h3 {
 		position: absolute;
 		inset: -0.5em -2em;
 		pointer-events: none;
-		animation: 0.25s rotate step-end infinite;
+		animation: 0.4s rotate step-end infinite;
 	}
 }
 

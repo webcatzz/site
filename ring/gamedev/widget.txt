@@ -1,0 +1,5 @@
+<div style="display: flex; justify-content: center; image-rendering: pixelated">
+	<a href="https://juneish.neocities.org/ring/gamedev/href?from=REPLACEME&to=prev"><img src="https://juneish.neocities.org/ring/gamedev/assets/prev.png" alt="previous site"></a>
+	<a href="https://juneish.neocities.org/ring/gamedev/"><img src="https://juneish.neocities.org/ring/gamedev/assets/button.gif" alt="gamedevring"></a>
+	<a href="https://juneish.neocities.org/ring/gamedev/href?from=REPLACEME&to=next"><img src="https://juneish.neocities.org/ring/gamedev/assets/next.png" alt="next site"></a>
+</div>
