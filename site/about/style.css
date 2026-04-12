@@ -1,0 +1,25 @@
+body {
+	font-family: ms-pgothic;
+	max-width: 360px;
+	margin: 32px;
+}
+
+#doll {
+	max-width: 100px;
+	margin-left: 1em;
+	margin-block: -0.5em 0.5em;
+	float: right;
+}
+
+#title {
+	font-size: 1em;
+	font-weight: normal;
+	letter-spacing: -0.0625em;
+	padding-bottom: 0.25em;
+	border-bottom: 1px dotted rgb(from currentcolor r g b / 0.25);
+	overflow: hidden;
+}
+
+p {
+	margin-block: 0.5em;
+}

@@ -1,0 +1,101 @@
+
+<hgroup id="title">
+	<h1>on the air</h1>
+	<p id="subtitle">(static wisps off the hoarse speakers, perched atop a magazine stack.)</p>
+</hgroup>
+
+<article>
+	<p>heading home through the night rain, listening to <cite>chrysalis</cite> - she's green on blast... cool air and bright lights... oh yeah. this is the life <time datetime="2025-10-12">2025.10.12</time></p>
+</article>
+
+<article>
+	<blockquote>
+		<p>wait a second mandy<br>
+			please let me take you home</p>
+	</blockquote>
+	<footer><cite>mandy</cite> - she's green</footer>
+</article>
+
+<article>
+	<blockquote>
+		<p>somebody loves you and you'll make it to heaven someday<br>
+			somebody loves you</p>
+	</blockquote>
+	<footer><cite>pony white whale</cite> - sun is poison</footer>
+</article>
+
+<article>
+	<blockquote>
+		<p>fool, all you touch on this turning dream<br>
+			is either gonna be burned or buried</p>
+		<p>all your jewelry goes around from town to town<br>
+			all your pretty ones, i'm not gonna say where they are now</p>
+		<footer><cite>buddy in the parade</cite> - hop along</footer>
+	</blockquote>
+</article>
+
+<article>
+	<blockquote>
+		<p>learning how we're supposed to talk<br>
+			i am a makeshift confidant<br>
+			making sure we get along</p>
+		<p>but i'm nodding off<br>
+			i'm nodding off and on</p>
+		<footer><cite>nodding</cite> - rugh</footer>
+	</blockquote>
+</article>
+
+<article>
+	<blockquote>
+		<p>he says "it's right on track"<br>
+			he says "it's right on track"</p>
+		<footer><cite>mantra is repeated</cite> - spirit of the beehive</footer>
+	</blockquote>
+</article>
+
+<article>
+	<p><cite>phonetics on and on</cite> by horsegirl has been stuck in my head for the past week... not an album i expected to like! simple lyrics which generally turns me off but they're really catchy <time datetime="2025-09-12">2025.09.12</time></p>
+</article>
+
+<article>
+	<p>saw an early screening of <cite>happyend</cite> and ughh the soundtrack... thank you lia ouyang rusli <time datetime="2025-09-10">2025.09.10</time></p>
+</article>
+
+<article>
+	<blockquote>
+		<p>two, four, six, eight<br>
+		they walk in two's<br>
+		da-da-da-da-da-da</p>
+		<footer><cite>2468</cite> - horsegirl</footer>
+	</blockquote>
+</article>
+
+<article>
+	<p>presently obsessed with <cite>slacker</cite> by bugcatcher. such nice sound. silly but emotionally charged lyrics. i don't really know where i found it...? <time datetime="2025-08-30">2025.08.30</time></p>
+</article>
+
+<article>
+	<blockquote>
+		<p>i don't wanna hear you<br>
+			i don't wanna see you say<br>
+			good-bye<br>
+			good-bye</p>
+		<footer><cite>little patterns</cite> - bugcatcher</footer>
+	</blockquote>
+</article>
+
+<article>
+	<p>spent most of the day dissolving to <a href="https://youtu.be/BwVRzhGf7Y8">apple man</a> but eventually got rescued by <cite>lost & found</cite> by free range. clear, gentle, like a summer drizzle. full of need but not forceful. i'm too tired to inspect the lyrics but what does catch on my consciousness hums like crystal <time datetime="2025-08-22">2025.08.22</time></p>
+</article>
+
+<article>
+	<p>newly enchanted by <cite>god gave him a wolf's heart</cite>. sun is poison draw from a similar set of metaphors to me; i fuck with worthlessness and resentment and reconciliation with the father. catchy melodies, too, and sharp lyrics. it's a shame i haven't been able to get into any of their other stuff but i'll hold out hope and try again <time datetime="2025-08-17">2025.08.17</time></p>
+</article>
+
+<article>
+	<p>imagining a new disco elysium game with teethe composing... <cite>magic of the sale</cite> has such a similar sound to the sea power ost but with such an interesting folk tilt. ethereal. beautiful. haunting. incredible atmosphere. if i ever find myself in a band i want my music to sound like this <time datetime="2025-08-16">2025.08.16</time></p>
+</article>
+
+<article>
+	<p>a little sad the new bugslam album has lost much of the forespi influence from <cite>this is all there is</cite> but i'm interested in the new direction (i.e. french). liked SULLY best. skimmed swim into the sound for the first time in a while, found some stuff to occupy me over the next week... checked out careful gaze's <cite>one day this will let you go</cite> which goes crazy(!) at the end but didn't interest me much otherwise <time datetime="2025-08-15">2025.08.15</time></p>
+</article>

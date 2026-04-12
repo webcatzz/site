@@ -1,0 +1,95 @@
+@font-face {
+	font-family: departure-mono;
+	src: url(/assets/fonts/departure-mono.woff2);
+	size-adjust: 80%;
+}
+
+body {
+	font-family: ms-pgothic;
+	max-width: 400px;
+	margin: 32px;
+}
+
+h1 {
+	font-size: 1em;
+	font-weight: normal;
+	letter-spacing: -0.0625em;
+	padding-bottom: 0.25em;
+	border-bottom: 1px dotted rgb(from currentcolor r g b / 0.25);
+	margin-block: 1em;
+}
+
+section {
+	margin-block: 1em;
+}
+
+h2 {
+	font-size: 1em;
+	font-weight: normal;
+	letter-spacing: -0.0625em;
+	padding-bottom: 0.25em;
+	border-bottom: 1px dotted rgb(from currentcolor r g b / 0.25);
+	margin-block: 0.25em;
+}
+
+p {
+	margin-block: 0.5em;
+}
+
+ul {
+	padding-inline-start: 1.25em;
+	margin-block: unset;
+}
+
+#sites {
+
+	th {
+		font-size: 0.75em;
+		font-weight: normal;
+		border-bottom: 1px dotted rgb(from currentcolor r g b / 0.25);
+
+		&:last-of-type {
+			text-align: start;
+
+			&::before {
+				content: url(assets/receipt.png) " ";
+			}
+		}
+	}
+
+	td:first-of-type {
+		text-align: center;
+		padding-block: 0.25em;
+
+		img {
+			padding: 2px;
+			border-style: solid;
+			border-width: 5px;
+			border-image: url(assets/stamp.png) round 5 / 5px;
+			margin-inline: auto;
+		}
+
+		a {
+			border: 1px dotted rgb(from currentcolor r g b / 0.25);
+			padding: 0.125em 0.5em;
+			
+			img + & {
+				border-block-start: unset;
+			}
+		}
+
+	}
+	
+	td:last-of-type {
+		margin-inline-start: unset;
+		
+		ul {
+			list-style: "• " inside;
+			padding-inline-start: unset;
+		}
+	}
+
+	tr:nth-of-type(even) td:first-child {rotate: 1deg}
+	tr:nth-of-type(odd) td:first-child {rotate: -1deg}
+
+}

@@ -1,0 +1,118 @@
+@font-face {
+	font-family: eb-garamond;
+	src: local("EB Garamond"), url(/assets/eb-garamond.ttf);
+}
+
+:root {
+	--green: #6aab8d;
+}
+
+body {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 24px;
+	font-family: eb-garamond;
+	text-align: center;
+	background:
+		radial-gradient(#092217, #151216 75%) fixed;
+	min-height: 100vh;
+	box-sizing: border-box;
+	padding: 64px;
+	margin: unset;
+}
+
+header {
+	color: var(--green);
+	text-shadow: 0 0 96px;
+	border: 3px double rgb(from currentcolor r g b / 0.5);
+	border-top-width: 1px;
+	border-top-style: solid;
+	padding: 1em;
+	border-radius: 3px;
+
+	p {
+		margin-block: 0;
+	}
+}
+
+h1 {
+	font-style: italic;
+	font-weight: normal;
+	margin-block: unset;
+}
+
+#table {
+	display: flex;
+	justify-content: center;
+	align-items: start;
+	border-radius: 19px;
+	outline: 1px solid rgb(from var(--green) r g b / 0.5);
+	outline-offset: -16px;
+}
+
+.card {
+	--width: 250px;
+	display: flex;
+	justify-content: center;
+	align-content: end;
+	flex-wrap: wrap;
+	column-gap: 0.25em;
+	font-size: 1.5em;
+	background-color: #eddbbe;
+	width: var(--width);
+	aspect-ratio: 40 / 69;
+	box-sizing: border-box;
+	padding: 20px 24px;
+	border-radius: 3px;
+	outline: 2px solid;
+	outline-offset: -16px;
+	box-shadow: 0 0 48px -32px #6aab8d;
+	cursor: pointer;
+
+	img {
+		display: inline;
+		vertical-align: -0.05em;
+		height: 0.75em;
+		margin-inline: 0.05em;
+	}
+
+	&.flipping {
+		pointer-events: none;
+	}
+
+	&.flipped {
+		background: url(assets/back.png) center / cover;
+	}
+
+	&:not(.flipped)::before {
+		content: "";
+		display: block;
+		border-top: 2px solid;
+		width: calc(100% + 16px);
+		margin: 8px -8px;
+	}
+
+	&:first-of-type, &:last-of-type {
+		margin-top: calc(var(--width) * 0.1);
+	}
+
+	&:first-of-type {
+		rotate: -4deg;
+	}
+
+	&:last-of-type {
+		rotate: 4deg;
+	}
+
+	&:nth-of-type(2) {
+		z-index: 1;
+	}
+}
+
+/* queries */
+
+@media (max-width: 800px) {
+	.card:first-child, .card:last-child {display: none}
+}

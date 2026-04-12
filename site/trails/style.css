@@ -1,0 +1,138 @@
+@font-face {
+	font-family: fs-hakumo;
+	src: url(assets/fs-hakumo.ttf);
+}
+
+:root {
+	--fore: #201503;
+	--back: #d6cfc1;
+	--blue: #bbcac2;
+	--font-heading: fs-hakumo;
+}
+
+body {
+	display: grid;
+	grid-template-columns: 1fr 2fr;
+	color: var(--fore);
+	font-family: thin;
+	background-color: var(--back);
+	background:
+		linear-gradient(to bottom, var(--blue), transparent 240px),
+		radial-gradient(var(--back) 75%, var(--blue)) fixed;
+	max-width: 600px;
+	margin: 64px auto;
+	padding-inline: 64px;
+}
+
+/* title */
+
+#title-wrapper {
+	position: relative;
+	margin-block-end: 0.5em;
+	grid-column: 1 / 3;
+}
+
+#banner {
+	width: 100%;
+	box-sizing: border-box;
+	border: 3px solid #d0c5b0;
+	border-radius: 3px;
+	clip-path: polygon(0 0, calc(100% - 16px) 0, 100% 16px, 100% 100%, 0 100%);
+	image-rendering: pixelated;
+}
+
+h1 {
+	font-family: var(--font-heading);
+	font-weight: normal;
+	font-style: italic;
+	line-height: 0.75;
+	padding-top: 0.125em;
+	margin-block: unset;
+	translate: -50%;
+	position: absolute;
+	top: 96px;
+	left: 50%;
+	mask: linear-gradient(to right, #ffffff60, #ffffff80 1em, #ffffffbf 2em, #ffffff30);
+}
+
+/* nav */
+
+nav {
+	margin-left: 32px;
+	margin-top: 2em;
+	
+	ul {
+		list-style: "* " inside;
+		padding-left: unset;
+		margin-block: unset;
+	}
+}
+
+.year-title {
+	font-size: 1em;
+	margin-block: 0.33em 0.167em;
+}
+
+/* content */
+
+main {
+	margin-right: 32px;
+}
+
+h2 {
+	font-family: var(--font-heading);
+	font-weight: normal;
+	margin-block-end: 0.67em;
+}
+
+p {
+	margin-block: 0.67em;
+}
+
+b, cite {
+	font-weight: normal;
+	font-style: italic;
+}
+
+a {
+	color: unset;
+	text-decoration-thickness: 0.075em;
+}
+
+hgroup {
+	margin-block: 1.33em 0.67em;
+
+	h3, p {
+		line-height: 1;
+		margin-block: unset;
+	}
+
+	p {
+		font-size: 0.875em;
+		font-style: italic;
+	}
+
+}
+
+h3 {
+	font-family: var(--font-heading);
+	font-weight: normal;
+
+	&::before {
+		content: "▧ ";
+		font-style: normal;
+	}
+}
+
+/* footer */
+
+footer {
+	font-size: 0.875em;
+	text-align: end;
+	margin-block-start: 2em;
+	grid-column: 1 / 3;
+
+	p {
+		margin-block: unset;
+	}
+}

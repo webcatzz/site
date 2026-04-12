@@ -1,0 +1,12 @@
+body {
+	&::after {
+		content: "";
+		background-image: url(assets/noise.png);
+		opacity: 0.04;
+		position: fixed;
+		inset: 0;
+		image-rendering: auto;
+		pointer-events: none;
+		z-index: 99;
+	}
+}

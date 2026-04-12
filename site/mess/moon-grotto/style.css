@@ -1,0 +1,113 @@
+@keyframes wobble {
+	from {translate: -0.67px 0}
+	50% {translate: 0.67px 0}
+}
+
+body {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: white;
+	background-color: black;
+	height: 100vh;
+	margin: unset;
+}
+
+#content {
+	width: 800px;
+	height: 600px;
+	position: relative;
+	animation: wobble 0.1s step-start infinite;
+}
+
+#stars {
+	width: 100%;
+	color: hsl(hue, saturation, lightness);
+	height: 100%;
+	position: absolute;
+	inset: 0;
+	image-rendering: pixelated;
+}
+
+#music-btn {
+	color: white;
+	background-color: #00000080;
+	border: 1px dotted #ffffff40;
+	background-color: unset;
+	position: absolute;
+	top: 16px;
+	left: 16px;
+}
+
+/* moon */
+
+.moon {
+	--light: hsl(40, 37%, 91%);
+	--dark: hsl(0, 0%, 0%);
+	--phase-back: var(--light);
+	--phase-fill: var(--dark);
+	--gradient-radius: 64px;
+	--gradient-bleed: 12px;
+	background-color: black;
+	background-image: radial-gradient(circle at var(--phase-x) var(--phase-y), var(--phase-fill) var(--gradient-radius), var(--phase-back) calc(var(--gradient-radius) + var(--gradient-bleed)));
+	background-repeat: no-repeat;
+	width: 128px;
+	aspect-ratio: 1;
+	border-radius: 50%;
+	position: absolute;
+	left: calc(50% - 64px);
+
+	&.crescent {
+		--phase-fill: var(--dark);
+		--phase-back: var(--light);
+		--gradient-radius: 60px;
+		--phase-y: 45%;
+		&.waxing {--phase-x: 40%}
+		&.waning {--phase-x: 60%}
+	}
+
+	&.half {
+		--phase-fill: var(--light);
+		--phase-back: var(--dark);
+		--gradient-radius: 60px;
+		background-image: linear-gradient(to var(--direction), var(--phase-back) calc(var(--gradient-radius) - var(--gradient-bleed) / 2), var(--phase-fill) calc(var(--gradient-radius) + var(--gradient-bleed) / 2));
+		&.waxing {--direction: right}
+		&.waning {--direction: left}
+	}
+
+	&.gibbous {
+		--phase-fill: var(--light);
+		--phase-back: var(--dark);
+		--gradient-radius: 56px;
+		--phase-y: 45%;
+		&.waxing {--phase-x: 55%}
+		&.waning {--phase-x: 45%}
+	}
+
+	&.full {
+		--phase-fill: var(--light);
+		--phase-back: var(--dark);
+		--gradient-radius: 60px;
+		--gradient-bleed: 4px;
+		--phase-x: 50%;
+		--phase-y: 48%;
+	}
+}
+
+#moon {
+	top: 64px;
+}
+
+#reflection {
+	scale: 1 -1;
+	filter: brightness(0.33);
+	bottom: 64px;
+}
+
+noscript {
+	max-width: 320px;
+	translate: -50% -50%;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+}

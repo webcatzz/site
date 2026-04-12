@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>lambchapel | junnections</title>
+	<link rel="stylesheet" href="style.css">
+	<script defer src="xml.js"></script>
+	<script defer src="script.js"></script>
+</head>
+<body>
+
+<div id="header">
+	<div id="title-wrapper">
+		<h1 id="title">Junnections</h1>
+		<details id="info">
+			<summary><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-question-mark-icon lucide-circle-question-mark" alt="info"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg></summary>
+			<p>junnections is a connections parody developed in collaboration with my friends. i hope you enjoy.</p>
+		</details>
+	</div>
+	<div id="selector-wrapper">
+		<select id="selector">
+			<option value="1">April 27, 2025</option>
+			<option value="3">This One Is Bullshit (In Our Defense It Was Really Hard To Write This Gimmick)</option>
+			<option value="4">Hi</option>
+			<option value="5">Something Nice For Once</option>
+			<option value="6">Did You Hear That?</option>
+			<option value="7">Feat.</option>
+			<option value="8">Hermann's Favorite</option>
+			<option value="9">Got A Smoke?</option>
+			<option value="10">Rainy Day</option>
+			<option value="11">Sounds Metal (Ember Edition)</option>
+			<option value="12">Nationwide Recall</option>
+			<option value="13">Private Screening</option>
+			<option value="14">Single</option>
+			<option value="15">Hands Off</option>
+		</select>
+		<svg id="selector-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down-icon lucide-chevron-down"><path d="m6 9 6 6 6-6"/></svg>
+	</div>
+</div>
+
+<div id="content">
+	<div id="tip">Create groups of four!</div>
+	<div id="status"></div>
+
+	<div id="grid">
+		<!-- ... -->
+	</div>
+	
+	<div id="mistakes">Mistakes remaining: </div>
+	<div class="buttons">
+		<button id="shuffle">Shuffle</button>
+		<button id="deselect" disabled>Deselect All</button>
+		<button id="submit" disabled>Submit</button>
+	</div>
+
+	<div id="summary" hidden>
+		<div id="summary-title">Well Done!</div>
+		<div id="summary-guesses"></div>
+		<div class="buttons">
+			<button id="retry">Try Again</button>
+			<button id="share">Share Your Results</button>
+			<button id="close">Show Puzzle</button>
+		</div>
+		<div id="summary-commentary">
+			<div id="summary-commentary-title">author commentary</div>
+		</div>
+	</div>
+</div>
+	
+</body>
+</html>

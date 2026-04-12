@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<connections>
+	<categories>
+		<category id="1" color="yellow">my parents fighting</category>
+		<category id="2" color="green">me getting bit by a dog</category>
+		<category id="3" color="blue">my dead fish</category>
+		<category id="4" color="purple">the face of god</category>
+	</categories>
+	<terms>
+		<term><img src="assets/rorschachs/1.png"/></term>
+		<term><img src="assets/rorschachs/2.png"/></term>
+		<term><img src="assets/rorschachs/3.png"/></term>
+		<term><img src="assets/rorschachs/4.png"/></term>
+		<term><img src="assets/rorschachs/5.png"/></term>
+		<term><img src="assets/rorschachs/6.png"/></term>
+		<term><img src="assets/rorschachs/7.png"/></term>
+		<term><img src="assets/rorschachs/8.png"/></term>
+		<term><img src="assets/rorschachs/9.png"/></term>
+		<term><img src="assets/rorschachs/10.png"/></term>
+		<term><img src="assets/rorschachs/11.png"/></term>
+		<term><img src="assets/rorschachs/12.png"/></term>
+		<term><img src="assets/rorschachs/13.png"/></term>
+		<term><img src="assets/rorschachs/14.png"/></term>
+		<term><img src="assets/rorschachs/15.png"/></term>
+		<term><img src="assets/rorschachs/16.png"/></term>
+	</terms>
+	<style>
+.term img {
+	object-fit: contain;
+	width: 100%;
+	height: 100%;
+}
+.category img {
+	display: inline;
+	height: 1.5em;
+}
+	</style>
+	<script>
+game.countIncorrect = function (terms) {
+	for (const term of terms)
+		term.category = this.categoriesGuessed + 1;
+	return 0;
+}
+	</script>
+	<commentary>
+		<comment from="braden">i wanted to name this puzzle free association, which june vetoed bc she thought it gave up the game. maybe she's right but you gotta admit it's a great title</comment>
+		<comment from="june">this is one of my favorites. people keep thinking they can solve the rorschachs and watching them desperately hallucinate groups is fun. hermann would be proud?</comment>
+	</commentary>
+</connections>

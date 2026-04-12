@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<connections mistakes="6">
+	<categories>
+		<category id="1" color="yellow">feat. a stitch</category>
+		<category id="2" color="green">feat. a lineup</category>
+		<category id="3" color="blue">feat. a racket</category>
+		<category id="4" color="purple">feat. buzzers</category>
+	</categories>
+	<terms>
+		<term category="4">basketball game</term>
+		<term category="4">family feud</term>
+		<term category="1">lilo</term>
+		<term category="2">baseball team</term>
+		<term category="1">quilt</term>
+		<term category="2">asch conformity test</term>
+		<term category="3">garage band</term>
+		<term category="1">frankenstein</term>
+		<term category="2">the usual suspects</term>
+		<term category="3">al capone</term>
+		<term category="4">milgram shock experiment</term>
+		<term category="2">music festival</term>
+		<term category="3">tennis</term>
+		<term category="1">tiktok</term>
+		<term category="4">beehive</term>
+		<term category="3">badminton</term>
+	</terms>
+	<style>
+@media (max-width: 800px) {
+	#grid {
+		font-size: 0.75em;
+	}
+}
+	</style>
+	<commentary>
+		<comment from="braden">I'm proud of this one. I like how unapproachable the puzzle looks— all the terms too different or too similar to be true</comment>
+	</commentary>
+</connections>

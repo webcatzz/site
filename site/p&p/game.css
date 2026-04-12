@@ -1,0 +1,106 @@
+#embed {
+	--height: 500px;
+	display: block;
+	background-color: #222;
+	aspect-ratio: 1.25;
+	height: var(--height);
+	padding-top: calc(var(--height) * 0.05);
+	margin-block: calc((90vh - var(--height)) / 2);
+	margin-inline: auto;
+	box-shadow: 0 0 64px 64px black;
+}
+
+main {
+	font-family: thin;
+	max-width: 600px;
+	box-sizing: border-box;
+	background-color: black;
+	padding-inline: 2em;
+	margin-block: 64px;
+	margin-inline: auto;
+	box-shadow: 0 0 64px 64px black;
+
+	h1 {
+		font-family: pico;
+		rotate: -1deg;
+		&::before {content: "-- "}
+		&::after {content: " --"}
+	}
+
+	p {
+		text-align: justify;
+		text-indent: 1em;
+		hyphens: auto;
+		margin-block: 0.5em;
+	}
+
+	a {
+		text-decoration-thickness: unset;
+	}
+
+	&::after {
+		content: "- lamb";
+		display: block;
+		font-family: pico;
+		text-align: right;
+		text-transform: uppercase;
+		rotate: -1deg;
+	}
+}
+
+#links {
+	text-align: center;
+	text-transform: uppercase;
+	image-rendering: pixelated;
+
+	ul {
+		display: grid;
+		grid-template:
+			"itch itch itch cart cart cart"
+			"prev prev home home next next"
+			/ auto auto auto auto auto auto;
+		justify-content: center;
+		gap: 1em 1.5em;
+		padding-inline-start: unset;
+	}
+
+	li {
+		display: inline-block;
+		/* margin-inline: 0.5em; */
+
+		&:nth-of-type(odd) {rotate: 1deg}
+		&:nth-of-type(even) {rotate: -1deg}
+	}
+}
+
+#link-itch {grid-area: itch; justify-self: end}
+#link-cart {grid-area: cart; justify-self: start}
+#link-prev {grid-area: prev}
+#link-home {grid-area: home}
+#link-next {grid-area: next}
+
+#link-itch a::before, #link-cart a::before {
+	content: "";
+	display: inline-block;
+	vertical-align: -0.2em;
+	background-size: cover;
+	width: 16px;
+	height: 16px;
+	margin-inline-end: 0.5em;
+}
+
+#link-itch a::before {
+	background-image: url(assets/itch.png);
+}
+
+#link-cart a::before {
+	background-image: url(assets/cart.png);
+}
+
+#link-prev::before {
+	content: "<< ";
+}
+
+#link-next::after {
+	content: " >>";
+}

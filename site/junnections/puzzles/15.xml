@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<connections>
+	<categories>
+		<category id="1" color="yellow">let go</category>
+		<category id="2" color="green">part of a classic magician act</category>
+		<category id="3" color="blue">trade commodities</category>
+		<category id="4" color="purple">clue weapons</category>
+	</categories>
+	<terms>
+		<term category="2">dove</term>
+		<term category="1">fire</term>
+		<term category="3">old spice</term>
+		<term category="2">rings</term>
+		<term category="4">candlestick</term>
+		<term category="4">rope</term>
+		<term category="3">porcelain</term>
+		<term category="1">sack</term>
+		<term category="4">pipe</term>
+		<term category="1">axe</term>
+		<term category="2">saw</term>
+		<term category="3">silk</term>
+		<term category="1">can</term>
+		<term category="2">wand</term>
+		<term category="3">gold</term>
+		<term category="4">gun</term>
+	</terms>
+	<commentary>
+		<comment from="braden">this one came to me while i was driving and i spent the whole rest of the drive repeating categories out loud to myself. junnections is making me go insane</comment>
+	</commentary>
+</connections>

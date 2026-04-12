@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<connections>
+	<categories>
+		<category id="1" color="yellow">bird calls</category>
+		<category id="2" color="green">string instruments</category>
+		<category id="3" color="blue">stock sound effects</category>
+		<category id="4" color="purple">heard before a movie</category>
+	</categories>
+	<terms>
+		<term category="3"><audio-trigger src="https://file.garden/ZdmFgugxzVCR-8Bl/connections/trombone.mp3"/></term>
+		<term category="2"><audio-trigger src="https://file.garden/ZdmFgugxzVCR-8Bl/connections/harpy.mp3"/></term>
+		<term category="1"><audio-trigger src="https://file.garden/ZdmFgugxzVCR-8Bl/connections/loon.mp3"/></term>
+		<term category="4"><audio-trigger src="https://file.garden/ZdmFgugxzVCR-8Bl/connections/mgm.mp3"/></term>
+		<term category="3"><audio-trigger src="https://file.garden/ZdmFgugxzVCR-8Bl/connections/wilhelm.mp3"/></term>
+		<term category="2"><audio-trigger src="https://file.garden/ZdmFgugxzVCR-8Bl/connections/gwitter.mp3"/></term>
+		<term category="1"><audio-trigger src="https://file.garden/ZdmFgugxzVCR-8Bl/connections/eagle.mp3"/></term>
+		<term category="3"><audio-trigger src="https://file.garden/ZdmFgugxzVCR-8Bl/connections/crickets.mp3"/></term>
+		<term category="3"><audio-trigger src="https://file.garden/ZdmFgugxzVCR-8Bl/connections/badumtss.mp3"/></term>
+		<term category="4"><audio-trigger src="https://file.garden/ZdmFgugxzVCR-8Bl/connections/neon.mp3"/></term>
+		<term category="1"><audio-trigger src="https://file.garden/ZdmFgugxzVCR-8Bl/connections/mourningdove.mp3"/></term>
+		<term category="2"><audio-trigger src="https://file.garden/ZdmFgugxzVCR-8Bl/connections/violint.mp3"/></term>
+		<term category="4"><audio-trigger src="https://file.garden/ZdmFgugxzVCR-8Bl/connections/fox.mp3"/></term>
+		<term category="1"><audio-trigger src="https://file.garden/ZdmFgugxzVCR-8Bl/connections/bigjay.mp3"/></term>
+		<term category="2"><audio-trigger src="https://file.garden/ZdmFgugxzVCR-8Bl/connections/peeno.mp3"/></term>
+		<term category="4"><audio-trigger src="https://file.garden/ZdmFgugxzVCR-8Bl/connections/thx.mp3"/></term>
+	</terms>
+	<style>
+audio-trigger {
+	cursor: pointer;
+	&:hover {scale: 1.1}
+	&::after {content: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLXZvbHVtZTItaWNvbiBsdWNpZGUtdm9sdW1lLTIiPjxwYXRoIGQ9Ik0xMSA0LjcwMmEuNzA1LjcwNSAwIDAgMC0xLjIwMy0uNDk4TDYuNDEzIDcuNTg3QTEuNCAxLjQgMCAwIDEgNS40MTYgOEgzYTEgMSAwIDAgMC0xIDF2NmExIDEgMCAwIDAgMSAxaDIuNDE2YTEuNCAxLjQgMCAwIDEgLjk5Ny40MTNsMy4zODMgMy4zODRBLjcwNS43MDUgMCAwIDAgMTEgMTkuMjk4eiIvPjxwYXRoIGQ9Ik0xNiA5YTUgNSAwIDAgMSAwIDYiLz48cGF0aCBkPSJNMTkuMzY0IDE4LjM2NGE5IDkgMCAwIDAgMC0xMi43MjgiLz48L3N2Zz4=)}
+}
+	</style>
+	<script>
+let audio = new Audio;
+class AudioTrigger extends HTMLElement {
+	constructor() {
+		super();
+		this.addEventListener("click", this.onClick);
+	}
+	onClick(e) {
+		e.stopPropagation();
+		if (audio.src == this.getAttribute("src")) audio.paused ? audio.play() : audio.pause();
+		else {
+			audio.src = this.getAttribute("src");
+			audio.play();
+		}
+	}
+}
+customElements.define("audio-trigger", AudioTrigger);
+	</script>
+</connections>

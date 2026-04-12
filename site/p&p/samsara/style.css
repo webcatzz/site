@@ -1,0 +1,6 @@
+body {
+	--fade-point: calc(100vw / (2727 / 2900));
+	background:
+		linear-gradient(to bottom, transparent calc(var(--fade-point) - 256px), black var(--fade-point)),
+		url(notes.png) top / 100% black;
+}

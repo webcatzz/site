@@ -1,0 +1,53 @@
+@font-face {
+	font-family: pico;
+	src: url(assets/pico-8.otf);
+	size-adjust: 70%;
+}
+
+:root {
+	--black: #000000;
+	--navy: #1d2b53;
+	--burgundy: #7e2553;
+	--green: #008751;
+	--brown: #ab5236;
+	--dark_gray: #5f574f;
+	--gray: #c2c3c7;
+	--white: #fff1e8;
+	--red: #ff004d;
+	--orange: #ffa300;
+	--yellow: #ffec27;
+	--lime: #00e436;
+	--blue: #29adff;
+	--lavender: #83769c;
+	--pink: #ff77a8;
+	--cream: #ffccaa;
+}
+
+body {
+	color: var(--lavender);
+	font-family: pico;
+	line-height: 1;
+	background-color: var(--black);
+	margin: 64px auto;
+	padding-inline: 64px;
+}
+
+h1 {
+	font-size: 1em;
+	font-weight: normal;
+	margin-block: unset;
+}
+
+p {
+	margin-block: unset;
+}
+
+a {
+	color: inherit;
+	text-decoration-thickness: 0.125em;
+	padding-block-end: 0.25em;
+}
+
+#back::before {
+	content: "<< ";
+}

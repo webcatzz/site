@@ -1,0 +1,69 @@
+body {
+	font-family: ms-pgothic;
+	margin: 2em;
+}
+
+#nav {
+	font-size: 0.875em;
+	margin-block: 1em;
+
+	p, ol, li {
+		display: inline;
+	}
+
+	ol {
+		padding-inline-start: unset;
+	}
+
+	&::before {content: "("}
+	&::after {content: ")"}
+}
+
+article {
+	display: grid;
+	grid-template:
+		"header"
+		"comic";
+}
+
+header {
+	display: grid;
+	grid-template:
+		"title comments-btn"
+		"subtitle subtitle"
+		/ 1fr auto;
+	align-items: center;
+	padding-block: 1em;
+	border-block: 1px dotted rgb(from currentcolor r g b / 0.25);
+}
+
+h2 {
+	font-size: 1em;
+	font-weight: normal;
+	letter-spacing: -0.0625em;
+	margin-block: unset;
+	grid-area: title;
+}
+
+.subtitle {
+	font-size: 0.875em;
+	grid-area: subtitle;
+}
+
+.comic {
+	width: 100%;
+	grid-area: comic;
+}
+
+.comments {
+	width: 100%;
+	grid-area: comic;
+
+	&.hidden {
+		display: none;
+	}
+}
+
+.comments-btn {
+	grid-area: comments-btn;
+}

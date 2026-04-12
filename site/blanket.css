@@ -1,0 +1,47 @@
+@font-face {
+	font-family: thin;
+	src: url(assets/fonts/thin.ttf);
+	size-adjust: 95%;
+}
+
+@font-face {
+	font-family: pebble;
+	src: url(/fonts/assets/pebble/pebble.ttf);
+}
+
+@font-face {
+	font-family: junipy;
+	src: url(/fonts/assets/junipy/junipy.ttf);
+}
+
+@font-face {
+	font-family: ms-pgothic;
+	src: local("MS PGothic"), url(assets/fonts/ms-pgothic.ttf);
+}
+
+:root {
+	--black: #635761; /* 443c48 */
+	--white: #f0efee; /* e3e2de */
+	--blue: #9ab1c7;
+	--pink: #f9cbd2;
+}
+
+/* block */
+
+button, summary {
+	cursor: pointer;
+}
+
+th, td {
+	padding: unset;
+}
+
+/* embed */
+
+img, svg, audio, video, iframe {
+	display: block;
+}
+
+iframe {
+	border: unset;
+}

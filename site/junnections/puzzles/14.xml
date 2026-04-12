@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<connections>
+	<categories>
+		<category id="1" color="yellow">together again</category>
+		<category id="2" color="green">top tier</category>
+		<category id="3" color="purple">scrabble high scorers</category>
+	</categories>
+	<terms>
+		<term category="1">one</term>
+		<term category="2">b</term>
+		<term category="2">a</term>
+		<term category="1">d</term>
+		<term category="1">m</term>
+		<term category="3">z</term>
+		<term category="2">s</term>
+		<term category="3">q</term>
+		<term category="3">j</term>
+		<term category="3">x</term>
+		<term category="2">c</term>
+		<term category="1">r</term>
+	</terms>
+	<commentary>
+		<comment from="braden">we tried so hard to put the letters S-E-X in the puzzle but in the end sex is less important than good puzzle design</comment>
+		<comment from="june">this one was taxing... we were on call yelling and making up increasingly obtuse categories for the letters "s" and "x". we ended up rewriting it cause there were extra categories.</comment>
+	</commentary>
+</connections>
