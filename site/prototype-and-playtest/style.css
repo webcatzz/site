@@ -154,10 +154,13 @@ section > header, .embed, .text {
 	margin-block: 2em;
 }
 
+section > header, .text {
+	margin-inline: 1em;
+}
+
 section > header {
 	display: grid;
 	grid-template-columns: auto 1fr;
-	margin-inline: 1em;
 
 	h2, p {
 		margin-block: unset;
@@ -193,11 +196,11 @@ h2 {
 	aspect-ratio: 1.25;
 	width: 100%;
 	padding-top: 3.5%;
+	user-select: none;
 }
 
 .text {
 	text-transform: unset;
-	margin-inline: 1em;
 
 	p {
 		text-indent: 1em;
@@ -227,6 +230,19 @@ footer {
 
 	body {
 		margin: 32px;
+	}
+
+	section {
+		padding: 0;
+	}
+
+	/* section > header, .text {
+		margin-inline: 0.5em;
+	} */
+
+	.embed {
+		aspect-ratio: 0.6;
+		padding-top: unset;
 	}
 
 }
