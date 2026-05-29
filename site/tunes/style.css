@@ -1,0 +1,370 @@
+@font-face {
+	font-family: belerofonte;
+	src: url(/assets/fonts/belerofonte.ttf);
+}
+
+@font-face {
+	font-family: inter;
+	src: local("Inter"), url(/assets/fonts/inter-variable.ttf);
+}
+
+@font-face {
+	font-family: inter;
+	font-style: italic;
+	src: local("Inter Italic"), url(/assets/fonts/inter-italic-variable.ttf);
+}
+
+:root {
+	overflow: clip;
+}
+
+body {
+	display: flex;
+	color: #59555e;
+	font-family: inter;
+	background:
+		radial-gradient(closest-side circle at 64%, #d2daf7, transparent) fixed,
+		url(assets/clouds.png) center / cover fixed,
+		repeating-radial-gradient(circle at var(--disc-center, center), #faedd8, #d9dbfb, #cfe7f5, #e5f4fc, #faedd8 33%) fixed;
+	height: 100vh;
+	margin: unset;
+	overflow: clip;
+}
+
+a {
+	color: inherit;
+}
+
+/* header */
+
+#header {
+	padding: 0 64px;
+	align-self: center;
+	flex-shrink: 0;
+}
+
+#title {
+	font-family: belerofonte;
+	font-size: 12em;
+	line-height: 1;
+	text-align: center;
+	letter-spacing: -0.0625em;
+	margin-block: 0 -0.33em;
+}
+
+#nav {
+	display: flex;
+	font-size: 1.25em;
+	position: relative;
+
+	ul {
+		list-style-type: none;
+		padding-inline-start: unset;
+		margin-block: unset;
+	}
+}
+
+.nav-disc {
+	--diameter: 500px;
+	--top-step: 16px;
+	display: block;
+	font-size: 0.5em;
+	line-height: 1.33;
+	background: url(assets/disc.png) center / cover;
+	width: var(--diameter);
+	height: var(--diameter);
+	box-sizing: border-box;
+	border-radius: 50%;
+	flex-shrink: 0;
+	contain: size;
+	position: relative;
+
+	&:is(a):hover {
+		filter: brightness(1.1);
+	}
+
+	&:has(+ .nav-disc) {
+		margin-right: calc(var(--diameter) * -0.95);
+	}
+
+	&:nth-child(1) { margin-top: calc(var(--top-step) * 4); }
+	&:nth-child(2) { margin-top: calc(var(--top-step) * 3); }
+	&:nth-child(3) { margin-top: calc(var(--top-step) * 2); }
+	&:nth-child(4) { margin-top: calc(var(--top-step) * 1); }
+
+	&.next {
+		&:nth-of-type(1) { z-index: 4; }
+		&:nth-of-type(2) { z-index: 3; }
+		&:nth-of-type(3) { z-index: 2; }
+		&:nth-of-type(4) { z-index: 1; }
+	}
+}
+
+#current-disc {
+	font-family: thin;
+	font-size: 1em;
+	hyphens: auto;
+	rotate: 0deg;
+	overflow: clip;
+	contain: strict;
+	z-index: 50;
+}
+
+.scroll-item {
+	--hole-radius: calc(var(--diameter) * 75 / 500 / 2);
+	text-overflow: ellipsis;
+	width: calc(50% - 32px);
+	box-sizing: border-box;
+	padding-inline: calc(var(--hole-radius) * 1.875) calc(var(--diameter) * 0.05);
+	translate: 0 -50%;
+	transform-origin: calc(var(--hole-radius) * -1);
+	overflow: clip;
+	position: absolute;
+	left: calc(50% + var(--hole-radius));
+	top: 50%;
+	transition: background-color 0.5s;
+
+	&:is(a) {
+		display: block;
+		text-decoration: none;
+		text-shadow: 0 0 0.25em #f2eff2;
+
+		&:hover {
+			background-color: #f2eff280;
+			box-shadow: 0 0 4px #f2eff2;
+			transition: background-color 0.125s;
+		}
+
+		&::before {
+			content: url(assets/nukodance.gif) " ";
+			line-height: 0;
+			vertical-align: -0.1875em;
+			image-rendering: pixelated;
+		}
+	}
+}
+
+.scroll-hint {
+	color: rgb(from currentcolor r g b / 0.67);
+	font-family: inter;
+	font-size: 0.75em;
+	font-style: italic;
+}
+
+.scroll-hidden {
+	visibility: hidden;
+}
+
+#back {
+	color: rgb(from currentcolor r g b / 0.67);
+	text-align: center;
+	text-decoration: none;
+	align-content: center;
+	background-color: #f2eff2;
+	width: 1.75em;
+	height: 1.75em;
+	border-radius: 6px;
+	position: absolute;
+	left: 24px;
+	bottom: 24px;
+
+	&:hover { color: inherit; }
+}
+
+/* tunes */
+
+#tunes {
+	--inner-width: 420px;
+	padding: 80px 32px;
+	overflow: clip auto;
+	flex: 1;
+	scroll-snap-type: y mandatory;
+}
+
+#tunes-header {
+	max-width: var(--inner-width);
+	margin-block-end: 32px;
+}
+
+#tunes-title {
+	font-size: 4em;
+	font-style: italic;
+	margin-block: unset;
+}
+
+#tunes-intro {
+	margin-block-start: -1em;
+
+	p {
+		margin-block: 0.33em;
+
+		&:first-child { margin-block-start: unset; }
+		&:last-child  { margin-block-end:   unset; }
+	}
+}
+
+.tune {
+	display: grid;
+	grid-template:
+		"title embed" auto
+		"info  embed" auto
+		"note  embed" 1fr
+		/ 1fr 1fr;
+	align-items: start;
+	gap: 6px 16px;
+	background-color: #f2eff2;
+	max-width: var(--inner-width);
+	box-sizing: border-box;
+	padding: 12px;
+	border-radius: 12px;
+	margin-block: 8px;
+	scroll-snap-align: center;
+
+	&:nth-of-type(odd)  { rotate: -0.5deg; }
+	&:nth-of-type(even) { rotate:  0.5deg; }
+}
+
+.tune-title {
+	font-size: 1.67em;
+	font-family: thin;
+	font-weight: normal;
+	line-height: 1;
+	margin-block: unset;
+	grid-area: title;
+}
+
+.tune-info {
+	margin-block: unset;
+
+	> dt {
+		font-size: 0.75em;
+	}
+
+	> dd {
+		font-family: thin;
+		font-size: 1em;
+		margin-left: unset;
+
+		+ dt {
+			margin-block-start: 0.25em;
+		}
+	}
+}
+
+.tune-tags {
+	display: flex;
+	flex-wrap: wrap;
+	column-gap: 0.33em;
+	list-style: "#" inside;
+	padding-inline-start: unset;
+	margin-block: unset;
+
+	> li::marker {
+		font-size: 0.875em;
+	}
+}
+
+.tune-embed {
+	background-color: black;
+	width: 100%;
+	box-sizing: border-box;
+	padding: 4px;
+	border-radius: 12px;
+	grid-area: embed;
+}
+
+.tune-note {
+	font-family: inter;
+	font-style: italic;
+	font-size: 0.875em;
+	text-shadow: 0 0 8px #edeae8;
+	background: url(assets/paper.png) center / 288px;
+	padding: 8px;
+	border: 1px solid #cbc7d2;
+	border-radius: 4px;
+	margin-block: unset;
+	grid-area: note;
+}
+
+/* footer */
+
+#footer {
+	color: rgb(from currentcolor r g b / 0.67);
+	font-size: 0.875em;
+	font-style: italic;
+	text-align: right;
+	width: 100%;
+	max-width: var(--inner-width);
+	margin-block-start: 32px;
+
+	p {
+		margin-block: 0.33em;
+	}
+}
+
+/* support */
+
+@media (max-width: 1000px) {
+
+	:root {
+		overflow: unset;
+	}
+
+	body {
+		flex-direction: column;
+		height: unset;
+		overflow: clip auto;
+	}
+
+	#header {
+		padding: 32px;
+	}
+
+	#title {
+		font-size: 8em;
+	}
+
+	.nav-disc {
+		--diameter: 75vw;
+	}
+
+	#year-title {
+		font-size: 4em;
+	}
+
+	#tunes {
+		padding-block: 32px;
+	}
+
+	#tunes-header, .tune, #footer {
+		margin-inline: auto;
+	}
+
+	.scroll-item {
+		padding-block: 0.125em;
+	}
+
+	a.scroll-item::before {
+		content: none;
+	}
+
+	.scroll-hint {
+		font-size: 0.75em;
+	}
+
+}
+
+@media (scripting: none) {
+
+	#current-disc {
+		padding: 64px;
+		overflow-y: auto;
+	}
+
+	.scroll-item {
+		width: unset;
+		position: unset;
+		translate: unset;
+	}
+
+}

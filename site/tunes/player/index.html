@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="robots" content="noindex, nofollow">
+	<style>
+body {
+	display: flex;
+	flex-direction: column;
+	align-items: stretch;
+	color: var(--primary-text, white);
+	font-family: sans-serif;
+	background: var(--page-margin, black);
+	height: 100vh;
+	margin: 0;
+	overflow: hidden;
+}
+
+h1, a {
+	display: none;
+}
+	</style>
+</head>
+<body>
+	<noscript>(psst... the player requires javascript)</noscript>
+	<script type="text/javascript">
+function browserHasRequiredFeatures() {
+	if (window.AudioContext == undefined && window.webkitAudioContext == undefined) {
+		return false;
+	}
+	try {
+		eval("class T {}");
+		eval("const a = () => 0");
+		eval("for (const a of []);");
+	} catch (error) {
+		return false;
+	}
+	return true;
+}
+
+if (browserHasRequiredFeatures()) {
+	var fileref = document.createElement("script");
+	fileref.setAttribute("type", "text/javascript");
+	if (!location.hash.startsWith("#song=")) history.replaceState(null, "", "#song=" + location.hash.slice(1));
+	switch (location.hash[6]) {
+		case "j": fileref.setAttribute("src", "jummbox.min.js"); break;
+		case "u": fileref.setAttribute("src", "ultrabox.min.js"); break;
+		case "9": fileref.setAttribute("src", "beepbox.min.js"); break;
+	}
+	document.head.appendChild(fileref);
+} else {
+	document.body.innerHTML = "(psst... the player doesn't support your browser. try updating or switching your browser)";
+}
+	</script>
+</body>
+</html>
