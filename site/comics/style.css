@@ -1,69 +1,196 @@
+@keyframes scroll { to { background-position: -320px -640px; } }
+
 body {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
 	font-family: ms-pgothic;
-	margin: 2em;
+	line-height: 1.25;
+	background: url(assets/bg.png) white;
+	min-height: 100vh;
+	margin: unset;
+	animation: 30s scroll linear infinite;
+	perspective: 1000px;
+}
+
+#main {
+	transform: rotateX(var(--rot-x, 0deg)) rotateY(var(--rot-y, 0deg));
+
+	&:not(:hover) { transition: 0.1s transform; } /* transitions back during reset */
+}
+
+#main, section {
+	transform-style: preserve-3d;
+}
+
+section {
+	padding-block: 24px;
+}
+
+section:not(:target) {
+	display: none;
+}
+
+#main:not(:has(> section:target)) > section:first-child {
+	display: flex;
+}
+
+.spread {
+	display: flex;
+}
+
+.page {
+	--rot-y-base:   5deg;
+	--rot-y-hover:  10deg;
+	--rot-y-active: 15deg;
+	background-color: white;
+	width: 400px;
+	aspect-ratio: 2 / 3;
+	box-sizing: border-box;
+	border-radius: 2px;
+
+	> a {
+		position: absolute;
+		inset-block: 0;
+	}
+
+	& + .page { border-left: 1px solid hsl(0, 0%, 90%); }
+
+	&.left {
+		transform-origin: right;
+		transform: rotateY(var(--rot-y-base));
+		transition: transform 0.1s;
+
+		& > a { inset-inline: 0 60%; }
+
+		&:has(> a:hover)  { transform: rotateY(var(--rot-y-hover)); }
+		&:has(> a:active) { transform: rotateY(var(--rot-y-active)); transition: none; }
+	}
+
+	&.right {
+		transform-origin: left;
+		transform: rotateY(calc(var(--rot-y-base) * -1));
+		transition: transform 0.1s;
+
+		& > a { inset-inline: 60% 0; }
+
+		&:has(> a:hover)  { transform: rotateY(calc(var(--rot-y-hover)  * -1)); }
+		&:has(> a:active) { transform: rotateY(calc(var(--rot-y-active) * -1)); transition: none; }
+	}
+}
+
+.image {
+	display: flex;
+	flex-direction: column;
+
+	> img {
+		object-fit: contain;
+		width: 100%;
+		height: 100%;
+		box-sizing: border-box;
+		padding: 16px 32px 32px;
+		flex: 1;
+	}
+}
+
+.text {
+	align-content: center;
+	padding: 7.5%;
+}
+
+#fight {
+	> .left.image  > img { object-position: right; padding-inline-end:   unset; }
+	> .right.image > img { object-position: left;  padding-inline-start: unset; }
+}
+
+#zine, #zine-i, #zine-ii, #zine-iii, #zine-iv, #zine-v {
+	> .image > img { padding: 32px 64px 64px; }
+}
+
+#back .text {
+	text-align: center;
+}
+
+section > a {
+	color: inherit;
+	text-decoration: none;
+}
+
+h1 {
+	margin: 1rem;
+}
+
+p {
+	margin-inline: 1em;
+}
+
+.week-label {
+	color: white;
+	font-family: monospace;
+	font-size: 0.875em;
+	font-weight: bold;
+	text-transform: uppercase;
+	line-height: 1;
+	background-color: black;
+	padding-inline: 0.125em;
+	align-self: center;
+}
+
+#table-of-contents {
+	font-size: 0.9em;
+	list-style-type: none;
+	padding-inline-start: unset;
+	counter-reset: toc;
+
+	li {
+		display: flex;
+		gap: 0.25em;
+		margin-block: 0.125em;
+
+		&::after {
+			content: "";
+			height: 0.75em;
+			border-bottom: 0.1em dotted;
+			flex: 1;
+		}
+	}
+}
+
+.toc-page {
+	order: 1;
+}
+
+.caption {
+	font-size: 0.67em;
+	font-weight: normal;
+	padding: 8px;
+	border-bottom: 1px dotted;
+	margin-block: unset;
+	/* position: absolute;
+	left: 8px;
+	top: 8px; */
+
+	.right > & {
+		text-align: right;
+	}
 }
 
 #nav {
-	font-size: 0.875em;
-	margin-block: 1em;
+	font-size: 0.75em;
 
-	p, ol, li {
-		display: inline;
-	}
-
-	ol {
+	ul {
+		display: flex;
+		gap: 6px;
+		list-style-type: none;
 		padding-inline-start: unset;
+		margin-block: unset;
 	}
 
-	&::before {content: "("}
-	&::after {content: ")"}
-}
-
-article {
-	display: grid;
-	grid-template:
-		"header"
-		"comic";
-}
-
-header {
-	display: grid;
-	grid-template:
-		"title comments-btn"
-		"subtitle subtitle"
-		/ 1fr auto;
-	align-items: center;
-	padding-block: 1em;
-	border-block: 1px dotted rgb(from currentcolor r g b / 0.25);
-}
-
-h2 {
-	font-size: 1em;
-	font-weight: normal;
-	letter-spacing: -0.0625em;
-	margin-block: unset;
-	grid-area: title;
-}
-
-.subtitle {
-	font-size: 0.875em;
-	grid-area: subtitle;
-}
-
-.comic {
-	width: 100%;
-	grid-area: comic;
-}
-
-.comments {
-	width: 100%;
-	grid-area: comic;
-
-	&.hidden {
-		display: none;
+	a {
+		color: inherit;
+		background-color: white;
+		padding: 3px 6px;
+		border-radius: 3px;
 	}
-}
-
-.comments-btn {
-	grid-area: comments-btn;
 }
