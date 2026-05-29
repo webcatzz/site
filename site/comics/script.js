@@ -14,8 +14,10 @@ main.addEventListener("mouseleave", function() {
 
 // navigates with keyboard
 addEventListener("keydown", e => {
-	if (e.key == "ArrowLeft")  { flip("left");  }
-	if (e.key == "ArrowRight") { flip("right"); }
+	if (!e.ctrlKey && !e.metaKey) {
+		if (e.key == "ArrowLeft") { flip("left"); }
+		else if (e.key == "ArrowRight") { flip("right"); }
+	}
 });
 
 // navigates using the left or right page

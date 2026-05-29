@@ -194,3 +194,29 @@ p {
 		border-radius: 3px;
 	}
 }
+
+/* support */
+
+@media (max-width: 800px) {
+
+	body {
+		perspective: 4000px;
+	}
+
+	#main {
+		transform: unset !important;
+	}
+
+	.spread {
+		display: block;
+	}
+
+	.page {
+		--rot-y-base: 0deg;
+	}
+
+	#nav {
+		margin-block-end: 24px;
+	}
+
+}
