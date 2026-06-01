@@ -3,51 +3,153 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>lambchapel | lambtrails</title>
+	<title>lamb trails • lamb chapel</title>
 	<link rel="stylesheet" href="/blanket.css">
 	<link rel="stylesheet" href="style.css">
+	<script defer src="script.js"></script>
 </head>
 <body>
 
 <div id="title-wrapper">
 	<img id="banner" src="assets/shepherdess.png" aria-hidden="true">
-	<h1>lambtrails</h1>
+	<h1>lamb trails</h1>
 </div>
 
-<nav>
-	<h2 class="year-title">2o26</h2>
+<nav id="nav">
+	<h2 class="year-title">'26</h2>
 	<ul>
-		<li><a href="">march</a></li>
+		<li><a href="#may">may</a></li>
+		<li><a href="#march">march</a></li>
 	</ul>
+	<a id="back" href="/">get me out of here i don't want to be here anymore!</a>
 </nav>
 
 <main>
-	<h2>march 26</h2>
 
-	<p>i'm trying my hand at a newsletter -- inspired by moogleboogles' <a href="https://moogleboogles.neocities.org/newsroom">newsroom</a> and sweetfish's <a href="https://sweetfish.site/checkout/0226">checkout</a></p>
+	<article id="may">
 
-	<hgroup>
-		<h3>lamb trails</h3>
-		<p>(what she's up to...)</p>
-	</hgroup>
+		<h2>may '26</h2>
 
-	<p><b>working on a few variations on a game engine in rust</b>. none of them will go anywhere hahah... but i've learned a lot about ffi binding in rust and about rust in general. lovely language.</p>
-	<p><b>watching a lot of lucid blocks</b>. i'm deeply fascinated with this game. it's so visuals. it's so visuals. great to see godot representation.</p>
-	<p>its death sequence is so good. instant black screen, some time to process what just killed you, abstraction of heavenly clouds, awake again. gorge</p>
+		<hgroup>
+			<h3>lamb trails</h3>
+			<p>(what she's up to...)</p>
+		</hgroup>
 
-	<hgroup>
-		<h3>record fair</h3>
-		<p>(what she's listening to...)</p>
-	</hgroup>
+		<p><b>updates! updates!</b> i'm busy updating the site... my poor sickly victorian child. checked off the tunes and comics pages this month!</p>
 
-	<p>feeling in tune with the spring.</p>
-	<p><cite>painted shut</cite> by hop along. "i saw my twin" has been repeating in my mind for the longest time. i feel like writing up something about the parallels it makes to "waitress". perennial.</p>
-	<p><cite>winnowing</cite> by forespi. stirring of the birds.</p>
-	<p>of new releases:</p>
-	<p><cite>mettle</cite> by she's green, their new single. yes! yes! we'll make it out!</p>
-	<p><cite>it's a pleasure of mine, to know you're fine</cite> by ladylike, their debut ep. i'm enchanted. warm and mellow and bitter. conversational. smells of the sea. it's good.</p>
-	<p><cite>phantasmagoria</cite> by paro!. pleasant and whimsical.</p>
-	<p><cite>post recovery</cite> by midwest post death. good noise rock.</p>
+		<p><b>finished off my uni projects.</b> check out my pico-8 game <a href="/prototype-and-playtest/#go-fishin" target="_blank">go fishin'</a> and my little comic <a href="/comics/#final" target="_blank">back n forth</a>!</p>
+
+		<p><b>implementing the jummbox synth in rust.</b> since i write most of my games' music in jummbox, for my loose game engine project, i thought it would be nice to be able to play jummbox songs back directly rather than have to manually export them as wav/mp3 and loop them.</p>
+
+		<p>another thought: since jummbox already stores songs as a compact string in the url, i could store songs in that compact format instead of in bulky audio files. i make pixel-art games, so audio is by far the biggest storage sink in my games -- even though it doesn't need to be because it's representable by tracker data anyway...</p>
+
+		<p>i've started implementing the jummbox synth in rust, using the original typescript as a reference. i've finished a json song loader, and now that i can load songs for testing, i've been working on the synth itself... which has been taking a while! translating the typescript directly would be one thing, but since it is so messy (sorry LOL) i've been reorganizing it as i go... which takes time.</p>
+
+		<p><b>playing some retroslop.</b> picked up final fantasy origins and enjoying it. (girl who's only plauyed delatrune voice) its fun to play games that make up deltarune's dna and see all the stuff it references without my knowing... the opening cutscene is straight up deltarune it's awesome. my self-assigned mission is to play many old games and absorb their cool game design</p>
+
+		<hgroup>
+			<h3>record fair</h3>
+			<p>(what she's listening to...)</p>
+		</hgroup>
+
+		<p>i continue to be obsessed with bedford falls in a straight up down bad way. currently have <a href="https://bandbedfordfalls.bandcamp.com/album/miende" rel="external" target="_blank"><cite>miende</cite></a> on loop.</p>
+
+		<p>bunch of new releases this month! i'm very happy.</p>
+
+		<section class="record">
+			<header>
+				<iframe class="record-bc" loading="lazy" src="https://bandcamp.com/EmbeddedPlayer/album=1981544800/size=small/bgcol=333333/linkcol=0687f5/license_id=6334/track=3580723410/transparent=true/" seamless></iframe>
+				<h4 class="record-title"><a href="https://feeblelittlehorse.bandcamp.com/album/bitknot" rel="external" target="_blank"><cite>bitknot</cite> by feeble little horse</a></h4>
+			</header>
+			<p>ah... i missed that poppy sound and here it's clearer than ever. the production quality! hot girl shit</p>
+		</section>
+
+		<section class="record">
+			<header>
+				<iframe class="record-bc" loading="lazy" src="https://bandcamp.com/EmbeddedPlayer/album=2004577768/size=small/bgcol=333333/linkcol=0687f5/license_id=6316/track=963384994/transparent=true/" seamless></iframe>
+				<h4 class="record-title"><a href="https://carseatheadrest.bandcamp.com/album/teen-of-denial-joe-s-story" rel="external" target="_blank"><cite>teen of denial (joe's story)</cite> by car seat headrest</a></h4>
+			</header>
+			<p>what a ride... i'm a fan of the hopecore csh's been putting out recently. i can't embed the track but go listen to "the ravenous house".</p>
+		</section>
+
+		<section class="record">
+			<header>
+				<iframe class="record-bc" loading="lazy" src="https://bandcamp.com/EmbeddedPlayer/album=3950835822/size=small/bgcol=333333/linkcol=0687f5/track=1088606264/transparent=true/" seamless></iframe>
+				<h4 class="record-title"><a href="https://sunispoison.bandcamp.com/album/angel-coil-up" rel="external" target="_blank"><cite>angel coil up</cite> by sun is poison</a></h4>
+			</header>
+			<p>i enjoyed its more elaborate production. feels like a productive experiment.</p>
+		</section>
+
+		<section class="record">
+			<header>
+				<iframe class="record-yt" loading="lazy" src="https://www.youtube-nocookie.com/embed/-PpvTWGPCmw" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+				<h4 class="record-title"><a href="https://youtu.be/-PpvTWGPCmw" rel="external" target="_blank"><cite>asea</cite> by shemdgari kontakti</a></h4>
+			</header>
+			<p>musica am zapkhuls otaxshi chaketilebistvis &lt;3</p>
+		</section>
+
+		<p>as for the others:</p>
+
+		<section class="record">
+			<header>
+				<iframe class="record-bc" loading="lazy" src="https://bandcamp.com/EmbeddedPlayer/album=228172885/size=small/bgcol=333333/linkcol=0687f5/track=663946782/transparent=true/" seamless></a></iframe>
+				<h4 class="record-title"><a href="https://allyrecords.bandcamp.com/album/lucky-dog-2" rel="external" target="_blank"><cite>lucky dog</cite> by dwaal troupe</a></h4>
+			</header>
+			<p>lucky dog! pleasant. i can hear the velvet underground inspiration (positive)</p>
+		</section>
+
+		<section class="record">
+			<header>
+				<iframe class="record-bc" loading="lazy" src="https://bandcamp.com/EmbeddedPlayer/album=1185039214/size=small/bgcol=333333/linkcol=0687f5/track=1771589102/transparent=true/" seamless></a></iframe>
+				<h4 class="record-title"><a href="https://https://firebuginvasion.bandcamp.com/album/about-the-elephant" rel="external" target="_blank"><cite>about the elephant</cite> by firebug invasion</a></h4>
+			</header>
+			<p>nicely textured. feels like an anxious late night</p>
+		</section>
+
+		<section class="record">
+			<header>
+				<iframe class="record-yt" loading="lazy" src="https://www.youtube-nocookie.com/embed/aa7cYiVb-UU" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+				<h4 class="record-title"><a href="https://www.youtube.com/playlist?list=OLAK5uy_lZKZJCPY3-BydB29sQ6bgRDtwP0W75Q-Y" rel="external" target="_blank"><cite>miss modular</cite> by mercenarychild</a></h4>
+			</header>
+			<p>pleasant</p>
+		</section>
+
+		<hr>
+
+		<p>until next time! take care.</p>
+
+	</article>
+
+	<article id="march">
+
+		<h2>march '26</h2>
+
+		<p>i'm trying my hand at a newsletter -- inspired by moogleboogles' <a href="https://moogleboogles.neocities.org/newsroom">newsroom</a> and sweetfish's <a href="https://sweetfish.site/checkout/0226">checkout</a></p>
+
+		<hgroup>
+			<h3>lamb trails</h3>
+			<p>(what she's up to...)</p>
+		</hgroup>
+
+		<p><b>working on a few variations on a game engine in rust</b>. none of them will go anywhere hahah... but i've learned a lot about ffi binding in rust and about rust in general. lovely language.</p>
+		<p><b>watching a lot of lucid blocks</b>. i'm deeply fascinated with this game. it's so visuals. it's so visuals. great to see godot representation.</p>
+		<p>its death sequence is so good. instant black screen, some time to process what just killed you, abstraction of heavenly clouds, awake again. gorge</p>
+
+		<hgroup>
+			<h3>record fair</h3>
+			<p>(what she's listening to...)</p>
+		</hgroup>
+
+		<p>feeling in tune with the spring.</p>
+		<p><cite>painted shut</cite> by hop along. "i saw my twin" has been repeating in my mind for the longest time. i feel like writing up something about the parallels it makes to "waitress". perennial.</p>
+		<p><cite>winnowing</cite> by forespi. stirring of the birds.</p>
+		<p>of new releases:</p>
+		<p><cite>mettle</cite> by she's green, their new single. yes! yes! we'll make it out!</p>
+		<p><cite>it's a pleasure of mine, to know you're fine</cite> by ladylike, their debut ep. i'm enchanted. warm and mellow and bitter. conversational. smells of the sea. it's good.</p>
+		<p><cite>phantasmagoria</cite> by paro!. pleasant and whimsical.</p>
+		<p><cite>post recovery</cite> by midwest post death. good noise rock.</p>
+
+	</article>
 
 </main>
 

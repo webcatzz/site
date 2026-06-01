@@ -4,7 +4,7 @@
 }
 
 :root {
-	--fore: #201503;
+	--fore: #312511;
 	--back: #d6cfc1;
 	--blue: #bbcac2;
 	--font-heading: fs-hakumo;
@@ -12,24 +12,39 @@
 
 body {
 	display: grid;
-	grid-template-columns: 1fr 2fr;
+	grid-template-columns: 1fr 3fr;
+	gap: 32px 3em;
 	color: var(--fore);
 	font-family: thin;
 	background-color: var(--back);
 	background:
-		linear-gradient(to bottom, var(--blue), transparent 240px),
-		radial-gradient(var(--back) 75%, var(--blue)) fixed;
+		radial-gradient(transparent 75%, var(--blue)) fixed,
+		url(assets/lamb.png) center 430px / 320px,
+		linear-gradient(to bottom, transparent, var(--back) 264px),
+		url(assets/clouds.png) center 24px / auto 240px;
 	max-width: 600px;
 	margin: 64px auto;
 	padding-inline: 64px;
+	position: relative;
 }
 
 /* title */
 
 #title-wrapper {
+	--fade-height: 128px;
+	margin-block-end: calc(var(--fade-height) * -1);
+	padding-block-end: var(--fade-height);
+	contain: paint;
 	position: relative;
-	margin-block-end: 0.5em;
+	z-index: -1;
 	grid-column: 1 / 3;
+
+	&::after {
+		content: "";
+		background-image: linear-gradient(to top, var(--back), transparent var(--fade-height));
+		position: absolute;
+		inset: 0;
+	}
 }
 
 #banner {
@@ -37,8 +52,9 @@ body {
 	box-sizing: border-box;
 	border: 3px solid #d0c5b0;
 	border-radius: 3px;
-	clip-path: polygon(0 0, calc(100% - 16px) 0, 100% 16px, 100% 100%, 0 100%);
+	clip-path: polygon(0 0, calc(100% - 40px) 0, 100% 40px, 100% 100%, 0 100%);
 	image-rendering: pixelated;
+	position: relative;
 }
 
 h1 {
@@ -46,23 +62,29 @@ h1 {
 	font-weight: normal;
 	font-style: italic;
 	line-height: 0.75;
+	letter-spacing: 0.0625em;
 	padding-top: 0.125em;
 	margin-block: unset;
 	translate: -50%;
 	position: absolute;
-	top: 96px;
+	top: 104px;
 	left: 50%;
 	mask: linear-gradient(to right, #ffffff60, #ffffff80 1em, #ffffffbf 2em, #ffffff30);
 }
 
 /* nav */
 
-nav {
+#nav {
+	background-color: rgb(from var(--blue) r g b / 0.33);
+	padding: 0.33em 1em 1em;
+	border-radius: 12px;
+	box-shadow: 0 0 16px rgb(from var(--blue) r g b / 0.67);
 	margin-left: 32px;
 	margin-top: 2em;
-	
+	align-self: start;
+
 	ul {
-		list-style: "* " inside;
+		list-style: circle inside;
 		padding-left: unset;
 		margin-block: unset;
 	}
@@ -70,7 +92,13 @@ nav {
 
 .year-title {
 	font-size: 1em;
-	margin-block: 0.33em 0.167em;
+	margin-block: unset;
+}
+
+#back {
+	display: block;
+	font-size: 0.75em;
+	margin-block-start: 1em;
 }
 
 /* content */
@@ -79,7 +107,15 @@ main {
 	margin-right: 32px;
 }
 
+article {
+	text-shadow: 0 0 8px var(--back);
+	line-height: 1.33;
+	margin-bottom: 4em;
+	scroll-margin-block: 1em;
+}
+
 h2 {
+	font-size: 1.75em;
 	font-family: var(--font-heading);
 	font-weight: normal;
 	margin-block-end: 0.67em;
@@ -89,18 +125,27 @@ p {
 	margin-block: 0.67em;
 }
 
-b, cite {
+b {
+	font-family: fs-hakumo;
+	line-height: 1;
+	font-weight: normal;
+	vertical-align: -0.0625em;
+}
+
+cite {
 	font-weight: normal;
 	font-style: italic;
 }
 
 a {
-	color: unset;
+	color: inherit;
+	text-decoration-color: color-mix(in oklab, currentcolor, var(--blue) 75%);
 	text-decoration-thickness: 0.075em;
 }
 
 hgroup {
 	margin-block: 1.33em 0.67em;
+	margin-inline-start: -0.5em;
 
 	h3, p {
 		line-height: 1;
@@ -108,20 +153,83 @@ hgroup {
 	}
 
 	p {
-		font-size: 0.875em;
+		font-family: thin;
 		font-style: italic;
+		margin-left: 1.75em;
 	}
-
 }
 
 h3 {
 	font-family: var(--font-heading);
+	font-size: 1.25em;
 	font-weight: normal;
 
 	&::before {
-		content: "▧ ";
+		content: "▧";
 		font-style: normal;
+		margin-right: 0.5em;
 	}
+}
+
+hr {
+	margin-block: 1em;
+	border: unset;
+	border-block-start: 1px dotted color-mix(in oklab, currentcolor, var(--blue));
+}
+
+/* records */
+
+.record {
+	margin-inline-start: 1em;
+
+	> header {
+		display: flex;
+		gap: 0.5em;
+		align-items: center;
+	}
+
+	> p {
+		margin-block: 0.33em;
+		margin-inline-start: 1.5em;
+	}
+}
+
+.record-bc {
+	--src-height: 42px;
+	--dst-height: 1.5em;
+	--scale: 0.5714285714285714; /* firefox bug #1264520: can't write `calc(var(--dst-height) / var(--src-height));` */
+	--src-width: 83.5px;
+	--dst-width: calc(var(--src-width) * var(--scale));
+	width: var(--src-width);
+	height: var(--src-height);
+	margin:
+		calc((var(--dst-height) - var(--src-height)) * 0.5)
+		calc((var(--dst-width)  - var(--src-width))  * 0.5);
+	scale: var(--scale);
+}
+
+.record-yt {
+	--thumb-width: 48px;
+	--hover-width: 320px;
+	--thumb-height: 1.5em;
+	--hover-height: calc(var(--hover-width) * 0.67);
+	width: var(--thumb-width);
+	height: var(--thumb-height);
+	border-radius: 6px;
+
+	&:hover {
+		width: var(--hover-width);
+		height: var(--hover-height);
+		margin: calc((var(--hover-height) - var(--thumb-height)) * -0.5) calc((var(--hover-width) - var(--thumb-width)) * -0.5);
+		z-index: 1;
+	}
+}
+
+.record-title {
+	font-family: fs-hakumo;
+	font-size: 1em;
+	font-weight: normal;
+	margin-block: unset;
 }
 
 /* footer */
@@ -129,10 +237,36 @@ h3 {
 footer {
 	font-size: 0.875em;
 	text-align: end;
-	margin-block-start: 2em;
 	grid-column: 1 / 3;
 
 	p {
 		margin-block: unset;
 	}
+}
+
+/* support */
+
+@media (max-width: 800px) {
+
+	body {
+		display: block;
+	}
+
+	#title-wrapper {
+		grid-column: unset;
+	}
+
+	h1 {
+		letter-spacing: normal;
+		top: 18%;
+	}
+
+	#nav {
+		margin-inline: 32px;
+	}
+
+	main {
+		margin-inline: unset;
+	}
+
 }
