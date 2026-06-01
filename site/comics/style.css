@@ -200,7 +200,8 @@ p {
 @media (max-width: 800px) {
 
 	body {
-		perspective: 4000px;
+		padding-inline: 24px;
+		/* perspective: 4000px; */
 	}
 
 	#main {
@@ -212,7 +213,12 @@ p {
 	}
 
 	.page {
-		--rot-y-base: 0deg;
+		width: unset;
+
+		& + .page { border-left: unset; margin-block-start: 8px; }
+
+		.spread > &.left  { box-shadow:  1px 0 hsl(0, 0%, 90%),  24px 0 white; }
+		.spread > &.right { box-shadow: -1px 0 hsl(0, 0%, 90%), -24px 0 white; }
 	}
 
 	#nav {
