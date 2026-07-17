@@ -11,312 +11,353 @@
 <body>
 
 <div id="main">
+
 	<section class="cover">
-		<div class="page right text">
-			<h1>digizine</h1>
-			<p>a collection of comics made for a weekly workshop class, jan-may 2026</p>
-			<p>- june</p>
-			<a href="#intro" title="next"></a>
+		<div class="page page-right">
+			<div class="page-content placard">
+				<h1>digizine</h1>
+				<p>a collection of comics made for a weekly workshop class, jan-may 2026</p>
+				<p>- june</p>
+			</div>
+			<a class="page-link" href="#intro" title="next"></a>
 		</div>
 	</section>
+
 	<section class="spread" id="intro">
-		<div class="page left text">
-			<p>this is a collection of comics i did for a class, presented in zine-style.</p>
-			<p>each week, we'd be given a prompt, draw a 1-3 page comic using that
-			prompt, and bring it in to workshop.</p>
-			<a href="#" title="prev"></a>
+		<div class="page page-left">
+			<div class="page-content placard">
+				<p>this is a collection of comics i did for a class, presented in zine-style.</p>
+				<p>each week, we'd be given a prompt, draw a 1-3 page comic using that
+				prompt, and bring it in to workshop.</p>
+			</div>
+			<a class="page-link" href="#" title="prev"></a>
 		</div>
-		<div class="page right text">
-			<header class="caption">table of contents</header>
-			<nav>
-				<ol id="table-of-contents">
-					<li><span class="week-label">week 01</span> <a href="#autobio">desire paths</a>             <span class="toc-page">3</span></li>
-					<li><span class="week-label">week 02</span> <a href="#scavenge">you can only choose two</a> <span class="toc-page">5</span></li>
-					<li><span class="week-label">week 03</span> <a href="#fight">untitled fragment</a>          <span class="toc-page">9</span></li>
-					<li><span class="week-label">week 04</span> <a href="#strips">strips</a>                    <span class="toc-page">11</span></li>
-					<li><span class="week-label">midterm</span> <a href="#zine">sasha finds the comet</a>       <span class="toc-page">13</span></li>
-					<li><span class="week-label">week 07</span> <a href="#silent">on the clock</a>              <span class="toc-page">23</span></li>
-					<li><span class="week-label">week 08</span> <a href="#experiment">unfocused</a>             <span class="toc-page">27</span></li>
-					<li><span class="week-label">week 09</span> <a href="#remake">desire paths ii</a>           <span class="toc-page">29</span></li>
-					<li><span class="week-label">week 10</span> <a href="#nonfiction">the fate of akkad</a>     <span class="toc-page">31</span></li>
-					<li><span class="week-label">~final~</span> <a href="#final">back n forth</a>               <span class="toc-page">37</span></li>
-				</ol>
-			</nav>
-			<a href="#autobio" title="next"></a>
+		<div class="page page-right">
+			<div class="page-content" id="table-of-contents">
+				<header class="caption">table of contents</header>
+				<nav>
+					<ol>
+						<li><span class="week-label">week 01</span> <a href="#autobio" title="desire paths"><img src="assets/icons/autobio.png"></a></li>
+						<li><span class="week-label">week 02</span> <a href="#scavenge" title="you can only choose two"><img src="assets/icons/scavenge.png"></a></li>
+						<li><span class="week-label">week 03</span> <a href="#fight" title="untitled fragment"><img src="assets/icons/fight.png"></a></li>
+						<li><span class="week-label">week 04</span> <a href="#strips" title="strips"><img src="assets/icons/strips.png"></a></li>
+						<li class="wide"><span class="week-label">midterm</span> <a href="#zine" title="sasha finds the comet"><img src="assets/icons/midterm.png"></a></li>
+						<li><span class="week-label">week 07</span> <a href="#silent" title="on the clock"><img src="assets/icons/silent.png"></a></li>
+						<li><span class="week-label">week 08</span> <a href="#experiment" title="unfocused"><img src="assets/icons/experiment.png"></a></li>
+						<li><span class="week-label">week 09</span> <a href="#remake" title="desire paths ii"><img src="assets/icons/remake.png"></a></li>
+						<li><span class="week-label">week 10</span> <a href="#nonfiction" title="the fate of akkad"><img src="assets/icons/nonfiction.png"></a></li>
+						<li class="wide"><span class="week-label">~final~</span> <a href="#final" title="back n forth"><img src="assets/icons/final.png"></a></li>
+					</ol>
+				</nav>
+			</div>
+			<a class="page-link" href="#autobio" title="next"></a>
 		</div>
 	</section>
+
 	<section class="spread" id="autobio">
-		<div class="page left image">
+		<div class="page page-left">
 			<header class="caption"><span class="week-label">week 01</span> prompt: autobio</header>
-			<img src="pages/autobio/1.png">
-			<a href="#intro" title="prev"></a>
+			<img class="page-content comic" src="pages/autobio/1.png" loading="lazy">
+			<a class="page-link" href="#intro" title="prev"></a>
 		</div>
-		<div class="page right image">
+		<div class="page page-right">
 			<header class="caption">(psst... <span style="padding-inline: 0.125em; border: 1px solid blue">identifying details removed</span>) <span class="week-label">week 01</span></header>
-			<img src="pages/autobio/2.png">
-			<a href="#scavenge" title="next"></a>
+			<img class="page-content comic" src="pages/autobio/2.png" loading="lazy">
+			<a class="page-link" href="#scavenge" title="next"></a>
 		</div>
 	</section>
+
 	<section class="spread" id="scavenge">
-		<div class="page left image">
+		<div class="page page-left">
 			<header class="caption"><span class="week-label">week 02</span> prompt: take something overheard or otherwise scavenged as a starting point</header>
-			<img src="pages/scavenge/1.png">
-			<a href="#autobio" title="prev"></a>
+			<img class="page-content comic" src="pages/scavenge/1.png" loading="lazy">
+			<a class="page-link" href="#autobio" title="prev"></a>
 		</div>
-		<div class="page right image">
+		<div class="page page-right">
 			<header class="caption"><span class="week-label">week 02</span></header>
-			<img src="pages/scavenge/2.png">
-			<a href="#scavenge-ii" title="next"></a>
+			<img class="page-content comic" src="pages/scavenge/2.png" loading="lazy">
+			<a class="page-link" href="#scavenge-ii" title="next"></a>
 		</div>
 	</section>
+
 	<section class="spread" id="scavenge-ii">
-		<div class="page left image">
+		<div class="page page-left">
 			<header class="caption"><span class="week-label">week 02</span></header>
-			<img src="pages/scavenge/3.png">
-			<a href="#scavenge" title="prev"></a>
+			<img class="page-content comic" src="pages/scavenge/3.png" loading="lazy">
+			<a class="page-link" href="#scavenge" title="prev"></a>
 		</div>
-		<div class="page right text">
-			<p>these next two are oc comics, first for bad dream, then for aerie.</p>
-			<p>the text of the first is "untitled fragment" from <i>house of leaves</i>.</p>
-			<a href="#fight" title="next"></a>
+		<div class="page page-right">
+			<div class="page-content placard">
+				<p>these next two are oc comics, first for bad dream, then for aerie.</p>
+				<p>the text of the first is "untitled fragment" from <i>house of leaves</i>.</p>
+			</div>
+			<a class="page-link" href="#fight" title="next"></a>
 		</div>
 	</section>
+
 	<section class="spread" id="fight">
-		<div class="page left image">
+		<div class="page page-left">
 			<header class="caption"><span class="week-label">week 03</span> prompt: two characters are fighting</header>
-			<img src="pages/fight/1.png">
-			<a href="#scavenge-ii" title="prev"></a>
+			<img class="page-content comic" src="pages/fight/1.png" loading="lazy">
+			<a class="page-link" href="#scavenge-ii" title="prev"></a>
 		</div>
-		<div class="page right image">
+		<div class="page page-right">
 			<header class="caption"><span class="week-label">week 03</span></header>
-			<img src="pages/fight/2.png">
-			<a href="#strips" title="next"></a>
+			<img class="page-content comic" src="pages/fight/2.png" loading="lazy">
+			<a class="page-link" href="#strips" title="next"></a>
 		</div>
 	</section>
+
 	<section class="spread" id="strips">
-		<div class="page left image">
+		<div class="page page-left">
 			<header class="caption"><span class="week-label">week 04</span> prompt: comic strips</header>
-			<img src="pages/strips.png">
-			<a href="#fight" title="prev"></a>
+			<img class="page-content comic" src="pages/strips.png" loading="lazy">
+			<a class="page-link" href="#fight" title="prev"></a>
 		</div>
-		<div class="page right text">
-			<p>i didn't have time to complete all the strips i wanted, so they jump around.</p>
-			<p>next is my midterm!</p>
-			<p>at first i was moving toward another comic around my established ocs, but i felt stuck, pulled back, and made something else instead.</p>
-			<a href="#zine" title="next"></a>
+		<div class="page page-right">
+			<div class="page-content placard">
+				<p>i didn't have time to complete all the strips i wanted, so they jump around.</p>
+				<p>next is my midterm!</p>
+				<p>at first i was moving toward another comic around my established ocs, but i felt stuck, pulled back, and made something else instead.</p>
+			</div>
+			<a class="page-link" href="#zine" title="next"></a>
 		</div>
 	</section>
+
 	<section class="spread" id="zine">
-		<div class="page left image">
+		<div class="page page-left">
 			<header class="caption"><span class="week-label">midterm</span> zine</header>
-			<img src="pages/zine/1.png">
-			<a href="#strips" title="prev"></a>
+			<img class="page-content comic" src="pages/zine/1.png" loading="lazy">
+			<a class="page-link" href="#strips" title="prev"></a>
 		</div>
-		<div class="page right image">
+		<div class="page page-right">
 			<header class="caption"><span class="week-label">midterm</span></header>
-			<img src="pages/zine/2.png">
-			<a href="#zine-ii" title="next"></a>
+			<img class="page-content comic" src="pages/zine/2.png" loading="lazy">
+			<a class="page-link" href="#zine-ii" title="next"></a>
 		</div>
 	</section>
+
 	<section class="spread" id="zine-ii">
-		<div class="page left image">
+		<div class="page page-left">
 			<header class="caption"><span class="week-label">midterm</span></header>
-			<img src="pages/zine/3.png">
-			<a href="#zine" title="prev"></a>
+			<img class="page-content comic" src="pages/zine/3.png" loading="lazy">
+			<a class="page-link" href="#zine" title="prev"></a>
 		</div>
-		<div class="page right image">
+		<div class="page page-right">
 			<header class="caption"><span class="week-label">midterm</span></header>
-			<img src="pages/zine/4.png">
-			<a href="#zine-iii" title="next"></a>
+			<img class="page-content comic" src="pages/zine/4.png" loading="lazy">
+			<a class="page-link" href="#zine-iii" title="next"></a>
 		</div>
 	</section>
+
 	<section class="spread" id="zine-iii">
-		<div class="page left image">
+		<div class="page page-left">
 			<header class="caption"><span class="week-label">midterm</span></header>
-			<img src="pages/zine/5.png">
-			<a href="#zine-ii" title="prev"></a>
+			<img class="page-content comic" src="pages/zine/5.png" loading="lazy">
+			<a class="page-link" href="#zine-ii" title="prev"></a>
 		</div>
-		<div class="page right image">
+		<div class="page page-right">
 			<header class="caption"><span class="week-label">midterm</span></header>
-			<img src="pages/zine/6.png">
-			<a href="#zine-iv" title="next"></a>
+			<img class="page-content comic" src="pages/zine/6.png" loading="lazy">
+			<a class="page-link" href="#zine-iv" title="next"></a>
 		</div>
 	</section>
+
 	<section class="spread" id="zine-iv">
-		<div class="page left image">
+		<div class="page page-left">
 			<header class="caption"><span class="week-label">midterm</span></header>
-			<img src="pages/zine/7.png"><a href="#zine-iii" title="prev"></a>
+			<img class="page-content comic" src="pages/zine/7.png" loading="lazy">
+			<a class="page-link" href="#zine-iii" title="prev"></a>
 		</div>
-		<div class="page right image">
+		<div class="page page-right">
 			<header class="caption"><span class="week-label">midterm</span></header>
-			<img src="pages/zine/8.png">
-			<a href="#zine-v" title="next"></a>
+			<img class="page-content comic" src="pages/zine/8.png" loading="lazy">
+			<a class="page-link" href="#zine-v" title="next"></a>
 		</div>
 	</section>
+
 	<section class="spread" id="zine-v">
-		<div class="page left image">
+		<div class="page page-left">
 			<header class="caption"><span class="week-label">midterm</span></header>
-			<img src="pages/zine/9.png"><a href="#zine-iv" title="prev"></a>
+			<img class="page-content comic" src="pages/zine/9.png" loading="lazy">
+			<a class="page-link" href="#zine-iv" title="prev"></a>
 		</div>
-		<div class="page right image">
+		<div class="page page-right">
 			<header class="caption"><span class="week-label">midterm</span></header>
-			<img src="pages/zine/10.png">
-			<a href="#silent" title="next"></a>
+			<img class="page-content comic" src="pages/zine/10.png" loading="lazy">
+			<a class="page-link" href="#silent" title="next"></a>
 		</div>
 	</section>
+
 	<section class="spread" id="silent">
-		<div class="page left image">
+		<div class="page page-left">
 			<header class="caption"><span class="week-label">week 07</span> prompt: silent (text-free)</header>
-			<img src="pages/silent/1.png">
-			<a href="#zine-v" title="prev"></a>
+			<img class="page-content comic" src="pages/silent/1.png" loading="lazy">
+			<a class="page-link" href="#zine-v" title="prev"></a>
 		</div>
-		<div class="page right image">
+		<div class="page page-right">
 			<header class="caption"><span class="week-label">week 07</span></header>
-			<img src="pages/silent/2.png">
-			<a href="#silent-ii" title="prev"></a>
+			<img class="page-content comic" src="pages/silent/2.png" loading="lazy">
+			<a class="page-link" href="#silent-ii" title="prev"></a>
 		</div>
 	</section>
+
 	<section class="spread" id="silent-ii">
-		<div class="page left image">
+		<div class="page page-left">
 			<header class="caption"><span class="week-label">week 07</span></header>
-			<img src="pages/silent/3.png">
-			<a href="#silent" title="next"></a>
+			<img class="page-content comic" src="pages/silent/3.png" loading="lazy">
+			<a class="page-link" href="#silent" title="prev"></a>
 		</div>
-		<div class="page right text">
-			<p></p>
-			<a href="#experiment"></a>
+		<div class="page page-right">
+			<a class="page-link" href="#experiment" title="next"></a>
 		</div>
 	</section>
+
 	<section class="spread" id="experiment">
-		<div class="page left image">
+		<div class="page page-left">
 			<header class="caption"><span class="week-label">week 08</span> prompt: experiment with a new style (visual, narrative style, etc.)</header>
-			<img src="pages/experiment/1.png">
-			<a href="#silent-ii" title="prev"></a>
+			<img class="page-content comic" src="pages/experiment/1.png" loading="lazy">
+			<a class="page-link" href="#silent-ii" title="prev"></a>
 		</div>
-		<div class="page right image">
+		<div class="page page-right">
 			<header class="caption"><span class="week-label">week 08</span></header>
-			<img src="pages/experiment/2.png">
-			<a href="#remake" title="next"></a>
+			<img class="page-content comic" src="pages/experiment/2.png" loading="lazy">
+			<a class="page-link" href="#remake" title="next"></a>
 		</div>
 	</section>
+
 	<section class="spread" id="remake">
-		<div class="page left image">
+		<div class="page page-left">
 			<header class="caption"><span class="week-label">week 09</span> prompt: pick one of your <a href="#autobio">previous assignments</a> and edit or remake it</header>
-			<img src="pages/remake/1.png">
-			<a href="#experiment" title="prev"></a>
+			<img class="page-content comic" src="pages/remake/1.png" loading="lazy">
+			<a class="page-link" href="#experiment" title="prev"></a>
 		</div>
-		<div class="page right image">
+		<div class="page page-right">
 			<header class="caption"><span class="week-label">week 09</span></header>
-			<img src="pages/remake/2.png">
-			<a href="#nonfiction" title="next"></a>
+			<img class="page-content comic" src="pages/remake/2.png" loading="lazy">
+			<a class="page-link" href="#nonfiction" title="next"></a>
 		</div>
 	</section>
+
 	<section class="spread" id="nonfiction">
-		<div class="page left image">
+		<div class="page page-left">
 			<header class="caption"><span class="week-label">week 10</span> prompt: nonfiction</header>
-			<img src="pages/nonfiction/1.png">
-			<a href="#remake" title="prev"></a>
+			<img class="page-content comic" src="pages/nonfiction/1.png" loading="lazy">
+			<a class="page-link" href="#remake" title="prev"></a>
 		</div>
-		<div class="page right image">
+		<div class="page page-right">
 			<header class="caption"><span class="week-label">week 10</span></header>
-			<img src="pages/nonfiction/2.png">
-			<a href="#nonfiction-ii" title="next"></a>
+			<img class="page-content comic" src="pages/nonfiction/2.png" loading="lazy">
+			<a class="page-link" href="#nonfiction-ii" title="next"></a>
 		</div>
 	</section>
+
 	<section class="spread" id="nonfiction-ii">
-		<div class="page left image">
+		<div class="page page-left">
 			<header class="caption"><span class="week-label">week 10</span></header>
-			<img src="pages/nonfiction/3.png">
-			<a href="#nonfiction" title="prev"></a>
+			<img class="page-content comic" src="pages/nonfiction/3.png" loading="lazy">
+			<a class="page-link" href="#nonfiction" title="prev"></a>
 		</div>
-		<div class="page right text">
-			<a href="#final-workshop" title="next"></a>
+		<div class="page page-right">
+			<a class="page-link" href="#final-workshop" title="next"></a>
 		</div>
 	</section>
+
 	<section class="spread" id="final-workshop">
-		<div class="page left image">
+		<div class="page page-left">
 			<header class="caption"><span class="week-label">interlude</span></header>
-			<img src="pages/final/workshop.png">
-			<a href="#nonfiction-ii" title="prev"></a>
+			<img class="page-content comic" src="pages/final/workshop.png" loading="lazy">
+			<a class="page-link" href="#nonfiction-ii" title="prev"></a>
 		</div>
-		<div class="page right text">
-			<p>this last comic is my final! on the left is some material i brought in to workshop while i was working on it.</p>
-			<p>i wanted to focus on characterwork, since i'd struggled with that in previous assignments.</p>
-			<p>thanks for reading! i hope you enjoy.</p>
-			<a href="#final" title="next"></a>
+		<div class="page page-right">
+			<div class="page-content placard">
+				<p>this last comic is my final! on the left is some material i brought in to workshop while i was working on it.</p>
+				<p>i wanted to focus on characterwork, since i'd struggled with that in previous assignments.</p>
+				<p>thanks for reading! enjoy.</p>
+			</div>
+			<a class="page-link" href="#final" title="next"></a>
 		</div>
 	</section>
+
 	<section class="spread" id="final">
-		<div class="page left image">
+		<div class="page page-left">
 			<header class="caption"><span class="week-label">~final~</span></header>
-			<img src="pages/final/1.png">
-			<a href="#final-workshop" title="prev"></a>
+			<img class="page-content comic" src="pages/final/1.png" loading="lazy">
+			<a class="page-link" href="#final-workshop" title="prev"></a>
 		</div>
-		<div class="page right image">
+		<div class="page page-right">
 			<header class="caption"><span class="week-label">~final~</span></header>
-			<img src="pages/final/2.png">
-			<a href="#final-ii" title="next"></a>
+			<img class="page-content comic" src="pages/final/2.png" loading="lazy">
+			<a class="page-link" href="#final-ii" title="next"></a>
 		</div>
 	</section>
+
 	<section class="spread" id="final-ii">
-		<div class="page left image">
+		<div class="page page-left">
 			<header class="caption"><span class="week-label">~final~</span></header>
-			<img src="pages/final/3.png">
-			<a href="#final" title="prev"></a>
+			<img class="page-content comic" src="pages/final/3.png" loading="lazy">
+			<a class="page-link" href="#final" title="prev"></a>
 		</div>
-		<div class="page right image">
+		<div class="page page-right">
 			<header class="caption"><span class="week-label">~final~</span></header>
-			<img src="pages/final/4.png">
-			<a href="#final-iii" title="next"></a>
+			<img class="page-content comic" src="pages/final/4.png" loading="lazy">
+			<a class="page-link" href="#final-iii" title="next"></a>
 		</div>
 	</section>
+
 	<section class="spread" id="final-iii">
-		<div class="page left image">
+		<div class="page page-left">
 			<header class="caption"><span class="week-label">~final~</span></header>
-			<img src="pages/final/5.png">
-			<a href="#final-ii" title="prev"></a>
+			<img class="page-content comic" src="pages/final/5.png" loading="lazy">
+			<a class="page-link" href="#final-ii" title="prev"></a>
 		</div>
-		<div class="page right image">
+		<div class="page page-right">
 			<header class="caption"><span class="week-label">~final~</span></header>
-			<img src="pages/final/6.png">
-			<a href="#final-iv" title="next"></a>
+			<img class="page-content comic" src="pages/final/6.png" loading="lazy">
+			<a class="page-link" href="#final-iv" title="next"></a>
 		</div>
 	</section>
+
 	<section class="spread" id="final-iv">
-		<div class="page left image">
+		<div class="page page-left">
 			<header class="caption"><span class="week-label">~final~</span></header>
-			<img src="pages/final/7.png">
-			<a href="#final-iii" title="prev"></a>
+			<img class="page-content comic" src="pages/final/7.png" loading="lazy">
+			<a class="page-link" href="#final-iii" title="prev"></a>
 		</div>
-		<div class="page right image">
+		<div class="page page-right">
 			<header class="caption"><span class="week-label">~final~</span></header>
-			<img src="pages/final/8.png">
-			<a href="#final-v" title="next"></a>
+			<img class="page-content comic" src="pages/final/8.png" loading="lazy">
+			<a class="page-link" href="#final-v" title="next"></a>
 		</div>
 	</section>
+
 	<section class="spread" id="final-v">
-		<div class="page left image">
+		<div class="page page-left">
 			<header class="caption"><span class="week-label">~final~</span></header>
-			<img src="pages/final/9.png">
-			<a href="#final-iv" title="prev"></a>
+			<img class="page-content comic" src="pages/final/9.png" loading="lazy">
+			<a class="page-link" href="#final-iv" title="prev"></a>
 		</div>
-		<div class="page right image">
+		<div class="page page-right">
 			<header class="caption"><span class="week-label">~final~</span></header>
-			<img src="pages/final/10.png">
-			<a href="#back" title="next"></a>
+			<img class="page-content comic" src="pages/final/10.png" loading="lazy">
+			<a class="page-link" href="#back" title="next"></a>
 		</div>
 	</section>
+
 	<section class="cover" id="back">
-		<div class="page left text">
-			<p>(fin.)</p>
-			<a href="#final-v" title="prev"></a>
+		<div class="page page-left">
+			<div class="page-content placard">
+				<p>(fin.)</p>
+			</div>
+			<a class="page-link" href="#final-v" title="prev"></a>
 		</div>
 	</section>
+
 </div>
 
 <nav id="nav">
 	<ul>
-		<li><a href="/">exit</a></li>
+		<li><a href="/">head home</a></li>
 		<li><a href="#intro">table of contents</a></li>
 	</ul>
 </nav>
